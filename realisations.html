@@ -1752,15 +1752,68 @@ margin: 0rem !important;
         });
       }
       
-      // Handle image errors - try fallback
+      // Handle image errors - try fallback to original
       img.addEventListener('error', function() {
         const src = this.src;
+        const srcset = this.getAttribute('srcset');
+        
         // If optimized version fails, try original
         if (src.includes('-p-')) {
-          const originalSrc = src.replace(/-p-\d+\.jpg/, '.jpg');
+          // Extract original filename by removing size suffix
+          let originalSrc = src.replace(/-p-\d+\.(jpg|jpeg|png)/i, '.$1');
+          // If that doesn't work, try different pattern
+          if (originalSrc === src) {
+            originalSrc = src.replace(/-p-\d+/, '');
+          }
           this.src = originalSrc;
+          // Also update srcset to use original for all sizes
+          if (srcset) {
+            const originalSrcset = srcset.replace(/-p-\d+\.(jpg|jpeg|png)/gi, '.$1');
+            this.setAttribute('srcset', originalSrcset);
+          }
+        } else if (srcset && srcset.includes('-p-')) {
+          // If srcset has optimized versions but they fail, use original
+          const originalSrcset = srcset.replace(/-p-\d+\.(jpg|jpeg|png)/gi, '.$1');
+          this.setAttribute('srcset', originalSrcset);
+          // Update src to original if it's not already
+          if (this.src.includes('-p-')) {
+            this.src = this.src.replace(/-p-\d+\.(jpg|jpeg|png)/i, '.$1');
+          }
         }
       });
+      
+      // Ensure srcset always includes original as fallback
+      if (img.srcset && img.srcset.includes('-p-')) {
+        const srcsetParts = img.srcset.split(',');
+        const hasOriginal = srcsetParts.some(part => !part.includes('-p-'));
+        if (!hasOriginal) {
+          // Extract original path from first srcset entry
+          const firstPart = srcsetParts[0].trim().split(' ')[0];
+          const originalPath = firstPart.replace(/-p-\d+\.(jpg|jpeg|png)/i, '.$1');
+          if (originalPath !== firstPart) {
+            // Add original as fallback at the end
+            img.srcset = img.srcset + ', ' + originalPath + ' 2560w';
+          }
+        }
+      }
+      
+      // Pre-check if optimized version exists, if not use original immediately
+      if (img.src && img.src.includes('-p-')) {
+        const testImg = new Image();
+        testImg.onerror = function() {
+          // Optimized version doesn't exist, use original
+          const originalSrc = img.src.replace(/-p-\d+\.(jpg|jpeg|png)/i, '.$1');
+          img.src = originalSrc;
+          if (img.srcset) {
+            const originalSrcset = img.srcset.replace(/-p-\d+\.(jpg|jpeg|png)/gi, '.$1');
+            img.setAttribute('srcset', originalSrcset);
+          }
+        };
+        testImg.onload = function() {
+          // Optimized version exists, keep it
+        };
+        testImg.src = img.src;
+      }
     });
     
     function fixImageOrientation(img) {
