@@ -2440,6 +2440,8 @@ figcaption {
   width: 100% !important;
   height: calc(100% + 100px) !important;
   border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .contact16_map {
@@ -2454,6 +2456,8 @@ figcaption {
   height: 35rem;
   position: relative;
   overflow: hidden;
+  border: 0 !important;
+  outline: none !important;
 }
 
 .layout626_divider {
