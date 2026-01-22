@@ -88,6 +88,30 @@ export default async function handler(req, res) {
     
     // ⚠️ HARDCODE recipient to prevent environment variable overrides
     const businessEmail = 'wrivard@kua.quebec';
+    
+    // Validate email addresses
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Adresse email invalide.'
+      });
+    }
+    
+    if (!emailRegex.test(businessEmail)) {
+      console.error('Invalid business email address:', businessEmail);
+      return res.status(500).json({
+        success: false,
+        message: 'Erreur de configuration serveur.'
+      });
+    }
+    
+    console.log('Email configuration:', {
+      fromEmail,
+      businessEmail,
+      clientEmail: email,
+      hasResendKey: !!process.env.RESEND_API_KEY
+    });
 
     // Budget mapping for better display
     const budgetMap = {
@@ -247,19 +271,33 @@ export default async function handler(req, res) {
       }
 
       console.log(`Attempting to send business email to: ${businessEmail}`);
-      const { data, error } = await resend.emails.send(emailData);
+      console.log('Business email data:', {
+        from: emailData.from,
+        to: emailData.to,
+        subject: emailData.subject,
+        hasAttachments: emailData.attachments ? emailData.attachments.length : 0,
+        htmlLength: emailData.html ? emailData.html.length : 0
+      });
+      
+      const result = await resend.emails.send(emailData);
+      console.log('Business email send result:', JSON.stringify(result, null, 2));
 
-      if (error) {
-        businessEmailError = error;
-        console.error('Business email error:', JSON.stringify(error, null, 2));
+      if (result.error) {
+        businessEmailError = result.error;
+        console.error('Business email error:', JSON.stringify(result.error, null, 2));
         console.error('Business email error details:', {
-          message: error.message,
-          name: error.name,
-          statusCode: error.statusCode
+          message: result.error.message,
+          name: result.error.name,
+          statusCode: result.error.statusCode
         });
-      } else {
+      } else if (result.data) {
         businessEmailSent = true;
-        console.log('Business email sent successfully:', data);
+        console.log('Business email sent successfully:', JSON.stringify(result.data, null, 2));
+      } else {
+        // No error but no data either - this shouldn't happen but log it
+        console.warn('Business email: No error but no data returned:', result);
+        businessEmailSent = false;
+        businessEmailError = { message: 'Unknown error: No data returned from Resend' };
       }
     } catch (businessEmailException) {
       businessEmailError = businessEmailException;
