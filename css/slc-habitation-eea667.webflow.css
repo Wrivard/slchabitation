@@ -2434,12 +2434,12 @@ figcaption {
 
 /* Hide Google My Maps header and footer bars */
 .contact16_map-wrapper .contact16_map {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  width: 100%;
-  height: calc(100% + 80px);
-  border: 0;
+  position: absolute !important;
+  top: -60px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: calc(100% + 100px) !important;
+  border: 0 !important;
 }
 
 .contact16_map {
