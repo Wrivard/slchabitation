@@ -2679,6 +2679,11 @@ figcaption {
   overflow: hidden;
 }
 
+/* Hide placeholder image on about page temporarily */
+.section_layout118 .layout118_image-wrapper {
+  display: none !important;
+}
+
 .layout118_item-list {
   grid-column-gap: 1.5rem;
   grid-row-gap: 1.5rem;
