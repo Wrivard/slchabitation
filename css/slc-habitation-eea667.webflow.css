@@ -1991,12 +1991,27 @@ figcaption {
 }
 
 .navbar3_tablet-menu-button {
-  border: 1px solid var(--color-scheme-1--border);
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  border: 1px solid var(--_primitives---colors--ecstasy);
+  background-color: var(--_primitives---colors--ecstasy);
   color: var(--_primitives---colors--white);
-  background-color: #000;
-  margin-left: 1rem;
-  padding: .5rem 1.5rem;
+  text-align: center;
+  text-transform: none;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  padding: .625rem 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color .2s, background-color .2s;
   display: none;
+  margin-left: 1rem;
+}
+
+.navbar3_tablet-menu-button:hover {
+  border-color: var(--_primitives---colors--ecstasy-dark);
+  background-color: var(--_primitives---colors--ecstasy-dark);
 }
 
 .navbar3_logo {
@@ -3579,6 +3594,25 @@ figcaption {
     margin-left: 0;
     margin-right: 0;
     display: inline-block;
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+    border: 1px solid var(--_primitives---colors--ecstasy);
+    background-color: var(--_primitives---colors--ecstasy);
+    color: var(--_primitives---colors--white);
+    text-align: center;
+    text-transform: none;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    padding: .625rem 1.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color .2s, background-color .2s;
+  }
+
+  .navbar3_tablet-menu-button:hover {
+    border-color: var(--_primitives---colors--ecstasy-dark);
+    background-color: var(--_primitives---colors--ecstasy-dark);
   }
 
   .menu-icon3_line-bottom {
@@ -4312,6 +4346,37 @@ figcaption {
   .contact6_content {
     grid-row-gap: 3rem;
     grid-template-columns: 1fr;
+  }
+}
+
+/* Footer credit mobile fix */
+@media screen and (max-width: 767px) {
+  .footer3_bottom-wrapper {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .footer3_bottom-wrapper > div[style*="position: absolute"] {
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 12px 0 !important;
+    order: 2;
+  }
+  
+  .footer3_credit-text {
+    order: 1;
+    width: 100%;
+    text-align: center !important;
+    margin-bottom: 8px;
+  }
+  
+  .footer3_legal-list {
+    order: 3;
+    width: 100%;
+    justify-content: center !important;
+    margin-top: 8px;
   }
 }
 
