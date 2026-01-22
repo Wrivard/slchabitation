@@ -2895,14 +2895,24 @@ figcaption {
   -ms-transform: none !important;
   /* Prevent rotation from EXIF data - use none to ignore EXIF orientation */
   -webkit-image-orientation: none !important;
+  /* Prevent any rotation */
+  rotate: 0deg !important;
+  -webkit-rotate: 0deg !important;
 }
 
 /* Ensure image wrapper maintains aspect ratio */
+.blog22_image-wrapper {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
 .blog22_image-wrapper img.blog22_image {
   min-height: 100% !important;
   max-height: 100% !important;
   object-fit: cover !important;
   object-position: center center !important;
+  transform: rotate(0deg) !important;
+  -webkit-transform: rotate(0deg) !important;
 }
 
 .blog22_featured-image-wrapper {
