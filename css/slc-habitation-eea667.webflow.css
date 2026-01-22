@@ -3299,8 +3299,10 @@ figcaption {
 }
 
 .back-top__arrow {
-  color: var(--_primitives---colors--mine-shaft-lightest);
-  width: 1.75em;
+  color: var(--_primitives---colors--white);
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
 }
 
 .messenger_button {
