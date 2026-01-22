@@ -463,7 +463,7 @@ export default async function handler(req, res) {
       }
     }
 
-    // Return success with detailed status
+    // Return success with detailed status - include full error details for debugging
     let responseMessage = 'Message envoyé avec succès!';
     if (!businessEmailSent && !confirmationEmailSent) {
       responseMessage = 'Erreur lors de l\'envoi des emails. Veuillez réessayer.';
@@ -473,14 +473,35 @@ export default async function handler(req, res) {
       responseMessage = 'L\'email au propriétaire a été envoyé, mais votre confirmation a échoué.';
     }
     
+    // Prepare detailed error information for debugging
+    const businessEmailErrorDetails = businessEmailError ? {
+      message: businessEmailError.message || String(businessEmailError),
+      name: businessEmailError.name,
+      statusCode: businessEmailError.statusCode,
+      fullError: JSON.stringify(businessEmailError, Object.getOwnPropertyNames(businessEmailError))
+    } : null;
+    
+    const confirmationEmailErrorDetails = confirmationEmailError ? {
+      message: confirmationEmailError.message || String(confirmationEmailError),
+      name: confirmationEmailError.name,
+      statusCode: confirmationEmailError.statusCode,
+      fullError: JSON.stringify(confirmationEmailError, Object.getOwnPropertyNames(confirmationEmailError))
+    } : null;
+    
     res.status(200).json({
       success: businessEmailSent || confirmationEmailSent, // Success if at least one email sent
       message: responseMessage,
       data: {
         confirmationSent: confirmationEmailSent,
         businessEmailSent: businessEmailSent,
-        confirmationEmailError: confirmationEmailError ? confirmationEmailError.message : null,
-        businessEmailError: businessEmailError ? businessEmailError.message : null
+        confirmationEmailError: confirmationEmailErrorDetails,
+        businessEmailError: businessEmailErrorDetails,
+        // Include email addresses for verification
+        emails: {
+          businessEmail: businessEmail,
+          clientEmail: email,
+          fromEmail: fromEmail
+        }
       }
     });
     

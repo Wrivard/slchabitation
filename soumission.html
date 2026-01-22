@@ -1348,6 +1348,27 @@ margin: 0rem !important;
             throw parseError;
           }
           
+          // Log response for debugging
+          console.log('📧 Email Status Response:', result);
+          
+          // Log detailed email status
+          if (result.data) {
+            console.log('📊 Email Status Details:', {
+              'Business Email Sent': result.data.businessEmailSent ? '✅ YES' : '❌ NO',
+              'Confirmation Email Sent': result.data.confirmationSent ? '✅ YES' : '❌ NO',
+              'Business Email': result.data.emails?.businessEmail,
+              'Client Email': result.data.emails?.clientEmail,
+              'From Email': result.data.emails?.fromEmail
+            });
+            
+            if (result.data.businessEmailError) {
+              console.error('❌ Business Email Error:', result.data.businessEmailError);
+            }
+            if (result.data.confirmationEmailError) {
+              console.error('❌ Confirmation Email Error:', result.data.confirmationEmailError);
+            }
+          }
+          
           if (result.success) {
             // Show Webflow success message
             form.style.display = 'none';
