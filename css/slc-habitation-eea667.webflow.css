@@ -2910,13 +2910,23 @@ figcaption {
   overflow: hidden !important;
 }
 
+.blog22_image-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  display: block !important;
+}
+
 .blog22_image-wrapper img.blog22_image {
   min-height: 100% !important;
   max-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover !important;
   object-position: center center !important;
   transform: rotate(0deg) !important;
   -webkit-transform: rotate(0deg) !important;
+  display: block !important;
 }
 
 .blog22_featured-image-wrapper {
