@@ -3956,6 +3956,12 @@ figcaption {
 }
 
 @media screen and (max-width: 767px) {
+  /* Mobile padding fix for realisations page */
+  .section_blog22 .padding-global {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   h1 {
     font-size: 2.5rem;
   }
