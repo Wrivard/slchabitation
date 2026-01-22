@@ -123,77 +123,104 @@ export default async function handler(req, res) {
       }
     }
 
-    // Create business email with table-based layout
+    // Logo URL for emails
+    const logoUrl = 'https://slchabitation.com/images/relume-567884.png';
+    
+    // Create business email with table-based layout and branding
     const businessEmailContent = `
       <!DOCTYPE html>
       <html>
-      <head><meta charset="utf-8"></head>
-      <body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f4f0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto;">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f4f0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);">
+          <!-- Logo Header -->
           <tr>
-            <td>
-              <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                <!-- Header -->
+            <td style="background: linear-gradient(135deg, #0b0b0b 0%, #232323 100%); padding: 32px 24px 24px 24px; text-align: center; border-bottom: 3px solid #d4a574;">
+              <img 
+                src="${logoUrl}" 
+                alt="SLC Habitation" 
+                style="max-width: 200px; height: auto; margin: 0 auto; display: block;"
+                onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='block';"
+              >
+              <div style="display: none; font-size: 24px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-top: 16px;">
+                SLC HABITATION
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Notification Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #d4a574 0%, #c49a5f 100%); color: #ffffff; text-align: center; padding: 24px 30px;">
+              <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.5px;">🏗️ Nouveau Projet</h1>
+              <p style="margin: 8px 0 0 0; font-size: 15px; opacity: 0.95; font-weight: 500;">Une nouvelle demande de soumission</p>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 40px 30px; background-color: #ffffff;">
+              <h2 style="color: #0b0b0b; margin: 0 0 24px 0; font-size: 20px; font-weight: 700; border-bottom: 3px solid #d4a574; padding-bottom: 12px; letter-spacing: -0.3px;">👤 Informations du Client</h2>
+              <table width="100%" cellpadding="10" cellspacing="0" style="margin-bottom: 32px; border-collapse: collapse;">
+                <tr style="border-bottom: 1px solid #e8e8e8;">
+                  <td style="font-weight: 600; color: #0b0b0b; width: 130px; vertical-align: top; padding: 12px 8px 12px 0;">Nom complet:</td>
+                  <td style="color: #232323; padding: 12px 0;">${fullName}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e8e8e8;">
+                  <td style="font-weight: 600; color: #0b0b0b; vertical-align: top; padding: 12px 8px 12px 0;">Email:</td>
+                  <td style="color: #232323; padding: 12px 0;"><a href="mailto:${email}" style="color: #d4a574; text-decoration: none; font-weight: 500;">${email}</a></td>
+                </tr>
+                ${phone ? `
+                <tr style="border-bottom: 1px solid #e8e8e8;">
+                  <td style="font-weight: 600; color: #0b0b0b; vertical-align: top; padding: 12px 8px 12px 0;">Téléphone:</td>
+                  <td style="color: #232323; padding: 12px 0;"><a href="tel:${phone}" style="color: #d4a574; text-decoration: none; font-weight: 500;">${phone}</a></td>
+                </tr>
+                ` : ''}
+                ${service ? `
+                <tr style="border-bottom: 1px solid #e8e8e8;">
+                  <td style="font-weight: 600; color: #0b0b0b; vertical-align: top; padding: 12px 8px 12px 0;">Service:</td>
+                  <td style="color: #232323; padding: 12px 0;">${service}</td>
+                </tr>
+                ` : ''}
+                <tr style="border-bottom: 1px solid #e8e8e8;">
+                  <td style="font-weight: 600; color: #0b0b0b; vertical-align: top; padding: 12px 8px 12px 0;">Budget:</td>
+                  <td style="color: #232323; padding: 12px 0;"><strong style="color: #d4a574;">${budgetDisplay}</strong></td>
+                </tr>
+                ${uploadedFiles && uploadedFiles.length > 0 ? `
                 <tr>
-                  <td style="background-color: #2c3e50; color: #ffffff; text-align: center; padding: 30px;">
-                    <h1 style="margin: 0; font-size: 28px; font-weight: bold;">🏗️ Nouveau Projet</h1>
-                    <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Une nouvelle demande de soumission</p>
+                  <td style="font-weight: 600; color: #0b0b0b; vertical-align: top; padding: 12px 8px 12px 0;">Images:</td>
+                  <td style="color: #232323; padding: 12px 0;">
+                    <span style="background-color: #d4a574; color: #ffffff; padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 600;">📷 ${uploadedFiles.length} image(s) attachée(s)</span>
                   </td>
                 </tr>
-                
-                <!-- Content -->
-                <tr>
-                  <td style="padding: 40px 30px; background-color: #ffffff;">
-                    <h2 style="color: #2c3e50; margin: 0 0 20px 0; font-size: 20px; border-bottom: 2px solid #d4a574; padding-bottom: 10px;">👤 Informations du Client</h2>
-                    <table width="100%" cellpadding="8" cellspacing="0" style="margin-bottom: 30px;">
-                      <tr>
-                        <td style="font-weight: bold; color: #2c3e50; width: 120px; vertical-align: top;">Nom:</td>
-                        <td style="color: #34495e;">${fullName}</td>
-                      </tr>
-                      <tr>
-                        <td style="font-weight: bold; color: #2c3e50; vertical-align: top;">Email:</td>
-                        <td style="color: #34495e;"><a href="mailto:${email}" style="color: #d4a574; text-decoration: none;">${email}</a></td>
-                      </tr>
-                      ${phone ? `
-                      <tr>
-                        <td style="font-weight: bold; color: #2c3e50; vertical-align: top;">Téléphone:</td>
-                        <td style="color: #34495e;"><a href="tel:${phone}" style="color: #d4a574; text-decoration: none;">${phone}</a></td>
-                      </tr>
-                      ` : ''}
-                      ${service ? `
-                      <tr>
-                        <td style="font-weight: bold; color: #2c3e50; vertical-align: top;">Service:</td>
-                        <td style="color: #34495e;">${service}</td>
-                      </tr>
-                      ` : ''}
-                      <tr>
-                        <td style="font-weight: bold; color: #2c3e50; vertical-align: top;">Budget:</td>
-                        <td style="color: #34495e;">${budgetDisplay}</td>
-                      </tr>
-                      ${uploadedFiles && uploadedFiles.length > 0 ? `
-                      <tr>
-                        <td style="font-weight: bold; color: #2c3e50; vertical-align: top;">Images:</td>
-                        <td style="color: #34495e;">${uploadedFiles.length} image(s) attachée(s)</td>
-                      </tr>
-                      ` : ''}
-                    </table>
-                    
-                    <h2 style="color: #2c3e50; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #d4a574; padding-bottom: 10px;">💬 Message</h2>
-                    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #d4a574; line-height: 1.6; color: #34495e;">
-                      ${message.replace(/\n/g, '<br>')}
-                    </div>
-                  </td>
-                </tr>
-                
-                <!-- Action Button -->
-                <tr>
-                  <td style="padding: 0 30px 40px 30px; text-align: center;">
-                    <a href="mailto:${email}?subject=Re: Votre demande de soumission" style="display: inline-block; background-color: #d4a574; color: #ffffff; text-decoration: none; padding: 15px 30px; border-radius: 6px; font-weight: bold; font-size: 16px; transition: background-color 0.3s;">
-                      📧 Répondre au Client
-                    </a>
-                  </td>
-                </tr>
+                ` : ''}
               </table>
+              
+              <h2 style="color: #0b0b0b; margin: 32px 0 20px 0; font-size: 20px; font-weight: 700; border-bottom: 3px solid #d4a574; padding-bottom: 12px; letter-spacing: -0.3px;">💬 Message</h2>
+              <div style="background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%); padding: 24px; border-radius: 8px; border-left: 4px solid #d4a574; line-height: 1.7; color: #232323; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                ${message.replace(/\n/g, '<br>')}
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Action Button -->
+          <tr>
+            <td style="padding: 0 30px 40px 30px; text-align: center; background-color: #ffffff;">
+              <a href="mailto:${email}?subject=Re: Votre demande de soumission" style="display: inline-block; background: linear-gradient(135deg, #d4a574 0%, #c49a5f 100%); color: #ffffff; text-decoration: none; padding: 16px 36px; border-radius: 8px; font-weight: 700; font-size: 16px; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3); letter-spacing: 0.3px;">
+                📧 Répondre au Client
+              </a>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8f9fa; padding: 24px 30px; text-align: center; border-top: 1px solid #e8e8e8;">
+              <p style="margin: 0; font-size: 12px; color: #858585; line-height: 1.6;">
+                Soumission reçue via <a href="https://slchabitation.com" style="color: #d4a574; text-decoration: none; font-weight: 500;">slchabitation.com</a><br>
+                <span style="color: #b5b5b5;">${new Date().toLocaleString('fr-CA', { dateStyle: 'long', timeStyle: 'short' })}</span>
+              </p>
             </td>
           </tr>
         </table>
@@ -229,39 +256,105 @@ export default async function handler(req, res) {
     const confirmationContent = `
       <!DOCTYPE html>
       <html>
-      <head><meta charset="utf-8"></head>
-      <body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f4f0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto;">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f4f0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);">
+          <!-- Logo Header -->
           <tr>
-            <td>
-              <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                <tr>
-                  <td style="background-color: #d4a574; color: #ffffff; text-align: center; padding: 30px;">
-                    <h1 style="margin: 0; font-size: 28px; font-weight: bold;">✅ Merci !</h1>
-                    <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Votre demande a été reçue</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 40px 30px; background-color: #ffffff; text-align: center;">
-                    <p style="font-size: 18px; color: #2c3e50; margin: 0 0 20px 0;">Bonjour <strong>${firstName || fullName}</strong>,</p>
-                    <p style="font-size: 16px; color: #34495e; line-height: 1.6; margin: 0 0 25px 0;">
-                      Merci de nous avoir contactés ! Nous avons bien reçu votre demande de soumission et nous vous répondrons dans les <strong>24-48 heures</strong>.
-                    </p>
-                    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #d4a574;">
-                      <p style="margin: 0; color: #34495e; font-size: 14px;">
-                        <strong>Votre demande:</strong><br>
-                        Service: ${service || 'Non spécifié'}<br>
-                        Budget: ${budgetDisplay}<br>
-                        ${phone ? `Téléphone: ${phone}` : ''}
-                      </p>
-                    </div>
-                    <p style="font-size: 16px; color: #34495e; margin: 25px 0 0 0;">
-                      Cordialement,<br>
-                      <strong style="color: #2c3e50;">L'équipe SLC Habitation</strong>
-                    </p>
-                  </td>
-                </tr>
-              </table>
+            <td style="background: linear-gradient(135deg, #0b0b0b 0%, #232323 100%); padding: 32px 24px 24px 24px; text-align: center; border-bottom: 3px solid #d4a574;">
+              <img 
+                src="${logoUrl}" 
+                alt="SLC Habitation" 
+                style="max-width: 200px; height: auto; margin: 0 auto; display: block;"
+                onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='block';"
+              >
+              <div style="display: none; font-size: 24px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-top: 16px;">
+                SLC HABITATION
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Success Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #d4a574 0%, #c49a5f 100%); color: #ffffff; text-align: center; padding: 32px 30px;">
+              <div style="font-size: 48px; margin-bottom: 12px;">✅</div>
+              <h1 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">Merci pour votre confiance !</h1>
+              <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.95; font-weight: 500;">Votre demande a été reçue avec succès</p>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 40px 30px; background-color: #ffffff;">
+              <p style="font-size: 18px; color: #0b0b0b; margin: 0 0 24px 0; font-weight: 600;">Bonjour <strong style="color: #d4a574;">${firstName || fullName}</strong>,</p>
+              <p style="font-size: 16px; color: #232323; line-height: 1.7; margin: 0 0 32px 0;">
+                Merci de nous avoir contactés ! Nous avons bien reçu votre demande de soumission et nous vous répondrons dans les <strong style="color: #0b0b0b;">24-48 heures</strong>.
+              </p>
+              
+              <!-- Project Summary Card -->
+              <div style="background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%); padding: 24px; border-radius: 8px; margin: 32px 0; border-left: 4px solid #d4a574; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                <h3 style="margin: 0 0 16px 0; color: #0b0b0b; font-size: 18px; font-weight: 700; letter-spacing: -0.3px;">📋 Récapitulatif de votre demande</h3>
+                <table width="100%" cellpadding="6" cellspacing="0" style="border-collapse: collapse;">
+                  <tr>
+                    <td style="font-weight: 600; color: #0b0b0b; width: 100px; vertical-align: top; padding: 8px 0;">Service:</td>
+                    <td style="color: #232323; padding: 8px 0;">${service || 'Non spécifié'}</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600; color: #0b0b0b; vertical-align: top; padding: 8px 0;">Budget:</td>
+                    <td style="color: #232323; padding: 8px 0;"><strong style="color: #d4a574;">${budgetDisplay}</strong></td>
+                  </tr>
+                  ${phone ? `
+                  <tr>
+                    <td style="font-weight: 600; color: #0b0b0b; vertical-align: top; padding: 8px 0;">Téléphone:</td>
+                    <td style="color: #232323; padding: 8px 0;">${phone}</td>
+                  </tr>
+                  ` : ''}
+                </table>
+              </div>
+              
+              <!-- Next Steps -->
+              <div style="background-color: #f8f9fa; padding: 24px; border-radius: 8px; margin: 32px 0; border: 2px solid #d4a574;">
+                <h3 style="margin: 0 0 16px 0; color: #0b0b0b; font-size: 18px; font-weight: 700; letter-spacing: -0.3px;">⏱️ Prochaines étapes</h3>
+                <ul style="margin: 0; padding-left: 20px; color: #232323; line-height: 1.8; font-size: 15px;">
+                  <li style="margin-bottom: 8px;">Analyse de votre demande (24h)</li>
+                  <li style="margin-bottom: 8px;">Préparation de la soumission détaillée</li>
+                  <li style="margin-bottom: 8px;">Prise de contact pour planifier une visite si nécessaire</li>
+                  <li>Remise de votre soumission personnalisée</li>
+                </ul>
+              </div>
+              
+              <!-- Contact Info -->
+              <div style="text-align: center; margin: 32px 0 0 0; padding: 24px; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 8px; border: 1px solid #e8e8e8;">
+                <p style="margin: 0 0 12px 0; color: #0b0b0b; font-weight: 600; font-size: 16px;">Une question urgente ?</p>
+                <p style="margin: 0; color: #232323; font-size: 15px; line-height: 1.8;">
+                  📞 <a href="tel:(514)404-8494" style="color: #d4a574; text-decoration: none; font-weight: 600;">(514) 404-8494</a><br>
+                  ✉️ <a href="mailto:slchabitation@gmail.com" style="color: #d4a574; text-decoration: none; font-weight: 600;">slchabitation@gmail.com</a>
+                </p>
+              </div>
+              
+              <!-- Signature -->
+              <div style="margin-top: 40px; padding-top: 24px; border-top: 2px solid #e8e8e8; text-align: center;">
+                <p style="margin: 0; font-size: 16px; color: #232323; line-height: 1.6;">
+                  Cordialement,<br>
+                  <strong style="color: #0b0b0b; font-size: 18px;">L'équipe SLC Habitation</strong><br>
+                  <span style="color: #858585; font-size: 14px; font-style: italic;">Rénovation et construction neuve dans les Laurentides</span>
+                </p>
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8f9fa; padding: 24px 30px; text-align: center; border-top: 1px solid #e8e8e8;">
+              <p style="margin: 0 0 12px 0; font-size: 13px; color: #858585; line-height: 1.6;">
+                Vous recevez cet email car vous avez soumis une demande sur <a href="https://slchabitation.com" style="color: #d4a574; text-decoration: none; font-weight: 500;">slchabitation.com</a>
+              </p>
+              <p style="margin: 0; font-size: 12px; color: #b5b5b5;">
+                © ${new Date().getFullYear()} SLC Habitation. Tous droits réservés.
+              </p>
             </td>
           </tr>
         </table>
