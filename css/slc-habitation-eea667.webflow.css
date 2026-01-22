@@ -3241,7 +3241,7 @@ figcaption {
   align-items: flex-end;
   width: 100%;
   height: 100vh;
-  padding: 2em;
+  padding: 1.5rem;
   display: flex;
   position: fixed;
   inset: 0%;
@@ -3250,12 +3250,32 @@ figcaption {
 .back-top__button {
   background-color: var(--_primitives---colors--ecstasy-dark);
   pointer-events: auto;
-  border-radius: 6px;
+  border-radius: 8px;
   outline-style: none;
-  width: max(2.5vw, 1.25rem);
-  height: max(2.5vw, 1.25rem);
-  padding: .5em;
+  border: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  padding: 0.75rem;
   position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.back-top__button:hover {
+  background-color: var(--_primitives---colors--ecstasy-darker);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-top__button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .back-top__arrow-wrap {
@@ -3287,14 +3307,40 @@ figcaption {
   z-index: 101 !important;
   background-color: var(--_primitives---colors--ecstasy-dark);
   color: var(--_primitives---colors--ecstasy-dark);
-  border-radius: 6px;
-  width: max(2.5vw, 1.25rem);
-  height: max(2.5vw, 1.25rem);
-  padding: .5rem;
+  border-radius: 8px;
+  width: 3.5rem;
+  height: 3.5rem;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  padding: 0.75rem;
   position: relative;
   inset: auto;
   pointer-events: auto !important;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.messenger_button:hover {
+  background-color: var(--_primitives---colors--ecstasy-darker);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.messenger_button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.messenger_button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 @media screen and (max-width: 991px) {
@@ -3840,12 +3886,27 @@ figcaption {
   }
 
   .back-top__wrap {
-    padding: 1.25em;
+    padding: 1.25rem;
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
   }
 
   .back-top__button {
-    border-radius: .5em;
-    padding: .4em;
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: 0.625rem;
+    border-radius: 8px;
+  }
+
+  .messenger_button {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: 0.625rem;
+    border-radius: 8px;
   }
 }
 
@@ -4346,6 +4407,29 @@ figcaption {
   .contact6_content {
     grid-row-gap: 3rem;
     grid-template-columns: 1fr;
+  }
+
+  /* Mobile button sizing - maintain minimum touch target */
+  .back-top__wrap {
+    padding: 1rem;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+
+  .back-top__button {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: 0.625rem;
+  }
+
+  .messenger_button {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: 0.625rem;
   }
 }
 
