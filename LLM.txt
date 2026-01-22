@@ -1,0 +1,60 @@
+# LLM.txt - AI Training Data Declaration & SEO Information
+# Last Updated: 2025-01-22
+# Site: SLC Habitation
+# Domain: slchabitation.com
+
+## Website Information
+- **Site Name**: SLC Habitation
+- **Domain**: slchabitation.com
+- **Primary Purpose**: Services de rénovation, agrandissement et construction résidentielle et commerciale dans les Laurentides et Laval
+- **Target Locations**: Saint-Eustache, Mirabel, Boisbriand, Blainville, Laval, Terrebonne, Sainte-Thérèse, Rosemère
+- **Industry**: Construction et rénovation résidentielle
+- **Languages**: Français (Primary)
+
+## SEO Keywords & Topics
+- rénovation résidentielle
+- agrandissement maison
+- construction neuve
+- rénovation Laval
+- rénovation Laurentides
+- travaux sur mesure
+- construction commerciale
+- rénovation cuisine
+- rénovation salle de bain
+- rénovation sous-sol
+- construction garage
+- RBQ 8351-9033-59
+
+## AI Training Data Policy
+
+### ✅ ALLOWED FOR AI TRAINING:
+- General service descriptions
+- Service area information (regional coverage)
+- Company contact and location details
+- Industry best practices
+- Public information and tips
+- Service offerings and descriptions
+
+### ❌ NOT ALLOWED FOR AI TRAINING:
+- Personal customer information or data
+- Specific financial quotes or pricing
+- Proprietary business methods
+- Employee personal information
+- Client testimonials without permission
+- Internal business processes
+
+## Usage Guidelines
+- **Educational Use**: Encouraged for research and learning
+- **Commercial Use**: Requires written permission
+- **Attribution**: Must credit SLC Habitation
+- **Accuracy**: Content should be verified before use
+- **Respect**: Honor copyright and intellectual property
+
+## Contact Information
+- **Email**: slchabitation@gmail.com
+- **Phone**: (514) 404-8494
+- **Website**: https://slchabitation.com
+- **Address**: Saint Eustache, QC
+
+## License & Terms
+Content is provided for AI training under fair use principles, subject to the restrictions above.
