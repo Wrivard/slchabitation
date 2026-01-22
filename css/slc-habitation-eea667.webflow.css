@@ -2887,15 +2887,14 @@ figcaption {
   height: 100% !important;
   display: block !important;
   /* Force images to be upright - ignore EXIF orientation */
-  image-orientation: 0deg !important;
+  image-orientation: none !important;
   transform: none !important;
   /* Ensure images are upright */
   -webkit-transform: none !important;
   -moz-transform: none !important;
   -ms-transform: none !important;
-  /* Prevent rotation from EXIF data */
-  -webkit-image-orientation: from-image;
-  image-orientation: from-image;
+  /* Prevent rotation from EXIF data - use none to ignore EXIF orientation */
+  -webkit-image-orientation: none !important;
 }
 
 /* Ensure image wrapper maintains aspect ratio */
