@@ -1837,34 +1837,26 @@ margin: 0rem !important;
     });
     
     function fixImageOrientation(img) {
-      // Read EXIF orientation if available
-      const imgElement = new Image();
-      imgElement.crossOrigin = 'anonymous';
-      imgElement.src = img.src;
+      // CRITICAL: Force upright orientation - override EXIF completely
+      img.style.setProperty('transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('-webkit-transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('-moz-transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('-ms-transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('image-orientation', 'from-image 0deg', 'important');
+      img.style.setProperty('-webkit-image-orientation', 'from-image 0deg', 'important');
       
-      imgElement.onload = function() {
-        // Get natural dimensions
-        const naturalWidth = imgElement.naturalWidth;
-        const naturalHeight = imgElement.naturalHeight;
-        
-        // If image is wider than tall, it might be landscape
-        // Force portrait/landscape based on container
-        const container = img.closest('.blog22_image-wrapper');
-        if (container) {
-          const containerWidth = container.offsetWidth;
-          const containerHeight = container.offsetHeight;
-          
-          // Ensure image fills container properly
-          img.style.objectFit = 'cover';
-          img.style.objectPosition = 'center';
-          
-          // Remove any rotation transforms
-          img.style.transform = 'none';
-          img.style.webkitTransform = 'none';
-          img.style.mozTransform = 'none';
-          img.style.msTransform = 'none';
-        }
-      };
+      // CRITICAL: Ensure cover mode
+      img.style.setProperty('object-fit', 'cover', 'important');
+      img.style.setProperty('object-position', 'center center', 'important');
+      img.style.setProperty('width', '100%', 'important');
+      img.style.setProperty('height', '100%', 'important');
+      
+      // Force wrapper aspect ratio
+      const container = img.closest('.blog22_image-wrapper');
+      if (container) {
+        container.style.setProperty('aspect-ratio', '16 / 9', 'important');
+        container.style.setProperty('overflow', 'hidden', 'important');
+      }
     }
   });
   </script>
