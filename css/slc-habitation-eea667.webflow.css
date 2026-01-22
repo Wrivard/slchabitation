@@ -2881,9 +2881,29 @@ figcaption {
 
 .blog22_image {
   aspect-ratio: 16 / 9;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+  object-fit: cover !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  /* Force images to be upright - ignore EXIF orientation */
+  image-orientation: 0deg !important;
+  transform: none !important;
+  /* Ensure images are upright */
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  /* Prevent rotation from EXIF data */
+  -webkit-image-orientation: from-image;
+  image-orientation: from-image;
+}
+
+/* Ensure image wrapper maintains aspect ratio */
+.blog22_image-wrapper img.blog22_image {
+  min-height: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
 }
 
 .blog22_featured-image-wrapper {
@@ -2920,6 +2940,13 @@ figcaption {
   border-radius: var(--_ui-styles---radius--large);
   width: 100%;
   overflow: hidden;
+  position: relative;
+  /* Ensure consistent height */
+  min-height: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blog22_meta-wrapper {
