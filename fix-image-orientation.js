@@ -33,6 +33,41 @@ async function fixOrientation(inputPath) {
   }
 }
 
+// Recursively process directory
+async function processDirectory(dirPath, folderName) {
+  if (!fs.existsSync(dirPath)) {
+    return;
+  }
+  
+  const items = fs.readdirSync(dirPath, { withFileTypes: true });
+  const files = [];
+  const subdirs = [];
+  
+  for (const item of items) {
+    const fullPath = path.join(dirPath, item.name);
+    if (item.isDirectory()) {
+      subdirs.push(fullPath);
+    } else if (item.isFile() && /\.(jpg|jpeg|png)$/i.test(item.name)) {
+      if (!item.name.includes('-p-') && !item.name.startsWith('_temp_')) {
+        files.push(fullPath);
+      }
+    }
+  }
+  
+  // Process files in current directory
+  if (files.length > 0) {
+    console.log(`\nFixing orientation in ${path.relative('images', dirPath)}: ${files.length} images`);
+    for (const filePath of files) {
+      await fixOrientation(filePath);
+    }
+  }
+  
+  // Recursively process subdirectories
+  for (const subdir of subdirs) {
+    await processDirectory(subdir, folderName);
+  }
+}
+
 // Main function
 async function main() {
   const folders = ['COMMERCIAL', 'EXTÉRIEUR', 'INTÉRIEUR'];
@@ -45,23 +80,7 @@ async function main() {
       continue;
     }
     
-    // Get all original images (not optimized versions)
-    const files = fs.readdirSync(folderPath)
-      .filter(file => /\.(jpg|jpeg|png)$/i.test(file))
-      .filter(file => !file.includes('-p-')) // Skip optimized versions
-      .filter(file => !file.startsWith('_temp_')); // Skip temp files
-    
-    if (files.length === 0) {
-      console.log(`\nNo images to fix in ${folder} folder`);
-      continue;
-    }
-    
-    console.log(`\nFixing orientation in ${folder} folder: ${files.length} images`);
-    
-    for (const file of files) {
-      const inputPath = path.join(folderPath, file);
-      await fixOrientation(inputPath);
-    }
+    await processDirectory(folderPath, folder);
   }
   
   console.log('\n✅ Image orientation fix complete!');

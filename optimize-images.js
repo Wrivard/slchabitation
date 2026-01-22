@@ -62,20 +62,45 @@ async function optimizeImage(inputPath, outputDir, baseName) {
   }
 }
 
+// Recursively process directory
+async function processDirectory(dirPath, baseDir) {
+  if (!fs.existsSync(dirPath)) {
+    return;
+  }
+  
+  const items = fs.readdirSync(dirPath, { withFileTypes: true });
+  const files = [];
+  const subdirs = [];
+  
+  for (const item of items) {
+    const fullPath = path.join(dirPath, item.name);
+    if (item.isDirectory()) {
+      subdirs.push(fullPath);
+    } else if (item.isFile() && /\.(jpg|jpeg|png)$/i.test(item.name)) {
+      if (!item.name.includes('-p-') && !item.name.startsWith('_temp_')) {
+        files.push({ path: fullPath, name: item.name });
+      }
+    }
+  }
+  
+  // Process files in current directory
+  if (files.length > 0) {
+    console.log(`\nProcessing ${path.relative('images', dirPath)}: ${files.length} images`);
+    for (const file of files) {
+      await optimizeImage(file.path, dirPath, file.name);
+    }
+  }
+  
+  // Recursively process subdirectories
+  for (const subdir of subdirs) {
+    await processDirectory(subdir, baseDir);
+  }
+}
+
 // Main function
 async function main() {
-  // Get all subdirectories in images folder
   const imagesDir = 'images';
-  const subdirs = fs.readdirSync(imagesDir, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
-  
-  // Filter to only process COMMERCIAL, EXTÉRIEUR, INTÉRIEUR folders
-  const targetFolders = subdirs.filter(folder => 
-    folder.toUpperCase().includes('COMMERCIAL') || 
-    folder.toUpperCase().includes('EXT') || 
-    folder.toUpperCase().includes('INT')
-  );
+  const targetFolders = ['COMMERCIAL', 'EXTÉRIEUR', 'INTÉRIEUR'];
   
   for (const folder of targetFolders) {
     const folderPath = path.join(imagesDir, folder);
@@ -85,22 +110,7 @@ async function main() {
       continue;
     }
     
-    const files = fs.readdirSync(folderPath)
-      .filter(file => /\.(jpg|jpeg|png)$/i.test(file))
-      .filter(file => !file.includes('-p-')) // Skip already optimized files
-      .filter(file => !file.includes('p-500') && !file.includes('p-800') && !file.includes('p-1080') && !file.includes('p-1600') && !file.includes('p-2000')); // Skip optimized versions
-    
-    if (files.length === 0) {
-      console.log(`\nNo images to optimize in ${folder} folder`);
-      continue;
-    }
-    
-    console.log(`\nProcessing ${folder} folder: ${files.length} images`);
-    
-    for (const file of files) {
-      const inputPath = path.join(folderPath, file);
-      await optimizeImage(inputPath, folderPath, file);
-    }
+    await processDirectory(folderPath, imagesDir);
   }
   
   console.log('\n✅ Image optimization complete!');
