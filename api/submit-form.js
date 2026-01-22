@@ -370,17 +370,46 @@ export default async function handler(req, res) {
       </html>
     `;
 
-    // Send confirmation email (don't fail if this fails)
+    // Send confirmation email (don't fail if this fails, but log it)
+    let confirmationEmailSent = false;
+    let confirmationEmailError = null;
+    
     try {
-      await resend.emails.send({
+      console.log(`Attempting to send confirmation email to: ${email}`);
+      const confirmationResult = await resend.emails.send({
         from: fromEmail,
         to: email,
         subject: 'Merci pour votre demande de soumission - SLC Habitation',
         html: confirmationContent,
         replyTo: businessEmail
       });
-    } catch (confirmationError) {
-      console.warn('Confirmation email failed:', confirmationError);
+      
+      if (confirmationResult.error) {
+        confirmationEmailError = confirmationResult.error;
+        console.error('Confirmation email error:', JSON.stringify(confirmationResult.error, null, 2));
+        console.error('Confirmation email error details:', {
+          message: confirmationResult.error.message,
+          name: confirmationResult.error.name,
+          statusCode: confirmationResult.error.statusCode
+        });
+      } else {
+        confirmationEmailSent = true;
+        console.log('Confirmation email sent successfully:', confirmationResult.data);
+      }
+    } catch (confirmationException) {
+      confirmationEmailError = confirmationException;
+      console.error('Confirmation email exception:', confirmationException);
+      console.error('Confirmation email exception details:', {
+        message: confirmationException.message,
+        stack: confirmationException.stack
+      });
+    }
+    
+    // Log warning if confirmation email failed
+    if (!confirmationEmailSent) {
+      console.warn('⚠️ WARNING: Confirmation email failed to send, but business email was sent successfully.');
+      console.warn('Confirmation email recipient:', email);
+      console.warn('Error:', confirmationEmailError);
     }
 
     // Clean up temporary files
@@ -396,26 +425,37 @@ export default async function handler(req, res) {
       }
     }
 
-    // Return success even if business email failed (confirmation email is more important)
-    const responseMessage = businessEmailSent 
-      ? 'Message envoyé avec succès!' 
-      : 'Message envoyé avec succès! (Note: L\'email au propriétaire a échoué, mais votre confirmation a été envoyée)';
+    // Return success with detailed status
+    let responseMessage = 'Message envoyé avec succès!';
+    if (!businessEmailSent && !confirmationEmailSent) {
+      responseMessage = 'Erreur lors de l\'envoi des emails. Veuillez réessayer.';
+    } else if (!businessEmailSent) {
+      responseMessage = 'Votre confirmation a été envoyée, mais l\'email au propriétaire a échoué.';
+    } else if (!confirmationEmailSent) {
+      responseMessage = 'L\'email au propriétaire a été envoyé, mais votre confirmation a échoué.';
+    }
     
     res.status(200).json({
-      success: true,
+      success: businessEmailSent || confirmationEmailSent, // Success if at least one email sent
       message: responseMessage,
       data: {
-        confirmationSent: true,
+        confirmationSent: confirmationEmailSent,
         businessEmailSent: businessEmailSent,
+        confirmationEmailError: confirmationEmailError ? confirmationEmailError.message : null,
         businessEmailError: businessEmailError ? businessEmailError.message : null
       }
     });
     
-    // Log warning if business email failed
+    // Log warnings for failed emails
     if (!businessEmailSent) {
-      console.warn('⚠️ WARNING: Business email failed to send, but confirmation email was sent successfully.');
+      console.warn('⚠️ WARNING: Business email failed to send.');
       console.warn('Business email recipient:', businessEmail);
       console.warn('Error:', businessEmailError);
+    }
+    if (!confirmationEmailSent) {
+      console.warn('⚠️ WARNING: Confirmation email failed to send.');
+      console.warn('Confirmation email recipient:', email);
+      console.warn('Error:', confirmationEmailError);
     }
 
   } catch (error) {
