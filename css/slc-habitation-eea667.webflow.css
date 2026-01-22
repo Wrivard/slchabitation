@@ -2880,11 +2880,13 @@ figcaption {
 }
 
 .blog22_image {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 9 !important;
   object-fit: cover !important;
   object-position: center !important;
   width: 100% !important;
   height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
   display: block !important;
   /* Force images to be upright - ignore EXIF orientation */
   image-orientation: none !important;
@@ -2898,6 +2900,8 @@ figcaption {
   /* Prevent any rotation */
   rotate: 0deg !important;
   -webkit-rotate: 0deg !important;
+  /* Prevent stretching - ensure cover mode */
+  flex-shrink: 0 !important;
 }
 
 /* Ensure image wrapper maintains aspect ratio */
