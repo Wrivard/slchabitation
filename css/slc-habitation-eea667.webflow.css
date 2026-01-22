@@ -3220,7 +3220,7 @@ figcaption {
 }
 
 .messenger_button {
-  z-index: 5;
+  z-index: 101 !important;
   background-color: var(--_primitives---colors--ecstasy-dark);
   color: var(--_primitives---colors--ecstasy-dark);
   border-radius: 6px;
@@ -3229,6 +3229,8 @@ figcaption {
   padding: .5rem;
   position: relative;
   inset: auto;
+  pointer-events: auto !important;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 991px) {
