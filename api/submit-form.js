@@ -228,27 +228,45 @@ export default async function handler(req, res) {
       </html>
     `;
 
-    // Send business email
-    const emailData = {
-      from: fromEmail,
-      to: businessEmail,
-      subject: `🏗️ Nouveau Projet - ${fullName}${service ? ` (${service})` : ''}`,
-      html: businessEmailContent,
-      replyTo: email
-    };
+    // Send business email (don't block confirmation email if this fails)
+    let businessEmailSent = false;
+    let businessEmailError = null;
+    
+    try {
+      const emailData = {
+        from: fromEmail,
+        to: businessEmail,
+        subject: `🏗️ Nouveau Projet - ${fullName}${service ? ` (${service})` : ''}`,
+        html: businessEmailContent,
+        replyTo: email
+      };
 
-    // Add attachments if any
-    if (attachments.length > 0) {
-      emailData.attachments = attachments;
-    }
+      // Add attachments if any
+      if (attachments.length > 0) {
+        emailData.attachments = attachments;
+      }
 
-    const { data, error } = await resend.emails.send(emailData);
+      console.log(`Attempting to send business email to: ${businessEmail}`);
+      const { data, error } = await resend.emails.send(emailData);
 
-    if (error) {
-      console.error('Business email error:', error);
-      return res.status(500).json({
-        success: false,
-        message: 'Erreur lors de l\'envoi de l\'email. Veuillez réessayer plus tard.'
+      if (error) {
+        businessEmailError = error;
+        console.error('Business email error:', JSON.stringify(error, null, 2));
+        console.error('Business email error details:', {
+          message: error.message,
+          name: error.name,
+          statusCode: error.statusCode
+        });
+      } else {
+        businessEmailSent = true;
+        console.log('Business email sent successfully:', data);
+      }
+    } catch (businessEmailException) {
+      businessEmailError = businessEmailException;
+      console.error('Business email exception:', businessEmailException);
+      console.error('Business email exception details:', {
+        message: businessEmailException.message,
+        stack: businessEmailException.stack
       });
     }
 
