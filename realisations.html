@@ -1720,28 +1720,11 @@ margin: 0rem !important;
   
   <!-- Category Filter Functionality -->
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  (function() {
+    // Run immediately to attach handlers before Webflow's handlers
     const filterLinks = document.querySelectorAll('.category-filter-link');
     const galleryItems = document.querySelectorAll('.blog22_item');
     
-    filterLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Remove active class from all links
-        filterLinks.forEach(l => l.classList.remove('active'));
-        
-        // Add active class to clicked link
-        this.classList.add('active');
-        
-        // Get category from data attribute
-        const category = this.getAttribute('data-category');
-        
-        // Filter items
-        filterItems(category);
-      });
-    });
-
     function filterItems(category) {
       galleryItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
@@ -1756,11 +1739,45 @@ margin: 0rem !important;
       });
     }
     
-    // Set default active filter (all)
-    if (filterLinks.length > 0) {
-      filterItems('all');
+    // Attach handlers with capture phase to run before other handlers
+    filterLinks.forEach(link => {
+      // Use capture phase and stop immediate propagation
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        // Remove active class from all links
+        filterLinks.forEach(l => l.classList.remove('active'));
+        
+        // Add active class to clicked link
+        this.classList.add('active');
+        
+        // Get category from data attribute
+        const category = this.getAttribute('data-category');
+        
+        // Filter items
+        filterItems(category);
+        
+        // Return false as additional safeguard
+        return false;
+      }, true); // Use capture phase (true)
+    });
+    
+    // Set default active filter (all) when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        if (filterLinks.length > 0) {
+          filterItems('all');
+        }
+      });
+    } else {
+      // DOM already loaded
+      if (filterLinks.length > 0) {
+        filterItems('all');
+      }
     }
-  });
+  })();
   </script>
   
   <!-- Image Orientation and Loading Fix -->
