@@ -136,16 +136,16 @@ export default async function handler(req, res) {
       </head>
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f4f0;">
         <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);">
-          <!-- Logo Header -->
+          <!-- Logo Header with White Background -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0b0b0b 0%, #232323 100%); padding: 32px 24px 24px 24px; text-align: center; border-bottom: 3px solid #d4a574;">
+            <td style="background-color: #ffffff; padding: 32px 24px 24px 24px; text-align: center; border-bottom: 3px solid #d4a574;">
               <img 
                 src="${logoUrl}" 
                 alt="SLC Habitation" 
                 style="max-width: 200px; height: auto; margin: 0 auto; display: block;"
                 onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='block';"
               >
-              <div style="display: none; font-size: 24px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-top: 16px;">
+              <div style="display: none; font-size: 24px; font-weight: 700; color: #0b0b0b; text-transform: uppercase; letter-spacing: 2px; margin-top: 16px;">
                 SLC HABITATION
               </div>
             </td>
