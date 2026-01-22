@@ -11,36 +11,38 @@ async function optimizeImage(inputPath, outputDir, baseName) {
   console.log(`Optimizing ${baseName}...`);
   
   try {
-    // Read original image
-    const image = sharp(inputPath);
-    const metadata = await image.metadata();
-    
-    // Create optimized versions for each size
-    for (const size of sizes) {
-      const outputPath = path.join(outputDir, `${nameWithoutExt}-p-${size}${ext}`);
+      // Read original image and apply EXIF orientation (this auto-rotates and removes orientation tag)
+      const image = sharp(inputPath);
+      // Use rotate() without angle to auto-rotate based on EXIF and strip orientation
+      const imageRotated = image.rotate(); // Auto-applies EXIF rotation and removes orientation tag
+      const metadata = await imageRotated.metadata();
       
-      // Only resize if original is larger than target size
-      if (metadata.width > size) {
-        let pipeline = image
-          .clone()
-          .resize(size, null, {
-            withoutEnlargement: true,
-            fit: 'inside'
-          });
+      // Create optimized versions for each size
+      for (const size of sizes) {
+        const outputPath = path.join(outputDir, `${nameWithoutExt}-p-${size}${ext}`);
         
-        // Apply format-specific optimization
-        if (ext.toLowerCase() === '.png') {
-          pipeline = pipeline.png({ quality: 90, compressionLevel: 9 });
-        } else {
-          pipeline = pipeline.jpeg({ quality: 85, mozjpeg: true });
+        // Only resize if original is larger than target size
+        if (metadata.width > size) {
+          let pipeline = imageRotated
+            .clone()
+            .resize(size, null, {
+              withoutEnlargement: true,
+              fit: 'inside'
+            });
+        
+          // Apply format-specific optimization
+          if (ext.toLowerCase() === '.png') {
+            pipeline = pipeline.png({ quality: 90, compressionLevel: 9 });
+          } else {
+            pipeline = pipeline.jpeg({ quality: 85, mozjpeg: true });
+          }
+        
+          await pipeline.toFile(outputPath);
+        
+          const stats = fs.statSync(outputPath);
+          console.log(`  Created ${size}w: ${(stats.size / 1024).toFixed(2)}KB`);
         }
-        
-        await pipeline.toFile(outputPath);
-        
-        const stats = fs.statSync(outputPath);
-        console.log(`  Created ${size}w: ${(stats.size / 1024).toFixed(2)}KB`);
       }
-    }
     
     // Calculate original size for reporting
     const originalSize = fs.statSync(inputPath).size;
