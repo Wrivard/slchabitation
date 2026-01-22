@@ -2879,54 +2879,53 @@ figcaption {
   display: grid;
 }
 
-.blog22_image {
-  aspect-ratio: 16 / 9 !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 100% !important;
-  max-height: 100% !important;
-  display: block !important;
-  /* Force images to be upright - ignore EXIF orientation */
-  image-orientation: none !important;
-  transform: none !important;
-  /* Ensure images are upright */
-  -webkit-transform: none !important;
-  -moz-transform: none !important;
-  -ms-transform: none !important;
-  /* Prevent rotation from EXIF data - use none to ignore EXIF orientation */
-  -webkit-image-orientation: none !important;
-  /* Prevent any rotation */
-  rotate: 0deg !important;
-  -webkit-rotate: 0deg !important;
-  /* Prevent stretching - ensure cover mode */
-  flex-shrink: 0 !important;
-}
-
-/* Ensure image wrapper maintains aspect ratio */
+/* Image wrapper - MUST have fixed aspect ratio */
 .blog22_image-wrapper {
   position: relative !important;
   overflow: hidden !important;
-}
-
-.blog22_image-wrapper {
   width: 100% !important;
-  height: 100% !important;
   aspect-ratio: 16 / 9 !important;
   display: block !important;
+  background-color: #f0f0f0 !important;
 }
 
+/* Force ALL images to be upright and use cover */
+.blog22_image,
+.blog22_image-wrapper img,
 .blog22_image-wrapper img.blog22_image {
-  min-height: 100% !important;
-  max-height: 100% !important;
-  width: 100% !important;
-  height: 100% !important;
+  /* CRITICAL: Force cover mode */
   object-fit: cover !important;
   object-position: center center !important;
+  
+  /* CRITICAL: Force dimensions */
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  
+  /* CRITICAL: Force no rotation - override EXIF */
   transform: rotate(0deg) !important;
   -webkit-transform: rotate(0deg) !important;
+  -moz-transform: rotate(0deg) !important;
+  -ms-transform: rotate(0deg) !important;
+  -o-transform: rotate(0deg) !important;
+  
+  /* CRITICAL: Ignore EXIF orientation */
+  image-orientation: from-image 0deg !important;
+  -webkit-image-orientation: from-image 0deg !important;
+  
+  /* Display */
   display: block !important;
+  
+  /* Prevent any other transforms */
+  rotate: 0deg !important;
+  -webkit-rotate: 0deg !important;
+  
+  /* Prevent stretching */
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
 }
 
 .blog22_featured-image-wrapper {

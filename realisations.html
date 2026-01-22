@@ -1736,12 +1736,32 @@ margin: 0rem !important;
     const images = document.querySelectorAll('.blog22_image');
     
     images.forEach(function(img) {
-      // Ensure cover mode
-      img.style.objectFit = 'cover';
-      img.style.objectPosition = 'center';
-      img.style.width = '100%';
-      img.style.height = '100%';
-      img.style.display = 'block';
+      // CRITICAL: Force cover mode with inline styles (highest priority)
+      img.style.setProperty('object-fit', 'cover', 'important');
+      img.style.setProperty('object-position', 'center center', 'important');
+      img.style.setProperty('width', '100%', 'important');
+      img.style.setProperty('height', '100%', 'important');
+      img.style.setProperty('min-width', '100%', 'important');
+      img.style.setProperty('min-height', '100%', 'important');
+      img.style.setProperty('max-width', '100%', 'important');
+      img.style.setProperty('max-height', '100%', 'important');
+      img.style.setProperty('display', 'block', 'important');
+      
+      // CRITICAL: Force no rotation - override EXIF
+      img.style.setProperty('transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('-webkit-transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('-moz-transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('-ms-transform', 'rotate(0deg)', 'important');
+      img.style.setProperty('image-orientation', 'from-image 0deg', 'important');
+      img.style.setProperty('-webkit-image-orientation', 'from-image 0deg', 'important');
+      
+      // Ensure wrapper has aspect ratio
+      const wrapper = img.closest('.blog22_image-wrapper');
+      if (wrapper) {
+        wrapper.style.setProperty('aspect-ratio', '16 / 9', 'important');
+        wrapper.style.setProperty('overflow', 'hidden', 'important');
+        wrapper.style.setProperty('position', 'relative', 'important');
+      }
       
       // Handle image load
       if (img.complete) {
