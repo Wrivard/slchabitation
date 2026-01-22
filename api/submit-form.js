@@ -396,11 +396,27 @@ export default async function handler(req, res) {
       }
     }
 
+    // Return success even if business email failed (confirmation email is more important)
+    const responseMessage = businessEmailSent 
+      ? 'Message envoyé avec succès!' 
+      : 'Message envoyé avec succès! (Note: L\'email au propriétaire a échoué, mais votre confirmation a été envoyée)';
+    
     res.status(200).json({
       success: true,
-      message: 'Message envoyé avec succès!',
-      data: data
+      message: responseMessage,
+      data: {
+        confirmationSent: true,
+        businessEmailSent: businessEmailSent,
+        businessEmailError: businessEmailError ? businessEmailError.message : null
+      }
     });
+    
+    // Log warning if business email failed
+    if (!businessEmailSent) {
+      console.warn('⚠️ WARNING: Business email failed to send, but confirmation email was sent successfully.');
+      console.warn('Business email recipient:', businessEmail);
+      console.warn('Error:', businessEmailError);
+    }
 
   } catch (error) {
     console.error('Server error:', error);
