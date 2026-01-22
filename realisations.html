@@ -1803,6 +1803,73 @@ margin: 0rem !important;
   });
   </script>
   
+  <!-- Image Orientation and Loading Fix -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Fix image orientation and ensure proper display
+    const images = document.querySelectorAll('.blog22_image');
+    
+    images.forEach(function(img) {
+      // Ensure cover mode
+      img.style.objectFit = 'cover';
+      img.style.objectPosition = 'center';
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.display = 'block';
+      
+      // Handle image load
+      if (img.complete) {
+        fixImageOrientation(img);
+      } else {
+        img.addEventListener('load', function() {
+          fixImageOrientation(img);
+        });
+      }
+      
+      // Handle image errors - try fallback
+      img.addEventListener('error', function() {
+        const src = this.src;
+        // If optimized version fails, try original
+        if (src.includes('-p-')) {
+          const originalSrc = src.replace(/-p-\d+\.jpg/, '.jpg');
+          this.src = originalSrc;
+        }
+      });
+    });
+    
+    function fixImageOrientation(img) {
+      // Read EXIF orientation if available
+      const imgElement = new Image();
+      imgElement.crossOrigin = 'anonymous';
+      imgElement.src = img.src;
+      
+      imgElement.onload = function() {
+        // Get natural dimensions
+        const naturalWidth = imgElement.naturalWidth;
+        const naturalHeight = imgElement.naturalHeight;
+        
+        // If image is wider than tall, it might be landscape
+        // Force portrait/landscape based on container
+        const container = img.closest('.blog22_image-wrapper');
+        if (container) {
+          const containerWidth = container.offsetWidth;
+          const containerHeight = container.offsetHeight;
+          
+          // Ensure image fills container properly
+          img.style.objectFit = 'cover';
+          img.style.objectPosition = 'center';
+          
+          // Remove any rotation transforms
+          img.style.transform = 'none';
+          img.style.webkitTransform = 'none';
+          img.style.mozTransform = 'none';
+          img.style.msTransform = 'none';
+        }
+      };
+    }
+  });
+  </script>
+  
   <!-- Console Error Suppression -->
   <script>
   // Suppress common console warnings that don't affect functionality
