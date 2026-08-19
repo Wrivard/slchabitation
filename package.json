@@ -1,22 +1,19 @@
 {
-  "name": "slc-habitation",
-  "version": "1.0.0",
-  "description": "SLC Habitation website with Resend email integration",
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev",
-    "optimize-images": "node optimize-images.js"
+    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
+    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
+  "private": true,
   "dependencies": {
-    "formidable": "^3.5.1",
-    "resend": "^2.0.0",
-    "sharp": "^0.33.5"
+    "@replit/connectors-sdk": "^0.4.1"
   },
-  "keywords": [
-    "webflow",
-    "resend",
-    "email"
-  ],
-  "author": "SLC Habitation",
-  "license": "MIT"
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "typescript": "~5.9.3"
+  }
 }
