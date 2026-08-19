@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SLC Habitation"
+description = "A French residential construction and renovation website showcasing SLC Habitation services, projects, and quote requests."
+version = "1.0.0"
+id = "artifacts/slc-habitation"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24553
+
+[services.development]
+run = "pnpm --filter @workspace/slc-habitation run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/slc-habitation", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/slc-habitation/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24553"
+BASE_PATH = "/"

@@ -1,0 +1,1 @@
+- [Legacy HTML in React](legacy-html-react-lifecycle.md) — embedded page scripts must replay late DOMContentLoaded/load listeners after React mounts.
