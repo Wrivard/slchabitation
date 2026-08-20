@@ -1,0 +1,19 @@
+# SLC Habitation
+
+SLC Habitation est un entrepreneur général québécois spécialisé en rénovation résidentielle, agrandissement, construction neuve et travaux sur mesure. L'entreprise dessert les Laurentides et Laval, notamment Saint-Eustache, Mirabel, Boisbriand, Blainville, Terrebonne, Sainte-Thérèse et Rosemère.
+
+Ce fichier est un index complémentaire destiné aux systèmes de récupération d'information. Les pages HTML, leurs métadonnées, le sitemap et les données structurées du site demeurent les sources de référence.
+
+## Pages principales
+
+- [Accueil](https://slchabitation.com/) — Présentation de SLC Habitation et de ses services de rénovation et de construction résidentielle dans les Laurentides et à Laval.
+- [Rénovation résidentielle](https://slchabitation.com/renovation) — Rénovation de cuisines, salles de bains, sous-sols et espaces de vie adaptée aux besoins des propriétaires.
+- [Agrandissement et construction neuve](https://slchabitation.com/agrandissement-construction-neuve) — Projets d'agrandissement résidentiel et de construction neuve, incluant maisons neuves et garages.
+- [Travaux sur mesure](https://slchabitation.com/travaux-sur-mesure) — Travaux résidentiels personnalisés pour adapter, embellir et renforcer une maison selon le projet.
+- [Réalisations](https://slchabitation.com/realisations) — Portfolio de projets de rénovation, d'agrandissement et de construction résidentielle réalisés par SLC Habitation.
+- [Demander une soumission](https://slchabitation.com/soumission) — Formulaire pour décrire un projet et demander une soumission en rénovation, agrandissement ou construction neuve.
+
+## Références techniques
+
+- [Sitemap XML](https://slchabitation.com/sitemap.xml) — Liste des URL publiques indexables.
+- [Robots.txt](https://slchabitation.com/robots.txt) — Directives d'exploration du site.
