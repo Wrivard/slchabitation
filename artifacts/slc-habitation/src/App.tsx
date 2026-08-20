@@ -35,21 +35,12 @@ function Router() {
       <PageMetadata {...metadata} />
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/index.html" component={Home} />
-        <Route path="/index" component={Home} />
-        <Route path="/a-propos.html" component={APropos} />
         <Route path="/a-propos" component={APropos} />
-        <Route path="/renovation.html" component={Renovation} />
         <Route path="/renovation" component={Renovation} />
-        <Route path="/agrandissement-construction-neuve.html" component={Agrandissement} />
         <Route path="/agrandissement-construction-neuve" component={Agrandissement} />
-        <Route path="/travaux-sur-mesure.html" component={TravauxSurMesure} />
         <Route path="/travaux-sur-mesure" component={TravauxSurMesure} />
-        <Route path="/realisations.html" component={Realisations} />
         <Route path="/realisations" component={Realisations} />
-        <Route path="/soumission.html" component={Soumission} />
         <Route path="/soumission" component={Soumission} />
-        <Route path="/politique-de-cookie.html" component={PolitiqueDeCookie} />
         <Route path="/politique-de-cookie" component={PolitiqueDeCookie} />
         <Route path="/401.html" component={Unauthorized} />
         <Route path="/404.html" component={NotFoundPage} />

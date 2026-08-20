@@ -5,9 +5,8 @@
 User-agent: *
 Allow: /
 
-# Block technical and non-content files
-Disallow: /css/
-Disallow: /js/
+# Keep crawlable resources available to rendering crawlers. The public
+# application depends on these files for its initial presentation.
 Disallow: /api/
 Disallow: /style-guide-*.html
 Disallow: /401.html
@@ -25,12 +24,4 @@ Allow: /images/*.webp
 # Sitemap location
 Sitemap: https://slchabitation.com/sitemap.xml
 
-# Block AI training bots
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
+# AI retrieval and search agents are allowed to discover the public site.

@@ -1,4 +1,5 @@
 import path from 'path';
+import { URL } from 'url';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
@@ -12,15 +13,21 @@ if (Number.isNaN(port) || port <= 0) {
 }
 
 const basePath = process.env.BASE_PATH || "/";
-const staticRoutePages = new Map([
-  ['/a-propos', '/a-propos.html'],
-  ['/renovation', '/renovation.html'],
-  ['/agrandissement-construction-neuve', '/agrandissement-construction-neuve.html'],
-  ['/travaux-sur-mesure', '/travaux-sur-mesure.html'],
-  ['/realisations', '/realisations.html'],
-  ['/soumission', '/soumission.html'],
-]);
-const staticPagePaths = new Set(staticRoutePages.values());
+
+const legacyRouteRedirects: Record<string, string> = {
+  '/index': '/',
+  '/index.html': '/',
+  '/a-propos.html': '/a-propos',
+  '/renovation.html': '/renovation',
+  '/agrandissement-construction-neuve.html': '/agrandissement-construction-neuve',
+  '/travaux-sur-mesure.html': '/travaux-sur-mesure',
+  '/realisations.html': '/realisations',
+  '/soumission.html': '/soumission',
+  '/politique-de-cookie.html': '/politique-de-cookie',
+};
+const prerenderedRoutePaths = new Set(
+  Object.values(legacyRouteRedirects).filter((route) => route !== '/'),
+);
 
 export default defineConfig({
   base: basePath,
@@ -44,17 +51,13 @@ export default defineConfig({
     {
       name: 'rewrite-html-to-index',
       configureServer(server) {
-        server.middlewares.use((req, res, next) => {
-          const pathname = req.url?.split('?')[0];
-          const staticPage = pathname ? staticRoutePages.get(pathname) : undefined;
-          if (staticPage && req.url) {
-            req.url = `${staticPage}${req.url.slice(pathname!.length)}`;
-          } else if (pathname?.endsWith('.html') && pathname !== '/index.html' && !staticPagePaths.has(pathname)) {
-            req.url = '/index.html';
-          }
-          next();
-        });
-      }
+        server.middlewares.use(redirectLegacyRoutes);
+      },
+
+      configurePreviewServer(server) {
+        server.middlewares.use(redirectLegacyRoutes);
+        server.middlewares.use(servePrerenderedRoute);
+      },
     }
   ],
   resolve: {
@@ -98,3 +101,32 @@ export default defineConfig({
     allowedHosts: true,
   },
 });
+
+function redirectLegacyRoutes(
+  req: { url?: string },
+  res: { statusCode: number; setHeader: (name: string, value: string) => void; end: () => void },
+  next: () => void,
+) {
+  const pathname = new URL(req.url || '/', 'http://localhost').pathname;
+  const cleanPath = legacyRouteRedirects[pathname];
+  if (!cleanPath) {
+    next();
+    return;
+  }
+
+  res.statusCode = 308;
+  res.setHeader('Location', cleanPath);
+  res.end();
+}
+
+function servePrerenderedRoute(
+  req: { url?: string },
+  _res: unknown,
+  next: () => void,
+) {
+  const requestUrl = new URL(req.url || '/', 'http://localhost');
+  if (prerenderedRoutePaths.has(requestUrl.pathname)) {
+    req.url = `${requestUrl.pathname}/index.html${requestUrl.search}`;
+  }
+  next();
+}

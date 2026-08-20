@@ -21,27 +21,63 @@ publicDir = "artifacts/slc-habitation/dist/public"
 
 [[services.production.rewrites]]
 from = "/a-propos"
-to = "/a-propos.html"
+to = "/a-propos/index.html"
 
 [[services.production.rewrites]]
 from = "/renovation"
-to = "/renovation.html"
+to = "/renovation/index.html"
 
 [[services.production.rewrites]]
 from = "/agrandissement-construction-neuve"
-to = "/agrandissement-construction-neuve.html"
+to = "/agrandissement-construction-neuve/index.html"
 
 [[services.production.rewrites]]
 from = "/travaux-sur-mesure"
-to = "/travaux-sur-mesure.html"
+to = "/travaux-sur-mesure/index.html"
 
 [[services.production.rewrites]]
 from = "/realisations"
-to = "/realisations.html"
+to = "/realisations/index.html"
 
 [[services.production.rewrites]]
 from = "/soumission"
-to = "/soumission.html"
+to = "/soumission/index.html"
+
+[[services.production.rewrites]]
+from = "/politique-de-cookie"
+to = "/politique-de-cookie/index.html"
+
+[[services.production.rewrites]]
+from = "/index"
+to = "/index.html"
+
+[[services.production.rewrites]]
+from = "/a-propos.html"
+to = "/a-propos/index.html"
+
+[[services.production.rewrites]]
+from = "/renovation.html"
+to = "/renovation/index.html"
+
+[[services.production.rewrites]]
+from = "/agrandissement-construction-neuve.html"
+to = "/agrandissement-construction-neuve/index.html"
+
+[[services.production.rewrites]]
+from = "/travaux-sur-mesure.html"
+to = "/travaux-sur-mesure/index.html"
+
+[[services.production.rewrites]]
+from = "/realisations.html"
+to = "/realisations/index.html"
+
+[[services.production.rewrites]]
+from = "/soumission.html"
+to = "/soumission/index.html"
+
+[[services.production.rewrites]]
+from = "/politique-de-cookie.html"
+to = "/politique-de-cookie/index.html"
 
 [[services.production.rewrites]]
 from = "/*"
