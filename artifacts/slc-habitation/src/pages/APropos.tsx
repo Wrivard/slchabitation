@@ -15,7 +15,63 @@ const imageAltText = {
   'images/relume-567906.jpeg': 'Intérieur résidentiel rénové par SLC Habitation',
 };
 
-const semanticHtmlContent = applyPageSemantics(htmlContent, imageAltText);
+const aboutFaqReplacements: ReadonlyArray<readonly [string, string]> = [
+  [
+    'Foire aux <span class="text-span-6">questions</span>',
+    'À propos de <span class="text-span-6">SLC Habitation</span>',
+  ],
+  [
+    'Tout ce qu&#x27;il faut savoir sur nos services et notre processus',
+    'Des réponses sur notre parcours, notre expertise et les régions que nous desservons.',
+  ],
+  [
+    'Quel est votre processus?',
+    'Depuis quand SLC Habitation accompagne-t-elle les propriétaires?',
+  ],
+  [
+    'Nous commençons par écouter vos besoins et votre vision. Ensuite, notre équipe évalue le projet sur place, puis nous préparons une soumission détaillée. Une fois approuvée, nous exécutons le travail avec rigueur et transparence.',
+    'SLC Habitation a amorcé ses activités en 2007. Aujourd&#x27;hui, l&#x27;entreprise s&#x27;appuie sur plus de 25 ans d&#x27;expérience cumulée dans le secteur résidentiel.',
+  ],
+  [
+    'Combien coûte une rénovation?',
+    'Quelle est l&#x27;expertise de SLC Habitation?',
+  ],
+  [
+    'Le coût dépend de l&#x27;ampleur et de la complexité de votre projet. Nous offrons des soumissions sans obligation qui détaillent chaque aspect des travaux. Aucune surprise, seulement de l&#x27;honnêteté.',
+    'Au fil des années, SLC Habitation a développé une expertise reconnue en rénovation et en agrandissement résidentiel.',
+  ],
+  [
+    'Travaillez-vous toute l&#x27;année?',
+    'Votre entreprise détient-elle une licence RBQ?',
+  ],
+  [
+    'Oui, nous opérons douze mois par année. Qu&#x27;il s&#x27;agisse d&#x27;une rénovation intérieure ou de travaux extérieurs, notre équipe demeure disponible selon votre calendrier et vos priorités.',
+    'Oui. SLC Habitation détient la licence RBQ 8351-9033-59.',
+  ],
+  [
+    'Utilisez-vous des matériaux durables?',
+    'Quelles régions desservez-vous?',
+  ],
+  [
+    'Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps. Chaque élément est choisi pour sa durabilité et son esthétique, assurant que votre investissement perdure.',
+    'SLC Habitation intervient dans plusieurs municipalités des Laurentides et de Laval, notamment Saint-Eustache, Mirabel, Boisbriand, Blainville, Laval, Terrebonne, Sainte-Thérèse et Rosemère.',
+  ],
+  [
+    'Offrez-vous un suivi après?',
+    'Quelle approche guide votre équipe?',
+  ],
+  [
+    'Notre engagement ne s&#x27;arrête pas à la fin des travaux. Nous restons disponibles pour répondre à vos questions et assurer votre satisfaction complète. Votre confiance est notre plus grande récompense.',
+    'Notre équipe met de l&#x27;avant la qualité d&#x27;exécution, les finitions soignées et le respect des attentes des clients.',
+  ],
+];
+
+const aboutHtmlContent = aboutFaqReplacements.reduce(
+  (markup, [from, to]) => markup.replace(from, to),
+  htmlContent,
+);
+
+const semanticHtmlContent = applyPageSemantics(aboutHtmlContent, imageAltText);
 
 export default function APropos() {
   const containerRef = useRef<HTMLDivElement>(null);
