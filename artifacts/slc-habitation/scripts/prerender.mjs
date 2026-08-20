@@ -13,6 +13,8 @@ const seoMetadata = JSON.parse(
   await readFile(path.join(root, 'src/lib/seo-route-metadata.json'), 'utf8'),
 );
 const { siteOrigin, routes } = seoMetadata;
+const fontStylesheet =
+  'https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap';
 
 function escapeHtml(value) {
   return value
@@ -80,9 +82,16 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   html = removeHeadTag(html, /<meta\b[^>]*property=["']og:url["'][^>]*>\s*/gi);
   html = removeHeadTag(html, /<meta\b[^>]*name=["']twitter:url["'][^>]*>\s*/gi);
   html = removeHeadTag(html, /<script\b[^>]*id=["']page-schema["'][^>]*>[\s\S]*?<\/script>\s*/gi);
+  html = removeHeadTag(
+    html,
+    /<link\b[^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*>\s*/gi,
+  );
 
   const canonical = `${siteOrigin}${route.path === '/' ? '/' : route.path}`;
   const headTags = `
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="${fontStylesheet}" rel="stylesheet">
   <title>${escapeHtml(route.title)}</title>
   <meta name="description" content="${escapeHtml(route.description)}">
   <link rel="canonical" href="${canonical}">

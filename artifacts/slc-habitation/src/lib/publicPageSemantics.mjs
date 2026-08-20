@@ -122,8 +122,52 @@ export function getPageSemantics(source) {
   return semantics;
 }
 
+const responsiveWebpSources = {
+  'images/upscale-house-1-min-1.png': {
+    width: 4096,
+    height: 2672,
+    srcset:
+      'images/upscale-house-1-min-1-p-500.webp 500w, images/upscale-house-1-min-1-p-800.webp 800w, images/upscale-house-1-min-1-p-1080.webp 1080w, images/upscale-house-1-min-1-p-1600.webp 1600w, images/upscale-house-1-min-1-p-2000.webp 2000w, images/upscale-house-1-min-1-p-2600.webp 2600w, images/upscale-house-1-min-1-p-3200.webp 3200w, images/upscale-house-1-min-1.webp 4096w',
+  },
+  'images/relume-657284.png': {
+    width: 832,
+    height: 1248,
+    srcset:
+      'images/relume-657284-p-500.webp 500w, images/relume-657284-p-800.webp 800w, images/relume-657284.webp 832w',
+  },
+};
+
+function optimizeLegacyAssets(markup) {
+  const withoutFontImports = markup
+    .replace(
+      /\s*<style>\s*@import\s+url\([^)]*fonts\.googleapis\.com[^)]*\)\s*<\/style>/gi,
+      '',
+    )
+    .replace(/<div class="fonts w-embed">\s*<\/div>/gi, '');
+
+  return withoutFontImports.replace(/<img\b[^>]*>/gi, (imageTag) => {
+    const source = imageTag.match(/\bsrc="([^"]+)"/i)?.[1];
+    const webpSource = source ? responsiveWebpSources[source] : undefined;
+
+    if (!webpSource || /<picture>/i.test(imageTag)) {
+      return imageTag;
+    }
+
+    const sizedImage = /\bwidth=|\bheight=/i.test(imageTag)
+      ? imageTag
+      : imageTag.replace(
+          /<img\b/i,
+          `<img width="${webpSource.width}" height="${webpSource.height}"`,
+        );
+    const sizes = sizedImage.match(/\bsizes="([^"]+)"/i)?.[1];
+    const sizesAttribute = sizes ? ` sizes="${sizes}"` : '';
+
+    return `<picture><source type="image/webp" srcset="${webpSource.srcset}"${sizesAttribute}>${sizedImage}</picture>`;
+  });
+}
+
 export function applyPageSemantics(markup, { imageAltText, demoteSecondH1 = false }) {
-  let enhancedMarkup = markup.replace(/<img\b[^>]*>/gi, (imageTag) => {
+  let enhancedMarkup = optimizeLegacyAssets(markup).replace(/<img\b[^>]*>/gi, (imageTag) => {
     const source = imageTag.match(/\bsrc="([^"]+)"/i)?.[1];
     const altText = source ? imageAltText[source] : undefined;
 
