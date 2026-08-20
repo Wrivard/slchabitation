@@ -1749,6 +1749,35 @@ textarea.w-select {
   display: block;
   overflow: hidden;
 }
+
+/* Visible keyboard focus for controls whose Webflow defaults remove outlines. */
+.w-input:focus-visible,
+.w-select:focus-visible,
+.w-dropdown-toggle:focus-visible,
+.w-dropdown-link:focus-visible,
+.w-nav-button:focus-visible,
+.w-tab-link:focus-visible,
+.w-slider-dot:focus-visible,
+.w-slider-arrow-left:focus-visible,
+.w-slider-arrow-right:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
+}
+
+/* Preserve the imported FAQ design when its triggers use native buttons. */
+button.faq2_question {
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+}
+
+button.faq2_question:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
+}
 .w-tab-pane {
   position: relative;
   display: none;
