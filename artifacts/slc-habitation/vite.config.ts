@@ -12,6 +12,15 @@ if (Number.isNaN(port) || port <= 0) {
 }
 
 const basePath = process.env.BASE_PATH || "/";
+const staticRoutePages = new Map([
+  ['/a-propos', '/a-propos.html'],
+  ['/renovation', '/renovation.html'],
+  ['/agrandissement-construction-neuve', '/agrandissement-construction-neuve.html'],
+  ['/travaux-sur-mesure', '/travaux-sur-mesure.html'],
+  ['/realisations', '/realisations.html'],
+  ['/soumission', '/soumission.html'],
+]);
+const staticPagePaths = new Set(staticRoutePages.values());
 
 export default defineConfig({
   base: basePath,
@@ -36,7 +45,11 @@ export default defineConfig({
       name: 'rewrite-html-to-index',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url?.endsWith('.html') && req.url !== '/index.html') {
+          const pathname = req.url?.split('?')[0];
+          const staticPage = pathname ? staticRoutePages.get(pathname) : undefined;
+          if (staticPage && req.url) {
+            req.url = `${staticPage}${req.url.slice(pathname!.length)}`;
+          } else if (pathname?.endsWith('.html') && pathname !== '/index.html' && !staticPagePaths.has(pathname)) {
             req.url = '/index.html';
           }
           next();
@@ -61,6 +74,17 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist/public'),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        index: path.resolve(import.meta.dirname, 'index.html'),
+        about: path.resolve(import.meta.dirname, 'a-propos.html'),
+        renovation: path.resolve(import.meta.dirname, 'renovation.html'),
+        expansion: path.resolve(import.meta.dirname, 'agrandissement-construction-neuve.html'),
+        customWork: path.resolve(import.meta.dirname, 'travaux-sur-mesure.html'),
+        projects: path.resolve(import.meta.dirname, 'realisations.html'),
+        quote: path.resolve(import.meta.dirname, 'soumission.html'),
+      },
+    },
   },
   server: {
     port,

@@ -20,6 +20,30 @@ serve = "static"
 publicDir = "artifacts/slc-habitation/dist/public"
 
 [[services.production.rewrites]]
+from = "/a-propos"
+to = "/a-propos.html"
+
+[[services.production.rewrites]]
+from = "/renovation"
+to = "/renovation.html"
+
+[[services.production.rewrites]]
+from = "/agrandissement-construction-neuve"
+to = "/agrandissement-construction-neuve.html"
+
+[[services.production.rewrites]]
+from = "/travaux-sur-mesure"
+to = "/travaux-sur-mesure.html"
+
+[[services.production.rewrites]]
+from = "/realisations"
+to = "/realisations.html"
+
+[[services.production.rewrites]]
+from = "/soumission"
+to = "/soumission.html"
+
+[[services.production.rewrites]]
 from = "/*"
 to = "/index.html"
 

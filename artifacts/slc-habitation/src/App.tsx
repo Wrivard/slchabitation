@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
+import { PageMetadata, metadataForPath } from '@/components/page-metadata';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
@@ -26,8 +27,12 @@ import {
 const queryClient = new QueryClient();
 
 function Router() {
+  const [location] = useLocation();
+  const metadata = metadataForPath(location);
+
   return (
     <RoutedErrorBoundary>
+      <PageMetadata {...metadata} />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/index.html" component={Home} />
