@@ -340,7 +340,11 @@ label {
 .w-input:focus,
 .w-select:focus {
   border-color: #3898EC;
-  outline: 0;
+}
+.w-input:focus-visible,
+.w-select:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
 }
 .w-input[disabled],
 .w-select[disabled],
@@ -1023,9 +1027,10 @@ textarea.w-select {
 .w-slider-arrow-right [class*=' w-icon-'] {
   position: absolute;
 }
-.w-slider-arrow-left:focus,
-.w-slider-arrow-right:focus {
-  outline: 0;
+.w-slider-arrow-left:focus-visible,
+.w-slider-arrow-right:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
 }
 .w-slider-arrow-left {
   z-index: 3;
@@ -1085,8 +1090,9 @@ textarea.w-select {
   cursor: pointer;
   padding-right: 40px;
 }
-.w-dropdown-toggle:focus {
-  outline: 0;
+.w-dropdown-toggle:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
 }
 .w-icon-dropdown-toggle {
   position: absolute;
@@ -1115,8 +1121,9 @@ textarea.w-select {
 .w-dropdown-link.w--current {
   color: #0082f3;
 }
-.w-dropdown-link:focus {
-  outline: 0;
+.w-dropdown-link:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
 }
 @media screen and (max-width: 767px) {
   .w-nav-brand {
@@ -1660,8 +1667,9 @@ textarea.w-select {
   tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
 }
-.w-nav-button:focus {
-  outline: 0;
+.w-nav-button:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
 }
 .w-nav-button.w--open {
   background-color: #C8C8C8;
@@ -1751,6 +1759,13 @@ textarea.w-select {
 }
 
 /* Visible keyboard focus for controls whose Webflow defaults remove outlines. */
+a[href]:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[contenteditable="true"]:focus-visible,
 .w-input:focus-visible,
 .w-select:focus-visible,
 .w-dropdown-toggle:focus-visible,

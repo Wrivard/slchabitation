@@ -19,6 +19,30 @@ const imageAltText = {
 
 const semanticHtmlContent = applyPageSemantics(htmlContent, imageAltText);
 
+const keyboardFocusStyles = `
+  a[href]:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  summary:focus-visible,
+  [contenteditable="true"]:focus-visible,
+  *[tabindex]:focus-visible,
+  .w-tab-link:focus-visible,
+  .w-nav-link:focus-visible,
+  .w-nav-brand:focus-visible,
+  .w-dropdown-btn:focus-visible,
+  .w-dropdown-toggle:focus-visible,
+  .w-slider-dot:focus-visible,
+  .w-slider-arrow-left:focus-visible,
+  .w-slider-arrow-right:focus-visible,
+  .w-dropdown-link:focus-visible,
+  .w-nav-button:focus-visible {
+    outline: 0.125rem solid #4d65ff;
+    outline-offset: 0.125rem;
+  }
+`;
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -108,5 +132,10 @@ export default function Home() {
     return enableFaqAccessibility(container);
   }, []);
 
-  return <div ref={containerRef} dangerouslySetInnerHTML={{ __html: enhanceAccessibility(normalizePublicLinks(semanticHtmlContent)) }} />;
+  return (
+    <>
+      <style>{keyboardFocusStyles}</style>
+      <div ref={containerRef} dangerouslySetInnerHTML={{ __html: enhanceAccessibility(normalizePublicLinks(semanticHtmlContent)) }} />
+    </>
+  );
 }
