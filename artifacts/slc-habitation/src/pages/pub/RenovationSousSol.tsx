@@ -1,5 +1,6 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
+import { PubPageNav, PubSectionHeader, PubFigure } from '@/components/pub/PubShared';
 import { FAQ } from '@/components/pub/FAQ';
 import {
   ArrowDown, Bath, Bed, CheckCircle2, ClipboardCheck, Droplets, Hammer,
@@ -225,9 +226,9 @@ export default function RenovationSousSolPub() {
         <div className="container-large relative mx-auto max-w-7xl px-6 pb-20 pt-20 md:pb-28 md:pt-28">
           <div className="max-w-4xl fade-up">
             <div className="mb-7 flex flex-wrap gap-3 text-sm font-medium text-white">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2"><Hammer className="h-4 w-4 text-primary" />18 ans d'expérience</span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
+              <span className="inline-flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
+              <span className="inline-flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><Hammer className="h-4 w-4 text-primary" />18 ans d'expérience</span>
+              <span className="inline-flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Aménagement intérieur résidentiel</p>
             <h1 className="mb-7 max-w-4xl font-heading text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">Rénovation de sous-sol <br />à Laval et dans les Laurentides</h1>
@@ -237,11 +238,7 @@ export default function RenovationSousSolPub() {
         </div>
       </section>
 
-      <nav aria-label="Navigation de la page" className="sticky top-0 z-20 border-b border-border bg-background/95 backdrop-blur">
-        <div className="container-large mx-auto flex max-w-7xl gap-5 overflow-x-auto px-6 py-4 text-sm font-semibold whitespace-nowrap">
-          {navigation.map((item) => <a key={item.href} href={item.href} className="text-muted-foreground transition-colors hover:text-primary">{item.label}</a>)}
-        </div>
-      </nav>
+      <PubPageNav items={navigation} />
 
       <section id="possibilites" className="scroll-mt-20 bg-background py-20 md:py-28">
         <div className="container-large mx-auto max-w-7xl px-6">
@@ -251,15 +248,15 @@ export default function RenovationSousSolPub() {
               <h2 className="mb-6 text-3xl font-bold leading-tight md:text-5xl">Partir de l’espace réel, puis imaginer la vie qui s’y passe</h2>
               <p className="text-lg leading-relaxed text-muted-foreground">Le sous-sol abrite souvent des conduits, une poutre, un panneau, une salle mécanique ou des fenêtres plus basses. Une rénovation réfléchie les intègre au plan pour guider la place des pièces, la lumière et les détails à prioriser.</p>
             </div>
-            <aside className="rounded-2xl border border-primary/25 bg-primary/10 p-6 lg:col-span-5">
+            <aside className="rounded-none border border-primary/25 bg-primary/10 p-6 lg:col-span-5">
               <div className="mb-3 flex items-center gap-3 font-heading text-lg font-bold"><Lightbulb className="h-5 w-5 text-primary" />À clarifier avant le plan</div>
               <p className="leading-relaxed text-muted-foreground">Notez les usages à réunir, les pièces à fermer et les équipements qui doivent rester accessibles. Cette liste rend la première discussion plus précise.</p>
             </aside>
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {possibilities.map(({ icon: Icon, title, text }) => (
-              <article key={title} className="rounded-2xl border border-border bg-muted/30 p-8">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"><Icon className="h-6 w-6" /></div>
+              <article key={title} className="rounded-none border border-border bg-muted/30 p-8">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-primary/10 text-primary"><Icon className="h-6 w-6" /></div>
                 <h3 className="mb-3 text-xl font-bold">{title}</h3><p className="leading-relaxed text-muted-foreground">{text}</p>
               </article>
             ))}
@@ -275,9 +272,9 @@ export default function RenovationSousSolPub() {
         <div className="container-large mx-auto max-w-7xl px-6">
           <div className="max-w-3xl"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Avant de refermer les murs</p><h2 className="mb-6 text-3xl font-bold leading-tight md:text-5xl">Le diagnostic donne une direction au projet</h2><p className="text-lg leading-relaxed text-muted-foreground">Au sous-sol, les conditions existantes peuvent influencer les matériaux, la disposition et les travaux à prévoir. Une analyse initiale aide à poser les bonnes questions avant de retenir un scénario.</p></div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {diagnosticPoints.map(([title, text]) => <div key={title} className="rounded-2xl border border-border bg-background p-7"><ClipboardCheck className="mb-5 h-6 w-6 text-primary" /><h3 className="mb-2 text-lg font-bold">{title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{text}</p></div>)}
+            {diagnosticPoints.map(([title, text]) => <div key={title} className="rounded-none border border-border bg-background p-7"><ClipboardCheck className="mb-5 h-6 w-6 text-primary" /><h3 className="mb-2 text-lg font-bold">{title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{text}</p></div>)}
           </div>
-          <div className="mt-10 grid gap-5 rounded-2xl bg-secondary p-7 text-white md:grid-cols-[auto_1fr] md:p-9"><Droplets className="h-8 w-8 text-primary" /><div><h3 className="mb-2 text-xl font-bold">Repère pratique : l’humidité ne se masque pas</h3><p className="leading-relaxed text-gray-300">Signalez toute trace d’eau, efflorescence, odeur de moisi, condensation ou dégradation avant de choisir les finis. Selon la cause, l’ordre des interventions peut changer.</p></div></div>
+          <div className="mt-10 grid gap-5 rounded-none bg-secondary p-7 text-white md:grid-cols-[auto_1fr] md:p-9"><Droplets className="h-8 w-8 text-primary" /><div><h3 className="mb-2 text-xl font-bold">Repère pratique : l’humidité ne se masque pas</h3><p className="leading-relaxed text-gray-300">Signalez toute trace d’eau, efflorescence, odeur de moisi, condensation ou dégradation avant de choisir les finis. Selon la cause, l’ordre des interventions peut changer.</p></div></div>
         </div>
       </section>
 
@@ -290,9 +287,9 @@ export default function RenovationSousSolPub() {
           </div>
           <div className="mt-14 space-y-8">
             {technicalChapters.map(({ number, title, icon: Icon, paragraphs, note }) => (
-              <article key={number} className="rounded-3xl border border-border bg-muted/20 p-7 md:p-10">
+              <article key={number} className="rounded-none border border-border bg-muted/20 p-7 md:p-10">
                 <div className="grid gap-6 lg:grid-cols-[80px_1fr]">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-none bg-primary/10 text-primary">
                     <Icon className="h-7 w-7" />
                   </div>
                   <div>
@@ -301,7 +298,7 @@ export default function RenovationSousSolPub() {
                     <div className="grid gap-5 lg:grid-cols-2">
                       {paragraphs.map((paragraph) => <p key={paragraph} className="leading-relaxed text-muted-foreground">{paragraph}</p>)}
                     </div>
-                    <div className="mt-6 rounded-xl border border-border bg-background px-5 py-4 text-sm leading-relaxed text-muted-foreground"><span className="font-bold text-foreground">Pour la visite — </span>{note}</div>
+                    <div className="mt-6 rounded-none border border-border bg-background px-5 py-4 text-sm leading-relaxed text-muted-foreground"><span className="font-bold text-foreground">Pour la visite — </span>{note}</div>
                   </div>
                 </div>
               </article>
@@ -315,10 +312,10 @@ export default function RenovationSousSolPub() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Une démarche lisible</p><h2 className="mb-6 text-3xl font-bold leading-tight md:text-5xl">Décider dans le bon ordre</h2><p className="leading-relaxed text-muted-foreground">Une approche par étapes aide à distinguer ce qui relève du bâtiment, de l’usage et de l’esthétique. Vous gardez une vue d’ensemble avant de discuter des choix qui influencent l’espace.</p><div className="mt-8 flex items-center gap-3 text-sm font-semibold text-foreground"><ArrowDown className="h-5 w-5 text-primary" />Du constat initial aux finitions</div></div>
             <div className="space-y-5 lg:col-span-8">
-              {steps.map((step) => <article key={step.number} className="grid gap-4 rounded-2xl border border-border p-7 md:grid-cols-[70px_1fr] md:p-8"><div className="font-heading text-3xl font-bold text-primary">{step.number}</div><div><h3 className="mb-3 text-xl font-bold">{step.title}</h3><p className="leading-relaxed text-muted-foreground">{step.text}</p></div></article>)}
+              {steps.map((step) => <article key={step.number} className="grid gap-4 rounded-none border border-border p-7 md:grid-cols-[70px_1fr] md:p-8"><div className="font-heading text-3xl font-bold text-primary">{step.number}</div><div><h3 className="mb-3 text-xl font-bold">{step.title}</h3><p className="leading-relaxed text-muted-foreground">{step.text}</p></div></article>)}
             </div>
           </div>
-          <div className="mt-12 rounded-3xl border border-border bg-muted/30 p-8 md:flex md:items-center md:justify-between md:gap-10 md:p-10"><div><h3 className="mb-2 text-2xl font-bold">Votre projet commence par les bonnes questions</h3><p className="max-w-2xl leading-relaxed text-muted-foreground">Partagez l’usage envisagé et les éléments qui vous préoccupent. Une évaluation permet de discuter de la faisabilité selon votre sous-sol.</p></div><PubCTA service="renovation-sous-sol" className="mt-6 shrink-0 px-7 py-4 md:mt-0" testId="button-middle-cta">Discuter de mon sous-sol</PubCTA></div>
+          <div className="mt-12 rounded-none border border-border bg-muted/30 p-8 md:flex md:items-center md:justify-between md:gap-10 md:p-10"><div><h3 className="mb-2 text-2xl font-bold">Votre projet commence par les bonnes questions</h3><p className="max-w-2xl leading-relaxed text-muted-foreground">Partagez l’usage envisagé et les éléments qui vous préoccupent. Une évaluation permet de discuter de la faisabilité selon votre sous-sol.</p></div><PubCTA service="renovation-sous-sol" className="mt-6 shrink-0 px-7 py-4 md:mt-0" testId="button-middle-cta">Discuter de mon sous-sol</PubCTA></div>
         </div>
       </section>
 
@@ -328,17 +325,17 @@ export default function RenovationSousSolPub() {
 
       <section id="inspirations" className="scroll-mt-20 bg-background py-20 md:py-28">
         <div className="container-large mx-auto max-w-7xl px-6"><div className="max-w-3xl"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Espaces de vie au niveau inférieur</p><h2 className="mb-6 text-3xl font-bold leading-tight md:text-5xl">Des réalisations qui montrent les possibilités</h2><p className="text-lg leading-relaxed text-muted-foreground">Ces photos illustrent un volume dégagé, une aire de vie, une pièce polyvalente et une salle de bain. Les dimensions, ouvertures et installations de votre résidence guideront les choix pertinents pour votre projet.</p></div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gallery.slice(1).map((image, index) => <figure key={image.src} className={index === 0 ? 'lg:col-span-2' : ''}><div className="overflow-hidden rounded-2xl bg-muted"><img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" className={`w-full object-cover transition-transform duration-500 hover:scale-[1.02] ${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'}`} /></div><figcaption className="pt-3 text-sm font-medium text-muted-foreground">{image.caption}</figcaption></figure>)}</div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gallery.slice(1).map((image, index) => <figure key={image.src} className={index === 0 ? 'lg:col-span-2' : ''}><div className="overflow-hidden rounded-none bg-muted"><img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" className={`w-full object-cover transition-transform duration-500 hover:scale-[1.02] ${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'}`} /></div><figcaption className="pt-3 text-sm font-medium text-muted-foreground">{image.caption}</figcaption></figure>)}</div>
           <div className="mt-12 grid gap-6 md:grid-cols-3"><div><PanelTop className="mb-4 h-6 w-6 text-primary" /><h3 className="mb-2 text-lg font-bold">Plafonds et détails techniques</h3><p className="text-sm leading-relaxed text-muted-foreground">Un plafond continu ou des zones abaissées peuvent être envisagés selon les conduits et la hauteur disponible.</p></div><div><Ruler className="mb-4 h-6 w-6 text-primary" /><h3 className="mb-2 text-lg font-bold">Circulation et rangement</h3><p className="text-sm leading-relaxed text-muted-foreground">Le passage vers l’escalier, la salle mécanique ou les fenêtres conserve son importance dans un plan confortable.</p></div><div><CheckCircle2 className="mb-4 h-6 w-6 text-primary" /><h3 className="mb-2 text-lg font-bold">Choix adaptés à l’usage</h3><p className="text-sm leading-relaxed text-muted-foreground">L’éclairage, les revêtements et l’acoustique se sélectionnent plus facilement lorsque la fonction de chaque zone est claire.</p></div></div>
         </div>
       </section>
 
       <section id="faq" className="scroll-mt-20 border-t border-border bg-muted/30 py-20 md:py-28">
-        <div className="container-large mx-auto max-w-4xl px-6"><div className="text-center"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Préparer votre réflexion</p><h2 className="mb-5 text-3xl font-bold md:text-5xl">Questions fréquentes sur la rénovation de sous-sol</h2><p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">Ces repères amorcent la conversation; une réponse adaptée dépend de votre résidence et du projet envisagé.</p></div><div className="mt-12 space-y-4">{faqs.map((faq) => <FAQ key={faq.question} question={faq.question} answer={faq.answer} />)}</div></div>
+        <div className="container-large mx-auto max-w-4xl px-6"><div className="text-center flex flex-col items-center"><PubSectionHeader kicker="Préparer votre réflexion" title="Questions fréquentes sur la rénovation de sous-sol" description="Ces repères amorcent la conversation; une réponse adaptée dépend de votre résidence et du projet envisagé." /></div><div className="mt-12 space-y-4">{faqs.map((faq) => <FAQ key={faq.question} question={faq.question} answer={faq.answer} />)}</div></div>
       </section>
 
       <section className="bg-background py-20 md:py-28">
-        <div className="container-large mx-auto max-w-4xl px-6 text-center"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Parlons de votre espace</p><h2 className="mb-6 text-3xl font-bold leading-tight md:text-5xl">Donnez une nouvelle place à votre sous-sol</h2><p className="mx-auto mb-9 max-w-2xl text-lg leading-relaxed text-muted-foreground">Décrivez-nous votre idée et votre espace actuel. Nous pourrons échanger sur les éléments à évaluer pour votre projet à Laval ou dans les Laurentides.</p><PubCTA service="renovation-sous-sol" className="px-9 py-5 text-lg" testId="button-bottom-cta">Présenter mon projet</PubCTA></div>
+        <div className="container-large mx-auto max-w-4xl px-6 text-center flex flex-col items-center"><PubSectionHeader kicker="Parlons de votre espace" title="Donnez une nouvelle place à votre sous-sol" description="Décrivez-nous votre idée et votre espace actuel. Nous pourrons échanger sur les éléments à évaluer pour votre projet à Laval ou dans les Laurentides." /><PubCTA service="renovation-sous-sol" className="px-9 py-5 text-lg" testId="button-bottom-cta">Présenter mon projet</PubCTA></div>
       </section>
     </PubLayout>
   );

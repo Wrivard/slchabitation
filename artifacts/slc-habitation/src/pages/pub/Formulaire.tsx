@@ -21,8 +21,8 @@ export default function FormulairePub() {
     <PubLayout>
       <section className="bg-background relative overflow-hidden">
         {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-[800px] bg-primary/5 rounded-bl-[100px] -z-10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-[500px] bg-accent/30 rounded-tr-[100px] -z-10 blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-1/2 h-[800px] bg-primary/5 rounded-none l-[100px] -z-10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-[500px] bg-accent/30 rounded-none r-[100px] -z-10 blur-3xl pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24">
           <div className="lg:hidden mb-8">
@@ -58,12 +58,12 @@ export default function FormulairePub() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-2 p-5 rounded-2xl bg-white border border-border/50 shadow-sm">
+                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
                   <ShieldCheck className="w-6 h-6 text-primary" />
                   <h4 className="font-semibold text-foreground">Licence RBQ</h4>
                   <p className="text-sm text-muted-foreground">8351-9033-59</p>
                 </div>
-                <div className="flex flex-col gap-2 p-5 rounded-2xl bg-white border border-border/50 shadow-sm">
+                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
                   <Clock className="w-6 h-6 text-primary" />
                   <h4 className="font-semibold text-foreground">18 ans d’expérience</h4>
                   <p className="text-sm text-muted-foreground">En rénovation résidentielle</p>
@@ -76,14 +76,14 @@ export default function FormulairePub() {
                   ['02', 'Détails'],
                   ['03', 'Coordonnées'],
                 ].map(([number, label]) => (
-                  <div key={number} className="rounded-2xl border border-border bg-white p-4">
+                  <div key={number} className="rounded-none border border-border bg-white p-4">
                     <span className="text-xs font-bold text-primary tracking-wider">{number}</span>
                     <p className="font-semibold text-foreground mt-2">{label}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-xl">
+              <div className="relative rounded-none overflow-hidden aspect-[4/3]">
                 <img
                   src="/images/relume-567906.jpeg"
                   alt="Exemple d’un espace intérieur rénové"
@@ -122,9 +122,7 @@ export default function FormulairePub() {
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                 className="relative"
               >
-                {/* Decorative border glow */}
-                <div className="absolute -inset-0.5 bg-gradient-to-br from-primary/30 to-transparent rounded-[2rem] blur opacity-50"></div>
-                <div className="relative bg-white rounded-[2rem] shadow-2xl p-6 sm:p-8 md:p-10 border border-white">
+                <div className="relative bg-white p-6 sm:p-8 md:p-10 border border-border">
                   <QuoteForm key={defaultService} defaultService={defaultService} />
                 </div>
               </motion.div>

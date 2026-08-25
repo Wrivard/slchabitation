@@ -1,5 +1,6 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
+import { PubPageNav, PubSectionHeader, PubFigure } from '@/components/pub/PubShared';
 import { FAQ } from '@/components/pub/FAQ';
 import {
   Bath, CheckCircle2, ChevronRight, ClipboardCheck, Droplets, Fan, Grid2X2,
@@ -64,9 +65,9 @@ export default function RenovationSalleDeBainPub() {
         <div className="container-large mx-auto max-w-6xl px-6">
           <div className="max-w-3xl fade-up">
             <div className="mb-7 flex flex-wrap gap-3 text-xs font-semibold tracking-wide text-white sm:text-sm">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2"><ShieldCheck className="h-4 w-4 text-primary" /> RBQ : 8351-9033-59</span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2"><Sparkles className="h-4 w-4 text-primary" /> 18 ans d’expérience</span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2"><MapPin className="h-4 w-4 text-primary" /> Laval et Laurentides</span>
+              <span className="inline-flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><ShieldCheck className="h-4 w-4 text-primary" /> RBQ : 8351-9033-59</span>
+              <span className="inline-flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><Sparkles className="h-4 w-4 text-primary" /> 18 ans d’expérience</span>
+              <span className="inline-flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><MapPin className="h-4 w-4 text-primary" /> Laval et Laurentides</span>
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Salle de bain pensée dans son ensemble</p>
             <h1 className="mb-7 text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">Rénovation de salle de bain <br />à Laval et dans les Laurentides</h1>
@@ -76,11 +77,7 @@ export default function RenovationSalleDeBainPub() {
         </div>
       </section>
 
-      <nav aria-label="Navigation de la page" className="sticky top-0 z-20 border-b border-border bg-background/95 shadow-sm backdrop-blur">
-        <div className="container-large mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 py-3 sm:px-6">
-          {navigation.map(([href, label]) => <a key={href} href={href} className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">{label}</a>)}
-        </div>
-      </nav>
+      <PubPageNav items={navigation.map(([href, label]) => ({ href, label }))} />
 
       <section id="approche" className="scroll-mt-20 bg-background py-20 md:py-28">
         <div className="container-large mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:items-center">
@@ -96,7 +93,7 @@ export default function RenovationSalleDeBainPub() {
             </div>
           </div>
           <figure className="lg:col-span-6">
-            <img src={bathroomImages.vanity} alt="Vanité en bois clair et miroir rond dans une salle de bain rénovée" width="1600" height="2133" loading="lazy" className="h-[500px] w-full rounded-[2rem] object-cover shadow-xl" />
+            <img src={bathroomImages.vanity} alt="Vanité en bois clair et miroir rond dans une salle de bain rénovée" width="1600" height="2133" loading="lazy" className="h-[500px] w-full rounded-none object-cover" />
             <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">Les matériaux, les volumes et la lumière se considèrent ensemble pour composer une pièce agréable à utiliser.</figcaption>
           </figure>
         </div>
@@ -110,11 +107,11 @@ export default function RenovationSalleDeBainPub() {
             <p className="text-lg leading-relaxed text-muted-foreground">Une salle de bain réussie ne repose pas sur une tendance unique. Elle peut être lumineuse et minimale, texturée et chaleureuse, ou plus contrastée. Le point de départ reste l’usage : se préparer à deux, faciliter le nettoyage, accueillir les serviettes, aménager une douche ou conserver un bain selon votre réalité.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {projectPriorities.map(({ icon: Icon, title, text }) => <article key={title} className="rounded-3xl border border-border bg-background p-8 shadow-sm">
+            {projectPriorities.map(({ icon: Icon, title, text }) => <article key={title} className="rounded-none border border-border bg-background p-8">
               <Icon className="mb-5 h-8 w-8 text-primary" /><h3 className="mb-3 text-xl font-bold">{title}</h3><p className="leading-relaxed text-muted-foreground">{text}</p>
             </article>)}
           </div>
-          <div className="mt-12 grid gap-8 rounded-[2rem] bg-secondary p-8 text-secondary-foreground md:grid-cols-2 md:p-10">
+          <div className="mt-12 grid gap-8 rounded-none bg-secondary p-8 text-secondary-foreground md:grid-cols-2 md:p-10">
             <div><h3 className="mb-4 text-2xl font-bold text-white">Douche, bain, vanité : les composer sans les isoler</h3><p className="leading-relaxed text-slate-300">Une douche avec paroi vitrée peut préserver la profondeur visuelle d’une petite salle de bain. Une niche peut être utile quand les produits de soin doivent rester accessibles. Un bain autoportant peut devenir un point focal si les dégagements, la robinetterie et les accès s’y prêtent. Chaque option est mise en relation avec les dimensions de la pièce avant de devenir un choix définitif.</p></div>
             <div><h3 className="mb-4 text-2xl font-bold text-white">Le détail qui change la routine</h3><p className="leading-relaxed text-slate-300">Un miroir bien positionné, une prise au bon endroit, une tablette près du bain ou des tiroirs organisés peuvent rendre la pièce plus intuitive. Ces détails ne remplacent pas les fondations techniques; ils donnent toutefois du sens à la rénovation. Les intégrer dès la planification facilite une vision d’ensemble et des décisions plus sereines.</p></div>
           </div>
@@ -123,7 +120,7 @@ export default function RenovationSalleDeBainPub() {
 
       <section className="bg-background py-20 md:py-28">
         <div className="container-large mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center">
-          <figure className="order-2 lg:order-1"><img src={bathroomImages.shower} alt="Douche vitrée et céramique grise dans une salle de bain" width="1600" height="2133" loading="lazy" className="h-[520px] w-full rounded-[2rem] object-cover shadow-xl" /></figure>
+          <figure className="order-2 lg:order-1"><img src={bathroomImages.shower} alt="Douche vitrée et céramique grise dans une salle de bain" width="1600" height="2133" loading="lazy" className="h-[520px] w-full rounded-none object-cover" /></figure>
           <div className="order-1 lg:order-2">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Matières et eau</p>
             <h2 className="mb-6 text-3xl font-bold leading-tight md:text-4xl">Penser les surfaces avant de penser les accessoires</h2>
@@ -140,8 +137,8 @@ export default function RenovationSalleDeBainPub() {
       <section id="planification" className="scroll-mt-20 bg-muted/35 py-20 md:py-28">
         <div className="container-large mx-auto max-w-7xl px-6">
           <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-5"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Avant de démarrer</p><h2 className="mb-6 text-3xl font-bold leading-tight md:text-4xl">Une évaluation pour situer les possibilités</h2><p className="text-lg leading-relaxed text-muted-foreground">Une belle idée prend une forme plus précise lorsqu’elle rencontre les conditions du bâtiment. L’évaluation ne sert pas à compliquer le projet : elle sert à identifier les points qui peuvent influencer le plan et à aborder les choix dans un ordre utile.</p><p className="mt-5 leading-relaxed text-muted-foreground">Le déplacement d’un drain illustre bien cette logique. Son parcours possible dépend notamment de la hauteur disponible, du sens des solives et de la manière dont le plancher est construit. Une douche ou une toilette peut parfois rester près de son emplacement actuel pour limiter les interventions à examiner; dans d’autres cas, le plan peut être revu. Le rôle de l’évaluation est d’éviter de conclure avant d’avoir observé ces repères.</p><aside className="mt-8 rounded-2xl border-l-4 border-primary bg-background p-6"><h3 className="mb-2 font-bold">À apporter à la discussion</h3><p className="text-sm leading-relaxed text-muted-foreground">Vos photos d’inspiration, vos habitudes de rangement, une liste de ce que vous souhaitez conserver et les irritants de la pièce actuelle donnent des repères concrets pour l’échange.</p></aside></div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">{assessmentPoints.map(([title, text]) => <article key={title} className="rounded-2xl border border-border bg-background p-6"><ClipboardCheck className="mb-4 h-6 w-6 text-primary" /><h3 className="mb-2 text-lg font-bold">{title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
+            <div className="lg:col-span-5"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Avant de démarrer</p><h2 className="mb-6 text-3xl font-bold leading-tight md:text-4xl">Une évaluation pour situer les possibilités</h2><p className="text-lg leading-relaxed text-muted-foreground">Une belle idée prend une forme plus précise lorsqu’elle rencontre les conditions du bâtiment. L’évaluation ne sert pas à compliquer le projet : elle sert à identifier les points qui peuvent influencer le plan et à aborder les choix dans un ordre utile.</p><p className="mt-5 leading-relaxed text-muted-foreground">Le déplacement d’un drain illustre bien cette logique. Son parcours possible dépend notamment de la hauteur disponible, du sens des solives et de la manière dont le plancher est construit. Une douche ou une toilette peut parfois rester près de son emplacement actuel pour limiter les interventions à examiner; dans d’autres cas, le plan peut être revu. Le rôle de l’évaluation est d’éviter de conclure avant d’avoir observé ces repères.</p><aside className="mt-8 rounded-none border-l-4 border-primary bg-background p-6"><h3 className="mb-2 font-bold">À apporter à la discussion</h3><p className="text-sm leading-relaxed text-muted-foreground">Vos photos d’inspiration, vos habitudes de rangement, une liste de ce que vous souhaitez conserver et les irritants de la pièce actuelle donnent des repères concrets pour l’échange.</p></aside></div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">{assessmentPoints.map(([title, text]) => <article key={title} className="rounded-none border border-border bg-background p-6"><ClipboardCheck className="mb-4 h-6 w-6 text-primary" /><h3 className="mb-2 text-lg font-bold">{title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
           </div>
         </div>
       </section>
@@ -149,8 +146,8 @@ export default function RenovationSalleDeBainPub() {
       <section id="realisation" className="scroll-mt-20 bg-background py-20 md:py-28">
         <div className="container-large mx-auto max-w-7xl px-6">
           <div className="mb-12 max-w-3xl"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Une démarche lisible</p><h2 className="mb-5 text-3xl font-bold md:text-4xl">Passer de l’intention à une salle de bain habitable</h2><p className="text-lg leading-relaxed text-muted-foreground">Chaque rénovation a son contexte. Cette séquence présente les sujets qui peuvent être abordés dans un projet, en restant attentive à ce que l’évaluation et les choix de conception permettent de confirmer.</p></div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">{steps.map(([number, title, text]) => <article key={number} className="rounded-2xl border border-border p-6"><span className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-bold text-primary">{number}</span><h3 className="mb-3 text-lg font-bold">{title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
-          <div className="mt-10 grid gap-6 rounded-[2rem] border border-border bg-muted/30 p-7 md:grid-cols-2 md:p-9">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">{steps.map(([number, title, text]) => <article key={number} className="rounded-none border border-border p-6"><span className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-bold text-primary">{number}</span><h3 className="mb-3 text-lg font-bold">{title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
+          <div className="mt-10 grid gap-6 rounded-none border border-border bg-muted/30 p-7 md:grid-cols-2 md:p-9">
             <div><div className="mb-3 flex items-center gap-3"><Fan className="h-6 w-6 text-primary" /><h3 className="text-xl font-bold">Humidité et renouvellement d’air</h3></div><p className="leading-relaxed text-muted-foreground">La ventilation mérite d’être pensée avec l’usage de la pièce, et non comme un accessoire ajouté à la fin. L’air humide doit pouvoir être évacué selon le parcours disponible dans le bâtiment. Le plafond, les conduits, une fenêtre existante et la position de la douche peuvent tous influencer la solution à étudier. Prévoir cet échange avant les finis aide à coordonner les ouvertures, les commandes et l’accès requis pour l’installation.</p></div>
             <div><div className="mb-3 flex items-center gap-3"><Lightbulb className="h-6 w-6 text-primary" /><h3 className="text-xl font-bold">Lumière, prises et commandes</h3></div><p className="leading-relaxed text-muted-foreground">Une salle de bain peut réunir une lumière générale, un éclairage au miroir et, selon le projet, une ambiance plus douce. Pensez à la hauteur du miroir, aux zones d’ombre et aux moments où la pièce est utilisée. Les prises, interrupteurs, luminaires et besoins électriques éventuels sont plus simples à discuter lorsque la vanité et la douche sont déjà situées sur le plan. Leur implantation demeure à valider selon les conditions du projet.</p></div>
           </div>
@@ -160,13 +157,13 @@ export default function RenovationSalleDeBainPub() {
       <section className="bg-secondary py-20 text-secondary-foreground md:py-28">
         <div className="container-large mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center">
           <div><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Une seconde lecture de votre projet</p><h2 className="mb-6 text-3xl font-bold leading-tight text-white md:text-4xl">Clarifier vos priorités avant les choix de finition</h2><p className="mb-5 leading-relaxed text-slate-300">Une rencontre peut être l’occasion de remettre de l’ordre dans les décisions : faut-il conserver l’emplacement des appareils? Quel rangement est réellement utile? Quelle ambiance s’accorde aux autres pièces? SLC Habitation détient la licence RBQ 8351-9033-59 et compte 18 ans d’expérience pour accompagner les projets à Laval et dans les Laurentides.</p><p className="mb-5 leading-relaxed text-slate-300">L’accessibilité peut aussi faire partie de la conversation, sans imposer un style particulier. Une circulation plus directe, une douche avec une entrée adaptée, une banquette envisagée, une vanité dont la profondeur convient ou des appuis prévus au bon endroit sont des sujets à soulever selon les besoins. Les dimensions de la pièce et les supports disponibles permettent ensuite d’examiner quelles avenues sont pertinentes.</p><p className="mb-8 leading-relaxed text-slate-300">Nous pouvons parler de votre espace tel qu’il est, de vos intentions et des éléments à vérifier. Les réponses détaillées dépendent de l’évaluation, des produits retenus et des conditions rencontrées dans la maison.</p><PubCTA service="renovation-salle-de-bain" className="px-8 py-5" testId="button-middle-cta">Discuter de ma salle de bain</PubCTA></div>
-          <figure><img src={bathroomImages.dark} alt="Salle de bain aux murs foncés avec douche et vanité suspendue" width="1600" height="2133" loading="lazy" className="h-[500px] w-full rounded-[2rem] object-cover shadow-2xl" /></figure>
+          <figure><img src={bathroomImages.dark} alt="Salle de bain aux murs foncés avec douche et vanité suspendue" width="1600" height="2133" loading="lazy" className="h-[500px] w-full rounded-none object-cover" /></figure>
         </div>
       </section>
 
       <section className="bg-background py-20 md:py-28">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center"><figure className="lg:col-span-5"><img src={bathroomImages.bright} alt="Salle de bain lumineuse avec douche, bain et céramique blanche" width="1600" height="1200" loading="lazy" className="h-[390px] w-full rounded-[2rem] object-cover shadow-lg" /></figure><div className="lg:col-span-7"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Un témoignage</p><blockquote className="mb-6 text-2xl font-medium leading-relaxed md:text-3xl">« Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l'écoute, je recommande vivement! »</blockquote><p className="font-bold">Isabelle Baril</p><p className="mt-1 text-sm text-muted-foreground">Propriétaire</p></div></div>
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center"><figure className="lg:col-span-5"><img src={bathroomImages.bright} alt="Salle de bain lumineuse avec douche, bain et céramique blanche" width="1600" height="1200" loading="lazy" className="h-[390px] w-full rounded-none object-cover" /></figure><div className="lg:col-span-7"><p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Un témoignage</p><blockquote className="mb-6 text-2xl font-medium leading-relaxed md:text-3xl">« Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l'écoute, je recommande vivement! »</blockquote><p className="font-bold">Isabelle Baril</p><p className="mt-1 text-sm text-muted-foreground">Propriétaire</p></div></div>
         </div>
       </section>
 

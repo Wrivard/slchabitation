@@ -248,7 +248,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
         </p>
         <Link
           href="/"
-          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-4 rounded-xl font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-lg"
+          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-4 rounded-none font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0"
           data-testid="button-return-home"
         >
           Retour à l'accueil
@@ -272,7 +272,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
               className="flex flex-col items-center gap-2"
             >
               <span
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-all duration-500 shadow-sm ${
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-all duration-500 ${
                   step >= number
                     ? 'bg-primary border-primary text-primary-foreground'
                     : 'bg-white border-border text-muted-foreground'
@@ -317,7 +317,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                 className="w-full"
               >
                 <div className="mb-8">
-                  <h3 className="text-3xl font-bold font-heading text-foreground mb-2">Quel est votre projet ?</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold font-heading text-foreground mb-2">Quel est votre projet ?</h3>
                   <p className="text-muted-foreground">Aidez-nous à comprendre vos besoins initiaux.</p>
                 </div>
 
@@ -333,9 +333,9 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                         ].map(svc => (
                           <label
                             key={svc.id}
-                            className={`border rounded-xl p-5 cursor-pointer transition-all flex items-center gap-4 group ${
+                            className={`border rounded-none p-5 cursor-pointer transition-all flex items-center gap-4 group ${
                               watch('service') === svc.id
-                                ? 'border-primary bg-primary/5 ring-1 ring-primary shadow-sm'
+                                ? 'border-primary bg-primary/5 ring-1 ring-primary'
                                 : 'border-border hover:border-primary/40 hover:bg-accent/10'
                             }`}
                           >
@@ -362,9 +362,9 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                       ].map((b, idx) => (
                         <label
                           key={b}
-                          className={`border rounded-xl p-4 cursor-pointer transition-all flex items-center gap-3 group ${
+                          className={`border rounded-none p-4 cursor-pointer transition-all flex items-center gap-3 group ${
                             watch('budget') === b
-                              ? 'border-primary bg-primary/5 ring-1 ring-primary shadow-sm'
+                              ? 'border-primary bg-primary/5 ring-1 ring-primary'
                               : 'border-border hover:border-primary/40 hover:bg-accent/10'
                           }`}
                         >
@@ -382,7 +382,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                   <button
                     type="button"
                     onClick={() => nextStep(['service', 'budget'])}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg mt-8 text-lg"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 mt-8 text-lg"
                     data-testid="button-next-step-1"
                   >
                     Continuer <ArrowRight className="w-5 h-5" />
@@ -420,7 +420,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                       id="description"
                       {...register("description")}
                       rows={6}
-                      className="w-full p-5 rounded-xl border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none bg-accent/5 text-lg"
+                      className="w-full p-5 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none bg-accent/5 text-lg"
                       placeholder="Ex: Nous souhaitons abattre le mur entre la cuisine et le salon, et refaire l'îlot central pour créer un espace ouvert..."
                       data-testid="input-description"
                     ></textarea>
@@ -431,7 +431,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="w-16 h-16 shrink-0 bg-accent/70 hover:bg-accent text-foreground border border-border rounded-xl flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      className="w-16 h-16 shrink-0 bg-accent/70 hover:bg-accent text-foreground border border-border rounded-none flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       aria-label="Retour"
                       data-testid="button-prev-step-2"
                     >
@@ -440,7 +440,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                     <button
                       type="button"
                       onClick={() => nextStep(['description'])}
-                      className="flex-grow bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg text-lg"
+                      className="flex-grow bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 text-lg"
                       data-testid="button-next-step-2"
                     >
                       Dernière étape <ArrowRight className="w-5 h-5" />
@@ -478,7 +478,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                         type="text"
                         id="firstName"
                         {...register("firstName")}
-                        className="w-full p-4 rounded-xl border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
                         data-testid="input-firstname"
                       />
                       {errors.firstName && <p className="text-sm text-destructive" data-testid="error-firstname">{errors.firstName.message}</p>}
@@ -489,7 +489,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                         type="text"
                         id="lastName"
                         {...register("lastName")}
-                        className="w-full p-4 rounded-xl border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
                         data-testid="input-lastname"
                       />
                       {errors.lastName && <p className="text-sm text-destructive" data-testid="error-lastname">{errors.lastName.message}</p>}
@@ -503,7 +503,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                         type="email"
                         id="email"
                         {...register("email")}
-                        className="w-full p-4 rounded-xl border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
                         data-testid="input-email"
                       />
                       {errors.email && <p className="text-sm text-destructive" data-testid="error-email">{errors.email.message}</p>}
@@ -514,7 +514,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                         type="tel"
                         id="phone"
                         {...register("phone")}
-                        className="w-full p-4 rounded-xl border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
                         data-testid="input-phone"
                       />
                       {errors.phone && <p className="text-sm text-destructive" data-testid="error-phone">{errors.phone.message}</p>}
@@ -522,7 +522,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                   </div>
 
                   <div className="pt-2">
-                    <label className="flex items-start gap-4 cursor-pointer group bg-accent/5 p-4 rounded-xl border border-transparent hover:border-primary/20 transition-colors">
+                    <label className="flex items-start gap-4 cursor-pointer group bg-accent/5 p-4 rounded-none border border-transparent hover:border-primary/20 transition-colors">
                       <div className="pt-0.5">
                         <input
                           type="checkbox"
@@ -547,7 +547,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                   </div>
 
                   {errorMsg && (
-                    <div className="bg-destructive/10 text-destructive p-5 rounded-xl text-sm border border-destructive/20 font-medium flex items-start gap-3" data-testid="status-error">
+                    <div className="bg-destructive/10 text-destructive p-5 rounded-none text-sm border border-destructive/20 font-medium flex items-start gap-3" data-testid="status-error">
                       <div className="w-5 h-5 rounded-full bg-destructive text-white flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">!</div>
                       {errorMsg}
                     </div>
@@ -557,7 +557,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="w-16 h-16 shrink-0 bg-accent/70 hover:bg-accent text-foreground border border-border rounded-xl flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50"
+                      className="w-16 h-16 shrink-0 bg-accent/70 hover:bg-accent text-foreground border border-border rounded-none flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50"
                       disabled={isSubmitting}
                       aria-label="Retour"
                       data-testid="button-prev-step-3"
@@ -567,7 +567,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                     <button
                       type="submit"
                       disabled={isSubmitting || turnstileError}
-                      className="flex-grow bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg disabled:opacity-70 disabled:hover:translate-y-0 text-lg"
+                      className="flex-grow bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:hover:translate-y-0 text-lg"
                       data-testid="button-submit-quote"
                     >
                       {isSubmitting ? (

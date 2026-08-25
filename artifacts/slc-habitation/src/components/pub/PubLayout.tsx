@@ -8,45 +8,38 @@ export function PubLayout({ children }: { children: ReactNode }) {
   useTrackingParams(); // Initialize tracking params capture
 
   return (
-    <div className="min-h-[100dvh] flex flex-col font-sans bg-background text-foreground selection:bg-primary/20 selection:text-primary">
-      <header className="py-4 px-6 md:px-12 grid grid-cols-2 items-center border-b border-border bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="flex items-center justify-start">
-          <div className="inline-block" data-testid="img-brand-logo">
-            <img
-              src="/images/relume-567884.png"
-              alt="SLC Habitation"
-              className="h-10 md:h-12 w-[140px] md:w-[180px] object-contain object-left"
-            />
-          </div>
+    <div className="pub-shell min-h-[100dvh] flex flex-col font-sans bg-background text-foreground selection:bg-primary/20 selection:text-primary">
+      <header
+        className="pub-site-header border-b border-border bg-background sticky top-0 z-50"
+        style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}
+      >
+        <div className="pub-site-header__logo" data-testid="img-brand-logo">
+          <img
+            src="/images/relume-567884.png"
+            alt="SLC Habitation"
+            className="h-8 md:h-10 w-auto object-contain object-left max-w-[120px] md:max-w-[160px]"
+          />
         </div>
 
-        <div className="flex items-center justify-end gap-4">
+        <div
+          className="pub-site-header__actions"
+          style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'flex-end' }}
+        >
           <a
             href="tel:5144048494"
-            className="inline-flex items-center justify-center lg:hidden w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-            data-testid="link-phone-mobile"
-            aria-label="Appeler SLC Habitation au 514 404-8494"
-            onClick={() => {
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({ event: 'phone_click' });
-            }}
-          >
-            <Phone className="w-5 h-5" />
-          </a>
-          <a
-            href="tel:5144048494"
-            className="hidden lg:inline-flex items-center gap-2 font-semibold text-foreground hover:text-primary transition-colors text-lg"
+            className="pub-site-header__phone font-semibold text-foreground hover:text-primary transition-colors !no-underline"
             data-testid="link-phone"
             onClick={() => {
               window.dataLayer = window.dataLayer || [];
               window.dataLayer.push({ event: 'phone_click' });
             }}
           >
-            <Phone className="w-5 h-5 text-primary" />
-            <span>(514) 404-8494</span>
+            <Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            <span className="hidden sm:inline">(514) 404-8494</span>
           </a>
-          <PubCTA service="" className="shadow-none hidden sm:flex">
-            Obtenir une soumission
+          <PubCTA service="" className="pub-site-header__cta shadow-none !no-underline h-auto min-h-0">
+            <span className="hidden sm:inline">Obtenir une soumission</span>
+            <span className="sm:hidden">Soumission</span>
           </PubCTA>
         </div>
       </header>
@@ -56,7 +49,7 @@ export function PubLayout({ children }: { children: ReactNode }) {
       </main>
 
       <footer className="py-16 px-6 md:px-12 bg-secondary text-secondary-foreground">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="space-y-6">
             <img
               src="/images/Logo.svg"
@@ -108,7 +101,7 @@ export function PubLayout({ children }: { children: ReactNode }) {
             </ul>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary-foreground/50">
+        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary-foreground/50">
           <p>© {new Date().getFullYear()} SLC Habitation. Tous droits réservés.</p>
         </div>
       </footer>

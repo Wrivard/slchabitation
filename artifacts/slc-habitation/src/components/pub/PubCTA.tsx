@@ -45,7 +45,7 @@ export function PubCTA({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 px-6 py-3 !bg-primary hover:!bg-primary/90 !text-primary-foreground focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-offset-2 focus-visible:!ring-primary ${className}`}
+      className={`inline-flex items-center justify-center gap-3 rounded-none font-bold transition-all hover:bg-primary-foreground hover:text-primary border border-transparent hover:border-primary px-8 py-4 !bg-primary hover:!bg-white !text-primary-foreground focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-offset-2 focus-visible:!ring-primary !no-underline ${className}`}
       data-testid={testId || "link-pub-cta"}
       onClick={() => {
         window.dataLayer = window.dataLayer || [];
