@@ -265,6 +265,19 @@
   }
 }
 
+@media (max-width: 479px) {
+  .navbar3_container {
+    column-gap: 0.5rem;
+  }
+
+  .navbar3_container > .button {
+    min-width: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+  }
+}
+
 /**
  * Using the elevate system.
  * Automatic contrast adjustment.

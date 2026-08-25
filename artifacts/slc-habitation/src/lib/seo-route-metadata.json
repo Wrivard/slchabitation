@@ -102,55 +102,172 @@
     {
       "source": "renovation-sous-sol.html",
       "path": "/renovation-sous-sol",
-      "title": "Rénovation de Sous-Sol | SLC Habitation",
-      "description": "Transformez votre sous-sol en espace de vie exceptionnel avec SLC Habitation. Rénovation sur mesure dans les Laurentides et à Laval.",
+      "title": "Rénovation de sous-sol Laval et Laurentides | SLC",
+      "description": "Aménagement de sous-sol sur mesure à Laval et dans les Laurentides : planification, isolation, insonorisation, finition et coordination par SLC Habitation.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Rénovation de sous-sol",
-        "description": "Aménagement et finition de sous-sols sur mesure dans les Laurentides et à Laval.",
-        "url": "https://slchabitation.com/renovation-sous-sol",
-        "provider": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        }
+        "@graph": [
+          {
+            "@type": "Service",
+            "@id": "https://slchabitation.com/renovation-sous-sol#service",
+            "name": "Rénovation de sous-sol",
+            "description": "Aménagement et finition de sous-sols sur mesure dans les Laurentides et à Laval.",
+            "url": "https://slchabitation.com/renovation-sous-sol",
+            "provider": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Laval" },
+              { "@type": "AdministrativeArea", "name": "Laurentides" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/renovation-sous-sol#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quelles sont les étapes pour insonoriser un sous-sol ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "L'approche dépend de la structure et de l'usage prévu. Elle peut comprendre des barres résilientes, de la laine insonorisante et des couches de gypse adaptées."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Faut-il traiter l'humidité avant de finir le sous-sol ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui. Il faut d'abord vérifier les signes d'infiltration, l'état de la fondation et le taux d'humidité avant de planifier l'isolation et la finition."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Est-ce possible d'ajouter une salle de bain au sous-sol si la plomberie n'est pas prévue ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "C'est souvent possible après une évaluation des drains, du renvoi principal et de la dalle afin de déterminer les travaux de plomberie requis."
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
       "source": "renovation-salle-de-bain.html",
       "path": "/renovation-salle-de-bain",
-      "title": "Rénovation de Salle de Bain | SLC Habitation",
-      "description": "Rénovation complète de salle de bain par SLC Habitation : design, plomberie, céramique. Expertise dans les Laurentides.",
+      "title": "Rénovation salle de bain | Laval et Laurentides",
+      "description": "Rénovation de salle de bain à Laval et dans les Laurentides : étanchéité, plomberie, céramique, ventilation et coordination par SLC Habitation.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Rénovation de salle de bain",
-        "description": "Rénovation clé en main de salles de bain, douches italiennes et pose de céramique.",
-        "url": "https://slchabitation.com/renovation-salle-de-bain",
-        "provider": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        }
+        "@graph": [
+          {
+            "@type": "Service",
+            "@id": "https://slchabitation.com/renovation-salle-de-bain#service",
+            "name": "Rénovation de salle de bain",
+            "description": "Rénovation de salles de bain, douches italiennes et pose de céramique.",
+            "url": "https://slchabitation.com/renovation-salle-de-bain",
+            "provider": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Laval" },
+              { "@type": "AdministrativeArea", "name": "Laurentides" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/renovation-salle-de-bain#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Faut-il refaire toute la plomberie lors d'une rénovation ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Pas systématiquement. La plomberie doit toutefois être adaptée si les appareils sont déplacés, et son état peut être évalué lorsque les murs sont ouverts."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Comment assurer une bonne étanchéité pour une douche italienne ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Une douche italienne exige une imperméabilisation soignée. Un système de membrane appliqué sur les murs et le plancher, avec un drain adapté et une pente précise, forme une barrière continue avant la pose de la céramique."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Peut-on installer un plancher chauffant sous n'importe quel revêtement ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La compatibilité dépend du système et du revêtement. La céramique et la pierre conduisent bien la chaleur; les spécifications du fabricant doivent être vérifiées pour les autres matériaux."
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
       "source": "renovation-cuisine.html",
       "path": "/renovation-cuisine",
-      "title": "Rénovation de Cuisine | SLC Habitation",
-      "description": "Rénovation de cuisine moderne et fonctionnelle. SLC Habitation gère votre projet de A à Z dans les Laurentides et Laval.",
+      "title": "Rénovation de cuisine | Laval et Laurentides",
+      "description": "Rénovation de cuisine à Laval et dans les Laurentides : aménagement, armoires, plomberie, électricité et coordination par SLC Habitation.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Rénovation de cuisine",
-        "description": "Refonte architecturale et rénovation complète de cuisines.",
-        "url": "https://slchabitation.com/renovation-cuisine",
-        "provider": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        }
+        "@graph": [
+          {
+            "@type": "Service",
+            "@id": "https://slchabitation.com/renovation-cuisine#service",
+            "name": "Rénovation de cuisine",
+            "description": "Aménagement et rénovation complète de cuisines.",
+            "url": "https://slchabitation.com/renovation-cuisine",
+            "provider": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Laval" },
+              { "@type": "AdministrativeArea", "name": "Laurentides" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/renovation-cuisine#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Est-ce possible d'abattre un mur pour créer une aire ouverte ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "C'est souvent possible après avoir déterminé si le mur est porteur. Un ingénieur en structure peut être requis pour concevoir le soutien approprié."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Doit-on commander les électroménagers avant le début des travaux ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Il est recommandé de connaître leurs dimensions et leurs spécifications avant les travaux afin de planifier les armoires, prises et raccordements."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Installez-vous des planchers chauffants dans la cuisine ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Un plancher chauffant peut être intégré lorsque le système choisi est compatible avec le nouveau revêtement et les conditions d'installation."
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {

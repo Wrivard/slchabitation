@@ -11,6 +11,11 @@ const MAX_FILE_SIZE = 4 * 1024 * 1024;
 const MAX_FILES = 5;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
+const ALLOWED_SERVICES = new Set([
+  "Rénovation de sous-sol",
+  "Rénovation de salle de bain",
+  "Rénovation de cuisine",
+]);
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
@@ -95,7 +100,11 @@ router.post("/submit-form", async (req: Request, res: Response) => {
     const fullName = `${firstName ?? ""} ${lastName ?? ""}`.trim();
     const email = firstValue(fields["Contact-6-Email"])?.trim();
     const phone = firstValue(fields["Contact-6-Phone"])?.trim();
-    const service = firstValue(fields["Contact-6-Select"])?.trim();
+    const submittedService = firstValue(fields["Contact-6-Select"])?.trim();
+    const service =
+      submittedService && ALLOWED_SERVICES.has(submittedService)
+        ? submittedService
+        : "Général";
     const budget = firstValue(fields["Contact-6-Radio"])?.trim();
     const message = firstValue(fields["Contact-6-Message"])?.trim();
     const honeypot = firstValue(fields["Contact-6-Website"])?.trim();
@@ -107,6 +116,9 @@ router.post("/submit-form", async (req: Request, res: Response) => {
     const utmCampaign = trackedValue(fields, "utm_campaign");
     const utmTerm = trackedValue(fields, "utm_term");
     const utmContent = trackedValue(fields, "utm_content");
+    const gclid = trackedValue(fields, "gclid");
+    const gbraid = trackedValue(fields, "gbraid");
+    const wbraid = trackedValue(fields, "wbraid");
     uploadedFiles = [
       ...fileList(files["Contact-6-Image[]"]),
       ...fileList(files["Contact-6-Image"]),
@@ -183,6 +195,9 @@ router.post("/submit-form", async (req: Request, res: Response) => {
       ["UTM campaign", utmCampaign],
       ["UTM term", utmTerm],
       ["UTM content", utmContent],
+      ["Google Click ID", gclid],
+      ["Google BRAID", gbraid],
+      ["Google WBRAID", wbraid],
     ]
       .filter(([, value]) => Boolean(value))
       .map(

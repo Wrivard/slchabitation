@@ -563,10 +563,10 @@ margin: 0rem !important;
               </nav>
             </div>
             <a href="realisations.html" class="navbar3_link w-nav-link">Réalisations</a>
-            <a href="soumission.html" class="navbar3_tablet-menu-button w-button">Soumission</a>
+            <a href="/formulaire" class="navbar3_tablet-menu-button w-button">Soumission</a>
           </nav>
           <a href="index.html" class="navbar3_logo-link w-nav-brand"><img sizes="(max-width: 479px) 86vw, 76.8125px" height="44px" alt="" src="images/relume-567884.png" loading="eager" srcset="images/relume-567884-p-500.png 500w, images/relume-567884.png 660w" class="navbar3_logo"></a>
-          <a id="w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc" href="soumission.html" class="button w-button">Soumission</a>
+          <a id="w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc" href="/formulaire" class="button w-button">Soumission</a>
           <div class="navbar3_menu-background"></div>
         </div>
       </div>
@@ -577,8 +577,23 @@ margin: 0rem !important;
       <div class="text-center mb-10">
         <h1 class="text-3xl md:text-5xl font-heading font-bold mb-4 text-mine-shaft">Demande de soumission</h1>
         <p id="form-service-heading" class="text-lg text-[#f58026] font-semibold uppercase tracking-wider mb-2"></p>
-        <p class="text-neutral-dark">Veuillez remplir ce formulaire. Nous vous contacterons rapidement pour discuter de votre projet.</p>
+        <p class="text-neutral-dark mb-4">Veuillez remplir ce formulaire. Nous vous rappellerons pour discuter de vos besoins et planifier une visite si nécessaire.</p>
+        <div class="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-neutral-lightest px-6 py-3 rounded-2xl sm:rounded-full border border-neutral-lighter mb-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-[#f58026]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="text-sm font-semibold text-mine-shaft">Entrepreneur licencié RBQ (8351-9033-59)</span>
+          </div>
+          <div class="hidden sm:block w-px h-4 bg-neutral-lighter"></div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-[#f58026]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="text-sm font-semibold text-mine-shaft">18 ans d'expérience</span>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-dark">Ou appelez-nous directement au <a href="tel:5144048494" class="font-bold text-[#f58026] hover:underline">(514) 404-8494</a>.</p>
       </div>
+      <p class="bg-neutral-lightest border border-neutral-lighter rounded-xl px-4 py-3 mb-8 text-sm text-center text-neutral-dark">
+        <strong class="text-mine-shaft">Après l'envoi :</strong> échange téléphonique, validation des besoins, puis visite si elle est utile.
+      </p>
       
       <form id="quote-form" action="/api/submit-form" method="POST" enctype="multipart/form-data" class="space-y-6">
         <div id="hidden-fields-container"></div>
@@ -610,7 +625,7 @@ margin: 0rem !important;
         </div>
         
         <div class="space-y-2">
-          <label for="Contact-6-Radio" class="block text-sm font-semibold text-mine-shaft">Budget approximatif</label>
+          <label for="Contact-6-Radio" class="block text-sm font-semibold text-mine-shaft">Budget approximatif (optionnel)</label>
           <select id="Contact-6-Radio" name="Contact-6-Radio" class="w-full px-4 py-3 rounded-lg border border-neutral-lighter focus:border-[#f58026] focus:ring-1 focus:ring-[#f58026] outline-none transition-shadow bg-neutral-lightest/50">
             <option value="">Sélectionnez une fourchette</option>
             <option value="Contact 6 Radio 1">25 000 $ et moins</option>
@@ -626,16 +641,16 @@ margin: 0rem !important;
         </div>
         
         <div class="pt-4">
-          <button type="submit" class="w-full !bg-[#f58026] hover:bg-[#d86d1b] transition-colors py-4 rounded-lg font-bold text-white text-lg shadow-md hover:shadow-lg">
+          <button type="submit" aria-describedby="form-error" class="w-full !bg-[#f58026] hover:bg-[#d86d1b] transition-colors py-4 rounded-lg font-bold text-white text-lg shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-wait">
             Envoyer ma demande
           </button>
         </div>
         <p id="form-error" role="alert" class="hidden text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3"></p>
-        <p class="text-xs text-center text-neutral mt-4">En soumettant ce formulaire, vous acceptez d'être contacté par SLC Habitation concernant votre projet.</p>
+        <p class="text-xs text-center text-neutral mt-4">Vos coordonnées servent à répondre à votre demande et à communiquer avec vous au sujet de ce projet. Consultez notre <a href="/politique-de-cookie" class="underline hover:text-[#f58026] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f58026] rounded">politique de cookies</a>.</p>
       </form>
       <div id="form-success" class="hidden text-center py-10" role="status" tabindex="-1">
         <h2 class="text-2xl font-bold text-mine-shaft mb-2">Demande envoyée avec succès</h2>
-        <p class="text-neutral-dark">Notre équipe vous contactera dans les plus brefs délais.</p>
+        <p class="text-neutral-dark">Merci. Notre équipe examinera vos informations et vous contactera pour la prochaine étape de votre projet.</p>
       </div>
     </div>
   </div>
@@ -644,7 +659,7 @@ margin: 0rem !important;
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const service = urlParams.get('service');
+  const requestedService = urlParams.get('service');
   
   const serviceNames = {
     'renovation-sous-sol': 'Rénovation de sous-sol',
@@ -652,7 +667,9 @@ document.addEventListener("DOMContentLoaded", () => {
     'renovation-cuisine': 'Rénovation de cuisine'
   };
   
-  if (service && serviceNames[service]) {
+  const service = requestedService && serviceNames[requestedService] ? requestedService : '';
+
+  if (service) {
     const heading = document.getElementById('form-service-heading');
     if (heading) {
       heading.textContent = 'Service : ' + serviceNames[service];
@@ -660,23 +677,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   const hiddenContainer = document.getElementById('hidden-fields-container');
-  const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  const trackingParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid'];
   
   if (hiddenContainer) {
-    utms.forEach(utm => {
-      if (urlParams.has(utm)) {
+    trackingParams.forEach(param => {
+      if (urlParams.has(param)) {
         const input = document.createElement('input');
         input.type = 'hidden';
-        input.name = utm;
-        input.value = urlParams.get(utm);
+        input.name = param;
+        input.value = urlParams.get(param);
         hiddenContainer.appendChild(input);
       }
     });
-    const serviceInput = document.createElement('input');
-    serviceInput.type = 'hidden';
-    serviceInput.name = 'Contact-6-Select';
-    serviceInput.value = serviceNames[service] || 'Projet de rénovation';
-    hiddenContainer.appendChild(serviceInput);
+    if (service) {
+      const serviceInput = document.createElement('input');
+      serviceInput.type = 'hidden';
+      serviceInput.name = 'Contact-6-Select';
+      serviceInput.value = serviceNames[service];
+      hiddenContainer.appendChild(serviceInput);
+    }
 
     const sourceInput = document.createElement('input');
     sourceInput.type = 'hidden';
@@ -689,12 +708,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById('quote-form');
   if (form) {
+    let formStarted = false;
+    form.addEventListener('focusin', () => {
+      if (!formStarted) {
+        formStarted = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'form_start',
+          service: service || 'general'
+        });
+      }
+    }, { once: true });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
       btn.textContent = "Envoi en cours...";
       btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
       const errorElement = document.getElementById('form-error');
       if (errorElement) {
         errorElement.classList.add('hidden');
@@ -714,8 +746,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'quote_form_submit',
-          service: service || 'general',
-          utm_campaign: urlParams.get('utm_campaign') || undefined
+          service: service || 'general'
         });
         form.classList.add('hidden');
         const successElement = document.getElementById('form-success');
@@ -731,6 +762,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } finally {
         btn.textContent = originalText;
         btn.disabled = false;
+        btn.removeAttribute('aria-busy');
       }
     });
   }
@@ -740,20 +772,39 @@ document.addEventListener("DOMContentLoaded", () => {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  const trackingParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid'];
+  const validServices = ['renovation-sous-sol', 'renovation-salle-de-bain', 'renovation-cuisine'];
   
   // Update CTA links
-  document.querySelectorAll('a.cta-link').forEach(a => {
-    let service = a.getAttribute('data-service');
-    if (!service) return;
-    
-    let ctaQuery = new URLSearchParams();
-    ctaQuery.set('service', service);
-    utms.forEach(utm => {
-      if (urlParams.has(utm)) ctaQuery.set(utm, urlParams.get(utm));
-    });
-    
-    a.href = '/formulaire?' + ctaQuery.toString();
+  document.querySelectorAll('a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href && (href.includes('soumission.html') || href.includes('/formulaire'))) {
+      let service = a.getAttribute('data-service');
+      if (!service) {
+        if (window.location.pathname.includes('sous-sol')) service = 'renovation-sous-sol';
+        else if (window.location.pathname.includes('salle-de-bain')) service = 'renovation-salle-de-bain';
+        else if (window.location.pathname.includes('cuisine')) service = 'renovation-cuisine';
+        else if (validServices.includes(urlParams.get('service'))) service = urlParams.get('service');
+      }
+
+      let ctaQuery = new URLSearchParams();
+      if (service) ctaQuery.set('service', service);
+      trackingParams.forEach(param => {
+        if (urlParams.has(param)) ctaQuery.set(param, urlParams.get(param));
+      });
+
+      const queryStr = ctaQuery.toString();
+      a.href = queryStr ? '/formulaire?' + queryStr : '/formulaire';
+
+      a.addEventListener('click', () => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'cta_click',
+          cta_text: a.innerText.trim(),
+          service: service || 'general'
+        });
+      });
+    }
   });
 });
 </script>
@@ -830,7 +881,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <a href="index.html" class="footer3_link">Accueil</a>
                     <a href="a-propos.html" class="footer3_link">À propos</a>
                     <a href="realisations.html" class="footer3_link">Réalisations</a>
-                    <a href="soumission.html" class="footer3_link">Soumission</a>
+                    <a href="/formulaire" class="footer3_link">Soumission</a>
                   </div>
                   <div class="footer3_link-list">
                     <a href="renovation.html" aria-current="page" class="footer3_link w--current">Rénovation</a>
