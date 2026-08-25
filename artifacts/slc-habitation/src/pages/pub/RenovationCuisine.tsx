@@ -1,104 +1,147 @@
 import { PubLayout } from '@/components/pub/PubLayout';
-import { QuoteForm } from '@/components/pub/QuoteForm';
+import { PubCTA } from '@/components/pub/PubCTA';
 import { FAQ } from '@/components/pub/FAQ';
-import { CheckCircle2, ShieldCheck, Clock, MapPin } from 'lucide-react';
+import { ShieldCheck, Clock, MapPin, Search, Maximize2, Zap, Utensils, Grid, Lightbulb, ClipboardCheck } from 'lucide-react';
 
 export default function RenovationCuisinePub() {
   return (
     <PubLayout>
       {/* Hero Section */}
-      <section className="bg-secondary text-secondary-foreground py-16 md:py-24 relative overflow-hidden">
+      <section className="bg-secondary text-secondary-foreground pt-20 pb-28 md:pt-32 md:pb-40 relative overflow-hidden">
         <div className="absolute inset-0 z-0 bg-black/60">
-          <img 
-            src="/images/relume-655453.jpeg" 
-            alt="Cuisine moderne par SLC Habitation" 
+          <img
+            src="/images/relume-655453.jpeg"
+            alt="Cuisine moderne par SLC Habitation"
             className="w-full h-full object-cover mix-blend-overlay"
             width="1407"
             height="1875"
           />
         </div>
-        <div className="container-large relative z-10 px-6 mx-auto grid lg:grid-cols-12 gap-12 items-center max-w-7xl">
-          <div className="lg:col-span-7 fade-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-heading leading-tight text-white">
-              Rénovation de cuisine à Laval et dans les Laurentides
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl leading-relaxed">
-              Alliez ergonomie, rangement intelligent et design. Nous orchestrons la transformation complète de votre cuisine pour en faire une pièce maîtresse.
-            </p>
-            
-            <div className="flex flex-wrap gap-4 mb-8">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <ShieldCheck className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium text-white">Licence RBQ : 8351-9033-59</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Clock className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium text-white">18 ans d'expérience</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <MapPin className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium text-white">Laval et Laurentides</span>
-              </div>
+        <div className="container-large relative z-10 px-6 mx-auto flex flex-col items-center text-center max-w-4xl fade-up">
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <ShieldCheck className="w-4 h-4 text-primary" />
+              <span className="text-xs md:text-sm font-medium text-white tracking-wide">Licence RBQ : 8351-9033-59</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 hidden sm:flex">
+              <Clock className="w-4 h-4 text-primary" />
+              <span className="text-xs md:text-sm font-medium text-white tracking-wide">18 ans d'expérience</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 hidden sm:flex">
+              <MapPin className="w-4 h-4 text-primary" />
+              <span className="text-xs md:text-sm font-medium text-white tracking-wide">Laval et Laurentides</span>
             </div>
           </div>
-          
-          <div className="lg:col-span-5 relative z-20">
-            <div className="absolute -inset-4 bg-primary/20 blur-2xl rounded-[3rem] -z-10"></div>
-            <QuoteForm defaultService="renovation-cuisine" />
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-heading leading-tight text-white tracking-tight">
+            Rénovation de cuisine{' '}<br/>à Laval et dans les Laurentides
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
+            La rénovation de cuisine exige une planification globale : optimisation de l'espace, ergonomie des déplacements et intégration technique soignée.
+          </p>
+
+          <PubCTA service="renovation-cuisine" className="text-lg px-8 py-5" testId="button-hero-cta" />
+        </div>
+      </section>
+
+      {/* Configurations */}
+      <section className="py-24 bg-muted/30 border-y border-border">
+        <div className="container-large px-6 mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-16 fade-up">
+            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Éléments de configuration</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground font-heading leading-tight">
+              Des détails qui transforment l'expérience
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Du choix des surfaces à la disposition de l'îlot, nous coordonnons chaque aspect de votre projet pour créer un espace à la fois esthétique et hautement fonctionnel.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-background p-10 rounded-[2rem] border border-border shadow-sm hover:shadow-md transition-all fade-up group">
+              <div className="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Grid className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-foreground font-heading">Ébénisterie et surfaces</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Coordination de l'installation de vos armoires personnalisées et de comptoirs durables pour une intégration harmonieuse des matériaux.
+              </p>
+            </div>
+
+            <div className="bg-background p-10 rounded-[2rem] border border-border shadow-sm hover:shadow-md transition-all fade-up delay-100 group">
+              <div className="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Utensils className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-foreground font-heading">Rangement ergonomique</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Planification des zones de préparation et de rangement pour un accès facilité à vos ustensiles et provisions au quotidien.
+              </p>
+            </div>
+
+            <div className="bg-background p-10 rounded-[2rem] border border-border shadow-sm hover:shadow-md transition-all fade-up delay-200 group">
+              <div className="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Lightbulb className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-foreground font-heading">Éclairage par zones</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Conception d'un éclairage adapté combinant lumière de travail sous les armoires et éclairage d'ambiance au-dessus des îlots.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 md:py-28 bg-background">
+      {/* Value Proposition */}
+      <section className="py-24 bg-background">
         <div className="container-large px-6 mx-auto max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-16 fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground font-heading">
+          <div className="text-center max-w-3xl mx-auto mb-20 fade-up">
+            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Approche architecturale</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground font-heading leading-tight">
               Bien plus qu'un changement d'armoires
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Nous prenons en charge la refonte architecturale de votre espace pour optimiser vos déplacements, maximiser le rangement et moderniser l'allure.
+              Nous évaluons la configuration architecturale de votre espace pour optimiser vos déplacements, maximiser le rangement et intégrer de façon harmonieuse vos nouveaux électroménagers.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-card p-10 rounded-[2rem] border border-border hover:border-primary/50 transition-colors fade-up">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
-                <CheckCircle2 className="w-7 h-7" />
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="bg-card p-10 rounded-[2rem] border border-border shadow-sm hover:shadow-md transition-all fade-up group">
+              <div className="w-16 h-16 bg-secondary text-white rounded-2xl flex items-center justify-center mb-8 transform group-hover:-translate-y-2 transition-transform">
+                <Search className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground font-heading">Optimisation spatiale</h3>
-              <p className="text-muted-foreground">
-                Nous repensons l'emplacement du frigo, de l'évier et de la cuisinière pour réduire vos déplacements et rendre l'espace de préparation intuitif.
+              <h3 className="text-2xl font-bold mb-4 text-foreground font-heading">Optimisation spatiale</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Repenser le triangle d'activité (frigo, évier, cuisinière) pour faciliter vos déplacements. Si la structure le permet et après évaluation, il est parfois possible de modifier les cloisons pour une aire plus ouverte.
               </p>
             </div>
-            
-            <div className="bg-card p-10 rounded-[2rem] border border-border hover:border-primary/50 transition-colors fade-up delay-100">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
-                <CheckCircle2 className="w-7 h-7" />
+
+            <div className="bg-card p-10 rounded-[2rem] border border-border shadow-sm hover:shadow-md transition-all fade-up delay-100 group">
+              <div className="w-16 h-16 bg-secondary text-white rounded-2xl flex items-center justify-center mb-8 transform group-hover:-translate-y-2 transition-transform">
+                <Zap className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground font-heading">Mise aux normes électriques</h3>
-              <p className="text-muted-foreground">
-                Ajout d'îlots avec prises intégrées, éclairage encastré et circuits dédiés pour vos électroménagers.
+              <h3 className="text-2xl font-bold mb-4 text-foreground font-heading">Ajustements techniques</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Ajout de circuits électriques nécessaires pour les nouveaux appareils, prises intégrées de façon sécuritaire aux îlots et un éclairage encastré stratégiquement positionné.
               </p>
             </div>
-            
-            <div className="bg-card p-10 rounded-[2rem] border border-border hover:border-primary/50 transition-colors fade-up delay-200">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
-                <CheckCircle2 className="w-7 h-7" />
+
+            <div className="bg-card p-10 rounded-[2rem] border border-border shadow-sm hover:shadow-md transition-all fade-up delay-200 group">
+              <div className="w-16 h-16 bg-secondary text-white rounded-2xl flex items-center justify-center mb-8 transform group-hover:-translate-y-2 transition-transform">
+                <Maximize2 className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground font-heading">Coordination de projet</h3>
-              <p className="text-muted-foreground">
-                Démolition, plomberie, menuiserie, pose des comptoirs et dosserets. Un seul entrepreneur pour orchestrer tous les quarts de métier.
+              <h3 className="text-2xl font-bold mb-4 text-foreground font-heading">Maîtrise d'œuvre</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Démolition contrôlée, plomberie, menuiserie et installation des surfaces. Un suivi organisé pour coordonner les travaux de différents quarts de métier.
               </p>
             </div>
           </div>
 
-          <div className="fade-up relative">
-            <div className="absolute -inset-2 bg-secondary/5 rounded-[2rem] transform rotate-1 -z-10"></div>
-            <img 
-              src="/images/relume-567906.jpeg" 
-              alt="Intérieur résidentiel rénové par SLC Habitation" 
-              className="w-full h-[50vh] min-h-[300px] object-cover rounded-[2rem] shadow-xl border-4 border-white" 
+          <div className="fade-up relative px-4 md:px-12">
+            <div className="absolute inset-0 bg-secondary/5 rounded-[3rem] transform rotate-1 -z-10"></div>
+            <img
+              src="/images/relume-567906.jpeg"
+              alt="Aire ouverte et cuisine moderne"
+              className="w-full h-[50vh] min-h-[400px] object-cover rounded-[2rem] shadow-2xl border-8 border-white relative z-10"
               loading="lazy"
               width="1440"
               height="1440"
@@ -107,54 +150,108 @@ export default function RenovationCuisinePub() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 md:py-28 bg-muted/30">
-        <div className="container-large px-6 mx-auto max-w-4xl">
-          <div className="text-center mb-12 fade-up">
-            <h2 className="text-3xl font-bold font-heading text-foreground mb-4">Questions fréquentes sur la rénovation de cuisine</h2>
-            <p className="text-muted-foreground">Voici les réponses aux questions les plus courantes de nos clients.</p>
+      {/* Evaluation */}
+      <section className="py-24 bg-muted/10 border-t border-border">
+        <div className="container-large px-6 mx-auto max-w-7xl">
+          <div className="max-w-3xl mb-16 fade-up">
+            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Analyse avant-projet</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground font-heading leading-tight">
+              Évaluation architecturale
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Transformer une cuisine demande de composer avec l'ossature existante de votre domicile. Avant d'amorcer les travaux, nous relevons les particularités techniques pour orienter la planification.
+            </p>
           </div>
-          
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 fade-up delay-100">
+            {[
+              { title: "Murs porteurs", desc: "Identification des cloisons porteuses afin de déterminer s'il est réaliste de modifier la répartition des pièces." },
+              { title: "Plomberie et ventilation", desc: "Localisation des colonnes de renvoi et des parcours de ventilation pour anticiper le positionnement de l'évier et de la hotte." },
+              { title: "Charges électriques", desc: "Vérification de la capacité du panneau principal face aux exigences des nouveaux électroménagers." },
+              { title: "Sous-planchers", desc: "Évaluation des niveaux de plancher existants pour planifier la continuité des nouveaux revêtements." }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl border border-border shadow-sm">
+                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6">
+                  <ClipboardCheck className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-foreground font-heading">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Testimonial */}
+      <section className="py-24 bg-secondary text-secondary-foreground relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        <div className="container-large px-6 mx-auto max-w-4xl text-center fade-up">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mb-10">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.4-6.3-4.8-6.3 4.8 2.3-7.4-6-4.6h7.6z"/></svg>
+          </div>
+          <blockquote className="text-2xl md:text-4xl font-heading font-medium text-white mb-10 leading-snug">
+            « Excellente compagnie, service professionnel et soucis du détails! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets! »
+          </blockquote>
+          <div className="flex flex-col items-center justify-center">
+            <div className="font-bold text-white text-lg tracking-wide">Mélodie Binette</div>
+            <div className="text-gray-400">Propriétaire</div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 bg-muted/30">
+        <div className="container-large px-6 mx-auto max-w-4xl">
+          <div className="text-center mb-16 fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-foreground mb-4">Questions fréquentes</h2>
+            <p className="text-muted-foreground text-lg">Informations clés pour votre projet de cuisine.</p>
+          </div>
+
           <div className="space-y-4 fade-up delay-100">
-            <FAQ 
-              question="Est-ce possible d'abattre un mur pour créer une aire ouverte ?" 
-              answer="C'est souvent possible après avoir déterminé si le mur est porteur. Un ingénieur en structure peut être requis pour concevoir le soutien approprié." 
+            <FAQ
+              question="Est-ce possible d'abattre un mur pour créer une aire ouverte ?"
+              answer="Il est souvent possible de le faire. Nous déterminons d'abord si le mur est porteur. Le cas échéant, une évaluation d'ingénieur en structure sera nécessaire pour planifier le soutien approprié."
             />
-            <FAQ 
-              question="Doit-on commander les électroménagers avant le début des travaux ?" 
-              answer="Il est recommandé de connaître leurs dimensions et leurs spécifications avant les travaux afin de planifier les armoires, prises et raccordements." 
+            <FAQ
+              question="Doit-on commander les électroménagers avant le début des travaux ?"
+              answer="C'est fortement recommandé. Connaître les dimensions exactes et les spécifications techniques de vos appareils permet d'éviter des ajustements imprévus."
             />
-            <FAQ 
-              question="Installez-vous des planchers chauffants dans la cuisine ?" 
-              answer="Un plancher chauffant peut être intégré lorsque le système choisi est compatible avec le nouveau revêtement et les conditions d'installation." 
+            <FAQ
+              question="Pouvons-nous refaire le plancher de la cuisine pour l'harmoniser avec le salon ?"
+              answer="Lors de la création d'une aire ouverte, l'unification des planchers est fréquente. Nous préparons le sous-plancher pour favoriser une transition adéquate entre les pièces."
             />
-            <FAQ 
-              question="Quel est votre processus de travail ?" 
-              answer="Nous commençons par écouter vos besoins et évaluer l'espace actuel. Nous préparons ensuite une soumission détaillée et, une fois approuvée, nous coordonnons l'ensemble des travaux." 
+            <FAQ
+              question="Comment gérez-vous la démolition ?"
+              answer="Nous protégeons les espaces de vie adjacents contre la poussière. La démolition est exécutée méthodiquement pour limiter les impacts sur le reste de la maison."
             />
-            <FAQ 
-              question="Combien coûte une rénovation de cuisine ?" 
-              answer="Le coût dépend de l'ampleur des travaux, des modifications structurelles et des matériaux choisis. Nous fournissons une évaluation claire et détaillée de chaque aspect du projet." 
+            <FAQ
+              question="Est-il nécessaire de refaire l'électricité ?"
+              answer="Lors d'une rénovation majeure, les circuits électriques doivent souvent être modifiés ou ajoutés pour répondre aux exigences des nouveaux appareils de cuisine."
             />
-            <FAQ 
-              question="Utilisez-vous des matériaux durables ?" 
-              answer="Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps et à l'usage quotidien." 
+            <FAQ
+              question="Peut-on conserver les armoires existantes et ne changer que les portes ?"
+              answer="Si les caissons sont en bon état et que la configuration vous convient, le resurfaçage (refacing) peut être une option à évaluer lors de la planification."
+            />
+            <FAQ
+              question="Où installer le micro-ondes ?"
+              answer="L'emplacement du micro-ondes se planifie en fonction de l'ergonomie, du rangement disponible et des possibilités de dégagement dans la nouvelle disposition."
+            />
+            <FAQ
+              question="La hotte de cuisine doit-elle sortir à l'extérieur ?"
+              answer="Une évacuation extérieure est recommandée pour une meilleure gestion des odeurs et de l'humidité, selon les contraintes de votre domicile."
             />
           </div>
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-20 bg-background border-t border-border">
+      {/* Bottom CTA */}
+      <section className="py-24 bg-background">
         <div className="container-large px-6 mx-auto max-w-4xl text-center fade-up">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-8">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.4-6.3-4.8-6.3 4.8 2.3-7.4-6-4.6h7.6z"/></svg>
-          </div>
-          <blockquote className="text-2xl md:text-3xl font-heading font-medium text-foreground mb-8 leading-snug">
-            « Excellente compagnie, service professionnel et soucis du détails! Merci a votre équipe pour vos bon conseil. Je recommande a tous pour la réalisation de vos projet! »
-          </blockquote>
-          <div className="font-bold text-foreground text-lg">Mélodie Binette</div>
-          <div className="text-muted-foreground">Propriétaire, Laval</div>
+          <h2 className="text-3xl md:text-5xl font-bold font-heading text-foreground mb-6">Prêt à repenser votre cuisine ?</h2>
+          <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
+            Bénéficiez de l'expertise d'une équipe structurée pour coordonner l'ensemble de votre projet, de l'évaluation technique jusqu'à l'installation des finitions.
+          </p>
+          <PubCTA service="renovation-cuisine" className="text-lg px-10 py-5" testId="button-bottom-cta" />
         </div>
       </section>
     </PubLayout>

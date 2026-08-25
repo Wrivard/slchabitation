@@ -19,7 +19,9 @@ declare global {
 }
 
 const formSchema = z.object({
-  service: z.string().min(1, "Veuillez sélectionner un type de travaux"),
+  service: z.string().refine((val) => ['renovation-sous-sol', 'renovation-salle-de-bain', 'renovation-cuisine'].includes(val), {
+    message: "Veuillez sélectionner un type de travaux valide",
+  }),
   budget: z.string().min(1, "Veuillez sélectionner un budget approximatif"),
   description: z.string().min(10, "Veuillez décrire brièvement votre projet (min 10 caractères)"),
   firstName: z.string().min(2, "Le prénom est requis"),
@@ -230,7 +232,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
         </div>
         <h3 className="text-2xl font-bold font-heading text-foreground mb-4">Demande envoyée avec succès</h3>
         <p className="text-muted-foreground mb-6">
-          Merci de votre confiance. Notre équipe examinera vos informations et vous contactera rapidement pour discuter de votre projet.
+          Merci de votre confiance. Notre équipe examinera vos informations et vous contactera pour discuter de votre projet.
         </p>
         <Link
           href="/"

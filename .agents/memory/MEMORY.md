@@ -1,2 +1,3 @@
 - [Legacy HTML in React](legacy-html-react-lifecycle.md) — embedded page scripts must replay late DOMContentLoaded/load listeners after React mounts.
 - [Static public pages](static-public-pages.md) — public marketing routes must ship prerendered HTML alongside the React experience.
+- [Paid funnel claims](paid-funnel-claims.md) — Google Ads copy must stay within the owner-approved evidence set and avoid invented commercial promises.

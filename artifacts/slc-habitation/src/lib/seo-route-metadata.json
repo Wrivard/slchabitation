@@ -274,7 +274,7 @@
       "source": "formulaire.html",
       "path": "/formulaire",
       "title": "Demander une soumission | SLC Habitation",
-      "description": "Demandez une soumission gratuite pour vos travaux de rénovation ou construction.",
+      "description": "Demandez une soumission pour vos travaux de rénovation ou construction.",
       "schema": {
         "@context": "https://schema.org",
         "@type": "ContactPage",
@@ -404,7 +404,7 @@
     {
       "path": "/pub/formulaire",
       "title": "Demander une soumission | SLC Habitation",
-      "description": "Demandez une soumission gratuite pour vos travaux de rénovation ou construction."
+      "description": "Demandez une soumission pour vos travaux de rénovation ou construction."
     },
     {
       "path": "/politique-de-confidentialite",
