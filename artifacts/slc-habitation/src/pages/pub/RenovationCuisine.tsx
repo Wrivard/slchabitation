@@ -1,8 +1,8 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
-import { PubPageNav, PubSectionHeader, PubFigure } from '@/components/pub/PubShared';
+import { PubPageNav, PubSectionHeader } from '@/components/pub/PubShared';
 import { FAQ } from '@/components/pub/FAQ';
-import { ArrowDown, Check, ClipboardCheck, Grid, Lightbulb, MapPin, Ruler, ShieldCheck, Utensils, Zap } from 'lucide-react';
+import { Check, Grid, Lightbulb, MapPin, Ruler, ShieldCheck, Utensils, ArrowRight, ClipboardCheck } from 'lucide-react';
 
 const kitchenImages = {
   hero: {
@@ -35,6 +35,30 @@ const kitchenImages = {
     width: 1080,
     height: 1440,
   },
+  extra1: {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-1600.jpg',
+    alt: 'Cuisine élégante avec finitions soignées',
+    width: 1600,
+    height: 1200,
+  },
+  extra2: {
+    src: '/images/INT%C3%89RIEUR/Cuisine/2403-p-1080.jpg',
+    alt: 'Détail de cuisine et éclairage',
+    width: 1080,
+    height: 1440,
+  },
+  extra3: {
+    src: '/images/relume-567906.jpeg',
+    alt: 'Cuisine moderne ouverte avec îlot',
+    width: 1440,
+    height: 1440,
+  },
+  extra4: {
+    src: '/images/INT%C3%89RIEUR/Cuisine/12509173_866265596824275_1393287164403664650_n%20(1).jpg',
+    alt: 'Cuisine classique avec boiseries',
+    width: 510,
+    height: 561,
+  }
 };
 
 const navItems = [
@@ -107,7 +131,7 @@ const chapters = [
       'La lumière du jour influence également les couleurs et les surfaces. Une porte, une fenêtre, une orientation ou une aire ouverte peuvent modifier la perception d’un fini au fil de la journée. Observer la pièce à plusieurs moments donne des repères utiles lorsque vous comparez des matériaux. Les besoins techniques associés à l’éclairage sont ensuite considérés dans la planification du projet.',
     ],
     callout: 'À observer chez vous : repérez les zones où vous préparez les aliments le matin et le soir. Cette observation concrète aide à exprimer les besoins d’éclairage au bon endroit.',
-    image: kitchenImages.island,
+    image: kitchenImages.extra2,
   },
 ];
 
@@ -152,21 +176,29 @@ const faqs = [
 export default function RenovationCuisinePub() {
   return (
     <PubLayout>
-      <section className="relative overflow-hidden bg-secondary text-white">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-secondary text-white min-h-[85vh] flex flex-col justify-end">
         <div className="absolute inset-0">
-          <img src={kitchenImages.hero.src} alt={kitchenImages.hero.alt} width={kitchenImages.hero.width} height={kitchenImages.hero.height} className="h-full w-full object-cover" fetchPriority="high" />
-          <div className="absolute inset-0 bg-secondary/80" />
+          <img
+            src={kitchenImages.hero.src}
+            alt={kitchenImages.hero.alt}
+            width={kitchenImages.hero.width}
+            height={kitchenImages.hero.height}
+            className="h-full w-full object-cover object-[center_30%]"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/60 to-transparent" />
         </div>
-        <div className="container-large relative mx-auto max-w-6xl px-6 pb-20 pt-24 md:pb-28 md:pt-32">
+        <div className="container-large relative mx-auto max-w-7xl px-6 pb-20 pt-32 fade-up">
           <div className="max-w-4xl">
             <div className="mb-7 flex flex-wrap gap-3 text-xs font-medium tracking-wide sm:text-sm">
-              <span className="flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
-              <span className="flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
-              <span className="border border-white/25 bg-white/10 px-4 py-2">18 ans d&apos;expérience</span>
+              <span className="flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2 rounded-none"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
+              <span className="flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2 rounded-none"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
+              <span className="border border-white/25 bg-white/10 px-4 py-2 rounded-none">18 ans d&apos;expérience</span>
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Cuisine pensée pour votre quotidien</p>
-            <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-6xl">Rénovation de cuisine à Laval et dans les Laurentides</h1>
-            <p className="mb-9 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">Réfléchir à une cuisine, c’est organiser des usages, des volumes et des interventions techniques dans un espace qui doit rester agréable à vivre. SLC Habitation vous accompagne pour examiner votre pièce et planifier une rénovation adaptée à ses particularités.</p>
+            <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de cuisine à Laval et dans les Laurentides</h1>
+            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">Réfléchir à une cuisine, c’est organiser des usages, des volumes et des interventions techniques dans un espace qui doit rester agréable à vivre. SLC Habitation vous accompagne pour examiner votre pièce et planifier une rénovation adaptée à ses particularités.</p>
             <PubCTA service="renovation-cuisine" className="px-8 py-5 text-lg" testId="button-hero-cta">Parler de mon projet</PubCTA>
           </div>
         </div>
@@ -174,78 +206,236 @@ export default function RenovationCuisinePub() {
 
       <PubPageNav items={navItems} />
 
-      <section id="demarche" className="scroll-mt-20 bg-background py-20 md:py-28">
+      {/* LECTURE COMPLÈTE */}
+      <section id="demarche" className="scroll-mt-20 bg-background py-24 md:py-32">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <div><PubSectionHeader kicker="Une lecture complète de la pièce" title="Avant les choix visibles, comprendre ce qui soutient le projet" /></div>
-            <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
-              <p>Une rénovation de cuisine ne se limite pas au remplacement des armoires. La pièce est liée aux autres espaces de la maison, à ses installations existantes et à la manière dont votre foyer l’utilise. Une réflexion globale aide à mettre les priorités dans le bon ordre : circulation, rangement, surfaces de travail, appareils, éclairage et finitions.</p>
-              <p>À Laval et dans les Laurentides, chaque domicile présente sa propre configuration. La démarche commence donc par une évaluation du lieu et de vos besoins. Selon ce qui est observé, certaines idées pourront être approfondies, adaptées ou écartées. Cette étape donne une base plus claire aux décisions qui suivent.</p>
+          <div className="grid gap-16 lg:grid-cols-12">
+            <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
+              <PubSectionHeader
+                kicker="Une lecture complète de la pièce"
+                title="Avant les choix visibles, comprendre ce qui soutient le projet"
+              />
+              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+                <p>Une rénovation de cuisine ne se limite pas au remplacement des armoires. La pièce est liée aux autres espaces de la maison, à ses installations existantes et à la manière dont votre foyer l’utilise. Une réflexion globale aide à mettre les priorités dans le bon ordre : circulation, rangement, surfaces de travail, appareils, éclairage et finitions.</p>
+                <p>À Laval et dans les Laurentides, chaque domicile présente sa propre configuration. La démarche commence donc par une évaluation du lieu et de vos besoins. Selon ce qui est observé, certaines idées pourront être approfondies, adaptées ou écartées. Cette étape donne une base plus claire aux décisions qui suivent.</p>
+              </div>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-none mb-12">
+                <img
+                  src={kitchenImages.extra1.src}
+                  alt={kitchenImages.extra1.alt}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="grid sm:grid-cols-2 gap-x-10 gap-y-12">
+                {assessmentItems.map((item) => (
+                  <div key={item.title} className="group">
+                    <div className="mb-4 h-px w-12 bg-primary transition-all duration-300 group-hover:w-full" />
+                    <h3 className="mb-3 text-xl font-bold text-foreground">{item.title}</h3>
+                    <p className="leading-relaxed text-muted-foreground">{item.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {assessmentItems.map((item) => <article key={item.title} className="rounded-none border border-border bg-card p-6"><ClipboardCheck className="mb-5 h-6 w-6 text-primary" /><h3 className="mb-3 text-xl font-bold text-foreground">{item.title}</h3><p className="leading-relaxed text-muted-foreground">{item.text}</p></article>)}
+        </div>
+      </section>
+
+      {/* IMPLANTATION (Chapitres compactés et photographiques) */}
+      <section id="implantation" className="scroll-mt-20 border-y border-border bg-muted/40 py-20 md:py-24">
+        <div className="container-large mx-auto max-w-7xl px-6">
+          <PubSectionHeader
+            className="mb-14 max-w-3xl"
+            kicker="Les chapitres d’une cuisine cohérente"
+            title="Transformer l’intention en décisions concrètes"
+            description="Chaque chapitre éclaire une partie du projet. Ils sont courts à lire, mais se répondent : une décision sur l’îlot peut influencer l’éclairage, le rangement et les parcours autour de la cuisine."
+          />
+
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+            {chapters.map((chapter) => (
+              <article key={chapter.number} className="flex flex-col group">
+                <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-none">
+                  <img
+                    src={chapter.image.src}
+                    alt={chapter.image.alt}
+                    width={chapter.image.width}
+                    height={chapter.image.height}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute top-4 left-4 bg-background/90 px-4 py-2 rounded-none font-bold text-primary text-sm tracking-widest">
+                    {chapter.number}
+                  </div>
+                </div>
+                <h3 className="mb-4 text-2xl font-bold leading-tight text-foreground">{chapter.title}</h3>
+                <div className="mb-6 flex-grow space-y-4 text-[0.95rem] leading-relaxed text-muted-foreground">
+                  {chapter.paragraphs.map((p) => <p key={p}>{p}</p>)}
+                </div>
+                <div className="mt-auto border-t border-border pt-5">
+                  <strong className="block text-foreground text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4 text-primary" /> Point de planification
+                  </strong>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{chapter.callout}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="implantation" className="scroll-mt-20 border-y border-border bg-muted/30 py-20 md:py-28">
+      {/* MATÉRIAUX */}
+      <section id="materiaux" className="scroll-mt-20 bg-background py-24 md:py-32">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-14 max-w-3xl text-center flex flex-col items-center"><PubSectionHeader kicker="Les chapitres d’une cuisine cohérente" title="Transformer l’intention en décisions concrètes" description="Chaque chapitre éclaire une partie du projet. Ils sont courts à lire, mais se répondent : une décision sur l’îlot peut influencer l’éclairage, le rangement et les parcours autour de la cuisine." /></div>
-          <div className="space-y-16">
-            {chapters.map((chapter, index) => <article key={chapter.number} className={index < 3 ? `grid gap-8 lg:grid-cols-2 lg:items-center ${index % 2 ? 'lg:[&>div:first-child]:order-2' : ''}` : 'mx-auto max-w-4xl'}>
-              <div><span className="text-5xl font-bold text-primary/35">{chapter.number}</span><h3 className="mb-5 mt-2 text-3xl font-bold leading-tight text-foreground">{chapter.title}</h3><div className="space-y-4 leading-relaxed text-muted-foreground">{chapter.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><aside className="mt-6 rounded-r-none border-l-4 border-primary bg-background p-5 text-sm leading-relaxed text-foreground"><strong className="block pb-1">Point de planification</strong>{chapter.callout}</aside></div>
-              {index < 3 && <PubFigure src={chapter.image.src} alt={chapter.image.alt} width={chapter.image.width} height={chapter.image.height} className="h-[360px]" />}
-            </article>)}
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center mb-20">
+            <div>
+              <PubSectionHeader
+                kicker="Des choix à rendre lisibles"
+                title="Des détails qui servent la cuisine, jour après jour"
+                description="Les matériaux et les équipements donnent un caractère à la pièce, mais ils ont aussi une incidence sur l’entretien, les usages et la continuité visuelle. Le bon choix est celui qui tient compte de l’ensemble : la lumière naturelle, le mobilier adjacent, le niveau d’activité de la cuisine et les préférences du foyer."
+              />
+              <p className="text-lg leading-relaxed text-muted-foreground">Au lieu d’additionner les tendances, nous pouvons examiner les associations de textures, la profondeur des comptoirs, les hauteurs de rangement et les points de contact du quotidien. Cette attention aide à obtenir une cuisine dont chaque élément a une raison d’être.</p>
+            </div>
+            <div className="aspect-[4/5] rounded-none overflow-hidden border border-border">
+               <img src={kitchenImages.extra4.src} alt={kitchenImages.extra4.alt} width={kitchenImages.extra4.width} height={kitchenImages.extra4.height} loading="lazy" className="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-16">
+            {configurationCards.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="flex flex-col">
+                <Icon className="w-8 h-8 text-primary mb-6 stroke-[1.5]" />
+                <h3 className="mb-4 text-xl font-bold text-foreground">{title}</h3>
+                <p className="leading-relaxed text-muted-foreground">{text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 rounded-none bg-secondary p-10 text-secondary-foreground md:flex md:items-center md:gap-10">
+            <Ruler className="mb-6 h-12 w-12 shrink-0 text-primary md:mb-0" />
+            <p className="text-lg leading-relaxed text-gray-200">
+              <strong className="text-white font-bold block mb-1">Un plan se vérifie dans l’espace.</strong>
+              Les croquis et les inspirations sont utiles, puis les dimensions, les ouvertures, les appareils et les contraintes du lieu permettent de les confronter à la réalité de votre cuisine.
+            </p>
           </div>
         </div>
       </section>
 
-      <section id="materiaux" className="scroll-mt-20 bg-background py-20 md:py-28">
-        <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-            <div><PubSectionHeader kicker="Des choix à rendre lisibles" title="Des détails qui servent la cuisine, jour après jour" description="Les matériaux et les équipements donnent un caractère à la pièce, mais ils ont aussi une incidence sur l’entretien, les usages et la continuité visuelle. Le bon choix est celui qui tient compte de l’ensemble : la lumière naturelle, le mobilier adjacent, le niveau d’activité de la cuisine et les préférences du foyer." /><p className="leading-relaxed text-muted-foreground">Au lieu d’additionner les tendances, nous pouvons examiner les associations de textures, la profondeur des comptoirs, les hauteurs de rangement et les points de contact du quotidien. Cette attention aide à obtenir une cuisine dont chaque élément a une raison d’être.</p></div>
-            <PubFigure src={kitchenImages.compact.src} alt={kitchenImages.compact.alt} width={kitchenImages.compact.width} height={kitchenImages.compact.height} className="h-[420px]" />
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">{configurationCards.map(({ icon: Icon, title, text }) => <article key={title} className="rounded-none border border-border p-7"><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-none bg-primary/10 text-primary"><Icon className="h-6 w-6" /></div><h3 className="mb-3 text-xl font-bold text-foreground">{title}</h3><p className="leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
-          <div className="mt-10 rounded-none bg-secondary p-7 text-secondary-foreground md:flex md:items-center md:gap-8"><Ruler className="mb-4 h-9 w-9 shrink-0 text-primary md:mb-0" /><p className="leading-relaxed text-gray-200"><strong className="text-white">Un plan se vérifie dans l’espace.</strong> Les croquis et les inspirations sont utiles, puis les dimensions, les ouvertures, les appareils et les contraintes du lieu permettent de les confronter à la réalité de votre cuisine.</p></div>
-        </div>
-      </section>
+      {/* UN PROJET PLUS FACILE À EXPLIQUER */}
+      <section className="bg-secondary py-24 text-secondary-foreground md:py-32 relative overflow-hidden">
+        <div className="container-large mx-auto max-w-7xl px-6 relative z-10">
+          <PubSectionHeader
+            className="mb-14 max-w-4xl"
+            tone="dark"
+            kicker="Un projet plus facile à expliquer"
+            title="Les bonnes questions avant de confirmer les choix"
+            description="Avant d’arrêter un plan, il est utile de regarder la cuisine comme une succession de scènes : l’arrivée des courses, le café du matin, la préparation d’un repas, le rangement et la circulation vers les autres pièces. Cette approche donne un langage simple pour partager ce qui fonctionne et ce qui mérite d’être revu."
+          />
 
-      <section className="bg-secondary py-20 text-secondary-foreground md:py-28">
-        <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
-            <div><PubSectionHeader tone="dark" kicker="Un projet plus facile à expliquer" title="Les bonnes questions avant de confirmer les choix" description="Avant d’arrêter un plan, il est utile de regarder la cuisine comme une succession de scènes : l’arrivée des courses, le café du matin, la préparation d’un repas, le rangement et la circulation vers les autres pièces. Cette approche donne un langage simple pour partager ce qui fonctionne et ce qui mérite d’être revu." /><p className="leading-relaxed text-gray-300">Vous n’avez pas besoin d’avoir toutes les réponses avant d’amorcer une discussion. Des photos d’inspiration peuvent aider à communiquer une ambiance, mais les décisions prennent leur sens lorsqu’elles sont ramenées à la pièce réelle. Le projet peut alors s’appuyer sur des priorités concrètes plutôt que sur une liste de tendances.</p><p className="mt-5 leading-relaxed text-gray-300">Il est également utile de séparer les besoins essentiels des souhaits à explorer. Par exemple, une famille peut vouloir davantage de rangement près de la préparation, tout en se demandant si une ouverture vers une pièce voisine est envisageable. En distinguant ces deux niveaux, la conversation peut avancer sans présumer qu’une option sera possible avant d’avoir regardé les conditions du bâtiment. Les préférences de style, elles aussi, gagnent à être accompagnées de références précises : une couleur, une texture, le type de poignée, la présence ou non d’armoires hautes, ou la place accordée à un îlot. Ces repères aident à mettre des mots sur une ambiance, puis à l’ajuster en fonction de la lumière, des dimensions et des choix techniques. Une cuisine cohérente ne résulte pas nécessairement d’un seul geste spectaculaire; elle peut naître d’une série de décisions compatibles entre elles. Enfin, pensez aux pièces adjacentes : une nouvelle cuisine peut modifier les vues depuis le séjour, la salle à manger ou l’entrée. La couleur des murs, la continuité des sols et le niveau de rangement visible sont des points simples à noter afin que la nouvelle pièce s’inscrive naturellement dans l’ensemble de la maison. Cette vision d’ensemble permet aussi de mieux expliquer vos arbitrages lorsque toutes les options ne se combinent pas dans une même configuration, avec des décisions documentées et comprises avant les interventions à coordonner.</p></div>
-            <div className="grid gap-4 sm:grid-cols-2">{decisionPoints.map((item) => <article key={item.title} className="rounded-none border border-white/15 bg-white/5 p-6"><h3 className="mb-3 text-xl font-bold text-white">{item.title}</h3><p className="text-sm leading-relaxed text-gray-300">{item.text}</p></article>)}</div>
+          <div className="grid gap-10 border-y border-white/15 py-10 text-lg leading-relaxed text-gray-300 lg:grid-cols-2">
+            <div className="space-y-7">
+                <p>Vous n’avez pas besoin d’avoir toutes les réponses avant d’amorcer une discussion. Des photos d’inspiration peuvent aider à communiquer une ambiance, mais les décisions prennent leur sens lorsqu’elles sont ramenées à la pièce réelle. Le projet peut alors s’appuyer sur des priorités concrètes plutôt que sur une liste de tendances.</p>
+                <p>Il est également utile de séparer les besoins essentiels des souhaits à explorer. Par exemple, une famille peut vouloir davantage de rangement près de la préparation, tout en se demandant si une ouverture vers une pièce voisine est envisageable. En distinguant ces deux niveaux, la conversation peut avancer sans présumer qu’une option sera possible avant d’avoir regardé les conditions du bâtiment.</p>
+            </div>
+            <div className="space-y-7">
+                <p>Les préférences de style, elles aussi, gagnent à être accompagnées de références précises : une couleur, une texture, le type de poignée, la présence ou non d’armoires hautes, ou la place accordée à un îlot. Ces repères aident à mettre des mots sur une ambiance, puis à l’ajuster en fonction de la lumière, des dimensions et des choix techniques. Une cuisine cohérente ne résulte pas nécessairement d’un seul geste spectaculaire; elle peut naître d’une série de décisions compatibles entre elles.</p>
+                <p>Enfin, pensez aux pièces adjacentes : une nouvelle cuisine peut modifier les vues depuis le séjour, la salle à manger ou l’entrée. La couleur des murs, la continuité des sols et le niveau de rangement visible sont des points simples à noter afin que la nouvelle pièce s’inscrive naturellement dans l’ensemble de la maison. Cette vision d’ensemble permet aussi de mieux expliquer vos arbitrages lorsque toutes les options ne se combinent pas dans une même configuration, avec des décisions documentées et comprises avant les interventions à coordonner.</p>
+            </div>
           </div>
-          <aside className="mt-10 rounded-none border border-primary/30 bg-primary/10 p-6 text-gray-200">
-            <h3 className="mb-2 text-lg font-bold text-white">Pour une rencontre productive</h3>
-            <p className="leading-relaxed">Notez ce que vous souhaitez conserver, ce qui vous dérange et ce que vous voulez pouvoir faire plus facilement dans votre future cuisine. Ajoutez les dimensions connues, les photos des murs, des fenêtres et des installations existantes. Ces éléments ne remplacent pas l’évaluation, mais ils rendent la conversation plus précise dès le départ. Si vous hésitez entre plusieurs idées, indiquez ce que chacune changerait dans votre quotidien. Une banquette peut créer une place pour les repas, un îlot peut devenir une zone de préparation, et une armoire pleine hauteur peut répondre au besoin de provisions; le contexte permet de comparer ces intentions. Il est aussi pertinent de signaler les contraintes de vie pendant les travaux, comme un accès utilisé régulièrement ou une pièce voisine à protéger. Ces informations donnent une image plus complète du projet à examiner et des choix qui devront être coordonnés.</p>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {decisionPoints.map((item) => (
+              <div key={item.title} className="border-t border-white/20 pt-6">
+                <h3 className="mb-4 text-xl font-bold text-white">{item.title}</h3>
+                <p className="leading-relaxed text-gray-400">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <aside className="mt-14 rounded-none border border-primary/30 bg-primary/10 p-8 text-gray-200">
+            <h3 className="mb-6 flex items-center gap-3 text-xl font-bold text-white">
+              <ClipboardCheck className="text-primary w-6 h-6" /> Pour une rencontre productive
+            </h3>
+            <div className="grid gap-6 leading-relaxed md:grid-cols-3">
+              <p>Notez ce que vous souhaitez conserver, ce qui vous dérange et ce que vous voulez pouvoir faire plus facilement dans votre future cuisine. Ajoutez les dimensions connues, les photos des murs, des fenêtres et des installations existantes. Ces éléments ne remplacent pas l’évaluation, mais ils rendent la conversation plus précise dès le départ.</p>
+              <p>Si vous hésitez entre plusieurs idées, indiquez ce que chacune changerait dans votre quotidien. Une banquette peut créer une place pour les repas, un îlot peut devenir une zone de préparation, et une armoire pleine hauteur peut répondre au besoin de provisions; le contexte permet de comparer ces intentions.</p>
+              <p>Il est aussi pertinent de signaler les contraintes de vie pendant les travaux, comme un accès utilisé régulièrement ou une pièce voisine à protéger. Ces informations donnent une image plus complète du projet à examiner et des choix qui devront être coordonnés.</p>
+            </div>
           </aside>
         </div>
       </section>
 
-      <section id="chantier" className="scroll-mt-20 border-y border-border bg-muted/30 py-20 md:py-28">
+      {/* LE CHANTIER */}
+      <section id="chantier" className="scroll-mt-20 bg-background py-24 md:py-32">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <PubFigure src="/images/relume-567906.jpeg" alt="Cuisine moderne ouverte avec îlot" width={1440} height={1440} className="h-[420px]" />
-            <div><PubSectionHeader kicker="Du plan aux travaux" title="Une séquence de chantier à organiser avec soin" description="La rénovation met en présence plusieurs types d’intervention. Retirer les éléments existants, ajuster les services, préparer les surfaces, installer les composantes puis traiter les finitions demande une coordination qui tient compte des choix retenus et de la situation rencontrée sur place." /><p className="leading-relaxed text-muted-foreground">SLC Habitation aborde le projet comme un ensemble. L’objectif est de relier les décisions de planification aux interventions nécessaires, en gardant une communication claire sur ce qui doit être évalué à mesure que le chantier avance.</p></div>
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center mb-20">
+            <div className="order-2 lg:order-1 rounded-none overflow-hidden aspect-[4/3] border border-border">
+              <img src={kitchenImages.extra3.src} alt={kitchenImages.extra3.alt} width={kitchenImages.extra3.width} height={kitchenImages.extra3.height} loading="lazy" className="w-full h-full object-cover" />
+            </div>
+            <div className="order-1 lg:order-2">
+              <PubSectionHeader
+                kicker="Du plan aux travaux"
+                title="Une séquence de chantier à organiser avec soin"
+                description="La rénovation met en présence plusieurs types d’intervention. Retirer les éléments existants, ajuster les services, préparer les surfaces, installer les composantes puis traiter les finitions demande une coordination qui tient compte des choix retenus et de la situation rencontrée sur place."
+              />
+              <p className="text-lg leading-relaxed text-muted-foreground">SLC Habitation aborde le projet comme un ensemble. L’objectif est de relier les décisions de planification aux interventions nécessaires, en gardant une communication claire sur ce qui doit être évalué à mesure que le chantier avance.</p>
+            </div>
           </div>
-          <ol className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">{siteSteps.map((step, index) => <li key={step.title} className="rounded-none border border-border bg-background p-6"><span className="mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">{index + 1}</span><h3 className="mb-3 text-lg font-bold text-foreground">{step.title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{step.text}</p></li>)}</ol>
-          <div className="mt-12 text-center flex flex-col items-center"><PubSectionHeader title="Votre cuisine mérite une réflexion complète" description="Parlez-nous de la pièce, de vos priorités et des changements envisagés. Une première discussion permet de situer votre projet et les éléments à examiner." /><PubCTA service="renovation-cuisine" className="px-8 py-5 text-lg" testId="button-middle-cta">Discuter de ma cuisine</PubCTA></div>
+
+          <div className="grid md:grid-cols-4 gap-10 border-t border-border pt-16">
+            {siteSteps.map((step, index) => (
+              <div key={step.title} className="relative">
+                <span className="block text-6xl font-black text-primary/10 mb-4 tracking-tighter">0{index + 1}</span>
+                <h3 className="mb-4 text-xl font-bold text-foreground">{step.title}</h3>
+                <p className="leading-relaxed text-muted-foreground">{step.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-24 text-center max-w-2xl mx-auto">
+            <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">Votre cuisine mérite une réflexion complète</h2>
+            <p className="mb-10 text-lg leading-relaxed text-muted-foreground">Parlez-nous de la pièce, de vos priorités et des changements envisagés. Une première discussion permet de situer votre projet et les éléments à examiner.</p>
+            <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-middle-cta">Discuter de ma cuisine</PubCTA>
+          </div>
         </div>
       </section>
 
-      <section className="bg-secondary py-20 text-secondary-foreground md:py-24">
-        <div className="container-large mx-auto max-w-4xl px-6 text-center"><blockquote className="mb-8 text-2xl font-medium leading-snug text-white md:text-3xl">« Excellente compagnie, service professionnel et soucis du détails! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets! »</blockquote><p className="font-bold text-white">Mélodie Binette</p><p className="text-sm text-gray-400">Propriétaire</p></div>
+      {/* TESTIMONIAL */}
+      <section className="bg-primary/5 py-24 text-foreground md:py-32 border-y border-border">
+        <div className="container-large mx-auto max-w-4xl px-6 text-center">
+          <blockquote className="mb-10 font-heading text-3xl md:text-4xl font-medium leading-tight text-foreground">
+            « Excellente compagnie, service professionnel et soucis du détails! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets! »
+          </blockquote>
+          <p className="font-bold text-lg text-foreground">Mélodie Binette</p>
+          <p className="text-muted-foreground">Propriétaire</p>
+        </div>
       </section>
 
-      <section id="faq" className="scroll-mt-20 bg-background py-20 md:py-28">
-        <div className="container-large mx-auto max-w-4xl px-6"><div className="mx-auto mb-14 max-w-3xl text-center flex flex-col items-center"><PubSectionHeader kicker="Réponses utiles" title="Questions fréquentes sur une rénovation de cuisine" description="Les réponses ci-dessous donnent des repères; les possibilités précises dépendent toujours de votre espace et de l’évaluation du projet." /></div><div className="space-y-4">{faqs.map((faq) => <FAQ key={faq.question} question={faq.question} answer={faq.answer} />)}</div></div>
+      {/* FAQ */}
+      <section id="faq" className="scroll-mt-20 bg-background py-24 md:py-32">
+        <div className="container-large mx-auto max-w-4xl px-6">
+          <PubSectionHeader
+            className="mx-auto text-center max-w-3xl mb-16"
+            kicker="Réponses utiles"
+            title="Questions fréquentes sur une rénovation de cuisine"
+            description="Les réponses ci-dessous donnent des repères; les possibilités précises dépendent toujours de votre espace et de l’évaluation du projet."
+          />
+          <div className="space-y-2 border-t border-border pt-8">
+            {faqs.map((faq) => <FAQ key={faq.question} question={faq.question} answer={faq.answer} />)}
+          </div>
+        </div>
       </section>
 
-      <section className="border-t border-border bg-muted/30 py-20 md:py-28">
-        <div className="container-large mx-auto max-w-4xl px-6 text-center"><div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-none bg-primary/10 text-primary"><Check className="h-7 w-7" /></div><PubSectionHeader title="Prêt à clarifier votre projet de cuisine?" description="Expliquez-nous votre point de départ, les usages que vous souhaitez améliorer et les changements envisagés. Nous pourrons vous orienter vers les éléments à considérer pour votre rénovation à Laval ou dans les Laurentides." /><PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-bottom-cta">Demander une soumission</PubCTA></div>
+      {/* CTA FOOTER */}
+      <section className="bg-secondary py-24 text-white md:py-32">
+        <div className="container-large mx-auto max-w-4xl px-6 text-center">
+          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-none bg-white/10">
+            <Check className="h-10 w-10 text-primary" />
+          </div>
+          <h2 className="mb-6 text-4xl font-bold md:text-5xl">Prêt à clarifier votre projet de cuisine?</h2>
+          <p className="mb-12 text-lg leading-relaxed text-gray-300">Expliquez-nous votre point de départ, les usages que vous souhaitez améliorer et les changements envisagés. Nous pourrons vous orienter vers les éléments à considérer pour votre rénovation à Laval ou dans les Laurentides.</p>
+          <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-bottom-cta">Demander une soumission</PubCTA>
+        </div>
       </section>
     </PubLayout>
   );

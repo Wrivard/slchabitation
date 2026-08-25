@@ -2,3 +2,4 @@
 - [Legacy Webflow CSS isolation](legacy-webflow-css-isolation.md) — isolate React funnel styling from legacy global rules; use scoped semantic classes for layout-critical chrome.
 - [Static public pages](static-public-pages.md) — public marketing routes must ship prerendered HTML alongside the React experience.
 - [Paid funnel claims](paid-funnel-claims.md) — Google Ads copy must stay within the owner-approved evidence set and avoid invented commercial promises.
+- [Lazy image checks](lazy-image-validation.md) — trigger each lazy image in-view before treating naturalWidth 0 as a broken request.

@@ -24,17 +24,19 @@ export function PubSectionHeader({
   description,
   children,
   tone = 'light',
+  className = "max-w-3xl mb-12",
 }: {
   kicker?: string;
   title: string;
   description?: string;
   children?: ReactNode;
   tone?: 'light' | 'dark';
+  className?: string;
 }) {
   const isDark = tone === 'dark';
 
   return (
-    <div className="max-w-3xl mb-12">
+    <div className={className}>
       {kicker && (
         <p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">
           {kicker}
