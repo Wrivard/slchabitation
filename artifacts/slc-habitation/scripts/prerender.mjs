@@ -80,7 +80,11 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   html = removeHeadTag(html, /<link\b[^>]*rel=["']canonical["'][^>]*>\s*/gi);
   html = removeHeadTag(html, /<meta\b[^>]*name=["']description["'][^>]*>\s*/gi);
   html = removeHeadTag(html, /<meta\b[^>]*property=["']og:url["'][^>]*>\s*/gi);
+  html = removeHeadTag(html, /<meta\b[^>]*property=["']og:title["'][^>]*>\s*/gi);
+  html = removeHeadTag(html, /<meta\b[^>]*property=["']og:description["'][^>]*>\s*/gi);
   html = removeHeadTag(html, /<meta\b[^>]*name=["']twitter:url["'][^>]*>\s*/gi);
+  html = removeHeadTag(html, /<meta\b[^>]*name=["']twitter:title["'][^>]*>\s*/gi);
+  html = removeHeadTag(html, /<meta\b[^>]*name=["']twitter:description["'][^>]*>\s*/gi);
   html = removeHeadTag(html, /<script\b[^>]*id=["']page-schema["'][^>]*>[\s\S]*?<\/script>\s*/gi);
   html = removeHeadTag(
     html,
@@ -96,7 +100,11 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   <meta name="description" content="${escapeHtml(route.description)}">
   <link rel="canonical" href="${canonical}">
   <meta property="og:url" content="${canonical}">
+  <meta property="og:title" content="${escapeHtml(route.title)}">
+  <meta property="og:description" content="${escapeHtml(route.description)}">
   <meta name="twitter:url" content="${canonical}">
+  <meta name="twitter:title" content="${escapeHtml(route.title)}">
+  <meta name="twitter:description" content="${escapeHtml(route.description)}">
   ${createSchemaTag(route.schema)}
 `;
   html = html.replace(/<head([^>]*)>/i, `<head$1>${headTags}`);

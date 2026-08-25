@@ -18,6 +18,10 @@ function firstValue(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
 
+function trackedValue(fields: Fields, key: string) {
+  return firstValue(fields[key])?.trim().slice(0, 300);
+}
+
 function escapeHtml(value: string) {
   return value.replace(
     /[&<>"']/g,
@@ -95,6 +99,14 @@ router.post("/submit-form", async (req: Request, res: Response) => {
     const budget = firstValue(fields["Contact-6-Radio"])?.trim();
     const message = firstValue(fields["Contact-6-Message"])?.trim();
     const honeypot = firstValue(fields["Contact-6-Website"])?.trim();
+    const sourcePage =
+      trackedValue(fields, "source_page") ||
+      trackedValue(fields, "Contact-6-Source-Page");
+    const utmSource = trackedValue(fields, "utm_source");
+    const utmMedium = trackedValue(fields, "utm_medium");
+    const utmCampaign = trackedValue(fields, "utm_campaign");
+    const utmTerm = trackedValue(fields, "utm_term");
+    const utmContent = trackedValue(fields, "utm_content");
     uploadedFiles = [
       ...fileList(files["Contact-6-Image[]"]),
       ...fileList(files["Contact-6-Image"]),
@@ -165,6 +177,12 @@ router.post("/submit-form", async (req: Request, res: Response) => {
       ["Téléphone", phone],
       ["Service", service],
       ["Budget", budget ? budgetLabels[budget] ?? budget : undefined],
+      ["Page d’origine", sourcePage],
+      ["UTM source", utmSource],
+      ["UTM medium", utmMedium],
+      ["UTM campaign", utmCampaign],
+      ["UTM term", utmTerm],
+      ["UTM content", utmContent],
     ]
       .filter(([, value]) => Boolean(value))
       .map(

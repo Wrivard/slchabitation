@@ -40,6 +40,31 @@ export const pageSemanticsBySource = Object.freeze({
     },
     demoteSecondH1: false,
   },
+  'renovation-sous-sol.html': {
+    imageAltText: {
+      'images/relume-657406.jpeg': 'Sous-sol aménagé par SLC Habitation',
+      'images/relume-655421.jpeg': 'Finition de sous-sol moderne'
+    },
+    demoteSecondH1: false,
+  },
+  'renovation-salle-de-bain.html': {
+    imageAltText: {
+      'images/relume-567908.jpeg': 'Salle de bain élégante par SLC Habitation',
+      'images/relume-655419.jpeg': 'Détail de salle de bain'
+    },
+    demoteSecondH1: false,
+  },
+  'renovation-cuisine.html': {
+    imageAltText: {
+      'images/relume-655453.jpeg': 'Cuisine moderne par SLC Habitation',
+      'images/relume-655417.jpeg': 'Texture cuisine'
+    },
+    demoteSecondH1: false,
+  },
+  'formulaire.html': {
+    imageAltText: {},
+    demoteSecondH1: false,
+  },
   'agrandissement-construction-neuve.html': {
     imageAltText: {
       'images/relume-567884.png': 'SLC Habitation',

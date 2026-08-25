@@ -6,7 +6,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const backupDir = path.join(__dirname, '../../.migration-backup');
+const sourceDir = path.join(__dirname, 'site');
 const pagesDir = path.join(__dirname, 'src/pages');
+const requestedComponents = new Set(process.argv.slice(2));
 
 const files = [
   { file: 'index.html', route: '/', component: 'Home' },
@@ -16,6 +18,10 @@ const files = [
   { file: 'travaux-sur-mesure.html', route: '/travaux-sur-mesure.html', component: 'TravauxSurMesure' },
   { file: 'realisations.html', route: '/realisations.html', component: 'Realisations' },
   { file: 'soumission.html', route: '/soumission.html', component: 'Soumission' },
+  { file: 'renovation-sous-sol.html', route: '/renovation-sous-sol.html', component: 'RenovationSousSol', source: 'site' },
+  { file: 'renovation-salle-de-bain.html', route: '/renovation-salle-de-bain.html', component: 'RenovationSalleDeBain', source: 'site' },
+  { file: 'renovation-cuisine.html', route: '/renovation-cuisine.html', component: 'RenovationCuisine', source: 'site' },
+  { file: 'formulaire.html', route: '/formulaire.html', component: 'Formulaire', source: 'site' },
   { file: 'politique-de-cookie.html', route: '/politique-de-cookie.html', component: 'PolitiqueDeCookie' },
   { file: '401.html', route: '/401.html', component: 'Unauthorized' },
   { file: '404.html', route: '/404.html', component: 'NotFoundPage' },
@@ -26,8 +32,10 @@ if (!fs.existsSync(pagesDir)) {
   fs.mkdirSync(pagesDir, { recursive: true });
 }
 
-files.forEach(({ file, component }) => {
-  const htmlPath = path.join(backupDir, file);
+files
+  .filter(({ component }) => requestedComponents.size === 0 || requestedComponents.has(component))
+  .forEach(({ file, component, source }) => {
+  const htmlPath = path.join(source === 'site' ? sourceDir : backupDir, file);
   if (!fs.existsSync(htmlPath)) {
     console.log(`Skipping ${file} - not found`);
     return;
@@ -41,10 +49,31 @@ files.forEach(({ file, component }) => {
   
   // Replace `class=` with `class=` since we use dangerouslySetInnerHTML it doesn't matter.
   const escapedContent = bodyContent.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\$/g, '\\$').replace(/`/g, '\\`');
-  
+  const semanticImports = source === 'site'
+    ? `import { enhanceAccessibility } from '../lib/enhanceAccessibility';
+import { normalizePublicLinks } from '@/lib/normalize-public-links';
+import { applyPageSemantics, getPageSemantics } from './pageSemantics';
+`
+    : '';
+  const semanticSetup = source === 'site'
+    ? `
+const pageSemantics = getPageSemantics('${file}');
+const semanticHtmlContent = applyPageSemantics(
+  htmlContent,
+  pageSemantics.imageAltText,
+  pageSemantics.demoteSecondH1,
+);
+`
+    : '';
+  const renderedHtml = source === 'site'
+    ? 'enhanceAccessibility(normalizePublicLinks(semanticHtmlContent))'
+    : 'htmlContent';
+
   const componentCode = `import { useEffect, useRef } from 'react';
+${semanticImports}
 
 const htmlContent = \`${escapedContent}\`;
+${semanticSetup}
 
 export default function ${component}() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -128,10 +157,10 @@ export default function ${component}() {
     };
   }, []);
 
-  return <div ref={containerRef} dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+  return <div ref={containerRef} dangerouslySetInnerHTML={{ __html: ${renderedHtml} }} />;
 }
 `;
 
   fs.writeFileSync(path.join(pagesDir, `${component}.tsx`), componentCode);
   console.log(`Generated ${component}.tsx`);
-});
+  });
