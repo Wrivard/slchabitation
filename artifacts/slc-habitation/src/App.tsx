@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { PageMetadata, metadataForPath } from '@/components/page-metadata';
@@ -8,10 +8,6 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import Home from '@/pages/Home';
 import APropos from '@/pages/APropos';
 import Renovation from '@/pages/Renovation';
-import RenovationSousSol from '@/pages/RenovationSousSol';
-import RenovationSalleDeBain from '@/pages/RenovationSalleDeBain';
-import RenovationCuisine from '@/pages/RenovationCuisine';
-import Formulaire from '@/pages/Formulaire';
 import Agrandissement from '@/pages/Agrandissement';
 import TravauxSurMesure from '@/pages/TravauxSurMesure';
 import Realisations from '@/pages/Realisations';
@@ -20,6 +16,13 @@ import PolitiqueDeCookie from '@/pages/PolitiqueDeCookie';
 import Unauthorized from '@/pages/Unauthorized';
 import NotFoundPage from '@/pages/NotFoundPage';
 import StyleGuide from '@/pages/StyleGuide';
+
+// New Pub Routes
+import RenovationSousSolPub from '@/pages/pub/RenovationSousSol';
+import RenovationSalleDeBainPub from '@/pages/pub/RenovationSalleDeBain';
+import RenovationCuisinePub from '@/pages/pub/RenovationCuisine';
+import FormulairePub from '@/pages/pub/Formulaire';
+import PolitiqueDeConfidentialite from '@/pages/PolitiqueDeConfidentialite';
 
 import {
   Route,
@@ -30,6 +33,36 @@ import {
 
 const queryClient = new QueryClient();
 
+function FunnelRedirect({ to }: { to: string }) {
+  const [, navigate] = useLocation();
+
+  useEffect(() => {
+    navigate(`${to}${window.location.search}`, { replace: true });
+  }, [navigate, to]);
+
+  return (
+    <main className="min-h-screen bg-background px-6 py-24 text-center text-foreground">
+      <p data-testid="status-funnel-redirect">Redirection vers le formulaire de soumission…</p>
+    </main>
+  );
+}
+
+function RenovationSousSolRedirect() {
+  return <FunnelRedirect to="/pub/renovation-sous-sol" />;
+}
+
+function RenovationSalleDeBainRedirect() {
+  return <FunnelRedirect to="/pub/renovation-salle-de-bain" />;
+}
+
+function RenovationCuisineRedirect() {
+  return <FunnelRedirect to="/pub/renovation-cuisine" />;
+}
+
+function FormulaireRedirect() {
+  return <FunnelRedirect to="/pub/formulaire" />;
+}
+
 function Router() {
   const [location] = useLocation();
   const metadata = metadataForPath(location);
@@ -38,13 +71,14 @@ function Router() {
     <RoutedErrorBoundary>
       <PageMetadata {...metadata} />
       <Switch>
+        {/* Main Site Routes */}
         <Route path="/" component={Home} />
         <Route path="/a-propos" component={APropos} />
         <Route path="/renovation" component={Renovation} />
-        <Route path="/renovation-sous-sol" component={RenovationSousSol} />
-        <Route path="/renovation-salle-de-bain" component={RenovationSalleDeBain} />
-        <Route path="/renovation-cuisine" component={RenovationCuisine} />
-        <Route path="/formulaire" component={Formulaire} />
+        <Route path="/renovation-sous-sol" component={RenovationSousSolRedirect} />
+        <Route path="/renovation-salle-de-bain" component={RenovationSalleDeBainRedirect} />
+        <Route path="/renovation-cuisine" component={RenovationCuisineRedirect} />
+        <Route path="/formulaire" component={FormulaireRedirect} />
         <Route path="/agrandissement-construction-neuve" component={Agrandissement} />
         <Route path="/travaux-sur-mesure" component={TravauxSurMesure} />
         <Route path="/realisations" component={Realisations} />
@@ -54,6 +88,13 @@ function Router() {
         <Route path="/404.html" component={NotFoundPage} />
         <Route path="/style-guide-a2eb197e-ef3b-4620-ad8c-6507e3057840.html" component={StyleGuide} />
         
+        {/* Paid Funnel (Pub) Routes */}
+        <Route path="/pub/renovation-sous-sol" component={RenovationSousSolPub} />
+        <Route path="/pub/renovation-salle-de-bain" component={RenovationSalleDeBainPub} />
+        <Route path="/pub/renovation-cuisine" component={RenovationCuisinePub} />
+        <Route path="/pub/formulaire" component={FormulairePub} />
+        <Route path="/politique-de-confidentialite" component={PolitiqueDeConfidentialite} />
+
         {/* Fallback to NotFoundPage (the one from Webflow) for custom 404 */}
         <Route component={NotFoundPage} />
       </Switch>

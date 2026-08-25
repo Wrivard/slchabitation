@@ -10,6 +10,7 @@ type PageMetadataProps = {
   description: string;
   path: string;
   schema?: Record<string, unknown>;
+  noindex?: boolean;
 };
 
 function setMeta(selector: string, attribute: 'name' | 'property', value: string) {
@@ -54,7 +55,7 @@ function setStructuredData(schema?: Record<string, unknown>) {
   }
 }
 
-export function PageMetadata({ title, description, path, schema }: PageMetadataProps) {
+export function PageMetadata({ title, description, path, schema, noindex }: PageMetadataProps) {
   const url = `${SITE_URL}${path}`;
 
   useEffect(() => {
@@ -78,7 +79,19 @@ export function PageMetadata({ title, description, path, schema }: PageMetadataP
     setMeta('meta[name="twitter:image"]', 'name', SOCIAL_IMAGE);
     setMeta('meta[name="twitter:image:alt"]', 'name', 'SLC Habitation — rénovation et construction résidentielle');
     setStructuredData(schema);
-  }, [description, schema, title, url]);
+
+    let noindexMeta = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (noindex) {
+      if (!noindexMeta) {
+        noindexMeta = document.createElement('meta');
+        noindexMeta.name = 'robots';
+        document.head.appendChild(noindexMeta);
+      }
+      noindexMeta.content = 'noindex, follow';
+    } else if (noindexMeta) {
+      noindexMeta.remove();
+    }
+  }, [description, schema, title, url, noindex]);
 
   return null;
 }
@@ -98,10 +111,14 @@ export function metadataForPath(location: string) {
     .replace(/\.html$/, '')
     .replace(/\/$/, '') || '/';
 
-  return routes[normalizedPath] ?? {
-    path: normalizedPath,
-    title: 'SLC Habitation | Rénovation résidentielle',
-    description:
-      'SLC Habitation accompagne les propriétaires pour leurs projets de rénovation, d’agrandissement et de construction résidentielle.',
+  const isPubRoute = normalizedPath.startsWith('/pub');
+
+  return {
+    ...(routes[normalizedPath] ?? {
+      path: normalizedPath,
+      title: 'SLC Habitation | Rénovation résidentielle',
+      description: 'SLC Habitation accompagne les propriétaires pour leurs projets de rénovation, d’agrandissement et de construction résidentielle.',
+    }),
+    noindex: isPubRoute,
   };
 }

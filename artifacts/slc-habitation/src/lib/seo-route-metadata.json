@@ -385,6 +385,31 @@
       "path": "/politique-de-cookie",
       "title": "Politique de cookies | SLC Habitation",
       "description": "Consultez la politique de cookies de SLC Habitation et découvrez comment nous utilisons les cookies sur notre site."
+    },
+    {
+      "path": "/pub/renovation-sous-sol",
+      "title": "Rénovation de sous-sol Laval et Laurentides | SLC",
+      "description": "Aménagement de sous-sol sur mesure à Laval et dans les Laurentides : planification, isolation, insonorisation, finition et coordination."
+    },
+    {
+      "path": "/pub/renovation-salle-de-bain",
+      "title": "Rénovation salle de bain | Laval et Laurentides",
+      "description": "Rénovation de salle de bain à Laval et dans les Laurentides : étanchéité, plomberie, céramique, ventilation et coordination."
+    },
+    {
+      "path": "/pub/renovation-cuisine",
+      "title": "Rénovation de cuisine | Laval et Laurentides",
+      "description": "Rénovation de cuisine à Laval et dans les Laurentides : aménagement, armoires, plomberie, électricité et coordination."
+    },
+    {
+      "path": "/pub/formulaire",
+      "title": "Demander une soumission | SLC Habitation",
+      "description": "Demandez une soumission gratuite pour vos travaux de rénovation ou construction."
+    },
+    {
+      "path": "/politique-de-confidentialite",
+      "title": "Politique de confidentialité | SLC Habitation",
+      "description": "Politique de confidentialité de SLC Habitation conformément à la Loi 25."
     }
   ]
 }

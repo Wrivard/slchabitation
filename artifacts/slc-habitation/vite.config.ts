@@ -102,6 +102,12 @@ export default defineConfig({
     strictPort: true,
     host: '0.0.0.0',
     allowedHosts: true,
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8080',
+        changeOrigin: true,
+      },
+    },
   },
   preview: {
     port,
@@ -115,15 +121,15 @@ function redirectLegacyRoutes(
   res: { statusCode: number; setHeader: (name: string, value: string) => void; end: () => void },
   next: () => void,
 ) {
-  const pathname = new URL(req.url || '/', 'http://localhost').pathname;
-  const cleanPath = legacyRouteRedirects[pathname];
+  const requestUrl = new URL(req.url || '/', 'http://localhost');
+  const cleanPath = legacyRouteRedirects[requestUrl.pathname];
   if (!cleanPath) {
     next();
     return;
   }
 
   res.statusCode = 308;
-  res.setHeader('Location', cleanPath);
+  res.setHeader('Location', `${cleanPath}${requestUrl.search}`);
   res.end();
 }
 
