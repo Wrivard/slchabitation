@@ -66,44 +66,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -o-font-smoothing: antialiased;
-  
-  /* Category Filter Styles */
-  .category-filter-link.active {
-    background-color: #d4a574;
-    color: #ffffff;
+}
+
+  /* Filtre par catégorie — doit rester identique au bloc correspondant de
+     src/index.css, qui prend le relais après l'hydratation React. */
+  .category-filter-link {
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
   }
-  
+
+  .category-filter-link:hover {
+    border-color: rgba(11, 11, 11, .15);
+    background-color: #f2f2f2;
+  }
+
+  /* Le contour de focus clavier vient de la règle `a[href]:focus-visible` de
+     css/webflow.css, commune à tous les liens du site hérité. */
+  .category-filter-link.active,
+  .category-filter-link[aria-current="true"] {
+    border-color: #f58026;
+    background-color: #f58026;
+    color: #fff;
+    font-weight: 600;
+  }
+
   .blog22_item.hidden {
     display: none !important;
   }
-  
-  .blog22_item {
-    transition: opacity 0.3s ease;
+
+  .category-filter-status {
+    width: 100%;
+    margin: -3rem 0 2rem;
+    color: rgba(11, 11, 11, .6);
+    font-size: .875rem;
   }
-  
-  .blog22_item.hidden {
-    opacity: 0;
+
+  .category-filter-status:empty {
+    display: none;
   }
-  
-  /* Ensure all images are upright and use cover mode */
-  .blog22_image-wrapper {
-    min-height: 300px !important;
-    height: 300px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  
-  .blog22_image {
-    object-fit: cover !important;
-    object-position: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    transform: none !important;
-    image-orientation: none !important;
-  }
-}
   /* Hide the back-to-top wrapper on default (to prevent flash on loaded site) */
 [data-back-to-top="wrap"]{ opacity: 0;}
 /* Show the button in the Webflow environment */
@@ -630,7 +630,7 @@ margin: 0rem !important;
                 </div>
                 <div class="blog22_content">
                   <div class="category-filter-menu">
-                    <a href="#" class="category-filter-link active w-inline-block" data-category="all">
+                    <a href="#" class="category-filter-link active w-inline-block" data-category="all" aria-current="true">
                       <div>Voir tout</div>
                     </a>
                     <a href="#" class="category-filter-link w-inline-block" data-category="interieur">
@@ -643,6 +643,7 @@ margin: 0rem !important;
                       <div>Commercial</div>
                     </a>
                   </div>
+                  <p class="category-filter-status" data-filter-status aria-live="polite"></p>
                   <div class="blog22_list-wrapper">
                     <div class="w-layout-grid blog22_list">
                       <!-- Intérieur - Kitchen -->
@@ -1567,64 +1568,70 @@ margin: 0rem !important;
   <script src="js/webflow.js" type="text/javascript"></script>
   
   <!-- Category Filter Functionality -->
+  <!-- Version statique du filtre, active avant l'hydratation React.
+       Doit refléter le comportement de src/lib/categoryFilter.ts. -->
   <script>
   (function() {
-    // Run immediately to attach handlers before Webflow's handlers
-    const filterLinks = document.querySelectorAll('.category-filter-link');
-    const galleryItems = document.querySelectorAll('.blog22_item');
-    
-    function filterItems(category) {
-      galleryItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
-        
-        if (category === 'all' || itemCategory === category) {
-          item.classList.remove('hidden');
-          item.style.display = '';
-        } else {
-          item.classList.add('hidden');
-          item.style.display = 'none';
-        }
-      });
+    var links = Array.prototype.slice.call(document.querySelectorAll('.category-filter-link'));
+    var items = Array.prototype.slice.call(document.querySelectorAll('.blog22_item'));
+    if (!links.length || !items.length) return;
+
+    var menu = document.querySelector('.category-filter-menu');
+    if (menu) {
+      menu.setAttribute('role', 'group');
+      menu.setAttribute('aria-label', 'Filtrer les réalisations par catégorie');
     }
-    
-    // Attach handlers with capture phase to run before other handlers
-    filterLinks.forEach(link => {
-      // Use capture phase and stop immediate propagation
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        
-        // Remove active class from all links
-        filterLinks.forEach(l => l.classList.remove('active'));
-        
-        // Add active class to clicked link
-        this.classList.add('active');
-        
-        // Get category from data attribute
-        const category = this.getAttribute('data-category');
-        
-        // Filter items
-        filterItems(category);
-        
-        // Return false as additional safeguard
-        return false;
-      }, true); // Use capture phase (true)
-    });
-    
-    // Set default active filter (all) when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        if (filterLinks.length > 0) {
-          filterItems('all');
+    var status = document.querySelector('[data-filter-status]');
+
+    function categoryOf(link) {
+      return link.getAttribute('data-category') || 'all';
+    }
+
+    function applyCategory(category) {
+      var visible = 0;
+      items.forEach(function(item) {
+        var matches = category === 'all' || item.getAttribute('data-category') === category;
+        item.classList.toggle('hidden', !matches);
+        item.style.display = matches ? '' : 'none';
+        if (matches) visible += 1;
+      });
+
+      var selectedLabel = null;
+      links.forEach(function(link) {
+        var selected = categoryOf(link) === category;
+        link.classList.toggle('active', selected);
+        if (selected) {
+          link.setAttribute('aria-current', 'true');
+          if (category !== 'all') {
+            selectedLabel = (link.textContent || '').trim() || null;
+          }
+        } else {
+          link.removeAttribute('aria-current');
         }
       });
-    } else {
-      // DOM already loaded
-      if (filterLinks.length > 0) {
-        filterItems('all');
+
+      if (status) {
+        var plural = visible > 1 ? 's' : '';
+        status.textContent = visible + ' projet' + plural + ' affiché' + plural +
+          (selectedLabel ? ' dans « ' + selectedLabel + ' »' : '');
       }
     }
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        applyCategory(categoryOf(this));
+      }, true);
+      link.addEventListener('keydown', function(event) {
+        if (event.key !== ' ' && event.key !== 'Spacebar') return;
+        event.preventDefault();
+        applyCategory(categoryOf(this));
+      });
+    });
+
+    var initial = links.filter(function(link) { return link.classList.contains('active'); })[0];
+    applyCategory(initial ? categoryOf(initial) : 'all');
   })();
   </script>
   

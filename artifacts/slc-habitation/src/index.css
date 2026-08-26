@@ -2253,3 +2253,49 @@ button.faq2_question {
     inset: -1px;
   }
 }
+
+/* --------------------------------------------------------------------------
+ * Filtre par catégorie de la page Réalisations
+ *
+ * Le balisage vient de l'export Webflow (voir src/pages/Realisations.tsx).
+ * Ces règles doivent rester identiques à celles du bloc <style> de
+ * site/realisations.html, qui habille la version statique servie avant
+ * l'hydratation React.
+ * ----------------------------------------------------------------------- */
+.category-filter-link {
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.category-filter-link:hover {
+  border-color: rgba(11, 11, 11, 0.15);
+  background-color: #f2f2f2;
+}
+
+/* Le contour de focus clavier vient de la règle `a[href]:focus-visible` de
+   public/css/webflow.css, commune à tous les liens du site hérité. */
+.category-filter-link.active,
+.category-filter-link[aria-current='true'] {
+  border-color: #f58026;
+  background-color: #f58026;
+  color: #fff;
+  font-weight: 600;
+}
+
+.blog22_item.hidden {
+  display: none !important;
+}
+
+.category-filter-status {
+  width: 100%;
+  margin: -3rem 0 2rem;
+  color: rgba(11, 11, 11, 0.6);
+  font-size: 0.875rem;
+}
+
+.category-filter-status:empty {
+  display: none;
+}
