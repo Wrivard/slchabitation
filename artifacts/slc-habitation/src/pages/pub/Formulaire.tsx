@@ -171,7 +171,7 @@ export default function FormulairePub() {
       />
 
       {/* QUESTIONS FRÉQUENTES : section complète, sous le formulaire */}
-      <section id="faq" className="scroll-mt-20 bg-muted py-16 md:py-20">
+      <section id="faq" className="pub-section-muted scroll-mt-20 py-16 md:py-20">
         <div className="container-large mx-auto max-w-4xl px-6">
           <PubSectionHeader
             className="mx-auto mb-12 max-w-3xl text-center"

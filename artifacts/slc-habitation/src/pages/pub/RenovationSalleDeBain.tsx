@@ -272,7 +272,7 @@ export default function RenovationSalleDeBainPub() {
       <PubProofBar />
 
       {/* CE QUI EST INCLUS */}
-      <section id="inclus" className="scroll-mt-20 bg-background py-16 md:py-20">
+      <section id="inclus" className="pub-section-grid scroll-mt-20 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
             className="mb-12 max-w-3xl"
@@ -303,7 +303,7 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* COMMENT ÇA SE PASSE */}
-      <section id="etapes" className="scroll-mt-20 border-y border-border bg-muted/40 py-16 md:py-20">
+      <section id="etapes" className="pub-section-muted scroll-mt-20 border-y border-border py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
             className="mb-12 max-w-3xl"
@@ -341,7 +341,7 @@ export default function RenovationSalleDeBainPub() {
       />
 
       {/* LA VISITE */}
-      <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
+      <section id="visite" className="pub-section-grid scroll-mt-20 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-12">
             <div className="lg:col-span-7">
@@ -394,7 +394,7 @@ export default function RenovationSalleDeBainPub() {
       />
 
       {/* FAQ */}
-      <section id="faq" className="scroll-mt-20 bg-background py-16 md:py-20">
+      <section id="faq" className="pub-section-muted scroll-mt-20 py-16 md:py-20">
         <div className="container-large mx-auto max-w-4xl px-6">
           <PubSectionHeader
             className="mx-auto text-center mb-16 max-w-3xl"
@@ -414,7 +414,7 @@ export default function RenovationSalleDeBainPub() {
       />
 
       {/* CTA FOOTER */}
-      <section data-sticky-hide className="relative isolate overflow-hidden bg-secondary py-20 text-white md:py-24">
+      <section data-sticky-hide className="pub-section-dark relative isolate overflow-hidden py-20 text-white md:py-24">
         <img
           src={bathroomImages.bright}
           alt=""

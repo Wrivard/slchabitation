@@ -279,7 +279,7 @@
   --card-foreground: 0 0% 4%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 4%;
-  --secondary: 0 0% 13%;
+  --secondary: 0 0% 10.6%;
   --secondary-foreground: 0 0% 100%;
   --muted: 0 0% 95%;
   --muted-foreground: 0 0% 33%;
@@ -313,6 +313,28 @@
 
 .pub-shell section[id] {
   scroll-margin-top: calc(var(--pub-header-height) + var(--pub-nav-bar-height));
+}
+
+.pub-shell .pub-section-white {
+  background-color: hsl(var(--background));
+}
+
+.pub-shell .pub-section-muted {
+  background-color: hsl(var(--muted));
+}
+
+.pub-shell .pub-section-dark {
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+.pub-shell .pub-section-grid,
+.pub-shell .pub-form-section {
+  background-color: hsl(var(--background));
+  background-image:
+    linear-gradient(rgb(0 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 0 0 / 0.05) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
 }
 
 .pub-shell h1,
@@ -878,14 +900,6 @@
   color: rgb(255 255 255 / 0.85);
 }
 
-.pub-shell .pub-form-section {
-  background-color: hsl(var(--background));
-  background-image:
-    linear-gradient(rgb(0 0 0 / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(0 0 0 / 0.05) 1px, transparent 1px);
-  background-size: 2.5rem 2.5rem;
-}
-
 .pub-shell .pub-form-hero__badges {
   display: flex;
   flex-wrap: wrap;
@@ -928,6 +942,7 @@
 }
 
 @media (max-width: 639px) {
+  .pub-shell .pub-section-grid,
   .pub-shell .pub-form-section {
     background-size: 2rem 2rem;
   }

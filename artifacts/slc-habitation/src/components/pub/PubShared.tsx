@@ -236,7 +236,7 @@ const proofItems: { icon: LucideIcon; value: string; text: string }[] = [
 
 export function PubProofBar() {
   return (
-    <section className="pub-proof-bar" aria-label="Ce que vous obtenez en nous écrivant" data-testid="proof-bar">
+    <section className="pub-proof-bar pub-section-dark" aria-label="Ce que vous obtenez en nous écrivant" data-testid="proof-bar">
       <ul className="pub-proof-bar__list">
         {proofItems.map(({ icon: Icon, value, text }) => (
           <li key={value} className="pub-proof-bar__item">
@@ -672,7 +672,7 @@ export function PubPhotoRow({
   items: (PubImage & { caption: string; text: string })[];
 }) {
   return (
-    <section id={id} className="pub-photo-row-section" data-testid="photo-row">
+    <section id={id} className="pub-section-dark pub-photo-row-section" data-testid="photo-row">
       <div className="container-large mx-auto max-w-7xl px-6">
         <PubSectionHeader
           className="mb-12 max-w-3xl"
@@ -724,7 +724,7 @@ export function PubReviews({
   items: { quote: string; author: string; role?: string }[];
 }) {
   return (
-    <section id={id} className="scroll-mt-20 border-y border-border bg-primary/5 py-16 md:py-20" data-testid="reviews">
+    <section id={id} className="pub-section-muted scroll-mt-20 border-y border-border py-16 md:py-20" data-testid="reviews">
       <div className="container-large mx-auto max-w-7xl px-6">
         <PubSectionHeader className="mb-12 max-w-3xl" kicker={kicker} title={title} description={description} />
         <div className="pub-reviews">
