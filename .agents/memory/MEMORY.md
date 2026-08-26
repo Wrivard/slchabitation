@@ -4,3 +4,4 @@
 - [Paid funnel claims](paid-funnel-claims.md) — Google Ads copy must stay within the owner-approved evidence set and avoid invented commercial promises.
 - [Lazy image checks](lazy-image-validation.md) — trigger each lazy image in-view before treating naturalWidth 0 as a broken request.
 - [Galerie tuile vedette](gallery-feature-tile-heights.md) — une tuile ne dicte la hauteur d'un bloc grid que si les images voisines sortent du flux.
+- [Routes pub en production](published-artifact-route-resolution.md) — les pages statiques imbriquées nécessitent des réécritures wildcard et une résolution Vite dédiée.

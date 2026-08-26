@@ -96,6 +96,22 @@ from = "/politique-de-cookie.html"
 to = "/politique-de-cookie/index.html"
 
 [[services.production.rewrites]]
+from = "/pub/formulaire/*"
+to = "/pub/formulaire/index.html"
+
+[[services.production.rewrites]]
+from = "/pub/renovation-cuisine/*"
+to = "/pub/renovation-cuisine/index.html"
+
+[[services.production.rewrites]]
+from = "/pub/renovation-salle-de-bain/*"
+to = "/pub/renovation-salle-de-bain/index.html"
+
+[[services.production.rewrites]]
+from = "/pub/renovation-sous-sol/*"
+to = "/pub/renovation-sous-sol/index.html"
+
+[[services.production.rewrites]]
 from = "/*"
 to = "/index.html"
 
