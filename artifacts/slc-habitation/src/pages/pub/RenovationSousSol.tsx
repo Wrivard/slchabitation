@@ -14,6 +14,7 @@ import {
   PubChecklist,
   PubGallery,
   PubHero,
+  PubPhotoRow,
   PubProofBar,
   PubReviews,
   PubServiceArea,
@@ -27,6 +28,7 @@ import {
 const navItems = [
   { href: '#inclus', label: 'Ce qui est inclus' },
   { href: '#etapes', label: 'Comment ça se passe' },
+  { href: '#finitions', label: 'Les finitions' },
   { href: '#visite', label: 'La visite' },
   { href: '#avis', label: 'Avis' },
   { href: '#realisations', label: 'Réalisations' },
@@ -51,6 +53,33 @@ const heroThumbs = [
     alt: 'Cuisine aménagée dans un sous-sol lumineux',
     width: 500,
     height: 375,
+  },
+];
+
+const detailPhotos = [
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-1600.jpg',
+    alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
+    width: 1600,
+    height: 1200,
+    caption: 'Plancher et portes',
+    text: 'Le plancher, les portes et les moulures donnent une finition propre et durable à la pièce.',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776-p-1600.jpg',
+    alt: 'Sous-sol aménagé avec escalier, portes et plancher de bois',
+    width: 1600,
+    height: 1200,
+    caption: 'Escalier et accès',
+    text: 'L’escalier et les accès sont intégrés à l’aménagement pour garder une circulation naturelle.',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-1600.jpg',
+    alt: 'Cuisine aménagée dans un sous-sol avec îlot central et armoires',
+    width: 1600,
+    height: 1200,
+    caption: 'Cuisine et rangement',
+    text: 'Une cuisine et des rangements bien intégrés rendent l’aire de vie du sous-sol vraiment utile.',
   },
 ];
 
@@ -298,6 +327,15 @@ export default function RenovationSousSolPub() {
           />
         </div>
       </section>
+
+      {/* LES FINITIONS */}
+      <PubPhotoRow
+        id="finitions"
+        kicker="Les finitions"
+        title="Un sous-sol pensé jusque dans les détails"
+        description="Voici quelques éléments qui donnent au sous-sol une vraie finition et une utilisation agréable au quotidien."
+        items={detailPhotos}
+      />
 
       {/* LA VISITE */}
       <section id="visite" className="pub-section-grid scroll-mt-20 py-16 md:py-20">

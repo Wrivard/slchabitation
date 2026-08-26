@@ -390,6 +390,14 @@ const paidPageEnhancements = {
       ['/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-800.jpg', 'Sous-sol en cours d’aménagement avec câblage et plafond suspendu', 800, 600],
       ['/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-800.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 800, 600],
     ],
+    detailsTitle: 'Un sous-sol pensé jusque dans les détails',
+    detailsIntro:
+      'Voici quelques éléments qui donnent au sous-sol une vraie finition et une utilisation agréable au quotidien.',
+    details: [
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-1600.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 1600, 1200, 'Plancher et portes', 'Le plancher, les portes et les moulures donnent une finition propre et durable à la pièce.'],
+      ['/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776-p-1600.jpg', 'Sous-sol aménagé avec escalier, portes et plancher de bois', 1600, 1200, 'Escalier et accès', 'L’escalier et les accès sont intégrés à l’aménagement pour garder une circulation naturelle.'],
+      ['/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-1600.jpg', 'Cuisine aménagée dans un sous-sol avec îlot central et armoires', 1600, 1200, 'Cuisine et rangement', 'Une cuisine et des rangements bien intégrés rendent l’aire de vie du sous-sol vraiment utile.'],
+    ],
     visitImage: ['/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505.jpg', 'Sous-sol en cours d’aménagement avec escalier, câblage et plafond suspendu', 4000, 3000],
     visitNote: [
       'L’humidité ne se cache pas sous le gypse',
