@@ -31,7 +31,7 @@ export default function FormulairePub() {
               Parlons de votre projet de rénovation
             </h1>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Trois étapes simples. Nous vous répondons sous 48 heures et la visite d’évaluation est sans frais.
+              Trois étapes courtes. Nous vous répondons sous 48 heures.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function FormulairePub() {
                 </h1>
 
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  Décrivez-nous l’espace que vous souhaitez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures, puis nous convenons d’une visite d’évaluation sans frais avant de préparer votre soumission.
+                  Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.
                 </p>
               </div>
 
@@ -71,7 +71,7 @@ export default function FormulairePub() {
                 <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
                   <Clock className="w-6 h-6 text-primary" />
                   <h4 className="text-base font-semibold text-foreground">Réponse sous 48 heures</h4>
-                  <p className="text-sm text-muted-foreground">À chaque demande reçue</p>
+                  <p className="text-sm text-muted-foreground">Pour chaque demande</p>
                 </div>
                 <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
                   <Wallet className="w-6 h-6 text-primary" />
@@ -109,16 +109,16 @@ export default function FormulairePub() {
                 <h3 className="text-2xl font-bold font-heading text-foreground">Questions fréquentes</h3>
                 <div className="space-y-3">
                   <FAQ
-                    question="Que se passe-t-il après l’envoi du formulaire ?"
-                    answer="Nous examinons votre demande et nous vous répondons sous 48 heures. Nous convenons ensuite d’une visite d’évaluation sans frais, qui permet d’observer l’espace sur place. Votre soumission est préparée à partir de cette visite."
+                    question="Que se passe-t-il après l’envoi du formulaire?"
+                    answer="Nous vous répondons sous 48 heures et nous convenons d’une visite sans frais. Votre soumission est préparée à partir de cette visite."
                   />
                   <FAQ
-                    question="Combien de temps faut-il pour démarrer les travaux ?"
-                    answer="L’échéancier est établi après la visite d’évaluation. Il dépend de l’envergure des travaux, de la préparation nécessaire et de nos disponibilités."
+                    question="Quand les travaux peuvent-ils commencer?"
+                    answer="L’échéancier vous est donné après la visite, avec votre soumission. Il dépend de l’ampleur des travaux et de nos disponibilités."
                   />
                   <FAQ
-                    question="Comment encadrez-vous les projets ?"
-                    answer="SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans en rénovation résidentielle. Les modalités du contrat, les responsabilités de chaque partie et les éléments propres au projet sont expliqués lors de l’évaluation."
+                    question="Est-ce que la soumission est payante?"
+                    answer="Non. La visite et l’estimation sont sans frais. SLC Habitation détient la licence RBQ 8351-9033-59."
                   />
                 </div>
               </div>

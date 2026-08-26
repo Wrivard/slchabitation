@@ -8,174 +8,26 @@ import {
   PubCardBody,
   PubCardIcon,
   PubCardList,
-  PubCardNote,
   PubCardNumber,
   PubCardText,
   PubCardTitle,
   PubChecklist,
   PubGallery,
-  PubInvite,
   PubProofBar,
   PubTestimonial,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
-  Bath, Bed, CheckCircle2, Droplets, Hammer,
-  Home, Lightbulb, MapPin, PanelTop, Ruler, ShieldCheck, Volume2, ArrowDown,
-  Ear, LayoutGrid, Wrench, Paintbrush, Waves, ArrowUpDown, Zap, DoorOpen, Layers, ClipboardList
+  CalendarCheck, Check, ClipboardCheck, Droplets, Hammer, Lightbulb, MapPin,
+  MessageSquare, Ruler, ShieldCheck, Wrench,
 } from 'lucide-react';
 
-const navigation = [
-  { href: '#possibilites', label: 'Possibilités' },
-  { href: '#diagnostic', label: 'Diagnostic' },
-  { href: '#demarche', label: 'Démarche' },
-  { href: '#inspirations', label: 'Réalisations' },
-  { href: '#faq', label: 'FAQ' },
-];
-
-const possibilities = [
-  {
-    icon: Home,
-    title: 'Salle familiale ou aire polyvalente',
-    text: "Coin lecture, jeux, téléviseur ou rangement : le plan relie les usages à la circulation, aux prises, à l’éclairage et aux accès.",
-  },
-  {
-    icon: Bed,
-    title: 'Chambre ou bureau à domicile',
-    text: "Pour une pièce fermée, la lumière, la fenêtre, la sortie et la configuration existante orientent les possibilités.",
-  },
-  {
-    icon: Bath,
-    title: 'Salle de bain ou salle d’eau',
-    text: "Conduites, renvoi, dalle et ventilation sont évalués avant de définir l’emplacement et les interventions.",
-  },
-];
-
-const diagnosticPoints = [
-  { icon: Droplets, title: 'Humidité et fondation', text: "Signes d'humidité, état apparent des murs de fondation et conditions à corriger avant de fermer les assemblages." },
-  { icon: ArrowUpDown, title: 'Hauteur et mécanique', text: 'Poutres, conduits, plomberie et câblage qui influencent la hauteur libre et le tracé des plafonds.' },
-  { icon: Waves, title: 'Dalle et plomberie', text: 'Emplacement des drains, du renvoi principal et des appareils projetés lorsque la plomberie fait partie du scénario.' },
-  { icon: DoorOpen, title: 'Ouvertures et sécurité', text: "Fenêtres, accès et usage prévu de chaque pièce, notamment lorsqu'une chambre est envisagée." },
-  { icon: Zap, title: 'Électricité et chauffage', text: "Panneau, circuits existants, zones d'éclairage et besoins de chauffage à considérer dans la planification." },
-  { icon: Layers, title: 'Structure et accès', text: "Murs, poutres, escaliers et parcours des matériaux qui peuvent influencer l'ordre des travaux." },
-];
-
-const planningChecklist = [
-  'Les usages à réunir dans l’espace',
-  'Les pièces à fermer',
-  'Les équipements à garder accessibles',
-];
-
-const technicalChapters = [
-  {
-    number: 'A',
-    title: 'Humidité, fondation et air intérieur',
-    icon: Droplets,
-    points: [
-      "À signaler : marque d’eau, peinture écaillée, odeur persistante, condensation ou dépôt blanchâtre.",
-      "Ces signes peuvent avoir des causes différentes. L’évaluation tient compte de ce qui est visible, des saisons et de l’usage prévu.",
-      "Selon les observations : étanchéité, drainage extérieur, ventilation, matériaux existants ou ordre des travaux peuvent être discutés.",
-    ],
-    note: "Indiquez si le phénomène suit la pluie, le dégel ou une saison précise.",
-  },
-  {
-    number: 'B',
-    title: 'Dalle de béton, drains et plomberie',
-    icon: Ruler,
-    points: [
-      "La dalle influence le niveau du plancher, les cloisons, le passage de plomberie et l’ajout possible d’une salle de bain.",
-      "La position des drains, du renvoi et des raccordements guide celle d’une douche, toilette, buanderie ou lavabo.",
-      "Toute intervention jugée pertinente dans la dalle se coordonne avec le revêtement, la hauteur, les accès et les murs.",
-    ],
-    note: "Notez l’emplacement connu du renvoi, de la pompe ou des appareils actuels.",
-  },
-  {
-    number: 'C',
-    title: 'Isolation, confort thermique et acoustique',
-    icon: Volume2,
-    points: [
-      "Isolation : murs, humidité, fondation et mode de chauffage se lisent ensemble. Les matériaux et leur ordre peuvent varier.",
-      "Confort : jeux, télétravail et sommeil n’imposent pas les mêmes attentes.",
-      "Acoustique : plafond, ouvertures, conduits et passages techniques sont examinés.",
-      "Selon la structure, laine isolante, désolidarisation ou couches de finition peuvent être envisagées.",
-    ],
-    note: "Précisez les bruits les plus dérangeants et les moments où ils surviennent.",
-  },
-  {
-    number: 'D',
-    title: 'Plafond, poutres et mécanique du bâtiment',
-    icon: PanelTop,
-    points: [
-      "À relever : conduits, plomberie, fils, poutres et accès aux appareils.",
-      "La hauteur libre compte aussi dans les parcours vers l’escalier, les portes et les zones utilisées.",
-      "Plafond continu, retombée ou accès conservé : la solution dépend de l’ensemble mécanique.",
-      "Une retombée peut structurer les zones. Des panneaux ou portes maintiennent les accès d’entretien nécessaires.",
-    ],
-    note: "Laissez les conduits et accès techniques visibles pour la visite.",
-  },
-  {
-    number: 'E',
-    title: 'Fenêtres, lumière et projet de chambre',
-    icon: Bed,
-    points: [
-      "Format et position des fenêtres orientent le bureau, la salle familiale et toute pièce fermée.",
-      "Margelles, finis et état apparent des ouvertures font partie de l’examen.",
-      "Pour une chambre, exigences applicables, sortie, fenêtre, hauteur et configuration sont vérifiées au cas par cas.",
-      "Agrandir une ouverture peut toucher la fondation et le fini extérieur : ce n’est pas un simple choix décoratif.",
-    ],
-    note: "Mentionnez les pièces fermées envisagées et le rôle de chacune.",
-  },
-  {
-    number: 'F',
-    title: 'Électricité, éclairage, chauffage et ventilation',
-    icon: Lightbulb,
-    points: [
-      "L’éclairage se planifie par zone : circulation, travail, lecture, salle de bain, escalier et rangement.",
-      "Circuits, interrupteurs, prises et luminaires tiennent compte du futur ameublement.",
-      "Bureau, salle familiale et salle de bain peuvent avoir des besoins distincts de chauffage et de ventilation.",
-      "Panneau, chauffage, conduits et appareils sont évalués avant de refermer murs et plafonds.",
-    ],
-    note: "Listez les appareils importants, postes de travail et zones à éclairer.",
-  },
-  {
-    number: 'G',
-    title: 'Plancher, usages évolutifs et entretien courant',
-    icon: Home,
-    points: [
-      "Le sol se choisit selon la dalle, l’humidité, le niveau visé et l’usage — après avoir compris le support.",
-      "Toucher, bruit, entretien et transitions orientent aussi le matériau.",
-      "Prises, rangements et cloisons bien placés facilitent l’évolution d’une salle de jeux vers la détente ou le travail.",
-      "Après les travaux, surveillez joints, fenêtres, appareils et tout changement d’odeur ou d’humidité.",
-    ],
-    note: "Apportez les mesures des meubles importants et l’usage futur envisagé.",
-  },
-];
-
-const steps = [
-  {
-    number: '01',
-    icon: Ear,
-    title: 'Écouter le projet et observer le lieu',
-    text: "Nous précisons les usages. Sur place, dimensions, ouvertures, mécanique visible et état général cadrent la réflexion.",
-  },
-  {
-    number: '02',
-    icon: LayoutGrid,
-    title: 'Définir une configuration cohérente',
-    text: "Les zones composent avec la circulation et la technique. Salle de bain, cloison, plafond et ouverture sont discutés avant les finis.",
-  },
-  {
-    number: '03',
-    icon: Wrench,
-    title: 'Prévoir les interventions techniques',
-    text: "Isolation, plomberie, électricité, chauffage et ventilation précèdent les surfaces. Leur portée, les permis et les validations dépendent du projet.",
-  },
-  {
-    number: '04',
-    icon: Paintbrush,
-    title: 'Passer aux finitions choisies',
-    text: "Sol, murs, portes, éclairage, menuiserie et accessoires s’accordent à l’usage. Chaque type de pièce appelle ses propres détails.",
-  },
+const navItems = [
+  { href: '#inclus', label: 'Ce qui est inclus' },
+  { href: '#etapes', label: 'Comment ça se passe' },
+  { href: '#visite', label: 'La visite' },
+  { href: '#realisations', label: 'Réalisations' },
+  { href: '#faq', label: 'Questions' },
 ];
 
 const gallery = [
@@ -226,42 +78,81 @@ const gallery = [
   },
 ];
 
+const includedCards = [
+  {
+    icon: Hammer,
+    title: 'La structure et l’isolation',
+    points: ['Divisions et cloisons', 'Isolation des murs et du plafond', 'Insonorisation si vous la voulez'],
+  },
+  {
+    icon: Wrench,
+    title: 'La plomberie et l’électricité',
+    points: ['Salle de bain ou salle d’eau', 'Prises, éclairage, chauffage', 'Ventilation de l’espace'],
+  },
+  {
+    icon: Check,
+    title: 'Les finitions',
+    points: ['Plancher, gypse, peinture', 'Portes, moulures, rangements', 'Plafond et escalier'],
+  },
+];
+
+const steps = [
+  {
+    icon: MessageSquare,
+    title: 'Vous nous écrivez',
+    text: 'Un formulaire de 3 étapes. Nous vous répondons sous 48 heures.',
+  },
+  {
+    icon: Ruler,
+    title: 'Nous venons voir',
+    text: 'La visite est sans frais. Nous mesurons le sous-sol et notons l’usage que vous visez.',
+  },
+  {
+    icon: ClipboardCheck,
+    title: 'Vous recevez votre soumission',
+    text: 'Les travaux prévus y sont détaillés. La soumission est sans frais.',
+  },
+  {
+    icon: CalendarCheck,
+    title: 'On réalise les travaux',
+    text: 'Une équipe, un ordre de travail clair, de la structure aux finitions.',
+  },
+];
+
+const visitPoints = [
+  { title: 'L’humidité', text: 'Les traces d’eau, les odeurs et l’état des murs de fondation.' },
+  { title: 'La hauteur', text: 'Les poutres, les conduits et les tuyaux qui descendent du plafond.' },
+  { title: 'La dalle', text: 'La position des drains, si vous voulez une salle de bain.' },
+  { title: 'Les fenêtres', text: 'Leur taille et leur sortie, surtout si vous voulez une chambre.' },
+];
+
+const visitChecklist = [
+  'L’usage que vous voulez donner à la pièce',
+  'Les pièces fermées souhaitées (chambre, bureau)',
+  'Les traces d’humidité que vous avez déjà vues',
+  'Votre budget approximatif',
+];
+
 const faqs = [
   {
-    question: "Faut-il examiner l'humidité avant de finir un sous-sol ?",
-    answer: "Oui. Des signes d'infiltration, de condensation, d'odeur persistante ou de matériau endommagé méritent d'être examinés avant de recouvrir les murs. Selon ce qui est observé, des correctifs peuvent devoir être considérés avant l'isolation et les finitions.",
+    question: 'Combien coûte l’aménagement d’un sous-sol?',
+    answer: 'Le prix dépend de la superficie, des pièces à fermer et des travaux de plomberie ou d’électricité nécessaires. Nous venons voir votre sous-sol, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.',
   },
   {
-    question: "Peut-on créer une chambre au sous-sol ?",
-    answer: "Cela dépend notamment de la fenêtre, de l'issue, de la hauteur, de la configuration et des exigences applicables au projet. Une visite permet d'examiner l'espace et de déterminer les options à approfondir.",
+    question: 'Que faire s’il y a de l’humidité?',
+    answer: 'Il faut régler la cause avant de fermer les murs. Pendant la visite, nous cherchons les traces d’eau et les odeurs, puis nous vous disons ce qui doit être corrigé en premier.',
   },
   {
-    question: "Une salle de bain peut-elle être ajoutée si rien n’est prévu ?",
-    answer: "C'est une possibilité qui doit être évaluée selon la plomberie existante, le renvoi principal, la dalle et l'emplacement proposé. La portée des travaux varie donc d'une résidence à l'autre.",
+    question: 'Peut-on aménager une chambre au sous-sol?',
+    answer: 'Souvent oui. Il faut une fenêtre qui sert de sortie et une hauteur suffisante. Nous vérifions ces points sur place et nous validons les exigences de votre municipalité.',
   },
   {
-    question: "Quel revêtement de sol considérer au sous-sol ?",
-    answer: "Le choix se fait en fonction de l'usage de la pièce, de l'état de la dalle, des conditions d'humidité et du style recherché. Le vinyle, la céramique et d'autres matériaux peuvent être discutés au cas par cas.",
+    question: 'Peut-on ajouter une salle de bain s’il n’y a rien de prévu?',
+    answer: 'C’est possible dans bien des cas. Tout dépend de la position du drain principal et de la dalle de béton. Nous le vérifions pendant la visite.',
   },
   {
-    question: "Comment conserver une bonne hauteur libre ?",
-    answer: "Les conduits, poutres, fils et tuyaux sont relevés au départ. Leur position peut guider le tracé d'un plafond, l'emplacement des zones de circulation ou la disposition des pièces. Il est préférable d'en parler avant de figer le plan.",
-  },
-  {
-    question: "L’insonorisation du plafond est-elle envisageable ?",
-    answer: "L'approche dépend du bruit à atténuer et de la composition actuelle du plafond. Laine isolante, désolidarisation et couches de finition peuvent être envisagées selon la structure et l'objectif du projet.",
-  },
-  {
-    question: "Faut-il un permis pour rénover un sous-sol ?",
-    answer: "Les exigences peuvent varier selon la municipalité et la nature des travaux, en particulier pour la plomberie, la structure, les fenêtres ou un changement d'usage. Les démarches applicables sont à valider pour le projet concerné.",
-  },
-  {
-    question: "Peut-on agrandir une fenêtre de sous-sol ?",
-    answer: "Cette intervention touche potentiellement la fondation, l'étanchéité et la finition extérieure. Elle doit être analysée selon la structure existante, l'ouverture envisagée et les exigences qui s'appliquent.",
-  },
-  {
-    question: "Que faut-il prévoir pour un bureau au sous-sol ?",
-    answer: "Au-delà du mobilier, il est utile de prévoir les prises, l'éclairage de travail, le réseau, le chauffage et le rangement. La position du bureau peut aussi être choisie en tenant compte de la lumière disponible et du bruit dans la maison.",
+    question: 'Est-ce que vous vous occupez de tout?',
+    answer: 'Oui. Structure, isolation, plomberie, électricité, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans d’expérience.',
   },
 ];
 
@@ -288,9 +179,9 @@ export default function RenovationSousSolPub() {
               <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><Hammer className="h-4 w-4 text-primary" />18 ans d'expérience</span>
               <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
             </div>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Aménagement intérieur résidentiel</p>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Entrepreneur en rénovation</p>
             <h1 className="mb-6 max-w-4xl font-heading text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">Rénovation de sous-sol <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-8 max-w-3xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Humidité, hauteur libre, plomberie : nous venons lire votre sous-sol sur place, puis nous préparons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
+            <p className="mb-8 max-w-3xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Nous venons voir votre sous-sol, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
             <PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>
             <p className="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p>
           </div>
@@ -299,72 +190,25 @@ export default function RenovationSousSolPub() {
 
       <PubProofBar />
 
-      <PubPageNav items={navigation} />
+      <PubPageNav items={navItems} />
 
-      {/* POSSIBILITÉS */}
-      <section id="possibilites" className="scroll-mt-20 bg-background py-16 md:py-20">
-        <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-end mb-12">
-            <div className="lg:col-span-7">
-              <PubSectionHeader
-                className="mb-0"
-                kicker="Un niveau à réinventer"
-                title="Partir de l’espace réel, puis imaginer la vie qui s’y passe"
-                description="Conduits, poutres, panneau, salle mécanique et fenêtres basses guident la place des pièces, la lumière et les priorités."
-              />
-            </div>
-            <div className="lg:col-span-5">
-              <PubChecklist icon={Lightbulb} title="À clarifier avant le plan" items={planningChecklist} />
-            </div>
-          </div>
-
-          <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-3">
-            {possibilities.map(({ icon: Icon, title, text }) => (
-              <PubCard key={title}>
-                <PubCardBody>
-                  <PubCardIcon icon={Icon} />
-                  <PubCardTitle>{title}</PubCardTitle>
-                  <PubCardText>{text}</PubCardText>
-                </PubCardBody>
-              </PubCard>
-            ))}
-          </div>
-
-          <div className="mt-16 grid lg:grid-cols-2 gap-12">
-            <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-1 lg:content-center rounded-none bg-muted/40 p-10 text-foreground">
-              <div>
-                <h3 className="mb-4 text-2xl font-bold">Un lieu pour le quotidien</h3>
-                <p className="leading-relaxed text-muted-foreground">Espace calme, jeux, écran ou bibliothèque peuvent cohabiter. Rangements fermés et passages clairs simplifient les usages multiples.</p>
-              </div>
-              <div>
-                <h3 className="mb-4 text-2xl font-bold">Un projet qui respecte la maison</h3>
-                <p className="leading-relaxed text-muted-foreground">Retombée, poutre ou fenêtre peuvent structurer les zones. Les solutions se précisent après l’évaluation de la résidence.</p>
-              </div>
-            </div>
-            <div className="aspect-[4/3] rounded-none overflow-hidden shadow-2xl shadow-black/5">
-               <img src={gallery[2].src} alt={gallery[2].alt} width={gallery[2].width} height={gallery[2].height} loading="lazy" className="w-full h-full object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DIAGNOSTIC */}
-      <section id="diagnostic" className="scroll-mt-20 border-y border-border bg-muted/30 py-16 md:py-20">
+      {/* CE QUI EST INCLUS */}
+      <section id="inclus" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
-            className="max-w-3xl mb-16"
-            kicker="Avant de refermer les murs"
-            title="Le diagnostic donne une direction au projet"
-             description="Les conditions existantes orientent les matériaux, la disposition et les travaux. L’analyse initiale aide à choisir un scénario."
+            className="mb-12 max-w-3xl"
+            kicker="Ce qui est inclus"
+            title="Un sous-sol fini au complet, par une seule équipe"
+            description="Salle familiale, chambre, bureau ou salle de bain : vous n’avez pas à coordonner plusieurs entrepreneurs. Nous nous occupons de tout."
           />
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {diagnosticPoints.map(({ icon: Icon, title, text }) => (
+          <div className="grid gap-6 md:grid-cols-3">
+            {includedCards.map(({ icon: Icon, title, points }) => (
               <PubCard key={title}>
                 <PubCardBody>
                   <PubCardIcon icon={Icon} />
                   <PubCardTitle>{title}</PubCardTitle>
-                  <PubCardText>{text}</PubCardText>
+                  <PubCardList items={points} />
                 </PubCardBody>
               </PubCard>
             ))}
@@ -373,43 +217,32 @@ export default function RenovationSousSolPub() {
           <PubActionBar
             className="mt-10"
             note="Visite et estimation sans frais, réponse sous 48 heures."
-            action={<PubCTA service="renovation-sous-sol" testId="button-diagnostic-cta">Obtenir ma soumission sans frais</PubCTA>}
+            action={<PubCTA service="renovation-sous-sol" testId="button-inclus-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
 
-          <figure className="mt-14 overflow-hidden rounded-none">
-            <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-[360px] w-full object-cover" />
-            <figcaption className="mt-4 text-sm text-muted-foreground">{gallery[1].caption}</figcaption>
-          </figure>
-
-          <div className="mt-14 flex flex-col md:flex-row items-center md:items-start gap-8 rounded-none bg-secondary p-10 text-white shadow-2xl shadow-black/5">
-            <Droplets className="h-12 w-12 shrink-0 text-primary" />
-            <div>
-              <h3 className="mb-3 text-xl font-bold">Repère pratique : l’humidité ne se masque pas</h3>
-              <p className="text-base leading-relaxed md:text-[1.0625rem] text-gray-300">Avant les finis, signalez eau, efflorescence, odeur, condensation ou dégradation. La cause peut changer l’ordre des travaux.</p>
-            </div>
+          <div className="mt-14 aspect-[16/9] w-full overflow-hidden rounded-none border border-border">
+            <img src={gallery[2].src} alt={gallery[2].alt} width={gallery[2].width} height={gallery[2].height} loading="lazy" className="h-full w-full object-cover" />
           </div>
         </div>
       </section>
 
-      {/* REPÈRES TECHNIQUES */}
-      <section className="bg-background py-16 md:py-20">
+      {/* COMMENT ÇA SE PASSE */}
+      <section id="etapes" className="scroll-mt-20 border-y border-border bg-muted/40 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
-            className="max-w-3xl mb-14"
-            kicker="Repères techniques pour mieux planifier"
-            title="Les sujets qui transforment une idée en projet réfléchi"
-            description="Sept repères pour préparer la visite — sans remplacer l’évaluation de votre résidence."
+            className="mb-12 max-w-3xl"
+            kicker="Comment ça se passe"
+            title="Quatre étapes simples"
           />
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {technicalChapters.map(({ number, title, icon: Icon, points, note }) => (
-              <PubCard key={number}>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map(({ icon: Icon, title, text }, index) => (
+              <PubCard key={title}>
                 <PubCardBody>
-                  <PubCardNumber icon={Icon}>{number}</PubCardNumber>
+                  <PubCardNumber icon={Icon}>{`0${index + 1}`}</PubCardNumber>
                   <PubCardTitle rule>{title}</PubCardTitle>
-                  <PubCardList items={points} />
+                  <PubCardText>{text}</PubCardText>
                 </PubCardBody>
-                <PubCardNote label="Pour la visite" icon={ClipboardList}>{note}</PubCardNote>
               </PubCard>
             ))}
           </div>
@@ -417,45 +250,49 @@ export default function RenovationSousSolPub() {
           <PubActionBar
             className="mt-10"
             note="Plus de 500 projets complétés, 19 avis Google 5 étoiles."
-            action={<PubCTA service="renovation-sous-sol" testId="button-reperes-cta">Obtenir ma soumission sans frais</PubCTA>}
+            action={<PubCTA service="renovation-sous-sol" testId="button-etapes-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
         </div>
       </section>
 
-      {/* DÉMARCHE */}
-      <section id="demarche" className="scroll-mt-20 border-y border-border bg-muted/40 py-16 md:py-20">
+      {/* LA VISITE */}
+      <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+            <div>
               <PubSectionHeader
-                kicker="Une démarche lisible"
-                title="Décider dans le bon ordre"
-                description="Les étapes séparent bâtiment, usage et esthétique. Vous gardez la vue d’ensemble avant de choisir."
+                className="mb-8 max-w-xl"
+                kicker="La visite"
+                title="Ce que nous regardons chez vous"
+                description="La visite est sans frais. Elle sert à chiffrer votre projet correctement."
               />
-              <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider text-foreground">
-                <ArrowDown className="h-5 w-5 text-primary" />Du constat initial aux finitions
-              </div>
-            </div>
-
-            <div className="lg:col-span-8">
-              <div className="grid gap-6 sm:grid-cols-2">
-                {steps.map((step) => (
-                  <PubCard key={step.number}>
-                    <PubCardBody>
-                      <PubCardNumber icon={step.icon}>{step.number}</PubCardNumber>
-                      <PubCardTitle rule>{step.title}</PubCardTitle>
-                      <PubCardText>{step.text}</PubCardText>
-                    </PubCardBody>
-                  </PubCard>
+              <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+                {visitPoints.map((item) => (
+                  <div key={item.title}>
+                    <div className="mb-3 h-px w-12 bg-primary" />
+                    <h3 className="mb-2 text-lg font-bold text-foreground">{item.title}</h3>
+                    <p className="leading-relaxed text-muted-foreground">{item.text}</p>
+                  </div>
                 ))}
               </div>
 
-              <PubInvite
-                className="mt-14"
-                kicker="Prochaine étape"
-                title="Votre projet commence par les bonnes questions"
-                description="Partagez l’usage visé et vos préoccupations. Nous répondons sous 48 heures et la visite d’évaluation est sans frais."
-                action={<PubCTA service="renovation-sous-sol" testId="button-middle-cta">Discuter de mon sous-sol</PubCTA>}
+              <div className="mt-10 flex flex-col gap-6 rounded-none bg-secondary p-8 text-white sm:flex-row sm:items-start">
+                <Droplets className="h-10 w-10 shrink-0 text-primary" aria-hidden="true" />
+                <div>
+                  <h3 className="mb-2 text-xl font-bold">L’humidité ne se cache pas sous le gypse</h3>
+                  <p className="leading-relaxed text-gray-300">Si vous avez déjà vu de l’eau, une odeur ou de la peinture qui pèle, dites-le-nous. Ça change l’ordre des travaux.</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-none border border-border">
+                <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-full w-full object-cover" />
+              </div>
+              <PubChecklist
+                className="mt-8"
+                icon={Lightbulb}
+                title="À préparer pour la visite"
+                items={visitChecklist}
               />
             </div>
           </div>
@@ -476,50 +313,20 @@ export default function RenovationSousSolPub() {
 
       {/* RÉALISATIONS */}
       <PubGallery
-        id="inspirations"
-        kicker="Espaces de vie au niveau inférieur"
+        id="realisations"
+        kicker="Sous-sols réalisés"
         title="Des sous-sols transformés en pièces de vie"
-        description="Volume dégagé, aire de vie, pièce polyvalente et salle de bain : des points de départ différents, des résultats différents."
+        description="Quelques projets menés de la structure aux finitions, parmi les 500 réalisés depuis 18 ans."
         images={gallery}
       />
-
-      {/* REPÈRES D’AMÉNAGEMENT */}
-      <section className="border-t border-border bg-background py-16 md:py-20">
-        <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-6 md:grid-cols-3">
-            <PubCard>
-              <PubCardBody>
-                <PubCardIcon icon={PanelTop} />
-                <PubCardTitle>Plafonds et détails techniques</PubCardTitle>
-                <PubCardText>Un plafond continu ou des zones abaissées peuvent être envisagés selon les conduits et la hauteur disponible.</PubCardText>
-              </PubCardBody>
-            </PubCard>
-            <PubCard>
-              <PubCardBody>
-                <PubCardIcon icon={Ruler} />
-                <PubCardTitle>Circulation et rangement</PubCardTitle>
-                <PubCardText>Le passage vers l’escalier, la salle mécanique ou les fenêtres conserve son importance dans un plan confortable.</PubCardText>
-              </PubCardBody>
-            </PubCard>
-            <PubCard>
-              <PubCardBody>
-                <PubCardIcon icon={CheckCircle2} />
-                <PubCardTitle>Choix adaptés à l’usage</PubCardTitle>
-                <PubCardText>L’éclairage, les revêtements et l’acoustique se sélectionnent plus facilement lorsque la fonction de chaque zone est claire.</PubCardText>
-              </PubCardBody>
-            </PubCard>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ */}
       <section id="faq" className="scroll-mt-20 border-y border-border bg-muted/30 py-16 md:py-20">
         <div className="container-large mx-auto max-w-4xl px-6">
           <PubSectionHeader
             className="text-center mx-auto mb-16 max-w-3xl"
-            kicker="Préparer votre réflexion"
-            title="Questions fréquentes sur la rénovation de sous-sol"
-            description="Ces repères amorcent la conversation; une réponse adaptée dépend de votre résidence et du projet envisagé."
+            kicker="Questions fréquentes"
+            title="Ce que les propriétaires nous demandent"
           />
           <FAQList>
             {faqs.map((faq) => <FAQ key={faq.question} question={faq.question} answer={faq.answer} />)}
@@ -539,14 +346,12 @@ export default function RenovationSousSolPub() {
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-secondary/85" />
-        <div className="container-large relative mx-auto flex max-w-3xl flex-col items-center px-6 text-center">
-          <PubSectionHeader
-            className="text-center"
-            tone="dark"
-            kicker="Parlons de votre espace"
-            title="Donnez une nouvelle place à votre sous-sol"
-            description="Décrivez votre sous-sol actuel et l’usage que vous visez. Nous vous répondons sous 48 heures et la visite d’évaluation est sans frais."
-          />
+        <div className="container-large relative mx-auto max-w-3xl px-6 text-center">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-primary">
+            <Check className="h-8 w-8 text-white" />
+          </div>
+          <h2 className="mb-5 font-bold">Prêt à recevoir votre soumission?</h2>
+          <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Dites-nous ce que vous voulez faire de votre sous-sol. Réponse sous 48 heures, visite sans frais.</p>
           <PubCTA service="renovation-sous-sol" size="lg" testId="button-bottom-cta">Demander ma soumission sans frais</PubCTA>
         </div>
       </section>
