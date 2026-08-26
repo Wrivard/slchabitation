@@ -125,6 +125,40 @@ const paidReviewsTitle = 'Ce que les propriétaires écrivent sur Google';
 const paidReviewsIntro =
   '19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation.';
 
+const formGallery = [
+  ['/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg', 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré', 2000, 2667, 'Rénovation de cuisine', 'Comptoir continu'],
+  ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg', 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche', 1600, 1200, 'Rénovation de salle de bain', 'Douche vitrée'],
+  ['/images/relume-657406.jpeg', 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses', 2048, 1536, 'Rénovation de sous-sol', 'Aire de vie et cuisine'],
+  ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg', 'Cuisine avec îlot en bois, rangements blancs et suspensions', 1600, 2133, 'Rénovation de cuisine', 'Îlot en bois'],
+  ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg', 'Salle de bain aux murs foncés avec douche en céramique', 1600, 2133, 'Rénovation de salle de bain', 'Palette foncée'],
+  ['/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 4000, 3000, 'Rénovation de sous-sol', 'Salle polyvalente'],
+];
+
+function createFormGalleryMarkup() {
+  const blocks = [];
+  for (let index = 0; index < formGallery.length; index += 3) {
+    blocks.push(formGallery.slice(index, index + 3));
+  }
+
+  const galleryBlocks = blocks.map((block, blockIndex) => {
+    const [feature, ...stack] = block;
+    const modifiers = [
+      stack.length === 0 ? 'pub-gallery__block--single' : '',
+      stack.length === 1 ? 'pub-gallery__block--pair' : '',
+      stack.length > 0 && blockIndex % 2 === 1 ? 'pub-gallery__block--reverse' : '',
+    ].filter(Boolean).join(' ');
+    const imageMarkup = ([src, alt, width, height, category, project], variant) => {
+      const label = variant === 'feature'
+        ? `<figcaption class="pub-gallery__label"><span class="pub-gallery__label-category">${escapeHtml(category)}</span><span class="pub-gallery__label-project">${escapeHtml(project)}</span></figcaption>`
+        : '';
+      return `<figure class="pub-gallery__item pub-gallery__item--${variant}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy" class="pub-gallery__image">${label}</figure>`;
+    };
+    return `<div class="pub-gallery__block ${modifiers}">${imageMarkup(feature, 'feature')}<div class="pub-gallery__stack">${stack.map((image) => imageMarkup(image, 'stack')).join('')}</div></div>`;
+  }).join('');
+
+  return `<section id="realisations" class="bg-background py-16 md:py-20" data-testid="section-gallery"><div class="container-large mx-auto max-w-7xl px-6"><div class="pub-gallery-head"><div class="pub-gallery-head__main"><p class="pub-section-header__kicker">Réalisations</p><h2 class="pub-section-header__title pub-gallery-head__title">Des projets terminés par notre équipe</h2></div><div class="pub-gallery-head__aside"><p class="pub-section-header__lede pub-gallery-head__text">Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 18 ans.</p></div></div><div class="pub-gallery">${galleryBlocks}</div></div></section>`;
+}
+
 const paidPageContent = {
   '/pub/renovation-sous-sol': {
     h1: 'Rénovation de sous-sol à Laval et dans les Laurentides',
@@ -430,7 +464,8 @@ function createFallbackSource(appShell, route) {
     bodyContent = `<header class="border-b bg-white"><div class="container-large mx-auto flex items-center justify-between px-6 py-4"><img src="/images/relume-567884.png" width="180" height="60" alt="SLC Habitation"><a href="tel:5144048494">(514) 404-8494</a><a href="/pub/formulaire">Obtenir une soumission</a></div></header>
     <main><section class="pub-form-hero"><img src="/images/relume-655417.jpeg" width="2560" height="1920" alt="" aria-hidden="true" class="pub-form-hero__image"><div class="pub-form-hero__scrim" aria-hidden="true"></div><div class="pub-form-hero__inner"><p class="pub-form-hero__label">Demande de soumission</p><h1 class="pub-form-hero__title">Parlons de votre projet de rénovation</h1><p>Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p></div></section>
     <section id="formulaire" class="py-16" aria-labelledby="formulaire-title"><div class="container-large mx-auto max-w-6xl px-6"><h2 id="formulaire-title">Parlez-nous de votre projet</h2><p>Le formulaire vous demande le type de travaux, votre budget approximatif, ce que vous voulez changer, la ville du projet, l’échéancier souhaité et vos coordonnées. Nous vous répondons sous 48 heures.</p><p>Le formulaire s’affiche dès que les fonctions de sécurité de la page sont chargées.</p><noscript><p>JavaScript est requis pour transmettre la demande en ligne. Vous pouvez aussi appeler SLC Habitation au <a href="tel:5144048494">(514) 404-8494</a>.</p></noscript><ul><li>Licence RBQ : 8351-9033-59</li><li>19 avis Google, tous 5 étoiles</li><li>Estimation sans frais, visite comprise</li></ul><figure class="pub-quote"><blockquote class="pub-quote__text">Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!</blockquote><figcaption class="pub-quote__author"><span class="pub-quote__name">Isabelle Baril</span> <span class="pub-quote__role">Avis Google</span></figcaption></figure><p>Vous préférez en parler de vive voix? <a href="tel:5144048494">(514) 404-8494</a></p></div></section>
-    <section id="faq" class="bg-muted py-16"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2><details><summary>Que se passe-t-il après l’envoi du formulaire?</summary><p>Nous vous répondons sous 48 heures et nous convenons d’une visite sans frais. Votre soumission est préparée à partir de cette visite.</p></details><details><summary>Quand les travaux peuvent-ils commencer?</summary><p>L’échéancier vous est donné après la visite, avec votre soumission. Il dépend de l’ampleur des travaux et de nos disponibilités.</p></details><details><summary>Est-ce que la soumission est payante?</summary><p>Non. La visite et l’estimation sont sans frais. SLC Habitation détient la licence RBQ 8351-9033-59.</p></details></div></section></main>
+     ${createFormGalleryMarkup()}
+     <section id="faq" class="bg-muted py-16"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2><details><summary>Que se passe-t-il après l’envoi du formulaire?</summary><p>Nous vous répondons sous 48 heures et nous convenons d’une visite sans frais. Votre soumission est préparée à partir de cette visite.</p></details><details><summary>Quand les travaux peuvent-ils commencer?</summary><p>L’échéancier vous est donné après la visite, avec votre soumission. Il dépend de l’ampleur des travaux et de nos disponibilités.</p></details><details><summary>Est-ce que la soumission est payante?</summary><p>Non. La visite et l’estimation sont sans frais. SLC Habitation détient la licence RBQ 8351-9033-59.</p></details></div></section></main>
     <footer class="pub-footer bg-secondary py-12 text-white"><div class="container-large mx-auto px-6"><p>Studio de rénovation résidentielle desservant Laval et les Laurentides.</p><p>Laval, Saint-Eustache, Terrebonne, Sainte-Thérèse, Rosemère, Mirabel, Boisbriand, Blainville et Saint-Jérôme.</p><p>RBQ 8351-9033-59 · <a href="tel:5144048494">(514) 404-8494</a> · <a href="/politique-de-confidentialite">Politique de confidentialité</a></p></div></footer>`;
   } else {
     bodyContent = `<main class="min-h-screen bg-background py-16"><div class="container-large px-6 mx-auto max-w-3xl"><h1>${escapeHtml(route.title)}</h1><p>${escapeHtml(route.description)}</p></div></main>`;

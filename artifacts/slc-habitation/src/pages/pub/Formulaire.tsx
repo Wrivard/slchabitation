@@ -1,7 +1,7 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { QuoteForm } from '@/components/pub/QuoteForm';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
-import { PubSectionHeader, PubTestimonial } from '@/components/pub/PubShared';
+import { PubGallery, PubSectionHeader, PubTestimonial } from '@/components/pub/PubShared';
 import { ShieldCheck, Star, Wallet, Phone } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { useMemo } from 'react';
@@ -13,6 +13,57 @@ const trustItems = [
   { icon: ShieldCheck, title: 'Licence RBQ', text: '8351-9033-59' },
   { icon: Star, title: '19 avis Google', text: 'Tous 5 étoiles' },
   { icon: Wallet, title: 'Estimation sans frais', text: 'Visite comprise' },
+];
+
+const formGallery = [
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg',
+    alt: 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré',
+    width: 2000,
+    height: 2667,
+    category: 'Rénovation de cuisine',
+    project: 'Comptoir continu',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg',
+    alt: 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche',
+    width: 1600,
+    height: 1200,
+    category: 'Rénovation de salle de bain',
+    project: 'Douche vitrée',
+  },
+  {
+    src: '/images/relume-657406.jpeg',
+    alt: 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses',
+    width: 2048,
+    height: 1536,
+    category: 'Rénovation de sous-sol',
+    project: 'Aire de vie et cuisine',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg',
+    alt: 'Cuisine avec îlot en bois, rangements blancs et suspensions',
+    width: 1600,
+    height: 2133,
+    category: 'Rénovation de cuisine',
+    project: 'Îlot en bois',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg',
+    alt: 'Salle de bain aux murs foncés avec douche en céramique',
+    width: 1600,
+    height: 2133,
+    category: 'Rénovation de salle de bain',
+    project: 'Palette foncée',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg',
+    alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
+    width: 4000,
+    height: 3000,
+    category: 'Rénovation de sous-sol',
+    project: 'Salle polyvalente',
+  },
 ];
 
 const faqs: { question: string; answer: string }[] = [
@@ -125,6 +176,15 @@ export default function FormulairePub() {
           </div>
         </div>
       </section>
+
+      {/* RÉALISATIONS : même composition portfolio que les pages de service. */}
+      <PubGallery
+        id="realisations"
+        kicker="Réalisations"
+        title="Des projets terminés par notre équipe"
+        description="Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 18 ans."
+        images={formGallery}
+      />
 
       {/* QUESTIONS FRÉQUENTES : section complète, sous le formulaire */}
       <section id="faq" className="scroll-mt-20 bg-muted py-16 md:py-20">
