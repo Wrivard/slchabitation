@@ -58,6 +58,12 @@ export function PubCTA({
           service: serviceContext || 'formulaire',
           destination: '/pub/formulaire',
         });
+        // Quand la route change, c'est le routeur qui remet la vue en haut :
+        // remonter ici écraserait la position mémorisée pour le bouton Retour.
+        // Il ne reste donc que le cas d'un clic depuis la page du formulaire.
+        if (location === '/pub/formulaire') {
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }
       }}
     >
       {children} <ArrowRight className="pub-button__icon" aria-hidden="true" />

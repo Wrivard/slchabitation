@@ -817,6 +817,108 @@
   }
 }
 
+/* --- Entête de la page formulaire ---
+   Bande compacte : la photo reste en arrière-plan, le formulaire doit rester
+   visible sans défiler, contrairement au héros des pages de service. */
+.pub-shell .pub-form-hero {
+  position: relative;
+  overflow: hidden;
+  background: hsl(var(--secondary));
+  color: #fff;
+}
+
+.pub-shell .pub-form-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+.pub-shell .pub-form-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    hsl(var(--secondary) / 0.94) 0%,
+    hsl(var(--secondary) / 0.88) 45%,
+    hsl(var(--secondary) / 0.62) 100%
+  );
+}
+
+.pub-shell .pub-form-hero__inner {
+  position: relative;
+  width: 100%;
+  max-width: 87.5rem;
+  margin-inline: auto;
+  padding: 3rem 1.5rem;
+}
+
+.pub-shell .pub-form-hero__label {
+  margin: 0 0 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+}
+
+.pub-shell .pub-form-hero__title {
+  max-width: 30ch;
+  margin: 0 0 1rem;
+  color: #fff;
+}
+
+.pub-shell .pub-form-hero__intro {
+  max-width: 42rem;
+  margin: 0 0 1.6rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.pub-shell .pub-form-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pub-shell .pub-form-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  background: rgb(0 0 0 / 0.28);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.pub-shell .pub-form-hero__badge-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  color: hsl(var(--primary));
+}
+
+@media (min-width: 640px) {
+  .pub-shell .pub-form-hero__badge {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .pub-shell .pub-form-hero__inner {
+    padding: 4.25rem 3rem;
+  }
+}
+
 /* --- Bande de photos commentées --- */
 .pub-shell .pub-photo-row-section {
   padding: 4rem 0;

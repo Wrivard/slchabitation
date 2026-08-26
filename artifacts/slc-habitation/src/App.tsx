@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect } from 'react';
+import { type ReactNode, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { PageMetadata, metadataForPath } from '@/components/page-metadata';
@@ -63,9 +63,50 @@ function FormulaireRedirect() {
   return <FunnelRedirect to="/pub/formulaire" />;
 }
 
+/**
+ * Une navigation interne doit toujours afficher le haut de la nouvelle page :
+ * sans cela, un visiteur qui clique sur « Obtenir une soumission » depuis le bas
+ * d'une page publicitaire arrive au milieu du formulaire.
+ *
+ * Deux exceptions : les ancres internes (`#visite`, `#faq`), qui gardent leur
+ * comportement, et les retours arrière du navigateur, où c'est la position
+ * mémorisée qui doit être restaurée. Le drapeau `popstate` est remis à zéro
+ * dans une tâche différée : les effets React déclenchés par la navigation
+ * s'exécutent avant, les clics suivants sont donc traités normalement.
+ */
+function useScrollToTopOnNavigation(location: string) {
+  const previousLocation = useRef<string | null>(null);
+  const isHistoryNavigation = useRef(false);
+
+  useEffect(() => {
+    const markHistoryNavigation = () => {
+      isHistoryNavigation.current = true;
+      window.setTimeout(() => {
+        isHistoryNavigation.current = false;
+      }, 0);
+    };
+
+    window.addEventListener('popstate', markHistoryNavigation);
+    return () => window.removeEventListener('popstate', markHistoryNavigation);
+  }, []);
+
+  useEffect(() => {
+    const isFirstRender = previousLocation.current === null;
+    const hasChanged = previousLocation.current !== location;
+    previousLocation.current = location;
+
+    if (isFirstRender || !hasChanged) return;
+    if (isHistoryNavigation.current) return;
+    if (window.location.hash) return;
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [location]);
+}
+
 function Router() {
   const [location] = useLocation();
   const metadata = metadataForPath(location);
+  useScrollToTopOnNavigation(location);
 
   return (
     <RoutedErrorBoundary>

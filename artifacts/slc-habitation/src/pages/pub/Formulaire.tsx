@@ -1,10 +1,42 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { QuoteForm } from '@/components/pub/QuoteForm';
-import { FAQ } from '@/components/pub/FAQ';
-import { ShieldCheck, Clock, Star, Wallet } from 'lucide-react';
+import { FAQ, FAQList } from '@/components/pub/FAQ';
+import { PubSectionHeader } from '@/components/pub/PubShared';
+import { ShieldCheck, Clock, Star, Wallet, Phone } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
+
+const trustItems = [
+  { icon: ShieldCheck, title: 'Licence RBQ', text: '8351-9033-59' },
+  { icon: Star, title: '19 avis Google 5 étoiles', text: 'Plus de 500 projets complétés' },
+  { icon: Clock, title: 'Réponse sous 48 heures', text: 'Pour chaque demande' },
+  { icon: Wallet, title: 'Estimation sans frais', text: 'Visite sur place comprise' },
+];
+
+const formSteps: [string, string][] = [
+  ['01', 'Projet'],
+  ['02', 'Détails'],
+  ['03', 'Coordonnées'],
+];
+
+const faqs: { question: string; answer: string }[] = [
+  {
+    question: 'Que se passe-t-il après l’envoi du formulaire?',
+    answer:
+      'Nous vous répondons sous 48 heures et nous convenons d’une visite sans frais. Votre soumission est préparée à partir de cette visite.',
+  },
+  {
+    question: 'Quand les travaux peuvent-ils commencer?',
+    answer:
+      'L’échéancier vous est donné après la visite, avec votre soumission. Il dépend de l’ampleur des travaux et de nos disponibilités.',
+  },
+  {
+    question: 'Est-ce que la soumission est payante?',
+    answer:
+      'Non. La visite et l’estimation sont sans frais. SLC Habitation détient la licence RBQ 8351-9033-59.',
+  },
+];
 
 export default function FormulairePub() {
   const [location] = useLocation();
@@ -19,126 +51,114 @@ export default function FormulairePub() {
 
   return (
     <PubLayout>
-      <section className="bg-background relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-[800px] bg-primary/5 rounded-none l-[100px] -z-10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-[500px] bg-accent/30 rounded-none r-[100px] -z-10 blur-3xl pointer-events-none" />
+      {/* ENTÊTE : photo en arrière-plan, titre et repères de confiance */}
+      <section className="pub-form-hero" data-testid="section-form-hero">
+        <img
+          src="/images/relume-655417.jpeg"
+          alt=""
+          aria-hidden="true"
+          width={2560}
+          height={1920}
+          fetchPriority="high"
+          className="pub-form-hero__image"
+        />
+        <div className="pub-form-hero__scrim" aria-hidden="true" />
+        <div className="pub-form-hero__inner">
+          <p className="pub-form-hero__label">Demande de soumission</p>
+          <h1 className="pub-form-hero__title">Parlons de votre projet de rénovation</h1>
+          <p className="pub-form-hero__intro">
+            Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous
+            48 heures. La visite et l’estimation sont sans frais.
+          </p>
+          <ul className="pub-form-hero__badges">
+            <li className="pub-form-hero__badge">
+              <Star className="pub-form-hero__badge-icon" aria-hidden="true" strokeWidth={1.75} />
+              19 avis Google 5 étoiles
+            </li>
+            <li className="pub-form-hero__badge">
+              <ShieldCheck className="pub-form-hero__badge-icon" aria-hidden="true" strokeWidth={1.75} />
+              Licence RBQ 8351-9033-59
+            </li>
+            <li className="pub-form-hero__badge">
+              <Clock className="pub-form-hero__badge-icon" aria-hidden="true" strokeWidth={1.75} />
+              Réponse sous 48 heures
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24">
-          <div className="lg:hidden mb-8">
-            <p className="text-primary text-sm font-bold uppercase tracking-[0.18em] mb-3">Demande de soumission</p>
-            <h1 className="text-4xl font-bold font-heading leading-tight text-foreground">
-              Parlons de votre projet de rénovation
-            </h1>
-            <p className="text-muted-foreground mt-4 leading-relaxed">
-              Trois étapes courtes. Nous vous répondons sous 48 heures.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-
-            {/* Left Column: Context, Trust, and Narrative */}
+      {/* FORMULAIRE */}
+      <section id="formulaire" className="scroll-mt-20 bg-background py-12 md:py-16 lg:py-20">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
+            {/* Le formulaire reste le point d'attention : premier sur mobile, à droite sur grand écran. */}
             <motion.div
-              className="order-2 lg:order-1 lg:col-span-6 xl:col-span-5 space-y-12"
-              initial={{ opacity: 0, y: 20 }}
+              className="order-1 lg:order-2 lg:col-span-6 xl:col-span-7"
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              <div className="hidden lg:block space-y-6">
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide">
-                  Demande de soumission
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-[1.1] text-foreground tracking-tight">
-                  Parlons de votre <span className="text-primary italic font-serif pr-2">projet</span> de rénovation.
-                </h1>
-
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.
-                </p>
+              <div className="border border-border bg-white p-6 sm:p-8 md:p-10">
+                <QuoteForm key={defaultService} defaultService={defaultService} />
               </div>
+            </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
-                  <ShieldCheck className="w-6 h-6 text-primary" />
-                  <h4 className="text-base font-semibold text-foreground">Licence RBQ</h4>
-                  <p className="text-sm text-muted-foreground">8351-9033-59</p>
-                </div>
-                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
-                  <Star className="w-6 h-6 text-primary" />
-                  <h4 className="text-base font-semibold text-foreground">19 avis Google 5 étoiles</h4>
-                  <p className="text-sm text-muted-foreground">Plus de 500 projets complétés</p>
-                </div>
-                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
-                  <Clock className="w-6 h-6 text-primary" />
-                  <h4 className="text-base font-semibold text-foreground">Réponse sous 48 heures</h4>
-                  <p className="text-sm text-muted-foreground">Pour chaque demande</p>
-                </div>
-                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
-                  <Wallet className="w-6 h-6 text-primary" />
-                  <h4 className="text-base font-semibold text-foreground">Estimation sans frais</h4>
-                  <p className="text-sm text-muted-foreground">Visite sur place comprise</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-3" aria-label="Les trois étapes du formulaire">
-                {[
-                  ['01', 'Projet'],
-                  ['02', 'Détails'],
-                  ['03', 'Coordonnées'],
-                ].map(([number, label]) => (
-                  <div key={number} className="rounded-none border border-border bg-white p-4">
-                    <span className="text-xs font-bold text-primary tracking-wider">{number}</span>
-                    <p className="font-semibold text-foreground mt-2">{label}</p>
+            {/* Réassurance : faits déjà utilisés partout dans le parcours publicitaire. */}
+            <div className="order-2 space-y-8 lg:order-1 lg:col-span-6 xl:col-span-5">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {trustItems.map(({ icon: Icon, title, text }) => (
+                  <div key={title} className="flex flex-col gap-2 border border-border/60 bg-white p-5">
+                    <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
+                    <p className="text-base font-semibold text-foreground">{title}</p>
+                    <p className="text-sm text-muted-foreground">{text}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="relative rounded-none overflow-hidden aspect-[4/3]">
-                <img
-                  src="/images/relume-567906.jpeg"
-                  alt="Exemple d’un espace intérieur rénové"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  width="1440"
-                  height="1440"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="grid grid-cols-3 gap-3" aria-label="Les trois étapes du formulaire">
+                {formSteps.map(([number, label]) => (
+                  <div key={number} className="border border-border bg-white p-4">
+                    <span className="text-xs font-bold tracking-wider text-primary">{number}</span>
+                    <p className="mt-2 font-semibold text-foreground">{label}</p>
+                  </div>
+                ))}
               </div>
 
-              <div className="space-y-6 pt-4">
-                <h3 className="text-2xl font-bold font-heading text-foreground">Questions fréquentes</h3>
-                <div className="space-y-3">
-                  <FAQ
-                    question="Que se passe-t-il après l’envoi du formulaire?"
-                    answer="Nous vous répondons sous 48 heures et nous convenons d’une visite sans frais. Votre soumission est préparée à partir de cette visite."
-                  />
-                  <FAQ
-                    question="Quand les travaux peuvent-ils commencer?"
-                    answer="L’échéancier vous est donné après la visite, avec votre soumission. Il dépend de l’ampleur des travaux et de nos disponibilités."
-                  />
-                  <FAQ
-                    question="Est-ce que la soumission est payante?"
-                    answer="Non. La visite et l’estimation sont sans frais. SLC Habitation détient la licence RBQ 8351-9033-59."
-                  />
-                </div>
+              <div className="border border-border bg-muted p-5">
+                <p className="text-sm text-muted-foreground">
+                  Vous préférez en parler de vive voix?
+                </p>
+                <a
+                  href="tel:5144048494"
+                  className="mt-1 inline-flex items-center gap-2 text-lg font-semibold text-foreground hover:text-primary"
+                  data-testid="link-form-phone"
+                  onClick={() => {
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({ event: 'phone_click' });
+                  }}
+                >
+                  <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
+                  (514) 404-8494
+                </a>
               </div>
-            </motion.div>
-
-            {/* Right Column: The Form */}
-            <div className="order-1 lg:order-2 lg:col-span-6 xl:col-span-7 lg:sticky lg:top-28">
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="relative"
-              >
-                <div className="relative bg-white p-6 sm:p-8 md:p-10 border border-border">
-                  <QuoteForm key={defaultService} defaultService={defaultService} />
-                </div>
-              </motion.div>
             </div>
-
           </div>
+        </div>
+      </section>
+
+      {/* QUESTIONS FRÉQUENTES : section complète, sous le formulaire */}
+      <section id="faq" className="scroll-mt-20 bg-muted py-16 md:py-20">
+        <div className="container-large mx-auto max-w-4xl px-6">
+          <PubSectionHeader
+            className="mx-auto mb-12 max-w-3xl text-center"
+            kicker="Questions fréquentes"
+            title="Ce que les propriétaires nous demandent"
+          />
+          <FAQList>
+            {faqs.map((faq) => (
+              <FAQ key={faq.question} question={faq.question} answer={faq.answer} />
+            ))}
+          </FAQList>
         </div>
       </section>
     </PubLayout>
