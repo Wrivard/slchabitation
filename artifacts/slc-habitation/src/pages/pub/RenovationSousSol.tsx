@@ -128,8 +128,8 @@ const includedCards = [
     title: 'La structure et l’isolation',
     points: ['Divisions et cloisons', 'Isolation des murs et du plafond', 'Insonorisation si vous la voulez'],
     image: {
-      src: '/images/INT%C3%89RIEUR/randoms/PXL_20211105_201904641-p-800.jpg',
-      alt: 'Chantier en cours : cloisons montées, murs peints et plancher protégé',
+      src: '/images/INT%C3%89RIEUR/randoms/20230223_130423_1787769737375-p-800.jpg',
+      alt: 'Sous-sol avec escalier, garde-corps et plancher de bois',
       width: 800,
       height: 600,
     },

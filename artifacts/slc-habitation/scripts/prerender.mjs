@@ -386,7 +386,7 @@ const paidPageEnhancements = {
       ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg', 'Salle polyvalente au sous-sol avec portes françaises', 500, 375],
     ],
     cardImages: [
-      ['/images/INT%C3%89RIEUR/randoms/PXL_20211105_201904641-p-800.jpg', 'Chantier en cours : cloisons montées, murs peints et plancher protégé', 800, 600],
+      ['/images/INT%C3%89RIEUR/randoms/20230223_130423_1787769737375-p-800.jpg', 'Sous-sol avec escalier, garde-corps et plancher de bois', 800, 600],
       ['/images/relume-655394-p-800.jpeg', 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol', 800, 1067],
       ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-800.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 800, 600],
     ],
