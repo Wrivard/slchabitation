@@ -27,6 +27,37 @@ const ALLOWED_SERVICES = new Set([
   "Rénovation de salle de bain",
   "Rénovation de cuisine",
 ]);
+/* Compléments demandés au visiteur depuis le formulaire publicitaire. Ils sont
+   facultatifs côté serveur : une valeur absente ou inconnue est simplement
+   ignorée, jamais un motif de rejet, pour qu'un client plus ancien continue
+   d'être accepté. */
+const ALLOWED_PROJECT_CITIES = new Set([
+  "Laval",
+  "Saint-Eustache",
+  "Terrebonne",
+  "Sainte-Thérèse",
+  "Rosemère",
+  "Mirabel",
+  "Boisbriand",
+  "Blainville",
+  "Saint-Jérôme",
+  "Autre municipalité",
+]);
+const ALLOWED_PROJECT_TIMELINES = new Set([
+  "Dès que possible",
+  "Dans les 3 prochains mois",
+  "Dans 3 à 6 mois",
+  "Dans plus de 6 mois",
+  "Je ne sais pas encore",
+]);
+const ALLOWED_REFERRAL_SOURCES = new Set([
+  "Recherche Google",
+  "Publicité en ligne",
+  "Recommandation d’un proche",
+  "Réseaux sociaux",
+  "Nous avons déjà fait affaire ensemble",
+  "Autre",
+]);
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 type ProcessedSubmission = {
@@ -60,6 +91,11 @@ const SUBMISSION_TTL_MS = 24 * 60 * 60 * 1000;
 
 function firstValue(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
+}
+
+/** Ne conserve la réponse que si elle fait partie des choix proposés. */
+function allowedChoice(value: string | undefined, choices: Set<string>) {
+  return value && choices.has(value) ? value : undefined;
 }
 
 function sanitizedValue(fields: Fields, key: string, maxLength = 300) {
@@ -229,6 +265,15 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
     const phone = sanitizedValue(fields, "Contact-6-Phone", 24);
     const service = sanitizedValue(fields, "Contact-6-Select", 100);
     const budget = sanitizedValue(fields, "Contact-6-Radio", 100);
+    const projectCity = allowedChoice(sanitizedValue(fields, "project_city", 60), ALLOWED_PROJECT_CITIES);
+    const projectTimeline = allowedChoice(
+      sanitizedValue(fields, "project_timeline", 60),
+      ALLOWED_PROJECT_TIMELINES,
+    );
+    const referralSource = allowedChoice(
+      sanitizedValue(fields, "referral_source", 60),
+      ALLOWED_REFERRAL_SOURCES,
+    );
     const rawMessage = firstValue(fields["Contact-6-Message"]);
     const message = sanitizedValue(fields, "Contact-6-Message", MAX_MESSAGE_LENGTH + 1);
     const honeypot = sanitizedValue(fields, "company_website") ?? sanitizedValue(fields, "Contact-6-Website");
@@ -406,6 +451,9 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       ["Téléphone", phone],
       ["Service", service],
       ["Budget", budget ? budgetLabels[budget] ?? budget : undefined],
+      ["Ville du projet", projectCity],
+      ["Échéancier souhaité", projectTimeline],
+      ["Nous a connus par", referralSource],
       ["Version du consentement", consentVersion],
       ["Texte du consentement", consentText],
       ["Consentement marketing", consentMarketing ? "accordé" : "refusé"],

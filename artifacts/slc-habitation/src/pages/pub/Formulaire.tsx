@@ -1,23 +1,18 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { QuoteForm } from '@/components/pub/QuoteForm';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
-import { PubSectionHeader } from '@/components/pub/PubShared';
-import { ShieldCheck, Clock, Star, Wallet, Phone } from 'lucide-react';
+import { PubSectionHeader, PubTestimonial } from '@/components/pub/PubShared';
+import { ShieldCheck, Star, Wallet, Phone } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
+/* Trois faits seulement : l'entête annonce déjà le délai de réponse et la
+   gratuité de la visite, inutile de les répéter mot pour mot juste en dessous. */
 const trustItems = [
   { icon: ShieldCheck, title: 'Licence RBQ', text: '8351-9033-59' },
-  { icon: Star, title: '19 avis Google 5 étoiles', text: 'Plus de 500 projets complétés' },
-  { icon: Clock, title: 'Réponse sous 48 heures', text: 'Pour chaque demande' },
-  { icon: Wallet, title: 'Estimation sans frais', text: 'Visite sur place comprise' },
-];
-
-const formSteps: [string, string][] = [
-  ['01', 'Projet'],
-  ['02', 'Détails'],
-  ['03', 'Coordonnées'],
+  { icon: Star, title: '19 avis Google', text: 'Tous 5 étoiles' },
+  { icon: Wallet, title: 'Estimation sans frais', text: 'Visite comprise' },
 ];
 
 const faqs: { question: string; answer: string }[] = [
@@ -70,20 +65,6 @@ export default function FormulairePub() {
             Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous
             48 heures. La visite et l’estimation sont sans frais.
           </p>
-          <ul className="pub-form-hero__badges">
-            <li className="pub-form-hero__badge">
-              <Star className="pub-form-hero__badge-icon" aria-hidden="true" strokeWidth={1.75} />
-              19 avis Google 5 étoiles
-            </li>
-            <li className="pub-form-hero__badge">
-              <ShieldCheck className="pub-form-hero__badge-icon" aria-hidden="true" strokeWidth={1.75} />
-              Licence RBQ 8351-9033-59
-            </li>
-            <li className="pub-form-hero__badge">
-              <Clock className="pub-form-hero__badge-icon" aria-hidden="true" strokeWidth={1.75} />
-              Réponse sous 48 heures
-            </li>
-          </ul>
         </div>
       </section>
 
@@ -105,7 +86,7 @@ export default function FormulairePub() {
 
             {/* Réassurance : faits déjà utilisés partout dans le parcours publicitaire. */}
             <div className="order-2 space-y-8 lg:order-1 lg:col-span-6 xl:col-span-5">
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 {trustItems.map(({ icon: Icon, title, text }) => (
                   <div key={title} className="flex flex-col gap-2 border border-border/60 bg-white p-5">
                     <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
@@ -115,14 +96,13 @@ export default function FormulairePub() {
                 ))}
               </div>
 
-              <div className="grid grid-cols-3 gap-3" aria-label="Les trois étapes du formulaire">
-                {formSteps.map(([number, label]) => (
-                  <div key={number} className="border border-border bg-white p-4">
-                    <span className="text-xs font-bold tracking-wider text-primary">{number}</span>
-                    <p className="mt-2 font-semibold text-foreground">{label}</p>
-                  </div>
-                ))}
-              </div>
+              {/* Avis Google réel : la preuve remplace la description des étapes,
+                  déjà visible dans l'indicateur en haut du formulaire. */}
+              <PubTestimonial
+                quote="Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!"
+                author="Isabelle Baril"
+                role="Avis Google"
+              />
 
               <div className="border border-border bg-muted p-5">
                 <p className="text-sm text-muted-foreground">

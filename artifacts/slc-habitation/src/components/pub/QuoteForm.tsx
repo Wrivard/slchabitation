@@ -25,6 +25,9 @@ const formSchema = z.object({
   }),
   budget: z.string().min(1, "Veuillez sélectionner un budget approximatif"),
   description: z.string().min(10, "Veuillez décrire brièvement votre projet (min 10 caractères)"),
+  city: z.string().min(1, "Veuillez indiquer la ville du projet"),
+  timeline: z.string().min(1, "Veuillez indiquer quand vous souhaitez faire les travaux"),
+  referral: z.string().optional(),
   firstName: z.string().min(2, "Le prénom est requis"),
   lastName: z.string().min(2, "Le nom est requis"),
   email: z.string().email("Courriel invalide"),
@@ -47,6 +50,39 @@ const serviceMap: Record<string, string> = {
   'renovation-salle-de-bain': 'Rénovation de salle de bain',
   'renovation-cuisine': 'Rénovation de cuisine',
 };
+
+/* Les neuf municipalités déjà annoncées sur le site, plus une sortie de secours
+   pour les demandes qui viennent d'à côté. Les valeurs envoyées au serveur sont
+   exactement ces libellés. */
+const projectCities = [
+  'Laval',
+  'Saint-Eustache',
+  'Terrebonne',
+  'Sainte-Thérèse',
+  'Rosemère',
+  'Mirabel',
+  'Boisbriand',
+  'Blainville',
+  'Saint-Jérôme',
+  'Autre municipalité',
+];
+
+const projectTimelines = [
+  'Dès que possible',
+  'Dans les 3 prochains mois',
+  'Dans 3 à 6 mois',
+  'Dans plus de 6 mois',
+  'Je ne sais pas encore',
+];
+
+const referralSources = [
+  'Recherche Google',
+  'Publicité en ligne',
+  'Recommandation d’un proche',
+  'Réseaux sociaux',
+  'Nous avons déjà fait affaire ensemble',
+  'Autre',
+];
 
 const budgetMap: Record<string, string> = {
   '25 000 $ et moins': 'Contact 6 Radio 1',
@@ -89,6 +125,9 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
       service: defaultService,
       budget: "",
       description: "",
+      city: "",
+      timeline: "",
+      referral: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -169,6 +208,18 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
       payload.append('Contact-6-Radio', exactBudget);
 
       payload.append('Contact-6-Message', data.description);
+
+      /* Réponses ajoutées au formulaire : le serveur les accepte comme des
+         compléments, une valeur absente ne bloque jamais l'envoi. */
+      if (projectCities.includes(data.city)) {
+        payload.append('project_city', data.city);
+      }
+      if (projectTimelines.includes(data.timeline)) {
+        payload.append('project_timeline', data.timeline);
+      }
+      if (data.referral && referralSources.includes(data.referral)) {
+        payload.append('referral_source', data.referral);
+      }
 
       if (data.honeypot) {
         payload.append('company_website', data.honeypot);
@@ -433,6 +484,48 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                     {errors.description && <p className="text-sm text-destructive mt-1" data-testid="error-description">{errors.description.message}</p>}
                   </div>
 
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <label htmlFor="city" className="block text-sm font-bold text-foreground uppercase tracking-wider">
+                        Ville du projet <span className="text-destructive">*</span>
+                      </label>
+                      <select
+                        id="city"
+                        {...register("city")}
+                        aria-invalid={errors.city ? 'true' : undefined}
+                        aria-describedby={errors.city ? 'city-error' : undefined}
+                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                        data-testid="select-city"
+                      >
+                        <option value="">Sélectionnez une ville</option>
+                        {projectCities.map((city) => (
+                          <option key={city} value={city}>{city}</option>
+                        ))}
+                      </select>
+                      {errors.city && <p id="city-error" className="text-sm text-destructive" data-testid="error-city">{errors.city.message}</p>}
+                    </div>
+
+                    <div className="space-y-3">
+                      <label htmlFor="timeline" className="block text-sm font-bold text-foreground uppercase tracking-wider">
+                        Échéancier souhaité <span className="text-destructive">*</span>
+                      </label>
+                      <select
+                        id="timeline"
+                        {...register("timeline")}
+                        aria-invalid={errors.timeline ? 'true' : undefined}
+                        aria-describedby={errors.timeline ? 'timeline-error' : undefined}
+                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                        data-testid="select-timeline"
+                      >
+                        <option value="">Sélectionnez un moment</option>
+                        {projectTimelines.map((timeline) => (
+                          <option key={timeline} value={timeline}>{timeline}</option>
+                        ))}
+                      </select>
+                      {errors.timeline && <p id="timeline-error" className="text-sm text-destructive" data-testid="error-timeline">{errors.timeline.message}</p>}
+                    </div>
+                  </div>
+
                   <div className="flex gap-4 pt-6">
                     <button
                       type="button"
@@ -445,7 +538,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                     </button>
                     <button
                       type="button"
-                      onClick={() => nextStep(['description'])}
+                      onClick={() => nextStep(['description', 'city', 'timeline'])}
                       className="flex-grow bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 text-lg"
                       data-testid="button-next-step-2"
                     >
@@ -525,6 +618,23 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                       />
                       {errors.phone && <p className="text-sm text-destructive" data-testid="error-phone">{errors.phone.message}</p>}
                     </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <label htmlFor="referral" className="block text-sm font-bold text-foreground uppercase tracking-wider">
+                      Comment nous avez-vous connus? <span className="font-medium normal-case tracking-normal text-muted-foreground">(facultatif)</span>
+                    </label>
+                    <select
+                      id="referral"
+                      {...register("referral")}
+                      className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                      data-testid="select-referral"
+                    >
+                      <option value="">Préfère ne pas répondre</option>
+                      {referralSources.map((source) => (
+                        <option key={source} value={source}>{source}</option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className="pt-2">
