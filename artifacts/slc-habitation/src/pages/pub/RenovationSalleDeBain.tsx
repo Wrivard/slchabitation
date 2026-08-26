@@ -63,7 +63,7 @@ export default function RenovationSalleDeBainPub() {
   return (
     <PubLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-secondary text-white min-h-[85vh] flex flex-col justify-end">
+      <section className="relative overflow-hidden bg-secondary text-white min-h-[72vh] flex flex-col justify-end">
         <div className="absolute inset-0">
           <img
             src={bathroomImages.hero}
@@ -75,7 +75,7 @@ export default function RenovationSalleDeBainPub() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/50 to-transparent" />
         </div>
-        <div className="container-large relative mx-auto max-w-7xl px-6 pb-20 pt-32 fade-up">
+        <div className="container-large relative mx-auto max-w-7xl px-6 pb-16 pt-24 fade-up">
           <div className="max-w-4xl">
             <div className="mb-7 flex flex-wrap gap-3 text-xs font-semibold tracking-wide sm:text-sm">
               <span className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><ShieldCheck className="h-4 w-4 text-primary" />RBQ : 8351-9033-59</span>
@@ -84,7 +84,7 @@ export default function RenovationSalleDeBainPub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Salle de bain pensée dans son ensemble</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de salle de bain <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-slate-200 md:text-xl">Usage, matières et technique doivent avancer ensemble. SLC Habitation examine votre espace avec vous pour envisager une rénovation cohérente avec votre maison.</p>
+            <p className="mb-8 max-w-2xl text-base leading-relaxed text-slate-200 md:text-[1.0625rem]">Usage, matières et technique doivent avancer ensemble. SLC Habitation examine votre espace avec vous pour envisager une rénovation cohérente avec votre maison.</p>
             <PubCTA service="renovation-salle-de-bain" className="px-8 py-5 text-lg rounded-none" testId="button-hero-cta">Parler de votre projet</PubCTA>
           </div>
         </div>
@@ -93,9 +93,9 @@ export default function RenovationSalleDeBainPub() {
       <PubPageNav items={navigation.map(([href, label]) => ({ href, label }))} />
 
       {/* NOTRE APPROCHE */}
-      <section id="approche" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="approche" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid lg:grid-cols-12 gap-16 lg:items-start">
+          <div className="grid lg:grid-cols-12 gap-12 lg:items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-32">
               <PubSectionHeader
                 kicker="Une pièce intime, plusieurs décisions"
@@ -109,7 +109,7 @@ export default function RenovationSalleDeBainPub() {
               </figure>
             </div>
             <div className="lg:col-span-7 lg:pl-8">
-              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+              <div className="space-y-4 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
                 <p className="text-xl text-foreground font-medium mb-8">Aucun choix n’est isolé. Le passage influence la vanité, la robinetterie touche les murs et la lumière transforme les textures.</p>
                 <p>À Laval et dans les Laurentides, chaque plan est différent : fenêtre ou pièce compacte, plomberie conservée ou disposition revue. Nous partons de l’espace réel, de vos habitudes et des contraintes visibles.</p>
                 <div className="border-y border-border py-2">
@@ -133,9 +133,9 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* POSSIBILITÉS */}
-      <section id="possibilites" className="scroll-mt-20 border-y border-border bg-muted/40 py-24 md:py-32">
+      <section id="possibilites" className="scroll-mt-20 border-y border-border bg-muted/40 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="mb-20 grid lg:grid-cols-2 gap-12 lg:items-end">
+          <div className="mb-12 grid lg:grid-cols-2 gap-12 lg:items-end">
             <div>
               <PubSectionHeader
                 kicker="Repères de conception"
@@ -143,11 +143,11 @@ export default function RenovationSalleDeBainPub() {
               />
             </div>
             <div>
-              <p className="text-lg leading-relaxed text-muted-foreground lg:pb-6">Lumineuse, texturée ou contrastée : la pièce part de l’usage, pas d’une tendance. Se préparer à deux, simplifier l’entretien, ranger les serviettes, aménager une douche ou garder un bain donnent la direction.</p>
+              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground lg:pb-6">Lumineuse, texturée ou contrastée : la pièce part de l’usage, pas d’une tendance. Se préparer à deux, simplifier l’entretien, ranger les serviettes, aménager une douche ou garder un bain donnent la direction.</p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-16 border-t border-border pt-16">
+          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-12">
             {projectPriorities.map(({ icon: Icon, title, text }) => (
               <div key={title} className="group">
                 <div className="mb-6 h-14 w-14 rounded-none bg-primary/10 flex items-center justify-center">
@@ -159,7 +159,7 @@ export default function RenovationSalleDeBainPub() {
             ))}
           </div>
 
-          <div className="mt-24 grid lg:grid-cols-2 gap-12">
+          <div className="mt-16 grid lg:grid-cols-2 gap-12">
             <div className="aspect-[4/3] rounded-none overflow-hidden shadow-2xl shadow-black/5">
                <img src={bathroomImages.extra1} alt="Bain autoportant et détails" width="1600" height="1200" loading="lazy" className="w-full h-full object-cover" />
             </div>
@@ -183,9 +183,9 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* MATIÈRES ET EAU (Murs & Planchers) */}
-      <section className="bg-background py-24 md:py-32">
+      <section className="bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div className="order-2 lg:order-1 aspect-[4/5] rounded-none overflow-hidden shadow-2xl shadow-black/5">
                <img src={bathroomImages.shower} alt="Douche vitrée et céramique grise" width="1600" height="2133" loading="lazy" className="w-full h-full object-cover" />
             </div>
@@ -194,7 +194,7 @@ export default function RenovationSalleDeBainPub() {
                 kicker="Matières et eau"
                 title="Penser les surfaces avant de penser les accessoires"
               />
-              <div className="text-lg leading-relaxed text-muted-foreground">
+              <div className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
                 <p className="mb-8">Murs et plancher encadrent l’eau, la perspective et l’entretien. Formats, joints et coupes se lisent avec le plan de la pièce.</p>
                 <div className="border-t border-border">
                   {[
@@ -217,16 +217,16 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* PLANIFICATION */}
-      <section id="planification" className="scroll-mt-20 border-y border-border bg-muted/30 py-24 md:py-32">
+      <section id="planification" className="scroll-mt-20 border-y border-border bg-muted/30 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-12">
+          <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <PubSectionHeader
                 kicker="Avant de démarrer"
                 title="Une évaluation pour situer les possibilités"
               />
-              <p className="text-lg leading-relaxed text-muted-foreground mb-6">L’évaluation confronte l’idée aux conditions du bâtiment. Elle repère ce qui influence le plan et remet les choix dans un ordre utile.</p>
-              <div className="border-l-2 border-primary pl-6 text-lg leading-relaxed text-muted-foreground">
+              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground mb-6">L’évaluation confronte l’idée aux conditions du bâtiment. Elle repère ce qui influence le plan et remet les choix dans un ordre utile.</p>
+              <div className="border-l-2 border-primary pl-6 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
                 <p className="mb-3 font-bold text-foreground">Exemple : déplacer un drain</p>
                 <p>Son parcours dépend de la hauteur disponible, des solives et de la construction du plancher. Garder une douche ou une toilette près de sa position peut limiter les interventions; ailleurs, revoir le plan peut convenir. L’observation vient avant la conclusion.</p>
               </div>
@@ -262,10 +262,10 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* RÉALISATION */}
-      <section id="realisation" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="realisation" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
-            className="max-w-3xl mb-20"
+            className="max-w-3xl mb-12"
             kicker="Une démarche lisible"
             title="Passer de l’intention à une salle de bain habitable"
              description="Chaque rénovation a son contexte. Cette séquence reste à confirmer par l’évaluation et les choix de conception."
@@ -281,13 +281,13 @@ export default function RenovationSalleDeBainPub() {
             ))}
           </div>
 
-          <div className="mt-16 grid md:grid-cols-2 gap-16 items-start">
+          <div className="mt-16 grid md:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
                <div className="flex items-center gap-4 border-b border-border pb-4">
                  <Fan className="h-8 w-8 text-primary stroke-[1.5]" />
                   <h3 className="text-2xl font-bold text-foreground">Humidité et renouvellement d’air</h3>
                </div>
-               <ul className="space-y-3 text-lg leading-relaxed text-muted-foreground">
+               <ul className="space-y-3 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
                  <li className="border-l border-primary pl-4">Prévoir l’évacuation de l’air humide selon le parcours disponible.</li>
                  <li className="border-l border-primary pl-4">Examiner plafond, conduits, fenêtre existante et position de la douche.</li>
                  <li className="border-l border-primary pl-4">Coordonner ouvertures, commandes et accès avant les finis.</li>
@@ -298,7 +298,7 @@ export default function RenovationSalleDeBainPub() {
                  <Lightbulb className="h-8 w-8 text-primary stroke-[1.5]" />
                   <h3 className="text-2xl font-bold text-foreground">Lumière, prises et commandes</h3>
                </div>
-               <ul className="space-y-3 text-lg leading-relaxed text-muted-foreground">
+               <ul className="space-y-3 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
                  <li className="border-l border-primary pl-4">Distinguer lumière générale, miroir et ambiance éventuelle.</li>
                  <li className="border-l border-primary pl-4">Observer hauteur du miroir, ombres et moments d’usage.</li>
                  <li className="border-l border-primary pl-4">Situer prises, commandes et luminaires après la vanité et la douche, puis valider selon le projet.</li>
@@ -309,16 +309,16 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* DEUXIÈME LECTURE */}
-      <section className="bg-secondary py-24 text-white md:py-32 overflow-hidden">
+      <section className="bg-secondary py-16 text-white md:py-20 overflow-hidden">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <PubSectionHeader
                 tone="dark"
                 kicker="Une seconde lecture de votre projet"
                 title="Clarifier vos priorités avant les choix de finition"
               />
-               <div className="text-lg leading-relaxed text-slate-300 mb-10">
+               <div className="text-base leading-relaxed md:text-[1.0625rem] text-slate-300 mb-8">
                  <p className="mb-6">La rencontre remet les décisions dans l’ordre : appareils à conserver, rangement utile et ambiance liée aux autres pièces.</p>
                  <div className="mb-6 grid border-y border-white/15 sm:grid-cols-3">
                    <div className="border-b border-white/15 py-4 sm:border-b-0 sm:border-r sm:pr-4">
@@ -347,9 +347,9 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* TÉMOIGNAGE ET GALERIE */}
-      <section className="bg-background py-24 md:py-32">
+      <section className="bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
              <div className="lg:col-span-5 order-2 lg:order-1">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="aspect-[3/4] overflow-hidden rounded-none shadow-2xl shadow-black/5">
@@ -362,7 +362,7 @@ export default function RenovationSalleDeBainPub() {
             </div>
             <div className="lg:col-span-7 order-1 lg:order-2 lg:pl-10">
               <p className="mb-6 text-sm font-bold uppercase tracking-[0.16em] text-primary">Témoignage</p>
-              <blockquote className="mb-10 text-3xl font-heading font-medium leading-tight text-foreground md:text-4xl">
+              <blockquote className="mb-8 text-3xl font-heading font-medium leading-tight text-foreground md:text-4xl">
                 « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l'écoute, je recommande vivement! »
               </blockquote>
               <div className="flex items-center gap-4">
@@ -378,7 +378,7 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* FAQ */}
-      <section id="questions" className="scroll-mt-20 border-y border-border bg-muted/30 py-24 md:py-32">
+      <section id="questions" className="scroll-mt-20 border-y border-border bg-muted/30 py-16 md:py-20">
         <div className="container-large mx-auto max-w-4xl px-6">
           <PubSectionHeader
             className="mx-auto text-center mb-16 max-w-3xl"
@@ -393,14 +393,22 @@ export default function RenovationSalleDeBainPub() {
       </section>
 
       {/* CTA FOOTER */}
-      <section className="bg-background py-24 md:py-32">
-        <div className="container-large mx-auto max-w-4xl px-6 text-center">
-          <Wrench className="mx-auto mb-6 h-10 w-10 text-primary" />
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Votre projet, votre espace</p>
-          <h2 className="mb-6 text-4xl font-bold md:text-5xl text-foreground">Parlons de la salle de bain que vous souhaitez transformer</h2>
-           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">Présentez votre pièce, vos idées et vos priorités. Nous pourrons examiner les options pour votre rénovation à Laval ou dans les Laurentides.</p>
+      <section data-sticky-hide className="relative isolate overflow-hidden bg-secondary py-20 text-white md:py-24">
+        <img
+          src={bathroomImages.bright}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-secondary/85" />
+        <div className="container-large relative mx-auto max-w-3xl px-6 text-center">
+          <Wrench className="mx-auto mb-5 h-9 w-9 text-primary" />
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-primary">Votre projet, votre espace</p>
+          <h2 className="mb-5 font-bold text-white">Parlons de la salle de bain que vous souhaitez transformer</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Présentez votre pièce, vos idées et vos priorités. Nous pourrons examiner les options pour votre rénovation à Laval ou dans les Laurentides.</p>
           <PubCTA service="renovation-salle-de-bain" className="px-10 py-5 text-lg rounded-none" testId="button-bottom-cta">Demander une évaluation</PubCTA>
-          <p className="mt-6 text-sm text-muted-foreground">La portée et les possibilités sont précisées en fonction de l’évaluation du projet.</p>
+          <p className="mt-6 text-sm text-gray-400">La portée et les possibilités sont précisées en fonction de l’évaluation du projet.</p>
         </div>
       </section>
     </PubLayout>

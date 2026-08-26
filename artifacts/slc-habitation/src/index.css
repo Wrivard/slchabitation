@@ -302,16 +302,209 @@
   overflow-wrap: anywhere;
 }
 
+/* Isolation du parcours publicitaire face au CSS hérité de Webflow.
+   Ces feuilles sont chargées hors couche : leurs sélecteurs d'élément
+   (a, ul, li, h3, h4, summary, img) l'emportent sur les utilitaires
+   Tailwind, qui vivent dans une couche. `revert-layer` rend la main
+   aux utilitaires appliqués sur l'élément. */
+.pub-shell a {
+  color: revert-layer;
+  text-decoration: revert-layer;
+}
+
+.pub-shell p {
+  margin-bottom: revert-layer;
+}
+
+.pub-shell ul,
+.pub-shell ol,
+.pub-shell li {
+  margin-block: revert-layer;
+  padding-left: revert-layer;
+}
+
+.pub-shell img {
+  display: revert-layer;
+  max-width: revert-layer;
+}
+
+.pub-shell summary {
+  display: revert-layer;
+  list-style: none;
+}
+
+.pub-shell summary::-webkit-details-marker {
+  display: none;
+}
+
+.pub-shell h3,
+.pub-shell h4,
+.pub-shell h5,
+.pub-shell h6 {
+  font-size: revert-layer;
+  font-weight: revert-layer;
+  line-height: revert-layer;
+  letter-spacing: revert-layer;
+}
+
 .pub-shell h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
+  font-size: clamp(2.05rem, 3.6vw, 2.9rem) !important;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
 }
 
 .pub-shell h2 {
-  font-size: clamp(2rem, 4vw, 3.25rem) !important;
-  font-weight: 400;
-  line-height: 1.15;
+  font-size: clamp(1.6rem, 2.5vw, 2.15rem) !important;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+/* --- Accordéon FAQ --- */
+.pub-faq {
+  background: #fff;
+  border: 1px solid hsl(var(--border));
+}
+
+.pub-faq__summary {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.15rem 1.35rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.2s ease;
+}
+
+.pub-faq__summary:hover {
+  color: hsl(var(--primary));
+}
+
+.pub-faq__summary::-webkit-details-marker,
+.pub-faq__summary::marker {
+  display: none;
+  content: '';
+}
+
+.pub-faq__icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: hsl(var(--primary));
+  transition: transform 0.3s ease;
+}
+
+.pub-faq[open] .pub-faq__icon {
+  transform: rotate(180deg);
+}
+
+.pub-faq__answer {
+  padding: 0 1.35rem 1.35rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.65;
+}
+
+/* --- Pied de page du parcours publicitaire --- */
+.pub-footer__title {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 1.15rem;
+}
+
+.pub-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pub-footer li {
+  margin: 0;
+  padding: 0;
+}
+
+.pub-footer a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+.pub-footer a:hover {
+  color: #fff;
+}
+
+/* --- CTA flottant --- */
+.pub-sticky-cta {
+  position: fixed;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(180%);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.pub-sticky-cta.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+  transition: opacity 0.2s ease, transform 0.25s ease, visibility 0s;
+}
+
+.pub-sticky-cta__phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  padding: 0.9rem 1.1rem;
+  background: hsl(var(--secondary));
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none !important;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
+}
+
+.pub-sticky-cta__button {
+  flex: 1 1 auto;
+  justify-content: center;
+  padding: 0.9rem 1.25rem !important;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
+}
+
+@media (min-width: 768px) {
+  .pub-sticky-cta {
+    left: auto;
+    right: 1.75rem;
+    bottom: 1.75rem;
+    gap: 0.65rem;
+  }
+
+  .pub-sticky-cta__button {
+    flex: 0 0 auto;
+    padding: 1rem 1.6rem !important;
+  }
 }
 
 .pub-site-header {

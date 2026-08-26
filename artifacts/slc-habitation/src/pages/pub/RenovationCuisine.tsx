@@ -54,10 +54,10 @@ const kitchenImages = {
     height: 1440,
   },
   extra4: {
-    src: '/images/INT%C3%89RIEUR/Cuisine/12509173_866265596824275_1393287164403664650_n%20(1).jpg',
-    alt: 'Cuisine classique avec boiseries',
-    width: 510,
-    height: 561,
+    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png',
+    alt: 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant',
+    width: 940,
+    height: 788,
   }
 };
 
@@ -177,7 +177,7 @@ export default function RenovationCuisinePub() {
   return (
     <PubLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-secondary text-white min-h-[85vh] flex flex-col justify-end">
+      <section className="relative overflow-hidden bg-secondary text-white min-h-[72vh] flex flex-col justify-end">
         <div className="absolute inset-0">
           <img
             src={kitchenImages.hero.src}
@@ -189,7 +189,7 @@ export default function RenovationCuisinePub() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/60 to-transparent" />
         </div>
-        <div className="container-large relative mx-auto max-w-7xl px-6 pb-20 pt-32 fade-up">
+        <div className="container-large relative mx-auto max-w-7xl px-6 pb-16 pt-24 fade-up">
           <div className="max-w-4xl">
             <div className="mb-7 flex flex-wrap gap-3 text-xs font-medium tracking-wide sm:text-sm">
               <span className="flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2 rounded-none"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
@@ -198,7 +198,7 @@ export default function RenovationCuisinePub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Cuisine pensée pour votre quotidien</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de cuisine à Laval et dans les Laurentides</h1>
-            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">SLC Habitation examine vos usages, votre espace et ses contraintes techniques pour planifier une rénovation adaptée.</p>
+            <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">SLC Habitation examine vos usages, votre espace et ses contraintes techniques pour planifier une rénovation adaptée.</p>
             <PubCTA service="renovation-cuisine" className="px-8 py-5 text-lg" testId="button-hero-cta">Parler de mon projet</PubCTA>
           </div>
         </div>
@@ -207,15 +207,15 @@ export default function RenovationCuisinePub() {
       <PubPageNav items={navItems} />
 
       {/* LECTURE COMPLÈTE */}
-      <section id="demarche" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="demarche" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-12">
+          <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
               <PubSectionHeader
                 kicker="Une lecture complète de la pièce"
                 title="Avant les choix visibles, comprendre ce qui soutient le projet"
               />
-              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+              <div className="space-y-4 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
                 <p>Au-delà des armoires, le projet relie circulation, rangement, surfaces de travail, appareils, éclairage et finitions.</p>
                 <p>À Laval et dans les Laurentides, la démarche commence par votre lieu et vos besoins. L’évaluation aide à approfondir, adapter ou écarter les idées.</p>
               </div>
@@ -243,7 +243,7 @@ export default function RenovationCuisinePub() {
       </section>
 
       {/* IMPLANTATION (Chapitres compactés et photographiques) */}
-      <section id="implantation" className="scroll-mt-20 border-y border-border bg-muted/40 py-20 md:py-24">
+      <section id="implantation" className="scroll-mt-20 border-y border-border bg-muted/40 py-14 md:py-16">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
             className="mb-14 max-w-3xl"
@@ -252,9 +252,12 @@ export default function RenovationCuisinePub() {
             description="Implantation, rangement, lumière et détails se répondent. Un choix d’îlot, par exemple, influence les autres."
           />
 
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-            {chapters.map((chapter) => (
-              <article key={chapter.number} className="flex flex-col group">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
+            {chapters.map((chapter, index) => (
+              <article
+                key={chapter.number}
+                className={`flex flex-col group ${index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
+              >
                 <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-none">
                   <img
                     src={chapter.image.src}
@@ -268,15 +271,15 @@ export default function RenovationCuisinePub() {
                     {chapter.number}
                   </div>
                 </div>
-                <h3 className="mb-4 text-2xl font-bold leading-tight text-foreground">{chapter.title}</h3>
-                <div className="mb-6 flex-grow space-y-4 text-[0.95rem] leading-relaxed text-muted-foreground">
+                <h3 className="mb-3 text-xl font-bold leading-snug text-foreground">{chapter.title}</h3>
+                <div className="mb-5 flex-grow space-y-3 text-[0.95rem] leading-relaxed text-muted-foreground">
                   {chapter.paragraphs.map((p) => <p key={p}>{p}</p>)}
                 </div>
-                <div className="mt-auto border-t border-border pt-5">
-                  <strong className="block text-foreground text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+                <div className="mt-auto border-t border-border pt-4">
+                  <strong className="mb-2 flex items-center gap-2 text-xs uppercase tracking-wider text-foreground">
                     <ArrowRight className="w-4 h-4 text-primary" /> Point de planification
                   </strong>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{chapter.callout}</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{chapter.callout}</p>
                 </div>
               </article>
             ))}
@@ -285,23 +288,23 @@ export default function RenovationCuisinePub() {
       </section>
 
       {/* MATÉRIAUX */}
-      <section id="materiaux" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="materiaux" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center mb-20">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center mb-12">
             <div>
               <PubSectionHeader
                 kicker="Des choix à rendre lisibles"
                 title="Des détails qui servent la cuisine, jour après jour"
                 description="Matériaux et équipements influencent le caractère, l’entretien, les usages et la continuité visuelle."
               />
-              <p className="text-lg leading-relaxed text-muted-foreground">Textures, lumière naturelle, comptoirs, hauteurs de rangement et mobilier adjacent sont examinés comme un ensemble.</p>
+              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">Textures, lumière naturelle, comptoirs, hauteurs de rangement et mobilier adjacent sont examinés comme un ensemble.</p>
             </div>
-            <div className="aspect-[4/5] rounded-none overflow-hidden border border-border">
+            <div className="aspect-[4/3] rounded-none overflow-hidden border border-border">
                <img src={kitchenImages.extra4.src} alt={kitchenImages.extra4.alt} width={kitchenImages.extra4.width} height={kitchenImages.extra4.height} loading="lazy" className="w-full h-full object-cover" />
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-16">
+          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-12">
             {configurationCards.map(({ icon: Icon, title, text }) => (
               <div key={title} className="flex flex-col">
                 <Icon className="w-8 h-8 text-primary mb-6 stroke-[1.5]" />
@@ -313,7 +316,7 @@ export default function RenovationCuisinePub() {
 
           <div className="mt-16 rounded-none bg-secondary p-10 text-secondary-foreground md:flex md:items-center md:gap-10">
             <Ruler className="mb-6 h-12 w-12 shrink-0 text-primary md:mb-0" />
-            <p className="text-lg leading-relaxed text-gray-200">
+            <p className="text-base leading-relaxed md:text-[1.0625rem] text-gray-200">
               <strong className="text-white font-bold block mb-1">Un plan se vérifie dans l’espace.</strong>
               Croquis et inspirations se confrontent aux dimensions, ouvertures, appareils et contraintes du lieu.
             </p>
@@ -322,7 +325,7 @@ export default function RenovationCuisinePub() {
       </section>
 
       {/* UN PROJET PLUS FACILE À EXPLIQUER */}
-      <section className="bg-secondary py-24 text-secondary-foreground md:py-32 relative overflow-hidden">
+      <section className="bg-secondary py-16 text-secondary-foreground md:py-20 relative overflow-hidden">
         <div className="container-large mx-auto max-w-7xl px-6 relative z-10">
           <PubSectionHeader
             className="mb-14 max-w-4xl"
@@ -332,52 +335,33 @@ export default function RenovationCuisinePub() {
             description="Regardez la cuisine en action : courses, café, préparation, rangement et circulation. Ces scènes révèlent ce qui fonctionne ou doit être revu."
           />
 
-          <div className="grid gap-x-12 gap-y-8 border-y border-white/15 py-10 text-gray-300 sm:grid-cols-2">
-            <div className="border-l-2 border-primary pl-5">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Priorités</p>
-              <p className="leading-relaxed">Séparez les besoins essentiels des souhaits à explorer. Une option reste à valider selon le bâtiment.</p>
-            </div>
-            <div className="border-l-2 border-primary pl-5">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Inspirations</p>
-              <p className="leading-relaxed">Utilisez-les pour préciser une ambiance, puis ramenez-les à la pièce réelle.</p>
-            </div>
-            <div className="border-l-2 border-primary pl-5">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Style</p>
-              <p className="leading-relaxed">Notez couleurs, textures, poignées, armoires hautes et place de l’îlot. Lumière, dimensions et technique guideront les ajustements.</p>
-            </div>
-            <div className="border-l-2 border-primary pl-5">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Pièces adjacentes</p>
-              <p className="leading-relaxed">Observez les vues, les murs, les sols et le rangement visible depuis le séjour, la salle à manger ou l’entrée.</p>
-            </div>
-          </div>
-
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-x-10 gap-y-8 border-t border-white/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
             {decisionPoints.map((item) => (
-              <div key={item.title} className="border-t border-white/20 pt-6">
-                <h3 className="mb-4 text-xl font-bold text-white">{item.title}</h3>
-                <p className="leading-relaxed text-gray-400">{item.text}</p>
+              <div key={item.title}>
+                <h3 className="mb-3 text-lg font-bold text-white">{item.title}</h3>
+                <p className="text-[0.95rem] leading-relaxed text-gray-400">{item.text}</p>
               </div>
             ))}
           </div>
 
-          <aside className="mt-14 rounded-none border border-primary/30 bg-primary/10 p-8 text-gray-200">
-            <h3 className="mb-6 flex items-center gap-3 text-xl font-bold text-white">
-              <ClipboardCheck className="text-primary w-6 h-6" /> Pour une rencontre productive
+          <aside className="mt-12 border border-primary/30 bg-primary/10 p-6 md:p-8">
+            <h3 className="mb-5 flex items-center gap-3 text-base font-bold uppercase tracking-[0.12em] text-white">
+              <ClipboardCheck className="h-5 w-5 text-primary" /> À préparer pour la rencontre
             </h3>
-            <ul className="grid gap-5 leading-relaxed md:grid-cols-2">
-              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">À conserver ou corriger</strong>Notez ce qui fonctionne, ce qui dérange et ce que vous voulez faciliter.</li>
-              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">Repères du lieu</strong>Apportez dimensions connues et photos des murs, fenêtres et installations. Elles ne remplacent pas l’évaluation.</li>
-              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">Options à comparer</strong>Expliquez l’usage visé : repas sur banquette, préparation sur l’îlot ou provisions en armoire haute.</li>
-              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">Vie pendant les travaux</strong>Signalez les accès utilisés et les pièces voisines à protéger.</li>
+            <ul className="grid gap-x-10 gap-y-3 text-[0.95rem] leading-relaxed text-gray-300 sm:grid-cols-2">
+              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />Ce qui fonctionne et ce qui dérange aujourd’hui</li>
+              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />Dimensions connues et photos de la pièce</li>
+              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />L’usage visé : repas, préparation, rangement</li>
+              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />Les accès et pièces voisines à protéger</li>
             </ul>
           </aside>
         </div>
       </section>
 
       {/* LE CHANTIER */}
-      <section id="chantier" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="chantier" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center mb-20">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center mb-12">
             <div className="order-2 lg:order-1 rounded-none overflow-hidden aspect-[4/3] border border-border">
               <img src={kitchenImages.extra3.src} alt={kitchenImages.extra3.alt} width={kitchenImages.extra3.width} height={kitchenImages.extra3.height} loading="lazy" className="w-full h-full object-cover" />
             </div>
@@ -387,11 +371,11 @@ export default function RenovationCuisinePub() {
                 title="Une séquence de chantier à organiser avec soin"
                 description="Retrait, services, surfaces, installation et finitions suivent une séquence adaptée aux choix et aux conditions sur place."
               />
-              <p className="text-lg leading-relaxed text-muted-foreground">SLC Habitation relie la planification aux interventions nécessaires et aux éléments à évaluer pendant le chantier.</p>
+              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">SLC Habitation relie la planification aux interventions nécessaires et aux éléments à évaluer pendant le chantier.</p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-10 border-t border-border pt-16">
+          <div className="grid md:grid-cols-4 gap-10 border-t border-border pt-12">
             {siteSteps.map((step, index) => (
               <div key={step.title} className="relative">
                 <span className="block text-6xl font-black text-primary/10 mb-4 tracking-tighter">0{index + 1}</span>
@@ -401,18 +385,18 @@ export default function RenovationCuisinePub() {
             ))}
           </div>
 
-          <div className="mt-24 text-center max-w-2xl mx-auto">
+          <div className="mt-16 text-center max-w-2xl mx-auto">
             <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">Votre cuisine mérite une réflexion complète</h2>
-            <p className="mb-10 text-lg leading-relaxed text-muted-foreground">Présentez la pièce, vos priorités et les changements envisagés. Une première discussion situe les éléments à examiner.</p>
+            <p className="mb-8 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">Présentez la pièce, vos priorités et les changements envisagés. Une première discussion situe les éléments à examiner.</p>
             <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-middle-cta">Discuter de ma cuisine</PubCTA>
           </div>
         </div>
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="bg-primary/5 py-24 text-foreground md:py-32 border-y border-border">
+      <section className="bg-primary/5 py-16 text-foreground md:py-20 border-y border-border">
         <div className="container-large mx-auto max-w-4xl px-6 text-center">
-          <blockquote className="mb-10 font-heading text-3xl md:text-4xl font-medium leading-tight text-foreground">
+          <blockquote className="mb-8 font-heading text-3xl md:text-4xl font-medium leading-tight text-foreground">
             « Excellente compagnie, service professionnel et soucis du détails! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets! »
           </blockquote>
           <p className="font-bold text-lg text-foreground">Mélodie Binette</p>
@@ -421,7 +405,7 @@ export default function RenovationCuisinePub() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="faq" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-4xl px-6">
           <PubSectionHeader
             className="mx-auto text-center max-w-3xl mb-16"
@@ -436,13 +420,23 @@ export default function RenovationCuisinePub() {
       </section>
 
       {/* CTA FOOTER */}
-      <section className="bg-secondary py-24 text-white md:py-32">
-        <div className="container-large mx-auto max-w-4xl px-6 text-center">
-          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-none bg-white/10">
-            <Check className="h-10 w-10 text-primary" />
+      <section data-sticky-hide className="relative isolate overflow-hidden bg-secondary py-20 text-white md:py-24">
+        <img
+          src={kitchenImages.hero.src}
+          alt=""
+          aria-hidden="true"
+          width={kitchenImages.hero.width}
+          height={kitchenImages.hero.height}
+          loading="lazy"
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-secondary/85" />
+        <div className="container-large relative mx-auto max-w-3xl px-6 text-center">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-primary">
+            <Check className="h-8 w-8 text-white" />
           </div>
-          <h2 className="mb-6 text-4xl font-bold md:text-5xl">Prêt à clarifier votre projet de cuisine?</h2>
-          <p className="mb-12 text-lg leading-relaxed text-gray-300">Présentez votre point de départ, les usages à améliorer et les changements envisagés pour votre rénovation à Laval ou dans les Laurentides.</p>
+          <h2 className="mb-5 font-bold">Prêt à clarifier votre projet de cuisine?</h2>
+          <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Présentez votre point de départ, les usages à améliorer et les changements envisagés pour votre rénovation à Laval ou dans les Laurentides.</p>
           <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-bottom-cta">Demander une soumission</PubCTA>
         </div>
       </section>

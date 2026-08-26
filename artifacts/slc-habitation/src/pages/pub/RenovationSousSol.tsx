@@ -231,7 +231,7 @@ export default function RenovationSousSolPub() {
   return (
     <PubLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-secondary text-secondary-foreground min-h-[85vh] flex flex-col justify-end">
+      <section className="relative overflow-hidden bg-secondary text-secondary-foreground min-h-[72vh] flex flex-col justify-end">
         <div className="absolute inset-0">
           <img
             src={gallery[0].src}
@@ -243,7 +243,7 @@ export default function RenovationSousSolPub() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/60 to-transparent" />
         </div>
-        <div className="container-large relative mx-auto max-w-7xl px-6 pb-20 pt-32 fade-up">
+        <div className="container-large relative mx-auto max-w-7xl px-6 pb-16 pt-24 fade-up">
           <div className="max-w-4xl">
             <div className="mb-7 flex flex-wrap gap-3 text-xs font-medium tracking-wide sm:text-sm text-white">
               <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
@@ -252,7 +252,7 @@ export default function RenovationSousSolPub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Aménagement intérieur résidentiel</p>
             <h1 className="mb-6 max-w-4xl font-heading text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">Rénovation de sous-sol <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-10 max-w-3xl text-lg leading-relaxed text-gray-200 md:text-xl">Transformez le sous-sol à partir de sa structure, de ses ouvertures et de votre quotidien. SLC Habitation vous aide à clarifier les possibilités avant de planifier.</p>
+            <p className="mb-8 max-w-3xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Transformez le sous-sol à partir de sa structure, de ses ouvertures et de votre quotidien. SLC Habitation vous aide à clarifier les possibilités avant de planifier.</p>
             <PubCTA service="renovation-sous-sol" className="px-8 py-5 text-lg rounded-none" testId="button-hero-cta">Parler de votre projet</PubCTA>
           </div>
         </div>
@@ -261,15 +261,15 @@ export default function RenovationSousSolPub() {
       <PubPageNav items={navigation} />
 
       {/* POSSIBILITÉS */}
-      <section id="possibilites" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="possibilites" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-12 lg:items-end mb-20">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-end mb-12">
             <div className="lg:col-span-7">
               <PubSectionHeader
                 kicker="Un niveau à réinventer"
                 title="Partir de l’espace réel, puis imaginer la vie qui s’y passe"
               />
-              <p className="text-lg leading-relaxed text-muted-foreground">Conduits, poutres, panneau, salle mécanique et fenêtres basses guident la place des pièces, la lumière et les priorités.</p>
+              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">Conduits, poutres, panneau, salle mécanique et fenêtres basses guident la place des pièces, la lumière et les priorités.</p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-none border border-primary/20 bg-primary/5 p-8">
@@ -281,7 +281,7 @@ export default function RenovationSousSolPub() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-16 border-t border-border pt-16">
+          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-12">
             {possibilities.map(({ icon: Icon, title, text }) => (
               <div key={title} className="group">
                 <div className="mb-6 h-14 w-14 rounded-none bg-primary/10 flex items-center justify-center">
@@ -293,7 +293,7 @@ export default function RenovationSousSolPub() {
             ))}
           </div>
 
-          <div className="mt-24 grid lg:grid-cols-2 gap-12">
+          <div className="mt-16 grid lg:grid-cols-2 gap-12">
             <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-1 lg:content-center rounded-none bg-muted/40 p-10 text-foreground">
               <div>
                 <h3 className="mb-4 text-2xl font-bold">Un lieu pour le quotidien</h3>
@@ -312,7 +312,7 @@ export default function RenovationSousSolPub() {
       </section>
 
       {/* DIAGNOSTIC */}
-      <section id="diagnostic" className="scroll-mt-20 border-y border-border bg-muted/30 py-24 md:py-32">
+      <section id="diagnostic" className="scroll-mt-20 border-y border-border bg-muted/30 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
             className="max-w-3xl mb-16"
@@ -321,7 +321,7 @@ export default function RenovationSousSolPub() {
              description="Les conditions existantes orientent les matériaux, la disposition et les travaux. L’analyse initiale aide à choisir un scénario."
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
             {diagnosticPoints.map(([title, text]) => (
               <div key={title} className="group border-t border-border pt-6">
                 <div className="mb-4 h-px w-12 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -331,32 +331,32 @@ export default function RenovationSousSolPub() {
             ))}
           </div>
 
-          <figure className="mt-20 overflow-hidden rounded-none">
+          <figure className="mt-14 overflow-hidden rounded-none">
             <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-[360px] w-full object-cover" />
             <figcaption className="mt-4 text-sm text-muted-foreground">{gallery[1].caption}</figcaption>
           </figure>
 
-          <div className="mt-20 flex flex-col md:flex-row items-center md:items-start gap-8 rounded-none bg-secondary p-10 text-white shadow-2xl shadow-black/5">
+          <div className="mt-14 flex flex-col md:flex-row items-center md:items-start gap-8 rounded-none bg-secondary p-10 text-white shadow-2xl shadow-black/5">
             <Droplets className="h-12 w-12 shrink-0 text-primary" />
             <div>
               <h3 className="mb-3 text-xl font-bold">Repère pratique : l’humidité ne se masque pas</h3>
-              <p className="text-lg leading-relaxed text-gray-300">Avant les finis, signalez eau, efflorescence, odeur, condensation ou dégradation. La cause peut changer l’ordre des travaux.</p>
+              <p className="text-base leading-relaxed md:text-[1.0625rem] text-gray-300">Avant les finis, signalez eau, efflorescence, odeur, condensation ou dégradation. La cause peut changer l’ordre des travaux.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* REPÈRES TECHNIQUES */}
-      <section className="bg-background py-24 md:py-32">
+      <section className="bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
-            className="max-w-3xl mb-24"
+            className="max-w-3xl mb-14"
             kicker="Repères techniques pour mieux planifier"
             title="Les sujets qui transforment une idée en projet réfléchi"
             description="Sept repères pour préparer la visite — sans remplacer l’évaluation de votre résidence."
           />
 
-          <div className="space-y-16 md:space-y-20">
+          <div className="space-y-12 md:space-y-14">
             {technicalChapters.map(({ number, title, icon: Icon, points, note }) => (
               <article key={number} className="grid gap-6 border-t border-border pt-10 lg:grid-cols-12 lg:gap-10 lg:pt-12 group">
                 <div className="lg:col-span-1 text-center hidden lg:block">
@@ -392,15 +392,15 @@ export default function RenovationSousSolPub() {
       </section>
 
       {/* DÉMARCHE */}
-      <section id="demarche" className="scroll-mt-20 border-y border-border bg-muted/40 py-24 md:py-32">
+      <section id="demarche" className="scroll-mt-20 border-y border-border bg-muted/40 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid lg:grid-cols-12 gap-16">
+          <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">
               <PubSectionHeader
                 kicker="Une démarche lisible"
                 title="Décider dans le bon ordre"
               />
-               <p className="text-lg leading-relaxed text-muted-foreground mb-8">Les étapes séparent bâtiment, usage et esthétique. Vous gardez la vue d’ensemble avant de choisir.</p>
+               <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground mb-8">Les étapes séparent bâtiment, usage et esthétique. Vous gardez la vue d’ensemble avant de choisir.</p>
               <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider text-foreground">
                 <ArrowDown className="h-5 w-5 text-primary" />Du constat initial aux finitions
               </div>
@@ -421,7 +421,7 @@ export default function RenovationSousSolPub() {
                 ))}
               </div>
 
-              <div className="mt-20 rounded-none bg-background border border-border p-10 md:flex md:items-center md:justify-between md:gap-10 shadow-xl shadow-black/5">
+              <div className="mt-14 rounded-none bg-background border border-border p-10 md:flex md:items-center md:justify-between md:gap-10 shadow-xl shadow-black/5">
                 <div>
                   <h3 className="mb-3 text-2xl font-bold">Votre projet commence par les bonnes questions</h3>
                    <p className="max-w-xl leading-relaxed text-muted-foreground">Partagez l’usage visé et vos préoccupations. L’évaluation permet de discuter des possibilités propres au sous-sol.</p>
@@ -434,10 +434,10 @@ export default function RenovationSousSolPub() {
       </section>
 
       {/* TÉMOIGNAGE */}
-      <section className="bg-secondary py-24 text-secondary-foreground md:py-32">
+      <section className="bg-secondary py-16 text-secondary-foreground md:py-20">
         <div className="container-large mx-auto max-w-5xl px-6 text-center">
           <Volume2 className="mx-auto mb-8 h-10 w-10 text-primary" />
-          <blockquote className="font-heading text-3xl md:text-4xl font-medium leading-tight text-white mb-10">
+          <blockquote className="font-heading text-3xl md:text-4xl font-medium leading-tight text-white mb-8">
             « Magnifique travail de l'équipe SLC Habitation. Nous avions un projet complexe avec plusieurs défis! Ils ont fait un travail exceptionnel. Un gros merci pour votre professionnalisme! Je recommande sans hésiter. »
           </blockquote>
           <div className="font-bold text-lg text-white">Johanne Duguay</div>
@@ -446,7 +446,7 @@ export default function RenovationSousSolPub() {
       </section>
 
       {/* INSPIRATIONS (Galerie Editoriale) */}
-      <section id="inspirations" className="scroll-mt-20 bg-background py-24 md:py-32">
+      <section id="inspirations" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
           <PubSectionHeader
             className="max-w-3xl mb-16"
@@ -473,7 +473,7 @@ export default function RenovationSousSolPub() {
             ))}
           </div>
 
-          <div className="mt-24 grid md:grid-cols-3 gap-12 border-t border-border pt-16">
+          <div className="mt-16 grid md:grid-cols-3 gap-12 border-t border-border pt-12">
             <div>
               <PanelTop className="mb-4 h-8 w-8 text-primary stroke-[1.5]" />
               <h3 className="mb-3 text-xl font-bold">Plafonds et détails techniques</h3>
@@ -494,7 +494,7 @@ export default function RenovationSousSolPub() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="scroll-mt-20 border-y border-border bg-muted/30 py-24 md:py-32">
+      <section id="faq" className="scroll-mt-20 border-y border-border bg-muted/30 py-16 md:py-20">
         <div className="container-large mx-auto max-w-4xl px-6">
           <PubSectionHeader
             className="text-center mx-auto mb-16 max-w-3xl"
@@ -509,10 +509,21 @@ export default function RenovationSousSolPub() {
       </section>
 
       {/* CTA FOOTER */}
-      <section className="bg-background py-24 md:py-32">
-        <div className="container-large mx-auto max-w-4xl px-6 text-center flex flex-col items-center">
+      <section data-sticky-hide className="relative isolate overflow-hidden bg-secondary py-20 text-white md:py-24">
+        <img
+          src={gallery[0].src}
+          alt=""
+          aria-hidden="true"
+          width={gallery[0].width}
+          height={gallery[0].height}
+          loading="lazy"
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-secondary/85" />
+        <div className="container-large relative mx-auto flex max-w-3xl flex-col items-center px-6 text-center">
           <PubSectionHeader
             className="text-center"
+            tone="dark"
             kicker="Parlons de votre espace"
             title="Donnez une nouvelle place à votre sous-sol"
             description="Décrivez votre idée et l’espace actuel. Échangeons sur les points à évaluer à Laval ou dans les Laurentides."

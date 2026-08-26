@@ -38,15 +38,15 @@ export function PubSectionHeader({
   return (
     <div className={className}>
       {kicker && (
-        <p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">
+        <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
           {kicker}
         </p>
       )}
-      <h2 className={`mb-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl ${isDark ? 'text-white' : 'text-foreground'}`}>
+      <h2 className={`mb-5 font-bold ${isDark ? 'text-white' : 'text-foreground'}`}>
         {title}
       </h2>
       {description && (
-        <p className={`text-lg leading-relaxed ${isDark ? 'text-gray-300' : 'text-muted-foreground'}`}>
+        <p className={`max-w-2xl text-base leading-relaxed md:text-[1.0625rem] ${isDark ? 'text-gray-300' : 'text-muted-foreground'}`}>
           {description}
         </p>
       )}

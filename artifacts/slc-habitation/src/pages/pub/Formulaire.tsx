@@ -60,12 +60,12 @@ export default function FormulairePub() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
                   <ShieldCheck className="w-6 h-6 text-primary" />
-                  <h4 className="font-semibold text-foreground">Licence RBQ</h4>
+                  <h4 className="text-base font-semibold text-foreground">Licence RBQ</h4>
                   <p className="text-sm text-muted-foreground">8351-9033-59</p>
                 </div>
                 <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
                   <Clock className="w-6 h-6 text-primary" />
-                  <h4 className="font-semibold text-foreground">18 ans d’expérience</h4>
+                  <h4 className="text-base font-semibold text-foreground">18 ans d’expérience</h4>
                   <p className="text-sm text-muted-foreground">En rénovation résidentielle</p>
                 </div>
               </div>
