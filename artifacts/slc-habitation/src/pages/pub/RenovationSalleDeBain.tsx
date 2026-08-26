@@ -27,31 +27,31 @@ import {
 
 const bathroomImages = {
   hero: {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20221021_145907-p-2000.jpg',
-    alt: 'Salle de bain avec porte de grange en bois, douche vitrée et mur de céramique hexagonale',
-    width: 2000,
-    height: 2667,
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
+    alt: 'Salle de bain avec vanité en bois, grande douche vitrée et céramique grise',
+    width: 1600,
+    height: 1200,
   },
-  visit: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230427_135113-p-1600.jpg',
-  bright: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg',
+  visit: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vitre-p-1600.jpg',
+  bright: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-bain-autoportant-p-1600.jpg',
 };
 
 const heroThumbs = [
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-500.jpg',
-    alt: 'Salle de bain lumineuse avec douche vitrée et céramique blanche',
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-bain-autoportant-p-500.jpg',
+    alt: 'Salle de bain avec bain autoportant, robinetterie noire et plancher gris',
     width: 500,
     height: 375,
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-500.jpg',
-    alt: 'Salle de bain aux murs foncés avec douche en céramique',
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-500.jpg',
+    alt: 'Salle de bain avec vanité en bois et douche vitrée',
     width: 500,
-    height: 667,
+    height: 375,
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-500.jpg',
-    alt: 'Salle de bain avec vanité en bois et céramique au mur',
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-vanite-noire-p-500.jpg',
+    alt: 'Salle de bain avec vanité noire, mur hexagonal et douche vitrée',
     width: 500,
     height: 667,
   },
@@ -59,28 +59,28 @@ const heroThumbs = [
 
 const detailPhotos = [
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152903-p-800.jpg',
-    alt: 'Douche d’angle vitrée dans une salle de bain en céramique grand format',
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
+    alt: 'Salle de bain avec vanité en bois, grande douche vitrée et céramique grise',
+    width: 1600,
+    height: 1200,
+    caption: 'Douche et vanité coordonnées',
+    text: 'La vanité en bois et la douche vitrée se répondent dans une pièce claire et fonctionnelle.',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vitre-p-800.jpg',
+    alt: 'Douche vitrée avec grande céramique grise et robinetterie noire',
     width: 800,
     height: 1067,
-    caption: 'Céramique grand format',
-    text: 'Moins de joints au mur et au sol, et une douche vitrée sans cadre encombrant.',
+    caption: 'Douche vitrée et céramique',
+    text: 'La grande douche vitrée met en valeur la céramique et garde la pièce visuellement ouverte.',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190331-p-800.jpg',
-    alt: 'Vanité en bois avec vasque ronde, miroir rond et murs foncés',
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2023-vanite-bois-p-800.jpg',
+    alt: 'Vanité en bois avec lavabo noir, miroirs ronds et dosseret décoratif',
     width: 800,
-    height: 600,
-    caption: 'Vanité, miroir, robinetterie',
-    text: 'La vanité, le miroir et la robinetterie sont alignés sur le même axe.',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163611-p-800.jpg',
-    alt: 'Douche vitrée, toilette et colonne de rangement dans une salle de bain rénovée',
-    width: 800,
-    height: 600,
-    caption: 'Rangement et éclairage',
-    text: 'La colonne de rangement est intégrée à côté de la douche, et l’éclairage est encastré au plafond.',
+    height: 1067,
+    caption: 'Vanité et mur accent',
+    text: 'La vanité en bois et le mur accent donnent du caractère à cette salle de bain sans alourdir l’espace.',
   },
 ];
 
@@ -125,32 +125,46 @@ const serviceCities = [
 
 const bathroomGallery = [
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg',
-    alt: 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche',
-    caption: 'Douche vitrée et céramique claire',
-    category: 'Rénovation de salle de bain',
-    project: 'Douche vitrée',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163652-p-1600.jpg',
-    alt: 'Salle de bain rénovée avec vanité et grand miroir',
-    caption: 'Vanité, miroir et éclairage coordonnés',
-    category: 'Rénovation de salle de bain',
-    project: 'Vanité et miroir',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg',
-    alt: 'Salle de bain aux murs foncés avec douche en céramique',
-    caption: 'Palette foncée et douche en céramique',
-    category: 'Rénovation de salle de bain',
-    project: 'Palette foncée',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20240709_151409-p-1600.jpg',
-    alt: 'Bain autoportant et robinetterie dans une salle de bain rénovée',
-    caption: 'Bain autoportant et dégagements',
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-bain-autoportant-p-1600.jpg',
+    alt: 'Salle de bain avec bain autoportant blanc, robinetterie noire et plancher gris',
+    caption: 'Bain autoportant et robinetterie noire',
     category: 'Rénovation de salle de bain',
     project: 'Bain autoportant',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
+    alt: 'Salle de bain avec vanité en bois, grande douche vitrée et céramique grise',
+    caption: 'Vanité en bois et douche vitrée',
+    category: 'Rénovation de salle de bain',
+    project: 'Douche et vanité',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vitre-p-1600.jpg',
+    alt: 'Douche vitrée avec grande céramique grise et robinetterie noire',
+    caption: 'Grande douche vitrée',
+    category: 'Rénovation de salle de bain',
+    project: 'Douche sur mesure',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-vanite-noire-p-1600.jpg',
+    alt: 'Salle de bain avec vanité noire, mur hexagonal et douche vitrée',
+    caption: 'Vanité noire et mur hexagonal',
+    category: 'Rénovation de salle de bain',
+    project: 'Vanité et mur accent',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2023-vanite-bois-p-1600.jpg',
+    alt: 'Salle de bain avec vanité en bois, lavabo noir et mur décoratif',
+    caption: 'Vanité en bois et lavabo noir',
+    category: 'Rénovation de salle de bain',
+    project: 'Vanité sur mesure',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2024-douche-vanite-p-1600.jpg',
+    alt: 'Salle de bain avec meuble-lavabo en bois, douche vitrée et porte coulissante',
+    caption: 'Meuble-lavabo et porte coulissante',
+    category: 'Rénovation de salle de bain',
+    project: 'Salle de bain complète',
   },
 ];
 
@@ -369,7 +383,7 @@ export default function RenovationSalleDeBainPub() {
             </div>
             <div className="pub-visit-panel lg:col-span-5">
               <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto">
-                <img src={bathroomImages.visit} alt="Vanité en bois clair et miroir rond dans une salle de bain rénovée" width="1600" height="2133" loading="lazy" className="h-full w-full object-cover" />
+                <img src={bathroomImages.visit} alt="Douche vitrée avec grande céramique grise et robinetterie noire" width="1200" height="1600" loading="lazy" className="h-full w-full object-cover" />
               </div>
             </div>
           </div>

@@ -413,7 +413,6 @@ export default function RenovationSousSolPub() {
 
       {/* ZONE DESSERVIE */}
       <PubServiceArea
-        className="pt-12 md:pt-16"
         cities={serviceCities}
         note="Votre municipalité n’est pas dans la liste? Écrivez-nous, nous vous dirons si nous nous déplaçons chez vous."
       />

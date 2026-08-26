@@ -754,7 +754,7 @@ export function PubReviews({
 
 export function PubServiceArea({ cities, note, className = "" }: { cities: string[]; note: string; className?: string }) {
   return (
-    <section className={`bg-background pb-16 md:pb-20 ${className}`.trim()} data-testid="service-area">
+    <section className={`bg-background pt-12 pb-16 md:pt-16 md:pb-20 ${className}`.trim()} data-testid="service-area">
       <div className="container-large mx-auto max-w-7xl px-6">
         <div className="pub-area">
           <p className="pub-area__label">
