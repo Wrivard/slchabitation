@@ -35,20 +35,20 @@ const navItems = [
 
 const heroThumbs = [
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20241017_152123-p-500.jpg',
-    alt: 'Pièce de vie au sous-sol avec plancher de bois clair',
+    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-500.jpg',
+    alt: 'Salle polyvalente au sous-sol avec portes françaises',
     width: 500,
     height: 375,
   },
   {
-    src: '/images/relume-655394-p-500.jpeg',
-    alt: 'Douche vitrée dans une salle de bain aménagée au sous-sol',
+    src: '/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-500.jpg',
+    alt: 'Sous-sol en cours d’aménagement avec escalier et plafond suspendu',
     width: 500,
-    height: 667,
+    height: 375,
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg',
-    alt: 'Salle polyvalente au sous-sol avec portes françaises',
+    src: '/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-500.jpg',
+    alt: 'Cuisine aménagée dans un sous-sol lumineux',
     width: 500,
     height: 375,
   },
@@ -85,40 +85,40 @@ const serviceCities = [
 
 const gallery = [
   {
-    src: '/images/relume-657406.jpeg',
-    alt: 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses',
-    width: 2048,
-    height: 1536,
-    caption: 'Aire de vie et cuisine au sous-sol',
-    category: 'Rénovation de sous-sol',
-    project: 'Aire de vie et cuisine',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg',
-    alt: 'Sous-sol dégagé avant un projet de réaménagement avec petites fenêtres et plafond suspendu',
+    src: '/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg',
+    alt: 'Sous-sol aménagé avec escalier, portes et plancher de bois',
     width: 4000,
     height: 3000,
-    caption: 'Point de départ : volume et éléments existants',
+    caption: 'Escalier et aire de vie aménagés',
     category: 'Rénovation de sous-sol',
-    project: 'Avant les travaux',
+    project: 'Aire de vie aménagée',
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg',
-    alt: 'Espace de sous-sol aménagé avec plancher de bois clair, fenêtres basses et murs beiges',
+    src: '/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505.jpg',
+    alt: 'Sous-sol en cours d’aménagement avec escalier, câblage et plafond suspendu',
     width: 4000,
     height: 3000,
-    caption: 'Pièce de vie lumineuse au niveau inférieur',
+    caption: 'Travaux en cours dans l’aire de vie',
     category: 'Rénovation de sous-sol',
-    project: 'Pièce de vie lumineuse',
+    project: 'Travaux en cours',
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg',
+    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173.jpg',
     alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
     width: 4000,
     height: 3000,
-    caption: 'Configuration ouverte avec accès fermé',
+    caption: 'Salle polyvalente avec finitions complètes',
     category: 'Rénovation de sous-sol',
     project: 'Salle polyvalente',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943.jpg',
+    alt: 'Cuisine aménagée dans un sous-sol avec îlot central et armoires',
+    width: 4000,
+    height: 3000,
+    caption: 'Cuisine et aire de vie au sous-sol',
+    category: 'Rénovation de sous-sol',
+    project: 'Cuisine au sous-sol',
   },
 ];
 
@@ -139,10 +139,10 @@ const includedCards = [
     title: 'La plomberie et l’électricité',
     points: ['Salle de bain ou salle d’eau', 'Prises, éclairage, chauffage', 'Ventilation de l’espace'],
     image: {
-      src: '/images/relume-655394-p-800.jpeg',
-      alt: 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol',
+      src: '/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-800.jpg',
+      alt: 'Sous-sol en cours d’aménagement avec câblage et plafond suspendu',
       width: 800,
-      height: 1067,
+      height: 600,
     },
   },
   {
@@ -150,7 +150,7 @@ const includedCards = [
     title: 'Les finitions',
     points: ['Plancher, gypse, peinture', 'Portes, moulures, rangements', 'Plafond et escalier'],
     image: {
-      src: '/images/INT%C3%89RIEUR/randoms/20241018_161142-p-800.jpg',
+      src: '/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-800.jpg',
       alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
       width: 800,
       height: 600,
@@ -267,10 +267,6 @@ export default function RenovationSousSolPub() {
             note="Visite et estimation sans frais, réponse sous 48 heures."
             action={<PubCTA service="renovation-sous-sol" testId="button-inclus-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
-
-          <div className="mt-14 aspect-[16/9] w-full overflow-hidden rounded-none border border-border">
-            <img src={gallery[2].src} alt={gallery[2].alt} width={gallery[2].width} height={gallery[2].height} loading="lazy" className="h-full w-full object-cover" />
-          </div>
         </div>
       </section>
 
@@ -379,6 +375,7 @@ export default function RenovationSousSolPub() {
 
       {/* ZONE DESSERVIE */}
       <PubServiceArea
+        className="pt-12 md:pt-16"
         cities={serviceCities}
         note="Votre municipalité n’est pas dans la liste? Écrivez-nous, nous vous dirons si nous nous déplaçons chez vous."
       />

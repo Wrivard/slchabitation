@@ -752,9 +752,9 @@ export function PubReviews({
  * Zone desservie : reprend les municipalités déjà annoncées sur le site.
  * ----------------------------------------------------------------------- */
 
-export function PubServiceArea({ cities, note }: { cities: string[]; note: string }) {
+export function PubServiceArea({ cities, note, className = "" }: { cities: string[]; note: string; className?: string }) {
   return (
-    <section className="bg-background pb-16 md:pb-20" data-testid="service-area">
+    <section className={`bg-background pb-16 md:pb-20 ${className}`.trim()} data-testid="service-area">
       <div className="container-large mx-auto max-w-7xl px-6">
         <div className="pub-area">
           <p className="pub-area__label">

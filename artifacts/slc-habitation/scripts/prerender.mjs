@@ -378,31 +378,30 @@ const paidPageEnhancements = {
     label: 'Entrepreneur en rénovation',
   },
   'renovation-sous-sol': {
-    hero: ['/images/relume-657406.jpeg', 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses', 2048, 1536],
+    hero: ['/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg', 'Sous-sol aménagé avec escalier, portes et plancher de bois', 4000, 3000],
     thumbsLabel: 'Sous-sols réalisés',
     thumbs: [
-      ['/images/INT%C3%89RIEUR/randoms/20241017_152123-p-500.jpg', 'Pièce de vie au sous-sol avec plancher de bois clair', 500, 375],
-      ['/images/relume-655394-p-500.jpeg', 'Douche vitrée dans une salle de bain aménagée au sous-sol', 500, 667],
-      ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg', 'Salle polyvalente au sous-sol avec portes françaises', 500, 375],
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-500.jpg', 'Salle polyvalente au sous-sol avec portes françaises', 500, 375],
+      ['/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-500.jpg', 'Sous-sol en cours d’aménagement avec escalier et plafond suspendu', 500, 375],
+      ['/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-500.jpg', 'Cuisine aménagée dans un sous-sol lumineux', 500, 375],
     ],
     cardImages: [
       ['/images/INT%C3%89RIEUR/randoms/20230223_130423_1787769737375-p-800.jpg', 'Sous-sol avec escalier, garde-corps et plancher de bois', 800, 600],
-      ['/images/relume-655394-p-800.jpeg', 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol', 800, 1067],
-      ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-800.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 800, 600],
+      ['/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-800.jpg', 'Sous-sol en cours d’aménagement avec câblage et plafond suspendu', 800, 600],
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-800.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 800, 600],
     ],
-    includedWide: ['/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg', 'Espace de sous-sol aménagé avec plancher de bois clair, fenêtres basses et murs beiges', 4000, 3000],
-    visitImage: ['/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg', 'Sous-sol dégagé avant un projet de réaménagement avec petites fenêtres et plafond suspendu', 4000, 3000],
+    visitImage: ['/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505.jpg', 'Sous-sol en cours d’aménagement avec escalier, câblage et plafond suspendu', 4000, 3000],
     visitNote: [
       'L’humidité ne se cache pas sous le gypse',
       'Si vous avez déjà vu de l’eau, une odeur ou de la peinture qui pèle, dites-le-nous. Ça change l’ordre des travaux.',
     ],
-    ctaImage: ['/images/relume-657406.jpeg', 2048, 1536],
+    ctaImage: ['/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg', 4000, 3000],
     reviews: [paidReviews.johanne, paidReviews.melodie, paidReviews.isabelle],
     images: [
-      ['/images/relume-657406.jpeg', 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses', 2048, 1536, 'Aire de vie et cuisine au sous-sol'],
-      ['/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg', 'Sous-sol dégagé avant un projet de réaménagement avec petites fenêtres et plafond suspendu', 4000, 3000, 'Point de départ : volume et éléments existants'],
-      ['/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg', 'Espace de sous-sol aménagé avec plancher de bois clair, fenêtres basses et murs beiges', 4000, 3000, 'Pièce de vie lumineuse au niveau inférieur'],
-      ['/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 4000, 3000, 'Configuration ouverte avec accès fermé'],
+      ['/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg', 'Sous-sol aménagé avec escalier, portes et plancher de bois', 4000, 3000, 'Escalier et aire de vie aménagés'],
+      ['/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505.jpg', 'Sous-sol en cours d’aménagement avec escalier, câblage et plafond suspendu', 4000, 3000, 'Travaux en cours dans l’aire de vie'],
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 4000, 3000, 'Salle polyvalente avec finitions complètes'],
+      ['/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943.jpg', 'Cuisine aménagée dans un sous-sol avec îlot central et armoires', 4000, 3000, 'Cuisine et aire de vie au sous-sol'],
     ],
     label: 'Entrepreneur en rénovation',
   },
@@ -438,12 +437,9 @@ function createPaidStaticBody(content, routePath) {
     .map(([quote, author]) =>
       `<figure><p>5 étoiles sur 5</p><blockquote>« ${escapeHtml(quote)} »</blockquote><figcaption><strong>${escapeHtml(author)}</strong>, propriétaire</figcaption></figure>`)
     .join('');
-  const includedWide = extra.includedWide
-    ? `<figure><img src="${escapeHtml(extra.includedWide[0])}" alt="${escapeHtml(extra.includedWide[1])}" width="${extra.includedWide[2]}" height="${extra.includedWide[3]}" loading="lazy"></figure>`
-    : '';
   const [ctaSrc, ctaWidth, ctaHeight] = extra.ctaImage;
   const ctaImage = `<img src="${escapeHtml(ctaSrc)}" alt="" aria-hidden="true" width="${ctaWidth}" height="${ctaHeight}" loading="lazy">`;
-  const serviceArea = `<section class="py-12"><div class="container-large mx-auto max-w-7xl px-6"><p><strong>Nous travaillons à</strong></p><ul>${paidServiceCities.map((city) => `<li>${escapeHtml(city)}</li>`).join('')}</ul><p>${escapeHtml(paidServiceNote)}</p></div></section>`;
+  const serviceArea = `<section class="pt-12 pb-12 md:pt-16 md:pb-20"><div class="container-large mx-auto max-w-7xl px-6"><p><strong>Nous travaillons à</strong></p><ul>${paidServiceCities.map((city) => `<li>${escapeHtml(city)}</li>`).join('')}</ul><p>${escapeHtml(paidServiceNote)}</p></div></section>`;
   const steps = content.steps.map(([title, text], index) =>
     `<li><strong>0${index + 1} — ${escapeHtml(title)}</strong> ${escapeHtml(text)}</li>`).join('');
   const visit = content.visit.map(([title, text]) => `<div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div>`).join('');
@@ -457,14 +453,14 @@ function createPaidStaticBody(content, routePath) {
   return `<header class="border-b bg-background"><div class="container-large mx-auto flex items-center justify-between px-6 py-4"><a href="/"><img src="/images/relume-567884.png" width="180" height="60" alt="SLC Habitation"></a><div class="flex items-center gap-6"><a href="tel:5144048494" class="font-semibold">(514) 404-8494</a>${cta}</div></div>${headerNav}</header>
   <main><section class="bg-secondary py-20 text-white"><div class="container-large mx-auto max-w-5xl px-6"><img src="${escapeHtml(heroSrc)}" alt="${escapeHtml(heroAlt)}" width="${heroWidth}" height="${heroHeight}"><p class="text-primary font-bold uppercase tracking-widest mb-4">${escapeHtml(extra.label)}</p><h1 class="text-4xl md:text-6xl font-bold mb-6">${escapeHtml(content.h1)}</h1><p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">${escapeHtml(content.intro)}</p><ul class="flex flex-wrap gap-4 mb-8"><li class="border border-white/25 bg-white/10 px-4 py-2">19 avis Google 5 étoiles</li><li class="border border-white/25 bg-white/10 px-4 py-2">Licence RBQ : 8351-9033-59</li></ul>${cta}<p>${escapeHtml(extra.thumbsLabel)}</p>${heroThumbs}</div></section>
   ${proofBar}
-     <section id="inclus" class="pub-section-grid py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Ce qui est inclus</p><h2>${escapeHtml(content.includedTitle)}</h2><p>${escapeHtml(content.includedIntro)}</p>${included}<p>Visite et estimation sans frais, réponse sous 48 heures.</p>${cta}${includedWide}</div></section>
+     <section id="inclus" class="pub-section-grid py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Ce qui est inclus</p><h2>${escapeHtml(content.includedTitle)}</h2><p>${escapeHtml(content.includedIntro)}</p>${included}<p>Visite et estimation sans frais, réponse sous 48 heures.</p>${cta}</div></section>
    <section id="etapes" class="pub-section-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Comment ça se passe</p><h2>Quatre étapes simples</h2><ol>${steps}</ol><p>Plus de 500 projets complétés, 19 avis Google 5 étoiles.</p>${cta}</div></section>
   ${details}
    <section id="visite" class="pub-section-grid py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>La visite</p><h2>Ce que nous regardons chez vous</h2><p>La visite est sans frais. Elle sert à chiffrer votre projet correctement.</p>${visit}${visitNote}<h3>À préparer pour la visite</h3><ul>${checklist}</ul><img src="${escapeHtml(visitSrc)}" alt="${escapeHtml(visitAlt)}" width="${visitWidth}" height="${visitHeight}" loading="lazy"></div></section>
    <section id="avis" class="pub-section-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Avis Google</p><h2>${escapeHtml(paidReviewsTitle)}</h2><p>${escapeHtml(paidReviewsIntro)}</p>${reviews}</div></section>
   <section id="realisations" class="bg-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><h2>${escapeHtml(content.galleryTitle)}</h2><p>${escapeHtml(content.galleryIntro)}</p>${images}</div></section>
    <section id="faq" class="pub-section-muted py-20"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2>${faqItems}</div></section>
-  ${serviceArea}
+   ${serviceArea}
   <section class="bg-secondary py-20 text-white text-center">${ctaImage}<div class="container-large mx-auto max-w-4xl px-6"><h2>Prêt à recevoir votre soumission?</h2><p class="mb-8">${escapeHtml(content.ctaText)}</p>${cta}</div></section></main>
   <footer class="pub-footer bg-secondary py-16 text-white"><div class="container-large mx-auto max-w-7xl px-6"><p>Studio de rénovation résidentielle desservant Laval et les Laurentides.</p><p>Laval, Saint-Eustache, Terrebonne, Sainte-Thérèse, Rosemère, Mirabel, Boisbriand, Blainville et Saint-Jérôme.</p><p>RBQ 8351-9033-59 · <a href="tel:5144048494">(514) 404-8494</a> · <a href="/politique-de-confidentialite">Politique de confidentialité</a></p></div></footer>`;
 }
