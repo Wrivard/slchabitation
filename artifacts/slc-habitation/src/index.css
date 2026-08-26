@@ -960,28 +960,61 @@
 }
 
 /* --- Galerie de réalisations ---
-   Colonnes CSS comme la galerie de la page d'accueil : les images gardent
-   leur hauteur propre et s'enchaînent sans cellule vide. */
+   Composition portfolio : une tuile vedette et deux tuiles empilées, motif
+   répété par groupes de trois et inversé d'un groupe à l'autre. */
+.pub-shell .pub-gallery-head {
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.pub-shell .pub-gallery-head__title {
+  margin-bottom: 0;
+}
+
+.pub-shell .pub-gallery-head__aside {
+  margin-top: 1rem;
+}
+
+.pub-shell .pub-gallery-head__text {
+  max-width: 30rem;
+  font-size: 0.9375rem;
+}
+
 .pub-shell .pub-gallery {
-  column-count: 1;
-  column-gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pub-shell .pub-gallery__block {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pub-shell .pub-gallery__stack {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 1.5rem;
+  min-height: 0;
 }
 
 .pub-shell .pub-gallery__item {
   position: relative;
-  display: inline-block;
-  width: 100%;
-  margin: 0 0 1.5rem;
+  margin: 0;
   overflow: hidden;
   background: hsl(var(--muted));
-  break-inside: avoid;
 }
 
-.pub-shell .pub-gallery__item--square .pub-gallery__image {
-  aspect-ratio: 1;
+.pub-shell .pub-gallery__item--feature .pub-gallery__image {
+  aspect-ratio: 4 / 3;
 }
 
-.pub-shell .pub-gallery__item--wide .pub-gallery__image {
+.pub-shell .pub-gallery__item--stack .pub-gallery__image {
+  aspect-ratio: 16 / 9;
+}
+
+.pub-shell .pub-gallery__block--single .pub-gallery__item--feature .pub-gallery__image {
   aspect-ratio: 16 / 9;
 }
 
@@ -1000,25 +1033,139 @@
   position: absolute;
   inset: auto 0 0 0;
   padding: 2.5rem 1.1rem 1rem;
-  background: linear-gradient(to top, rgb(0 0 0 / 0.78), rgb(0 0 0 / 0));
+  background: linear-gradient(to top, rgb(0 0 0 / 0.85), rgb(0 0 0 / 0.6) 45%, rgb(0 0 0 / 0));
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.55);
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.4;
   color: #fff;
 }
 
+/* Le texte repose sur la partie basse du dégradé, maintenue assez opaque pour
+   rester lisible sur une photo claire comme sur une photo foncée. */
+.pub-shell .pub-gallery__label {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 4.5rem 1.5rem 1.5rem;
+  /* Fond plein sous toute la zone de texte (surtitre compris, même si le nom
+     du projet passe sur deux lignes), puis fondu au-dessus seulement. */
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 0.86) 0,
+    rgb(0 0 0 / 0.86) calc(100% - 4.5rem),
+    rgb(0 0 0 / 0.45) calc(100% - 2.25rem),
+    rgb(0 0 0 / 0) 100%
+  );
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.55);
+}
+
+.pub-shell .pub-gallery__label-category {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+}
+
+.pub-shell .pub-gallery__label-project {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
 @media (min-width: 768px) {
-  .pub-shell .pub-gallery {
-    column-count: 2;
-    column-gap: 2rem;
+  .pub-shell .pub-gallery-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
   }
 
-  .pub-shell .pub-gallery__item {
-    margin-bottom: 2rem;
+  .pub-shell .pub-gallery-head__main {
+    max-width: 38rem;
+  }
+
+  .pub-shell .pub-gallery-head__aside {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .pub-shell .pub-gallery {
+    gap: 2rem;
+  }
+
+  /* La tuile vedette est le seul élément à hauteur définie (son ratio) et elle
+     occupe les deux rangées : ce sont donc elles qui découpent sa hauteur, et
+     les tuiles empilées s'y ajustent au lieu de suivre leur taille naturelle.
+     La pile passe en `display: contents` pour que ses tuiles deviennent des
+     cellules du bloc. */
+  .pub-shell .pub-gallery__block {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .pub-shell .pub-gallery__block--single {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pub-shell .pub-gallery__stack {
+    display: contents;
+  }
+
+  .pub-shell .pub-gallery__item--feature {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    aspect-ratio: 1;
+  }
+
+  .pub-shell .pub-gallery__block--single .pub-gallery__item--feature {
+    aspect-ratio: 16 / 9;
+  }
+
+  .pub-shell .pub-gallery__item--stack {
+    grid-column: 2;
+    min-height: 0;
+  }
+
+  /* Bloc à deux images : la tuile empilée occupe toute la hauteur. */
+  .pub-shell .pub-gallery__block--pair .pub-gallery__item--stack {
+    grid-row: 1 / span 2;
+  }
+
+  .pub-shell .pub-gallery__block--reverse .pub-gallery__item--feature {
+    grid-column: 2;
+  }
+
+  .pub-shell .pub-gallery__block--reverse .pub-gallery__item--stack {
+    grid-column: 1;
+  }
+
+  /* Les images sont sorties du flux : sans elles, les tuiles n'apportent
+     aucune hauteur naturelle et les rangées ne dépendent plus que du ratio de
+     la tuile vedette. */
+  .pub-shell .pub-gallery__image {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+    width: 100%;
+    height: 100%;
   }
 
   .pub-shell .pub-gallery__caption {
     font-size: 0.875rem;
+  }
+
+  .pub-shell .pub-gallery__label-project {
+    font-size: 1.5rem;
   }
 }
 

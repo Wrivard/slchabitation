@@ -184,6 +184,8 @@ const gallery = [
     width: 2048,
     height: 1536,
     caption: 'Aire de vie et cuisine au sous-sol',
+    category: 'Rénovation de sous-sol',
+    project: 'Aire de vie et cuisine',
   },
   {
     src: '/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg',
@@ -191,6 +193,8 @@ const gallery = [
     width: 4000,
     height: 3000,
     caption: 'Point de départ : volume et éléments existants',
+    category: 'Rénovation de sous-sol',
+    project: 'Avant les travaux',
   },
   {
     src: '/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg',
@@ -198,6 +202,8 @@ const gallery = [
     width: 4000,
     height: 3000,
     caption: 'Pièce de vie lumineuse au niveau inférieur',
+    category: 'Rénovation de sous-sol',
+    project: 'Pièce de vie lumineuse',
   },
   {
     src: '/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg',
@@ -205,6 +211,8 @@ const gallery = [
     width: 4000,
     height: 3000,
     caption: 'Configuration ouverte avec accès fermé',
+    category: 'Rénovation de sous-sol',
+    project: 'Salle polyvalente',
   },
   {
     src: '/images/relume-655394.jpeg',
@@ -212,6 +220,8 @@ const gallery = [
     width: 1536,
     height: 2048,
     caption: 'Salle de bain : détail de douche et ventilation',
+    category: 'Rénovation de sous-sol',
+    project: 'Salle de bain au sous-sol',
   },
 ];
 

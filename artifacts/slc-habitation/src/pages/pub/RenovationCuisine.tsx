@@ -107,31 +107,43 @@ const kitchenGallery = [
     src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg',
     alt: 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré',
     caption: 'Plan de travail continu et armoires claires',
+    category: 'Rénovation de cuisine',
+    project: 'Comptoir continu',
   },
   {
     src: '/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg',
     alt: 'Cuisine avec îlot en bois, rangements blancs et suspensions',
     caption: 'Îlot en bois et rangements intégrés',
+    category: 'Rénovation de cuisine',
+    project: 'Îlot en bois',
   },
   {
     src: '/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png',
     alt: 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant',
     caption: 'Saint-Jérôme : armoires claires, comptoir contrastant',
+    category: 'Rénovation de cuisine',
+    project: 'Projet Saint-Jérôme',
   },
   {
     src: '/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg',
     alt: 'Grande cuisine blanche avec îlot central et comptoirs clairs',
     caption: 'Cuisine ouverte sur l’aire de vie',
+    category: 'Rénovation de cuisine',
+    project: 'Cuisine ouverte',
   },
   {
     src: '/images/INT%C3%89RIEUR/Cuisine/2403-p-1600.jpg',
     alt: 'Détail d’une cuisine avec éclairage sous les armoires',
     caption: 'Éclairage de travail sous les armoires',
+    category: 'Rénovation de cuisine',
+    project: 'Éclairage de travail',
   },
   {
     src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg',
     alt: 'Cuisine avec îlot, plancher clair et porte coulissante en bois',
     caption: 'Plancher clair et porte coulissante',
+    category: 'Rénovation de cuisine',
+    project: 'Plancher clair',
   },
 ];
 

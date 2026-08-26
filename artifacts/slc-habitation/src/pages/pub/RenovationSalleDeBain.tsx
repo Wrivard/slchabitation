@@ -47,31 +47,43 @@ const bathroomGallery = [
     src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg',
     alt: 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche',
     caption: 'Douche vitrée et céramique claire',
+    category: 'Rénovation de salle de bain',
+    project: 'Douche vitrée',
   },
   {
     src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163652-p-1600.jpg',
     alt: 'Salle de bain rénovée avec vanité et grand miroir',
     caption: 'Vanité, miroir et éclairage coordonnés',
+    category: 'Rénovation de salle de bain',
+    project: 'Vanité et miroir',
   },
   {
     src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg',
     alt: 'Salle de bain aux murs foncés avec douche en céramique',
     caption: 'Palette foncée et douche en céramique',
+    category: 'Rénovation de salle de bain',
+    project: 'Palette foncée',
   },
   {
     src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20240709_151409-p-1600.jpg',
     alt: 'Bain autoportant et robinetterie dans une salle de bain rénovée',
     caption: 'Bain autoportant et dégagements',
+    category: 'Rénovation de salle de bain',
+    project: 'Bain autoportant',
   },
   {
     src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230410_141714-p-1600.jpg',
     alt: 'Salle de bain avec douche en céramique et paroi vitrée',
     caption: 'Paroi vitrée et niche de douche',
+    category: 'Rénovation de salle de bain',
+    project: 'Niche de douche',
   },
   {
     src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-1600.jpg',
     alt: 'Salle de bain rénovée avec vanité en bois et céramique au mur',
     caption: 'Vanité en bois et mur en céramique',
+    category: 'Rénovation de salle de bain',
+    project: 'Vanité en bois',
   },
 ];
 

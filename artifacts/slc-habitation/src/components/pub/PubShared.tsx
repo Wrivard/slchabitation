@@ -316,6 +316,28 @@ export interface PubGalleryImage {
   src: string;
   alt: string;
   caption?: string;
+  /** Catégorie affichée en surtitre sur la tuile vedette. */
+  category?: string;
+  /** Nom court du projet, affiché en gros sur la tuile vedette. */
+  project?: string;
+}
+
+function PubGalleryTile({ image, variant }: { image: PubGalleryImage; variant: 'feature' | 'stack' }) {
+  const label = variant === 'feature' ? image.project ?? image.caption : undefined;
+
+  return (
+    <figure className={`pub-gallery__item pub-gallery__item--${variant}`}>
+      <img src={image.src} alt={image.alt} loading="lazy" className="pub-gallery__image" />
+      {label ? (
+        <figcaption className="pub-gallery__label">
+          {image.category && <span className="pub-gallery__label-category">{image.category}</span>}
+          <span className="pub-gallery__label-project">{label}</span>
+        </figcaption>
+      ) : (
+        image.caption && <figcaption className="pub-gallery__caption">{image.caption}</figcaption>
+      )}
+    </figure>
+  );
 }
 
 export function PubGallery({
@@ -333,6 +355,16 @@ export function PubGallery({
   images: PubGalleryImage[];
   surface?: 'background' | 'muted';
 }) {
+  const paragraphs = description === undefined ? [] : Array.isArray(description) ? description : [description];
+
+  /* Composition portfolio : une tuile vedette accompagnée de deux tuiles
+     empilées. Le motif se répète par groupes de trois et change de côté d'un
+     groupe à l'autre ; un groupe incomplet reste plein sans laisser de trou. */
+  const blocks: PubGalleryImage[][] = [];
+  for (let index = 0; index < images.length; index += 3) {
+    blocks.push(images.slice(index, index + 3));
+  }
+
   return (
     <section
       id={id}
@@ -340,19 +372,46 @@ export function PubGallery({
       data-testid="section-gallery"
     >
       <div className="container-large mx-auto max-w-7xl px-6">
-        <PubSectionHeader className="mb-12 max-w-3xl" kicker={kicker} title={title} description={description} />
-        {/* Colonnes façon galerie de la page d'accueil : les hauteurs alternent
-            sans laisser de trous, contrairement à une grille à cellules fixes. */}
+        <div className="pub-gallery-head">
+          <div className="pub-gallery-head__main">
+            {kicker && <p className="pub-section-header__kicker">{kicker}</p>}
+            <h2 className="pub-section-header__title pub-gallery-head__title">{title}</h2>
+          </div>
+          {paragraphs.length > 0 && (
+            <div className="pub-gallery-head__aside">
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph} className="pub-section-header__lede pub-gallery-head__text">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+
         <div className="pub-gallery">
-          {images.map((image, index) => (
-            <figure
-              key={image.src}
-              className={`pub-gallery__item pub-gallery__item--${index % 4 === 0 || index % 4 === 3 ? 'square' : 'wide'}`}
-            >
-              <img src={image.src} alt={image.alt} loading="lazy" className="pub-gallery__image" />
-              {image.caption && <figcaption className="pub-gallery__caption">{image.caption}</figcaption>}
-            </figure>
-          ))}
+          {blocks.map((block, blockIndex) => {
+            const [feature, ...stack] = block;
+            const modifiers = [
+              stack.length === 0 ? 'pub-gallery__block--single' : '',
+              stack.length === 1 ? 'pub-gallery__block--pair' : '',
+              stack.length > 0 && blockIndex % 2 === 1 ? 'pub-gallery__block--reverse' : '',
+            ]
+              .filter(Boolean)
+              .join(' ');
+
+            return (
+              <div key={feature.src} className={`pub-gallery__block ${modifiers}`.trim()}>
+                <PubGalleryTile image={feature} variant="feature" />
+                {stack.length > 0 && (
+                  <div className="pub-gallery__stack">
+                    {stack.map((image) => (
+                      <PubGalleryTile key={image.src} image={image} variant="stack" />
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
