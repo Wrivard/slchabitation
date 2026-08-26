@@ -2,7 +2,6 @@ import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
 import {
   PubActionBar,
-  PubPageNav,
   PubSectionHeader,
   PubCard,
   PubCardBody,
@@ -21,8 +20,8 @@ import {
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
-  CalendarCheck, Check, ClipboardCheck, Droplets, Hammer, Lightbulb, MapPin,
-  MessageSquare, Ruler, ShieldCheck, Wrench,
+  CalendarCheck, Check, ClipboardCheck, Droplets, Hammer, Lightbulb,
+  MessageSquare, Ruler, ShieldCheck, Star, Wrench,
 } from 'lucide-react';
 
 const navItems = [
@@ -42,16 +41,16 @@ const heroThumbs = [
     height: 375,
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg',
-    alt: 'Salle polyvalente au sous-sol avec portes françaises',
-    width: 500,
-    height: 375,
-  },
-  {
     src: '/images/relume-655394-p-500.jpeg',
     alt: 'Douche vitrée dans une salle de bain aménagée au sous-sol',
     width: 500,
     height: 667,
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg',
+    alt: 'Salle polyvalente au sous-sol avec portes françaises',
+    width: 500,
+    height: 375,
   },
 ];
 
@@ -230,19 +229,17 @@ const faqs = [
 
 export default function RenovationSousSolPub() {
   return (
-    <PubLayout>
+    <PubLayout navItems={navItems}>
       {/* HERO */}
       <PubHero
         label="Entrepreneur en rénovation"
         title="Rénovation de sous-sol à Laval et dans les Laurentides"
-        intro="Nous venons voir votre sous-sol, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans."
+        intro="Nous venons voir votre sous-sol, puis nous vous remettons votre soumission."
         badges={[
+          { icon: Star, text: '19 avis Google 5 étoiles' },
           { icon: ShieldCheck, text: 'Licence RBQ : 8351-9033-59' },
-          { icon: Hammer, text: '18 ans d’expérience' },
-          { icon: MapPin, text: 'Laval et Laurentides' },
         ]}
         action={<PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>}
-        note="Estimation et visite sans frais · Réponse sous 48 heures"
         image={gallery[0]}
         objectPosition="center 60%"
         thumbs={heroThumbs}
@@ -250,8 +247,6 @@ export default function RenovationSousSolPub() {
       />
 
       <PubProofBar />
-
-      <PubPageNav items={navItems} />
 
       {/* CE QUI EST INCLUS */}
       <section id="inclus" className="scroll-mt-20 bg-background py-16 md:py-20">
@@ -320,38 +315,37 @@ export default function RenovationSousSolPub() {
       {/* LA VISITE */}
       <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            <div>
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+            <div className="lg:col-span-5">
               <PubSectionHeader
                 className="mb-8 max-w-xl"
                 kicker="La visite"
                 title="Ce que nous regardons chez vous"
                 description="La visite est sans frais. Elle sert à chiffrer votre projet correctement."
               />
-              <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              <div className="pub-visit-points">
                 {visitPoints.map((item) => (
-                  <div key={item.title}>
-                    <div className="mb-3 h-px w-12 bg-primary" />
-                    <h3 className="mb-2 text-lg font-bold text-foreground">{item.title}</h3>
-                    <p className="leading-relaxed text-muted-foreground">{item.text}</p>
+                  <div key={item.title} className="pub-visit-point">
+                    <h3 className="pub-visit-point__title">{item.title}</h3>
+                    <p className="pub-visit-point__text">{item.text}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-10 flex flex-col gap-6 rounded-none bg-secondary p-8 text-white sm:flex-row sm:items-start">
-                <Droplets className="h-10 w-10 shrink-0 text-primary" aria-hidden="true" />
+              <div className="mt-8 flex flex-col gap-5 rounded-none bg-secondary p-6 text-white sm:flex-row sm:items-start md:p-7">
+                <Droplets className="h-9 w-9 shrink-0 text-primary" aria-hidden="true" />
                 <div>
-                  <h3 className="mb-2 text-xl font-bold">L’humidité ne se cache pas sous le gypse</h3>
-                  <p className="leading-relaxed text-gray-300">Si vous avez déjà vu de l’eau, une odeur ou de la peinture qui pèle, dites-le-nous. Ça change l’ordre des travaux.</p>
+                  <h3 className="mb-2 text-lg font-bold">L’humidité ne se cache pas sous le gypse</h3>
+                  <p className="text-sm leading-relaxed text-gray-300">Si vous avez déjà vu de l’eau, une odeur ou de la peinture qui pèle, dites-le-nous. Ça change l’ordre des travaux.</p>
                 </div>
               </div>
             </div>
-            <div>
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-none border border-border">
+            <div className="pub-visit-panel lg:col-span-7">
+              <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-[1/1]">
                 <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-full w-full object-cover" />
               </div>
               <PubChecklist
-                className="mt-8"
+                className="pub-visit-panel__checklist"
                 icon={Lightbulb}
                 title="À préparer pour la visite"
                 items={visitChecklist}

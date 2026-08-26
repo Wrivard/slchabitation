@@ -4,15 +4,15 @@ import type { LucideIcon } from 'lucide-react';
 
 type Tone = 'light' | 'dark';
 
+export type PubNavItem = { href: string; label: string };
+
 /**
- * Table des matières des pages publicitaires.
- * Elle reste accessible pendant la lecture (collée sous l'en-tête) et
- * signale la section en cours de lecture.
+ * Suit la section en cours de lecture pour les liens de sections placés dans
+ * l'en-tête. Un seul appel sert les deux variantes d'affichage (en ligne sur
+ * grand écran, barre défilante en dessous).
  */
-export function PubPageNav({ items }: { items: { href: string; label: string }[] }) {
+export function usePubActiveSection(items: PubNavItem[]): string {
   const [active, setActive] = useState('');
-  const listRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const sections = items
@@ -24,7 +24,8 @@ export function PubPageNav({ items }: { items: { href: string; label: string }[]
     let frame = 0;
     const update = () => {
       frame = 0;
-      const offset = (navRef.current?.getBoundingClientRect().bottom ?? 0) + 24;
+      const header = document.querySelector<HTMLElement>('.pub-site-header');
+      const offset = (header?.getBoundingClientRect().bottom ?? 0) + 24;
       let current = '';
       for (const section of sections) {
         if (section.el.getBoundingClientRect().top <= offset) current = section.href;
@@ -46,38 +47,57 @@ export function PubPageNav({ items }: { items: { href: string; label: string }[]
     };
   }, [items]);
 
-  // Sur mobile la liste défile horizontalement : l'entrée active doit rester visible.
+  return active;
+}
+
+/**
+ * Liste des sections de la page, affichée dans l'en-tête.
+ * `variant="inline"` s'insère dans la rangée du logo (écrans larges),
+ * `variant="bar"` occupe une deuxième rangée défilante.
+ */
+export function PubNavLinks({
+  items,
+  active,
+  variant,
+}: {
+  items: PubNavItem[];
+  active: string;
+  variant: 'inline' | 'bar';
+}) {
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // La barre défile horizontalement : l'entrée active doit rester visible.
   useEffect(() => {
+    if (variant !== 'bar') return;
     const list = listRef.current;
     if (!list || !active) return;
     const link = list.querySelector<HTMLElement>('[data-active="true"]');
     if (!link || list.scrollWidth <= list.clientWidth) return;
     const target = link.offsetLeft - (list.clientWidth - link.clientWidth) / 2;
     list.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
-  }, [active]);
+  }, [active, variant]);
 
   return (
-    <nav ref={navRef} aria-label="Sections de la page" className="pub-toc" data-testid="pub-toc">
-      <div className="pub-toc__inner">
-        <span className="pub-toc__label" aria-hidden="true">
-          Sur cette page
-        </span>
-        <div ref={listRef} className="pub-toc__list no-scrollbar">
-          {items.map((item) => {
-            const isActive = active === item.href;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="pub-toc__link"
-                data-active={isActive ? 'true' : 'false'}
-                aria-current={isActive ? 'true' : undefined}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </div>
+    <nav
+      aria-label="Sections de la page"
+      className={`pub-header-nav pub-header-nav--${variant}`}
+      data-testid={variant === 'bar' ? 'pub-toc' : 'pub-header-nav-inline'}
+    >
+      <div ref={listRef} className="pub-header-nav__list no-scrollbar">
+        {items.map((item) => {
+          const isActive = active === item.href;
+          return (
+            <a
+              key={item.href}
+              href={item.href}
+              className="pub-header-nav__link"
+              data-active={isActive ? 'true' : 'false'}
+              aria-current={isActive ? 'true' : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })}
       </div>
     </nav>
   );
@@ -144,7 +164,7 @@ export function PubHero({
   intro: string;
   badges: { icon?: LucideIcon; text: string }[];
   action: ReactNode;
-  note: string;
+  note?: string;
   image: PubImage;
   objectPosition?: string;
   thumbs?: PubImage[];
@@ -176,7 +196,7 @@ export function PubHero({
           <h1 className="pub-hero__title">{title}</h1>
           <p className="pub-hero__intro">{intro}</p>
           <div className="pub-hero__action">{action}</div>
-          <p className="pub-hero__note">{note}</p>
+          {note && <p className="pub-hero__note">{note}</p>}
         </div>
         {thumbs.length > 0 && (
           <aside className="pub-hero__aside" data-testid="hero-thumbs">
@@ -210,8 +230,8 @@ export function PubHero({
 const proofItems: { icon: LucideIcon; value: string; text: string }[] = [
   { icon: Clock, value: 'Réponse sous 48 h', text: 'à chaque demande reçue' },
   { icon: Wallet, value: 'Estimation sans frais', text: 'visite comprise' },
-  { icon: Star, value: '19 avis Google 5 étoiles', text: 'laissés par des propriétaires' },
-  { icon: CheckCircle2, value: '500+ projets complétés', text: 'en 18 ans, licence RBQ' },
+  { icon: CheckCircle2, value: '500+ projets complétés', text: 'en 18 ans' },
+  { icon: MapPin, value: 'Laval et les Laurentides', text: '9 municipalités desservies' },
 ];
 
 export function PubProofBar() {

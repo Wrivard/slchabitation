@@ -2,7 +2,6 @@ import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
 import {
   PubActionBar,
-  PubPageNav,
   PubSectionHeader,
   PubCard,
   PubCardBody,
@@ -22,7 +21,7 @@ import {
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
-  MapPin, ShieldCheck, Sparkles, Ruler, Lightbulb,
+  ShieldCheck, Star, Ruler, Lightbulb,
   ClipboardCheck, Wrench, Hammer, Droplets, MessageSquare, CalendarCheck, Check,
 } from 'lucide-react';
 
@@ -288,19 +287,17 @@ const faqs = [
 
 export default function RenovationSalleDeBainPub() {
   return (
-    <PubLayout>
+    <PubLayout navItems={navItems}>
       {/* HERO */}
       <PubHero
         label="Entrepreneur en rénovation"
         title="Rénovation de salle de bain à Laval et dans les Laurentides"
-        intro="Nous venons voir votre salle de bain, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans."
+        intro="Nous venons voir votre salle de bain, puis nous vous remettons votre soumission."
         badges={[
+          { icon: Star, text: '19 avis Google 5 étoiles' },
           { icon: ShieldCheck, text: 'Licence RBQ : 8351-9033-59' },
-          { icon: MapPin, text: 'Laval et Laurentides' },
-          { icon: Sparkles, text: '18 ans d’expérience' },
         ]}
         action={<PubCTA service="renovation-salle-de-bain" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>}
-        note="Estimation et visite sans frais · Réponse sous 48 heures"
         image={bathroomImages.hero}
         objectPosition="center 40%"
         thumbs={heroThumbs}
@@ -308,8 +305,6 @@ export default function RenovationSalleDeBainPub() {
       />
 
       <PubProofBar />
-
-      <PubPageNav items={navItems} />
 
       {/* CE QUI EST INCLUS */}
       <section id="inclus" className="scroll-mt-20 bg-background py-16 md:py-20">
@@ -383,30 +378,29 @@ export default function RenovationSalleDeBainPub() {
       {/* LA VISITE */}
       <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            <div>
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+            <div className="lg:col-span-5">
               <PubSectionHeader
                 className="mb-8 max-w-xl"
                 kicker="La visite"
                 title="Ce que nous regardons chez vous"
                 description="La visite est sans frais. Elle sert à chiffrer votre projet correctement."
               />
-              <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              <div className="pub-visit-points">
                 {visitPoints.map((item) => (
-                  <div key={item.title}>
-                    <div className="mb-3 h-px w-12 bg-primary" />
-                    <h3 className="mb-2 text-lg font-bold text-foreground">{item.title}</h3>
-                    <p className="leading-relaxed text-muted-foreground">{item.text}</p>
+                  <div key={item.title} className="pub-visit-point">
+                    <h3 className="pub-visit-point__title">{item.title}</h3>
+                    <p className="pub-visit-point__text">{item.text}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div>
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-none border border-border">
+            <div className="pub-visit-panel lg:col-span-7">
+              <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-[1/1]">
                 <img src={bathroomImages.visit} alt="Vanité en bois clair et miroir rond dans une salle de bain rénovée" width="1600" height="2133" loading="lazy" className="h-full w-full object-cover" />
               </div>
               <PubChecklist
-                className="mt-8"
+                className="pub-visit-panel__checklist"
                 icon={Lightbulb}
                 title="À préparer pour la visite"
                 items={visitChecklist}

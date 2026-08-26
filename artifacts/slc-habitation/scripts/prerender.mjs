@@ -129,7 +129,7 @@ const paidPageContent = {
   '/pub/renovation-sous-sol': {
     h1: 'Rénovation de sous-sol à Laval et dans les Laurentides',
     intro:
-      'Nous venons voir votre sous-sol, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans.',
+      'Nous venons voir votre sous-sol, puis nous vous remettons votre soumission.',
     steps: [
       ['Vous nous écrivez', 'Un formulaire de 3 étapes. Nous vous répondons sous 48 heures.'],
       ['Nous venons voir', 'La visite est sans frais. Nous mesurons le sous-sol et notons l’usage que vous visez.'],
@@ -170,7 +170,7 @@ const paidPageContent = {
   '/pub/renovation-salle-de-bain': {
     h1: 'Rénovation de salle de bain à Laval et dans les Laurentides',
     intro:
-      'Nous venons voir votre salle de bain, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans.',
+      'Nous venons voir votre salle de bain, puis nous vous remettons votre soumission.',
     steps: [
       ['Vous nous écrivez', 'Un formulaire de 3 étapes. Nous vous répondons sous 48 heures.'],
       ['Nous venons voir', 'La visite est sans frais. Nous mesurons la pièce et notons ce qui doit changer.'],
@@ -211,7 +211,7 @@ const paidPageContent = {
   '/pub/renovation-cuisine': {
     h1: 'Rénovation de cuisine à Laval et dans les Laurentides',
     intro:
-      'Nous venons voir votre cuisine, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans.',
+      'Nous venons voir votre cuisine, puis nous vous remettons votre soumission.',
     steps: [
       ['Vous nous écrivez', 'Un formulaire de 3 étapes. Nous vous répondons sous 48 heures.'],
       ['Nous venons voir', 'La visite est sans frais. Nous mesurons et nous écoutons ce que vous voulez changer.'],
@@ -257,7 +257,7 @@ const paidPageEnhancements = {
     thumbsLabel: 'Cuisines réalisées',
     thumbs: [
       ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-500.jpg', 'Cuisine avec îlot en bois et rangements blancs', 500, 667],
-      ['/images/INT%C3%89RIEUR/Cuisine/2403-p-500.jpg', 'Détail d’une cuisine avec éclairage sous les armoires', 500, 667],
+      ['/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-500.jpg', 'Cuisine deux tons avec hotte au-dessus du comptoir et armoires foncées', 500, 667],
       ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-500.jpg', 'Cuisine avec îlot et plancher clair', 500, 667],
     ],
     cardImages: [
@@ -330,8 +330,8 @@ const paidPageEnhancements = {
     thumbsLabel: 'Sous-sols réalisés',
     thumbs: [
       ['/images/INT%C3%89RIEUR/randoms/20241017_152123-p-500.jpg', 'Pièce de vie au sous-sol avec plancher de bois clair', 500, 375],
-      ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg', 'Salle polyvalente au sous-sol avec portes françaises', 500, 375],
       ['/images/relume-655394-p-500.jpeg', 'Douche vitrée dans une salle de bain aménagée au sous-sol', 500, 667],
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg', 'Salle polyvalente au sous-sol avec portes françaises', 500, 375],
     ],
     cardImages: [
       ['/images/INT%C3%89RIEUR/randoms/PXL_20211105_201904641-p-800.jpg', 'Chantier en cours : cloisons montées, murs peints et plancher protégé', 800, 600],
@@ -358,10 +358,11 @@ function createPaidStaticBody(content, routePath) {
   const extra = paidPageEnhancements[serviceSlug];
   const cta = `<a class="inline-flex rounded-none bg-primary px-6 py-3 font-semibold text-white" href="/pub/formulaire?service=${escapeHtml(serviceSlug)}">Obtenir ma soumission sans frais</a>`;
   // Mêmes faits que le composant PubProofBar de la version React.
-  const proofBar = `<section aria-label="Ce que vous obtenez en nous écrivant" class="bg-secondary py-6 text-white"><div class="container-large mx-auto max-w-7xl px-6"><ul class="flex flex-wrap gap-8"><li><strong>Réponse sous 48 h</strong> — à chaque demande reçue</li><li><strong>Estimation sans frais</strong> — visite comprise</li><li><strong>19 avis Google 5 étoiles</strong> — laissés par des propriétaires</li><li><strong>500+ projets complétés</strong> — en 18 ans, licence RBQ</li></ul></div></section>`;
+  const proofBar = `<section aria-label="Ce que vous obtenez en nous écrivant" class="bg-secondary py-6 text-white"><div class="container-large mx-auto max-w-7xl px-6"><ul class="flex flex-wrap gap-8"><li><strong>Réponse sous 48 h</strong> — à chaque demande reçue</li><li><strong>Estimation sans frais</strong> — visite comprise</li><li><strong>500+ projets complétés</strong> — en 18 ans</li><li><strong>Laval et les Laurentides</strong> — 9 municipalités desservies</li></ul></div></section>`;
   const nav = createPaidNav(Boolean(extra.details))
     .map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(label)}</a>`)
     .join(' · ');
+  const headerNav = `<nav aria-label="Sections de la page" class="border-t border-border"><div class="container-large mx-auto flex gap-4 overflow-x-auto px-6 py-2">${nav}</div></nav>`;
   const images = extra.images.map(([src, alt, width, height, caption]) => `<figure><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy"><figcaption>${escapeHtml(caption || alt)}</figcaption></figure>`).join('');
   const [heroSrc, heroAlt, heroWidth, heroHeight] = extra.hero;
   const heroThumbs = extra.thumbs
@@ -394,10 +395,9 @@ function createPaidStaticBody(content, routePath) {
   const checklist = content.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
   const faqItems = content.faqs.map(([question, answer]) =>
     `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('');
-  return `<header class="border-b bg-background"><div class="container-large mx-auto flex items-center justify-between px-6 py-4"><a href="/"><img src="/images/relume-567884.png" width="180" height="60" alt="SLC Habitation"></a><div class="flex items-center gap-6"><a href="tel:5144048494" class="font-semibold">(514) 404-8494</a>${cta}</div></div></header>
-  <main><section class="bg-secondary py-20 text-white"><div class="container-large mx-auto max-w-5xl px-6"><img src="${escapeHtml(heroSrc)}" alt="${escapeHtml(heroAlt)}" width="${heroWidth}" height="${heroHeight}"><p class="text-primary font-bold uppercase tracking-widest mb-4">${escapeHtml(extra.label)}</p><h1 class="text-4xl md:text-6xl font-bold mb-6">${escapeHtml(content.h1)}</h1><p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">${escapeHtml(content.intro)}</p><ul class="flex flex-wrap gap-4 mb-8"><li class="border border-white/25 bg-white/10 px-4 py-2">Licence RBQ : 8351-9033-59</li><li class="border border-white/25 bg-white/10 px-4 py-2">18 ans d’expérience</li><li class="border border-white/25 bg-white/10 px-4 py-2">Laval et Laurentides</li></ul>${cta}<p class="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p><p>${escapeHtml(extra.thumbsLabel)}</p>${heroThumbs}</div></section>
+  return `<header class="border-b bg-background"><div class="container-large mx-auto flex items-center justify-between px-6 py-4"><a href="/"><img src="/images/relume-567884.png" width="180" height="60" alt="SLC Habitation"></a><div class="flex items-center gap-6"><a href="tel:5144048494" class="font-semibold">(514) 404-8494</a>${cta}</div></div>${headerNav}</header>
+  <main><section class="bg-secondary py-20 text-white"><div class="container-large mx-auto max-w-5xl px-6"><img src="${escapeHtml(heroSrc)}" alt="${escapeHtml(heroAlt)}" width="${heroWidth}" height="${heroHeight}"><p class="text-primary font-bold uppercase tracking-widest mb-4">${escapeHtml(extra.label)}</p><h1 class="text-4xl md:text-6xl font-bold mb-6">${escapeHtml(content.h1)}</h1><p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">${escapeHtml(content.intro)}</p><ul class="flex flex-wrap gap-4 mb-8"><li class="border border-white/25 bg-white/10 px-4 py-2">19 avis Google 5 étoiles</li><li class="border border-white/25 bg-white/10 px-4 py-2">Licence RBQ : 8351-9033-59</li></ul>${cta}<p>${escapeHtml(extra.thumbsLabel)}</p>${heroThumbs}</div></section>
   ${proofBar}
-  <nav aria-label="Navigation dans la page" class="border-b border-border bg-background"><div class="container-large mx-auto flex gap-6 overflow-x-auto px-6 py-5">${nav}</div></nav>
   <section id="inclus" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Ce qui est inclus</p><h2>${escapeHtml(content.includedTitle)}</h2><p>${escapeHtml(content.includedIntro)}</p>${included}<p>Visite et estimation sans frais, réponse sous 48 heures.</p>${cta}${includedWide}</div></section>
   <section id="etapes" class="bg-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Comment ça se passe</p><h2>Quatre étapes simples</h2><ol>${steps}</ol><p>Plus de 500 projets complétés, 19 avis Google 5 étoiles.</p>${cta}</div></section>
   ${details}

@@ -299,10 +299,20 @@
   }
 }
 
-/* L'en-tête collant et la table des matières couvrent le haut de la fenêtre :
-   les ancres doivent s'arrêter sous les deux. */
+/* L'en-tête collant contient la table des matières : sur les écrans étroits
+   elle occupe une deuxième rangée, prise en compte par les ancres. */
+.pub-shell {
+  --pub-nav-bar-height: 3.4rem;
+}
+
+@media (min-width: 1440px) {
+  .pub-shell {
+    --pub-nav-bar-height: 0rem;
+  }
+}
+
 .pub-shell section[id] {
-  scroll-margin-top: calc(var(--pub-header-height) + 3.75rem);
+  scroll-margin-top: calc(var(--pub-header-height) + var(--pub-nav-bar-height));
 }
 
 .pub-shell h1,
@@ -476,50 +486,19 @@
   flex: 0 0 auto;
 }
 
-/* --- Table des matières --- */
-.pub-shell .pub-toc {
-  position: sticky;
-  top: var(--pub-header-height);
-  z-index: 40;
-  border-bottom: 1px solid hsl(var(--border));
-  background: hsl(var(--background) / 0.92);
-  backdrop-filter: blur(10px);
-}
-
-.pub-shell .pub-toc__inner {
+/* --- Table des matières, intégrée à l'en-tête collant --- */
+.pub-shell .pub-header-nav__list {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  width: 100%;
-  max-width: 80rem;
-  margin-inline: auto;
-  padding: 0.6rem 1.5rem;
-}
-
-.pub-shell .pub-toc__label {
-  display: none;
-  flex: 0 0 auto;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
-}
-
-.pub-shell .pub-toc__list {
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  gap: 0.35rem;
-  overflow-x: auto;
+  gap: 0.25rem;
   scroll-behavior: smooth;
 }
 
-.pub-shell .pub-toc__link {
+.pub-shell .pub-header-nav__link {
   flex: 0 0 auto;
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.45rem 0.95rem;
+  padding: 0.4rem 0.85rem;
   font-size: 0.875rem;
   font-weight: 600;
   white-space: nowrap;
@@ -531,24 +510,82 @@
     background-color 0.2s ease;
 }
 
-.pub-shell .pub-toc__link:hover {
+.pub-shell .pub-header-nav__link:hover {
   color: hsl(var(--primary));
   border-color: hsl(var(--border));
 }
 
-.pub-shell .pub-toc__link[data-active='true'] {
+.pub-shell .pub-header-nav__link[data-active='true'] {
   color: hsl(var(--primary));
   border-color: hsl(var(--primary) / 0.45);
   background: hsl(var(--primary) / 0.08);
 }
 
-@media (min-width: 768px) {
-  .pub-shell .pub-toc__label {
-    display: inline-flex;
+/* Variante en ligne : réservée aux écrans assez larges pour la porter
+   à côté du logo et des actions. */
+.pub-shell .pub-header-nav--inline {
+  display: none;
+  min-width: 0;
+}
+
+/* Variante en barre : deuxième rangée défilante sous le logo. */
+.pub-shell .pub-header-nav--bar {
+  width: 100%;
+  border-top: 1px solid hsl(var(--border));
+  padding: 0.35rem 1rem;
+}
+
+.pub-shell .pub-header-nav--bar .pub-header-nav__list {
+  overflow-x: auto;
+}
+
+.pub-shell .pub-header-nav--bar .pub-header-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+}
+
+@media (min-width: 640px) {
+  .pub-shell .pub-header-nav--bar {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .pub-shell .pub-header-nav--inline {
+    display: block;
+    flex: 1 1 auto;
+    overflow: hidden;
   }
 
-  .pub-shell .pub-toc__inner {
-    padding: 0.7rem 3rem;
+  /* Une seule rangée : les liens se resserrent plutôt que de passer à la ligne
+     et d'allonger l'en-tête collant. */
+  .pub-shell .pub-header-nav--inline .pub-header-nav__list {
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0.1rem;
+    overflow-x: auto;
+  }
+
+  .pub-shell .pub-header-nav--inline .pub-header-nav__link {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.8125rem;
+  }
+
+  .pub-shell .pub-header-nav--bar {
+    display: none;
+  }
+}
+
+@media (min-width: 1600px) {
+  .pub-shell .pub-header-nav--inline .pub-header-nav__list {
+    gap: 0.25rem;
+  }
+
+  .pub-shell .pub-header-nav--inline .pub-header-nav__link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -1205,6 +1242,51 @@
 }
 
 /* --- Panneau de préparation --- */
+/* --- Section « La visite » : points à gauche, photo + préparation à droite --- */
+.pub-shell .pub-visit-points {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pub-shell .pub-visit-point {
+  border-left: 2px solid hsl(var(--primary));
+  padding-left: 1rem;
+}
+
+.pub-shell .pub-visit-point__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: hsl(var(--foreground));
+}
+
+.pub-shell .pub-visit-point__text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+
+/* La photo et la liste de préparation forment un bloc continu, plus haut que
+   la colonne de texte à sa gauche. */
+.pub-shell .pub-visit-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.pub-shell .pub-visit-panel__media {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border));
+  border-bottom: 0;
+}
+
+.pub-shell .pub-visit-panel__checklist {
+  margin: 0;
+}
+
 .pub-shell .pub-checklist {
   border: 1px solid hsl(var(--primary) / 0.3);
   background: hsl(var(--primary) / 0.06);
@@ -1940,8 +2022,9 @@ button.faq2_question {
   }
 }
 
-.pub-site-header {
+.pub-site-header__row {
   padding: 0.75rem 1rem;
+  gap: 1rem;
 }
 
 .pub-site-header__logo {
@@ -1983,7 +2066,7 @@ button.faq2_question {
 }
 
 @media (min-width: 640px) {
-  .pub-site-header {
+  .pub-site-header__row {
     padding: 0.9rem 2rem;
   }
 
@@ -2002,7 +2085,11 @@ button.faq2_question {
 }
 
 @media (max-width: 389px) {
-  .pub-site-header {
+  .pub-site-header__row {
+    padding-inline: 0.75rem;
+  }
+
+  .pub-shell .pub-header-nav--bar {
     padding-inline: 0.75rem;
   }
 

@@ -4,45 +4,62 @@ import { Phone } from 'lucide-react';
 import { useTrackingParams } from '@/hooks/use-tracking-params';
 import { PubCTA } from './PubCTA';
 import { PubStickyCTA } from './PubStickyCTA';
+import { PubNavLinks, usePubActiveSection, type PubNavItem } from './PubShared';
 
-export function PubLayout({ children }: { children: ReactNode }) {
+/**
+ * `navItems` regroupe la table des matières dans l'en-tête collant : en ligne
+ * avec le logo sur les très grands écrans, sur une deuxième rangée défilante
+ * en dessous. Une seule barre reste collée au haut de la fenêtre.
+ */
+export function PubLayout({ children, navItems = [] }: { children: ReactNode; navItems?: PubNavItem[] }) {
   useTrackingParams(); // Initialize tracking params capture
+  const activeSection = usePubActiveSection(navItems);
 
   return (
     <div className="pub-shell min-h-[100dvh] flex flex-col font-sans bg-background text-foreground selection:bg-primary/20 selection:text-primary">
       <header
         className="pub-site-header border-b border-border bg-background sticky top-0 z-50"
-        style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}
+        data-has-nav={navItems.length > 0 ? 'true' : 'false'}
+        style={{ display: 'flex', flexDirection: 'column', width: '100%' }}
       >
-        <div className="pub-site-header__logo" data-testid="img-brand-logo">
-          <img
-            src="/images/relume-567884.png"
-            alt="SLC Habitation"
-            className="h-8 md:h-10 w-auto object-contain object-left max-w-[120px] md:max-w-[160px]"
-          />
+        <div
+          className="pub-site-header__row"
+          style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}
+        >
+          <div className="pub-site-header__logo" data-testid="img-brand-logo">
+            <img
+              src="/images/relume-567884.png"
+              alt="SLC Habitation"
+              className="h-8 md:h-10 w-auto object-contain object-left max-w-[120px] md:max-w-[160px]"
+            />
+          </div>
+
+          {navItems.length > 0 && <PubNavLinks items={navItems} active={activeSection} variant="inline" />}
+
+          <div
+            className="pub-site-header__actions"
+            style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'flex-end' }}
+          >
+            <a
+              href="tel:5144048494"
+              className="pub-site-header__phone font-semibold text-foreground hover:text-primary transition-colors !no-underline"
+              data-testid="link-phone"
+              onClick={() => {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: 'phone_click' });
+              }}
+            >
+              <Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              <span className="hidden sm:inline">(514) 404-8494</span>
+            </a>
+            <PubCTA service="" className="pub-site-header__cta shadow-none !no-underline h-auto min-h-0">
+              <span className="hidden sm:inline">Obtenir une soumission</span>
+              <span className="sm:hidden">Soumission</span>
+            </PubCTA>
+          </div>
         </div>
 
-        <div
-          className="pub-site-header__actions"
-          style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'flex-end' }}
-        >
-          <a
-            href="tel:5144048494"
-            className="pub-site-header__phone font-semibold text-foreground hover:text-primary transition-colors !no-underline"
-            data-testid="link-phone"
-            onClick={() => {
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({ event: 'phone_click' });
-            }}
-          >
-            <Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-            <span className="hidden sm:inline">(514) 404-8494</span>
-          </a>
-          <PubCTA service="" className="pub-site-header__cta shadow-none !no-underline h-auto min-h-0">
-            <span className="hidden sm:inline">Obtenir une soumission</span>
-            <span className="sm:hidden">Soumission</span>
-          </PubCTA>
-        </div>
+        {navItems.length > 0 && <PubNavLinks items={navItems} active={activeSection} variant="bar" />}
       </header>
 
       <main className="flex-grow">
