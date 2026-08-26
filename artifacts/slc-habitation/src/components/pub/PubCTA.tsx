@@ -6,11 +6,15 @@ export function PubCTA({
   service,
   className = "",
   children = "Demander une soumission",
+  size = 'md',
+  variant = 'primary',
   testId
 }: {
   service: string;
   className?: string;
   children?: React.ReactNode;
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'primary' | 'alternate';
   testId?: string;
 }) {
   const [location] = useLocation();
@@ -45,7 +49,7 @@ export function PubCTA({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-3 rounded-none font-bold transition-all hover:bg-primary-foreground hover:text-primary border border-transparent hover:border-primary px-8 py-4 !bg-primary hover:!bg-white !text-primary-foreground focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-offset-2 focus-visible:!ring-primary !no-underline ${className}`}
+      className={`pub-button pub-button--${size} pub-button--${variant} ${className}`.trim()}
       data-testid={testId || "link-pub-cta"}
       onClick={() => {
         window.dataLayer = window.dataLayer || [];
@@ -56,7 +60,7 @@ export function PubCTA({
         });
       }}
     >
-      {children} <ArrowRight className="w-5 h-5" />
+      {children} <ArrowRight className="pub-button__icon" aria-hidden="true" />
     </Link>
   );
 }

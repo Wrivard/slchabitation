@@ -1,7 +1,18 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
-import { PubPageNav, PubSectionHeader } from '@/components/pub/PubShared';
-import { FAQ } from '@/components/pub/FAQ';
+import {
+  PubPageNav,
+  PubSectionHeader,
+  PubCard,
+  PubCardBody,
+  PubCardIcon,
+  PubCardNumber,
+  PubCardText,
+  PubCardTitle,
+  PubGallery,
+  PubTestimonial,
+} from '@/components/pub/PubShared';
+import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
   MapPin, ShieldCheck, Sparkles, Ruler, Droplets, Lightbulb,
   ClipboardCheck, Fan, Wrench
@@ -23,7 +34,41 @@ const navigation = [
   ['#possibilites', 'Possibilités'],
   ['#planification', 'Planifier'],
   ['#realisation', 'Réalisation'],
+  ['#realisations', 'Réalisations'],
   ['#questions', 'FAQ'],
+];
+
+const bathroomGallery = [
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg',
+    alt: 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche',
+    caption: 'Douche vitrée et céramique claire',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163652-p-1600.jpg',
+    alt: 'Salle de bain rénovée avec vanité et grand miroir',
+    caption: 'Vanité, miroir et éclairage coordonnés',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg',
+    alt: 'Salle de bain aux murs foncés avec douche en céramique',
+    caption: 'Palette foncée et douche en céramique',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20240709_151409-p-1600.jpg',
+    alt: 'Bain autoportant et robinetterie dans une salle de bain rénovée',
+    caption: 'Bain autoportant et dégagements',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230410_141714-p-1600.jpg',
+    alt: 'Salle de bain avec douche en céramique et paroi vitrée',
+    caption: 'Paroi vitrée et niche de douche',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-1600.jpg',
+    alt: 'Salle de bain rénovée avec vanité en bois et céramique au mur',
+    caption: 'Vanité en bois et mur en céramique',
+  },
 ];
 
 const projectPriorities = [
@@ -85,7 +130,7 @@ export default function RenovationSalleDeBainPub() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Salle de bain pensée dans son ensemble</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de salle de bain <br />à Laval et dans les Laurentides</h1>
             <p className="mb-8 max-w-2xl text-base leading-relaxed text-slate-200 md:text-[1.0625rem]">Usage, matières et technique doivent avancer ensemble. SLC Habitation examine votre espace avec vous pour envisager une rénovation cohérente avec votre maison.</p>
-            <PubCTA service="renovation-salle-de-bain" className="px-8 py-5 text-lg rounded-none" testId="button-hero-cta">Parler de votre projet</PubCTA>
+            <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-hero-cta">Parler de votre projet</PubCTA>
           </div>
         </div>
       </section>
@@ -135,27 +180,22 @@ export default function RenovationSalleDeBainPub() {
       {/* POSSIBILITÉS */}
       <section id="possibilites" className="scroll-mt-20 border-y border-border bg-muted/40 py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="mb-12 grid lg:grid-cols-2 gap-12 lg:items-end">
-            <div>
-              <PubSectionHeader
-                kicker="Repères de conception"
-                title="Des choix qui servent votre quotidien"
-              />
-            </div>
-            <div>
-              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground lg:pb-6">Lumineuse, texturée ou contrastée : la pièce part de l’usage, pas d’une tendance. Se préparer à deux, simplifier l’entretien, ranger les serviettes, aménager une douche ou garder un bain donnent la direction.</p>
-            </div>
-          </div>
+          <PubSectionHeader
+            className="mb-12 max-w-3xl"
+            kicker="Repères de conception"
+            title="Des choix qui servent votre quotidien"
+            description="Lumineuse, texturée ou contrastée : la pièce part de l’usage, pas d’une tendance. Se préparer à deux, simplifier l’entretien, ranger les serviettes, aménager une douche ou garder un bain donnent la direction."
+          />
 
-          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-12">
+          <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-3">
             {projectPriorities.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="group">
-                <div className="mb-6 h-14 w-14 rounded-none bg-primary/10 flex items-center justify-center">
-                  <Icon className="w-7 h-7 text-primary stroke-[1.5] transition-transform duration-300 group-hover:scale-110" />
-                </div>
-                <h3 className="mb-4 text-xl font-bold text-foreground">{title}</h3>
-                <p className="leading-relaxed text-muted-foreground">{text}</p>
-              </div>
+              <PubCard key={title}>
+                <PubCardBody>
+                  <PubCardIcon icon={Icon} />
+                  <PubCardTitle>{title}</PubCardTitle>
+                  <PubCardText>{text}</PubCardText>
+                </PubCardBody>
+              </PubCard>
             ))}
           </div>
 
@@ -193,9 +233,9 @@ export default function RenovationSalleDeBainPub() {
               <PubSectionHeader
                 kicker="Matières et eau"
                 title="Penser les surfaces avant de penser les accessoires"
+                description="Murs et plancher encadrent l’eau, la perspective et l’entretien. Formats, joints et coupes se lisent avec le plan de la pièce."
               />
               <div className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
-                <p className="mb-8">Murs et plancher encadrent l’eau, la perspective et l’entretien. Formats, joints et coupes se lisent avec le plan de la pièce.</p>
                 <div className="border-t border-border">
                   {[
                     ['Formats', 'Un grand format peut unifier la lecture. Une mosaïque peut servir certains détails ou certaines surfaces.'],
@@ -224,8 +264,8 @@ export default function RenovationSalleDeBainPub() {
               <PubSectionHeader
                 kicker="Avant de démarrer"
                 title="Une évaluation pour situer les possibilités"
+                description="L’évaluation confronte l’idée aux conditions du bâtiment. Elle repère ce qui influence le plan et remet les choix dans un ordre utile."
               />
-              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground mb-6">L’évaluation confronte l’idée aux conditions du bâtiment. Elle repère ce qui influence le plan et remet les choix dans un ordre utile.</p>
               <div className="border-l-2 border-primary pl-6 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
                 <p className="mb-3 font-bold text-foreground">Exemple : déplacer un drain</p>
                 <p>Son parcours dépend de la hauteur disponible, des solives et de la construction du plancher. Garder une douche ou une toilette près de sa position peut limiter les interventions; ailleurs, revoir le plan peut convenir. L’observation vient avant la conclusion.</p>
@@ -248,12 +288,14 @@ export default function RenovationSalleDeBainPub() {
                <div className="mb-12 aspect-[16/9] overflow-hidden rounded-none">
                   <img src={bathroomImages.extra2} alt="Salle de bain moderne" width="1600" height="2133" loading="lazy" className="w-full h-full object-cover" />
               </div>
-              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-12 lg:border-t lg:border-border lg:pt-12">
+              <div className="grid gap-6 sm:grid-cols-2 lg:border-t lg:border-border lg:pt-12">
                 {assessmentPoints.map(([title, text]) => (
-                  <div key={title} className="group">
-                    <h3 className="mb-3 text-lg font-bold text-foreground">{title}</h3>
-                    <p className="leading-relaxed text-muted-foreground">{text}</p>
-                  </div>
+                  <PubCard key={title}>
+                    <PubCardBody>
+                      <PubCardTitle>{title}</PubCardTitle>
+                      <PubCardText>{text}</PubCardText>
+                    </PubCardBody>
+                  </PubCard>
                 ))}
               </div>
             </div>
@@ -271,13 +313,15 @@ export default function RenovationSalleDeBainPub() {
              description="Chaque rénovation a son contexte. Cette séquence reste à confirmer par l’évaluation et les choix de conception."
           />
 
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5 border-y border-border py-16">
+          <div className="grid gap-6 border-y border-border py-16 sm:grid-cols-2 lg:grid-cols-5">
             {steps.map(([number, title, text]) => (
-              <div key={number} className="relative">
-                <div className="text-6xl font-black text-primary/10 mb-6 font-heading tracking-tighter">0{number}</div>
-                <h3 className="mb-4 text-xl font-bold text-foreground">{title}</h3>
-                <p className="leading-relaxed text-muted-foreground text-sm">{text}</p>
-              </div>
+              <PubCard key={number}>
+                <PubCardBody>
+                  <PubCardNumber>{`0${number}`}</PubCardNumber>
+                  <PubCardTitle>{title}</PubCardTitle>
+                  <PubCardText>{text}</PubCardText>
+                </PubCardBody>
+              </PubCard>
             ))}
           </div>
 
@@ -337,7 +381,7 @@ export default function RenovationSalleDeBainPub() {
                  <p className="mb-4">L’accessibilité n’impose pas un style. Circulation directe, entrée de douche adaptée, banquette, profondeur de vanité et appuis peuvent être discutés selon les besoins.</p>
                  <p>Les avenues dépendent des dimensions, des supports, des produits retenus et des conditions observées dans la maison.</p>
               </div>
-              <PubCTA service="renovation-salle-de-bain" className="px-8 py-5 text-lg rounded-none" testId="button-middle-cta">Discuter de ma salle de bain</PubCTA>
+              <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-middle-cta">Discuter de ma salle de bain</PubCTA>
             </div>
             <div className="aspect-[4/5] rounded-none overflow-hidden">
               <img src={bathroomImages.dark} alt="Salle de bain aux murs foncés" width="1600" height="2133" loading="lazy" className="w-full h-full object-cover" />
@@ -346,36 +390,30 @@ export default function RenovationSalleDeBainPub() {
         </div>
       </section>
 
-      {/* TÉMOIGNAGE ET GALERIE */}
+      {/* TÉMOIGNAGE */}
       <section className="bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-             <div className="lg:col-span-5 order-2 lg:order-1">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="aspect-[3/4] overflow-hidden rounded-none shadow-2xl shadow-black/5">
-                    <img src={bathroomImages.extra3} alt="Détail salle de bain lumineuse" width="1600" height="1200" loading="lazy" className="h-full w-full object-cover" />
-                  </div>
-                  <div className="aspect-[3/4] translate-y-8 overflow-hidden rounded-none">
-                    <img src={bathroomImages.bright} alt="Salle de bain lumineuse avec douche, bain et céramique blanche" width="1600" height="1200" loading="lazy" className="h-full w-full object-cover" />
-                  </div>
-               </div>
-            </div>
-            <div className="lg:col-span-7 order-1 lg:order-2 lg:pl-10">
-              <p className="mb-6 text-sm font-bold uppercase tracking-[0.16em] text-primary">Témoignage</p>
-              <blockquote className="mb-8 text-3xl font-heading font-medium leading-tight text-foreground md:text-4xl">
-                « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l'écoute, je recommande vivement! »
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-px bg-primary" />
-                <div>
-                  <p className="font-bold text-lg text-foreground">Isabelle Baril</p>
-                  <p className="text-muted-foreground">Propriétaire</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <PubTestimonial
+            quote="Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l'écoute, je recommande vivement!"
+            author="Isabelle Baril"
+            role="Propriétaire"
+            image={{
+              src: bathroomImages.extra3,
+              alt: 'Salle de bain rénovée, lumineuse, avec vanité et grand miroir',
+            }}
+          />
         </div>
       </section>
+
+      {/* GALERIE */}
+      <PubGallery
+        id="realisations"
+        surface="muted"
+        kicker="Salles de bain réalisées"
+        title="Des pièces terminées à Laval et dans les Laurentides"
+        description="Quelques projets menés par l’équipe : douches, vanités, céramique et éclairage choisis avec les propriétaires."
+        images={bathroomGallery}
+      />
 
       {/* FAQ */}
       <section id="questions" className="scroll-mt-20 border-y border-border bg-muted/30 py-16 md:py-20">
@@ -386,9 +424,9 @@ export default function RenovationSalleDeBainPub() {
             title="Questions fréquentes sur la rénovation de salle de bain"
              description="Des repères à nuancer selon la pièce, le bâtiment et les choix du projet."
           />
-          <div className="space-y-2 border-t border-border pt-8">
+          <FAQList>
             {faqs.map(([question, answer]) => <FAQ key={question} question={question as string} answer={answer as string} />)}
-          </div>
+          </FAQList>
         </div>
       </section>
 
@@ -407,7 +445,7 @@ export default function RenovationSalleDeBainPub() {
           <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-primary">Votre projet, votre espace</p>
           <h2 className="mb-5 font-bold text-white">Parlons de la salle de bain que vous souhaitez transformer</h2>
           <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Présentez votre pièce, vos idées et vos priorités. Nous pourrons examiner les options pour votre rénovation à Laval ou dans les Laurentides.</p>
-          <PubCTA service="renovation-salle-de-bain" className="px-10 py-5 text-lg rounded-none" testId="button-bottom-cta">Demander une évaluation</PubCTA>
+          <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-bottom-cta">Demander une évaluation</PubCTA>
           <p className="mt-6 text-sm text-gray-400">La portée et les possibilités sont précisées en fonction de l’évaluation du projet.</p>
         </div>
       </section>

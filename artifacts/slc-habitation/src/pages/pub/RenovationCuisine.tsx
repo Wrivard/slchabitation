@@ -1,7 +1,21 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
-import { PubPageNav, PubSectionHeader } from '@/components/pub/PubShared';
-import { FAQ } from '@/components/pub/FAQ';
+import {
+  PubPageNav,
+  PubSectionHeader,
+  PubCard,
+  PubCardBody,
+  PubCardIcon,
+  PubCardMedia,
+  PubCardNote,
+  PubCardNumber,
+  PubCardText,
+  PubCardTitle,
+  PubGallery,
+  PubInvite,
+  PubTestimonial,
+} from '@/components/pub/PubShared';
+import { FAQ, FAQList } from '@/components/pub/FAQ';
 import { Check, Grid, Lightbulb, MapPin, Ruler, ShieldCheck, Utensils, ArrowRight, ClipboardCheck } from 'lucide-react';
 
 const kitchenImages = {
@@ -66,7 +80,41 @@ const navItems = [
   { href: '#implantation', label: 'Implantation' },
   { href: '#materiaux', label: 'Détails pratiques' },
   { href: '#chantier', label: 'Le chantier' },
+  { href: '#realisations', label: 'Réalisations' },
   { href: '#faq', label: 'FAQ' },
+];
+
+const kitchenGallery = [
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg',
+    alt: 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré',
+    caption: 'Plan de travail continu et armoires claires',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg',
+    alt: 'Cuisine avec îlot en bois, rangements blancs et suspensions',
+    caption: 'Îlot en bois et rangements intégrés',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png',
+    alt: 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant',
+    caption: 'Saint-Jérôme : armoires claires, comptoir contrastant',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg',
+    alt: 'Grande cuisine blanche avec îlot central et comptoirs clairs',
+    caption: 'Cuisine ouverte sur l’aire de vie',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/2403-p-1600.jpg',
+    alt: 'Détail d’une cuisine avec éclairage sous les armoires',
+    caption: 'Éclairage de travail sous les armoires',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg',
+    alt: 'Cuisine avec îlot, plancher clair et porte coulissante en bois',
+    caption: 'Plancher clair et porte coulissante',
+  },
 ];
 
 const assessmentItems = [
@@ -199,7 +247,7 @@ export default function RenovationCuisinePub() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Cuisine pensée pour votre quotidien</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de cuisine à Laval et dans les Laurentides</h1>
             <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">SLC Habitation examine vos usages, votre espace et ses contraintes techniques pour planifier une rénovation adaptée.</p>
-            <PubCTA service="renovation-cuisine" className="px-8 py-5 text-lg" testId="button-hero-cta">Parler de mon projet</PubCTA>
+            <PubCTA service="renovation-cuisine" size="lg" testId="button-hero-cta">Parler de mon projet</PubCTA>
           </div>
         </div>
       </section>
@@ -212,13 +260,14 @@ export default function RenovationCuisinePub() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
               <PubSectionHeader
+                className="mb-0 max-w-3xl"
                 kicker="Une lecture complète de la pièce"
                 title="Avant les choix visibles, comprendre ce qui soutient le projet"
+                description={[
+                  'Au-delà des armoires, le projet relie circulation, rangement, surfaces de travail, appareils, éclairage et finitions.',
+                  'À Laval et dans les Laurentides, la démarche commence par votre lieu et vos besoins. L’évaluation aide à approfondir, adapter ou écarter les idées.',
+                ]}
               />
-              <div className="space-y-4 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">
-                <p>Au-delà des armoires, le projet relie circulation, rangement, surfaces de travail, appareils, éclairage et finitions.</p>
-                <p>À Laval et dans les Laurentides, la démarche commence par votre lieu et vos besoins. L’évaluation aide à approfondir, adapter ou écarter les idées.</p>
-              </div>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <div className="aspect-[4/3] w-full overflow-hidden rounded-none mb-12">
@@ -252,36 +301,26 @@ export default function RenovationCuisinePub() {
             description="Implantation, rangement, lumière et détails se répondent. Un choix d’îlot, par exemple, influence les autres."
           />
 
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
             {chapters.map((chapter, index) => (
-              <article
-                key={chapter.number}
-                className={`flex flex-col group ${index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
-              >
-                <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-none">
-                  <img
-                    src={chapter.image.src}
-                    alt={chapter.image.alt}
-                    width={chapter.image.width}
-                    height={chapter.image.height}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4 bg-background/90 px-4 py-2 rounded-none font-bold text-primary text-sm tracking-widest">
-                    {chapter.number}
-                  </div>
-                </div>
-                <h3 className="mb-3 text-xl font-bold leading-snug text-foreground">{chapter.title}</h3>
-                <div className="mb-5 flex-grow space-y-3 text-[0.95rem] leading-relaxed text-muted-foreground">
-                  {chapter.paragraphs.map((p) => <p key={p}>{p}</p>)}
-                </div>
-                <div className="mt-auto border-t border-border pt-4">
-                  <strong className="mb-2 flex items-center gap-2 text-xs uppercase tracking-wider text-foreground">
-                    <ArrowRight className="w-4 h-4 text-primary" /> Point de planification
-                  </strong>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{chapter.callout}</p>
-                </div>
-              </article>
+              <PubCard key={chapter.number} className={index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}>
+                <PubCardMedia
+                  src={chapter.image.src}
+                  alt={chapter.image.alt}
+                  width={chapter.image.width}
+                  height={chapter.image.height}
+                  badge={chapter.number}
+                />
+                <PubCardBody>
+                  <PubCardTitle>{chapter.title}</PubCardTitle>
+                  {chapter.paragraphs.map((paragraph) => (
+                    <PubCardText key={paragraph}>{paragraph}</PubCardText>
+                  ))}
+                </PubCardBody>
+                <PubCardNote label="Point de planification" icon={ArrowRight}>
+                  {chapter.callout}
+                </PubCardNote>
+              </PubCard>
             ))}
           </div>
         </div>
@@ -293,24 +332,29 @@ export default function RenovationCuisinePub() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center mb-12">
             <div>
               <PubSectionHeader
+                className="mb-0 max-w-3xl"
                 kicker="Des choix à rendre lisibles"
                 title="Des détails qui servent la cuisine, jour après jour"
-                description="Matériaux et équipements influencent le caractère, l’entretien, les usages et la continuité visuelle."
+                description={[
+                  'Matériaux et équipements influencent le caractère, l’entretien, les usages et la continuité visuelle.',
+                  'Textures, lumière naturelle, comptoirs, hauteurs de rangement et mobilier adjacent sont examinés comme un ensemble.',
+                ]}
               />
-              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">Textures, lumière naturelle, comptoirs, hauteurs de rangement et mobilier adjacent sont examinés comme un ensemble.</p>
             </div>
             <div className="aspect-[4/3] rounded-none overflow-hidden border border-border">
                <img src={kitchenImages.extra4.src} alt={kitchenImages.extra4.alt} width={kitchenImages.extra4.width} height={kitchenImages.extra4.height} loading="lazy" className="w-full h-full object-cover" />
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-12">
+          <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-3">
             {configurationCards.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="flex flex-col">
-                <Icon className="w-8 h-8 text-primary mb-6 stroke-[1.5]" />
-                <h3 className="mb-4 text-xl font-bold text-foreground">{title}</h3>
-                <p className="leading-relaxed text-muted-foreground">{text}</p>
-              </div>
+              <PubCard key={title}>
+                <PubCardBody>
+                  <PubCardIcon icon={Icon} />
+                  <PubCardTitle>{title}</PubCardTitle>
+                  <PubCardText>{text}</PubCardText>
+                </PubCardBody>
+              </PubCard>
             ))}
           </div>
 
@@ -335,12 +379,14 @@ export default function RenovationCuisinePub() {
             description="Regardez la cuisine en action : courses, café, préparation, rangement et circulation. Ces scènes révèlent ce qui fonctionne ou doit être revu."
           />
 
-          <div className="grid gap-x-10 gap-y-8 border-t border-white/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 border-t border-white/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
             {decisionPoints.map((item) => (
-              <div key={item.title}>
-                <h3 className="mb-3 text-lg font-bold text-white">{item.title}</h3>
-                <p className="text-[0.95rem] leading-relaxed text-gray-400">{item.text}</p>
-              </div>
+              <PubCard key={item.title} tone="dark">
+                <PubCardBody>
+                  <PubCardTitle>{item.title}</PubCardTitle>
+                  <PubCardText>{item.text}</PubCardText>
+                </PubCardBody>
+              </PubCard>
             ))}
           </div>
 
@@ -367,42 +413,58 @@ export default function RenovationCuisinePub() {
             </div>
             <div className="order-1 lg:order-2">
               <PubSectionHeader
+                className="mb-0 max-w-3xl"
                 kicker="Du plan aux travaux"
                 title="Une séquence de chantier à organiser avec soin"
-                description="Retrait, services, surfaces, installation et finitions suivent une séquence adaptée aux choix et aux conditions sur place."
+                description={[
+                  'Retrait, services, surfaces, installation et finitions suivent une séquence adaptée aux choix et aux conditions sur place.',
+                  'SLC Habitation relie la planification aux interventions nécessaires et aux éléments à évaluer pendant le chantier.',
+                ]}
               />
-              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">SLC Habitation relie la planification aux interventions nécessaires et aux éléments à évaluer pendant le chantier.</p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-10 border-t border-border pt-12">
+          <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-4">
             {siteSteps.map((step, index) => (
-              <div key={step.title} className="relative">
-                <span className="block text-6xl font-black text-primary/10 mb-4 tracking-tighter">0{index + 1}</span>
-                <h3 className="mb-4 text-xl font-bold text-foreground">{step.title}</h3>
-                <p className="leading-relaxed text-muted-foreground">{step.text}</p>
-              </div>
+              <PubCard key={step.title}>
+                <PubCardBody>
+                  <PubCardNumber>{`0${index + 1}`}</PubCardNumber>
+                  <PubCardTitle>{step.title}</PubCardTitle>
+                  <PubCardText>{step.text}</PubCardText>
+                </PubCardBody>
+              </PubCard>
             ))}
           </div>
 
-          <div className="mt-16 text-center max-w-2xl mx-auto">
-            <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">Votre cuisine mérite une réflexion complète</h2>
-            <p className="mb-8 text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">Présentez la pièce, vos priorités et les changements envisagés. Une première discussion situe les éléments à examiner.</p>
-            <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-middle-cta">Discuter de ma cuisine</PubCTA>
-          </div>
+          <PubInvite
+            className="mt-16"
+            kicker="Prochaine étape"
+            title="Votre cuisine mérite une réflexion complète"
+            description="Présentez la pièce, vos priorités et les changements envisagés. Une première discussion situe les éléments à examiner."
+            action={<PubCTA service="renovation-cuisine" testId="button-middle-cta">Discuter de ma cuisine</PubCTA>}
+          />
         </div>
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="bg-primary/5 py-16 text-foreground md:py-20 border-y border-border">
-        <div className="container-large mx-auto max-w-4xl px-6 text-center">
-          <blockquote className="mb-8 font-heading text-3xl md:text-4xl font-medium leading-tight text-foreground">
-            « Excellente compagnie, service professionnel et soucis du détails! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets! »
-          </blockquote>
-          <p className="font-bold text-lg text-foreground">Mélodie Binette</p>
-          <p className="text-muted-foreground">Propriétaire</p>
+      <section className="border-y border-border bg-primary/5 py-16 md:py-20">
+        <div className="container-large mx-auto max-w-4xl px-6">
+          <PubTestimonial
+            quote="Excellente compagnie, service professionnel et soucis du détails! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets!"
+            author="Mélodie Binette"
+            role="Propriétaire"
+          />
         </div>
       </section>
+
+      {/* GALERIE */}
+      <PubGallery
+        id="realisations"
+        kicker="Cuisines réalisées"
+        title="Des cuisines livrées à Laval et dans les Laurentides"
+        description="Quelques projets terminés par l’équipe : implantations, rangements et finitions choisis avec les propriétaires."
+        images={kitchenGallery}
+      />
 
       {/* FAQ */}
       <section id="faq" className="scroll-mt-20 bg-background py-16 md:py-20">
@@ -413,9 +475,9 @@ export default function RenovationCuisinePub() {
             title="Questions fréquentes sur une rénovation de cuisine"
             description="Les réponses ci-dessous donnent des repères; les possibilités précises dépendent toujours de votre espace et de l’évaluation du projet."
           />
-          <div className="space-y-2 border-t border-border pt-8">
+          <FAQList>
             {faqs.map((faq) => <FAQ key={faq.question} question={faq.question} answer={faq.answer} />)}
-          </div>
+          </FAQList>
         </div>
       </section>
 
@@ -437,7 +499,7 @@ export default function RenovationCuisinePub() {
           </div>
           <h2 className="mb-5 font-bold">Prêt à clarifier votre projet de cuisine?</h2>
           <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Présentez votre point de départ, les usages à améliorer et les changements envisagés pour votre rénovation à Laval ou dans les Laurentides.</p>
-          <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-bottom-cta">Demander une soumission</PubCTA>
+          <PubCTA service="renovation-cuisine" size="lg" testId="button-bottom-cta">Demander une soumission</PubCTA>
         </div>
       </section>
     </PubLayout>

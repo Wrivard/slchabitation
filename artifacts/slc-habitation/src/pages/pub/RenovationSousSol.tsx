@@ -1,7 +1,20 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
-import { PubPageNav, PubSectionHeader } from '@/components/pub/PubShared';
-import { FAQ } from '@/components/pub/FAQ';
+import {
+  PubPageNav,
+  PubSectionHeader,
+  PubCard,
+  PubCardBody,
+  PubCardIcon,
+  PubCardNote,
+  PubCardNumber,
+  PubCardText,
+  PubCardTitle,
+  PubGallery,
+  PubInvite,
+  PubTestimonial,
+} from '@/components/pub/PubShared';
+import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
   Bath, Bed, CheckCircle2, Droplets, Hammer,
   Home, Lightbulb, MapPin, PanelTop, Ruler, ShieldCheck, Volume2, ArrowRight, ArrowDown
@@ -253,7 +266,7 @@ export default function RenovationSousSolPub() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Aménagement intérieur résidentiel</p>
             <h1 className="mb-6 max-w-4xl font-heading text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">Rénovation de sous-sol <br />à Laval et dans les Laurentides</h1>
             <p className="mb-8 max-w-3xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Transformez le sous-sol à partir de sa structure, de ses ouvertures et de votre quotidien. SLC Habitation vous aide à clarifier les possibilités avant de planifier.</p>
-            <PubCTA service="renovation-sous-sol" className="px-8 py-5 text-lg rounded-none" testId="button-hero-cta">Parler de votre projet</PubCTA>
+            <PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Parler de votre projet</PubCTA>
           </div>
         </div>
       </section>
@@ -266,10 +279,11 @@ export default function RenovationSousSolPub() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-end mb-12">
             <div className="lg:col-span-7">
               <PubSectionHeader
+                className="mb-0"
                 kicker="Un niveau à réinventer"
                 title="Partir de l’espace réel, puis imaginer la vie qui s’y passe"
+                description="Conduits, poutres, panneau, salle mécanique et fenêtres basses guident la place des pièces, la lumière et les priorités."
               />
-              <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground">Conduits, poutres, panneau, salle mécanique et fenêtres basses guident la place des pièces, la lumière et les priorités.</p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-none border border-primary/20 bg-primary/5 p-8">
@@ -281,15 +295,15 @@ export default function RenovationSousSolPub() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12 border-t border-border pt-12">
+          <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-3">
             {possibilities.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="group">
-                <div className="mb-6 h-14 w-14 rounded-none bg-primary/10 flex items-center justify-center">
-                  <Icon className="w-7 h-7 text-primary stroke-[1.5] transition-transform duration-300 group-hover:scale-110" />
-                </div>
-                <h3 className="mb-4 text-xl font-bold text-foreground">{title}</h3>
-                <p className="leading-relaxed text-muted-foreground">{text}</p>
-              </div>
+              <PubCard key={title}>
+                <PubCardBody>
+                  <PubCardIcon icon={Icon} />
+                  <PubCardTitle>{title}</PubCardTitle>
+                  <PubCardText>{text}</PubCardText>
+                </PubCardBody>
+              </PubCard>
             ))}
           </div>
 
@@ -321,13 +335,14 @@ export default function RenovationSousSolPub() {
              description="Les conditions existantes orientent les matériaux, la disposition et les travaux. L’analyse initiale aide à choisir un scénario."
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {diagnosticPoints.map(([title, text]) => (
-              <div key={title} className="group border-t border-border pt-6">
-                <div className="mb-4 h-px w-12 bg-primary transition-all duration-300 group-hover:w-full" />
-                <h3 className="mb-3 text-lg font-bold text-foreground">{title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{text}</p>
-              </div>
+              <PubCard key={title}>
+                <PubCardBody>
+                  <PubCardTitle>{title}</PubCardTitle>
+                  <PubCardText>{text}</PubCardText>
+                </PubCardBody>
+              </PubCard>
             ))}
           </div>
 
@@ -356,36 +371,26 @@ export default function RenovationSousSolPub() {
             description="Sept repères pour préparer la visite — sans remplacer l’évaluation de votre résidence."
           />
 
-          <div className="space-y-12 md:space-y-14">
+          <div className="grid gap-6 md:grid-cols-2">
             {technicalChapters.map(({ number, title, icon: Icon, points, note }) => (
-              <article key={number} className="grid gap-6 border-t border-border pt-10 lg:grid-cols-12 lg:gap-10 lg:pt-12 group">
-                <div className="lg:col-span-1 text-center hidden lg:block">
-                  <div className="text-5xl font-black text-primary/10 tracking-tighter mb-2">{number}</div>
-                </div>
-                <div className="lg:col-span-11 lg:pl-4">
-                  <div className="flex items-start gap-4 mb-7">
-                    <Icon className="mt-1 w-7 h-7 shrink-0 text-primary stroke-[1.5]" />
-                    <div>
-                      <span className="mb-1 block text-xs font-bold uppercase tracking-[0.18em] text-primary lg:hidden">Chapitre {number}</span>
-                      <h3 className="text-2xl font-bold leading-tight text-foreground">{title}</h3>
-                    </div>
+              <PubCard key={number}>
+                <PubCardBody>
+                  <div className="mb-5 flex items-center justify-between gap-4">
+                    <PubCardIcon icon={Icon} className="mb-0" />
+                    <span className="font-heading text-4xl font-black leading-none tracking-tighter text-primary/25">{number}</span>
                   </div>
-                  <ul className="mb-8 grid gap-x-10 gap-y-4 md:grid-cols-2">
+                  <PubCardTitle>{title}</PubCardTitle>
+                  <ul className="grid gap-3">
                     {points.map((point) => (
-                      <li key={point} className="flex gap-3 border-t border-border/70 pt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <li key={point} className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-primary" />
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="border-l-2 border-primary pl-6 py-2">
-                    <strong className="block text-foreground text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                      <ArrowRight className="w-4 h-4 text-primary" /> Pour la visite
-                    </strong>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{note}</p>
-                  </div>
-                </div>
-              </article>
+                </PubCardBody>
+                <PubCardNote label="Pour la visite" icon={ArrowRight}>{note}</PubCardNote>
+              </PubCard>
             ))}
           </div>
         </div>
@@ -399,96 +404,84 @@ export default function RenovationSousSolPub() {
               <PubSectionHeader
                 kicker="Une démarche lisible"
                 title="Décider dans le bon ordre"
+                description="Les étapes séparent bâtiment, usage et esthétique. Vous gardez la vue d’ensemble avant de choisir."
               />
-               <p className="text-base leading-relaxed md:text-[1.0625rem] text-muted-foreground mb-8">Les étapes séparent bâtiment, usage et esthétique. Vous gardez la vue d’ensemble avant de choisir.</p>
               <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider text-foreground">
                 <ArrowDown className="h-5 w-5 text-primary" />Du constat initial aux finitions
               </div>
             </div>
 
             <div className="lg:col-span-8">
-              <div className="space-y-12">
+              <div className="grid gap-6 sm:grid-cols-2">
                 {steps.map((step) => (
-                  <div key={step.number} className="grid md:grid-cols-[80px_1fr] gap-6 group">
-                    <div className="text-5xl font-black text-primary/20 tracking-tighter group-hover:text-primary transition-colors duration-300">
-                      {step.number}
-                    </div>
-                    <div>
-                      <h3 className="mb-3 text-xl font-bold text-foreground">{step.title}</h3>
-                      <p className="leading-relaxed text-muted-foreground">{step.text}</p>
-                    </div>
-                  </div>
+                  <PubCard key={step.number}>
+                    <PubCardBody>
+                      <PubCardNumber>{step.number}</PubCardNumber>
+                      <PubCardTitle>{step.title}</PubCardTitle>
+                      <PubCardText>{step.text}</PubCardText>
+                    </PubCardBody>
+                  </PubCard>
                 ))}
               </div>
 
-              <div className="mt-14 rounded-none bg-background border border-border p-10 md:flex md:items-center md:justify-between md:gap-10 shadow-xl shadow-black/5">
-                <div>
-                  <h3 className="mb-3 text-2xl font-bold">Votre projet commence par les bonnes questions</h3>
-                   <p className="max-w-xl leading-relaxed text-muted-foreground">Partagez l’usage visé et vos préoccupations. L’évaluation permet de discuter des possibilités propres au sous-sol.</p>
-                </div>
-                <PubCTA service="renovation-sous-sol" className="mt-8 shrink-0 px-8 py-4 rounded-none md:mt-0" testId="button-middle-cta">Discuter de mon sous-sol</PubCTA>
-              </div>
+              <PubInvite
+                className="mt-14"
+                kicker="Prochaine étape"
+                title="Votre projet commence par les bonnes questions"
+                description="Partagez l’usage visé et vos préoccupations. L’évaluation permet de discuter des possibilités propres au sous-sol."
+                action={<PubCTA service="renovation-sous-sol" testId="button-middle-cta">Discuter de mon sous-sol</PubCTA>}
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* TÉMOIGNAGE */}
-      <section className="bg-secondary py-16 text-secondary-foreground md:py-20">
-        <div className="container-large mx-auto max-w-5xl px-6 text-center">
-          <Volume2 className="mx-auto mb-8 h-10 w-10 text-primary" />
-          <blockquote className="font-heading text-3xl md:text-4xl font-medium leading-tight text-white mb-8">
-            « Magnifique travail de l'équipe SLC Habitation. Nous avions un projet complexe avec plusieurs défis! Ils ont fait un travail exceptionnel. Un gros merci pour votre professionnalisme! Je recommande sans hésiter. »
-          </blockquote>
-          <div className="font-bold text-lg text-white">Johanne Duguay</div>
-          <div className="mt-1 text-gray-400">Propriétaire</div>
+      <section className="bg-secondary py-16 md:py-20">
+        <div className="container-large mx-auto max-w-5xl px-6">
+          <PubTestimonial
+            tone="dark"
+            quote="Magnifique travail de l'équipe SLC Habitation. Nous avions un projet complexe avec plusieurs défis! Ils ont fait un travail exceptionnel. Un gros merci pour votre professionnalisme! Je recommande sans hésiter."
+            author="Johanne Duguay"
+            role="Propriétaire"
+          />
         </div>
       </section>
 
-      {/* INSPIRATIONS (Galerie Editoriale) */}
-      <section id="inspirations" className="scroll-mt-20 bg-background py-16 md:py-20">
+      {/* RÉALISATIONS */}
+      <PubGallery
+        id="inspirations"
+        kicker="Espaces de vie au niveau inférieur"
+        title="Des réalisations qui montrent les possibilités"
+        description="Volume dégagé, aire de vie, pièce polyvalente et salle de bain. Votre espace guidera les choix pertinents."
+        images={gallery}
+      />
+
+      {/* REPÈRES D’AMÉNAGEMENT */}
+      <section className="border-t border-border bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <PubSectionHeader
-            className="max-w-3xl mb-16"
-            kicker="Espaces de vie au niveau inférieur"
-            title="Des réalisations qui montrent les possibilités"
-            description="Volume dégagé, aire de vie, pièce polyvalente et salle de bain. Votre espace guidera les choix pertinents."
-          />
-
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {gallery.map((image) => (
-              <figure key={image.src} className="break-inside-avoid relative group overflow-hidden rounded-none bg-muted">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
-                  loading="lazy"
-                  className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <figcaption className="text-sm font-medium text-white">{image.caption}</figcaption>
-                </div>
-              </figure>
-            ))}
-          </div>
-
-          <div className="mt-16 grid md:grid-cols-3 gap-12 border-t border-border pt-12">
-            <div>
-              <PanelTop className="mb-4 h-8 w-8 text-primary stroke-[1.5]" />
-              <h3 className="mb-3 text-xl font-bold">Plafonds et détails techniques</h3>
-              <p className="leading-relaxed text-muted-foreground">Un plafond continu ou des zones abaissées peuvent être envisagés selon les conduits et la hauteur disponible.</p>
-            </div>
-            <div>
-              <Ruler className="mb-4 h-8 w-8 text-primary stroke-[1.5]" />
-              <h3 className="mb-3 text-xl font-bold">Circulation et rangement</h3>
-              <p className="leading-relaxed text-muted-foreground">Le passage vers l’escalier, la salle mécanique ou les fenêtres conserve son importance dans un plan confortable.</p>
-            </div>
-            <div>
-              <CheckCircle2 className="mb-4 h-8 w-8 text-primary stroke-[1.5]" />
-              <h3 className="mb-3 text-xl font-bold">Choix adaptés à l’usage</h3>
-              <p className="leading-relaxed text-muted-foreground">L’éclairage, les revêtements et l’acoustique se sélectionnent plus facilement lorsque la fonction de chaque zone est claire.</p>
-            </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            <PubCard>
+              <PubCardBody>
+                <PubCardIcon icon={PanelTop} />
+                <PubCardTitle>Plafonds et détails techniques</PubCardTitle>
+                <PubCardText>Un plafond continu ou des zones abaissées peuvent être envisagés selon les conduits et la hauteur disponible.</PubCardText>
+              </PubCardBody>
+            </PubCard>
+            <PubCard>
+              <PubCardBody>
+                <PubCardIcon icon={Ruler} />
+                <PubCardTitle>Circulation et rangement</PubCardTitle>
+                <PubCardText>Le passage vers l’escalier, la salle mécanique ou les fenêtres conserve son importance dans un plan confortable.</PubCardText>
+              </PubCardBody>
+            </PubCard>
+            <PubCard>
+              <PubCardBody>
+                <PubCardIcon icon={CheckCircle2} />
+                <PubCardTitle>Choix adaptés à l’usage</PubCardTitle>
+                <PubCardText>L’éclairage, les revêtements et l’acoustique se sélectionnent plus facilement lorsque la fonction de chaque zone est claire.</PubCardText>
+              </PubCardBody>
+            </PubCard>
           </div>
         </div>
       </section>
@@ -502,9 +495,9 @@ export default function RenovationSousSolPub() {
             title="Questions fréquentes sur la rénovation de sous-sol"
             description="Ces repères amorcent la conversation; une réponse adaptée dépend de votre résidence et du projet envisagé."
           />
-          <div className="space-y-2 border-t border-border pt-8">
+          <FAQList>
             {faqs.map((faq) => <FAQ key={faq.question} question={faq.question} answer={faq.answer} />)}
-          </div>
+          </FAQList>
         </div>
       </section>
 
@@ -528,7 +521,7 @@ export default function RenovationSousSolPub() {
             title="Donnez une nouvelle place à votre sous-sol"
             description="Décrivez votre idée et l’espace actuel. Échangeons sur les points à évaluer à Laval ou dans les Laurentides."
           />
-          <PubCTA service="renovation-sous-sol" className="px-10 py-5 text-lg rounded-none" testId="button-bottom-cta">Présenter mon projet</PubCTA>
+          <PubCTA service="renovation-sous-sol" size="lg" testId="button-bottom-cta">Présenter mon projet</PubCTA>
         </div>
       </section>
     </PubLayout>
