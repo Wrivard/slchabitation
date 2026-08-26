@@ -81,7 +81,7 @@ export function PubStickyCTA() {
         <span className="sr-only md:not-sr-only">(514) 404-8494</span>
       </a>
       <PubCTA service="" className="pub-sticky-cta__button" testId="button-sticky-cta">
-        Obtenir une soumission
+        Ma soumission sans frais
       </PubCTA>
     </div>
   );

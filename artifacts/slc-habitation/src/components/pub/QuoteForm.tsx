@@ -243,8 +243,14 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
           <CheckCircle2 className="w-10 h-10" />
         </div>
         <h3 className="text-3xl font-bold font-heading text-foreground mb-4">Demande envoyée</h3>
-        <p className="text-lg text-muted-foreground mb-10 max-w-md">
-          Merci de votre confiance. Notre équipe examinera vos informations avant de vous contacter pour discuter de votre projet.
+        <p className="text-lg text-muted-foreground mb-4 max-w-md">
+          Merci de votre confiance. Nous examinons votre demande et nous vous répondons sous 48 heures pour convenir d’une visite d’évaluation sans frais.
+        </p>
+        <p className="text-base text-muted-foreground mb-10 max-w-md">
+          Besoin de nous joindre avant?{' '}
+          <a href="tel:5144048494" className="font-semibold text-primary" data-testid="link-success-phone">
+            (514) 404-8494
+          </a>
         </p>
         <Link
           href="/"
@@ -573,10 +579,13 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                       {isSubmitting ? (
                         <><Loader2 className="w-6 h-6 animate-spin" /> Envoi en cours...</>
                       ) : (
-                        <>Envoyer la demande <ArrowRight className="w-5 h-5" /></>
+                        <>Envoyer ma demande <ArrowRight className="w-5 h-5" /></>
                       )}
                     </button>
                   </div>
+                  <p className="text-sm text-muted-foreground" data-testid="text-submit-reassurance">
+                    Réponse sous 48 heures. La visite d’évaluation et l’estimation sont sans frais.
+                  </p>
                 </div>
               </motion.div>
             )}

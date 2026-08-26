@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { Check, Phone, ShieldCheck } from 'lucide-react';
+import { Check, CheckCircle2, Clock, Phone, ShieldCheck, Star, Wallet } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 type Tone = 'light' | 'dark';
@@ -116,6 +116,37 @@ export function PubSectionHeader({
       ))}
       {children}
     </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * Bandeau de preuves : faits vérifiés, placés juste sous le héros.
+ * Le contenu est volontairement identique sur les trois pages pour que la
+ * promesse reste la même quel que soit le mot-clé qui amène le visiteur.
+ * ----------------------------------------------------------------------- */
+
+const proofItems: { icon: LucideIcon; value: string; text: string }[] = [
+  { icon: Clock, value: 'Réponse sous 48 h', text: 'à chaque demande reçue' },
+  { icon: Wallet, value: 'Estimation sans frais', text: 'visite comprise' },
+  { icon: Star, value: '19 avis Google 5 étoiles', text: 'laissés par des propriétaires' },
+  { icon: CheckCircle2, value: '500+ projets complétés', text: 'en 18 ans, licence RBQ' },
+];
+
+export function PubProofBar() {
+  return (
+    <section className="pub-proof-bar" aria-label="Ce que vous obtenez en nous écrivant" data-testid="proof-bar">
+      <ul className="pub-proof-bar__list">
+        {proofItems.map(({ icon: Icon, value, text }) => (
+          <li key={value} className="pub-proof-bar__item">
+            <Icon className="pub-proof-bar__icon" aria-hidden="true" strokeWidth={1.75} />
+            <span>
+              <span className="pub-proof-bar__value">{value}</span>
+              <span className="pub-proof-bar__text">{text}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 

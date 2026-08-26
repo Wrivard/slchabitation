@@ -16,6 +16,7 @@ import {
   PubChecklist,
   PubGallery,
   PubInvite,
+  PubProofBar,
   PubTestimonial,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
@@ -305,11 +306,14 @@ export default function RenovationCuisinePub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Cuisine pensée pour votre quotidien</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de cuisine à Laval et dans les Laurentides</h1>
-            <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">SLC Habitation examine vos usages, votre espace et ses contraintes techniques pour planifier une rénovation adaptée.</p>
-            <PubCTA service="renovation-cuisine" size="lg" testId="button-hero-cta">Parler de mon projet</PubCTA>
+            <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Nous venons voir votre cuisine, nous écoutons comment vous l’utilisez, puis nous préparons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
+            <PubCTA service="renovation-cuisine" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>
+            <p className="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p>
           </div>
         </div>
       </section>
+
+      <PubProofBar />
 
       <PubPageNav items={navItems} />
 
@@ -383,8 +387,8 @@ export default function RenovationCuisinePub() {
 
           <PubActionBar
             className="mt-10"
-            note="Planification rigoureuse. Résultats durables."
-            action={<PubCTA service="renovation-cuisine" testId="button-implantation-cta">Obtenir une soumission</PubCTA>}
+            note="Visite et estimation sans frais, réponse sous 48 heures."
+            action={<PubCTA service="renovation-cuisine" testId="button-implantation-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
         </div>
       </section>
@@ -423,8 +427,8 @@ export default function RenovationCuisinePub() {
 
           <PubActionBar
             className="mt-10"
-            note="Conseils clairs. Choix durables."
-            action={<PubCTA service="renovation-cuisine" testId="button-materiaux-cta">Obtenir une soumission</PubCTA>}
+            note="Plus de 500 projets complétés depuis 18 ans."
+            action={<PubCTA service="renovation-cuisine" testId="button-materiaux-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
 
           <div className="mt-16 rounded-none bg-secondary p-10 text-secondary-foreground md:flex md:items-center md:gap-10">
@@ -471,8 +475,8 @@ export default function RenovationCuisinePub() {
           <PubActionBar
             className="mt-6"
             tone="dark"
-            note="Conseils clairs. Décisions mieux alignées."
-            action={<PubCTA service="renovation-cuisine" testId="button-questions-cta">Obtenir une soumission</PubCTA>}
+            note="19 avis Google 5 étoiles, licence RBQ 8351-9033-59."
+            action={<PubCTA service="renovation-cuisine" testId="button-questions-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
         </div>
       </section>
@@ -523,7 +527,7 @@ export default function RenovationCuisinePub() {
       <section className="border-y border-border bg-primary/5 py-16 md:py-20">
         <div className="container-large mx-auto max-w-4xl px-6">
           <PubTestimonial
-            quote="Excellente compagnie, service professionnel et soucis du détails! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets!"
+            quote="Excellente compagnie, service professionnel et souci du détail! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets!"
             author="Mélodie Binette"
             role="Propriétaire"
           />
@@ -534,8 +538,8 @@ export default function RenovationCuisinePub() {
       <PubGallery
         id="realisations"
         kicker="Cuisines réalisées"
-        title="Des cuisines livrées à Laval et dans les Laurentides"
-        description="Quelques projets terminés par l’équipe : implantations, rangements et finitions choisis avec les propriétaires."
+        title="Des cuisines terminées par notre équipe"
+        description="Quelques projets menés du plan aux finitions, avec les propriétaires, parmi les 500 réalisés depuis 18 ans."
         images={kitchenGallery}
       />
 
@@ -571,8 +575,8 @@ export default function RenovationCuisinePub() {
             <Check className="h-8 w-8 text-white" />
           </div>
           <h2 className="mb-5 font-bold">Prêt à clarifier votre projet de cuisine?</h2>
-          <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Présentez votre point de départ, les usages à améliorer et les changements envisagés pour votre rénovation à Laval ou dans les Laurentides.</p>
-          <PubCTA service="renovation-cuisine" size="lg" testId="button-bottom-cta">Demander une soumission</PubCTA>
+          <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Décrivez votre cuisine actuelle et ce que vous voulez changer. Nous vous répondons sous 48 heures et la visite d’évaluation est sans frais.</p>
+          <PubCTA service="renovation-cuisine" size="lg" testId="button-bottom-cta">Demander ma soumission sans frais</PubCTA>
         </div>
       </section>
     </PubLayout>

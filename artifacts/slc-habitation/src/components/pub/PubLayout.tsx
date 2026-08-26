@@ -64,6 +64,9 @@ export function PubLayout({ children }: { children: ReactNode }) {
             <p className="max-w-xs text-sm leading-relaxed text-white/60">
               Studio de rénovation résidentielle desservant Laval et les Laurentides avec une approche attentive à chaque projet.
             </p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60" data-testid="text-footer-territoire">
+              Laval, Saint-Eustache, Terrebonne, Sainte-Thérèse, Rosemère, Mirabel, Boisbriand, Blainville et Saint-Jérôme.
+            </p>
           </div>
 
           <div>

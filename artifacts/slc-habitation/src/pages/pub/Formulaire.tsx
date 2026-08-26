@@ -1,7 +1,7 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { QuoteForm } from '@/components/pub/QuoteForm';
 import { FAQ } from '@/components/pub/FAQ';
-import { ShieldCheck, Clock } from 'lucide-react';
+import { ShieldCheck, Clock, Star, Wallet } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
@@ -31,7 +31,7 @@ export default function FormulairePub() {
               Parlons de votre projet de rénovation
             </h1>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Trois étapes simples pour nous transmettre les renseignements essentiels sur votre projet.
+              Trois étapes simples. Nous vous répondons sous 48 heures et la visite d’évaluation est sans frais.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function FormulairePub() {
                 </h1>
 
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  Décrivez-nous l’espace que vous souhaitez rénover à Laval ou dans les Laurentides. Ces premiers renseignements nous aideront à préparer une discussion adaptée à votre propriété.
+                  Décrivez-nous l’espace que vous souhaitez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures, puis nous convenons d’une visite d’évaluation sans frais avant de préparer votre soumission.
                 </p>
               </div>
 
@@ -64,9 +64,19 @@ export default function FormulairePub() {
                   <p className="text-sm text-muted-foreground">8351-9033-59</p>
                 </div>
                 <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
+                  <Star className="w-6 h-6 text-primary" />
+                  <h4 className="text-base font-semibold text-foreground">19 avis Google 5 étoiles</h4>
+                  <p className="text-sm text-muted-foreground">Plus de 500 projets complétés</p>
+                </div>
+                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
                   <Clock className="w-6 h-6 text-primary" />
-                  <h4 className="text-base font-semibold text-foreground">18 ans d’expérience</h4>
-                  <p className="text-sm text-muted-foreground">En rénovation résidentielle</p>
+                  <h4 className="text-base font-semibold text-foreground">Réponse sous 48 heures</h4>
+                  <p className="text-sm text-muted-foreground">À chaque demande reçue</p>
+                </div>
+                <div className="flex flex-col gap-2 p-5 rounded-none bg-white border border-border/50">
+                  <Wallet className="w-6 h-6 text-primary" />
+                  <h4 className="text-base font-semibold text-foreground">Estimation sans frais</h4>
+                  <p className="text-sm text-muted-foreground">Visite sur place comprise</p>
                 </div>
               </div>
 
@@ -99,16 +109,16 @@ export default function FormulairePub() {
                 <h3 className="text-2xl font-bold font-heading text-foreground">Questions fréquentes</h3>
                 <div className="space-y-3">
                   <FAQ
-                    question="Comment fonctionne le processus de soumission ?"
-                    answer="Après l’envoi du formulaire, notre équipe examine les renseignements transmis afin de préparer la discussion. Une visite peut ensuite être planifiée lorsque l’évaluation sur place est nécessaire pour préciser la portée des travaux."
+                    question="Que se passe-t-il après l’envoi du formulaire ?"
+                    answer="Nous examinons votre demande et nous vous répondons sous 48 heures. Nous convenons ensuite d’une visite d’évaluation sans frais, qui permet d’observer l’espace sur place. Votre soumission est préparée à partir de cette visite."
                   />
                   <FAQ
                     question="Combien de temps faut-il pour démarrer les travaux ?"
-                    answer="Le calendrier précis de votre projet sera discuté et établi suite à notre évaluation initiale. L'échéancier dépendra de l'envergure des travaux, de la préparation nécessaire et de nos disponibilités."
+                    answer="L’échéancier est établi après la visite d’évaluation. Il dépend de l’envergure des travaux, de la préparation nécessaire et de nos disponibilités."
                   />
                   <FAQ
                     question="Comment encadrez-vous les projets ?"
-                    answer="Les modalités du contrat, les responsabilités de chaque partie et les éléments propres au projet seront expliqués lors de l'évaluation."
+                    answer="SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans en rénovation résidentielle. Les modalités du contrat, les responsabilités de chaque partie et les éléments propres au projet sont expliqués lors de l’évaluation."
                   />
                 </div>
               </div>

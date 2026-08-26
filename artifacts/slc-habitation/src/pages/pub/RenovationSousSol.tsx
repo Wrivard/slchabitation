@@ -15,6 +15,7 @@ import {
   PubChecklist,
   PubGallery,
   PubInvite,
+  PubProofBar,
   PubTestimonial,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
@@ -289,11 +290,14 @@ export default function RenovationSousSolPub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Aménagement intérieur résidentiel</p>
             <h1 className="mb-6 max-w-4xl font-heading text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">Rénovation de sous-sol <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-8 max-w-3xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Transformez le sous-sol à partir de sa structure, de ses ouvertures et de votre quotidien. SLC Habitation vous aide à clarifier les possibilités avant de planifier.</p>
-            <PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Parler de votre projet</PubCTA>
+            <p className="mb-8 max-w-3xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Humidité, hauteur libre, plomberie : nous venons lire votre sous-sol sur place, puis nous préparons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
+            <PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>
+            <p className="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p>
           </div>
         </div>
       </section>
+
+      <PubProofBar />
 
       <PubPageNav items={navigation} />
 
@@ -368,8 +372,8 @@ export default function RenovationSousSolPub() {
 
           <PubActionBar
             className="mt-10"
-            note="Un diagnostic avant les décisions."
-            action={<PubCTA service="renovation-sous-sol" testId="button-diagnostic-cta">Obtenir une soumission</PubCTA>}
+            note="Visite et estimation sans frais, réponse sous 48 heures."
+            action={<PubCTA service="renovation-sous-sol" testId="button-diagnostic-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
 
           <figure className="mt-14 overflow-hidden rounded-none">
@@ -412,8 +416,8 @@ export default function RenovationSousSolPub() {
 
           <PubActionBar
             className="mt-10"
-            note="Des repères, puis une évaluation sur place."
-            action={<PubCTA service="renovation-sous-sol" testId="button-reperes-cta">Obtenir une soumission</PubCTA>}
+            note="Plus de 500 projets complétés, 19 avis Google 5 étoiles."
+            action={<PubCTA service="renovation-sous-sol" testId="button-reperes-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
         </div>
       </section>
@@ -450,7 +454,7 @@ export default function RenovationSousSolPub() {
                 className="mt-14"
                 kicker="Prochaine étape"
                 title="Votre projet commence par les bonnes questions"
-                description="Partagez l’usage visé et vos préoccupations. L’évaluation permet de discuter des possibilités propres au sous-sol."
+                description="Partagez l’usage visé et vos préoccupations. Nous répondons sous 48 heures et la visite d’évaluation est sans frais."
                 action={<PubCTA service="renovation-sous-sol" testId="button-middle-cta">Discuter de mon sous-sol</PubCTA>}
               />
             </div>
@@ -474,8 +478,8 @@ export default function RenovationSousSolPub() {
       <PubGallery
         id="inspirations"
         kicker="Espaces de vie au niveau inférieur"
-        title="Des réalisations qui montrent les possibilités"
-        description="Volume dégagé, aire de vie, pièce polyvalente et salle de bain. Votre espace guidera les choix pertinents."
+        title="Des sous-sols transformés en pièces de vie"
+        description="Volume dégagé, aire de vie, pièce polyvalente et salle de bain : des points de départ différents, des résultats différents."
         images={gallery}
       />
 
@@ -541,9 +545,9 @@ export default function RenovationSousSolPub() {
             tone="dark"
             kicker="Parlons de votre espace"
             title="Donnez une nouvelle place à votre sous-sol"
-            description="Décrivez votre idée et l’espace actuel. Échangeons sur les points à évaluer à Laval ou dans les Laurentides."
+            description="Décrivez votre sous-sol actuel et l’usage que vous visez. Nous vous répondons sous 48 heures et la visite d’évaluation est sans frais."
           />
-          <PubCTA service="renovation-sous-sol" size="lg" testId="button-bottom-cta">Présenter mon projet</PubCTA>
+          <PubCTA service="renovation-sous-sol" size="lg" testId="button-bottom-cta">Demander ma soumission sans frais</PubCTA>
         </div>
       </section>
     </PubLayout>

@@ -13,6 +13,7 @@ import {
   PubCardTitle,
   PubChecklist,
   PubGallery,
+  PubProofBar,
   PubTestimonial,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
@@ -173,11 +174,14 @@ export default function RenovationSalleDeBainPub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Salle de bain pensée dans son ensemble</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de salle de bain <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-8 max-w-2xl text-base leading-relaxed text-slate-200 md:text-[1.0625rem]">Usage, matières et technique doivent avancer ensemble. SLC Habitation examine votre espace avec vous pour envisager une rénovation cohérente avec votre maison.</p>
-            <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-hero-cta">Parler de votre projet</PubCTA>
+            <p className="mb-8 max-w-2xl text-base leading-relaxed text-slate-200 md:text-[1.0625rem]">Douche, vanité, plomberie et ventilation se planifient ensemble. Nous visitons votre salle de bain, puis nous préparons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
+            <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>
+            <p className="mt-4 text-sm text-slate-300">Estimation et visite sans frais · Réponse sous 48 heures</p>
           </div>
         </div>
       </section>
+
+      <PubProofBar />
 
       <PubPageNav items={navigation.map(([href, label]) => ({ href, label }))} />
 
@@ -245,8 +249,8 @@ export default function RenovationSalleDeBainPub() {
 
           <PubActionBar
             className="mt-10"
-            note="Choix comparés avant d’être retenus."
-            action={<PubCTA service="renovation-salle-de-bain" testId="button-possibilites-cta">Obtenir une soumission</PubCTA>}
+            note="Visite et estimation sans frais, réponse sous 48 heures."
+            action={<PubCTA service="renovation-salle-de-bain" testId="button-possibilites-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
 
           <div className="mt-16 grid lg:grid-cols-2 gap-12">
@@ -373,8 +377,8 @@ export default function RenovationSalleDeBainPub() {
 
           <PubActionBar
             className="mt-12"
-            note="Séquence confirmée après l’évaluation."
-            action={<PubCTA service="renovation-salle-de-bain" testId="button-realisation-cta">Obtenir une soumission</PubCTA>}
+            note="Plus de 500 projets complétés, 19 avis Google 5 étoiles."
+            action={<PubCTA service="renovation-salle-de-bain" testId="button-realisation-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
 
           <div className="mt-16 grid md:grid-cols-2 gap-12 items-start">
@@ -462,8 +466,8 @@ export default function RenovationSalleDeBainPub() {
         id="realisations"
         surface="muted"
         kicker="Salles de bain réalisées"
-        title="Des pièces terminées à Laval et dans les Laurentides"
-        description="Quelques projets menés par l’équipe : douches, vanités, céramique et éclairage choisis avec les propriétaires."
+        title="Des salles de bain terminées par notre équipe"
+        description="Douches, vanités, céramique et éclairage choisis avec les propriétaires, parmi les 500 projets réalisés depuis 18 ans."
         images={bathroomGallery}
       />
 
@@ -496,9 +500,9 @@ export default function RenovationSalleDeBainPub() {
           <Wrench className="mx-auto mb-5 h-9 w-9 text-primary" />
           <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-primary">Votre projet, votre espace</p>
           <h2 className="mb-5 font-bold text-white">Parlons de la salle de bain que vous souhaitez transformer</h2>
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Présentez votre pièce, vos idées et vos priorités. Nous pourrons examiner les options pour votre rénovation à Laval ou dans les Laurentides.</p>
-          <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-bottom-cta">Demander une évaluation</PubCTA>
-          <p className="mt-6 text-sm text-gray-400">La portée et les possibilités sont précisées en fonction de l’évaluation du projet.</p>
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Décrivez votre pièce actuelle et ce que vous voulez changer. Nous vous répondons sous 48 heures et la visite d’évaluation est sans frais.</p>
+          <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-bottom-cta">Demander ma soumission sans frais</PubCTA>
+          <p className="mt-6 text-sm text-gray-400">La portée exacte des travaux est précisée après la visite.</p>
         </div>
       </section>
     </PubLayout>
