@@ -1,21 +1,25 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
 import {
+  PubActionBar,
   PubPageNav,
   PubSectionHeader,
   PubCard,
   PubCardBody,
   PubCardIcon,
+  PubCardList,
   PubCardNumber,
   PubCardText,
   PubCardTitle,
+  PubChecklist,
   PubGallery,
   PubTestimonial,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
   MapPin, ShieldCheck, Sparkles, Ruler, Droplets, Lightbulb,
-  ClipboardCheck, Fan, Wrench
+  ClipboardCheck, Fan, Wrench, Layers, Waves, Wind, Zap,
+  Ear, ScanLine, PencilRuler, Settings2, Hammer
 } from 'lucide-react';
 
 const bathroomImages = {
@@ -72,24 +76,52 @@ const bathroomGallery = [
 ];
 
 const projectPriorities = [
-  { icon: Ruler, title: 'Circulation et proportions', text: 'Dégagement devant la vanité, ouverture de porte et espace autour du bain guident le plan. Dans une petite pièce, des volumes justes comptent plus que le nombre d’éléments.' },
-  { icon: Droplets, title: 'Zones exposées à l’eau', text: 'Douche, bain et raccords ont leurs propres contraintes. Surfaces, joints, pente et étanchéité sont étudiés selon la configuration.' },
-  { icon: Lightbulb, title: 'Lumière et gestes quotidiens', text: 'Miroir, éclairage général et commandes suivent les habitudes de la maisonnée. Leur position se prévoit avant la fermeture des murs.' },
+  {
+    icon: Ruler,
+    title: 'Circulation et proportions',
+    points: [
+      'Dégagement devant la vanité, ouverture de porte et espace autour du bain guident le plan.',
+      'Dans une petite pièce, des volumes justes comptent plus que le nombre d’éléments.',
+    ],
+  },
+  {
+    icon: Droplets,
+    title: 'Zones exposées à l’eau',
+    points: [
+      'Douche, bain et raccords ont leurs propres contraintes.',
+      'Surfaces, joints, pente et étanchéité sont étudiés selon la configuration.',
+    ],
+  },
+  {
+    icon: Lightbulb,
+    title: 'Lumière et gestes quotidiens',
+    points: [
+      'Miroir, éclairage général et commandes suivent les habitudes de la maisonnée.',
+      'Leur position se prévoit avant la fermeture des murs.',
+    ],
+  },
 ];
 
 const assessmentPoints = [
-  ['Structure et plancher', 'Sens des solives, état du sous-plancher et charge des revêtements peuvent orienter le plan.'],
-  ['Plomberie existante', 'Arrivées d’eau, drain et appareils indiquent ce qui peut rester ou être repensé.'],
-  ['Ventilation', 'Parcours d’évacuation, emplacement de l’appareil et contraintes du bâtiment sont vérifiés avant les travaux.'],
-  ['Électricité et éclairage', 'Panneau, circuits, prises et éclairage sont considérés selon les besoins du projet.'],
+  { icon: Layers, title: 'Structure et plancher', text: 'Sens des solives, état du sous-plancher et charge des revêtements peuvent orienter le plan.' },
+  { icon: Waves, title: 'Plomberie existante', text: 'Arrivées d’eau, drain et appareils indiquent ce qui peut rester ou être repensé.' },
+  { icon: Wind, title: 'Ventilation', text: 'Parcours d’évacuation, emplacement de l’appareil et contraintes du bâtiment sont vérifiés avant les travaux.' },
+  { icon: Zap, title: 'Électricité et éclairage', text: 'Panneau, circuits, prises et éclairage sont considérés selon les besoins du projet.' },
+];
+
+const preparationChecklist = [
+  'Photos d’inspiration',
+  'Habitudes de rangement',
+  'Éléments à conserver',
+  'Irritants actuels',
 ];
 
 const steps = [
-  ['1', 'Écouter la pièce et vos priorités', 'Douche, vanité, rangement, ambiance et circulation : la discussion cerne ce qui doit changer. Vos inspirations précisent matières et contrastes.'],
-  ['2', 'Observer l’existant', 'Murs, ouvertures, installations et accès relient le plan au bâtiment. Un déplacement d’appareil se confirme après cette lecture technique.'],
-  ['3', 'Composer un plan cohérent', 'Douche, vanité, miroir, rangement, niches et revêtements sont comparés ensemble, selon la pièce.'],
-  ['4', 'Préparer les détails techniques', 'Plomberie, électricité requise, ventilation et surfaces à protéger sont coordonnées avant les finis, la robinetterie et les accessoires.'],
-  ['5', 'Avancer par zones', 'Démolition nécessaire, supports, technique et finitions suivent un ordre adapté à la portée et aux choix retenus.'],
+  { icon: Ear, title: 'Écouter la pièce et vos priorités', text: 'Douche, vanité, rangement, ambiance et circulation : la discussion cerne ce qui doit changer. Vos inspirations précisent matières et contrastes.' },
+  { icon: ScanLine, title: 'Observer l’existant', text: 'Murs, ouvertures, installations et accès relient le plan au bâtiment. Un déplacement d’appareil se confirme après cette lecture technique.' },
+  { icon: PencilRuler, title: 'Composer un plan cohérent', text: 'Douche, vanité, miroir, rangement, niches et revêtements sont comparés ensemble, selon la pièce.' },
+  { icon: Settings2, title: 'Préparer les détails techniques', text: 'Plomberie, électricité requise, ventilation et surfaces à protéger sont coordonnées avant les finis, la robinetterie et les accessoires.' },
+  { icon: Hammer, title: 'Avancer par zones', text: 'Démolition nécessaire, supports, technique et finitions suivent un ordre adapté à la portée et aux choix retenus.' },
 ];
 
 const faqs = [
@@ -188,16 +220,22 @@ export default function RenovationSalleDeBainPub() {
           />
 
           <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-3">
-            {projectPriorities.map(({ icon: Icon, title, text }) => (
+            {projectPriorities.map(({ icon: Icon, title, points }) => (
               <PubCard key={title}>
                 <PubCardBody>
                   <PubCardIcon icon={Icon} />
                   <PubCardTitle>{title}</PubCardTitle>
-                  <PubCardText>{text}</PubCardText>
+                  <PubCardList items={points} />
                 </PubCardBody>
               </PubCard>
             ))}
           </div>
+
+          <PubActionBar
+            className="mt-10"
+            note="Choix comparés avant d’être retenus."
+            action={<PubCTA service="renovation-salle-de-bain" testId="button-possibilites-cta">Obtenir une soumission</PubCTA>}
+          />
 
           <div className="mt-16 grid lg:grid-cols-2 gap-12">
             <div className="aspect-[4/3] rounded-none overflow-hidden shadow-2xl shadow-black/5">
@@ -271,17 +309,12 @@ export default function RenovationSalleDeBainPub() {
                 <p>Son parcours dépend de la hauteur disponible, des solives et de la construction du plancher. Garder une douche ou une toilette près de sa position peut limiter les interventions; ailleurs, revoir le plan peut convenir. L’observation vient avant la conclusion.</p>
               </div>
 
-              <div className="mt-12 rounded-none border border-primary/20 bg-primary/5 p-8">
-                <h3 className="mb-3 font-bold text-xl flex items-center gap-2">
-                  <ClipboardCheck className="text-primary w-5 h-5" /> À apporter à la discussion
-                </h3>
-                <ul className="grid gap-2 text-muted-foreground sm:grid-cols-2">
-                  <li>— Photos d’inspiration</li>
-                  <li>— Habitudes de rangement</li>
-                  <li>— Éléments à conserver</li>
-                  <li>— Irritants actuels</li>
-                </ul>
-              </div>
+              <PubChecklist
+                className="mt-12"
+                icon={ClipboardCheck}
+                title="À apporter à la discussion"
+                items={preparationChecklist}
+              />
             </div>
 
             <div className="lg:col-span-7">
@@ -289,9 +322,10 @@ export default function RenovationSalleDeBainPub() {
                   <img src={bathroomImages.extra2} alt="Salle de bain moderne" width="1600" height="2133" loading="lazy" className="w-full h-full object-cover" />
               </div>
               <div className="grid gap-6 sm:grid-cols-2 lg:border-t lg:border-border lg:pt-12">
-                {assessmentPoints.map(([title, text]) => (
+                {assessmentPoints.map(({ icon: Icon, title, text }) => (
                   <PubCard key={title}>
                     <PubCardBody>
+                      <PubCardIcon icon={Icon} />
                       <PubCardTitle>{title}</PubCardTitle>
                       <PubCardText>{text}</PubCardText>
                     </PubCardBody>
@@ -314,16 +348,22 @@ export default function RenovationSalleDeBainPub() {
           />
 
           <div className="grid gap-6 border-y border-border py-16 sm:grid-cols-2 lg:grid-cols-5">
-            {steps.map(([number, title, text]) => (
-              <PubCard key={number}>
+            {steps.map(({ icon: Icon, title, text }, index) => (
+              <PubCard key={title}>
                 <PubCardBody>
-                  <PubCardNumber>{`0${number}`}</PubCardNumber>
-                  <PubCardTitle>{title}</PubCardTitle>
+                  <PubCardNumber icon={Icon}>{`0${index + 1}`}</PubCardNumber>
+                  <PubCardTitle rule>{title}</PubCardTitle>
                   <PubCardText>{text}</PubCardText>
                 </PubCardBody>
               </PubCard>
             ))}
           </div>
+
+          <PubActionBar
+            className="mt-12"
+            note="Séquence confirmée après l’évaluation."
+            action={<PubCTA service="renovation-salle-de-bain" testId="button-realisation-cta">Obtenir une soumission</PubCTA>}
+          />
 
           <div className="mt-16 grid md:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">

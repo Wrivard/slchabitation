@@ -1,15 +1,18 @@
 import { PubLayout } from '@/components/pub/PubLayout';
 import { PubCTA } from '@/components/pub/PubCTA';
 import {
+  PubActionBar,
   PubPageNav,
   PubSectionHeader,
   PubCard,
   PubCardBody,
   PubCardIcon,
+  PubCardList,
   PubCardNote,
   PubCardNumber,
   PubCardText,
   PubCardTitle,
+  PubChecklist,
   PubGallery,
   PubInvite,
   PubTestimonial,
@@ -17,7 +20,8 @@ import {
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
   Bath, Bed, CheckCircle2, Droplets, Hammer,
-  Home, Lightbulb, MapPin, PanelTop, Ruler, ShieldCheck, Volume2, ArrowRight, ArrowDown
+  Home, Lightbulb, MapPin, PanelTop, Ruler, ShieldCheck, Volume2, ArrowDown,
+  Ear, LayoutGrid, Wrench, Paintbrush, Waves, ArrowUpDown, Zap, DoorOpen, Layers, ClipboardList
 } from 'lucide-react';
 
 const navigation = [
@@ -47,12 +51,18 @@ const possibilities = [
 ];
 
 const diagnosticPoints = [
-  ['Humidité et fondation', "Signes d'humidité, état apparent des murs de fondation et conditions à corriger avant de fermer les assemblages."],
-  ['Hauteur et mécanique', 'Poutres, conduits, plomberie et câblage qui influencent la hauteur libre et le tracé des plafonds.'],
-  ['Dalle et plomberie', 'Emplacement des drains, du renvoi principal et des appareils projetés lorsque la plomberie fait partie du scénario.'],
-  ['Ouvertures et sécurité', "Fenêtres, accès et usage prévu de chaque pièce, notamment lorsqu'une chambre est envisagée."],
-  ['Électricité et chauffage', "Panneau, circuits existants, zones d'éclairage et besoins de chauffage à considérer dans la planification."],
-  ['Structure et accès', "Murs, poutres, escaliers et parcours des matériaux qui peuvent influencer l'ordre des travaux."],
+  { icon: Droplets, title: 'Humidité et fondation', text: "Signes d'humidité, état apparent des murs de fondation et conditions à corriger avant de fermer les assemblages." },
+  { icon: ArrowUpDown, title: 'Hauteur et mécanique', text: 'Poutres, conduits, plomberie et câblage qui influencent la hauteur libre et le tracé des plafonds.' },
+  { icon: Waves, title: 'Dalle et plomberie', text: 'Emplacement des drains, du renvoi principal et des appareils projetés lorsque la plomberie fait partie du scénario.' },
+  { icon: DoorOpen, title: 'Ouvertures et sécurité', text: "Fenêtres, accès et usage prévu de chaque pièce, notamment lorsqu'une chambre est envisagée." },
+  { icon: Zap, title: 'Électricité et chauffage', text: "Panneau, circuits existants, zones d'éclairage et besoins de chauffage à considérer dans la planification." },
+  { icon: Layers, title: 'Structure et accès', text: "Murs, poutres, escaliers et parcours des matériaux qui peuvent influencer l'ordre des travaux." },
+];
+
+const planningChecklist = [
+  'Les usages à réunir dans l’espace',
+  'Les pièces à fermer',
+  'Les équipements à garder accessibles',
 ];
 
 const technicalChapters = [
@@ -143,21 +153,25 @@ const technicalChapters = [
 const steps = [
   {
     number: '01',
+    icon: Ear,
     title: 'Écouter le projet et observer le lieu',
     text: "Nous précisons les usages. Sur place, dimensions, ouvertures, mécanique visible et état général cadrent la réflexion.",
   },
   {
     number: '02',
+    icon: LayoutGrid,
     title: 'Définir une configuration cohérente',
     text: "Les zones composent avec la circulation et la technique. Salle de bain, cloison, plafond et ouverture sont discutés avant les finis.",
   },
   {
     number: '03',
+    icon: Wrench,
     title: 'Prévoir les interventions techniques',
     text: "Isolation, plomberie, électricité, chauffage et ventilation précèdent les surfaces. Leur portée, les permis et les validations dépendent du projet.",
   },
   {
     number: '04',
+    icon: Paintbrush,
     title: 'Passer aux finitions choisies',
     text: "Sol, murs, portes, éclairage, menuiserie et accessoires s’accordent à l’usage. Chaque type de pièce appelle ses propres détails.",
   },
@@ -286,12 +300,7 @@ export default function RenovationSousSolPub() {
               />
             </div>
             <div className="lg:col-span-5">
-              <div className="rounded-none border border-primary/20 bg-primary/5 p-8">
-                <h3 className="mb-3 font-bold text-xl flex items-center gap-2">
-                  <Lightbulb className="text-primary w-5 h-5" /> À clarifier avant le plan
-                </h3>
-                <p className="leading-relaxed text-muted-foreground">Notez trois choses : usages à réunir, pièces à fermer et équipements à garder accessibles.</p>
-              </div>
+              <PubChecklist icon={Lightbulb} title="À clarifier avant le plan" items={planningChecklist} />
             </div>
           </div>
 
@@ -336,15 +345,22 @@ export default function RenovationSousSolPub() {
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {diagnosticPoints.map(([title, text]) => (
+            {diagnosticPoints.map(({ icon: Icon, title, text }) => (
               <PubCard key={title}>
                 <PubCardBody>
+                  <PubCardIcon icon={Icon} />
                   <PubCardTitle>{title}</PubCardTitle>
                   <PubCardText>{text}</PubCardText>
                 </PubCardBody>
               </PubCard>
             ))}
           </div>
+
+          <PubActionBar
+            className="mt-10"
+            note="Un diagnostic avant les décisions."
+            action={<PubCTA service="renovation-sous-sol" testId="button-diagnostic-cta">Obtenir une soumission</PubCTA>}
+          />
 
           <figure className="mt-14 overflow-hidden rounded-none">
             <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-[360px] w-full object-cover" />
@@ -375,24 +391,20 @@ export default function RenovationSousSolPub() {
             {technicalChapters.map(({ number, title, icon: Icon, points, note }) => (
               <PubCard key={number}>
                 <PubCardBody>
-                  <div className="mb-5 flex items-center justify-between gap-4">
-                    <PubCardIcon icon={Icon} className="mb-0" />
-                    <span className="font-heading text-4xl font-black leading-none tracking-tighter text-primary/25">{number}</span>
-                  </div>
-                  <PubCardTitle>{title}</PubCardTitle>
-                  <ul className="grid gap-3">
-                    {points.map((point) => (
-                      <li key={point} className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-primary" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <PubCardNumber icon={Icon}>{number}</PubCardNumber>
+                  <PubCardTitle rule>{title}</PubCardTitle>
+                  <PubCardList items={points} />
                 </PubCardBody>
-                <PubCardNote label="Pour la visite" icon={ArrowRight}>{note}</PubCardNote>
+                <PubCardNote label="Pour la visite" icon={ClipboardList}>{note}</PubCardNote>
               </PubCard>
             ))}
           </div>
+
+          <PubActionBar
+            className="mt-10"
+            note="Des repères, puis une évaluation sur place."
+            action={<PubCTA service="renovation-sous-sol" testId="button-reperes-cta">Obtenir une soumission</PubCTA>}
+          />
         </div>
       </section>
 
@@ -416,8 +428,8 @@ export default function RenovationSousSolPub() {
                 {steps.map((step) => (
                   <PubCard key={step.number}>
                     <PubCardBody>
-                      <PubCardNumber>{step.number}</PubCardNumber>
-                      <PubCardTitle>{step.title}</PubCardTitle>
+                      <PubCardNumber icon={step.icon}>{step.number}</PubCardNumber>
+                      <PubCardTitle rule>{step.title}</PubCardTitle>
                       <PubCardText>{step.text}</PubCardText>
                     </PubCardBody>
                   </PubCard>

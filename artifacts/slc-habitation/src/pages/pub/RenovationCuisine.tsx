@@ -3,20 +3,38 @@ import { PubCTA } from '@/components/pub/PubCTA';
 import {
   PubPageNav,
   PubSectionHeader,
+  PubActionBar,
   PubCard,
   PubCardBody,
   PubCardIcon,
+  PubCardList,
   PubCardMedia,
   PubCardNote,
   PubCardNumber,
   PubCardText,
   PubCardTitle,
+  PubChecklist,
   PubGallery,
   PubInvite,
   PubTestimonial,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
-import { Check, Grid, Lightbulb, MapPin, Ruler, ShieldCheck, Utensils, ArrowRight, ClipboardCheck } from 'lucide-react';
+import {
+  CalendarCheck,
+  Check,
+  ChefHat,
+  ClipboardCheck,
+  Grid,
+  Hammer,
+  Layers,
+  Lightbulb,
+  MapPin,
+  MoveHorizontal,
+  Refrigerator,
+  Ruler,
+  ShieldCheck,
+  Utensils,
+} from 'lucide-react';
 
 const kitchenImages = {
   hero: {
@@ -125,9 +143,27 @@ const assessmentItems = [
 ];
 
 const configurationCards = [
-  { icon: Grid, title: 'Armoires et surfaces', text: 'Caissons, façades, poignées, comptoirs et dosserets forment un ensemble. Proportions, joints et transitions comptent aussi.' },
-  { icon: Utensils, title: 'Rangement utile', text: 'Tiroirs, garde-manger et armoires s’organisent selon vos objets et vos gestes réels.' },
-  { icon: Lightbulb, title: 'Éclairage par usage', text: 'Éclairages général, de travail et d’ambiance se distinguent. Leur emplacement se prévoit avec les armoires.' },
+  {
+    icon: Grid,
+    title: 'Armoires et surfaces',
+    points: [
+      'Caissons, façades, poignées, comptoirs et dosserets forment un ensemble.',
+      'Proportions, joints et transitions comptent aussi.',
+    ],
+  },
+  {
+    icon: Utensils,
+    title: 'Rangement utile',
+    points: ['Tiroirs, garde-manger et armoires s’organisent selon vos objets et vos gestes réels.'],
+  },
+  {
+    icon: Lightbulb,
+    title: 'Éclairage par usage',
+    points: [
+      'Éclairages général, de travail et d’ambiance se distinguent.',
+      'Leur emplacement se prévoit avec les armoires.',
+    ],
+  },
 ];
 
 const chapters = [
@@ -184,29 +220,40 @@ const chapters = [
 ];
 
 const siteSteps = [
-  { title: 'Comprendre le lieu', text: 'Volumes, murs, accès, installations et objectifs.' },
-  { title: 'Planifier les interventions', text: 'Implantation et matériaux reliés à la plomberie, l’électricité, la ventilation et la menuiserie.' },
-  { title: 'Préparer les séquences', text: 'Démolition, ajustements techniques, surfaces et finitions dans un ordre adapté.' },
-  { title: 'Avancer avec méthode', text: 'Décisions et interventions alignées sur le plan et les conditions observées.' },
+  { icon: Ruler, title: 'Comprendre le lieu', text: 'Volumes, murs, accès, installations et objectifs.' },
+  { icon: ClipboardCheck, title: 'Planifier les interventions', text: 'Implantation et matériaux reliés à la plomberie, l’électricité, la ventilation et la menuiserie.' },
+  { icon: Hammer, title: 'Préparer les séquences', text: 'Démolition, ajustements techniques, surfaces et finitions dans un ordre adapté.' },
+  { icon: CalendarCheck, title: 'Avancer avec méthode', text: 'Décisions et interventions alignées sur le plan et les conditions observées.' },
 ];
 
 const decisionPoints = [
   {
+    icon: ChefHat,
     title: 'Le plan de travail',
     text: 'Suivez le trajet des aliments : arrivée, lavage, préparation, cuisson. Position, continuité et dégagement comptent autant que la superficie.',
   },
   {
+    icon: Refrigerator,
     title: 'Les appareils',
     text: 'Réfrigérateur, lave-vaisselle, four, micro-ondes et petits appareils ont leurs dimensions, portes et raccordements. Leur interaction compte à plusieurs.',
   },
   {
+    icon: MoveHorizontal,
     title: 'Les passages',
     text: 'Les trajets vers le salon, la salle à manger, l’extérieur ou l’escalier traversent parfois la cuisine. L’évaluation situe les zones actives et les conflits possibles.',
   },
   {
+    icon: Layers,
     title: 'Les finitions',
     text: 'Jonctions comptoir-dosseret, transitions de plancher, moulures et poignées façonnent l’ensemble. Les discuter tôt facilite leur coordination.',
   },
+];
+
+const meetingChecklist = [
+  'Ce qui fonctionne et ce qui dérange aujourd’hui',
+  'Dimensions connues et photos de la pièce',
+  'L’usage visé : repas, préparation, rangement',
+  'Les accès et pièces voisines à protéger',
 ];
 
 const faqs = [
@@ -313,16 +360,20 @@ export default function RenovationCuisinePub() {
                 />
                 <PubCardBody>
                   <PubCardTitle>{chapter.title}</PubCardTitle>
-                  {chapter.paragraphs.map((paragraph) => (
-                    <PubCardText key={paragraph}>{paragraph}</PubCardText>
-                  ))}
+                  <PubCardList items={chapter.paragraphs} />
                 </PubCardBody>
-                <PubCardNote label="Point de planification" icon={ArrowRight}>
+                <PubCardNote label="Point de planification" icon={Lightbulb}>
                   {chapter.callout}
                 </PubCardNote>
               </PubCard>
             ))}
           </div>
+
+          <PubActionBar
+            className="mt-10"
+            note="Planification rigoureuse. Résultats durables."
+            action={<PubCTA service="renovation-cuisine" testId="button-implantation-cta">Obtenir une soumission</PubCTA>}
+          />
         </div>
       </section>
 
@@ -347,16 +398,22 @@ export default function RenovationCuisinePub() {
           </div>
 
           <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-3">
-            {configurationCards.map(({ icon: Icon, title, text }) => (
+            {configurationCards.map(({ icon: Icon, title, points }) => (
               <PubCard key={title}>
                 <PubCardBody>
                   <PubCardIcon icon={Icon} />
                   <PubCardTitle>{title}</PubCardTitle>
-                  <PubCardText>{text}</PubCardText>
+                  <PubCardList items={points} />
                 </PubCardBody>
               </PubCard>
             ))}
           </div>
+
+          <PubActionBar
+            className="mt-10"
+            note="Conseils clairs. Choix durables."
+            action={<PubCTA service="renovation-cuisine" testId="button-materiaux-cta">Obtenir une soumission</PubCTA>}
+          />
 
           <div className="mt-16 rounded-none bg-secondary p-10 text-secondary-foreground md:flex md:items-center md:gap-10">
             <Ruler className="mb-6 h-12 w-12 shrink-0 text-primary md:mb-0" />
@@ -380,27 +437,31 @@ export default function RenovationCuisinePub() {
           />
 
           <div className="grid gap-6 border-t border-white/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
-            {decisionPoints.map((item) => (
-              <PubCard key={item.title} tone="dark">
+            {decisionPoints.map(({ icon: Icon, title, text }) => (
+              <PubCard key={title} tone="dark">
                 <PubCardBody>
-                  <PubCardTitle>{item.title}</PubCardTitle>
-                  <PubCardText>{item.text}</PubCardText>
+                  <PubCardIcon icon={Icon} />
+                  <PubCardTitle>{title}</PubCardTitle>
+                  <PubCardText>{text}</PubCardText>
                 </PubCardBody>
               </PubCard>
             ))}
           </div>
 
-          <aside className="mt-12 border border-primary/30 bg-primary/10 p-6 md:p-8">
-            <h3 className="mb-5 flex items-center gap-3 text-base font-bold uppercase tracking-[0.12em] text-white">
-              <ClipboardCheck className="h-5 w-5 text-primary" /> À préparer pour la rencontre
-            </h3>
-            <ul className="grid gap-x-10 gap-y-3 text-[0.95rem] leading-relaxed text-gray-300 sm:grid-cols-2">
-              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />Ce qui fonctionne et ce qui dérange aujourd’hui</li>
-              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />Dimensions connues et photos de la pièce</li>
-              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />L’usage visé : repas, préparation, rangement</li>
-              <li className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />Les accès et pièces voisines à protéger</li>
-            </ul>
-          </aside>
+          <PubChecklist
+            className="mt-12"
+            tone="dark"
+            icon={ClipboardCheck}
+            title="À préparer pour la rencontre"
+            items={meetingChecklist}
+          />
+
+          <PubActionBar
+            className="mt-6"
+            tone="dark"
+            note="Conseils clairs. Décisions mieux alignées."
+            action={<PubCTA service="renovation-cuisine" testId="button-questions-cta">Obtenir une soumission</PubCTA>}
+          />
         </div>
       </section>
 
@@ -425,12 +486,12 @@ export default function RenovationCuisinePub() {
           </div>
 
           <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-4">
-            {siteSteps.map((step, index) => (
-              <PubCard key={step.title}>
+            {siteSteps.map(({ icon: Icon, title, text }, index) => (
+              <PubCard key={title}>
                 <PubCardBody>
-                  <PubCardNumber>{`0${index + 1}`}</PubCardNumber>
-                  <PubCardTitle>{step.title}</PubCardTitle>
-                  <PubCardText>{step.text}</PubCardText>
+                  <PubCardNumber icon={Icon}>{`0${index + 1}`}</PubCardNumber>
+                  <PubCardTitle rule>{title}</PubCardTitle>
+                  <PubCardText>{text}</PubCardText>
                 </PubCardBody>
               </PubCard>
             ))}

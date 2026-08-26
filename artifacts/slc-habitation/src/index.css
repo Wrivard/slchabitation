@@ -600,13 +600,19 @@
 
 .pub-shell .pub-card__badge {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  padding: 0.4rem 0.8rem;
-  background: hsl(var(--background) / 0.92);
-  font-size: 0.75rem;
+  top: 0.9rem;
+  left: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 0.55rem;
+  background: #fff;
+  font-family: var(--app-font-heading);
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  line-height: 1;
   color: hsl(var(--primary));
 }
 
@@ -632,15 +638,37 @@
   background: hsl(var(--primary) / 0.16);
 }
 
+.pub-shell .pub-card__number-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
 .pub-shell .pub-card__number {
-  display: block;
-  margin-bottom: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: hsl(var(--primary));
   font-family: var(--app-font-heading);
-  font-size: 2.75rem;
-  font-weight: 800;
+  font-size: 1.0625rem;
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.04em;
-  color: hsl(var(--primary) / 0.32);
+  color: #fff;
+}
+
+.pub-shell .pub-card__number-icon {
+  width: 1.85rem;
+  height: 1.85rem;
+  flex: 0 0 auto;
+  color: hsl(var(--foreground) / 0.75);
+}
+
+.pub-shell .pub-card--dark .pub-card__number-icon {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .pub-shell .pub-card__title {
@@ -654,6 +682,14 @@
 
 .pub-shell .pub-card--dark .pub-card__title {
   color: #fff;
+}
+
+/* Titre souligné d'un trait court : repère visuel des cartes d'étapes. */
+.pub-shell .pub-card__title--rule {
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid hsl(var(--primary));
+  margin-bottom: 1.05rem;
+  align-self: flex-start;
 }
 
 .pub-shell .pub-card__text {
@@ -671,34 +707,89 @@
   color: rgba(255, 255, 255, 0.68);
 }
 
+/* --- Listes cochées dans les cartes --- */
+.pub-shell .pub-card__list {
+  list-style: none;
+  margin: 0 0 0.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.pub-shell .pub-card__text + .pub-card__list {
+  margin-top: 0.95rem;
+}
+
+.pub-shell .pub-card__list-item {
+  display: flex;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: hsl(var(--muted-foreground));
+}
+
+.pub-shell .pub-card--dark .pub-card__list-item {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pub-shell .pub-card__list-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  margin-top: 0.3rem;
+  color: hsl(var(--primary));
+}
+
+/* --- Encadré de rappel au pied des cartes --- */
 .pub-shell .pub-card__note {
-  margin-top: auto;
-  border-top: 1px solid hsl(var(--border));
-  background: hsl(var(--muted) / 0.6);
-  padding: 1.15rem 1.6rem 1.3rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin: auto 1.6rem 1.6rem;
+  border: 1px solid hsl(var(--primary) / 0.22);
+  background: hsl(var(--primary) / 0.07);
+  padding: 0.95rem 1.05rem 1rem;
 }
 
 .pub-shell .pub-card--dark .pub-card__note {
-  border-top-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: hsl(var(--primary) / 0.32);
+  background: hsl(var(--primary) / 0.12);
+}
+
+.pub-shell .pub-card__note-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  flex: 0 0 auto;
+  border: 1px solid hsl(var(--primary) / 0.4);
+  color: hsl(var(--primary));
+}
+
+.pub-shell .pub-card__note-content {
+  min-width: 0;
 }
 
 .pub-shell .pub-card__note-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0 0 0.6rem;
-  font-size: 0.6875rem;
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: hsl(var(--primary));
+  line-height: 1.4;
+  color: hsl(var(--foreground));
+}
+
+.pub-shell .pub-card--dark .pub-card__note-label {
+  color: #fff;
 }
 
 .pub-shell .pub-card__note-text {
   margin: 0;
   font-size: 0.9063rem;
-  line-height: 1.68;
+  line-height: 1.62;
   color: hsl(var(--muted-foreground));
 }
 
@@ -706,28 +797,192 @@
   color: rgba(255, 255, 255, 0.66);
 }
 
+/* Le corps s'arrête avant l'encadré : celui-ci prend le bas de la carte. */
+.pub-shell .pub-card__body:has(+ .pub-card__note) {
+  padding-bottom: 1.2rem;
+}
+
+/* --- Panneau de préparation --- */
+.pub-shell .pub-checklist {
+  border: 1px solid hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.06);
+  padding: 1.6rem 1.5rem;
+}
+
+.pub-shell .pub-checklist--dark {
+  border-color: hsl(var(--primary) / 0.4);
+  background: hsl(var(--primary) / 0.1);
+}
+
+.pub-shell .pub-checklist__title {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 0 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: hsl(var(--foreground));
+}
+
+.pub-shell .pub-checklist--dark .pub-checklist__title {
+  color: #fff;
+}
+
+.pub-shell .pub-checklist__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 auto;
+  border: 1px solid hsl(var(--primary) / 0.45);
+  background: hsl(var(--primary) / 0.12);
+  color: hsl(var(--primary));
+}
+
+.pub-shell .pub-checklist__list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pub-shell .pub-checklist__item {
+  display: flex;
+  gap: 0.7rem;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+
+.pub-shell .pub-checklist--dark .pub-checklist__item {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.pub-shell .pub-checklist__check {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  margin-top: 0.28rem;
+  color: hsl(var(--primary));
+}
+
+/* --- Barre d'action (téléphone + soumission) --- */
+.pub-shell .pub-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.25rem;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  padding: 1.1rem 1.25rem;
+}
+
+.pub-shell .pub-action-bar--dark {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pub-shell .pub-action-bar__note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  margin-left: auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: hsl(var(--muted-foreground));
+}
+
+.pub-shell .pub-action-bar--dark .pub-action-bar__note {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.pub-shell .pub-action-bar__note-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  color: hsl(var(--primary));
+}
+
+.pub-shell .pub-button--phone {
+  border-color: hsl(var(--secondary));
+  background: hsl(var(--secondary));
+}
+
+.pub-shell .pub-button--phone:hover {
+  border-color: hsl(var(--secondary) / 0.85);
+  background: hsl(var(--secondary) / 0.85);
+}
+
+.pub-shell .pub-action-bar--dark .pub-button--phone {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: transparent;
+}
+
+.pub-shell .pub-action-bar--dark .pub-button--phone:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 639px) {
+  .pub-shell .pub-action-bar .pub-button {
+    width: 100%;
+  }
+
+  .pub-shell .pub-action-bar__note {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .pub-shell .pub-checklist__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .pub-shell .pub-checklist {
+    padding: 2rem 2.25rem;
+  }
+
+  .pub-shell .pub-action-bar {
+    padding: 1.25rem 1.75rem;
+  }
+}
+
 /* Le corps de carte garde son rythme quand il porte plusieurs blocs. */
 .pub-shell .pub-card__body > * + .pub-card__title {
   margin-top: 0.35rem;
 }
 
-/* --- Galerie de réalisations --- */
+/* --- Galerie de réalisations ---
+   Colonnes CSS comme la galerie de la page d'accueil : les images gardent
+   leur hauteur propre et s'enchaînent sans cellule vide. */
 .pub-shell .pub-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  column-count: 1;
+  column-gap: 1.5rem;
 }
 
 .pub-shell .pub-gallery__item {
   position: relative;
-  margin: 0;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1.5rem;
   overflow: hidden;
   background: hsl(var(--muted));
-  aspect-ratio: 4 / 3;
+  break-inside: avoid;
 }
 
-.pub-shell .pub-gallery__item--feature {
-  grid-column: span 2;
+.pub-shell .pub-gallery__item--square .pub-gallery__image {
+  aspect-ratio: 1;
+}
+
+.pub-shell .pub-gallery__item--wide .pub-gallery__image {
+  aspect-ratio: 16 / 9;
 }
 
 .pub-shell .pub-gallery__image {
@@ -754,14 +1009,12 @@
 
 @media (min-width: 768px) {
   .pub-shell .pub-gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+    column-count: 2;
+    column-gap: 2rem;
   }
 
-  .pub-shell .pub-gallery__item--feature {
-    grid-column: span 2;
-    grid-row: span 2;
-    aspect-ratio: auto;
+  .pub-shell .pub-gallery__item {
+    margin-bottom: 2rem;
   }
 
   .pub-shell .pub-gallery__caption {

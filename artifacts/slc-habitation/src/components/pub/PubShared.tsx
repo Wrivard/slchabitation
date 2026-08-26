@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
+import { Check, Phone, ShieldCheck } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 type Tone = 'light' | 'dark';
@@ -169,20 +170,41 @@ export function PubCardIcon({ icon: Icon, className = '' }: { icon: LucideIcon; 
   );
 }
 
-export function PubCardNumber({ children }: { children: ReactNode }) {
+/**
+ * Numéro d'étape : pastille carrée (la marque n'utilise pas d'angles arrondis),
+ * avec une icône facultative alignée à l'opposé.
+ */
+export function PubCardNumber({ children, icon: Icon }: { children: ReactNode; icon?: LucideIcon }) {
   return (
-    <span className="pub-card__number" aria-hidden="true">
-      {children}
-    </span>
+    <div className="pub-card__number-row">
+      <span className="pub-card__number" aria-hidden="true">
+        {children}
+      </span>
+      {Icon && <Icon className="pub-card__number-icon" aria-hidden="true" strokeWidth={1.5} />}
+    </div>
   );
 }
 
-export function PubCardTitle({ children }: { children: ReactNode }) {
-  return <h3 className="pub-card__title">{children}</h3>;
+export function PubCardTitle({ children, rule = false }: { children: ReactNode; rule?: boolean }) {
+  return <h3 className={`pub-card__title${rule ? ' pub-card__title--rule' : ''}`}>{children}</h3>;
 }
 
 export function PubCardText({ children }: { children: ReactNode }) {
   return <p className="pub-card__text">{children}</p>;
+}
+
+/** Liste à puces cochées : rend les blocs de texte plus faciles à parcourir. */
+export function PubCardList({ items }: { items: ReactNode[] }) {
+  return (
+    <ul className="pub-card__list">
+      {items.map((item, index) => (
+        <li key={index} className="pub-card__list-item">
+          <Check className="pub-card__list-icon" aria-hidden="true" strokeWidth={2.5} />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export function PubCardNote({
@@ -196,11 +218,92 @@ export function PubCardNote({
 }) {
   return (
     <div className="pub-card__note">
-      <p className="pub-card__note-label">
-        {Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />}
-        {label}
-      </p>
-      <p className="pub-card__note-text">{children}</p>
+      {Icon && (
+        <span className="pub-card__note-icon" aria-hidden="true">
+          <Icon className="h-4 w-4" strokeWidth={1.75} />
+        </span>
+      )}
+      <div className="pub-card__note-content">
+        <p className="pub-card__note-label">{label}</p>
+        <p className="pub-card__note-text">{children}</p>
+      </div>
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * Panneau de préparation (liste cochée sur deux colonnes)
+ * ----------------------------------------------------------------------- */
+
+export function PubChecklist({
+  title,
+  items,
+  icon: Icon,
+  tone = 'light',
+  className = '',
+}: {
+  title: string;
+  items: string[];
+  icon?: LucideIcon;
+  tone?: Tone;
+  className?: string;
+}) {
+  return (
+    <aside
+      className={`pub-checklist${tone === 'dark' ? ' pub-checklist--dark' : ''} ${className}`.trim()}
+      data-testid="checklist-panel"
+    >
+      <h3 className="pub-checklist__title">
+        {Icon && (
+          <span className="pub-checklist__icon" aria-hidden="true">
+            <Icon className="h-5 w-5" strokeWidth={1.75} />
+          </span>
+        )}
+        {title}
+      </h3>
+      <ul className="pub-checklist__list">
+        {items.map((item) => (
+          <li key={item} className="pub-checklist__item">
+            <Check className="pub-checklist__check" aria-hidden="true" strokeWidth={2.5} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * Barre d'action : téléphone + soumission au bas des sections
+ * ----------------------------------------------------------------------- */
+
+export function PubActionBar({
+  action,
+  note,
+  tone = 'light',
+  className = '',
+}: {
+  action: ReactNode;
+  note?: string;
+  tone?: Tone;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`pub-action-bar${tone === 'dark' ? ' pub-action-bar--dark' : ''} ${className}`.trim()}
+      data-testid="action-bar"
+    >
+      <a href="tel:5144048494" className="pub-button pub-button--phone" data-testid="link-action-phone">
+        <Phone className="pub-button__icon" aria-hidden="true" />
+        (514) 404-8494
+      </a>
+      {action}
+      {note && (
+        <p className="pub-action-bar__note">
+          <ShieldCheck className="pub-action-bar__note-icon" aria-hidden="true" strokeWidth={1.75} />
+          <span>{note}</span>
+        </p>
+      )}
     </div>
   );
 }
@@ -238,11 +341,13 @@ export function PubGallery({
     >
       <div className="container-large mx-auto max-w-7xl px-6">
         <PubSectionHeader className="mb-12 max-w-3xl" kicker={kicker} title={title} description={description} />
+        {/* Colonnes façon galerie de la page d'accueil : les hauteurs alternent
+            sans laisser de trous, contrairement à une grille à cellules fixes. */}
         <div className="pub-gallery">
           {images.map((image, index) => (
             <figure
               key={image.src}
-              className={`pub-gallery__item${index === 0 ? ' pub-gallery__item--feature' : ''}`}
+              className={`pub-gallery__item pub-gallery__item--${index % 4 === 0 || index % 4 === 3 ? 'square' : 'wide'}`}
             >
               <img src={image.src} alt={image.alt} loading="lazy" className="pub-gallery__image" />
               {image.caption && <figcaption className="pub-gallery__caption">{image.caption}</figcaption>}
