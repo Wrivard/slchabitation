@@ -314,12 +314,12 @@ const paidPageContent = {
 
 const paidPageEnhancements = {
   'renovation-cuisine': {
-    hero: ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 'Grande cuisine blanche avec îlot central et comptoirs clairs', 1600, 1200],
+    hero: ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-1600.jpg', 'Cuisine rénovée avec îlot central, armoires en bois et salle à manger attenante', 1600, 1200],
     thumbsLabel: 'Cuisines réalisées',
     thumbs: [
-      ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-500.jpg', 'Cuisine avec îlot en bois et rangements blancs', 500, 667],
-      ['/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-500.jpg', 'Cuisine deux tons avec hotte au-dessus du comptoir et armoires foncées', 500, 667],
-      ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-500.jpg', 'Cuisine avec îlot et plancher clair', 500, 667],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2023-ilot-bois-p-500.jpg', 'Cuisine avec îlot en bois, armoires noires et comptoir clair', 500, 333],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-500.jpg', 'Cuisine blanche avec îlot et fenêtre donnant sur la cour', 500, 375],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-500.jpg', 'Cuisine avec îlot, armoires en bois et luminaires suspendus', 500, 375],
     ],
     cardImages: [
       ['/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-800.jpg', 'Cuisine refaite avec hotte au-dessus de l’îlot et armoires deux tons', 800, 1067],
@@ -330,17 +330,17 @@ const paidPageEnhancements = {
     detailsIntro:
       'Ces trois photos viennent de cuisines que nous avons livrées. Voici ce qu’on y remarque de près.',
     details: [
-      ['/images/INT%C3%89RIEUR/Cuisine/finitions-cuisine-01.jpg', 'Cuisine avec îlot en bois, armoires blanches et suspensions', 1200, 1600, 'Îlot en bois et armoires blanches', 'Un îlot en bois, des armoires blanches et des suspensions structurent cette cuisine.'],
-      ['/images/INT%C3%89RIEUR/Cuisine/finitions-cuisine-02.jpg', 'Cuisine ouverte avec grand îlot, armoires blanches et plancher clair', 1600, 1200, 'Cuisine ouverte et grand îlot', 'La cuisine s’ouvre sur l’aire de vie autour d’un grand îlot central.'],
-      ['/images/INT%C3%89RIEUR/Cuisine/finitions-cuisine-03.jpg', 'Cuisine avec armoires blanches et foncées, comptoir clair et plancher de bois', 1200, 1600, 'Armoires deux tons et plancher de bois', 'Les armoires deux tons et le plancher de bois donnent du contraste à cette cuisine.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2023-ilot-bois-p-1600.jpg', 'Cuisine avec îlot en bois, armoires noires, comptoir clair et suspensions', 1600, 1067, 'Îlot et contraste des matériaux', 'Le bois de l’îlot, les armoires foncées et le comptoir clair créent un point central chaleureux.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-1600.jpg', 'Cuisine blanche avec fenêtre, évier sous la fenêtre et îlot central', 1600, 1200, 'Lumière naturelle et espace de travail', 'La fenêtre éclaire le plan de travail et l’îlot garde une circulation pratique autour de la cuisine.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-1600.jpg', 'Cuisine avec armoires en bois, îlot central, dosseret en pierre et salle à manger', 1600, 1200, 'Cuisine et salle à manger coordonnées', 'Les armoires, le dosseret et le plancher prolongent la cuisine jusque dans l’espace repas.'],
     ],
-    visitImage: ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg', 'Cuisine avec îlot, plancher clair et porte coulissante en bois', 1600, 2133],
-    ctaImage: ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 1600, 1200],
+    visitImage: ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-1600.jpg', 'Cuisine blanche avec îlot, dosseret en petits carreaux et grande fenêtre', 1600, 1200],
+    ctaImage: ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-1600.jpg', 1600, 1200],
     reviews: [paidReviews.melodie, paidReviews.isabelle, paidReviews.johanne],
     images: [
-      ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg', 'Cuisine avec îlot en bois, rangements blancs et suspensions', 1600, 2133, 'Îlot en bois et rangements intégrés'],
-      ['/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png', 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant', 940, 788, 'Saint-Jérôme : armoires claires, comptoir contrastant'],
-      ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 'Grande cuisine blanche avec îlot central et comptoirs clairs', 1600, 1200, 'Cuisine ouverte sur l’aire de vie'],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2023-ilot-bois-p-1600.jpg', 'Cuisine avec îlot en bois, armoires noires et comptoir clair', 1600, 1067, 'Îlot en bois et armoires noires'],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-1600.jpg', 'Cuisine avec îlot central, armoires en bois et salle à manger attenante', 1600, 1200, 'Cuisine et salle à manger'],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-1600.jpg', 'Cuisine blanche avec fenêtre, îlot central et dosseret en petits carreaux', 1600, 1200, 'Cuisine blanche et fenêtre'],
       ['/images/INT%C3%89RIEUR/Cuisine/2403-p-1600.jpg', 'Détail d’une cuisine avec éclairage sous les armoires', 1600, 2133, 'Éclairage de travail sous les armoires'],
     ],
     label: 'Entrepreneur en rénovation',
