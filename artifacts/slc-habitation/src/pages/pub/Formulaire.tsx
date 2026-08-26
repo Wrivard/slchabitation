@@ -104,7 +104,7 @@ export default function FormulairePub() {
       </section>
 
       {/* FORMULAIRE */}
-      <section id="formulaire" className="scroll-mt-20 bg-background py-12 md:py-16 lg:py-20">
+      <section id="formulaire" className="pub-form-section scroll-mt-20 bg-background py-12 md:py-16 lg:py-20">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
             {/* Le formulaire reste le point d'attention : premier sur mobile, à droite sur grand écran. */}

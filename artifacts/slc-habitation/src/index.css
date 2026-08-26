@@ -878,6 +878,14 @@
   color: rgb(255 255 255 / 0.85);
 }
 
+.pub-shell .pub-form-section {
+  background-color: hsl(var(--background));
+  background-image:
+    linear-gradient(rgb(0 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 0 0 / 0.05) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+}
+
 .pub-shell .pub-form-hero__badges {
   display: flex;
   flex-wrap: wrap;
@@ -916,6 +924,12 @@
 @media (min-width: 768px) {
   .pub-shell .pub-form-hero__inner {
     padding: 4.25rem 3rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .pub-shell .pub-form-section {
+    background-size: 2rem 2rem;
   }
 }
 
