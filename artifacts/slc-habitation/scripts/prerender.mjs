@@ -340,6 +340,10 @@ const paidPageEnhancements = {
     ],
     includedWide: ['/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg', 'Espace de sous-sol aménagé avec plancher de bois clair, fenêtres basses et murs beiges', 4000, 3000],
     visitImage: ['/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg', 'Sous-sol dégagé avant un projet de réaménagement avec petites fenêtres et plafond suspendu', 4000, 3000],
+    visitNote: [
+      'L’humidité ne se cache pas sous le gypse',
+      'Si vous avez déjà vu de l’eau, une odeur ou de la peinture qui pèle, dites-le-nous. Ça change l’ordre des travaux.',
+    ],
     ctaImage: ['/images/relume-657406.jpeg', 2048, 1536],
     reviews: [paidReviews.johanne, paidReviews.melodie, paidReviews.isabelle],
     images: [
@@ -392,6 +396,10 @@ function createPaidStaticBody(content, routePath) {
   const steps = content.steps.map(([title, text], index) =>
     `<li><strong>0${index + 1} — ${escapeHtml(title)}</strong> ${escapeHtml(text)}</li>`).join('');
   const visit = content.visit.map(([title, text]) => `<div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div>`).join('');
+  // Encadré propre à la page sous-sol, entre les points de visite et la liste de préparation.
+  const visitNote = extra.visitNote
+    ? `<div><h3>${escapeHtml(extra.visitNote[0])}</h3><p>${escapeHtml(extra.visitNote[1])}</p></div>`
+    : '';
   const checklist = content.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
   const faqItems = content.faqs.map(([question, answer]) =>
     `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('');
@@ -401,7 +409,7 @@ function createPaidStaticBody(content, routePath) {
   <section id="inclus" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Ce qui est inclus</p><h2>${escapeHtml(content.includedTitle)}</h2><p>${escapeHtml(content.includedIntro)}</p>${included}<p>Visite et estimation sans frais, réponse sous 48 heures.</p>${cta}${includedWide}</div></section>
   <section id="etapes" class="bg-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Comment ça se passe</p><h2>Quatre étapes simples</h2><ol>${steps}</ol><p>Plus de 500 projets complétés, 19 avis Google 5 étoiles.</p>${cta}</div></section>
   ${details}
-  <section id="visite" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>La visite</p><h2>Ce que nous regardons chez vous</h2><p>La visite est sans frais. Elle sert à chiffrer votre projet correctement.</p>${visit}<img src="${escapeHtml(visitSrc)}" alt="${escapeHtml(visitAlt)}" width="${visitWidth}" height="${visitHeight}" loading="lazy"><h3>À préparer pour la visite</h3><ul>${checklist}</ul></div></section>
+  <section id="visite" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>La visite</p><h2>Ce que nous regardons chez vous</h2><p>La visite est sans frais. Elle sert à chiffrer votre projet correctement.</p>${visit}${visitNote}<h3>À préparer pour la visite</h3><ul>${checklist}</ul><img src="${escapeHtml(visitSrc)}" alt="${escapeHtml(visitAlt)}" width="${visitWidth}" height="${visitHeight}" loading="lazy"></div></section>
   <section id="avis" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Avis Google</p><h2>${escapeHtml(paidReviewsTitle)}</h2><p>${escapeHtml(paidReviewsIntro)}</p>${reviews}</div></section>
   <section id="realisations" class="bg-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><h2>${escapeHtml(content.galleryTitle)}</h2><p>${escapeHtml(content.galleryIntro)}</p>${images}</div></section>
   <section id="faq" class="py-20"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2>${faqItems}</div></section>

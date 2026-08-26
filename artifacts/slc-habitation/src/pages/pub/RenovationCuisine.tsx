@@ -384,8 +384,8 @@ export default function RenovationCuisinePub() {
       {/* LA VISITE */}
       <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
-            <div className="lg:col-span-5">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-12">
+            <div className="lg:col-span-7">
               <PubSectionHeader
                 className="mb-8 max-w-xl"
                 kicker="La visite"
@@ -400,9 +400,16 @@ export default function RenovationCuisinePub() {
                   </div>
                 ))}
               </div>
+
+              <PubChecklist
+                className="pub-visit-checklist"
+                icon={Lightbulb}
+                title="À préparer pour la visite"
+                items={visitChecklist}
+              />
             </div>
-            <div className="pub-visit-panel lg:col-span-7">
-              <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-[1/1]">
+            <div className="pub-visit-panel lg:col-span-5">
+              <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto">
                 <img
                   src={kitchenImages.visit.src}
                   alt={kitchenImages.visit.alt}
@@ -412,12 +419,6 @@ export default function RenovationCuisinePub() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <PubChecklist
-                className="pub-visit-panel__checklist"
-                icon={Lightbulb}
-                title="À préparer pour la visite"
-                items={visitChecklist}
-              />
             </div>
           </div>
         </div>

@@ -1242,7 +1242,7 @@
 }
 
 /* --- Panneau de préparation --- */
-/* --- Section « La visite » : points à gauche, photo + préparation à droite --- */
+/* --- Section « La visite » : points + préparation à gauche, photo à droite --- */
 .pub-shell .pub-visit-points {
   display: flex;
   flex-direction: column;
@@ -1269,8 +1269,13 @@
   color: hsl(var(--muted-foreground));
 }
 
-/* La photo et la liste de préparation forment un bloc continu, plus haut que
-   la colonne de texte à sa gauche. */
+/* La liste de préparation ferme la colonne de texte. */
+.pub-shell .pub-visit-checklist {
+  margin-top: 2rem;
+}
+
+/* La photo occupe seule la colonne de droite et s'étire sur toute la hauteur
+   de la rangée pour se terminer au même niveau que le texte. */
 .pub-shell .pub-visit-panel {
   display: flex;
   flex-direction: column;
@@ -1280,11 +1285,13 @@
   width: 100%;
   overflow: hidden;
   border: 1px solid hsl(var(--border));
-  border-bottom: 0;
 }
 
-.pub-shell .pub-visit-panel__checklist {
-  margin: 0;
+@media (min-width: 1024px) {
+  .pub-shell .pub-visit-panel__media {
+    flex: 1;
+    min-height: 28rem;
+  }
 }
 
 .pub-shell .pub-checklist {

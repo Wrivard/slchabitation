@@ -315,8 +315,8 @@ export default function RenovationSousSolPub() {
       {/* LA VISITE */}
       <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
         <div className="container-large mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
-            <div className="lg:col-span-5">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-12">
+            <div className="lg:col-span-7">
               <PubSectionHeader
                 className="mb-8 max-w-xl"
                 kicker="La visite"
@@ -339,17 +339,18 @@ export default function RenovationSousSolPub() {
                   <p className="text-sm leading-relaxed text-gray-300">Si vous avez déjà vu de l’eau, une odeur ou de la peinture qui pèle, dites-le-nous. Ça change l’ordre des travaux.</p>
                 </div>
               </div>
-            </div>
-            <div className="pub-visit-panel lg:col-span-7">
-              <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-[1/1]">
-                <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-full w-full object-cover" />
-              </div>
+
               <PubChecklist
-                className="pub-visit-panel__checklist"
+                className="pub-visit-checklist"
                 icon={Lightbulb}
                 title="À préparer pour la visite"
                 items={visitChecklist}
               />
+            </div>
+            <div className="pub-visit-panel lg:col-span-5">
+              <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto">
+                <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-full w-full object-cover" />
+              </div>
             </div>
           </div>
         </div>
