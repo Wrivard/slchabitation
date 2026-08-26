@@ -152,41 +152,6 @@ const bathroomGallery = [
     category: 'Rénovation de salle de bain',
     project: 'Bain autoportant',
   },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230410_141714-p-1600.jpg',
-    alt: 'Salle de bain avec douche en céramique et paroi vitrée',
-    caption: 'Paroi vitrée et niche de douche',
-    category: 'Rénovation de salle de bain',
-    project: 'Niche de douche',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-1600.jpg',
-    alt: 'Salle de bain rénovée avec vanité en bois et céramique au mur',
-    caption: 'Vanité en bois et mur en céramique',
-    category: 'Rénovation de salle de bain',
-    project: 'Vanité en bois',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152903-p-1600.jpg',
-    alt: 'Douche d’angle vitrée avec niche en bois et céramique grand format',
-    caption: 'Douche vitrée et niche en bois',
-    category: 'Rénovation de salle de bain',
-    project: 'Niche en bois',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190331-p-1600.jpg',
-    alt: 'Vanité en bois avec vasque ronde, miroir rond et murs foncés',
-    caption: 'Vasque ronde et miroir rond',
-    category: 'Rénovation de salle de bain',
-    project: 'Vasque ronde',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241018_153927-p-1600.jpg',
-    alt: 'Salle de bain avec douche d’angle vitrée, vanité blanche et murs foncés',
-    caption: 'Douche d’angle et vanité blanche',
-    category: 'Rénovation de salle de bain',
-    project: 'Douche d’angle',
-  },
 ];
 
 const includedCards = [

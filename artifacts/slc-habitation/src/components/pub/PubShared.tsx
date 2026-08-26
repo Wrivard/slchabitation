@@ -457,11 +457,19 @@ export interface PubGalleryImage {
   project?: string;
 }
 
-function PubGalleryTile({ image, variant }: { image: PubGalleryImage; variant: 'feature' | 'stack' }) {
+function PubGalleryTile({
+  image,
+  variant,
+  className = '',
+}: {
+  image: PubGalleryImage;
+  variant: 'feature' | 'stack';
+  className?: string;
+}) {
   const label = variant === 'feature' ? image.project ?? image.caption : undefined;
 
   return (
-    <figure className={`pub-gallery__item pub-gallery__item--${variant}`}>
+    <figure className={`pub-gallery__item pub-gallery__item--${variant} ${className}`.trim()}>
       <img
         src={image.src}
         alt={image.alt}
@@ -499,12 +507,12 @@ export function PubGallery({
 }) {
   const paragraphs = description === undefined ? [] : Array.isArray(description) ? description : [description];
 
-  /* Composition portfolio : une tuile vedette accompagnée de deux tuiles
-     empilées. Le motif se répète par groupes de trois et change de côté d'un
-     groupe à l'autre ; un groupe incomplet reste plein sans laisser de trou. */
+  /* Composition bento : une tuile vedette, une tuile panoramique et deux
+     tuiles compactes. Le motif se répète par groupes de quatre et change de
+     côté d'un groupe à l'autre ; un groupe incomplet reste plein. */
   const blocks: PubGalleryImage[][] = [];
-  for (let index = 0; index < images.length; index += 3) {
-    blocks.push(images.slice(index, index + 3));
+  for (let index = 0; index < images.length; index += 4) {
+    blocks.push(images.slice(index, index + 4));
   }
 
   return (
@@ -536,6 +544,7 @@ export function PubGallery({
             const modifiers = [
               stack.length === 0 ? 'pub-gallery__block--single' : '',
               stack.length === 1 ? 'pub-gallery__block--pair' : '',
+              stack.length >= 3 ? 'pub-gallery__block--bento' : '',
               stack.length > 0 && blockIndex % 2 === 1 ? 'pub-gallery__block--reverse' : '',
             ]
               .filter(Boolean)
@@ -544,10 +553,15 @@ export function PubGallery({
             return (
               <div key={feature.src} className={`pub-gallery__block ${modifiers}`.trim()}>
                 <PubGalleryTile image={feature} variant="feature" />
-                {stack.length > 0 && (
+                  {stack.length > 0 && (
                   <div className="pub-gallery__stack">
-                    {stack.map((image) => (
-                      <PubGalleryTile key={image.src} image={image} variant="stack" />
+                    {stack.map((image, stackIndex) => (
+                      <PubGalleryTile
+                        key={image.src}
+                        image={image}
+                        variant="stack"
+                        className={`pub-gallery__item--stack-${stackIndex + 1}`}
+                      />
                     ))}
                   </div>
                 )}

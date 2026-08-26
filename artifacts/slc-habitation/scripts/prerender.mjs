@@ -126,18 +126,16 @@ const paidReviewsIntro =
   '19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation.';
 
 const formGallery = [
-  ['/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg', 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré', 2000, 2667, 'Rénovation de cuisine', 'Comptoir continu'],
   ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg', 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche', 1600, 1200, 'Rénovation de salle de bain', 'Douche vitrée'],
   ['/images/relume-657406.jpeg', 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses', 2048, 1536, 'Rénovation de sous-sol', 'Aire de vie et cuisine'],
   ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg', 'Cuisine avec îlot en bois, rangements blancs et suspensions', 1600, 2133, 'Rénovation de cuisine', 'Îlot en bois'],
   ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg', 'Salle de bain aux murs foncés avec douche en céramique', 1600, 2133, 'Rénovation de salle de bain', 'Palette foncée'],
-  ['/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 4000, 3000, 'Rénovation de sous-sol', 'Salle polyvalente'],
 ];
 
 function createFormGalleryMarkup() {
   const blocks = [];
-  for (let index = 0; index < formGallery.length; index += 3) {
-    blocks.push(formGallery.slice(index, index + 3));
+  for (let index = 0; index < formGallery.length; index += 4) {
+    blocks.push(formGallery.slice(index, index + 4));
   }
 
   const galleryBlocks = blocks.map((block, blockIndex) => {
@@ -145,18 +143,47 @@ function createFormGalleryMarkup() {
     const modifiers = [
       stack.length === 0 ? 'pub-gallery__block--single' : '',
       stack.length === 1 ? 'pub-gallery__block--pair' : '',
+      stack.length >= 3 ? 'pub-gallery__block--bento' : '',
       stack.length > 0 && blockIndex % 2 === 1 ? 'pub-gallery__block--reverse' : '',
     ].filter(Boolean).join(' ');
-    const imageMarkup = ([src, alt, width, height, category, project], variant) => {
+    const imageMarkup = ([src, alt, width, height, category, project], variant, stackIndex = -1) => {
       const label = variant === 'feature'
         ? `<figcaption class="pub-gallery__label"><span class="pub-gallery__label-category">${escapeHtml(category)}</span><span class="pub-gallery__label-project">${escapeHtml(project)}</span></figcaption>`
         : '';
-      return `<figure class="pub-gallery__item pub-gallery__item--${variant}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy" class="pub-gallery__image">${label}</figure>`;
+      const stackClass = variant === 'stack' ? ` pub-gallery__item--stack-${stackIndex + 1}` : '';
+      return `<figure class="pub-gallery__item pub-gallery__item--${variant}${stackClass}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy" class="pub-gallery__image">${label}</figure>`;
     };
-    return `<div class="pub-gallery__block ${modifiers}">${imageMarkup(feature, 'feature')}<div class="pub-gallery__stack">${stack.map((image) => imageMarkup(image, 'stack')).join('')}</div></div>`;
+    return `<div class="pub-gallery__block ${modifiers}">${imageMarkup(feature, 'feature')}<div class="pub-gallery__stack">${stack.map((image, stackIndex) => imageMarkup(image, 'stack', stackIndex)).join('')}</div></div>`;
   }).join('');
 
   return `<section id="realisations" class="bg-background py-16 md:py-20" data-testid="section-gallery"><div class="container-large mx-auto max-w-7xl px-6"><div class="pub-gallery-head"><div class="pub-gallery-head__main"><p class="pub-section-header__kicker">Réalisations</p><h2 class="pub-section-header__title pub-gallery-head__title">Des projets terminés par notre équipe</h2></div><div class="pub-gallery-head__aside"><p class="pub-section-header__lede pub-gallery-head__text">Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 18 ans.</p></div></div><div class="pub-gallery">${galleryBlocks}</div></div></section>`;
+}
+
+function createPaidGalleryMarkup(images) {
+  const blocks = [];
+  for (let index = 0; index < images.length; index += 4) {
+    blocks.push(images.slice(index, index + 4));
+  }
+
+  const galleryBlocks = blocks.map((block, blockIndex) => {
+    const [feature, ...stack] = block;
+    const modifiers = [
+      stack.length === 0 ? 'pub-gallery__block--single' : '',
+      stack.length === 1 ? 'pub-gallery__block--pair' : '',
+      stack.length >= 3 ? 'pub-gallery__block--bento' : '',
+      stack.length > 0 && blockIndex % 2 === 1 ? 'pub-gallery__block--reverse' : '',
+    ].filter(Boolean).join(' ');
+    const imageMarkup = ([src, alt, width, height, caption], variant, stackIndex = -1) => {
+      const stackClass = variant === 'stack' ? ` pub-gallery__item--stack-${stackIndex + 1}` : '';
+      const captionMarkup = variant === 'feature'
+        ? `<figcaption class="pub-gallery__label"><span class="pub-gallery__label-project">${escapeHtml(caption || alt)}</span></figcaption>`
+        : `<figcaption class="pub-gallery__caption">${escapeHtml(caption || alt)}</figcaption>`;
+      return `<figure class="pub-gallery__item pub-gallery__item--${variant}${stackClass}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy" class="pub-gallery__image">${captionMarkup}</figure>`;
+    };
+    return `<div class="pub-gallery__block ${modifiers}">${imageMarkup(feature, 'feature')}<div class="pub-gallery__stack">${stack.map((image, stackIndex) => imageMarkup(image, 'stack', stackIndex)).join('')}</div></div>`;
+  }).join('');
+
+  return `<div class="pub-gallery">${galleryBlocks}</div>`;
 }
 
 const paidPageContent = {
@@ -303,22 +330,18 @@ const paidPageEnhancements = {
     detailsIntro:
       'Ces trois photos viennent de cuisines que nous avons livrées. Voici ce qu’on y remarque de près.',
     details: [
-      ['/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-800.jpg', 'Cuisine avec comptoir continu, armoires claires et éclairage intégré', 800, 1067, 'Comptoir continu', 'Le plan de travail file d’un mur à l’autre, sans joint apparent au passage de l’évier.'],
-      ['/images/INT%C3%89RIEUR/Cuisine/2403-p-800.jpg', 'Éclairage installé sous les armoires d’une cuisine rénovée', 800, 1067, 'Éclairage sous les armoires', 'La lumière est amenée directement sur le plan de travail.'],
-      ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-800.jpg', 'Îlot en bois avec suspensions et rangements blancs', 800, 1067, 'Îlot et rangements', 'L’îlot, les suspensions et les rangements suivent le même axe.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/finitions-cuisine-01.jpg', 'Cuisine avec îlot en bois, armoires blanches et suspensions', 1200, 1600, 'Îlot en bois et armoires blanches', 'Un îlot en bois, des armoires blanches et des suspensions structurent cette cuisine.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/finitions-cuisine-02.jpg', 'Cuisine ouverte avec grand îlot, armoires blanches et plancher clair', 1600, 1200, 'Cuisine ouverte et grand îlot', 'La cuisine s’ouvre sur l’aire de vie autour d’un grand îlot central.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/finitions-cuisine-03.jpg', 'Cuisine avec armoires blanches et foncées, comptoir clair et plancher de bois', 1200, 1600, 'Armoires deux tons et plancher de bois', 'Les armoires deux tons et le plancher de bois donnent du contraste à cette cuisine.'],
     ],
     visitImage: ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg', 'Cuisine avec îlot, plancher clair et porte coulissante en bois', 1600, 2133],
     ctaImage: ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 1600, 1200],
     reviews: [paidReviews.melodie, paidReviews.isabelle, paidReviews.johanne],
     images: [
-      ['/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg', 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré', 2000, 2667, 'Plan de travail continu et armoires claires'],
       ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg', 'Cuisine avec îlot en bois, rangements blancs et suspensions', 1600, 2133, 'Îlot en bois et rangements intégrés'],
       ['/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png', 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant', 940, 788, 'Saint-Jérôme : armoires claires, comptoir contrastant'],
       ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 'Grande cuisine blanche avec îlot central et comptoirs clairs', 1600, 1200, 'Cuisine ouverte sur l’aire de vie'],
       ['/images/INT%C3%89RIEUR/Cuisine/2403-p-1600.jpg', 'Détail d’une cuisine avec éclairage sous les armoires', 1600, 2133, 'Éclairage de travail sous les armoires'],
-      ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg', 'Cuisine avec îlot, plancher clair et porte coulissante en bois', 1600, 2133, 'Plancher clair et porte coulissante'],
-      ['/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-1600.jpg', 'Cuisine refaite avec hotte au-dessus de l’îlot et armoires deux tons', 1600, 2133, 'Hotte au-dessus de l’îlot, armoires deux tons'],
-      ['/images/INT%C3%89RIEUR/Cuisine/20250106_124707-p-1600.jpg', 'Cuisine blanche avec cuisinière, hotte encastrée et électroménagers en inox', 1600, 2133, 'Cuisine blanche ouverte sur l’escalier'],
     ],
     label: 'Entrepreneur en rénovation',
   },
@@ -351,11 +374,6 @@ const paidPageEnhancements = {
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163652-p-1600.jpg', 'Salle de bain rénovée avec vanité et grand miroir', 1600, 1200, 'Vanité, miroir et éclairage coordonnés'],
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg', 'Salle de bain aux murs foncés avec douche en céramique', 1600, 2133, 'Palette foncée et douche en céramique'],
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20240709_151409-p-1600.jpg', 'Bain autoportant et robinetterie dans une salle de bain rénovée', 1600, 1200, 'Bain autoportant et dégagements'],
-      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230410_141714-p-1600.jpg', 'Salle de bain avec douche en céramique et paroi vitrée', 1600, 2133, 'Paroi vitrée et niche de douche'],
-      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-1600.jpg', 'Salle de bain rénovée avec vanité en bois et céramique au mur', 1600, 2133, 'Vanité en bois et mur en céramique'],
-      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152903-p-1600.jpg', 'Douche d’angle vitrée avec niche en bois et céramique grand format', 1600, 2133, 'Douche vitrée et niche en bois'],
-      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190331-p-1600.jpg', 'Vanité en bois avec vasque ronde, miroir rond et murs foncés', 1600, 1200, 'Vasque ronde et miroir rond'],
-      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241018_153927-p-1600.jpg', 'Salle de bain avec douche d’angle vitrée, vanité blanche et murs foncés', 1600, 2133, 'Douche d’angle et vanité blanche'],
     ],
     label: 'Entrepreneur en rénovation',
   },
@@ -385,7 +403,6 @@ const paidPageEnhancements = {
       ['/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg', 'Sous-sol dégagé avant un projet de réaménagement avec petites fenêtres et plafond suspendu', 4000, 3000, 'Point de départ : volume et éléments existants'],
       ['/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg', 'Espace de sous-sol aménagé avec plancher de bois clair, fenêtres basses et murs beiges', 4000, 3000, 'Pièce de vie lumineuse au niveau inférieur'],
       ['/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 4000, 3000, 'Configuration ouverte avec accès fermé'],
-      ['/images/relume-655394.jpeg', 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol', 1536, 2048, 'Salle de bain : détail de douche et ventilation'],
     ],
     label: 'Entrepreneur en rénovation',
   },
@@ -401,7 +418,7 @@ function createPaidStaticBody(content, routePath) {
     .map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(label)}</a>`)
     .join(' · ');
   const headerNav = `<nav aria-label="Sections de la page" class="border-t border-border"><div class="container-large mx-auto flex gap-4 overflow-x-auto px-6 py-2">${nav}</div></nav>`;
-  const images = extra.images.map(([src, alt, width, height, caption]) => `<figure><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy"><figcaption>${escapeHtml(caption || alt)}</figcaption></figure>`).join('');
+  const images = createPaidGalleryMarkup(extra.images);
   const [heroSrc, heroAlt, heroWidth, heroHeight] = extra.hero;
   const heroThumbs = extra.thumbs
     .map(([src, alt, width, height]) => `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy">`)

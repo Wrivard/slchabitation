@@ -90,8 +90,8 @@ const detailPhotos = [
   {
     src: '/images/INT%C3%89RIEUR/Cuisine/finitions-cuisine-03.jpg',
     alt: 'Cuisine avec armoires blanches et foncées, comptoir clair et plancher de bois',
-    width: 4000,
-    height: 3000,
+    width: 1200,
+    height: 1600,
     caption: 'Armoires deux tons et plancher de bois',
     text: 'Les armoires deux tons et le plancher de bois donnent du contraste à cette cuisine.',
   },
@@ -138,13 +138,6 @@ const serviceCities = [
 
 const kitchenGallery = [
   {
-    src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg',
-    alt: 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré',
-    caption: 'Plan de travail continu et armoires claires',
-    category: 'Rénovation de cuisine',
-    project: 'Comptoir continu',
-  },
-  {
     src: '/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg',
     alt: 'Cuisine avec îlot en bois, rangements blancs et suspensions',
     caption: 'Îlot en bois et rangements intégrés',
@@ -171,27 +164,6 @@ const kitchenGallery = [
     caption: 'Éclairage de travail sous les armoires',
     category: 'Rénovation de cuisine',
     project: 'Éclairage de travail',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg',
-    alt: 'Cuisine avec îlot, plancher clair et porte coulissante en bois',
-    caption: 'Plancher clair et porte coulissante',
-    category: 'Rénovation de cuisine',
-    project: 'Plancher clair',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-1600.jpg',
-    alt: 'Cuisine refaite avec hotte au-dessus de l’îlot et armoires deux tons',
-    caption: 'Hotte au-dessus de l’îlot, armoires deux tons',
-    category: 'Rénovation de cuisine',
-    project: 'Armoires deux tons',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124707-p-1600.jpg',
-    alt: 'Cuisine blanche avec cuisinière, hotte encastrée et électroménagers en inox',
-    caption: 'Cuisine blanche ouverte sur l’escalier',
-    category: 'Rénovation de cuisine',
-    project: 'Cuisine blanche',
   },
 ];
 

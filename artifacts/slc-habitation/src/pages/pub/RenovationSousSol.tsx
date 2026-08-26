@@ -120,15 +120,6 @@ const gallery = [
     category: 'Rénovation de sous-sol',
     project: 'Salle polyvalente',
   },
-  {
-    src: '/images/relume-655394.jpeg',
-    alt: 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol',
-    width: 1536,
-    height: 2048,
-    caption: 'Salle de bain : détail de douche et ventilation',
-    category: 'Rénovation de sous-sol',
-    project: 'Salle de bain au sous-sol',
-  },
 ];
 
 const includedCards = [

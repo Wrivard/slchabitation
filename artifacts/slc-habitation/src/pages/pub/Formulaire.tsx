@@ -17,14 +17,6 @@ const trustItems = [
 
 const formGallery = [
   {
-    src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg',
-    alt: 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré',
-    width: 2000,
-    height: 2667,
-    category: 'Rénovation de cuisine',
-    project: 'Comptoir continu',
-  },
-  {
     src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg',
     alt: 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche',
     width: 1600,
@@ -55,14 +47,6 @@ const formGallery = [
     height: 2133,
     category: 'Rénovation de salle de bain',
     project: 'Palette foncée',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg',
-    alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
-    width: 4000,
-    height: 3000,
-    category: 'Rénovation de sous-sol',
-    project: 'Salle polyvalente',
   },
 ];
 
