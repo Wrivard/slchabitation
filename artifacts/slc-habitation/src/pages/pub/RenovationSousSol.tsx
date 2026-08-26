@@ -3,7 +3,7 @@ import { PubCTA } from '@/components/pub/PubCTA';
 import { PubPageNav, PubSectionHeader } from '@/components/pub/PubShared';
 import { FAQ } from '@/components/pub/FAQ';
 import {
-  Bath, Bed, CheckCircle2, ClipboardCheck, Droplets, Hammer,
+  Bath, Bed, CheckCircle2, Droplets, Hammer,
   Home, Lightbulb, MapPin, PanelTop, Ruler, ShieldCheck, Volume2, ArrowRight, ArrowDown
 } from 'lucide-react';
 
@@ -19,17 +19,17 @@ const possibilities = [
   {
     icon: Home,
     title: 'Salle familiale ou aire polyvalente',
-    text: "Un espace ouvert peut accueillir un coin lecture, une zone de jeux, un téléviseur ou des rangements. La circulation, les prises, l'éclairage et les accès sont considérés selon les habitudes du foyer.",
+    text: "Coin lecture, jeux, téléviseur ou rangement : le plan relie les usages à la circulation, aux prises, à l’éclairage et aux accès.",
   },
   {
     icon: Bed,
     title: 'Chambre ou bureau à domicile',
-    text: "Lorsqu'une pièce fermée est envisagée, nous examinons notamment la lumière, la fenêtre, la sortie et la configuration existante. Ces éléments orientent la possibilité d'aménager une chambre ou un bureau.",
+    text: "Pour une pièce fermée, la lumière, la fenêtre, la sortie et la configuration existante orientent les possibilités.",
   },
   {
     icon: Bath,
     title: 'Salle de bain ou salle d’eau',
-    text: "Une salle de bain au sous-sol demande une lecture attentive des conduites, du renvoi, de la dalle et de la ventilation. L'emplacement souhaité est évalué avant de définir les interventions.",
+    text: "Conduites, renvoi, dalle et ventilation sont évalués avant de définir l’emplacement et les interventions.",
   },
 ];
 
@@ -47,9 +47,10 @@ const technicalChapters = [
     number: 'A',
     title: 'Humidité, fondation et air intérieur',
     icon: Droplets,
-    paragraphs: [
-      "Un sous-sol est en contact direct avec le sol et réagit aux saisons, à la ventilation de la maison et aux conditions autour de la fondation. Avant de choisir un mur décoratif ou un plancher, il est utile d’observer les indices simples : marque d’eau, peinture qui s’écaille, odeur persistante, condensation sur une surface froide ou dépôt blanchâtre sur le béton. Ces signes ne désignent pas automatiquement une même cause, mais ils méritent d’être signalés.",
-      "L’évaluation porte sur ce qui est visible et sur l’usage prévu de la pièce. Une zone de rangement, une salle familiale et une chambre n’ont pas la même tolérance aux variations de confort. Selon les observations, la discussion peut toucher l’étanchéité, le drainage extérieur, la ventilation, les matériaux déjà en place ou la séquence des travaux.",
+    points: [
+      "À signaler : marque d’eau, peinture écaillée, odeur persistante, condensation ou dépôt blanchâtre.",
+      "Ces signes peuvent avoir des causes différentes. L’évaluation tient compte de ce qui est visible, des saisons et de l’usage prévu.",
+      "Selon les observations : étanchéité, drainage extérieur, ventilation, matériaux existants ou ordre des travaux peuvent être discutés.",
     ],
     note: "Indiquez si le phénomène suit la pluie, le dégel ou une saison précise.",
   },
@@ -57,9 +58,10 @@ const technicalChapters = [
     number: 'B',
     title: 'Dalle de béton, drains et plomberie',
     icon: Ruler,
-    paragraphs: [
-      "La dalle est le point de départ de plusieurs décisions : niveau du futur plancher, emplacement d’une cloison, passage de plomberie et possibilité d’ajouter une salle de bain. Les drains, le renvoi principal et les raccordements existants ne sont pas toujours visibles de la même façon d’une maison à l’autre. Leur position peut influencer l’endroit le plus logique pour une douche, une toilette, une buanderie ou un lavabo.",
-      "Lorsqu’un nouvel appareil est envisagé, l’analyse du tracé souhaité permet de distinguer les options à examiner avant de définir le plan final. Une intervention dans la dalle, si elle s’avère pertinente, demande une coordination avec le revêtement, la hauteur disponible, l’accès aux équipements et la finition des murs.",
+    points: [
+      "La dalle influence le niveau du plancher, les cloisons, le passage de plomberie et l’ajout possible d’une salle de bain.",
+      "La position des drains, du renvoi et des raccordements guide celle d’une douche, toilette, buanderie ou lavabo.",
+      "Toute intervention jugée pertinente dans la dalle se coordonne avec le revêtement, la hauteur, les accès et les murs.",
     ],
     note: "Notez l’emplacement connu du renvoi, de la pompe ou des appareils actuels.",
   },
@@ -67,9 +69,11 @@ const technicalChapters = [
     number: 'C',
     title: 'Isolation, confort thermique et acoustique',
     icon: Volume2,
-    paragraphs: [
-      "L’isolation d’un sous-sol ne se résume pas à remplir une cavité. La composition des murs, les conditions d’humidité observées, la fondation et la façon dont la pièce sera chauffée sont considérées ensemble. Selon le bâtiment, le choix des matériaux et l’ordre d’installation peuvent varier. Un espace destiné aux jeux, au télétravail ou au sommeil gagne à être réfléchi à partir du confort attendu, plutôt qu’à partir d’une solution identique partout.",
-      "L’acoustique est aussi liée à l’usage. Pour atténuer les sons entre le rez-de-chaussée et le sous-sol, on peut examiner le plafond existant, les ouvertures, les conduits et les passages autour des fils ou des tuyaux. La laine isolante, la désolidarisation et certaines couches de finition sont des pistes possibles selon la structure.",
+    points: [
+      "Isolation : murs, humidité, fondation et mode de chauffage se lisent ensemble. Les matériaux et leur ordre peuvent varier.",
+      "Confort : jeux, télétravail et sommeil n’imposent pas les mêmes attentes.",
+      "Acoustique : plafond, ouvertures, conduits et passages techniques sont examinés.",
+      "Selon la structure, laine isolante, désolidarisation ou couches de finition peuvent être envisagées.",
     ],
     note: "Précisez les bruits les plus dérangeants et les moments où ils surviennent.",
   },
@@ -77,9 +81,11 @@ const technicalChapters = [
     number: 'D',
     title: 'Plafond, poutres et mécanique du bâtiment',
     icon: PanelTop,
-    paragraphs: [
-      "Les plafonds de sous-sol révèlent souvent la mécanique de la maison : conduits de ventilation, plomberie, fils, retours de poutres et accès à certains appareils. Avant de choisir entre un plafond continu, une retombée ou une solution qui conserve des accès, il faut lire ces éléments dans leur ensemble. La hauteur libre ne se mesure pas seulement au centre de la pièce; les parcours vers l’escalier, les portes et les zones utilisées comptent aussi.",
-      "Une configuration peut parfois transformer une contrainte en repère visuel. Une retombée peut séparer un coin télé d’un espace de jeu ou accompagner un corridor. Certaines zones doivent rester accessibles pour l’entretien. Le plan peut donc prévoir des panneaux ou des portes discrètes.",
+    points: [
+      "À relever : conduits, plomberie, fils, poutres et accès aux appareils.",
+      "La hauteur libre compte aussi dans les parcours vers l’escalier, les portes et les zones utilisées.",
+      "Plafond continu, retombée ou accès conservé : la solution dépend de l’ensemble mécanique.",
+      "Une retombée peut structurer les zones. Des panneaux ou portes maintiennent les accès d’entretien nécessaires.",
     ],
     note: "Laissez les conduits et accès techniques visibles pour la visite.",
   },
@@ -87,9 +93,11 @@ const technicalChapters = [
     number: 'E',
     title: 'Fenêtres, lumière et projet de chambre',
     icon: Bed,
-    paragraphs: [
-      "Les fenêtres de sous-sol apportent une lumière précieuse, mais leur format et leur position orientent aussi la disposition des pièces. Un coin bureau peut profiter d’une ouverture existante; une salle familiale peut être organisée pour ne pas bloquer la lumière; une pièce fermée demande de réfléchir à son accès, à sa luminosité et à sa relation avec le reste du niveau. Les margelles, les finis autour des fenêtres et l’état apparent des ouvertures font partie des éléments à regarder.",
-      "Si une chambre est souhaitée, il est préférable de le dire dès le départ. Les exigences applicables à une pièce utilisée pour dormir, les possibilités de sortie, la fenêtre, la hauteur et la configuration doivent être examinées pour le cas précis. L’agrandissement d’une ouverture peut toucher la fondation et la finition extérieure; ce n’est pas une décision de décoration. Une discussion précoce aide à distinguer une intention intéressante des interventions qu’elle pourrait demander.",
+    points: [
+      "Format et position des fenêtres orientent le bureau, la salle familiale et toute pièce fermée.",
+      "Margelles, finis et état apparent des ouvertures font partie de l’examen.",
+      "Pour une chambre, exigences applicables, sortie, fenêtre, hauteur et configuration sont vérifiées au cas par cas.",
+      "Agrandir une ouverture peut toucher la fondation et le fini extérieur : ce n’est pas un simple choix décoratif.",
     ],
     note: "Mentionnez les pièces fermées envisagées et le rôle de chacune.",
   },
@@ -97,9 +105,11 @@ const technicalChapters = [
     number: 'F',
     title: 'Électricité, éclairage, chauffage et ventilation',
     icon: Lightbulb,
-    paragraphs: [
-      "Un sous-sol transformé en espace de vie peut demander une nouvelle façon de répartir l’éclairage. Les petites fenêtres et les plafonds plus bas rendent les zones lumineuses particulièrement importantes : circulation, poste de travail, coin lecture, salle de bain, escalier et rangements. La discussion peut porter sur les circuits, les interrupteurs, les prises et la position des luminaires, en tenant compte du plan d’ameublement envisagé plutôt que d’une pièce vide.",
-      "Le chauffage et la ventilation sont tout aussi liés à l’usage. Un bureau occupé plusieurs heures, une salle familiale fréquentée le soir ou une salle de bain peuvent soulever des besoins différents. Le panneau électrique, les sources de chauffage existantes, les conduits et les appareils en place sont des points à évaluer. Cette lecture aide à prévoir les interventions à discuter avant que les murs et plafonds ne soient refermés.",
+    points: [
+      "L’éclairage se planifie par zone : circulation, travail, lecture, salle de bain, escalier et rangement.",
+      "Circuits, interrupteurs, prises et luminaires tiennent compte du futur ameublement.",
+      "Bureau, salle familiale et salle de bain peuvent avoir des besoins distincts de chauffage et de ventilation.",
+      "Panneau, chauffage, conduits et appareils sont évalués avant de refermer murs et plafonds.",
     ],
     note: "Listez les appareils importants, postes de travail et zones à éclairer.",
   },
@@ -107,9 +117,11 @@ const technicalChapters = [
     number: 'G',
     title: 'Plancher, usages évolutifs et entretien courant',
     icon: Home,
-    paragraphs: [
-      "Le revêtement de sol se choisit avec la dalle, les conditions d’humidité, le niveau souhaité et la fonction de la pièce. Une aire de jeux, un bureau, une salle familiale ou une salle de bain n’imposent pas les mêmes priorités. Le toucher, le bruit, la facilité de nettoyage et la transition vers l’escalier ou une autre pièce peuvent orienter la sélection. Un matériau peut être discuté après avoir compris ce qui se trouve sous la surface.",
-      "Penser à un usage évolutif peut rendre l’aménagement plus durable dans le quotidien. Une grande salle peut d’abord servir aux enfants, puis devenir un coin détente ou un espace de travail; des prises bien placées, des rangements et des cloisons choisies avec soin laissent davantage de possibilités. Après les travaux, il reste pertinent d’observer les joints, les zones près des fenêtres, le fonctionnement des appareils et tout changement d’odeur ou d’humidité afin de réagir à ce qui est observé.",
+    points: [
+      "Le sol se choisit selon la dalle, l’humidité, le niveau visé et l’usage — après avoir compris le support.",
+      "Toucher, bruit, entretien et transitions orientent aussi le matériau.",
+      "Prises, rangements et cloisons bien placés facilitent l’évolution d’une salle de jeux vers la détente ou le travail.",
+      "Après les travaux, surveillez joints, fenêtres, appareils et tout changement d’odeur ou d’humidité.",
     ],
     note: "Apportez les mesures des meubles importants et l’usage futur envisagé.",
   },
@@ -119,22 +131,22 @@ const steps = [
   {
     number: '01',
     title: 'Écouter le projet et observer le lieu',
-    text: "La première discussion sert à comprendre l'usage recherché : pièce pour la famille, bureau, chambre, salle de bain, rangement ou combinaison de fonctions. Sur place, les dimensions, les ouvertures, la mécanique visible et l'état général donnent un cadre plus concret à la réflexion.",
+    text: "Nous précisons les usages. Sur place, dimensions, ouvertures, mécanique visible et état général cadrent la réflexion.",
   },
   {
     number: '02',
     title: 'Définir une configuration cohérente',
-    text: "À partir des contraintes observées, les zones sont placées de façon à préserver la circulation et à composer avec les éléments techniques. Une salle de bain, une cloison, un plafond ou une ouverture peuvent modifier l'organisation. Les choix sont donc discutés avant que les détails de finition prennent toute la place.",
+    text: "Les zones composent avec la circulation et la technique. Salle de bain, cloison, plafond et ouverture sont discutés avant les finis.",
   },
   {
     number: '03',
     title: 'Prévoir les interventions techniques',
-    text: "Avant les surfaces visibles viennent les travaux qui se trouvent derrière les murs : isolation, plomberie, électricité, chauffage, ventilation ou ajustements requis par la configuration. Leur portée dépend du bâtiment et du résultat visé. C'est aussi le moment de clarifier les permis ou validations pouvant être applicables.",
+    text: "Isolation, plomberie, électricité, chauffage et ventilation précèdent les surfaces. Leur portée, les permis et les validations dépendent du projet.",
   },
   {
     number: '04',
     title: 'Passer aux finitions choisies',
-    text: "Revêtement de sol, murs, portes, éclairage, menuiserie et accessoires sont coordonnés avec l'usage de la pièce. L'objectif n'est pas de suivre une formule unique : une salle familiale, une pièce de travail et une salle de bain ne sollicitent pas les mêmes matériaux ni les mêmes détails.",
+    text: "Sol, murs, portes, éclairage, menuiserie et accessoires s’accordent à l’usage. Chaque type de pièce appelle ses propres détails.",
   },
 ];
 
@@ -240,7 +252,7 @@ export default function RenovationSousSolPub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Aménagement intérieur résidentiel</p>
             <h1 className="mb-6 max-w-4xl font-heading text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">Rénovation de sous-sol <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-10 max-w-3xl text-lg leading-relaxed text-gray-200 md:text-xl">Un sous-sol peut devenir une véritable extension de la maison lorsqu’il est pensé à partir de sa structure, de ses ouvertures et de votre quotidien. SLC Habitation vous accompagne pour clarifier les possibilités de votre espace avant d’en planifier l’aménagement.</p>
+            <p className="mb-10 max-w-3xl text-lg leading-relaxed text-gray-200 md:text-xl">Transformez le sous-sol à partir de sa structure, de ses ouvertures et de votre quotidien. SLC Habitation vous aide à clarifier les possibilités avant de planifier.</p>
             <PubCTA service="renovation-sous-sol" className="px-8 py-5 text-lg rounded-none" testId="button-hero-cta">Parler de votre projet</PubCTA>
           </div>
         </div>
@@ -257,14 +269,14 @@ export default function RenovationSousSolPub() {
                 kicker="Un niveau à réinventer"
                 title="Partir de l’espace réel, puis imaginer la vie qui s’y passe"
               />
-              <p className="text-lg leading-relaxed text-muted-foreground">Le sous-sol abrite souvent des conduits, une poutre, un panneau, une salle mécanique ou des fenêtres plus basses. Une rénovation réfléchie les intègre au plan pour guider la place des pièces, la lumière et les détails à prioriser.</p>
+              <p className="text-lg leading-relaxed text-muted-foreground">Conduits, poutres, panneau, salle mécanique et fenêtres basses guident la place des pièces, la lumière et les priorités.</p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-none border border-primary/20 bg-primary/5 p-8">
                 <h3 className="mb-3 font-bold text-xl flex items-center gap-2">
                   <Lightbulb className="text-primary w-5 h-5" /> À clarifier avant le plan
                 </h3>
-                <p className="leading-relaxed text-muted-foreground">Notez les usages à réunir, les pièces à fermer et les équipements qui doivent rester accessibles. Cette liste rend la première discussion plus précise.</p>
+                <p className="leading-relaxed text-muted-foreground">Notez trois choses : usages à réunir, pièces à fermer et équipements à garder accessibles.</p>
               </div>
             </div>
           </div>
@@ -285,11 +297,11 @@ export default function RenovationSousSolPub() {
             <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-1 lg:content-center rounded-none bg-muted/40 p-10 text-foreground">
               <div>
                 <h3 className="mb-4 text-2xl font-bold">Un lieu pour le quotidien</h3>
-                <p className="leading-relaxed text-muted-foreground">Une salle familiale peut réunir un espace calme, un coin jeux et une surface pour un écran ou une bibliothèque. Des rangements fermés et des passages bien définis simplifient aussi l’usage lorsque le sous-sol accueille plusieurs fonctions.</p>
+                <p className="leading-relaxed text-muted-foreground">Espace calme, jeux, écran ou bibliothèque peuvent cohabiter. Rangements fermés et passages clairs simplifient les usages multiples.</p>
               </div>
               <div>
                 <h3 className="mb-4 text-2xl font-bold">Un projet qui respecte la maison</h3>
-                <p className="leading-relaxed text-muted-foreground">Une retombée de plafond peut marquer une transition; une poutre peut cadrer un coin bureau; une fenêtre peut guider la place d’un espace de détente. Les solutions se précisent après l’évaluation des conditions propres à la résidence.</p>
+                <p className="leading-relaxed text-muted-foreground">Retombée, poutre ou fenêtre peuvent structurer les zones. Les solutions se précisent après l’évaluation de la résidence.</p>
               </div>
             </div>
             <div className="aspect-[4/3] rounded-none overflow-hidden shadow-2xl shadow-black/5">
@@ -306,7 +318,7 @@ export default function RenovationSousSolPub() {
             className="max-w-3xl mb-16"
             kicker="Avant de refermer les murs"
             title="Le diagnostic donne une direction au projet"
-            description="Au sous-sol, les conditions existantes peuvent influencer les matériaux, la disposition et les travaux à prévoir. Une analyse initiale aide à poser les bonnes questions avant de retenir un scénario."
+             description="Les conditions existantes orientent les matériaux, la disposition et les travaux. L’analyse initiale aide à choisir un scénario."
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
@@ -328,7 +340,7 @@ export default function RenovationSousSolPub() {
             <Droplets className="h-12 w-12 shrink-0 text-primary" />
             <div>
               <h3 className="mb-3 text-xl font-bold">Repère pratique : l’humidité ne se masque pas</h3>
-              <p className="text-lg leading-relaxed text-gray-300">Signalez toute trace d’eau, efflorescence, odeur de moisi, condensation ou dégradation avant de choisir les finis. Selon la cause, l’ordre des interventions peut changer.</p>
+              <p className="text-lg leading-relaxed text-gray-300">Avant les finis, signalez eau, efflorescence, odeur, condensation ou dégradation. La cause peut changer l’ordre des travaux.</p>
             </div>
           </div>
         </div>
@@ -341,23 +353,31 @@ export default function RenovationSousSolPub() {
             className="max-w-3xl mb-24"
             kicker="Repères techniques pour mieux planifier"
             title="Les sujets qui transforment une idée en projet réfléchi"
-            description="Chaque chapitre ci-dessous sert à préparer une conversation concrète. Il ne remplace pas l’évaluation de votre résidence : les conditions observées, les équipements existants et l’usage recherché permettent de déterminer quelles pistes méritent d’être approfondies."
+            description="Sept repères pour préparer la visite — sans remplacer l’évaluation de votre résidence."
           />
 
-          <div className="space-y-24">
-            {technicalChapters.map(({ number, title, icon: Icon, paragraphs, note }) => (
-              <article key={number} className="grid lg:grid-cols-12 gap-10 items-start group">
+          <div className="space-y-16 md:space-y-20">
+            {technicalChapters.map(({ number, title, icon: Icon, points, note }) => (
+              <article key={number} className="grid gap-6 border-t border-border pt-10 lg:grid-cols-12 lg:gap-10 lg:pt-12 group">
                 <div className="lg:col-span-1 text-center hidden lg:block">
                   <div className="text-5xl font-black text-primary/10 tracking-tighter mb-2">{number}</div>
                 </div>
                 <div className="lg:col-span-11 lg:pl-4">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Icon className="w-8 h-8 text-primary stroke-[1.5]" />
-                    <h3 className="text-2xl font-bold text-foreground">{title}</h3>
+                  <div className="flex items-start gap-4 mb-7">
+                    <Icon className="mt-1 w-7 h-7 shrink-0 text-primary stroke-[1.5]" />
+                    <div>
+                      <span className="mb-1 block text-xs font-bold uppercase tracking-[0.18em] text-primary lg:hidden">Chapitre {number}</span>
+                      <h3 className="text-2xl font-bold leading-tight text-foreground">{title}</h3>
+                    </div>
                   </div>
-                  <div className="grid lg:grid-cols-2 gap-8 text-lg leading-relaxed text-muted-foreground mb-8">
-                    {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                  </div>
+                  <ul className="mb-8 grid gap-x-10 gap-y-4 md:grid-cols-2">
+                    {points.map((point) => (
+                      <li key={point} className="flex gap-3 border-t border-border/70 pt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                   <div className="border-l-2 border-primary pl-6 py-2">
                     <strong className="block text-foreground text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
                       <ArrowRight className="w-4 h-4 text-primary" /> Pour la visite
@@ -380,7 +400,7 @@ export default function RenovationSousSolPub() {
                 kicker="Une démarche lisible"
                 title="Décider dans le bon ordre"
               />
-              <p className="text-lg leading-relaxed text-muted-foreground mb-8">Une approche par étapes aide à distinguer ce qui relève du bâtiment, de l’usage et de l’esthétique. Vous gardez une vue d’ensemble avant de discuter des choix qui influencent l’espace.</p>
+               <p className="text-lg leading-relaxed text-muted-foreground mb-8">Les étapes séparent bâtiment, usage et esthétique. Vous gardez la vue d’ensemble avant de choisir.</p>
               <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider text-foreground">
                 <ArrowDown className="h-5 w-5 text-primary" />Du constat initial aux finitions
               </div>
@@ -404,7 +424,7 @@ export default function RenovationSousSolPub() {
               <div className="mt-20 rounded-none bg-background border border-border p-10 md:flex md:items-center md:justify-between md:gap-10 shadow-xl shadow-black/5">
                 <div>
                   <h3 className="mb-3 text-2xl font-bold">Votre projet commence par les bonnes questions</h3>
-                  <p className="max-w-xl leading-relaxed text-muted-foreground">Partagez l’usage envisagé et les éléments qui vous préoccupent. Une évaluation permet de discuter de la faisabilité selon votre sous-sol.</p>
+                   <p className="max-w-xl leading-relaxed text-muted-foreground">Partagez l’usage visé et vos préoccupations. L’évaluation permet de discuter des possibilités propres au sous-sol.</p>
                 </div>
                 <PubCTA service="renovation-sous-sol" className="mt-8 shrink-0 px-8 py-4 rounded-none md:mt-0" testId="button-middle-cta">Discuter de mon sous-sol</PubCTA>
               </div>
@@ -432,7 +452,7 @@ export default function RenovationSousSolPub() {
             className="max-w-3xl mb-16"
             kicker="Espaces de vie au niveau inférieur"
             title="Des réalisations qui montrent les possibilités"
-            description="Ces photos illustrent un volume dégagé, une aire de vie, une pièce polyvalente et une salle de bain. Les dimensions, ouvertures et installations de votre résidence guideront les choix pertinents pour votre projet."
+            description="Volume dégagé, aire de vie, pièce polyvalente et salle de bain. Votre espace guidera les choix pertinents."
           />
 
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
@@ -495,7 +515,7 @@ export default function RenovationSousSolPub() {
             className="text-center"
             kicker="Parlons de votre espace"
             title="Donnez une nouvelle place à votre sous-sol"
-            description="Décrivez-nous votre idée et votre espace actuel. Nous pourrons échanger sur les éléments à évaluer pour votre projet à Laval ou dans les Laurentides."
+            description="Décrivez votre idée et l’espace actuel. Échangeons sur les points à évaluer à Laval ou dans les Laurentides."
           />
           <PubCTA service="renovation-sous-sol" className="px-10 py-5 text-lg rounded-none" testId="button-bottom-cta">Présenter mon projet</PubCTA>
         </div>

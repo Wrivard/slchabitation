@@ -70,16 +70,16 @@ const navItems = [
 ];
 
 const assessmentItems = [
-  { title: 'Implantation et circulation', text: 'Nous observons les passages, les ouvertures, la lumière et la place réellement disponible autour des zones de travail.' },
-  { title: 'Structure existante', text: 'Les murs, les niveaux et les particularités du bâtiment orientent ce qui peut être envisagé pour une nouvelle configuration.' },
-  { title: 'Services techniques', text: 'La position de la plomberie, de la ventilation et de l’alimentation électrique est considérée avant de fixer les choix.' },
-  { title: 'Équipements et finitions', text: 'Les dimensions des appareils, le type de rangement, les surfaces et les raccords se planifient ensemble plutôt qu’en dernier.' },
+  { title: 'Implantation et circulation', text: 'Passages, ouvertures, lumière et espace autour des zones de travail.' },
+  { title: 'Structure existante', text: 'Murs, niveaux et particularités du bâtiment orientent la configuration possible.' },
+  { title: 'Services techniques', text: 'Plomberie, ventilation et alimentation électrique sont considérées avant les choix.' },
+  { title: 'Équipements et finitions', text: 'Appareils, rangements, surfaces et raccords se planifient ensemble.' },
 ];
 
 const configurationCards = [
-  { icon: Grid, title: 'Armoires et surfaces', text: 'La sélection des caissons, façades, poignées, comptoirs et dosserets se réfléchit comme un ensemble. Les proportions, les joints et les transitions comptent autant que chaque matériau pris séparément.' },
-  { icon: Utensils, title: 'Rangement utile', text: 'Tiroirs, garde-manger, armoires hautes et espaces près des zones de préparation peuvent être organisés selon les objets que vous utilisez vraiment et les gestes que vous répétez.' },
-  { icon: Lightbulb, title: 'Éclairage par usage', text: 'Une cuisine gagne à distinguer l’éclairage général, l’éclairage de travail et l’éclairage d’ambiance. Leur emplacement se prévoit avec les armoires et non après leur pose.' },
+  { icon: Grid, title: 'Armoires et surfaces', text: 'Caissons, façades, poignées, comptoirs et dosserets forment un ensemble. Proportions, joints et transitions comptent aussi.' },
+  { icon: Utensils, title: 'Rangement utile', text: 'Tiroirs, garde-manger et armoires s’organisent selon vos objets et vos gestes réels.' },
+  { icon: Lightbulb, title: 'Éclairage par usage', text: 'Éclairages général, de travail et d’ambiance se distinguent. Leur emplacement se prévoit avec les armoires.' },
 ];
 
 const chapters = [
@@ -87,77 +87,77 @@ const chapters = [
     number: '01',
     title: 'Partir de vos habitudes, pas seulement d’une image',
     paragraphs: [
-      'Une cuisine réussie commence par une lecture attentive de votre quotidien. Préparez-vous souvent les repas à deux ou à plusieurs? Avez-vous besoin d’une grande surface pour cuisiner, d’un coin repas, d’un espace pour les enfants ou d’un garde-manger plus accessible? Ces questions permettent de donner une fonction précise à chaque zone avant de parler de finis.',
-      'Nous examinons avec vous les irritants de la cuisine actuelle : un réfrigérateur qui coupe le passage, des comptoirs trop courts, des prises mal situées, un évier éloigné de la préparation ou des armoires difficiles à utiliser. Une rénovation peut alors viser une circulation plus lisible et des choix cohérents avec le volume de la pièce.',
+      'D’abord, vos usages : cuisiner seul ou à plusieurs, manger sur place, accueillir les enfants ou accéder au garde-manger.',
+      'Puis, les irritants : passages bloqués, comptoirs courts, prises mal situées, évier éloigné ou armoires peu pratiques.',
     ],
-    callout: 'À préparer pour la rencontre : quelques photos de la pièce, les dimensions connues, vos électroménagers à conserver ou à remplacer, et une liste de ce qui vous manque au quotidien.',
+    callout: 'À préparer : photos, dimensions connues, appareils à conserver ou remplacer et besoins du quotidien.',
     image: kitchenImages.island,
   },
   {
     number: '02',
     title: 'Composer une implantation qui laisse respirer la pièce',
     paragraphs: [
-      'L’implantation met en relation les principales zones de la cuisine : conservation, lavage, préparation et cuisson. Il ne s’agit pas d’appliquer une formule identique à toutes les maisons; une cuisine en corridor, en L, en U ou ouverte sur le séjour présente des contraintes et des occasions différentes. Les accès, les fenêtres et les portes font partie de l’équation.',
-      'Un îlot peut offrir un comptoir additionnel, du rangement ou un point de rencontre, à condition que les dégagements autour de lui soient étudiés. Dans d’autres pièces, une péninsule ou un long plan de travail peut mieux convenir. L’évaluation de l’espace existant aide à choisir une solution proportionnée, sans encombrer les parcours.',
+      'L’implantation relie conservation, lavage, préparation et cuisson. Corridor, L, U ou aire ouverte : chaque forme répond à ses accès, fenêtres et portes.',
+      'Îlot, péninsule ou long plan de travail se comparent selon l’espace réel, le rangement et les dégagements.',
     ],
-    callout: 'Repère pratique : ouvrez mentalement les portes d’armoires, le lave-vaisselle et les tiroirs. Les zones de passage doivent rester considérées lorsque plusieurs éléments sont utilisés en même temps.',
+    callout: 'Repère : imaginez portes, lave-vaisselle et tiroirs ouverts en même temps. Vérifiez les passages.',
     image: kitchenImages.modern,
   },
   {
     number: '03',
     title: 'Coordonner les détails avant qu’ils ne deviennent des ajustements',
     paragraphs: [
-      'Les dimensions réelles des appareils influencent l’implantation des armoires, les dégagements, les prises et parfois la ventilation. Avoir leurs fiches techniques au moment de la planification permet de vérifier les besoins liés à l’installation. Le même principe s’applique au choix de l’évier, de la robinetterie, de la hotte et de la surface de cuisson.',
-      'Les matériaux demandent aussi une coordination concrète. Un comptoir, un dosseret, une moulure ou un plancher se rencontrent à des endroits précis. Nous portons attention aux lignes visibles, aux hauteurs, aux seuils et aux retours de finition afin de préparer une composition qui s’accorde à votre intérieur.',
+      'Les dimensions des appareils influencent armoires, dégagements, prises et parfois ventilation. Les fiches techniques permettent de vérifier l’installation.',
+      'Évier, robinetterie, hotte, cuisson, comptoir, dosseret et plancher exigent aussi des raccords précis.',
     ],
-    callout: 'Bon à noter : conservez les documents techniques des appareils choisis. Ils donnent les dimensions, les exigences de branchement et les dégagements à valider dans le plan.',
+    callout: 'À conserver : fiches des appareils, avec dimensions, branchements et dégagements.',
     image: kitchenImages.floor,
   },
   {
     number: '04',
     title: 'Prévoir le rangement à partir de ce que vous possédez',
     paragraphs: [
-      'Le rangement n’est pas une quantité abstraite d’armoires. Il est plus utile lorsqu’il répond aux objets, aux formats et aux habitudes de la maison. Les casseroles, les provisions, les contenants, les petits appareils et la vaisselle n’ont pas tous besoin du même accès. En les nommant dès le départ, vous pouvez distinguer ce qui doit rester à portée de main de ce qui peut prendre place plus haut ou plus loin.',
-      'Les grands tiroirs peuvent convenir à certains usages, tandis que les armoires verticales, les tablettes ou un garde-manger peuvent répondre à d’autres. L’important est d’éviter que le rangement empiète sur les surfaces nécessaires à la préparation. La profondeur, la largeur des façades et le sens d’ouverture se regardent avec les parcours réels autour de la cuisine.',
+      'Casseroles, provisions, contenants, petits appareils et vaisselle n’exigent pas le même accès. Leur fréquence d’usage guide leur place.',
+      'Tiroirs, armoires verticales, tablettes ou garde-manger doivent préserver les surfaces de préparation et les parcours.',
     ],
-    callout: 'Exercice simple : faites la liste de cinq objets qui encombrent votre comptoir aujourd’hui. Leur usage et leur fréquence aideront à imaginer où ils pourraient être rangés demain.',
+    callout: 'Exercice : listez cinq objets qui encombrent le comptoir et leur fréquence d’usage.',
     image: kitchenImages.compact,
   },
   {
     number: '05',
     title: 'Faire de la lumière un outil de confort et de précision',
     paragraphs: [
-      'Une seule source de lumière au plafond ne répond pas toujours aux différents moments vécus dans la cuisine. Préparer un repas demande de voir clairement le plan de travail; un repas partagé ou un passage en soirée appelle souvent une ambiance différente. Le placement de l’éclairage se réfléchit en parallèle avec l’implantation des armoires, l’îlot et les zones où les ombres pourraient gêner.',
-      'La lumière du jour influence également les couleurs et les surfaces. Une porte, une fenêtre, une orientation ou une aire ouverte peuvent modifier la perception d’un fini au fil de la journée. Observer la pièce à plusieurs moments donne des repères utiles lorsque vous comparez des matériaux. Les besoins techniques associés à l’éclairage sont ensuite considérés dans la planification du projet.',
+      'Préparation, repas et passage en soirée n’appellent pas le même éclairage. Son placement se réfléchit avec les armoires, l’îlot et les zones d’ombre.',
+      'La lumière du jour change la perception des couleurs et des surfaces. Observez les finis à plusieurs moments.',
     ],
-    callout: 'À observer chez vous : repérez les zones où vous préparez les aliments le matin et le soir. Cette observation concrète aide à exprimer les besoins d’éclairage au bon endroit.',
+    callout: 'À observer : où préparez-vous les aliments le matin et le soir?',
     image: kitchenImages.extra2,
   },
 ];
 
 const siteSteps = [
-  { title: 'Comprendre le lieu', text: 'Le point de départ est la cuisine telle qu’elle existe : volumes, murs, accès, installations et objectifs du projet.' },
-  { title: 'Planifier les interventions', text: 'Les choix d’implantation et de matériaux sont mis en relation avec les travaux nécessaires en plomberie, électricité, ventilation et menuiserie.' },
-  { title: 'Préparer les séquences', text: 'La démolition, les ajustements techniques, les surfaces et les finitions nécessitent un ordre de travail adapté au projet.' },
-  { title: 'Avancer avec méthode', text: 'La coordination vise à garder les décisions et les interventions alignées avec le plan retenu, selon les conditions observées sur place.' },
+  { title: 'Comprendre le lieu', text: 'Volumes, murs, accès, installations et objectifs.' },
+  { title: 'Planifier les interventions', text: 'Implantation et matériaux reliés à la plomberie, l’électricité, la ventilation et la menuiserie.' },
+  { title: 'Préparer les séquences', text: 'Démolition, ajustements techniques, surfaces et finitions dans un ordre adapté.' },
+  { title: 'Avancer avec méthode', text: 'Décisions et interventions alignées sur le plan et les conditions observées.' },
 ];
 
 const decisionPoints = [
   {
     title: 'Le plan de travail',
-    text: 'Demandez-vous où les aliments arrivent, où ils sont lavés, puis où ils sont préparés. La place disponible entre l’évier, la cuisson et les autres éléments peut être examinée selon vos habitudes. Une grande surface n’est pas la seule réponse : sa position, sa continuité et la possibilité de la garder dégagée font aussi une différence dans l’usage quotidien.',
+    text: 'Suivez le trajet des aliments : arrivée, lavage, préparation, cuisson. Position, continuité et dégagement comptent autant que la superficie.',
   },
   {
     title: 'Les appareils',
-    text: 'Réfrigérateur, lave-vaisselle, four, micro-ondes et petit électroménager créent des besoins différents. Leurs dimensions, leurs portes et leurs raccordements ne doivent pas être traités comme de simples cases sur un dessin. Prévoir ces informations aide à discuter de l’emplacement de chacun et des interactions possibles lorsque la cuisine est utilisée par plusieurs personnes.',
+    text: 'Réfrigérateur, lave-vaisselle, four, micro-ondes et petits appareils ont leurs dimensions, portes et raccordements. Leur interaction compte à plusieurs.',
   },
   {
     title: 'Les passages',
-    text: 'Une cuisine est traversée pour aller vers le salon, la salle à manger, une porte extérieure ou un escalier. Un projet tient compte de ces déplacements et des personnes qui ne cuisinent pas nécessairement au même moment. Les parcours peuvent être observés lors de l’évaluation afin de situer les zones actives et de limiter les conflits d’usage dans la mesure permise par l’espace.',
+    text: 'Les trajets vers le salon, la salle à manger, l’extérieur ou l’escalier traversent parfois la cuisine. L’évaluation situe les zones actives et les conflits possibles.',
   },
   {
     title: 'Les finitions',
-    text: 'Une finition se juge autant dans ses détails que dans un échantillon. Les jonctions entre le comptoir et le dosseret, la rencontre du plancher avec les pièces voisines, les moulures et les poignées participent à l’ensemble. Les discuter tôt permet de relier le caractère souhaité aux éléments qui doivent être coordonnés pendant les travaux.',
+    text: 'Jonctions comptoir-dosseret, transitions de plancher, moulures et poignées façonnent l’ensemble. Les discuter tôt facilite leur coordination.',
   },
 ];
 
@@ -198,7 +198,7 @@ export default function RenovationCuisinePub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Cuisine pensée pour votre quotidien</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de cuisine à Laval et dans les Laurentides</h1>
-            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">Réfléchir à une cuisine, c’est organiser des usages, des volumes et des interventions techniques dans un espace qui doit rester agréable à vivre. SLC Habitation vous accompagne pour examiner votre pièce et planifier une rénovation adaptée à ses particularités.</p>
+            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">SLC Habitation examine vos usages, votre espace et ses contraintes techniques pour planifier une rénovation adaptée.</p>
             <PubCTA service="renovation-cuisine" className="px-8 py-5 text-lg" testId="button-hero-cta">Parler de mon projet</PubCTA>
           </div>
         </div>
@@ -216,8 +216,8 @@ export default function RenovationCuisinePub() {
                 title="Avant les choix visibles, comprendre ce qui soutient le projet"
               />
               <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-                <p>Une rénovation de cuisine ne se limite pas au remplacement des armoires. La pièce est liée aux autres espaces de la maison, à ses installations existantes et à la manière dont votre foyer l’utilise. Une réflexion globale aide à mettre les priorités dans le bon ordre : circulation, rangement, surfaces de travail, appareils, éclairage et finitions.</p>
-                <p>À Laval et dans les Laurentides, chaque domicile présente sa propre configuration. La démarche commence donc par une évaluation du lieu et de vos besoins. Selon ce qui est observé, certaines idées pourront être approfondies, adaptées ou écartées. Cette étape donne une base plus claire aux décisions qui suivent.</p>
+                <p>Au-delà des armoires, le projet relie circulation, rangement, surfaces de travail, appareils, éclairage et finitions.</p>
+                <p>À Laval et dans les Laurentides, la démarche commence par votre lieu et vos besoins. L’évaluation aide à approfondir, adapter ou écarter les idées.</p>
               </div>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
@@ -249,7 +249,7 @@ export default function RenovationCuisinePub() {
             className="mb-14 max-w-3xl"
             kicker="Les chapitres d’une cuisine cohérente"
             title="Transformer l’intention en décisions concrètes"
-            description="Chaque chapitre éclaire une partie du projet. Ils sont courts à lire, mais se répondent : une décision sur l’îlot peut influencer l’éclairage, le rangement et les parcours autour de la cuisine."
+            description="Implantation, rangement, lumière et détails se répondent. Un choix d’îlot, par exemple, influence les autres."
           />
 
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -292,9 +292,9 @@ export default function RenovationCuisinePub() {
               <PubSectionHeader
                 kicker="Des choix à rendre lisibles"
                 title="Des détails qui servent la cuisine, jour après jour"
-                description="Les matériaux et les équipements donnent un caractère à la pièce, mais ils ont aussi une incidence sur l’entretien, les usages et la continuité visuelle. Le bon choix est celui qui tient compte de l’ensemble : la lumière naturelle, le mobilier adjacent, le niveau d’activité de la cuisine et les préférences du foyer."
+                description="Matériaux et équipements influencent le caractère, l’entretien, les usages et la continuité visuelle."
               />
-              <p className="text-lg leading-relaxed text-muted-foreground">Au lieu d’additionner les tendances, nous pouvons examiner les associations de textures, la profondeur des comptoirs, les hauteurs de rangement et les points de contact du quotidien. Cette attention aide à obtenir une cuisine dont chaque élément a une raison d’être.</p>
+              <p className="text-lg leading-relaxed text-muted-foreground">Textures, lumière naturelle, comptoirs, hauteurs de rangement et mobilier adjacent sont examinés comme un ensemble.</p>
             </div>
             <div className="aspect-[4/5] rounded-none overflow-hidden border border-border">
                <img src={kitchenImages.extra4.src} alt={kitchenImages.extra4.alt} width={kitchenImages.extra4.width} height={kitchenImages.extra4.height} loading="lazy" className="w-full h-full object-cover" />
@@ -315,7 +315,7 @@ export default function RenovationCuisinePub() {
             <Ruler className="mb-6 h-12 w-12 shrink-0 text-primary md:mb-0" />
             <p className="text-lg leading-relaxed text-gray-200">
               <strong className="text-white font-bold block mb-1">Un plan se vérifie dans l’espace.</strong>
-              Les croquis et les inspirations sont utiles, puis les dimensions, les ouvertures, les appareils et les contraintes du lieu permettent de les confronter à la réalité de votre cuisine.
+              Croquis et inspirations se confrontent aux dimensions, ouvertures, appareils et contraintes du lieu.
             </p>
           </div>
         </div>
@@ -329,17 +329,25 @@ export default function RenovationCuisinePub() {
             tone="dark"
             kicker="Un projet plus facile à expliquer"
             title="Les bonnes questions avant de confirmer les choix"
-            description="Avant d’arrêter un plan, il est utile de regarder la cuisine comme une succession de scènes : l’arrivée des courses, le café du matin, la préparation d’un repas, le rangement et la circulation vers les autres pièces. Cette approche donne un langage simple pour partager ce qui fonctionne et ce qui mérite d’être revu."
+            description="Regardez la cuisine en action : courses, café, préparation, rangement et circulation. Ces scènes révèlent ce qui fonctionne ou doit être revu."
           />
 
-          <div className="grid gap-10 border-y border-white/15 py-10 text-lg leading-relaxed text-gray-300 lg:grid-cols-2">
-            <div className="space-y-7">
-                <p>Vous n’avez pas besoin d’avoir toutes les réponses avant d’amorcer une discussion. Des photos d’inspiration peuvent aider à communiquer une ambiance, mais les décisions prennent leur sens lorsqu’elles sont ramenées à la pièce réelle. Le projet peut alors s’appuyer sur des priorités concrètes plutôt que sur une liste de tendances.</p>
-                <p>Il est également utile de séparer les besoins essentiels des souhaits à explorer. Par exemple, une famille peut vouloir davantage de rangement près de la préparation, tout en se demandant si une ouverture vers une pièce voisine est envisageable. En distinguant ces deux niveaux, la conversation peut avancer sans présumer qu’une option sera possible avant d’avoir regardé les conditions du bâtiment.</p>
+          <div className="grid gap-x-12 gap-y-8 border-y border-white/15 py-10 text-gray-300 sm:grid-cols-2">
+            <div className="border-l-2 border-primary pl-5">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Priorités</p>
+              <p className="leading-relaxed">Séparez les besoins essentiels des souhaits à explorer. Une option reste à valider selon le bâtiment.</p>
             </div>
-            <div className="space-y-7">
-                <p>Les préférences de style, elles aussi, gagnent à être accompagnées de références précises : une couleur, une texture, le type de poignée, la présence ou non d’armoires hautes, ou la place accordée à un îlot. Ces repères aident à mettre des mots sur une ambiance, puis à l’ajuster en fonction de la lumière, des dimensions et des choix techniques. Une cuisine cohérente ne résulte pas nécessairement d’un seul geste spectaculaire; elle peut naître d’une série de décisions compatibles entre elles.</p>
-                <p>Enfin, pensez aux pièces adjacentes : une nouvelle cuisine peut modifier les vues depuis le séjour, la salle à manger ou l’entrée. La couleur des murs, la continuité des sols et le niveau de rangement visible sont des points simples à noter afin que la nouvelle pièce s’inscrive naturellement dans l’ensemble de la maison. Cette vision d’ensemble permet aussi de mieux expliquer vos arbitrages lorsque toutes les options ne se combinent pas dans une même configuration, avec des décisions documentées et comprises avant les interventions à coordonner.</p>
+            <div className="border-l-2 border-primary pl-5">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Inspirations</p>
+              <p className="leading-relaxed">Utilisez-les pour préciser une ambiance, puis ramenez-les à la pièce réelle.</p>
+            </div>
+            <div className="border-l-2 border-primary pl-5">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Style</p>
+              <p className="leading-relaxed">Notez couleurs, textures, poignées, armoires hautes et place de l’îlot. Lumière, dimensions et technique guideront les ajustements.</p>
+            </div>
+            <div className="border-l-2 border-primary pl-5">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">Pièces adjacentes</p>
+              <p className="leading-relaxed">Observez les vues, les murs, les sols et le rangement visible depuis le séjour, la salle à manger ou l’entrée.</p>
             </div>
           </div>
 
@@ -356,11 +364,12 @@ export default function RenovationCuisinePub() {
             <h3 className="mb-6 flex items-center gap-3 text-xl font-bold text-white">
               <ClipboardCheck className="text-primary w-6 h-6" /> Pour une rencontre productive
             </h3>
-            <div className="grid gap-6 leading-relaxed md:grid-cols-3">
-              <p>Notez ce que vous souhaitez conserver, ce qui vous dérange et ce que vous voulez pouvoir faire plus facilement dans votre future cuisine. Ajoutez les dimensions connues, les photos des murs, des fenêtres et des installations existantes. Ces éléments ne remplacent pas l’évaluation, mais ils rendent la conversation plus précise dès le départ.</p>
-              <p>Si vous hésitez entre plusieurs idées, indiquez ce que chacune changerait dans votre quotidien. Une banquette peut créer une place pour les repas, un îlot peut devenir une zone de préparation, et une armoire pleine hauteur peut répondre au besoin de provisions; le contexte permet de comparer ces intentions.</p>
-              <p>Il est aussi pertinent de signaler les contraintes de vie pendant les travaux, comme un accès utilisé régulièrement ou une pièce voisine à protéger. Ces informations donnent une image plus complète du projet à examiner et des choix qui devront être coordonnés.</p>
-            </div>
+            <ul className="grid gap-5 leading-relaxed md:grid-cols-2">
+              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">À conserver ou corriger</strong>Notez ce qui fonctionne, ce qui dérange et ce que vous voulez faciliter.</li>
+              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">Repères du lieu</strong>Apportez dimensions connues et photos des murs, fenêtres et installations. Elles ne remplacent pas l’évaluation.</li>
+              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">Options à comparer</strong>Expliquez l’usage visé : repas sur banquette, préparation sur l’îlot ou provisions en armoire haute.</li>
+              <li className="border-t border-white/15 pt-4"><strong className="mb-1 block text-white">Vie pendant les travaux</strong>Signalez les accès utilisés et les pièces voisines à protéger.</li>
+            </ul>
           </aside>
         </div>
       </section>
@@ -376,9 +385,9 @@ export default function RenovationCuisinePub() {
               <PubSectionHeader
                 kicker="Du plan aux travaux"
                 title="Une séquence de chantier à organiser avec soin"
-                description="La rénovation met en présence plusieurs types d’intervention. Retirer les éléments existants, ajuster les services, préparer les surfaces, installer les composantes puis traiter les finitions demande une coordination qui tient compte des choix retenus et de la situation rencontrée sur place."
+                description="Retrait, services, surfaces, installation et finitions suivent une séquence adaptée aux choix et aux conditions sur place."
               />
-              <p className="text-lg leading-relaxed text-muted-foreground">SLC Habitation aborde le projet comme un ensemble. L’objectif est de relier les décisions de planification aux interventions nécessaires, en gardant une communication claire sur ce qui doit être évalué à mesure que le chantier avance.</p>
+              <p className="text-lg leading-relaxed text-muted-foreground">SLC Habitation relie la planification aux interventions nécessaires et aux éléments à évaluer pendant le chantier.</p>
             </div>
           </div>
 
@@ -394,7 +403,7 @@ export default function RenovationCuisinePub() {
 
           <div className="mt-24 text-center max-w-2xl mx-auto">
             <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">Votre cuisine mérite une réflexion complète</h2>
-            <p className="mb-10 text-lg leading-relaxed text-muted-foreground">Parlez-nous de la pièce, de vos priorités et des changements envisagés. Une première discussion permet de situer votre projet et les éléments à examiner.</p>
+            <p className="mb-10 text-lg leading-relaxed text-muted-foreground">Présentez la pièce, vos priorités et les changements envisagés. Une première discussion situe les éléments à examiner.</p>
             <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-middle-cta">Discuter de ma cuisine</PubCTA>
           </div>
         </div>
@@ -433,7 +442,7 @@ export default function RenovationCuisinePub() {
             <Check className="h-10 w-10 text-primary" />
           </div>
           <h2 className="mb-6 text-4xl font-bold md:text-5xl">Prêt à clarifier votre projet de cuisine?</h2>
-          <p className="mb-12 text-lg leading-relaxed text-gray-300">Expliquez-nous votre point de départ, les usages que vous souhaitez améliorer et les changements envisagés. Nous pourrons vous orienter vers les éléments à considérer pour votre rénovation à Laval ou dans les Laurentides.</p>
+          <p className="mb-12 text-lg leading-relaxed text-gray-300">Présentez votre point de départ, les usages à améliorer et les changements envisagés pour votre rénovation à Laval ou dans les Laurentides.</p>
           <PubCTA service="renovation-cuisine" className="px-10 py-5 text-lg" testId="button-bottom-cta">Demander une soumission</PubCTA>
         </div>
       </section>

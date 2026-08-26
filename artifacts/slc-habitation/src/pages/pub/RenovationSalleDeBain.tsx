@@ -27,36 +27,36 @@ const navigation = [
 ];
 
 const projectPriorities = [
-  { icon: Ruler, title: 'Circulation et proportions', text: 'Le dégagement devant la vanité, l’ouverture de la porte et la place autour du bain guident le plan. Une petite pièce peut gagner en clarté avec des volumes bien choisis plutôt qu’avec davantage d’éléments.' },
-  { icon: Droplets, title: 'Zones exposées à l’eau', text: 'La douche, le bain et les raccords demandent une réflexion distincte. Le choix des surfaces, des joints, de la pente et des détails d’étanchéité est abordé selon la configuration retenue.' },
-  { icon: Lightbulb, title: 'Lumière et gestes quotidiens', text: 'L’éclairage au miroir, l’ambiance générale et les commandes se réfléchissent avec les habitudes de la maisonnée. Cela aide à positionner chaque élément avant la fermeture des murs.' },
+  { icon: Ruler, title: 'Circulation et proportions', text: 'Dégagement devant la vanité, ouverture de porte et espace autour du bain guident le plan. Dans une petite pièce, des volumes justes comptent plus que le nombre d’éléments.' },
+  { icon: Droplets, title: 'Zones exposées à l’eau', text: 'Douche, bain et raccords ont leurs propres contraintes. Surfaces, joints, pente et étanchéité sont étudiés selon la configuration.' },
+  { icon: Lightbulb, title: 'Lumière et gestes quotidiens', text: 'Miroir, éclairage général et commandes suivent les habitudes de la maisonnée. Leur position se prévoit avant la fermeture des murs.' },
 ];
 
 const assessmentPoints = [
-  ['Structure et plancher', 'Le sens des solives, l’état du sous-plancher et la charge prévue par les revêtements peuvent influencer les options de plan.'],
-  ['Plomberie existante', 'La position des arrivées d’eau, du drain et des appareils permet d’évaluer ce qui peut rester en place et ce qui mérite d’être repensé.'],
-  ['Ventilation', 'Le parcours d’évacuation de l’air humide, l’emplacement de l’appareil et les contraintes du bâtiment sont à examiner avant les travaux.'],
-  ['Électricité et éclairage', 'Le panneau, les circuits existants, les prises et les besoins d’éclairage sont considérés lorsque le projet le demande.'],
+  ['Structure et plancher', 'Sens des solives, état du sous-plancher et charge des revêtements peuvent orienter le plan.'],
+  ['Plomberie existante', 'Arrivées d’eau, drain et appareils indiquent ce qui peut rester ou être repensé.'],
+  ['Ventilation', 'Parcours d’évacuation, emplacement de l’appareil et contraintes du bâtiment sont vérifiés avant les travaux.'],
+  ['Électricité et éclairage', 'Panneau, circuits, prises et éclairage sont considérés selon les besoins du projet.'],
 ];
 
 const steps = [
-  ['1', 'Écouter la pièce et vos priorités', 'Une première discussion sert à comprendre ce que vous souhaitez changer : une douche plus ouverte, une vanité mieux adaptée, du rangement, une ambiance différente ou une circulation plus simple. Les photos d’inspiration sont utiles pour préciser les matériaux et le niveau de contraste que vous aimez.'],
-  ['2', 'Observer l’existant', 'L’évaluation sur place met le plan en relation avec le bâtiment. Les murs, les ouvertures, les installations visibles et les accès sont des repères concrets. Certaines décisions, notamment un déplacement d’appareil, se confirment après cette lecture technique.'],
-  ['3', 'Composer un plan cohérent', 'Les composantes sont ensuite envisagées ensemble : dimensions de la douche, type de vanité, emplacement du miroir, rangement, niches et revêtements. Cette étape permet de comparer des avenues adaptées à la pièce plutôt que de sélectionner chaque produit isolément.'],
-  ['4', 'Préparer les détails techniques', 'Avant la finition, les parcours de plomberie, les interventions électriques requises, la ventilation et les surfaces à protéger sont coordonnés selon le projet. La céramique, la robinetterie et les accessoires prennent alors place dans une séquence plus lisible.'],
-  ['5', 'Avancer par zones', 'La réalisation se structure habituellement autour de la démolition nécessaire, de la préparation des supports, des composantes techniques et des finitions. La portée exacte et l’ordre des interventions sont établis en fonction de votre salle de bain et des choix retenus.'],
+  ['1', 'Écouter la pièce et vos priorités', 'Douche, vanité, rangement, ambiance et circulation : la discussion cerne ce qui doit changer. Vos inspirations précisent matières et contrastes.'],
+  ['2', 'Observer l’existant', 'Murs, ouvertures, installations et accès relient le plan au bâtiment. Un déplacement d’appareil se confirme après cette lecture technique.'],
+  ['3', 'Composer un plan cohérent', 'Douche, vanité, miroir, rangement, niches et revêtements sont comparés ensemble, selon la pièce.'],
+  ['4', 'Préparer les détails techniques', 'Plomberie, électricité requise, ventilation et surfaces à protéger sont coordonnées avant les finis, la robinetterie et les accessoires.'],
+  ['5', 'Avancer par zones', 'Démolition nécessaire, supports, technique et finitions suivent un ordre adapté à la portée et aux choix retenus.'],
 ];
 
 const faqs = [
-  ['Faut-il rénover toute la salle de bain ou seulement la douche ?', 'Les deux approches peuvent être envisagées. Le bon périmètre dépend de l’état des surfaces adjacentes, de la plomberie, de l’âge des composantes et du résultat recherché. Une intervention ciblée peut aussi amener à vérifier la continuité des finis et la protection des zones voisines. Une évaluation aide à déterminer une portée raisonnable pour votre pièce.'],
-  ['Peut-on déplacer la toilette, le bain ou la douche ?', 'Cela dépend notamment du cheminement du drain, de la structure du plancher et de l’accès aux installations existantes. Déplacer un appareil peut modifier plusieurs éléments du projet; il est donc préférable de le valider après l’observation de la salle de bain. Nous pouvons discuter d’options qui tiennent compte de ces contraintes.'],
-  ['Comment se planifie une douche sans seuil ?', 'Une douche sans seuil demande une attention particulière au niveau du plancher, à la pente vers le drain, à l’étanchéité et à la paroi. Les dimensions disponibles et le type de drain influencent aussi le dessin. Selon l’évaluation, une solution de plain-pied ou une alternative avec base peut être plus appropriée.'],
-  ['Quels revêtements conviennent au sol et aux murs ?', 'La céramique, la porcelaine, la mosaïque et d’autres surfaces peuvent être considérées selon l’usage, le style et l’entretien souhaité. Le format des carreaux change la perception de l’espace et peut influencer les coupes. Dans la douche, les détails de pose et les zones à protéger font partie de la discussion, pas seulement la couleur.'],
-  ['Est-ce qu’un plancher chauffant est possible ?', 'Cette possibilité est examinée avec la composition du plancher, l’alimentation électrique disponible, le revêtement choisi et le confort recherché. La céramique est souvent considérée pour ce type d’application, mais le projet doit être évalué dans son ensemble. Le positionnement du thermostat et les zones non chauffées peuvent aussi être planifiés.'],
-  ['Pourquoi la ventilation est-elle importante ?', 'Une salle de bain produit de l’humidité au quotidien. Le volume de la pièce, la présence d’une fenêtre, le parcours vers l’extérieur et les installations en place sont des éléments utiles pour réfléchir à l’extraction d’air. La ventilation se prévoit idéalement avant que les murs et le plafond reçoivent leurs finis.'],
-  ['Comment choisir une vanité et le rangement ?', 'Commencez par les objets que vous utilisez réellement et par l’espace de circulation nécessaire. Des tiroirs, une pharmacie, des niches ou une colonne peuvent être considérés selon les murs disponibles. La profondeur du meuble, la hauteur du miroir et la position des prises contribuent également à l’usage quotidien.'],
-  ['Que faut-il prévoir pour l’éclairage ?', 'Il est utile de distinguer l’éclairage général de la lumière autour du miroir et de l’éclairage d’ambiance. Les zones près de l’eau, les commandes et les besoins électriques sont à intégrer au plan. Une réflexion en amont évite de choisir les luminaires seulement après les finitions.'],
-  ['Comment préparer la rencontre pour un projet de salle de bain ?', 'Notez ce qui fonctionne moins bien aujourd’hui, les appareils que vous souhaitez conserver ou remplacer, ainsi que vos priorités de rangement et d’entretien. Des dimensions approximatives, des photos de la pièce et quelques images d’inspiration enrichissent l’échange. Les conditions observées sur place servent ensuite à préciser les possibilités.'],
+  ['Faut-il rénover toute la salle de bain ou seulement la douche ?', 'Les deux sont possibles. Le périmètre dépend des surfaces voisines, de la plomberie, de l’âge des composantes et du résultat visé. Une intervention ciblée demande aussi de vérifier la continuité des finis et la protection autour; l’évaluation aide à fixer une portée raisonnable.'],
+  ['Peut-on déplacer la toilette, le bain ou la douche ?', 'Cela dépend du drain, de la structure du plancher et de l’accès aux installations. Comme un déplacement peut toucher plusieurs éléments, les options se valident après l’observation de la pièce.'],
+  ['Comment se planifie une douche sans seuil ?', 'Il faut examiner le niveau du plancher, la pente, le drain, l’étanchéité, la paroi et les dimensions disponibles. L’évaluation indique si une solution de plain-pied ou une base convient mieux.'],
+  ['Quels revêtements conviennent au sol et aux murs ?', 'Céramique, porcelaine, mosaïque ou autres surfaces se choisissent selon l’usage, le style et l’entretien. Le format influence la perception et les coupes; dans la douche, pose et zones à protéger comptent autant que la couleur.'],
+  ['Est-ce qu’un plancher chauffant est possible ?', 'Il faut considérer le plancher, l’alimentation électrique, le revêtement et le confort recherché. La céramique est souvent envisagée, mais l’ensemble du projet — thermostat et zones non chauffées compris — doit être évalué.'],
+  ['Pourquoi la ventilation est-elle importante ?', 'La salle de bain produit de l’humidité chaque jour. Volume, fenêtre, parcours vers l’extérieur et installations existantes orientent l’extraction d’air, à prévoir avant les finis des murs et du plafond.'],
+  ['Comment choisir une vanité et le rangement ?', 'Partez des objets à ranger et de la circulation nécessaire. Tiroirs, pharmacie, niches ou colonne dépendent des murs disponibles; profondeur du meuble, miroir et prises influencent aussi l’usage.'],
+  ['Que faut-il prévoir pour l’éclairage ?', 'Distinguez lumière générale, éclairage du miroir et ambiance. Zones près de l’eau, commandes et besoins électriques s’intègrent au plan avant les finitions.'],
+  ['Comment préparer la rencontre pour un projet de salle de bain ?', 'Notez les irritants, les appareils à conserver ou remplacer, puis vos priorités de rangement et d’entretien. Dimensions approximatives, photos et inspirations alimentent l’échange; l’observation sur place précise ensuite les possibilités.'],
 ];
 
 export default function RenovationSalleDeBainPub() {
@@ -84,7 +84,7 @@ export default function RenovationSalleDeBainPub() {
             </div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Salle de bain pensée dans son ensemble</p>
             <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de salle de bain <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-slate-200 md:text-xl">Réimaginer une salle de bain, c’est accorder les gestes du matin, les matières que l’on voit et les éléments techniques que l’on ne voit pas. SLC Habitation vous accompagne pour examiner votre espace et envisager une rénovation cohérente avec votre maison.</p>
+            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-slate-200 md:text-xl">Usage, matières et technique doivent avancer ensemble. SLC Habitation examine votre espace avec vous pour envisager une rénovation cohérente avec votre maison.</p>
             <PubCTA service="renovation-salle-de-bain" className="px-8 py-5 text-lg rounded-none" testId="button-hero-cta">Parler de votre projet</PubCTA>
           </div>
         </div>
@@ -110,11 +110,22 @@ export default function RenovationSalleDeBainPub() {
             </div>
             <div className="lg:col-span-7 lg:pl-8">
               <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-                <p className="text-xl text-foreground font-medium mb-8">Une rénovation de salle de bain commence rarement par un seul choix. Vous pensez peut-être à une douche plus confortable, à un meuble-lavabo qui libère le comptoir ou à une céramique qui change l’atmosphère. Pourtant, ces choix se répondent : la largeur de passage influence la vanité, la robinetterie influence les murs, et la lumière modifie la lecture des textures.</p>
-                <p>À Laval comme dans les Laurentides, les salles de bain se trouvent dans des maisons aux plans très différents. Certaines offrent une fenêtre, d’autres sont compactes; certaines conservent leur plomberie au même endroit, d’autres invitent à revoir la disposition. L’objectif est de partir de l’espace réel, de vos habitudes et des contraintes observables afin d’orienter le projet avec discernement.</p>
-                <p>Nous privilégions une conversation pratique : qui utilise la pièce, quels objets doivent y trouver place, quelle ambiance vous convient et quels éléments posent problème aujourd’hui? Ces réponses aident à élaborer un aménagement lisible. Elles permettent aussi de prioriser les décisions qui doivent être prises avant les finis, sans présumer de ce que la structure ou les installations permettront.</p>
-                <p>Avant l’évaluation, il peut être utile de distinguer les souhaits essentiels des préférences secondaires. Par exemple, conserver un bain, créer davantage de rangement ou faciliter l’entrée dans la douche sont des priorités qui orientent vraiment le plan. La couleur d’un robinet, le format du miroir ou la position d’une tablette peuvent ensuite être comparés avec plus de recul. Cette préparation ne vous engage pas : elle donne simplement un vocabulaire plus clair pour expliquer ce que vous attendez de la pièce.</p>
-                <p>Il est aussi pertinent de penser aux changements de besoins, sans transformer la salle de bain en espace clinique. Une porte qui ne gêne pas le passage, des commandes faciles à atteindre, une zone de séchage près de la douche ou une surface de comptoir dégagée peuvent être appréciés par des personnes de tous âges. Si la mobilité est un enjeu actuel ou futur, dites-le dès la première discussion. Cela permet d’examiner l’accès, les dégagements et les renforts possibles avant que les choix de finition ne prennent toute la place.</p>
+                <p className="text-xl text-foreground font-medium mb-8">Aucun choix n’est isolé. Le passage influence la vanité, la robinetterie touche les murs et la lumière transforme les textures.</p>
+                <p>À Laval et dans les Laurentides, chaque plan est différent : fenêtre ou pièce compacte, plomberie conservée ou disposition revue. Nous partons de l’espace réel, de vos habitudes et des contraintes visibles.</p>
+                <div className="border-y border-border py-2">
+                  {[
+                    ['Usage', 'Qui utilise la pièce? Que faut-il ranger? Qu’est-ce qui gêne aujourd’hui?'],
+                    ['Priorités', 'Bain à conserver, rangement à gagner ou douche plus accessible orientent d’abord le plan.'],
+                    ['Finitions', 'Couleur du robinet, miroir et tablette se comparent ensuite, sans engagement.'],
+                    ['Évolution', 'Passage libre, commandes accessibles, zone de séchage et comptoir dégagé servent tous les âges.'],
+                  ].map(([label, text]) => (
+                    <div key={label} className="grid gap-1 border-b border-border py-5 last:border-b-0 sm:grid-cols-[8rem_1fr] sm:gap-6">
+                      <p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">{label}</p>
+                      <p>{text}</p>
+                    </div>
+                  ))}
+                </div>
+                <p>Un enjeu de mobilité actuel ou futur mérite d’être nommé tôt. Accès, dégagements et renforts possibles peuvent alors être examinés avant les finitions, sans donner à la pièce un aspect clinique.</p>
               </div>
             </div>
           </div>
@@ -132,7 +143,7 @@ export default function RenovationSalleDeBainPub() {
               />
             </div>
             <div>
-              <p className="text-lg leading-relaxed text-muted-foreground lg:pb-6">Une salle de bain réussie ne repose pas sur une tendance unique. Elle peut être lumineuse et minimale, texturée et chaleureuse, ou plus contrastée. Le point de départ reste l’usage : se préparer à deux, faciliter le nettoyage, accueillir les serviettes, aménager une douche ou conserver un bain selon votre réalité.</p>
+              <p className="text-lg leading-relaxed text-muted-foreground lg:pb-6">Lumineuse, texturée ou contrastée : la pièce part de l’usage, pas d’une tendance. Se préparer à deux, simplifier l’entretien, ranger les serviettes, aménager une douche ou garder un bain donnent la direction.</p>
             </div>
           </div>
 
@@ -155,11 +166,16 @@ export default function RenovationSalleDeBainPub() {
             <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-1 lg:content-center rounded-none bg-secondary p-10 text-secondary-foreground">
               <div>
                 <h3 className="mb-4 text-2xl font-bold text-white">Douche, bain, vanité : les composer sans les isoler</h3>
-                <p className="leading-relaxed text-slate-300">Une douche avec paroi vitrée peut préserver la profondeur visuelle d’une petite salle de bain. Une niche peut être utile quand les produits de soin doivent rester accessibles. Un bain autoportant peut devenir un point focal si les dégagements, la robinetterie et les accès s’y prêtent. Chaque option est mise en relation avec les dimensions de la pièce avant de devenir un choix définitif.</p>
+                 <ul className="space-y-3 leading-relaxed text-slate-300">
+                   <li className="border-l border-primary pl-4"><strong className="text-white">Paroi vitrée :</strong> peut préserver la profondeur visuelle.</li>
+                   <li className="border-l border-primary pl-4"><strong className="text-white">Niche :</strong> garde les produits accessibles.</li>
+                   <li className="border-l border-primary pl-4"><strong className="text-white">Bain autoportant :</strong> peut devenir un point focal si dégagements, robinetterie et accès s’y prêtent.</li>
+                 </ul>
+                 <p className="mt-4 leading-relaxed text-slate-300">Chaque option est confrontée aux dimensions avant d’être retenue.</p>
               </div>
               <div>
                 <h3 className="mb-4 text-2xl font-bold text-white">Le détail qui change la routine</h3>
-                <p className="leading-relaxed text-slate-300">Un miroir bien positionné, une prise au bon endroit, une tablette près du bain ou des tiroirs organisés peuvent rendre la pièce plus intuitive. Ces détails ne remplacent pas les fondations techniques; ils donnent toutefois du sens à la rénovation. Les intégrer dès la planification facilite une vision d’ensemble et des décisions plus sereines.</p>
+                 <p className="leading-relaxed text-slate-300">Miroir, prise, tablette et tiroirs rendent les gestes plus intuitifs. Planifiés tôt, ces détails complètent les fondations techniques et clarifient les décisions.</p>
               </div>
             </div>
           </div>
@@ -178,11 +194,22 @@ export default function RenovationSalleDeBainPub() {
                 kicker="Matières et eau"
                 title="Penser les surfaces avant de penser les accessoires"
               />
-              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-                <p>Dans une salle de bain, les murs et le plancher sont plus qu’un décor. Ils encadrent les zones humides, structurent la perspective et déterminent une part importante de l’entretien. Un grand format peut créer une lecture plus continue; une mosaïque peut convenir à certains détails ou à certaines surfaces. Les dimensions, les joints et les coupes méritent d’être regardés avec le plan de la pièce.</p>
-                <p>La douche appelle une attention particulière. Sa forme, son seuil éventuel, son drain, ses murs et sa porte s’inscrivent dans un ensemble où les niveaux et les raccords comptent. Les systèmes d’imperméabilisation et les matériaux appropriés sont considérés selon la solution retenue. Il est préférable de discuter de ces aspects avant de fixer la céramique ou la robinetterie.</p>
-                <p>Les échantillons sont utiles, mais la lumière réelle change les nuances. Observer une finition mate, un veinage ou une teinte de bois avec l’éclairage prévu peut aider à faire un choix plus juste. Une palette volontairement courte — par exemple une céramique principale, un accent et un métal — peut aussi soutenir une pièce calme sans limiter votre personnalité.</p>
-                <p>Les couches situées sous le revêtement font également partie de la réflexion. Selon la zone, le support doit être préparé avant l’application d’un système d’étanchéité, puis les transitions entre le plancher, les murs, le drain et les pénétrations de plomberie demandent des détails adaptés. Cette séquence est particulièrement importante dans une douche, car la surface visible ne suffit pas à décrire la gestion de l’eau. Le système envisagé et les conditions relevées sur place guident les décisions techniques.</p>
+              <div className="text-lg leading-relaxed text-muted-foreground">
+                <p className="mb-8">Murs et plancher encadrent l’eau, la perspective et l’entretien. Formats, joints et coupes se lisent avec le plan de la pièce.</p>
+                <div className="border-t border-border">
+                  {[
+                    ['Formats', 'Un grand format peut unifier la lecture. Une mosaïque peut servir certains détails ou certaines surfaces.'],
+                    ['Douche', 'Forme, seuil éventuel, drain, murs, porte, niveaux et raccords forment un seul système. Imperméabilisation et matériaux se choisissent avant la céramique et la robinetterie.'],
+                    ['Lumière', 'Elle modifie les finis mats, veinages et teintes de bois. Une palette courte — céramique principale, accent et métal — peut garder la pièce calme et personnelle.'],
+                    ['Sous la surface', 'Support, étanchéité et transitions au plancher, aux murs, au drain et aux pénétrations de plomberie demandent des détails adaptés. Dans la douche, le fini visible ne suffit pas à gérer l’eau.'],
+                  ].map(([label, text]) => (
+                    <div key={label} className="grid gap-2 border-b border-border py-5 sm:grid-cols-[8rem_1fr] sm:gap-6">
+                      <p className="font-bold text-foreground">{label}</p>
+                      <p>{text}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 text-base">Le système retenu et les conditions observées sur place guident les décisions techniques.</p>
               </div>
             </div>
           </div>
@@ -198,14 +225,22 @@ export default function RenovationSalleDeBainPub() {
                 kicker="Avant de démarrer"
                 title="Une évaluation pour situer les possibilités"
               />
-              <p className="text-lg leading-relaxed text-muted-foreground mb-6">Une belle idée prend une forme plus précise lorsqu’elle rencontre les conditions du bâtiment. L’évaluation ne sert pas à compliquer le projet : elle sert à identifier les points qui peuvent influencer le plan et à aborder les choix dans un ordre utile.</p>
-              <p className="text-lg leading-relaxed text-muted-foreground">Le déplacement d’un drain illustre bien cette logique. Son parcours possible dépend notamment de la hauteur disponible, du sens des solives et de la manière dont le plancher est construit. Une douche ou une toilette peut parfois rester près de son emplacement actuel pour limiter les interventions à examiner; dans d’autres cas, le plan peut être revu. Le rôle de l’évaluation est d’éviter de conclure avant d’avoir observé ces repères.</p>
+              <p className="text-lg leading-relaxed text-muted-foreground mb-6">L’évaluation confronte l’idée aux conditions du bâtiment. Elle repère ce qui influence le plan et remet les choix dans un ordre utile.</p>
+              <div className="border-l-2 border-primary pl-6 text-lg leading-relaxed text-muted-foreground">
+                <p className="mb-3 font-bold text-foreground">Exemple : déplacer un drain</p>
+                <p>Son parcours dépend de la hauteur disponible, des solives et de la construction du plancher. Garder une douche ou une toilette près de sa position peut limiter les interventions; ailleurs, revoir le plan peut convenir. L’observation vient avant la conclusion.</p>
+              </div>
 
               <div className="mt-12 rounded-none border border-primary/20 bg-primary/5 p-8">
                 <h3 className="mb-3 font-bold text-xl flex items-center gap-2">
                   <ClipboardCheck className="text-primary w-5 h-5" /> À apporter à la discussion
                 </h3>
-                <p className="leading-relaxed text-muted-foreground">Vos photos d’inspiration, vos habitudes de rangement, une liste de ce que vous souhaitez conserver et les irritants de la pièce actuelle donnent des repères concrets pour l’échange.</p>
+                <ul className="grid gap-2 text-muted-foreground sm:grid-cols-2">
+                  <li>— Photos d’inspiration</li>
+                  <li>— Habitudes de rangement</li>
+                  <li>— Éléments à conserver</li>
+                  <li>— Irritants actuels</li>
+                </ul>
               </div>
             </div>
 
@@ -233,7 +268,7 @@ export default function RenovationSalleDeBainPub() {
             className="max-w-3xl mb-20"
             kicker="Une démarche lisible"
             title="Passer de l’intention à une salle de bain habitable"
-            description="Chaque rénovation a son contexte. Cette séquence présente les sujets qui peuvent être abordés dans un projet, en restant attentive à ce que l’évaluation et les choix de conception permettent de confirmer."
+             description="Chaque rénovation a son contexte. Cette séquence reste à confirmer par l’évaluation et les choix de conception."
           />
 
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5 border-y border-border py-16">
@@ -252,14 +287,22 @@ export default function RenovationSalleDeBainPub() {
                  <Fan className="h-8 w-8 text-primary stroke-[1.5]" />
                   <h3 className="text-2xl font-bold text-foreground">Humidité et renouvellement d’air</h3>
                </div>
-               <p className="leading-relaxed text-muted-foreground text-lg">La ventilation mérite d’être pensée avec l’usage de la pièce, et non comme un accessoire ajouté à la fin. L’air humide doit pouvoir être évacué selon le parcours disponible dans le bâtiment. Le plafond, les conduits, une fenêtre existante et la position de la douche peuvent tous influencer la solution à étudier. Prévoir cet échange avant les finis aide à coordonner les ouvertures, les commandes et l’accès requis pour l’installation.</p>
+               <ul className="space-y-3 text-lg leading-relaxed text-muted-foreground">
+                 <li className="border-l border-primary pl-4">Prévoir l’évacuation de l’air humide selon le parcours disponible.</li>
+                 <li className="border-l border-primary pl-4">Examiner plafond, conduits, fenêtre existante et position de la douche.</li>
+                 <li className="border-l border-primary pl-4">Coordonner ouvertures, commandes et accès avant les finis.</li>
+               </ul>
             </div>
             <div className="space-y-6">
                <div className="flex items-center gap-4 border-b border-border pb-4">
                  <Lightbulb className="h-8 w-8 text-primary stroke-[1.5]" />
                   <h3 className="text-2xl font-bold text-foreground">Lumière, prises et commandes</h3>
                </div>
-               <p className="leading-relaxed text-muted-foreground text-lg">Une salle de bain peut réunir une lumière générale, un éclairage au miroir et, selon le projet, une ambiance plus douce. Pensez à la hauteur du miroir, aux zones d’ombre et aux moments où la pièce est utilisée. Les prises, interrupteurs, luminaires et besoins électriques éventuels sont plus simples à discuter lorsque la vanité et la douche sont déjà situées sur le plan. Leur implantation demeure à valider selon les conditions du projet.</p>
+               <ul className="space-y-3 text-lg leading-relaxed text-muted-foreground">
+                 <li className="border-l border-primary pl-4">Distinguer lumière générale, miroir et ambiance éventuelle.</li>
+                 <li className="border-l border-primary pl-4">Observer hauteur du miroir, ombres et moments d’usage.</li>
+                 <li className="border-l border-primary pl-4">Situer prises, commandes et luminaires après la vanité et la douche, puis valider selon le projet.</li>
+               </ul>
             </div>
           </div>
         </div>
@@ -275,10 +318,24 @@ export default function RenovationSalleDeBainPub() {
                 kicker="Une seconde lecture de votre projet"
                 title="Clarifier vos priorités avant les choix de finition"
               />
-              <div className="space-y-6 text-lg leading-relaxed text-slate-300 mb-10">
-                <p>Une rencontre peut être l’occasion de remettre de l’ordre dans les décisions : faut-il conserver l’emplacement des appareils? Quel rangement est réellement utile? Quelle ambiance s’accorde aux autres pièces? SLC Habitation détient la licence RBQ 8351-9033-59 et compte 18 ans d’expérience pour accompagner les projets à Laval et dans les Laurentides.</p>
-                <p>L’accessibilité peut aussi faire partie de la conversation, sans imposer un style particulier. Une circulation plus directe, une douche avec une entrée adaptée, une banquette envisagée, une vanité dont la profondeur convient ou des appuis prévus au bon endroit sont des sujets à soulever selon les besoins. Les dimensions de la pièce et les supports disponibles permettent ensuite d’examiner quelles avenues sont pertinentes.</p>
-                <p>Nous pouvons parler de votre espace tel qu’il est, de vos intentions et des éléments à vérifier. Les réponses détaillées dépendent de l’évaluation, des produits retenus et des conditions rencontrées dans la maison.</p>
+               <div className="text-lg leading-relaxed text-slate-300 mb-10">
+                 <p className="mb-6">La rencontre remet les décisions dans l’ordre : appareils à conserver, rangement utile et ambiance liée aux autres pièces.</p>
+                 <div className="mb-6 grid border-y border-white/15 sm:grid-cols-3">
+                   <div className="border-b border-white/15 py-4 sm:border-b-0 sm:border-r sm:pr-4">
+                     <p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">Licence</p>
+                     <p className="mt-1 text-white">RBQ 8351-9033-59</p>
+                   </div>
+                   <div className="border-b border-white/15 py-4 sm:border-b-0 sm:border-r sm:px-4">
+                     <p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">Expérience</p>
+                     <p className="mt-1 text-white">18 ans</p>
+                   </div>
+                   <div className="py-4 sm:pl-4">
+                     <p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">Territoire</p>
+                     <p className="mt-1 text-white">Laval et Laurentides</p>
+                   </div>
+                 </div>
+                 <p className="mb-4">L’accessibilité n’impose pas un style. Circulation directe, entrée de douche adaptée, banquette, profondeur de vanité et appuis peuvent être discutés selon les besoins.</p>
+                 <p>Les avenues dépendent des dimensions, des supports, des produits retenus et des conditions observées dans la maison.</p>
               </div>
               <PubCTA service="renovation-salle-de-bain" className="px-8 py-5 text-lg rounded-none" testId="button-middle-cta">Discuter de ma salle de bain</PubCTA>
             </div>
@@ -327,7 +384,7 @@ export default function RenovationSalleDeBainPub() {
             className="mx-auto text-center mb-16 max-w-3xl"
             kicker="Planifier avec plus de repères"
             title="Questions fréquentes sur la rénovation de salle de bain"
-            description="Voici des pistes pour préparer votre réflexion. Les réponses précises se nuancent selon la salle de bain, le bâtiment et les choix du projet."
+             description="Des repères à nuancer selon la pièce, le bâtiment et les choix du projet."
           />
           <div className="space-y-2 border-t border-border pt-8">
             {faqs.map(([question, answer]) => <FAQ key={question} question={question as string} answer={answer as string} />)}
@@ -341,7 +398,7 @@ export default function RenovationSalleDeBainPub() {
           <Wrench className="mx-auto mb-6 h-10 w-10 text-primary" />
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-primary">Votre projet, votre espace</p>
           <h2 className="mb-6 text-4xl font-bold md:text-5xl text-foreground">Parlons de la salle de bain que vous souhaitez transformer</h2>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">Présentez-nous votre pièce, vos idées et vos priorités. Nous pourrons amorcer une discussion sur les options à examiner pour votre rénovation de salle de bain à Laval ou dans les Laurentides.</p>
+           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">Présentez votre pièce, vos idées et vos priorités. Nous pourrons examiner les options pour votre rénovation à Laval ou dans les Laurentides.</p>
           <PubCTA service="renovation-salle-de-bain" className="px-10 py-5 text-lg rounded-none" testId="button-bottom-cta">Demander une évaluation</PubCTA>
           <p className="mt-6 text-sm text-muted-foreground">La portée et les possibilités sont précisées en fonction de l’évaluation du projet.</p>
         </div>
