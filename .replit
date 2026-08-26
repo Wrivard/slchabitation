@@ -4,6 +4,38 @@ modules = ["nodejs-24", "python-base-3.13"]
 router = "application"
 deploymentTarget = "autoscale"
 
+[[deployment.rewrites]]
+from = "/pub/formulaire"
+to = "/pub/formulaire/index.html"
+
+[[deployment.rewrites]]
+from = "/pub/formulaire/"
+to = "/pub/formulaire/index.html"
+
+[[deployment.rewrites]]
+from = "/pub/renovation-cuisine"
+to = "/pub/renovation-cuisine/index.html"
+
+[[deployment.rewrites]]
+from = "/pub/renovation-cuisine/"
+to = "/pub/renovation-cuisine/index.html"
+
+[[deployment.rewrites]]
+from = "/pub/renovation-salle-de-bain"
+to = "/pub/renovation-salle-de-bain/index.html"
+
+[[deployment.rewrites]]
+from = "/pub/renovation-salle-de-bain/"
+to = "/pub/renovation-salle-de-bain/index.html"
+
+[[deployment.rewrites]]
+from = "/pub/renovation-sous-sol"
+to = "/pub/renovation-sous-sol/index.html"
+
+[[deployment.rewrites]]
+from = "/pub/renovation-sous-sol/"
+to = "/pub/renovation-sous-sol/index.html"
+
 [deployment.postBuild]
 args = ["pnpm", "store", "prune"]
 env = { "CI" = "true" }
