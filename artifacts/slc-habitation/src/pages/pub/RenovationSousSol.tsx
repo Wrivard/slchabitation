@@ -8,13 +8,16 @@ import {
   PubCardBody,
   PubCardIcon,
   PubCardList,
+  PubCardMedia,
   PubCardNumber,
   PubCardText,
   PubCardTitle,
   PubChecklist,
   PubGallery,
+  PubHero,
   PubProofBar,
-  PubTestimonial,
+  PubReviews,
+  PubServiceArea,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
@@ -26,8 +29,59 @@ const navItems = [
   { href: '#inclus', label: 'Ce qui est inclus' },
   { href: '#etapes', label: 'Comment ça se passe' },
   { href: '#visite', label: 'La visite' },
+  { href: '#avis', label: 'Avis' },
   { href: '#realisations', label: 'Réalisations' },
   { href: '#faq', label: 'Questions' },
+];
+
+const heroThumbs = [
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/20241017_152123-p-500.jpg',
+    alt: 'Pièce de vie au sous-sol avec plancher de bois clair',
+    width: 500,
+    height: 375,
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg',
+    alt: 'Salle polyvalente au sous-sol avec portes françaises',
+    width: 500,
+    height: 375,
+  },
+  {
+    src: '/images/relume-655394-p-500.jpeg',
+    alt: 'Douche vitrée dans une salle de bain aménagée au sous-sol',
+    width: 500,
+    height: 667,
+  },
+];
+
+const reviews = [
+  {
+    quote:
+      'Magnifique travail de l’équipe SLC Habitation. Nous avions un projet complexe d’agrandissement et de rénovation d’une vieille maison avec plusieurs défis! Ils ont fait un travail exceptionnel!!! Un gros merci pour votre patience et votre professionnalisme! Je recommande sans hésiter!',
+    author: 'Johanne Duguay',
+  },
+  {
+    quote:
+      'Excellente compagnie, service professionnel et soucis du détails! Merci a votre équipe pour vos bon conseil. Je recommande a tous pour la réalisation de vos projet!',
+    author: 'Mélodie Binette',
+  },
+  {
+    quote: 'Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!',
+    author: 'Isabelle Baril',
+  },
+];
+
+const serviceCities = [
+  'Laval',
+  'Saint-Eustache',
+  'Terrebonne',
+  'Sainte-Thérèse',
+  'Rosemère',
+  'Mirabel',
+  'Boisbriand',
+  'Blainville',
+  'Saint-Jérôme',
 ];
 
 const gallery = [
@@ -83,16 +137,34 @@ const includedCards = [
     icon: Hammer,
     title: 'La structure et l’isolation',
     points: ['Divisions et cloisons', 'Isolation des murs et du plafond', 'Insonorisation si vous la voulez'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/randoms/PXL_20211105_201904641-p-800.jpg',
+      alt: 'Chantier en cours : cloisons montées, murs peints et plancher protégé',
+      width: 800,
+      height: 600,
+    },
   },
   {
     icon: Wrench,
     title: 'La plomberie et l’électricité',
     points: ['Salle de bain ou salle d’eau', 'Prises, éclairage, chauffage', 'Ventilation de l’espace'],
+    image: {
+      src: '/images/relume-655394-p-800.jpeg',
+      alt: 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol',
+      width: 800,
+      height: 1067,
+    },
   },
   {
     icon: Check,
     title: 'Les finitions',
     points: ['Plancher, gypse, peinture', 'Portes, moulures, rangements', 'Plafond et escalier'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/randoms/20241018_161142-p-800.jpg',
+      alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
+      width: 800,
+      height: 600,
+    },
   },
 ];
 
@@ -160,33 +232,22 @@ export default function RenovationSousSolPub() {
   return (
     <PubLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-secondary text-secondary-foreground min-h-[72vh] flex flex-col justify-end">
-        <div className="absolute inset-0">
-          <img
-            src={gallery[0].src}
-            alt={gallery[0].alt}
-            width={gallery[0].width}
-            height={gallery[0].height}
-            loading="eager"
-            className="h-full w-full object-cover object-[center_60%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/60 to-transparent" />
-        </div>
-        <div className="container-large relative mx-auto max-w-7xl px-6 pb-16 pt-24 fade-up">
-          <div className="max-w-4xl">
-            <div className="mb-7 flex flex-wrap gap-3 text-xs font-medium tracking-wide sm:text-sm text-white">
-              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
-              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><Hammer className="h-4 w-4 text-primary" />18 ans d'expérience</span>
-              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
-            </div>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Entrepreneur en rénovation</p>
-            <h1 className="mb-6 max-w-4xl font-heading text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">Rénovation de sous-sol <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-8 max-w-3xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Nous venons voir votre sous-sol, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
-            <PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>
-            <p className="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p>
-          </div>
-        </div>
-      </section>
+      <PubHero
+        label="Entrepreneur en rénovation"
+        title="Rénovation de sous-sol à Laval et dans les Laurentides"
+        intro="Nous venons voir votre sous-sol, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans."
+        badges={[
+          { icon: ShieldCheck, text: 'Licence RBQ : 8351-9033-59' },
+          { icon: Hammer, text: '18 ans d’expérience' },
+          { icon: MapPin, text: 'Laval et Laurentides' },
+        ]}
+        action={<PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>}
+        note="Estimation et visite sans frais · Réponse sous 48 heures"
+        image={gallery[0]}
+        objectPosition="center 60%"
+        thumbs={heroThumbs}
+        thumbsLabel="Sous-sols réalisés"
+      />
 
       <PubProofBar />
 
@@ -203,8 +264,9 @@ export default function RenovationSousSolPub() {
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            {includedCards.map(({ icon: Icon, title, points }) => (
+            {includedCards.map(({ icon: Icon, title, points, image }) => (
               <PubCard key={title}>
+                <PubCardMedia src={image.src} alt={image.alt} width={image.width} height={image.height} />
                 <PubCardBody>
                   <PubCardIcon icon={Icon} />
                   <PubCardTitle>{title}</PubCardTitle>
@@ -299,17 +361,12 @@ export default function RenovationSousSolPub() {
         </div>
       </section>
 
-      {/* TÉMOIGNAGE */}
-      <section className="bg-secondary py-16 md:py-20">
-        <div className="container-large mx-auto max-w-5xl px-6">
-          <PubTestimonial
-            tone="dark"
-            quote="Magnifique travail de l'équipe SLC Habitation. Nous avions un projet complexe avec plusieurs défis! Ils ont fait un travail exceptionnel. Un gros merci pour votre professionnalisme! Je recommande sans hésiter."
-            author="Johanne Duguay"
-            role="Propriétaire"
-          />
-        </div>
-      </section>
+      {/* AVIS */}
+      <PubReviews
+        title="Ce que les propriétaires écrivent sur Google"
+        description="19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation."
+        items={reviews}
+      />
 
       {/* RÉALISATIONS */}
       <PubGallery
@@ -333,6 +390,12 @@ export default function RenovationSousSolPub() {
           </FAQList>
         </div>
       </section>
+
+      {/* ZONE DESSERVIE */}
+      <PubServiceArea
+        cities={serviceCities}
+        note="Votre municipalité n’est pas dans la liste? Écrivez-nous, nous vous dirons si nous nous déplaçons chez vous."
+      />
 
       {/* CTA FOOTER */}
       <section data-sticky-hide className="relative isolate overflow-hidden bg-secondary py-20 text-white md:py-24">

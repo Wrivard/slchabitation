@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { Check, CheckCircle2, Clock, Phone, ShieldCheck, Star, Wallet } from 'lucide-react';
+import { Check, CheckCircle2, Clock, MapPin, Phone, ShieldCheck, Star, Wallet } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 type Tone = 'light' | 'dark';
@@ -116,6 +116,88 @@ export function PubSectionHeader({
       ))}
       {children}
     </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * Héros des pages publicitaires.
+ * La photo reste lisible (dégradé latéral sur grand écran) et une bande de
+ * vignettes montre tout de suite du vrai travail réalisé.
+ * ----------------------------------------------------------------------- */
+
+type PubImage = { src: string; alt: string; width: number; height: number };
+
+export function PubHero({
+  label,
+  title,
+  intro,
+  badges,
+  action,
+  note,
+  image,
+  objectPosition = 'center 35%',
+  thumbs = [],
+  thumbsLabel = 'Réalisations récentes',
+}: {
+  label: string;
+  title: string;
+  intro: string;
+  badges: { icon?: LucideIcon; text: string }[];
+  action: ReactNode;
+  note: string;
+  image: PubImage;
+  objectPosition?: string;
+  thumbs?: PubImage[];
+  thumbsLabel?: string;
+}) {
+  return (
+    <section className="pub-hero" data-testid="pub-hero">
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        fetchPriority="high"
+        className="pub-hero__image"
+        style={{ objectPosition }}
+      />
+      <div className="pub-hero__scrim" aria-hidden="true" />
+      <div className="pub-hero__inner">
+        <div className="pub-hero__content fade-up">
+          <ul className="pub-hero__badges">
+            {badges.map(({ icon: Icon, text }) => (
+              <li key={text} className="pub-hero__badge">
+                {Icon && <Icon className="pub-hero__badge-icon" aria-hidden="true" strokeWidth={1.75} />}
+                {text}
+              </li>
+            ))}
+          </ul>
+          <p className="pub-hero__label">{label}</p>
+          <h1 className="pub-hero__title">{title}</h1>
+          <p className="pub-hero__intro">{intro}</p>
+          <div className="pub-hero__action">{action}</div>
+          <p className="pub-hero__note">{note}</p>
+        </div>
+        {thumbs.length > 0 && (
+          <aside className="pub-hero__aside" data-testid="hero-thumbs">
+            <p className="pub-hero__aside-label">{thumbsLabel}</p>
+            <div className="pub-hero__thumbs">
+              {thumbs.map((thumb) => (
+                <img
+                  key={thumb.src}
+                  src={thumb.src}
+                  alt={thumb.alt}
+                  width={thumb.width}
+                  height={thumb.height}
+                  loading="lazy"
+                  className="pub-hero__thumb"
+                />
+              ))}
+            </div>
+          </aside>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -346,6 +428,8 @@ export function PubActionBar({
 export interface PubGalleryImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
   caption?: string;
   /** Catégorie affichée en surtitre sur la tuile vedette. */
   category?: string;
@@ -358,7 +442,14 @@ function PubGalleryTile({ image, variant }: { image: PubGalleryImage; variant: '
 
   return (
     <figure className={`pub-gallery__item pub-gallery__item--${variant}`}>
-      <img src={image.src} alt={image.alt} loading="lazy" className="pub-gallery__image" />
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading="lazy"
+        className="pub-gallery__image"
+      />
       {label ? (
         <figcaption className="pub-gallery__label">
           {image.category && <span className="pub-gallery__label-category">{image.category}</span>}
@@ -525,6 +616,128 @@ export function PubInvite({
       </div>
       <div className="pub-invite__action">{action}</div>
     </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * Bande de photos commentées : montre le détail du travail sans rallonger
+ * le texte. Fond foncé pour casser le rythme entre deux sections claires.
+ * ----------------------------------------------------------------------- */
+
+export function PubPhotoRow({
+  id,
+  kicker,
+  title,
+  description,
+  items,
+}: {
+  id?: string;
+  kicker?: string;
+  title: string;
+  description?: string;
+  items: (PubImage & { caption: string; text: string })[];
+}) {
+  return (
+    <section id={id} className="pub-photo-row-section" data-testid="photo-row">
+      <div className="container-large mx-auto max-w-7xl px-6">
+        <PubSectionHeader
+          className="mb-12 max-w-3xl"
+          tone="dark"
+          kicker={kicker}
+          title={title}
+          description={description}
+        />
+        <div className="pub-photo-row">
+          {items.map((item) => (
+            <figure key={item.src} className="pub-photo-row__figure">
+              <div className="pub-photo-row__media">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  loading="lazy"
+                  className="pub-photo-row__image"
+                />
+              </div>
+              <figcaption className="pub-photo-row__caption">
+                <strong className="pub-photo-row__title">{item.caption}</strong>
+                <span className="pub-photo-row__text">{item.text}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * Avis Google déjà publiés (aucun avis inventé).
+ * ----------------------------------------------------------------------- */
+
+export function PubReviews({
+  id = 'avis',
+  kicker = 'Avis Google',
+  title,
+  description,
+  items,
+}: {
+  id?: string;
+  kicker?: string;
+  title: string;
+  description?: string;
+  items: { quote: string; author: string; role?: string }[];
+}) {
+  return (
+    <section id={id} className="scroll-mt-20 border-y border-border bg-primary/5 py-16 md:py-20" data-testid="reviews">
+      <div className="container-large mx-auto max-w-7xl px-6">
+        <PubSectionHeader className="mb-12 max-w-3xl" kicker={kicker} title={title} description={description} />
+        <div className="pub-reviews">
+          {items.map((item) => (
+            <figure key={item.author} className="pub-review" data-testid="review-card">
+              <div className="pub-review__stars" role="img" aria-label="5 étoiles sur 5">
+                {[0, 1, 2, 3, 4].map((index) => (
+                  <Star key={index} className="pub-review__star" aria-hidden="true" strokeWidth={0} />
+                ))}
+              </div>
+              <blockquote className="pub-review__text">{item.quote}</blockquote>
+              <figcaption className="pub-review__author">
+                <span className="pub-review__name">{item.author}</span>
+                <span className="pub-review__role">{item.role ?? 'Propriétaire'}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * Zone desservie : reprend les municipalités déjà annoncées sur le site.
+ * ----------------------------------------------------------------------- */
+
+export function PubServiceArea({ cities, note }: { cities: string[]; note: string }) {
+  return (
+    <section className="bg-background pb-16 md:pb-20" data-testid="service-area">
+      <div className="container-large mx-auto max-w-7xl px-6">
+        <div className="pub-area">
+          <p className="pub-area__label">
+            <MapPin className="pub-area__icon" aria-hidden="true" strokeWidth={1.75} />
+            Nous travaillons à
+          </p>
+          <ul className="pub-area__list">
+            {cities.map((city) => (
+              <li key={city} className="pub-area__item">
+                {city}
+              </li>
+            ))}
+          </ul>
+          <p className="pub-area__note">{note}</p>
+        </div>
+      </div>
+    </section>
   );
 }
 

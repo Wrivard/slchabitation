@@ -8,13 +8,17 @@ import {
   PubCardBody,
   PubCardIcon,
   PubCardList,
+  PubCardMedia,
   PubCardNumber,
   PubCardText,
   PubCardTitle,
   PubChecklist,
   PubGallery,
+  PubHero,
+  PubPhotoRow,
   PubProofBar,
-  PubTestimonial,
+  PubReviews,
+  PubServiceArea,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
@@ -23,19 +27,101 @@ import {
 } from 'lucide-react';
 
 const bathroomImages = {
-  hero: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20221021_145907-p-2000.jpg',
-  wide: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20240709_151409-p-1600.jpg',
+  hero: {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20221021_145907-p-2000.jpg',
+    alt: 'Salle de bain avec porte de grange en bois, douche vitrée et mur de céramique hexagonale',
+    width: 2000,
+    height: 2667,
+  },
   visit: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230427_135113-p-1600.jpg',
-  testimonial: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163652-p-1600.jpg',
   bright: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg',
 };
+
+const heroThumbs = [
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-500.jpg',
+    alt: 'Salle de bain lumineuse avec douche vitrée et céramique blanche',
+    width: 500,
+    height: 375,
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-500.jpg',
+    alt: 'Salle de bain aux murs foncés avec douche en céramique',
+    width: 500,
+    height: 667,
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-500.jpg',
+    alt: 'Salle de bain avec vanité en bois et céramique au mur',
+    width: 500,
+    height: 667,
+  },
+];
+
+const detailPhotos = [
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152903-p-800.jpg',
+    alt: 'Douche d’angle vitrée dans une salle de bain en céramique grand format',
+    width: 800,
+    height: 1067,
+    caption: 'Céramique grand format',
+    text: 'Moins de joints au mur et au sol, et une douche vitrée sans cadre encombrant.',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190331-p-800.jpg',
+    alt: 'Vanité en bois avec vasque ronde, miroir rond et murs foncés',
+    width: 800,
+    height: 600,
+    caption: 'Vanité, miroir, robinetterie',
+    text: 'La vanité, le miroir et la robinetterie sont alignés sur le même axe.',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163611-p-800.jpg',
+    alt: 'Douche vitrée, toilette et colonne de rangement dans une salle de bain rénovée',
+    width: 800,
+    height: 600,
+    caption: 'Rangement et éclairage',
+    text: 'La colonne de rangement est intégrée à côté de la douche, et l’éclairage est encastré au plafond.',
+  },
+];
 
 const navItems = [
   { href: '#inclus', label: 'Ce qui est inclus' },
   { href: '#etapes', label: 'Comment ça se passe' },
+  { href: '#finitions', label: 'Les finitions' },
   { href: '#visite', label: 'La visite' },
+  { href: '#avis', label: 'Avis' },
   { href: '#realisations', label: 'Réalisations' },
   { href: '#faq', label: 'Questions' },
+];
+
+const reviews = [
+  {
+    quote: 'Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!',
+    author: 'Isabelle Baril',
+  },
+  {
+    quote:
+      'Excellente compagnie, service professionnel et soucis du détails! Merci a votre équipe pour vos bon conseil. Je recommande a tous pour la réalisation de vos projet!',
+    author: 'Mélodie Binette',
+  },
+  {
+    quote:
+      'Magnifique travail de l’équipe SLC Habitation. Nous avions un projet complexe d’agrandissement et de rénovation d’une vieille maison avec plusieurs défis! Ils ont fait un travail exceptionnel!!! Un gros merci pour votre patience et votre professionnalisme! Je recommande sans hésiter!',
+    author: 'Johanne Duguay',
+  },
+];
+
+const serviceCities = [
+  'Laval',
+  'Saint-Eustache',
+  'Terrebonne',
+  'Sainte-Thérèse',
+  'Rosemère',
+  'Mirabel',
+  'Boisbriand',
+  'Blainville',
+  'Saint-Jérôme',
 ];
 
 const bathroomGallery = [
@@ -81,6 +167,27 @@ const bathroomGallery = [
     category: 'Rénovation de salle de bain',
     project: 'Vanité en bois',
   },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152903-p-1600.jpg',
+    alt: 'Douche d’angle vitrée avec niche en bois et céramique grand format',
+    caption: 'Douche vitrée et niche en bois',
+    category: 'Rénovation de salle de bain',
+    project: 'Niche en bois',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190331-p-1600.jpg',
+    alt: 'Vanité en bois avec vasque ronde, miroir rond et murs foncés',
+    caption: 'Vasque ronde et miroir rond',
+    category: 'Rénovation de salle de bain',
+    project: 'Vasque ronde',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241018_153927-p-1600.jpg',
+    alt: 'Salle de bain avec douche d’angle vitrée, vanité blanche et murs foncés',
+    caption: 'Douche d’angle et vanité blanche',
+    category: 'Rénovation de salle de bain',
+    project: 'Douche d’angle',
+  },
 ];
 
 const includedCards = [
@@ -88,16 +195,34 @@ const includedCards = [
     icon: Hammer,
     title: 'La démolition et la préparation',
     points: ['Retrait de l’ancienne salle de bain', 'Protection du reste de la maison', 'Plancher et murs remis d’aplomb'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20220511_145711-p-800.jpg',
+      alt: 'Salle de bain refaite avec bain, mur de céramique blanche et plancher de terrazzo',
+      width: 800,
+      height: 1067,
+    },
   },
   {
     icon: Wrench,
     title: 'La plomberie et la ventilation',
     points: ['Douche, bain, toilette, vanité', 'Membrane étanche dans la douche', 'Ventilateur évacué vers l’extérieur'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241018_153927-p-800.jpg',
+      alt: 'Salle de bain avec douche d’angle vitrée, vanité blanche et murs foncés',
+      width: 800,
+      height: 1067,
+    },
   },
   {
     icon: Droplets,
     title: 'La céramique et les finitions',
     points: ['Céramique au sol et aux murs', 'Vanité, miroir, robinetterie', 'Éclairage, prises et peinture'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20220511_145731-p-800.jpg',
+      alt: 'Vanité suspendue en bois, miroir rond et plancher de terrazzo',
+      width: 800,
+      height: 1067,
+    },
   },
 ];
 
@@ -165,33 +290,22 @@ export default function RenovationSalleDeBainPub() {
   return (
     <PubLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-secondary text-white min-h-[72vh] flex flex-col justify-end">
-        <div className="absolute inset-0">
-          <img
-            src={bathroomImages.hero}
-            alt="Salle de bain avec douche vitrée, vanité et céramique"
-            width="2000"
-            height="2667"
-            className="h-full w-full object-cover object-[center_40%]"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/50 to-transparent" />
-        </div>
-        <div className="container-large relative mx-auto max-w-7xl px-6 pb-16 pt-24 fade-up">
-          <div className="max-w-4xl">
-            <div className="mb-7 flex flex-wrap gap-3 text-xs font-semibold tracking-wide sm:text-sm">
-              <span className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><ShieldCheck className="h-4 w-4 text-primary" />RBQ : 8351-9033-59</span>
-              <span className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
-              <span className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-none border border-white/10"><Sparkles className="h-4 w-4 text-primary" />18 ans d’expérience</span>
-            </div>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Entrepreneur en rénovation</p>
-            <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de salle de bain <br />à Laval et dans les Laurentides</h1>
-            <p className="mb-8 max-w-2xl text-base leading-relaxed text-slate-200 md:text-[1.0625rem]">Nous venons voir votre salle de bain, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
-            <PubCTA service="renovation-salle-de-bain" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>
-            <p className="mt-4 text-sm text-slate-300">Estimation et visite sans frais · Réponse sous 48 heures</p>
-          </div>
-        </div>
-      </section>
+      <PubHero
+        label="Entrepreneur en rénovation"
+        title="Rénovation de salle de bain à Laval et dans les Laurentides"
+        intro="Nous venons voir votre salle de bain, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans."
+        badges={[
+          { icon: ShieldCheck, text: 'Licence RBQ : 8351-9033-59' },
+          { icon: MapPin, text: 'Laval et Laurentides' },
+          { icon: Sparkles, text: '18 ans d’expérience' },
+        ]}
+        action={<PubCTA service="renovation-salle-de-bain" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>}
+        note="Estimation et visite sans frais · Réponse sous 48 heures"
+        image={bathroomImages.hero}
+        objectPosition="center 40%"
+        thumbs={heroThumbs}
+        thumbsLabel="Salles de bain réalisées"
+      />
 
       <PubProofBar />
 
@@ -208,8 +322,9 @@ export default function RenovationSalleDeBainPub() {
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            {includedCards.map(({ icon: Icon, title, points }) => (
+            {includedCards.map(({ icon: Icon, title, points, image }) => (
               <PubCard key={title}>
+                <PubCardMedia src={image.src} alt={image.alt} width={image.width} height={image.height} />
                 <PubCardBody>
                   <PubCardIcon icon={Icon} />
                   <PubCardTitle>{title}</PubCardTitle>
@@ -224,10 +339,6 @@ export default function RenovationSalleDeBainPub() {
             note="Visite et estimation sans frais, réponse sous 48 heures."
             action={<PubCTA service="renovation-salle-de-bain" testId="button-inclus-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
-
-          <div className="mt-14 aspect-[16/9] w-full overflow-hidden rounded-none border border-border">
-            <img src={bathroomImages.wide} alt="Bain autoportant et robinetterie dans une salle de bain rénovée" width="1600" height="1200" loading="lazy" className="h-full w-full object-cover" />
-          </div>
         </div>
       </section>
 
@@ -259,6 +370,15 @@ export default function RenovationSalleDeBainPub() {
           />
         </div>
       </section>
+
+      {/* LES FINITIONS */}
+      <PubPhotoRow
+        id="finitions"
+        kicker="Les finitions"
+        title="Le détail qui change une salle de bain"
+        description="Ces trois photos viennent de salles de bain que nous avons livrées. Voici ce qu’on y remarque de près."
+        items={detailPhotos}
+      />
 
       {/* LA VISITE */}
       <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
@@ -296,20 +416,12 @@ export default function RenovationSalleDeBainPub() {
         </div>
       </section>
 
-      {/* TÉMOIGNAGE */}
-      <section className="border-y border-border bg-primary/5 py-16 md:py-20">
-        <div className="container-large mx-auto max-w-7xl px-6">
-          <PubTestimonial
-            quote="Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l'écoute, je recommande vivement!"
-            author="Isabelle Baril"
-            role="Propriétaire"
-            image={{
-              src: bathroomImages.testimonial,
-              alt: 'Salle de bain rénovée, lumineuse, avec vanité et grand miroir',
-            }}
-          />
-        </div>
-      </section>
+      {/* AVIS */}
+      <PubReviews
+        title="Ce que les propriétaires écrivent sur Google"
+        description="19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation."
+        items={reviews}
+      />
 
       {/* GALERIE */}
       <PubGallery
@@ -335,12 +447,20 @@ export default function RenovationSalleDeBainPub() {
         </div>
       </section>
 
+      {/* ZONE DESSERVIE */}
+      <PubServiceArea
+        cities={serviceCities}
+        note="Votre municipalité n’est pas dans la liste? Écrivez-nous, nous vous dirons si nous nous déplaçons chez vous."
+      />
+
       {/* CTA FOOTER */}
       <section data-sticky-hide className="relative isolate overflow-hidden bg-secondary py-20 text-white md:py-24">
         <img
           src={bathroomImages.bright}
           alt=""
           aria-hidden="true"
+          width={1600}
+          height={1200}
           loading="lazy"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />

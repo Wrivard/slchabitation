@@ -74,13 +74,56 @@ function createSchemaTag(schema) {
   return `<script id="page-schema" type="application/ld+json">${serializedSchema}</script>`;
 }
 
-const paidNav = [
-  ['inclus', 'Ce qui est inclus'],
-  ['etapes', 'Comment ça se passe'],
-  ['visite', 'La visite'],
-  ['realisations', 'Réalisations'],
-  ['faq', 'Questions'],
+// Mêmes entrées que la constante `navItems` de chaque page React. L'entrée
+// « Les finitions » n'existe que sur les pages qui affichent une bande photo.
+function createPaidNav(hasDetails) {
+  return [
+    ['inclus', 'Ce qui est inclus'],
+    ['etapes', 'Comment ça se passe'],
+    ...(hasDetails ? [['finitions', 'Les finitions']] : []),
+    ['visite', 'La visite'],
+    ['avis', 'Avis'],
+    ['realisations', 'Réalisations'],
+    ['faq', 'Questions'],
+  ];
+}
+
+// Mêmes municipalités que le composant PubServiceArea et le pied de page.
+const paidServiceCities = [
+  'Laval',
+  'Saint-Eustache',
+  'Terrebonne',
+  'Sainte-Thérèse',
+  'Rosemère',
+  'Mirabel',
+  'Boisbriand',
+  'Blainville',
+  'Saint-Jérôme',
 ];
+
+const paidServiceNote =
+  'Votre municipalité n’est pas dans la liste? Écrivez-nous, nous vous dirons si nous nous déplaçons chez vous.';
+
+// Les trois avis Google publiés sur le site principal, dans le même ordre que
+// la constante `reviews` de chaque page React.
+const paidReviews = {
+  melodie: [
+    'Excellente compagnie, service professionnel et soucis du détails! Merci a votre équipe pour vos bon conseil. Je recommande a tous pour la réalisation de vos projet!',
+    'Mélodie Binette',
+  ],
+  isabelle: [
+    'Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!',
+    'Isabelle Baril',
+  ],
+  johanne: [
+    'Magnifique travail de l’équipe SLC Habitation. Nous avions un projet complexe d’agrandissement et de rénovation d’une vieille maison avec plusieurs défis! Ils ont fait un travail exceptionnel!!! Un gros merci pour votre patience et votre professionnalisme! Je recommande sans hésiter!',
+    'Johanne Duguay',
+  ],
+};
+
+const paidReviewsTitle = 'Ce que les propriétaires écrivent sur Google';
+const paidReviewsIntro =
+  '19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation.';
 
 const paidPageContent = {
   '/pub/renovation-sous-sol': {
@@ -115,10 +158,6 @@ const paidPageContent = {
     ],
     galleryTitle: 'Des sous-sols transformés en pièces de vie',
     galleryIntro: 'Quelques projets menés de la structure aux finitions, parmi les 500 réalisés depuis 18 ans.',
-    testimonial: {
-      quote: "Magnifique travail de l'équipe SLC Habitation. Nous avions un projet complexe avec plusieurs défis! Ils ont fait un travail exceptionnel. Un gros merci pour votre professionnalisme! Je recommande sans hésiter.",
-      author: 'Johanne Duguay',
-    },
     ctaText: 'Dites-nous ce que vous voulez faire de votre sous-sol. Réponse sous 48 heures, visite sans frais.',
     faqs: [
       ['Combien coûte l’aménagement d’un sous-sol?', 'Le prix dépend de la superficie, des pièces à fermer et des travaux de plomberie ou d’électricité nécessaires. Nous venons voir votre sous-sol, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.'],
@@ -160,10 +199,6 @@ const paidPageContent = {
     ],
     galleryTitle: 'Des salles de bain terminées par notre équipe',
     galleryIntro: 'Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 18 ans.',
-    testimonial: {
-      quote: "Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l'écoute, je recommande vivement!",
-      author: 'Isabelle Baril',
-    },
     ctaText: 'Dites-nous ce que vous voulez changer dans votre salle de bain. Réponse sous 48 heures, visite sans frais.',
     faqs: [
       ['Combien coûte une rénovation de salle de bain?', 'Le prix dépend de la grandeur de la pièce, des matériaux et des travaux de plomberie nécessaires. Nous venons voir la pièce, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.'],
@@ -205,10 +240,6 @@ const paidPageContent = {
     ],
     galleryTitle: 'Des cuisines terminées par notre équipe',
     galleryIntro: 'Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 18 ans.',
-    testimonial: {
-      quote: 'Excellente compagnie, service professionnel et souci du détail! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets!',
-      author: 'Mélodie Binette',
-    },
     ctaText: 'Dites-nous ce que vous voulez changer dans votre cuisine. Réponse sous 48 heures, visite sans frais.',
     faqs: [
       ['Combien coûte une rénovation de cuisine?', 'Le prix dépend de la grandeur de la pièce, des matériaux et des travaux de plomberie ou d’électricité nécessaires. Nous venons voir votre cuisine, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.'],
@@ -222,6 +253,29 @@ const paidPageContent = {
 
 const paidPageEnhancements = {
   'renovation-cuisine': {
+    hero: ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 'Grande cuisine blanche avec îlot central et comptoirs clairs', 1600, 1200],
+    thumbsLabel: 'Cuisines réalisées',
+    thumbs: [
+      ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-500.jpg', 'Cuisine avec îlot en bois et rangements blancs', 500, 667],
+      ['/images/INT%C3%89RIEUR/Cuisine/2403-p-500.jpg', 'Détail d’une cuisine avec éclairage sous les armoires', 500, 667],
+      ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-500.jpg', 'Cuisine avec îlot et plancher clair', 500, 667],
+    ],
+    cardImages: [
+      ['/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-800.jpg', 'Cuisine refaite avec hotte au-dessus de l’îlot et armoires deux tons', 800, 1067],
+      ['/images/INT%C3%89RIEUR/Cuisine/20250106_124707-p-800.jpg', 'Cuisine blanche avec cuisinière, hotte encastrée et électroménagers en inox', 800, 1067],
+      ['/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png', 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant', 940, 788],
+    ],
+    detailsTitle: 'Le détail qui change une cuisine',
+    detailsIntro:
+      'Ces trois photos viennent de cuisines que nous avons livrées. Voici ce qu’on y remarque de près.',
+    details: [
+      ['/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-800.jpg', 'Cuisine avec comptoir continu, armoires claires et éclairage intégré', 800, 1067, 'Comptoir continu', 'Le plan de travail file d’un mur à l’autre, sans joint apparent au passage de l’évier.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/2403-p-800.jpg', 'Éclairage installé sous les armoires d’une cuisine rénovée', 800, 1067, 'Éclairage sous les armoires', 'La lumière est amenée directement sur le plan de travail.'],
+      ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-800.jpg', 'Îlot en bois avec suspensions et rangements blancs', 800, 1067, 'Îlot et rangements', 'L’îlot, les suspensions et les rangements suivent le même axe.'],
+    ],
+    visitImage: ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg', 'Cuisine avec îlot, plancher clair et porte coulissante en bois', 1600, 2133],
+    ctaImage: ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 1600, 1200],
+    reviews: [paidReviews.melodie, paidReviews.isabelle, paidReviews.johanne],
     images: [
       ['/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-2000.jpg', 'Cuisine rénovée avec armoires claires, comptoir continu et éclairage intégré', 2000, 2667, 'Plan de travail continu et armoires claires'],
       ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg', 'Cuisine avec îlot en bois, rangements blancs et suspensions', 1600, 2133, 'Îlot en bois et rangements intégrés'],
@@ -229,10 +283,35 @@ const paidPageEnhancements = {
       ['/images/INT%C3%89RIEUR/Cuisine/IMG_20231107_093929-p-1600.jpg', 'Grande cuisine blanche avec îlot central et comptoirs clairs', 1600, 1200, 'Cuisine ouverte sur l’aire de vie'],
       ['/images/INT%C3%89RIEUR/Cuisine/2403-p-1600.jpg', 'Détail d’une cuisine avec éclairage sous les armoires', 1600, 2133, 'Éclairage de travail sous les armoires'],
       ['/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg', 'Cuisine avec îlot, plancher clair et porte coulissante en bois', 1600, 2133, 'Plancher clair et porte coulissante'],
+      ['/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-1600.jpg', 'Cuisine refaite avec hotte au-dessus de l’îlot et armoires deux tons', 1600, 2133, 'Hotte au-dessus de l’îlot, armoires deux tons'],
+      ['/images/INT%C3%89RIEUR/Cuisine/20250106_124707-p-1600.jpg', 'Cuisine blanche avec cuisinière, hotte encastrée et électroménagers en inox', 1600, 2133, 'Cuisine blanche ouverte sur l’escalier'],
     ],
     label: 'Entrepreneur en rénovation',
   },
   'renovation-salle-de-bain': {
+    hero: ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20221021_145907-p-2000.jpg', 'Salle de bain avec porte de grange en bois, douche vitrée et mur de céramique hexagonale', 2000, 2667],
+    thumbsLabel: 'Salles de bain réalisées',
+    thumbs: [
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-500.jpg', 'Salle de bain lumineuse avec douche vitrée et céramique blanche', 500, 375],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-500.jpg', 'Salle de bain aux murs foncés avec douche en céramique', 500, 667],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-500.jpg', 'Salle de bain avec vanité en bois et céramique au mur', 500, 667],
+    ],
+    cardImages: [
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20220511_145711-p-800.jpg', 'Salle de bain refaite avec bain, mur de céramique blanche et plancher de terrazzo', 800, 1067],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241018_153927-p-800.jpg', 'Salle de bain avec douche d’angle vitrée, vanité blanche et murs foncés', 800, 1067],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20220511_145731-p-800.jpg', 'Vanité suspendue en bois, miroir rond et plancher de terrazzo', 800, 1067],
+    ],
+    detailsTitle: 'Le détail qui change une salle de bain',
+    detailsIntro:
+      'Ces trois photos viennent de salles de bain que nous avons livrées. Voici ce qu’on y remarque de près.',
+    details: [
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152903-p-800.jpg', 'Douche d’angle vitrée dans une salle de bain en céramique grand format', 800, 1067, 'Céramique grand format', 'Moins de joints au mur et au sol, et une douche vitrée sans cadre encombrant.'],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190331-p-800.jpg', 'Vanité en bois avec vasque ronde, miroir rond et murs foncés', 800, 600, 'Vanité, miroir, robinetterie', 'La vanité, le miroir et la robinetterie sont alignés sur le même axe.'],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163611-p-800.jpg', 'Douche vitrée, toilette et colonne de rangement dans une salle de bain rénovée', 800, 600, 'Rangement et éclairage', 'La colonne de rangement est intégrée à côté de la douche, et l’éclairage est encastré au plafond.'],
+    ],
+    visitImage: ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230427_135113-p-1600.jpg', 'Vanité en bois clair et miroir rond dans une salle de bain rénovée', 1600, 2133],
+    ctaImage: ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg', 1600, 1200],
+    reviews: [paidReviews.isabelle, paidReviews.melodie, paidReviews.johanne],
     images: [
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg', 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche', 1600, 1200, 'Douche vitrée et céramique claire'],
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163652-p-1600.jpg', 'Salle de bain rénovée avec vanité et grand miroir', 1600, 1200, 'Vanité, miroir et éclairage coordonnés'],
@@ -240,15 +319,34 @@ const paidPageEnhancements = {
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20240709_151409-p-1600.jpg', 'Bain autoportant et robinetterie dans une salle de bain rénovée', 1600, 1200, 'Bain autoportant et dégagements'],
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20230410_141714-p-1600.jpg', 'Salle de bain avec douche en céramique et paroi vitrée', 1600, 2133, 'Paroi vitrée et niche de douche'],
       ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20251024_145742-p-1600.jpg', 'Salle de bain rénovée avec vanité en bois et céramique au mur', 1600, 2133, 'Vanité en bois et mur en céramique'],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152903-p-1600.jpg', 'Douche d’angle vitrée avec niche en bois et céramique grand format', 1600, 2133, 'Douche vitrée et niche en bois'],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190331-p-1600.jpg', 'Vanité en bois avec vasque ronde, miroir rond et murs foncés', 1600, 1200, 'Vasque ronde et miroir rond'],
+      ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241018_153927-p-1600.jpg', 'Salle de bain avec douche d’angle vitrée, vanité blanche et murs foncés', 1600, 2133, 'Douche d’angle et vanité blanche'],
     ],
     label: 'Entrepreneur en rénovation',
   },
   'renovation-sous-sol': {
+    hero: ['/images/relume-657406.jpeg', 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses', 2048, 1536],
+    thumbsLabel: 'Sous-sols réalisés',
+    thumbs: [
+      ['/images/INT%C3%89RIEUR/randoms/20241017_152123-p-500.jpg', 'Pièce de vie au sous-sol avec plancher de bois clair', 500, 375],
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-500.jpg', 'Salle polyvalente au sous-sol avec portes françaises', 500, 375],
+      ['/images/relume-655394-p-500.jpeg', 'Douche vitrée dans une salle de bain aménagée au sous-sol', 500, 667],
+    ],
+    cardImages: [
+      ['/images/INT%C3%89RIEUR/randoms/PXL_20211105_201904641-p-800.jpg', 'Chantier en cours : cloisons montées, murs peints et plancher protégé', 800, 600],
+      ['/images/relume-655394-p-800.jpeg', 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol', 800, 1067],
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142-p-800.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 800, 600],
+    ],
+    includedWide: ['/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg', 'Espace de sous-sol aménagé avec plancher de bois clair, fenêtres basses et murs beiges', 4000, 3000],
+    visitImage: ['/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg', 'Sous-sol dégagé avant un projet de réaménagement avec petites fenêtres et plafond suspendu', 4000, 3000],
+    ctaImage: ['/images/relume-657406.jpeg', 2048, 1536],
+    reviews: [paidReviews.johanne, paidReviews.melodie, paidReviews.isabelle],
     images: [
       ['/images/relume-657406.jpeg', 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses', 2048, 1536, 'Aire de vie et cuisine au sous-sol'],
       ['/images/INT%C3%89RIEUR/randoms/20240926_155408.jpg', 'Sous-sol dégagé avant un projet de réaménagement avec petites fenêtres et plafond suspendu', 4000, 3000, 'Point de départ : volume et éléments existants'],
       ['/images/INT%C3%89RIEUR/randoms/20241017_152123.jpg', 'Espace de sous-sol aménagé avec plancher de bois clair, fenêtres basses et murs beiges', 4000, 3000, 'Pièce de vie lumineuse au niveau inférieur'],
-      ['/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 4000, 3000, 'Salle polyvalente avec accès fermé'],
+      ['/images/INT%C3%89RIEUR/randoms/20241018_161142.jpg', 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond', 4000, 3000, 'Configuration ouverte avec accès fermé'],
       ['/images/relume-655394.jpeg', 'Douche vitrée et fenêtre basse dans une salle de bain aménagée au sous-sol', 1536, 2048, 'Salle de bain : détail de douche et ventilation'],
     ],
     label: 'Entrepreneur en rénovation',
@@ -261,10 +359,35 @@ function createPaidStaticBody(content, routePath) {
   const cta = `<a class="inline-flex rounded-none bg-primary px-6 py-3 font-semibold text-white" href="/pub/formulaire?service=${escapeHtml(serviceSlug)}">Obtenir ma soumission sans frais</a>`;
   // Mêmes faits que le composant PubProofBar de la version React.
   const proofBar = `<section aria-label="Ce que vous obtenez en nous écrivant" class="bg-secondary py-6 text-white"><div class="container-large mx-auto max-w-7xl px-6"><ul class="flex flex-wrap gap-8"><li><strong>Réponse sous 48 h</strong> — à chaque demande reçue</li><li><strong>Estimation sans frais</strong> — visite comprise</li><li><strong>19 avis Google 5 étoiles</strong> — laissés par des propriétaires</li><li><strong>500+ projets complétés</strong> — en 18 ans, licence RBQ</li></ul></div></section>`;
-  const nav = paidNav.map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(label)}</a>`).join(' · ');
-  const images = extra.images.map(([src, alt, width, height, caption], index) => `<figure><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="${index ? 'lazy' : 'eager'}"><figcaption>${escapeHtml(caption || alt)}</figcaption></figure>`).join('');
-  const included = content.included.map(([title, points]) =>
-    `<article><h3>${escapeHtml(title)}</h3><ul>${points.map((point) => `<li>${escapeHtml(point)}</li>`).join('')}</ul></article>`).join('');
+  const nav = createPaidNav(Boolean(extra.details))
+    .map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(label)}</a>`)
+    .join(' · ');
+  const images = extra.images.map(([src, alt, width, height, caption]) => `<figure><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy"><figcaption>${escapeHtml(caption || alt)}</figcaption></figure>`).join('');
+  const [heroSrc, heroAlt, heroWidth, heroHeight] = extra.hero;
+  const heroThumbs = extra.thumbs
+    .map(([src, alt, width, height]) => `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy">`)
+    .join('');
+  const [visitSrc, visitAlt, visitWidth, visitHeight] = extra.visitImage;
+  const included = content.included.map(([title, points], index) => {
+    const [src, alt, width, height] = extra.cardImages[index];
+    return `<article><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy"><h3>${escapeHtml(title)}</h3><ul>${points.map((point) => `<li>${escapeHtml(point)}</li>`).join('')}</ul></article>`;
+  }).join('');
+  const details = extra.details
+    ? `<section id="finitions" class="bg-secondary py-20 text-white"><div class="container-large mx-auto max-w-7xl px-6"><p>Les finitions</p><h2>${escapeHtml(extra.detailsTitle)}</h2><p>${escapeHtml(extra.detailsIntro)}</p>${extra.details
+        .map(([src, alt, width, height, caption, text]) =>
+          `<figure><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy"><figcaption><strong>${escapeHtml(caption)}</strong> ${escapeHtml(text)}</figcaption></figure>`)
+        .join('')}</div></section>`
+    : '';
+  const reviews = extra.reviews
+    .map(([quote, author]) =>
+      `<figure><p>5 étoiles sur 5</p><blockquote>« ${escapeHtml(quote)} »</blockquote><figcaption><strong>${escapeHtml(author)}</strong>, propriétaire</figcaption></figure>`)
+    .join('');
+  const includedWide = extra.includedWide
+    ? `<figure><img src="${escapeHtml(extra.includedWide[0])}" alt="${escapeHtml(extra.includedWide[1])}" width="${extra.includedWide[2]}" height="${extra.includedWide[3]}" loading="lazy"></figure>`
+    : '';
+  const [ctaSrc, ctaWidth, ctaHeight] = extra.ctaImage;
+  const ctaImage = `<img src="${escapeHtml(ctaSrc)}" alt="" aria-hidden="true" width="${ctaWidth}" height="${ctaHeight}" loading="lazy">`;
+  const serviceArea = `<section class="py-12"><div class="container-large mx-auto max-w-7xl px-6"><p><strong>Nous travaillons à</strong></p><ul>${paidServiceCities.map((city) => `<li>${escapeHtml(city)}</li>`).join('')}</ul><p>${escapeHtml(paidServiceNote)}</p></div></section>`;
   const steps = content.steps.map(([title, text], index) =>
     `<li><strong>0${index + 1} — ${escapeHtml(title)}</strong> ${escapeHtml(text)}</li>`).join('');
   const visit = content.visit.map(([title, text]) => `<div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div>`).join('');
@@ -272,16 +395,18 @@ function createPaidStaticBody(content, routePath) {
   const faqItems = content.faqs.map(([question, answer]) =>
     `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('');
   return `<header class="border-b bg-background"><div class="container-large mx-auto flex items-center justify-between px-6 py-4"><a href="/"><img src="/images/relume-567884.png" width="180" height="60" alt="SLC Habitation"></a><div class="flex items-center gap-6"><a href="tel:5144048494" class="font-semibold">(514) 404-8494</a>${cta}</div></div></header>
-  <main><section class="bg-secondary py-20 text-white"><div class="container-large mx-auto max-w-5xl px-6"><p class="text-primary font-bold uppercase tracking-widest mb-4">${escapeHtml(extra.label)}</p><h1 class="text-4xl md:text-6xl font-bold mb-6">${escapeHtml(content.h1)}</h1><p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">${escapeHtml(content.intro)}</p><ul class="flex flex-wrap gap-4 mb-8"><li class="border border-white/25 bg-white/10 px-4 py-2">Licence RBQ : 8351-9033-59</li><li class="border border-white/25 bg-white/10 px-4 py-2">18 ans d’expérience</li><li class="border border-white/25 bg-white/10 px-4 py-2">Laval et Laurentides</li></ul>${cta}<p class="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p></div></section>
+  <main><section class="bg-secondary py-20 text-white"><div class="container-large mx-auto max-w-5xl px-6"><img src="${escapeHtml(heroSrc)}" alt="${escapeHtml(heroAlt)}" width="${heroWidth}" height="${heroHeight}"><p class="text-primary font-bold uppercase tracking-widest mb-4">${escapeHtml(extra.label)}</p><h1 class="text-4xl md:text-6xl font-bold mb-6">${escapeHtml(content.h1)}</h1><p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">${escapeHtml(content.intro)}</p><ul class="flex flex-wrap gap-4 mb-8"><li class="border border-white/25 bg-white/10 px-4 py-2">Licence RBQ : 8351-9033-59</li><li class="border border-white/25 bg-white/10 px-4 py-2">18 ans d’expérience</li><li class="border border-white/25 bg-white/10 px-4 py-2">Laval et Laurentides</li></ul>${cta}<p class="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p><p>${escapeHtml(extra.thumbsLabel)}</p>${heroThumbs}</div></section>
   ${proofBar}
   <nav aria-label="Navigation dans la page" class="border-b border-border bg-background"><div class="container-large mx-auto flex gap-6 overflow-x-auto px-6 py-5">${nav}</div></nav>
-  <section id="inclus" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Ce qui est inclus</p><h2>${escapeHtml(content.includedTitle)}</h2><p>${escapeHtml(content.includedIntro)}</p>${included}<p>Visite et estimation sans frais, réponse sous 48 heures.</p>${cta}</div></section>
+  <section id="inclus" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Ce qui est inclus</p><h2>${escapeHtml(content.includedTitle)}</h2><p>${escapeHtml(content.includedIntro)}</p>${included}<p>Visite et estimation sans frais, réponse sous 48 heures.</p>${cta}${includedWide}</div></section>
   <section id="etapes" class="bg-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Comment ça se passe</p><h2>Quatre étapes simples</h2><ol>${steps}</ol><p>Plus de 500 projets complétés, 19 avis Google 5 étoiles.</p>${cta}</div></section>
-  <section id="visite" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>La visite</p><h2>Ce que nous regardons chez vous</h2><p>La visite est sans frais. Elle sert à chiffrer votre projet correctement.</p>${visit}<h3>À préparer pour la visite</h3><ul>${checklist}</ul></div></section>
-  <section class="py-20"><div class="container-large mx-auto max-w-4xl px-6 text-center"><blockquote>« ${escapeHtml(content.testimonial.quote)} »</blockquote><p><strong>${escapeHtml(content.testimonial.author)}</strong>, propriétaire</p></div></section>
+  ${details}
+  <section id="visite" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>La visite</p><h2>Ce que nous regardons chez vous</h2><p>La visite est sans frais. Elle sert à chiffrer votre projet correctement.</p>${visit}<img src="${escapeHtml(visitSrc)}" alt="${escapeHtml(visitAlt)}" width="${visitWidth}" height="${visitHeight}" loading="lazy"><h3>À préparer pour la visite</h3><ul>${checklist}</ul></div></section>
+  <section id="avis" class="py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Avis Google</p><h2>${escapeHtml(paidReviewsTitle)}</h2><p>${escapeHtml(paidReviewsIntro)}</p>${reviews}</div></section>
   <section id="realisations" class="bg-muted py-20"><div class="container-large mx-auto max-w-7xl px-6"><h2>${escapeHtml(content.galleryTitle)}</h2><p>${escapeHtml(content.galleryIntro)}</p>${images}</div></section>
   <section id="faq" class="py-20"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2>${faqItems}</div></section>
-  <section class="bg-secondary py-20 text-white text-center"><div class="container-large mx-auto max-w-4xl px-6"><h2>Prêt à recevoir votre soumission?</h2><p class="mb-8">${escapeHtml(content.ctaText)}</p>${cta}</div></section></main>
+  ${serviceArea}
+  <section class="bg-secondary py-20 text-white text-center">${ctaImage}<div class="container-large mx-auto max-w-4xl px-6"><h2>Prêt à recevoir votre soumission?</h2><p class="mb-8">${escapeHtml(content.ctaText)}</p>${cta}</div></section></main>
   <footer class="pub-footer bg-secondary py-16 text-white"><div class="container-large mx-auto max-w-7xl px-6"><p>Studio de rénovation résidentielle desservant Laval et les Laurentides.</p><p>Laval, Saint-Eustache, Terrebonne, Sainte-Thérèse, Rosemère, Mirabel, Boisbriand, Blainville et Saint-Jérôme.</p><p>RBQ 8351-9033-59 · <a href="tel:5144048494">(514) 404-8494</a> · <a href="/politique-de-confidentialite">Politique de confidentialité</a></p></div></footer>`;
 }
 

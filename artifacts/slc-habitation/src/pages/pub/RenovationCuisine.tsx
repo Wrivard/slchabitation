@@ -8,13 +8,17 @@ import {
   PubCardBody,
   PubCardIcon,
   PubCardList,
+  PubCardMedia,
   PubCardNumber,
   PubCardText,
   PubCardTitle,
   PubChecklist,
   PubGallery,
+  PubHero,
+  PubPhotoRow,
   PubProofBar,
-  PubTestimonial,
+  PubReviews,
+  PubServiceArea,
 } from '@/components/pub/PubShared';
 import { FAQ, FAQList } from '@/components/pub/FAQ';
 import {
@@ -38,26 +42,99 @@ const kitchenImages = {
     width: 1600,
     height: 1200,
   },
-  wide: {
-    src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-1600.jpg',
-    alt: 'Cuisine élégante avec finitions soignées',
-    width: 1600,
-    height: 1200,
-  },
   visit: {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png',
-    alt: 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant',
-    width: 940,
-    height: 788,
+    src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-1600.jpg',
+    alt: 'Cuisine avec îlot, plancher clair et porte coulissante en bois',
+    width: 1600,
+    height: 2133,
   },
 };
+
+const heroThumbs = [
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-500.jpg',
+    alt: 'Cuisine avec îlot en bois et rangements blancs',
+    width: 500,
+    height: 667,
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/2403-p-500.jpg',
+    alt: 'Détail d’une cuisine avec éclairage sous les armoires',
+    width: 500,
+    height: 667,
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124701-p-500.jpg',
+    alt: 'Cuisine avec îlot et plancher clair',
+    width: 500,
+    height: 667,
+  },
+];
+
+const detailPhotos = [
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20220823_074355-p-800.jpg',
+    alt: 'Cuisine avec comptoir continu, armoires claires et éclairage intégré',
+    width: 800,
+    height: 1067,
+    caption: 'Comptoir continu',
+    text: 'Le plan de travail file d’un mur à l’autre, sans joint apparent au passage de l’évier.',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/2403-p-800.jpg',
+    alt: 'Éclairage installé sous les armoires d’une cuisine rénovée',
+    width: 800,
+    height: 1067,
+    caption: 'Éclairage sous les armoires',
+    text: 'La lumière est amenée directement sur le plan de travail.',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-800.jpg',
+    alt: 'Îlot en bois avec suspensions et rangements blancs',
+    width: 800,
+    height: 1067,
+    caption: 'Îlot et rangements',
+    text: 'L’îlot, les suspensions et les rangements suivent le même axe.',
+  },
+];
 
 const navItems = [
   { href: '#inclus', label: 'Ce qui est inclus' },
   { href: '#etapes', label: 'Comment ça se passe' },
+  { href: '#finitions', label: 'Les finitions' },
   { href: '#visite', label: 'La visite' },
+  { href: '#avis', label: 'Avis' },
   { href: '#realisations', label: 'Réalisations' },
   { href: '#faq', label: 'Questions' },
+];
+
+const reviews = [
+  {
+    quote:
+      'Excellente compagnie, service professionnel et soucis du détails! Merci a votre équipe pour vos bon conseil. Je recommande a tous pour la réalisation de vos projet!',
+    author: 'Mélodie Binette',
+  },
+  {
+    quote: 'Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!',
+    author: 'Isabelle Baril',
+  },
+  {
+    quote:
+      'Magnifique travail de l’équipe SLC Habitation. Nous avions un projet complexe d’agrandissement et de rénovation d’une vieille maison avec plusieurs défis! Ils ont fait un travail exceptionnel!!! Un gros merci pour votre patience et votre professionnalisme! Je recommande sans hésiter!',
+    author: 'Johanne Duguay',
+  },
+];
+
+const serviceCities = [
+  'Laval',
+  'Saint-Eustache',
+  'Terrebonne',
+  'Sainte-Thérèse',
+  'Rosemère',
+  'Mirabel',
+  'Boisbriand',
+  'Blainville',
+  'Saint-Jérôme',
 ];
 
 const kitchenGallery = [
@@ -103,6 +180,20 @@ const kitchenGallery = [
     category: 'Rénovation de cuisine',
     project: 'Plancher clair',
   },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-1600.jpg',
+    alt: 'Cuisine refaite avec hotte au-dessus de l’îlot et armoires deux tons',
+    caption: 'Hotte au-dessus de l’îlot, armoires deux tons',
+    category: 'Rénovation de cuisine',
+    project: 'Armoires deux tons',
+  },
+  {
+    src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124707-p-1600.jpg',
+    alt: 'Cuisine blanche avec cuisinière, hotte encastrée et électroménagers en inox',
+    caption: 'Cuisine blanche ouverte sur l’escalier',
+    category: 'Rénovation de cuisine',
+    project: 'Cuisine blanche',
+  },
 ];
 
 const includedCards = [
@@ -110,16 +201,34 @@ const includedCards = [
     icon: Hammer,
     title: 'La démolition et la préparation',
     points: ['Retrait de l’ancienne cuisine', 'Protection des pièces voisines', 'Murs et planchers remis d’aplomb'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/Cuisine/20221021_145939-p-800.jpg',
+      alt: 'Cuisine refaite avec hotte au-dessus de l’îlot et armoires deux tons',
+      width: 800,
+      height: 1067,
+    },
   },
   {
     icon: Wrench,
     title: 'La plomberie et l’électricité',
     points: ['Évier, lave-vaisselle, hotte', 'Prises, éclairage, îlot', 'Ventilation vers l’extérieur'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/Cuisine/20250106_124707-p-800.jpg',
+      alt: 'Cuisine blanche avec cuisinière, hotte encastrée et électroménagers en inox',
+      width: 800,
+      height: 1067,
+    },
   },
   {
     icon: Grid,
     title: 'Les armoires et les finitions',
     points: ['Armoires, comptoirs, dosseret', 'Plancher et peinture', 'Poignées, moulures, retouches'],
+    image: {
+      src: '/images/INT%C3%89RIEUR/Cuisine/cuisine%20st%20jerome%20apres.png',
+      alt: 'Cuisine rénovée à Saint-Jérôme avec armoires claires et comptoir contrastant',
+      width: 940,
+      height: 788,
+    },
   },
 ];
 
@@ -187,33 +296,22 @@ export default function RenovationCuisinePub() {
   return (
     <PubLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-secondary text-white min-h-[72vh] flex flex-col justify-end">
-        <div className="absolute inset-0">
-          <img
-            src={kitchenImages.hero.src}
-            alt={kitchenImages.hero.alt}
-            width={kitchenImages.hero.width}
-            height={kitchenImages.hero.height}
-            className="h-full w-full object-cover object-[center_30%]"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/60 to-transparent" />
-        </div>
-        <div className="container-large relative mx-auto max-w-7xl px-6 pb-16 pt-24 fade-up">
-          <div className="max-w-4xl">
-            <div className="mb-7 flex flex-wrap gap-3 text-xs font-medium tracking-wide sm:text-sm">
-              <span className="flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2 rounded-none"><ShieldCheck className="h-4 w-4 text-primary" />Licence RBQ : 8351-9033-59</span>
-              <span className="flex items-center gap-2 border border-white/25 bg-white/10 px-4 py-2 rounded-none"><MapPin className="h-4 w-4 text-primary" />Laval et Laurentides</span>
-              <span className="border border-white/25 bg-white/10 px-4 py-2 rounded-none">18 ans d&apos;expérience</span>
-            </div>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">Entrepreneur en rénovation</p>
-            <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl">Rénovation de cuisine à Laval et dans les Laurentides</h1>
-            <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-[1.0625rem]">Nous venons voir votre cuisine, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans.</p>
-            <PubCTA service="renovation-cuisine" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>
-            <p className="mt-4 text-sm text-gray-300">Estimation et visite sans frais · Réponse sous 48 heures</p>
-          </div>
-        </div>
-      </section>
+      <PubHero
+        label="Entrepreneur en rénovation"
+        title="Rénovation de cuisine à Laval et dans les Laurentides"
+        intro="Nous venons voir votre cuisine, puis nous vous remettons votre soumission. Plus de 500 projets complétés en 18 ans."
+        badges={[
+          { icon: ShieldCheck, text: 'Licence RBQ : 8351-9033-59' },
+          { icon: MapPin, text: 'Laval et Laurentides' },
+          { icon: Hammer, text: '18 ans d’expérience' },
+        ]}
+        action={<PubCTA service="renovation-cuisine" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>}
+        note="Estimation et visite sans frais · Réponse sous 48 heures"
+        image={kitchenImages.hero}
+        objectPosition="center 30%"
+        thumbs={heroThumbs}
+        thumbsLabel="Cuisines réalisées"
+      />
 
       <PubProofBar />
 
@@ -230,8 +328,9 @@ export default function RenovationCuisinePub() {
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            {includedCards.map(({ icon: Icon, title, points }) => (
+            {includedCards.map(({ icon: Icon, title, points, image }) => (
               <PubCard key={title}>
+                <PubCardMedia src={image.src} alt={image.alt} width={image.width} height={image.height} />
                 <PubCardBody>
                   <PubCardIcon icon={Icon} />
                   <PubCardTitle>{title}</PubCardTitle>
@@ -246,17 +345,6 @@ export default function RenovationCuisinePub() {
             note="Visite et estimation sans frais, réponse sous 48 heures."
             action={<PubCTA service="renovation-cuisine" testId="button-inclus-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
-
-          <div className="mt-14 aspect-[16/9] w-full overflow-hidden rounded-none border border-border">
-            <img
-              src={kitchenImages.wide.src}
-              alt={kitchenImages.wide.alt}
-              width={kitchenImages.wide.width}
-              height={kitchenImages.wide.height}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
         </div>
       </section>
 
@@ -288,6 +376,15 @@ export default function RenovationCuisinePub() {
           />
         </div>
       </section>
+
+      {/* LES FINITIONS */}
+      <PubPhotoRow
+        id="finitions"
+        kicker="Les finitions"
+        title="Le détail qui change une cuisine"
+        description="Ces trois photos viennent de cuisines que nous avons livrées. Voici ce qu’on y remarque de près."
+        items={detailPhotos}
+      />
 
       {/* LA VISITE */}
       <section id="visite" className="scroll-mt-20 bg-background py-16 md:py-20">
@@ -332,16 +429,12 @@ export default function RenovationCuisinePub() {
         </div>
       </section>
 
-      {/* TÉMOIGNAGE */}
-      <section className="border-y border-border bg-primary/5 py-16 md:py-20">
-        <div className="container-large mx-auto max-w-4xl px-6">
-          <PubTestimonial
-            quote="Excellente compagnie, service professionnel et souci du détail! Merci à votre équipe pour vos bons conseils. Je recommande à tous pour la réalisation de vos projets!"
-            author="Mélodie Binette"
-            role="Propriétaire"
-          />
-        </div>
-      </section>
+      {/* AVIS */}
+      <PubReviews
+        title="Ce que les propriétaires écrivent sur Google"
+        description="19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation."
+        items={reviews}
+      />
 
       {/* GALERIE */}
       <PubGallery
@@ -365,6 +458,12 @@ export default function RenovationCuisinePub() {
           </FAQList>
         </div>
       </section>
+
+      {/* ZONE DESSERVIE */}
+      <PubServiceArea
+        cities={serviceCities}
+        note="Votre municipalité n’est pas dans la liste? Écrivez-nous, nous vous dirons si nous nous déplaçons chez vous."
+      />
 
       {/* CTA FOOTER */}
       <section data-sticky-hide className="relative isolate overflow-hidden bg-secondary py-20 text-white md:py-24">
