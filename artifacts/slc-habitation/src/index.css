@@ -1141,7 +1141,7 @@
 }
 
 .pub-shell .pub-card--dark {
-  background: rgba(255, 255, 255, 0.04);
+  background: #242424;
   border-color: rgba(255, 255, 255, 0.14);
 }
 
@@ -1427,13 +1427,13 @@
 
 .pub-shell .pub-checklist {
   border: 1px solid hsl(var(--primary) / 0.3);
-  background: hsl(var(--primary) / 0.06);
+  background: hsl(var(--card));
   padding: 1.6rem 1.5rem;
 }
 
 .pub-shell .pub-checklist--dark {
   border-color: hsl(var(--primary) / 0.4);
-  background: hsl(var(--primary) / 0.1);
+  background: #242424;
 }
 
 .pub-shell .pub-checklist__title {
@@ -1505,7 +1505,7 @@
 
 .pub-shell .pub-action-bar--dark {
   border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.05);
+  background: #242424;
 }
 
 .pub-shell .pub-action-bar__note {
