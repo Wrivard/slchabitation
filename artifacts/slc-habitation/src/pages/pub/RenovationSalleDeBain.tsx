@@ -132,7 +132,7 @@ const bathroomGallery = [
     project: 'Bain autoportant',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
+    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
     alt: 'Salle de bain avec vanité en bois, grande douche vitrée et céramique grise',
     caption: 'Vanité en bois et douche vitrée',
     category: 'Rénovation de salle de bain',
