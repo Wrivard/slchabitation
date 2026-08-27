@@ -772,7 +772,7 @@ margin: 0rem !important;
                               <div className="margin-bottom margin-small">
                                 {' '}
                                 <div className="blog22_image-wrapper">
-                                  <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n-p-500.jpg 500w, /images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n-p-800.jpg 800w, /images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n-p-1080.jpg 1080w, /images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n-p-1600.jpg 1600w, /images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n-p-2000.jpg 2000w, /images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n.jpg 2560w" alt="Maison transformée par une rénovation extérieure SLC Habitation" loading="lazy" src="/images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n-p-800.jpg" className="blog22_image" />
+                                  <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n-p-500.jpg 500w, /images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n.jpg 2560w" alt="Maison transformée par une rénovation extérieure SLC Habitation" loading="lazy" src="/images/EXT%C3%89RIEUR/36362527_10217059415620058_266782490591494144_n.jpg" className="blog22_image" />
                                 </div>
                                 {' '}
                               </div>
@@ -803,7 +803,7 @@ margin: 0rem !important;
                               <div className="margin-bottom margin-small">
                                 {' '}
                                 <div className="blog22_image-wrapper">
-                                  <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n-p-500.jpg 500w, /images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n-p-800.jpg 800w, /images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n-p-1080.jpg 1080w, /images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n-p-1600.jpg 1600w, /images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n-p-2000.jpg 2000w, /images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n.jpg 2560w" alt="Projet extérieur résidentiel réalisé par SLC Habitation" loading="lazy" src="/images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n-p-800.jpg" className="blog22_image" />
+                                  <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n-p-500.jpg 500w, /images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n.jpg 2560w" alt="Projet extérieur résidentiel réalisé par SLC Habitation" loading="lazy" src="/images/EXT%C3%89RIEUR/36494490_10217059415020043_7963031579108835328_n.jpg" className="blog22_image" />
                                 </div>
                                 {' '}
                               </div>
