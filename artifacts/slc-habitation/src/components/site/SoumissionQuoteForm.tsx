@@ -64,7 +64,7 @@ export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: 
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
         {/* Le formulaire reste le point d'attention : premier sur mobile, à droite sur grand écran. */}
         <div className="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
-          <div className="border border-border bg-white p-6 sm:p-8 md:p-10">
+          <div className="rounded-lg border border-border bg-white p-6 shadow-[0_24px_60px_-40px_rgb(0_0_0_/_0.45)] sm:p-8 md:p-10">
             <QuoteForm
               key={defaultService}
               services={soumissionServices}
@@ -79,7 +79,7 @@ export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: 
         <aside className="order-2 space-y-6 lg:sticky lg:top-24 lg:order-1 lg:col-span-6 xl:col-span-5">
           <ul className="grid grid-cols-2 gap-3" data-testid="list-form-trust">
             {trustItems.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="flex flex-col gap-1 border border-border/60 bg-white p-4">
+              <li key={title} className="flex flex-col gap-1 rounded-md border border-border/70 bg-white p-4">
                 <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
                 <p className="text-sm font-semibold leading-snug text-foreground">{title}</p>
                 <p className="text-xs text-muted-foreground">{text}</p>

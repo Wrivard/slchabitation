@@ -438,6 +438,113 @@
   margin-block: revert-layer;
 }
 
+/* --- Formulaire de soumission monté dans la page héritée de Webflow ---
+   La section `/soumission` accueille un bloc React (`SoumissionQuoteForm`)
+   posé au milieu du balisage Webflow : il lui faut ses propres jetons de
+   couleur et le même dégagement face aux sélecteurs d'élément hérités que les
+   pages entièrement React. */
+
+/* Fond quadrillé de la section, repris des pages publicitaires. */
+.section_contact6.color-scheme-1 {
+  background-color: hsl(0 0% 100%);
+  background-image:
+    linear-gradient(rgb(0 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 0 0 / 0.05) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+}
+
+@media (max-width: 639px) {
+  .section_contact6.color-scheme-1 {
+    background-size: 2rem 2rem;
+  }
+}
+
+.soumission-quote-form {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 4%;
+  --secondary: 0 0% 10.6%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 40 14% 95%;
+  --muted-foreground: 0 0% 33%;
+  /* Teinte chaude des états sélectionnés, accordée à l'orange de la marque. */
+  --accent: 26 91% 96%;
+  --accent-foreground: 26 91% 30%;
+  --border: 0 0% 89%;
+  --input: 0 0% 80%;
+  --radius: 0.35rem;
+  --app-font-heading: 'Alexandria', system-ui, sans-serif;
+}
+
+.soumission-quote-form h2,
+.soumission-quote-form h3,
+.soumission-quote-form h4 {
+  font-family: 'Alexandria', system-ui, sans-serif;
+  font-size: revert-layer;
+  font-weight: revert-layer;
+  line-height: revert-layer;
+  letter-spacing: revert-layer;
+  margin-block: revert-layer;
+  text-transform: none !important;
+}
+
+.soumission-quote-form p,
+.soumission-quote-form figure,
+.soumission-quote-form blockquote {
+  margin-block: revert-layer;
+  margin-inline: revert-layer;
+}
+
+.soumission-quote-form ul,
+.soumission-quote-form ol,
+.soumission-quote-form li {
+  margin-block: revert-layer;
+  padding-left: revert-layer;
+}
+
+.soumission-quote-form a {
+  color: revert-layer;
+  text-decoration: revert-layer;
+}
+
+/* Les contrôles de formulaire sont les plus exposés : `webflow.css` et
+   `normalize.css` sont chargés hors couche et écrasent sinon les utilitaires
+   des composants (taille, bordure, fond, focus). */
+.soumission-quote-form label,
+.soumission-quote-form input,
+.soumission-quote-form select,
+.soumission-quote-form textarea,
+.soumission-quote-form button {
+  display: revert-layer;
+  width: revert-layer;
+  height: revert-layer;
+  min-height: revert-layer;
+  margin: revert-layer;
+  padding: revert-layer;
+  border: revert-layer;
+  border-radius: revert-layer;
+  background-color: revert-layer;
+  color: revert-layer;
+  font-family: revert-layer;
+  font-size: revert-layer;
+  font-weight: revert-layer;
+  line-height: revert-layer;
+  text-align: revert-layer;
+  vertical-align: revert-layer;
+  box-shadow: revert-layer;
+  appearance: revert-layer;
+}
+
+.soumission-quote-form button:focus-visible,
+.soumission-quote-form input:focus-visible,
+.soumission-quote-form select:focus-visible,
+.soumission-quote-form textarea:focus-visible,
+.soumission-quote-form a:focus-visible {
+  outline: revert-layer;
+  outline-offset: revert-layer;
+}
+
 /* --- En-tête de section : rythme unique surtitre / titre / sous-textes --- */
 .pub-shell .pub-section-header__kicker {
   margin: 0 0 0.7rem;

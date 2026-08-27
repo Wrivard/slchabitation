@@ -2,12 +2,45 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Loader2, ArrowRight, ArrowLeft, CheckCircle2, ImagePlus, X } from 'lucide-react';
+import {
+  Loader2,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle2,
+  ImagePlus,
+  X,
+  AlertCircle,
+  ShieldCheck,
+} from 'lucide-react';
 import { Link, useLocation } from 'wouter';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useTrackingParams } from '@/hooks/use-tracking-params';
 import { rememberQuoteSubmission } from '@/lib/quote-submission';
 import { TurnstileWidget } from '@/components/pub/TurnstileWidget';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Progress } from '@/components/ui/progress';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 
 declare global {
   interface Window {
@@ -125,6 +158,13 @@ const referralSources = [
   'Autre',
 ];
 
+const budgetOptions = [
+  '25 000 $ et moins',
+  '25 000 $ – 50 000 $',
+  '50 000 $ – 100 000 $',
+  '100 000 $ et plus',
+];
+
 const budgetMap: Record<string, string> = {
   '25 000 $ et moins': 'Contact 6 Radio 1',
   '25 000 $ – 50 000 $': 'Contact 6 Radio 2',
@@ -132,11 +172,29 @@ const budgetMap: Record<string, string> = {
   '100 000 $ et plus': 'Contact 6 Radio 4',
 };
 
-const stepVariants = {
-  hidden: { opacity: 0, x: 20, transition: { duration: 0.3 } },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-  exit: { opacity: 0, x: -20, transition: { duration: 0.3 } }
-};
+const steps = [
+  { number: 1, label: 'Projet' },
+  { number: 2, label: 'Détails' },
+  { number: 3, label: 'Coordonnées' },
+];
+
+/* Habillage commun aux champs : hauteur confortable au doigt, bordure qui
+   réagit au survol, anneau de focus visible au clavier et bordure rouge dès
+   que react-hook-form marque le champ invalide. */
+const fieldClass =
+  'h-12 rounded-md border-input bg-white px-4 text-base shadow-none transition-colors hover:border-primary/50 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring/40 aria-[invalid=true]:border-destructive';
+
+const selectTriggerClass =
+  'h-12 rounded-md border-input bg-white px-4 text-base shadow-none transition-colors hover:border-primary/50 focus:border-primary focus:ring-2 focus:ring-ring/40 aria-[invalid=true]:border-destructive';
+
+const labelClass = 'text-xs font-bold uppercase tracking-[0.12em] text-foreground';
+
+const optionalHintClass = 'ml-1 font-medium normal-case tracking-normal text-muted-foreground';
+
+/* Carte de choix : la sélection et le focus clavier se lisent d'un coup d'œil
+   grâce à l'état du bouton radio qu'elle contient. */
+const choiceCardClass =
+  'flex cursor-pointer items-center gap-3 rounded-md border border-border bg-white p-4 text-base transition-colors hover:border-primary/50 hover:bg-accent/50 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-accent has-[[data-state=checked]]:ring-1 has-[[data-state=checked]]:ring-primary has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2';
 
 export function QuoteForm({
   defaultService = "",
@@ -155,6 +213,8 @@ export function QuoteForm({
   const [photoError, setPhotoError] = useState<string | null>(null);
   const photoInputRef = useRef<HTMLInputElement>(null);
 
+  const prefersReducedMotion = useReducedMotion();
+
   const formSchema = useMemo(
     () => createFormSchema(services.map((service) => service.id)),
     [services],
@@ -164,19 +224,17 @@ export function QuoteForm({
   const submissionId = useRef<string>(crypto.randomUUID());
   const formStarted = useRef(false);
   const turnstileResetRef = useRef<(() => void) | undefined>(undefined);
-  const stepTwoHeadingRef = useRef<HTMLHeadingElement>(null);
-  const stepThreeHeadingRef = useRef<HTMLHeadingElement>(null);
+  const shellRef = useRef<HTMLDivElement>(null);
+  const stepHeadingRefs = [
+    useRef<HTMLHeadingElement>(null),
+    useRef<HTMLHeadingElement>(null),
+    useRef<HTMLHeadingElement>(null),
+  ];
 
   const getTrackingParams = useTrackingParams();
   const [, navigate] = useLocation();
 
-  const {
-    register,
-    handleSubmit,
-    trigger,
-    watch,
-    formState: { errors, isSubmitting }
-  } = useForm<FormData>({
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       service: defaultService,
@@ -194,6 +252,17 @@ export function QuoteForm({
     }
   });
 
+  const {
+    control,
+    register,
+    handleSubmit,
+    trigger,
+    watch,
+    formState: { errors, isSubmitting },
+  } = form;
+
+  const descriptionLength = watch('description')?.length ?? 0;
+
   useEffect(() => {
     const subscription = watch((value) => {
       if (!formStarted.current && (value.budget || value.description || value.firstName)) {
@@ -205,10 +274,22 @@ export function QuoteForm({
     return () => subscription.unsubscribe();
   }, [watch, defaultService]);
 
+  /* Changement d'étape : le formulaire revient sous les yeux du visiteur et le
+     titre de la nouvelle étape prend le focus pour les lecteurs d'écran. */
+  const isFirstRender = useRef(true);
   useEffect(() => {
-    if (step === 2) stepTwoHeadingRef.current?.focus();
-    if (step === 3) stepThreeHeadingRef.current?.focus();
-  }, [step]);
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    shellRef.current?.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+    stepHeadingRefs[step - 1]?.current?.focus({ preventScroll: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step, prefersReducedMotion]);
 
   const handleTurnstileVerify = useCallback((token: string) => {
     setTurnstileToken(token);
@@ -410,523 +491,693 @@ export function QuoteForm({
     }
   };
 
+  const stepVariants: Variants = prefersReducedMotion
+    ? {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.15 } },
+        exit: { opacity: 0, transition: { duration: 0.1 } },
+      }
+    : {
+        hidden: { opacity: 0, x: 24, transition: { duration: 0.28, ease: 'easeOut' } },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.34, ease: 'easeOut' } },
+        exit: { opacity: 0, x: -24, transition: { duration: 0.22, ease: 'easeIn' } },
+      };
+
   if (isSuccess) {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className={`flex flex-col items-center justify-center text-center py-12 ${className}`}
+        initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
+        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+        className={`flex flex-col items-center justify-center py-12 text-center ${className}`}
         data-testid="status-success"
       >
-        <div className="w-20 h-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center mb-8 ring-8 ring-green-50/50">
-          <CheckCircle2 className="w-10 h-10" />
+        <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-green-50 text-green-600 ring-8 ring-green-50/50">
+          <CheckCircle2 className="h-10 w-10" />
         </div>
-        <h3 className="text-3xl font-bold font-heading text-foreground mb-4">Demande envoyée</h3>
-        <p className="text-lg text-muted-foreground mb-4 max-w-md">
+        <h3 className="mb-4 font-heading text-3xl font-bold text-foreground">Demande envoyée</h3>
+        <p className="mb-4 max-w-md text-lg text-muted-foreground">
           Merci de votre confiance. Nous examinons votre demande et nous vous répondons sous 48 heures pour convenir d’une visite d’évaluation sans frais.
         </p>
-        <p className="text-base text-muted-foreground mb-10 max-w-md">
+        <p className="mb-10 max-w-md text-base text-muted-foreground">
           Besoin de nous joindre avant?{' '}
           <a href="tel:5144048494" className="font-semibold text-primary" data-testid="link-success-phone">
             (514) 404-8494
           </a>
         </p>
-        <Link
-          href="/"
-          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-4 rounded-none font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0"
-          data-testid="button-return-home"
-        >
-          Retour à l'accueil
-        </Link>
+        <Button asChild variant="secondary" size="lg" className="h-12 px-8 text-base font-semibold">
+          <Link href="/" data-testid="button-return-home">
+            Retour à l'accueil
+          </Link>
+        </Button>
       </motion.div>
     );
   }
 
   return (
-    <div className={className}>
-      {/* Progress Indicator */}
-      <div className="mb-10 relative" data-testid={`status-step-${step}`}>
-        <div className="flex justify-between mb-2 relative z-10">
-          {[
-            { number: 1, label: 'Projet' },
-            { number: 2, label: 'Détails' },
-            { number: 3, label: 'Coordonnées' },
-          ].map(({ number, label }) => (
-            <div
+    <div ref={shellRef} className={`scroll-mt-28 ${className}`}>
+      {/* Progression : étape courante, barre de remplissage et repères nommés. */}
+      <div className="mb-8" data-testid={`status-step-${step}`}>
+        <div className="flex items-baseline justify-between gap-4">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
+            Étape {step} sur {steps.length}
+          </p>
+          <p className="text-xs font-medium text-muted-foreground">
+            {steps.length - step === 0
+              ? 'Dernière étape'
+              : `Encore ${steps.length - step} étape${steps.length - step > 1 ? 's' : ''}`}
+          </p>
+        </div>
+        <Progress
+          value={(step / steps.length) * 100}
+          className="mt-3 h-1.5 bg-muted"
+          aria-label={`Étape ${step} sur ${steps.length}`}
+        />
+        <ol className="mt-3 grid grid-cols-3 gap-2">
+          {steps.map(({ number, label }) => (
+            <li
               key={number}
-              className="flex flex-col items-center gap-2"
+              className={`text-xs font-semibold ${
+                step >= number ? 'text-foreground' : 'text-muted-foreground'
+              } ${number === 2 ? 'text-center' : ''} ${number === 3 ? 'text-right' : ''}`}
+              aria-current={step === number ? 'step' : undefined}
             >
-              <span
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-all duration-500 ${
-                  step >= number
-                    ? 'bg-primary border-primary text-primary-foreground'
-                    : 'bg-white border-border text-muted-foreground'
-                }`}
-              >
-                {number}
-              </span>
-              <span className={`text-xs font-semibold ${step >= number ? 'text-foreground' : 'text-muted-foreground'}`}>
-                {label}
-              </span>
-            </div>
+              {label}
+            </li>
           ))}
-        </div>
-        <div className="absolute top-5 left-5 right-5 h-0.5 bg-border -z-0">
-          <div
-            className="h-full bg-primary transition-all duration-500 ease-out"
-            style={{ width: `${((step - 1) / 2) * 100}%` }}
-          />
-        </div>
+        </ol>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <input
-          type="text"
-          {...register("honeypot")}
-          className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
-          aria-hidden="true"
-          tabIndex={-1}
-          autoComplete="off"
-          data-testid="input-honeypot"
-        />
+      <Form {...form}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <input
+            type="text"
+            {...register("honeypot")}
+            className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
+            aria-hidden="true"
+            tabIndex={-1}
+            autoComplete="off"
+            data-testid="input-honeypot"
+          />
 
-        <div className="overflow-hidden relative">
-          <AnimatePresence mode="wait" initial={false}>
-            {step === 1 && (
-              <motion.div
-                key="step1"
-                variants={stepVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="w-full"
-              >
-                <div className="mb-8">
-                  <h3 className="text-2xl md:text-3xl font-bold font-heading text-foreground mb-2">Quel est votre projet ?</h3>
-                  <p className="text-muted-foreground">Aidez-nous à comprendre vos besoins initiaux.</p>
-                </div>
-
-                <div className="space-y-8">
-                  {showServiceChoice && services.length > 4 && (
-                    /* Au-delà de quatre services, la liste déroulante reste plus
-                       lisible que des cartes à cocher, surtout sur mobile. */
-                    <div className="space-y-3">
-                      <label htmlFor="service" className="block text-sm font-bold text-foreground uppercase tracking-wider">
-                        Type de travaux <span className="text-destructive">*</span>
-                      </label>
-                      <select
-                        id="service"
-                        {...register("service")}
-                        aria-invalid={errors.service ? 'true' : undefined}
-                        aria-describedby={errors.service ? 'service-error' : undefined}
-                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                        data-testid="select-service"
-                      >
-                        <option value="">Sélectionnez un service</option>
-                        {services.map((svc) => (
-                          <option key={svc.id} value={svc.id}>{svc.label}</option>
-                        ))}
-                      </select>
-                      {errors.service && <p id="service-error" className="text-sm text-destructive" data-testid="error-service">{errors.service.message}</p>}
-                    </div>
-                  )}
-
-                  {showServiceChoice && services.length <= 4 && (
-                    <div className="space-y-4">
-                      <label className="block text-sm font-bold text-foreground uppercase tracking-wider">Type de travaux <span className="text-destructive">*</span></label>
-                      <div className="grid grid-cols-1 gap-3">
-                        {services.map(svc => (
-                          <label
-                            key={svc.id}
-                            className={`border rounded-none p-5 cursor-pointer transition-all flex items-center gap-4 group ${
-                              watch('service') === svc.id
-                                ? 'border-primary bg-primary/5 ring-1 ring-primary'
-                                : 'border-border hover:border-primary/40 hover:bg-accent/10'
-                            }`}
-                          >
-                            <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${watch('service') === svc.id ? 'border-primary' : 'border-muted-foreground/40 group-hover:border-primary/50'}`}>
-                              {watch('service') === svc.id && <div className="w-2.5 h-2.5 bg-primary rounded-full" />}
-                            </div>
-                            <input type="radio" value={svc.id} {...register("service")} className="sr-only" data-testid={`radio-service-${svc.id}`} />
-                            <span className="font-semibold text-foreground text-lg">{svc.label}</span>
-                          </label>
-                        ))}
-                      </div>
-                      {errors.service && <p className="text-sm text-destructive mt-2 flex items-center gap-1" data-testid="error-service"><Loader2 className="w-3 h-3" /> {errors.service.message}</p>}
-                    </div>
-                  )}
-
-                  <div className="space-y-4">
-                    <label className="block text-sm font-bold text-foreground uppercase tracking-wider">Budget approximatif <span className="text-destructive">*</span></label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {[
-                        '25 000 $ et moins',
-                        '25 000 $ – 50 000 $',
-                        '50 000 $ – 100 000 $',
-                        '100 000 $ et plus'
-                      ].map((b, idx) => (
-                        <label
-                          key={b}
-                          className={`border rounded-none p-4 cursor-pointer transition-all flex items-center gap-3 group ${
-                            watch('budget') === b
-                              ? 'border-primary bg-primary/5 ring-1 ring-primary'
-                              : 'border-border hover:border-primary/40 hover:bg-accent/10'
-                          }`}
-                        >
-                          <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${watch('budget') === b ? 'border-primary' : 'border-muted-foreground/40 group-hover:border-primary/50'}`}>
-                            {watch('budget') === b && <div className="w-2 h-2 bg-primary rounded-full" />}
-                          </div>
-                          <input type="radio" value={b} {...register("budget")} className="sr-only" data-testid={`radio-budget-${idx}`} />
-                          <span className="font-medium text-foreground">{b}</span>
-                        </label>
-                      ))}
-                    </div>
-                    {errors.budget && <p className="text-sm text-destructive mt-2" data-testid="error-budget">{errors.budget.message}</p>}
+          <div className="relative overflow-hidden">
+            <AnimatePresence mode="wait" initial={false}>
+              {step === 1 && (
+                <motion.div
+                  key="step1"
+                  variants={stepVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="w-full"
+                >
+                  <div className="mb-8">
+                    <h3
+                      ref={stepHeadingRefs[0]}
+                      tabIndex={-1}
+                      className="mb-2 font-heading text-2xl font-bold text-foreground outline-none md:text-3xl"
+                    >
+                      Quel est votre projet ?
+                    </h3>
+                    <p className="text-muted-foreground">Aidez-nous à comprendre vos besoins initiaux.</p>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={() => nextStep(['service', 'budget'])}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 mt-8 text-lg"
-                    data-testid="button-next-step-1"
-                  >
-                    Continuer <ArrowRight className="w-5 h-5" />
-                  </button>
-                </div>
-              </motion.div>
-            )}
+                  <div className="space-y-8">
+                    {showServiceChoice && services.length > 4 && (
+                      /* Au-delà de quatre services, la liste déroulante reste plus
+                         lisible que des cartes à cocher, surtout sur mobile. */
+                      <FormField
+                        control={control}
+                        name="service"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelClass}>
+                              Type de travaux <span className="text-destructive">*</span>
+                            </FormLabel>
+                            <Select value={field.value ?? ''} onValueChange={field.onChange}>
+                              <FormControl>
+                                <SelectTrigger className={selectTriggerClass} data-testid="select-service">
+                                  <SelectValue placeholder="Sélectionnez un service" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {services.map((svc) => (
+                                  <SelectItem key={svc.id} value={svc.id} className="text-base">
+                                    {svc.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage data-testid="error-service" />
+                          </FormItem>
+                        )}
+                      />
+                    )}
 
-            {step === 2 && (
-              <motion.div
-                key="step2"
-                variants={stepVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="w-full"
-              >
-                <div className="mb-8">
-                  <h3
-                    ref={stepTwoHeadingRef}
-                    tabIndex={-1}
-                    className="text-3xl font-bold font-heading text-foreground mb-2 outline-none"
-                  >
-                    Parlez-nous de votre vision
-                  </h3>
-                  <p className="text-muted-foreground">Les détails nous aident à mieux préparer notre premier appel.</p>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="space-y-3">
-                    <label htmlFor="description" className="block text-sm font-bold text-foreground uppercase tracking-wider">
-                      Description de votre projet <span className="text-destructive">*</span>
-                    </label>
-                    <textarea
-                      id="description"
-                      {...register("description")}
-                      rows={6}
-                      className="w-full p-5 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none bg-accent/5 text-lg"
-                      placeholder="Ex: Nous souhaitons abattre le mur entre la cuisine et le salon, et refaire l'îlot central pour créer un espace ouvert..."
-                      data-testid="input-description"
-                    ></textarea>
-                    {errors.description && <p className="text-sm text-destructive mt-1" data-testid="error-description">{errors.description.message}</p>}
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <label htmlFor="city" className="block text-sm font-bold text-foreground uppercase tracking-wider">
-                        Ville du projet <span className="text-destructive">*</span>
-                      </label>
-                      <select
-                        id="city"
-                        {...register("city")}
-                        aria-invalid={errors.city ? 'true' : undefined}
-                        aria-describedby={errors.city ? 'city-error' : undefined}
-                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                        data-testid="select-city"
-                      >
-                        <option value="">Sélectionnez une ville</option>
-                        {projectCities.map((city) => (
-                          <option key={city} value={city}>{city}</option>
-                        ))}
-                      </select>
-                      {errors.city && <p id="city-error" className="text-sm text-destructive" data-testid="error-city">{errors.city.message}</p>}
-                    </div>
-
-                    <div className="space-y-3">
-                      <label htmlFor="timeline" className="block text-sm font-bold text-foreground uppercase tracking-wider">
-                        Échéancier souhaité <span className="text-destructive">*</span>
-                      </label>
-                      <select
-                        id="timeline"
-                        {...register("timeline")}
-                        aria-invalid={errors.timeline ? 'true' : undefined}
-                        aria-describedby={errors.timeline ? 'timeline-error' : undefined}
-                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                        data-testid="select-timeline"
-                      >
-                        <option value="">Sélectionnez un moment</option>
-                        {projectTimelines.map((timeline) => (
-                          <option key={timeline} value={timeline}>{timeline}</option>
-                        ))}
-                      </select>
-                      {errors.timeline && <p id="timeline-error" className="text-sm text-destructive" data-testid="error-timeline">{errors.timeline.message}</p>}
-                    </div>
-                  </div>
-
-                  {allowPhotos && (
-                    <div className="space-y-3">
-                      <label htmlFor="photos" className="block text-sm font-bold text-foreground uppercase tracking-wider">
-                        Photos du projet <span className="font-medium normal-case tracking-normal text-muted-foreground">(facultatif)</span>
-                      </label>
-                      <div className="border border-dashed border-input bg-accent/5 p-5 space-y-4">
-                        <div className="flex flex-wrap items-center gap-3">
-                          <button
-                            type="button"
-                            onClick={() => photoInputRef.current?.click()}
-                            disabled={photos.length >= MAX_PHOTOS}
-                            className="inline-flex items-center gap-2 border border-border bg-white px-4 py-3 font-semibold text-foreground transition-colors hover:border-primary/50 hover:bg-accent/20 disabled:cursor-not-allowed disabled:opacity-60"
-                            data-testid="button-add-photos"
-                          >
-                            <ImagePlus className="h-5 w-5" /> Ajouter des photos
-                          </button>
-                          <span className="text-sm text-muted-foreground" data-testid="text-photo-count">
-                            {photos.length} / {MAX_PHOTOS} photo{photos.length > 1 ? 's' : ''}
-                          </span>
-                        </div>
-                        <input
-                          ref={photoInputRef}
-                          id="photos"
-                          type="file"
-                          accept="image/*"
-                          multiple
-                          className="sr-only"
-                          onChange={(event) => addPhotos(event.target.files)}
-                          data-testid="input-photos"
-                        />
-                        {photos.length > 0 && (
-                          <ul className="space-y-2" data-testid="list-photos">
-                            {photos.map((photo, index) => (
-                              <li
-                                key={`${photo.name}-${index}`}
-                                className="flex items-center justify-between gap-3 border border-border bg-white px-4 py-3"
+                    {showServiceChoice && services.length <= 4 && (
+                      <FormField
+                        control={control}
+                        name="service"
+                        render={({ field, fieldState }) => (
+                          <FormItem>
+                            {/* Titre du groupe : un `span` plutôt qu'un `label`, sinon
+                                chaque carte imbriquerait un label dans un autre. */}
+                            <span
+                              id="service-group-label"
+                              className={cn('block', labelClass, fieldState.error && 'text-destructive')}
+                            >
+                              Type de travaux <span className="text-destructive">*</span>
+                            </span>
+                            <FormControl>
+                              <RadioGroup
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                aria-labelledby="service-group-label"
+                                className="grid grid-cols-1 gap-3"
                               >
-                                <span className="min-w-0 flex-1 truncate text-sm text-foreground">{photo.name}</span>
-                                <span className="shrink-0 text-sm text-muted-foreground">{formatFileSize(photo.size)}</span>
-                                <button
-                                  type="button"
-                                  onClick={() => removePhoto(index)}
-                                  className="shrink-0 text-muted-foreground transition-colors hover:text-destructive"
-                                  aria-label={`Retirer la photo ${photo.name}`}
-                                  data-testid={`button-remove-photo-${index}`}
+                                {services.map((svc) => (
+                                  <Label
+                                    key={svc.id}
+                                    htmlFor={`service-${svc.id}`}
+                                    className={`${choiceCardClass} p-5 font-semibold`}
+                                  >
+                                    <RadioGroupItem
+                                      value={svc.id}
+                                      id={`service-${svc.id}`}
+                                      className="h-5 w-5 shrink-0 border-muted-foreground/50 data-[state=checked]:border-primary"
+                                      data-testid={`radio-service-${svc.id}`}
+                                    />
+                                    <span className="text-lg text-foreground">{svc.label}</span>
+                                  </Label>
+                                ))}
+                              </RadioGroup>
+                            </FormControl>
+                            <FormMessage data-testid="error-service" />
+                          </FormItem>
+                        )}
+                      />
+                    )}
+
+                    <FormField
+                      control={control}
+                      name="budget"
+                      render={({ field, fieldState }) => (
+                        <FormItem>
+                          <span
+                            id="budget-group-label"
+                            className={cn('block', labelClass, fieldState.error && 'text-destructive')}
+                          >
+                            Budget approximatif <span className="text-destructive">*</span>
+                          </span>
+                          <FormControl>
+                            <RadioGroup
+                              value={field.value}
+                              onValueChange={field.onChange}
+                              aria-labelledby="budget-group-label"
+                              className="grid grid-cols-1 gap-3 sm:grid-cols-2"
+                            >
+                              {budgetOptions.map((budget, index) => (
+                                <Label
+                                  key={budget}
+                                  htmlFor={`budget-${index}`}
+                                  className={`${choiceCardClass} font-medium`}
                                 >
-                                  <X className="h-5 w-5" />
-                                </button>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        <p className="text-sm text-muted-foreground">
-                          JPG, PNG, GIF ou WEBP — {formatFileSize(MAX_PHOTO_BYTES)} par photo, {MAX_PHOTOS} photos et {formatFileSize(MAX_PHOTOS_TOTAL_BYTES)} au total.
-                        </p>
-                        {photoError && (
-                          <p className="text-sm text-destructive" role="alert" data-testid="error-photos">{photoError}</p>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex gap-4 pt-6">
-                    <button
-                      type="button"
-                      onClick={prevStep}
-                      className="w-16 h-16 shrink-0 bg-accent/70 hover:bg-accent text-foreground border border-border rounded-none flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      aria-label="Retour"
-                      data-testid="button-prev-step-2"
-                    >
-                      <ArrowLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => nextStep(['description', 'city', 'timeline'])}
-                      className="flex-grow bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 text-lg"
-                      data-testid="button-next-step-2"
-                    >
-                      Dernière étape <ArrowRight className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {step === 3 && (
-              <motion.div
-                key="step3"
-                variants={stepVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="w-full pb-2"
-              >
-                <div className="mb-8">
-                  <h3
-                    ref={stepThreeHeadingRef}
-                    tabIndex={-1}
-                    className="text-3xl font-bold font-heading text-foreground mb-2 outline-none"
-                  >
-                    Où pouvons-nous vous joindre ?
-                  </h3>
-                  <p className="text-muted-foreground">Vos coordonnées pour que nous puissions vous contacter.</p>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="firstName" className="block text-sm font-bold text-foreground uppercase tracking-wider">Prénom <span className="text-destructive">*</span></label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        {...register("firstName")}
-                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                        data-testid="input-firstname"
-                      />
-                      {errors.firstName && <p className="text-sm text-destructive" data-testid="error-firstname">{errors.firstName.message}</p>}
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="lastName" className="block text-sm font-bold text-foreground uppercase tracking-wider">Nom <span className="text-destructive">*</span></label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        {...register("lastName")}
-                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                        data-testid="input-lastname"
-                      />
-                      {errors.lastName && <p className="text-sm text-destructive" data-testid="error-lastname">{errors.lastName.message}</p>}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="block text-sm font-bold text-foreground uppercase tracking-wider">Courriel <span className="text-destructive">*</span></label>
-                      <input
-                        type="email"
-                        id="email"
-                        {...register("email")}
-                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                        data-testid="input-email"
-                      />
-                      {errors.email && <p className="text-sm text-destructive" data-testid="error-email">{errors.email.message}</p>}
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="block text-sm font-bold text-foreground uppercase tracking-wider">Téléphone <span className="text-destructive">*</span></label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        {...register("phone")}
-                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                        data-testid="input-phone"
-                      />
-                      {errors.phone && <p className="text-sm text-destructive" data-testid="error-phone">{errors.phone.message}</p>}
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <label htmlFor="referral" className="block text-sm font-bold text-foreground uppercase tracking-wider">
-                      Comment nous avez-vous connus? <span className="font-medium normal-case tracking-normal text-muted-foreground">(facultatif)</span>
-                    </label>
-                    <select
-                      id="referral"
-                      {...register("referral")}
-                      className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
-                      data-testid="select-referral"
-                    >
-                      <option value="">Préfère ne pas répondre</option>
-                      {referralSources.map((source) => (
-                        <option key={source} value={source}>{source}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="pt-2">
-                    <label className="flex items-start gap-4 cursor-pointer group bg-accent/5 p-4 rounded-none border border-transparent hover:border-primary/20 transition-colors">
-                      <div className="pt-0.5">
-                        <input
-                          type="checkbox"
-                          {...register("consent")}
-                          className="w-5 h-5 rounded border-input text-primary focus:ring-primary cursor-pointer accent-primary"
-                          data-testid="checkbox-consent"
-                        />
-                      </div>
-                      <span className="text-sm text-muted-foreground leading-relaxed">
-                        Je consens à être contacté(e) concernant ma demande et j'accepte la <a href="/politique-de-confidentialite" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary text-foreground font-medium transition-colors" data-testid="link-form-privacy">politique de confidentialité</a>. <span className="text-destructive">*</span>
-                      </span>
-                    </label>
-                    {errors.consent && <p className="text-sm text-destructive mt-2 ml-9" data-testid="error-consent">{errors.consent.message}</p>}
-                  </div>
-
-                  <div className="flex justify-center py-2">
-                    <TurnstileWidget
-                      onVerify={handleTurnstileVerify}
-                      onError={handleTurnstileError}
-                      onResetRef={handleTurnstileReset}
-                    />
-                  </div>
-
-                  {errorMsg && (
-                    <div className="bg-destructive/10 text-destructive p-5 rounded-none text-sm border border-destructive/20 font-medium flex items-start gap-3" data-testid="status-error">
-                      <div className="w-5 h-5 rounded-full bg-destructive text-white flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">!</div>
-                      {errorMsg}
-                    </div>
-                  )}
-
-                  <div className="flex gap-4 pt-4">
-                    <button
-                      type="button"
-                      onClick={prevStep}
-                      className="w-16 h-16 shrink-0 bg-accent/70 hover:bg-accent text-foreground border border-border rounded-none flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50"
-                      disabled={isSubmitting}
-                      aria-label="Retour"
-                      data-testid="button-prev-step-3"
-                    >
-                      <ArrowLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting || turnstileError}
-                      className="flex-grow bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:hover:translate-y-0 text-lg"
-                      data-testid="button-submit-quote"
-                    >
-                      {isSubmitting ? (
-                        <><Loader2 className="w-6 h-6 animate-spin" /> Envoi en cours...</>
-                      ) : (
-                        <>Envoyer ma demande <ArrowRight className="w-5 h-5" /></>
+                                  <RadioGroupItem
+                                    value={budget}
+                                    id={`budget-${index}`}
+                                    className="h-5 w-5 shrink-0 border-muted-foreground/50 data-[state=checked]:border-primary"
+                                    data-testid={`radio-budget-${index}`}
+                                  />
+                                  <span className="text-foreground">{budget}</span>
+                                </Label>
+                              ))}
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage data-testid="error-budget" />
+                        </FormItem>
                       )}
-                    </button>
+                    />
+
+                    <Button
+                      type="button"
+                      size="lg"
+                      onClick={() => nextStep(['service', 'budget'])}
+                      className="mt-2 h-14 w-full text-base font-bold"
+                      data-testid="button-next-step-1"
+                    >
+                      Continuer <ArrowRight className="h-5 w-5" />
+                    </Button>
                   </div>
-                  <p className="text-sm text-muted-foreground" data-testid="text-submit-reassurance">
-                    Réponse sous 48 heures. La visite d’évaluation et l’estimation sont sans frais.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </form>
-      <style dangerouslySetInnerHTML={{__html: `
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background-color: rgba(0,0,0,0.1);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(0,0,0,0.2);
-        }
-      `}} />
+                </motion.div>
+              )}
+
+              {step === 2 && (
+                <motion.div
+                  key="step2"
+                  variants={stepVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="w-full"
+                >
+                  <div className="mb-8">
+                    <h3
+                      ref={stepHeadingRefs[1]}
+                      tabIndex={-1}
+                      className="mb-2 font-heading text-2xl font-bold text-foreground outline-none md:text-3xl"
+                    >
+                      Parlez-nous de votre vision
+                    </h3>
+                    <p className="text-muted-foreground">Les détails nous aident à mieux préparer notre premier appel.</p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <FormField
+                      control={control}
+                      name="description"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className={labelClass}>
+                            Description de votre projet <span className="text-destructive">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <Textarea
+                              {...field}
+                              rows={6}
+                              maxLength={MAX_DESCRIPTION_LENGTH}
+                              placeholder="Ex: Nous souhaitons abattre le mur entre la cuisine et le salon, et refaire l'îlot central pour créer un espace ouvert..."
+                              className="min-h-[10rem] resize-y rounded-md border-input bg-white p-4 text-base shadow-none transition-colors hover:border-primary/50 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring/40 aria-[invalid=true]:border-destructive"
+                              data-testid="input-description"
+                            />
+                          </FormControl>
+                          <div className="flex items-start justify-between gap-4">
+                            <FormMessage data-testid="error-description" />
+                            <FormDescription
+                              className={`ml-auto shrink-0 tabular-nums ${
+                                descriptionLength > MAX_DESCRIPTION_LENGTH - 100 ? 'text-destructive' : ''
+                              }`}
+                            >
+                              {descriptionLength} / {MAX_DESCRIPTION_LENGTH}
+                            </FormDescription>
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                      <FormField
+                        control={control}
+                        name="city"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelClass}>
+                              Ville du projet <span className="text-destructive">*</span>
+                            </FormLabel>
+                            <Select value={field.value ?? ''} onValueChange={field.onChange}>
+                              <FormControl>
+                                <SelectTrigger className={selectTriggerClass} data-testid="select-city">
+                                  <SelectValue placeholder="Sélectionnez une ville" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {projectCities.map((city) => (
+                                  <SelectItem key={city} value={city} className="text-base">
+                                    {city}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage data-testid="error-city" />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={control}
+                        name="timeline"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelClass}>
+                              Échéancier souhaité <span className="text-destructive">*</span>
+                            </FormLabel>
+                            <Select value={field.value ?? ''} onValueChange={field.onChange}>
+                              <FormControl>
+                                <SelectTrigger className={selectTriggerClass} data-testid="select-timeline">
+                                  <SelectValue placeholder="Sélectionnez un moment" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {projectTimelines.map((timeline) => (
+                                  <SelectItem key={timeline} value={timeline} className="text-base">
+                                    {timeline}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage data-testid="error-timeline" />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    {allowPhotos && (
+                      <div className="space-y-2">
+                        <span className={`block ${labelClass}`}>
+                          Photos du projet <span className={optionalHintClass}>(facultatif)</span>
+                        </span>
+                        <div className="space-y-4 rounded-md border border-dashed border-input bg-muted/50 p-5">
+                          <div className="flex flex-wrap items-center gap-3">
+                            <Button
+                              type="button"
+                              variant="outline"
+                              onClick={() => photoInputRef.current?.click()}
+                              disabled={photos.length >= MAX_PHOTOS}
+                              className="h-11 bg-white px-4 text-base font-semibold"
+                              data-testid="button-add-photos"
+                            >
+                              <ImagePlus className="h-5 w-5" /> Ajouter des photos
+                            </Button>
+                            <span className="text-sm text-muted-foreground" data-testid="text-photo-count">
+                              {photos.length} / {MAX_PHOTOS} photo{photos.length > 1 ? 's' : ''}
+                            </span>
+                          </div>
+                          <input
+                            ref={photoInputRef}
+                            id="photos"
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            className="sr-only"
+                            onChange={(event) => addPhotos(event.target.files)}
+                            data-testid="input-photos"
+                          />
+                          {photos.length > 0 && (
+                            <ul className="space-y-2" data-testid="list-photos">
+                              {photos.map((photo, index) => (
+                                <li
+                                  key={`${photo.name}-${index}`}
+                                  className="flex items-center justify-between gap-3 rounded-md border border-border bg-white px-4 py-3"
+                                >
+                                  <span className="min-w-0 flex-1 truncate text-sm text-foreground">{photo.name}</span>
+                                  <span className="shrink-0 text-sm text-muted-foreground">{formatFileSize(photo.size)}</span>
+                                  <Button
+                                    type="button"
+                                    variant="ghost"
+                                    size="icon"
+                                    onClick={() => removePhoto(index)}
+                                    className="shrink-0 text-muted-foreground hover:text-destructive"
+                                    aria-label={`Retirer la photo ${photo.name}`}
+                                    data-testid={`button-remove-photo-${index}`}
+                                  >
+                                    <X className="h-5 w-5" />
+                                  </Button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          <p className="text-sm text-muted-foreground">
+                            JPG, PNG, GIF ou WEBP — {formatFileSize(MAX_PHOTO_BYTES)} par photo, {MAX_PHOTOS} photos et {formatFileSize(MAX_PHOTOS_TOTAL_BYTES)} au total.
+                          </p>
+                          {photoError && (
+                            <p
+                              className="flex items-start gap-2 text-sm font-medium text-destructive"
+                              role="alert"
+                              data-testid="error-photos"
+                            >
+                              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                              {photoError}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex gap-3 pt-4">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon"
+                        onClick={prevStep}
+                        className="h-14 w-14 shrink-0 bg-white"
+                        aria-label="Retour à l’étape précédente"
+                        data-testid="button-prev-step-2"
+                      >
+                        <ArrowLeft className="h-6 w-6" />
+                      </Button>
+                      <Button
+                        type="button"
+                        size="lg"
+                        onClick={() => nextStep(['description', 'city', 'timeline'])}
+                        className="h-14 flex-1 text-base font-bold"
+                        data-testid="button-next-step-2"
+                      >
+                        Dernière étape <ArrowRight className="h-5 w-5" />
+                      </Button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {step === 3 && (
+                <motion.div
+                  key="step3"
+                  variants={stepVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="w-full pb-2"
+                >
+                  <div className="mb-8">
+                    <h3
+                      ref={stepHeadingRefs[2]}
+                      tabIndex={-1}
+                      className="mb-2 font-heading text-2xl font-bold text-foreground outline-none md:text-3xl"
+                    >
+                      Où pouvons-nous vous joindre ?
+                    </h3>
+                    <p className="text-muted-foreground">Vos coordonnées pour que nous puissions vous contacter.</p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                      <FormField
+                        control={control}
+                        name="firstName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelClass}>
+                              Prénom <span className="text-destructive">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                type="text"
+                                autoComplete="given-name"
+                                className={fieldClass}
+                                data-testid="input-firstname"
+                              />
+                            </FormControl>
+                            <FormMessage data-testid="error-firstname" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={control}
+                        name="lastName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelClass}>
+                              Nom <span className="text-destructive">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                type="text"
+                                autoComplete="family-name"
+                                className={fieldClass}
+                                data-testid="input-lastname"
+                              />
+                            </FormControl>
+                            <FormMessage data-testid="error-lastname" />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                      <FormField
+                        control={control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelClass}>
+                              Courriel <span className="text-destructive">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                type="email"
+                                inputMode="email"
+                                autoComplete="email"
+                                className={fieldClass}
+                                data-testid="input-email"
+                              />
+                            </FormControl>
+                            <FormMessage data-testid="error-email" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelClass}>
+                              Téléphone <span className="text-destructive">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                type="tel"
+                                inputMode="tel"
+                                autoComplete="tel"
+                                className={fieldClass}
+                                data-testid="input-phone"
+                              />
+                            </FormControl>
+                            <FormMessage data-testid="error-phone" />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={control}
+                      name="referral"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className={labelClass}>
+                            Comment nous avez-vous connus?
+                            <span className={optionalHintClass}>(facultatif)</span>
+                          </FormLabel>
+                          <Select value={field.value ?? ''} onValueChange={field.onChange}>
+                            <FormControl>
+                              <SelectTrigger className={selectTriggerClass} data-testid="select-referral">
+                                <SelectValue placeholder="Préfère ne pas répondre" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {referralSources.map((source) => (
+                                <SelectItem key={source} value={source} className="text-base">
+                                  {source}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={control}
+                      name="consent"
+                      render={({ field }) => (
+                        <FormItem className="space-y-2">
+                          <FormLabel
+                            htmlFor="consent"
+                            className="flex cursor-pointer items-start gap-3 rounded-md border border-border bg-muted/50 p-4 text-sm font-normal leading-relaxed text-muted-foreground transition-colors hover:border-primary/40 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                id="consent"
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                                className="mt-0.5 h-5 w-5 shrink-0 border-muted-foreground/50 data-[state=checked]:border-primary"
+                                data-testid="checkbox-consent"
+                              />
+                            </FormControl>
+                            <span>
+                              Je consens à être contacté(e) concernant ma demande et j'accepte la{' '}
+                              <a
+                                href="/politique-de-confidentialite"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-medium text-foreground underline transition-colors hover:text-primary"
+                                data-testid="link-form-privacy"
+                              >
+                                politique de confidentialité
+                              </a>
+                              . <span className="text-destructive">*</span>
+                            </span>
+                          </FormLabel>
+                          <FormMessage data-testid="error-consent" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <div className="flex justify-center">
+                      <TurnstileWidget
+                        onVerify={handleTurnstileVerify}
+                        onError={handleTurnstileError}
+                        onResetRef={handleTurnstileReset}
+                      />
+                    </div>
+
+                    {errorMsg && (
+                      <div
+                        className="flex items-start gap-3 rounded-md border border-destructive/20 bg-destructive/10 p-4 text-sm font-medium text-destructive"
+                        role="alert"
+                        data-testid="status-error"
+                      >
+                        <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                        {errorMsg}
+                      </div>
+                    )}
+
+                    <div className="flex gap-3 pt-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon"
+                        onClick={prevStep}
+                        disabled={isSubmitting}
+                        className="h-14 w-14 shrink-0 bg-white"
+                        aria-label="Retour à l’étape précédente"
+                        data-testid="button-prev-step-3"
+                      >
+                        <ArrowLeft className="h-6 w-6" />
+                      </Button>
+                      <Button
+                        type="submit"
+                        size="lg"
+                        disabled={isSubmitting || turnstileError}
+                        className="h-14 flex-1 text-base font-bold"
+                        data-testid="button-submit-quote"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="h-5 w-5 animate-spin" /> Envoi en cours...
+                          </>
+                        ) : (
+                          <>
+                            Envoyer ma demande <ArrowRight className="h-5 w-5" />
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    <p
+                      className="flex items-start gap-2 text-sm text-muted-foreground"
+                      data-testid="text-submit-reassurance"
+                    >
+                      <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                      Réponse sous 48 heures. La visite d’évaluation et l’estimation sont sans frais.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </form>
+      </Form>
     </div>
   );
 }

@@ -110,20 +110,6 @@ const staticTrustItems = [
   { title: 'Licence RBQ', text: '8351-9033-59' },
 ];
 
-/* Mêmes identifiants et libellés que `soumissionServices`
-   (src/components/site/SoumissionQuoteForm.tsx). */
-const staticServices = [
-  ['renovation-cuisine', 'Rénovation de cuisine'],
-  ['renovation-salle-de-bain', 'Rénovation de salle de bain'],
-  ['renovation-sous-sol', 'Rénovation de sous-sol'],
-  ['travaux-exterieurs', 'Travaux extérieurs'],
-  ['agrandissement', 'Agrandissement'],
-  ['construction-neuve', 'Construction neuve'],
-  ['construction-garage', 'Construction de garage'],
-  ['commercial', 'Projet commercial'],
-  ['industriel', 'Projet industriel'],
-];
-
 const staticBudgets = [
   '25 000 $ et moins',
   '25 000 $ – 50 000 $',
@@ -159,55 +145,54 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id
 
   <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
   <div class="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
-  <div class="border border-border bg-white p-6 sm:p-8 md:p-10">
-    <div class="mb-10 relative">
-      <div class="flex justify-between mb-2 relative z-10">
+  <div class="rounded-lg border border-border bg-white p-6 shadow-[0_24px_60px_-40px_rgb(0_0_0_/_0.45)] sm:p-8 md:p-10">
+    <div class="mb-8">
+      <div class="flex items-baseline justify-between gap-4">
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">Étape 1 sur ${staticSteps.length}</p>
+        <p class="text-xs font-medium text-muted-foreground">Encore ${staticSteps.length - 1} étapes</p>
+      </div>
+      <div class="relative mt-3 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+        <div class="h-full w-full flex-1 bg-primary" style="transform:translateX(-66.6667%)"></div>
+      </div>
+      <ol class="mt-3 grid grid-cols-3 gap-2">
         ${staticSteps
           .map(
-            ({ number, label }) => `<div class="flex flex-col items-center gap-2">
-          <span class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 ${
-            number === 1
-              ? 'bg-primary border-primary text-primary-foreground'
-              : 'bg-white border-border text-muted-foreground'
-          }">${number}</span>
-          <span class="text-xs font-semibold ${number === 1 ? 'text-foreground' : 'text-muted-foreground'}">${label}</span>
-        </div>`,
+            ({ number, label }) =>
+              `<li class="text-xs font-semibold ${
+                number === 1 ? 'text-foreground' : 'text-muted-foreground'
+              }${number === 2 ? ' text-center' : ''}${number === 3 ? ' text-right' : ''}">${label}</li>`,
           )
           .join('\n        ')}
-      </div>
-      <div class="absolute top-5 left-5 right-5 h-0.5 bg-border -z-0"></div>
+      </ol>
     </div>
 
-    <div class="space-y-6">
+    <div>
       <div class="mb-8">
-        <h3 class="text-2xl md:text-3xl font-bold font-heading text-foreground mb-2">Quel est votre projet ?</h3>
+        <h3 class="mb-2 font-heading text-2xl font-bold text-foreground md:text-3xl">Quel est votre projet ?</h3>
         <p class="text-muted-foreground">Aidez-nous à comprendre vos besoins initiaux.</p>
       </div>
 
       <div class="space-y-8">
-        <div class="space-y-3">
-          <label for="service" class="block text-sm font-bold text-foreground uppercase tracking-wider">Type de travaux <span class="text-destructive">*</span></label>
-          <select id="service" name="service" class="w-full p-4 rounded-none border border-input bg-accent/5 text-lg">
-            <option value="">Sélectionnez un service</option>
-            ${staticServices.map(([id, label]) => `<option value="${id}">${label}</option>`).join('\n            ')}
-          </select>
+        <div class="space-y-2">
+          <span class="block text-xs font-bold uppercase leading-none tracking-[0.12em] text-foreground">Type de travaux <span class="text-destructive">*</span></span>
+          <span class="flex h-12 w-full items-center justify-between rounded-md border border-input bg-white px-4 text-base text-muted-foreground">Sélectionnez un service<span class="block h-4 w-4 opacity-50" aria-hidden="true"></span></span>
         </div>
 
-        <div class="space-y-4">
-          <label class="block text-sm font-bold text-foreground uppercase tracking-wider">Budget approximatif <span class="text-destructive">*</span></label>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="space-y-2">
+          <span class="block text-xs font-bold uppercase leading-none tracking-[0.12em] text-foreground">Budget approximatif <span class="text-destructive">*</span></span>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
             ${staticBudgets
               .map(
-                (budget) => `<span class="border border-border rounded-none p-4 flex items-center gap-3">
-              <span class="w-4 h-4 rounded-full border border-muted-foreground/40 shrink-0"></span>
-              <span class="font-medium text-foreground">${budget}</span>
+                (budget) => `<span class="flex items-center gap-3 rounded-md border border-border bg-white p-4 text-base font-medium leading-none">
+              <span class="h-5 w-5 shrink-0 rounded-full border border-muted-foreground/50"></span>
+              <span class="text-foreground">${budget}</span>
             </span>`,
               )
               .join('\n            ')}
           </div>
         </div>
 
-        <span class="w-full bg-primary text-primary-foreground font-bold py-4 rounded-none flex items-center justify-center gap-2 mt-8 text-lg">Continuer</span>
+        <span class="mt-2 inline-flex h-14 w-full items-center justify-center gap-2 rounded-md border border-primary-border bg-primary px-8 text-base font-bold text-primary-foreground">Continuer</span>
       </div>
     </div>
   </div>
@@ -217,7 +202,7 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id
   <ul class="grid grid-cols-2 gap-3">
     ${staticTrustItems
       .map(
-        ({ title, text }) => `<li class="flex flex-col gap-1 border border-border/60 bg-white p-4">
+        ({ title, text }) => `<li class="flex flex-col gap-1 rounded-md border border-border/70 bg-white p-4">
       ${staticIconSlot}
       <p class="text-sm font-semibold leading-snug text-foreground">${title}</p>
       <p class="text-xs text-muted-foreground">${text}</p>
@@ -227,6 +212,9 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id
   </ul>
 
   <figure class="border border-border bg-muted p-5">
+    <div class="mb-2 flex gap-0.5 text-primary" aria-hidden="true">
+      ${'<span class="block h-4 w-4"></span>'.repeat(5)}
+    </div>
     <blockquote class="text-base leading-relaxed text-foreground">« Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement! »</blockquote>
     <figcaption class="mt-2 text-sm text-muted-foreground">Isabelle Baril — Avis Google</figcaption>
   </figure>
