@@ -1,0 +1,602 @@
+head
+  link [href=https://fonts.googleapis.com rel=preconnect]
+  link [href=https://fonts.gstatic.com rel=preconnect]
+  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
+  title « Rénovation de sous-sol Laval et Laurentides | SLC »
+  meta [name=description]
+  meta [name=robots]
+  link [href=https://slchabitation.com/pub/renovation-sous-sol rel=canonical]
+  meta
+  meta
+  meta
+  meta [name=twitter:url]
+  meta [name=twitter:title]
+  meta [name=twitter:description]
+  noscript
+    style « [data-noscript-reveal]{opacity:1!important;transform:none!important} »
+  script « window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gta…410841db »
+  script « function updateGoogleConsentFromCookiebot() { var consent = window.Cookiebot && window.Coo…421f72fa »
+  script « (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm…b644a597 »
+  meta
+  meta [name=viewport]
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta [name=twitter:card]
+  meta [name=twitter:image]
+  meta [name=twitter:image:alt]
+  script [type=application/ld+json] « { "@context": "https://schema.org", "@graph": [ { "@type": "HomeAndConstructionBusiness", …3bbba0a4 »
+  link [href=/favicon.svg rel=icon type=image/svg+xml]
+  link [href=/favicon.png rel=icon sizes=256x256 type=image/png]
+  link [href=/css/normalize.css rel=stylesheet type=text/css]
+  link [href=/css/webflow.css rel=stylesheet type=text/css]
+  link [href=/css/slc-habitation-eea667.webflow.css rel=stylesheet type=text/css]
+  link [href=/css/site-chrome.css rel=stylesheet type=text/css]
+  script [src=/assets/main-*.js type=module]
+  link [href=/assets/main-*.css rel=stylesheet]
+body
+  div [id=root]
+    link [href=/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg rel=preload]
+    div.bg-background.flex.flex-col.font-sans.min-h-[100dvh].pub-shell.selection:bg-primary/20.selection:text-primary.text-foreground
+      div.site-chrome.site-chrome--header [data-testid=site-navbar]
+        section.banner9_component.color-scheme-3
+          div.padding-global
+            div.banner9_content-wrapper
+              div.banner9_content
+                div.banne9_icon-wrapper
+                  div.icon-1x1-small.w-embed
+                    svg [height=100% width=100%]
+                      path
+                div.banner9_text-wrapper
+                  a.text-weight-semibold [href=tel:(514)404-8494] « (514) 404-8494 »
+                div.banner9_text-wrapper
+                  p.text-size-small « RBQ: 8351-9033-59 »
+              div.banner9_social-icons.w-layout-grid
+                a.banner9_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                  div.social-icon.w-embed
+                    svg [height=24 width=24]
+                      path
+        div.color-scheme-1.navbar3_component.w-nav [data-animation=over-left data-collapse=medium data-duration=400 data-easing2=ease data-easing=ease role=banner]
+          div.navbar3_container
+            div.navbar3_menu-button.w-nav-button
+              div.menu-icon3
+                div.menu-icon3_line-top
+                div.menu-icon3_line-middle
+                div.menu-icon3_line-bottom
+            nav.navbar3_menu.w-nav-menu [role=navigation]
+              a.navbar3_logo-link-menu.w-nav-brand [href=#]
+                img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+              a.navbar3_link.w-nav-link [href=/] « Accueil »
+              a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
+              div.navbar3_menu-dropdown.w-dropdown [data-delay=200 data-hover=true]
+                div.navbar3_dropdown-toggle.w-dropdown-toggle
+                  div « Services »
+                  div.dropdown-chevron.w-embed
+                    svg [height=100% width=100%]
+                      path
+                nav.navbar3_dropdown-list.w-dropdown-list
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/renovation] « Rénovation »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
+              a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
+              a.navbar3_tablet-menu-button.w-button [href=/soumission] « Soumission »
+            a.navbar3_logo-link.w-nav-brand [href=/]
+              img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+            a.button.w-button [href=/soumission id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
+            div.navbar3_menu-background
+      div.pub-section-nav
+        nav.pub-header-nav.pub-header-nav--bar [aria-label=Sections de la page data-testid=pub-toc]
+          div.no-scrollbar.pub-header-nav__list
+            a.pub-header-nav__link [data-active=false href=#inclus] « Ce qui est inclus »
+            a.pub-header-nav__link [data-active=false href=#etapes] « Comment ça se passe »
+            a.pub-header-nav__link [data-active=false href=#finitions] « Les finitions »
+            a.pub-header-nav__link [data-active=false href=#visite] « La visite »
+            a.pub-header-nav__link [data-active=false href=#avis] « Avis »
+            a.pub-header-nav__link [data-active=false href=#realisations] « Réalisations »
+            a.pub-header-nav__link [data-active=false href=#faq] « Questions »
+      main.flex-grow
+        section.pub-hero [data-testid=pub-hero]
+          img.pub-hero__image [alt=Sous-sol aménagé avec escalier, portes et plancher de bois height=3000 src=/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg style=object-position:center 60% width=4000]
+          div.pub-hero__scrim [aria-hidden=true]
+          div.pub-hero__inner
+            div.fade-up.pub-hero__content
+              ul.pub-hero__badges
+                li.pub-hero__badge « 19 avis Google 5 étoiles »
+                  svg.lucide.lucide-star.pub-hero__badge-icon [aria-hidden=true height=24 width=24]
+                    path
+                li.pub-hero__badge « Licence RBQ : 8351-9033-59 »
+                  svg.lucide.lucide-shield-check.pub-hero__badge-icon [aria-hidden=true height=24 width=24]
+                    path
+                    path
+              p.pub-hero__label « Entrepreneur en rénovation »
+              h1.pub-hero__title « Rénovation de sous-sol à Laval et dans les Laurentides »
+              p.pub-hero__intro « Nous venons voir votre sous-sol, puis nous vous remettons votre soumission. »
+              div.pub-hero__action
+                a.pub-button.pub-button--lg.pub-button--primary [data-testid=button-hero-cta href=/soumission?service=renovation-sous-sol] « Obtenir ma soumission sans frais »
+                  svg.lucide.lucide-arrow-right.pub-button__icon [aria-hidden=true height=24 width=24]
+                    path
+                    path
+            aside.pub-hero__aside [data-testid=hero-thumbs]
+              p.pub-hero__aside-label « Sous-sols réalisés »
+              div.pub-hero__thumbs
+                img.pub-hero__thumb [alt=Salle polyvalente au sous-sol avec portes françaises height=375 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-500.jpg width=500]
+                img.pub-hero__thumb [alt=Sous-sol en cours d’aménagement avec escalier et plafond suspendu height=375 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-500.jpg width=500]
+                img.pub-hero__thumb [alt=Cuisine aménagée dans un sous-sol lumineux height=375 loading=lazy src=/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-500.jpg width=500]
+        section.pub-proof-bar.pub-section-dark [aria-label=Ce que vous obtenez en nous écrivant data-testid=proof-bar]
+          ul.pub-proof-bar__list
+            li.pub-proof-bar__item
+              svg.lucide.lucide-clock.pub-proof-bar__icon [aria-hidden=true height=24 width=24]
+                path
+                circle
+              span
+                span.pub-proof-bar__value « Réponse sous 48 h »
+                span.pub-proof-bar__text « à chaque demande reçue »
+            li.pub-proof-bar__item
+              svg.lucide.lucide-wallet.pub-proof-bar__icon [aria-hidden=true height=24 width=24]
+                path
+                path
+              span
+                span.pub-proof-bar__value « Estimation sans frais »
+                span.pub-proof-bar__text « visite comprise »
+            li.pub-proof-bar__item
+              svg.lucide.lucide-circle-check.pub-proof-bar__icon [aria-hidden=true height=24 width=24]
+                circle
+                path
+              span
+                span.pub-proof-bar__value « 500+ projets complétés »
+                span.pub-proof-bar__text « en 25 ans »
+            li.pub-proof-bar__item
+              svg.lucide.lucide-map-pin.pub-proof-bar__icon [aria-hidden=true height=24 width=24]
+                path
+                circle
+              span
+                span.pub-proof-bar__value « Laval et les Laurentides »
+                span.pub-proof-bar__text « 9 municipalités desservies »
+        section.md:py-20.pub-section-grid.py-16.scroll-mt-20 [id=inclus]
+          div.container-large.max-w-7xl.mx-auto.px-6
+            div.max-w-3xl.mb-12.pub-section-header
+              p.pub-section-header__kicker « Ce qui est inclus »
+              h2.pub-section-header__title « Un sous-sol fini au complet, par une seule équipe »
+              p.pub-section-header__lede « Salle familiale, chambre, bureau ou salle de bain : vous n’avez pas à coordonner plusieurs…e8f38a99 »
+            div.gap-6.grid.md:grid-cols-3
+              article.pub-card
+                div.pub-card__media
+                  img.pub-card__image [alt=Sous-sol avec escalier, garde-corps et plancher de bois height=600 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20230223_130423_1787769737375-p-800.jpg width=800]
+                div.pub-card__body
+                  span.pub-card__icon [aria-hidden=true]
+                    svg.h-6.lucide.lucide-hammer.w-6 [aria-hidden=true height=24 width=24]
+                      path
+                      path
+                      path
+                  h3.pub-card__title « La structure et l’isolation »
+                  ul.pub-card__list
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Divisions et cloisons »
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Isolation des murs et du plafond »
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Insonorisation si vous la voulez »
+              article.pub-card
+                div.pub-card__media
+                  img.pub-card__image [alt=Sous-sol en cours d’aménagement avec câblage et plafond suspendu height=600 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-800.jpg width=800]
+                div.pub-card__body
+                  span.pub-card__icon [aria-hidden=true]
+                    svg.h-6.lucide.lucide-wrench.w-6 [aria-hidden=true height=24 width=24]
+                      path
+                  h3.pub-card__title « La plomberie et l’électricité »
+                  ul.pub-card__list
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Salle de bain ou salle d’eau »
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Prises, éclairage, chauffage »
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Ventilation de l’espace »
+              article.pub-card
+                div.pub-card__media
+                  img.pub-card__image [alt=Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond height=600 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-800.jpg width=800]
+                div.pub-card__body
+                  span.pub-card__icon [aria-hidden=true]
+                    svg.h-6.lucide.lucide-check.w-6 [aria-hidden=true height=24 width=24]
+                      path
+                  h3.pub-card__title « Les finitions »
+                  ul.pub-card__list
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Plancher, gypse, peinture »
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Portes, moulures, rangements »
+                    li.pub-card__list-item
+                      svg.lucide.lucide-check.pub-card__list-icon [aria-hidden=true height=24 width=24]
+                        path
+                      span « Plafond et escalier »
+            div.mt-10.pub-action-bar [data-testid=action-bar]
+              a.pub-button.pub-button--phone [data-testid=link-action-phone href=tel:5144048494] « (514) 404-8494 »
+                svg.lucide.lucide-phone.pub-button__icon [aria-hidden=true height=24 width=24]
+                  path
+              a.pub-button.pub-button--md.pub-button--primary [data-testid=button-inclus-cta href=/soumission?service=renovation-sous-sol] « Obtenir ma soumission sans frais »
+                svg.lucide.lucide-arrow-right.pub-button__icon [aria-hidden=true height=24 width=24]
+                  path
+                  path
+              p.pub-action-bar__note
+                svg.lucide.lucide-shield-check.pub-action-bar__note-icon [aria-hidden=true height=24 width=24]
+                  path
+                  path
+                span « Visite et estimation sans frais, réponse sous 48 heures. »
+        section.border-border.border-y.md:py-20.pub-section-muted.py-16.scroll-mt-20 [id=etapes]
+          div.container-large.max-w-7xl.mx-auto.px-6
+            div.max-w-3xl.mb-12.pub-section-header
+              p.pub-section-header__kicker « Comment ça se passe »
+              h2.pub-section-header__title « Quatre étapes simples »
+            div.gap-6.grid.lg:grid-cols-4.sm:grid-cols-2
+              article.pub-card
+                div.pub-card__body
+                  div.pub-card__number-row
+                    span.pub-card__number [aria-hidden=true] « 01 »
+                    svg.lucide.lucide-message-square.pub-card__number-icon [aria-hidden=true height=24 width=24]
+                      path
+                  h3.pub-card__title.pub-card__title--rule « Vous nous écrivez »
+                  p.pub-card__text « Un formulaire de 3 étapes. Nous vous répondons sous 48 heures. »
+              article.pub-card
+                div.pub-card__body
+                  div.pub-card__number-row
+                    span.pub-card__number [aria-hidden=true] « 02 »
+                    svg.lucide.lucide-ruler.pub-card__number-icon [aria-hidden=true height=24 width=24]
+                      path
+                      path
+                      path
+                      path
+                      path
+                  h3.pub-card__title.pub-card__title--rule « Nous venons voir »
+                  p.pub-card__text « La visite est sans frais. Nous mesurons le sous-sol et notons l’usage que vous visez. »
+              article.pub-card
+                div.pub-card__body
+                  div.pub-card__number-row
+                    span.pub-card__number [aria-hidden=true] « 03 »
+                    svg.lucide.lucide-clipboard-check.pub-card__number-icon [aria-hidden=true height=24 width=24]
+                      rect [height=4 width=8]
+                      path
+                      path
+                  h3.pub-card__title.pub-card__title--rule « Vous recevez votre soumission »
+                  p.pub-card__text « Les travaux prévus y sont détaillés. La soumission est sans frais. »
+              article.pub-card
+                div.pub-card__body
+                  div.pub-card__number-row
+                    span.pub-card__number [aria-hidden=true] « 04 »
+                    svg.lucide.lucide-calendar-check.pub-card__number-icon [aria-hidden=true height=24 width=24]
+                      path
+                      path
+                      rect [height=18 width=18]
+                      path
+                      path
+                  h3.pub-card__title.pub-card__title--rule « On réalise les travaux »
+                  p.pub-card__text « Une équipe, un ordre de travail clair, de la structure aux finitions. »
+            div.mt-10.pub-action-bar [data-testid=action-bar]
+              a.pub-button.pub-button--phone [data-testid=link-action-phone href=tel:5144048494] « (514) 404-8494 »
+                svg.lucide.lucide-phone.pub-button__icon [aria-hidden=true height=24 width=24]
+                  path
+              a.pub-button.pub-button--md.pub-button--primary [data-testid=button-etapes-cta href=/soumission?service=renovation-sous-sol] « Obtenir ma soumission sans frais »
+                svg.lucide.lucide-arrow-right.pub-button__icon [aria-hidden=true height=24 width=24]
+                  path
+                  path
+              p.pub-action-bar__note
+                svg.lucide.lucide-shield-check.pub-action-bar__note-icon [aria-hidden=true height=24 width=24]
+                  path
+                  path
+                span « Plus de 500 projets complétés, 19 avis Google 5 étoiles. »
+        section.pub-photo-row-section.pub-section-dark [data-testid=photo-row id=finitions]
+          div.container-large.max-w-7xl.mx-auto.px-6
+            div.max-w-3xl.mb-12.pub-section-header.pub-section-header--dark
+              p.pub-section-header__kicker « Les finitions »
+              h2.pub-section-header__title « Un sous-sol pensé jusque dans les détails »
+              p.pub-section-header__lede « Voici quelques éléments qui donnent au sous-sol une vraie finition et une utilisation agré…92f4f469 »
+            div.pub-photo-row
+              figure.pub-photo-row__figure
+                div.pub-photo-row__media
+                  img.pub-photo-row__image [alt=Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond height=1200 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-1600.jpg width=1600]
+                figcaption.pub-photo-row__caption
+                  strong.pub-photo-row__title « Plancher et portes »
+                  span.pub-photo-row__text « Le plancher, les portes et les moulures donnent une finition propre et durable à la pièce. »
+              figure.pub-photo-row__figure
+                div.pub-photo-row__media
+                  img.pub-photo-row__image [alt=Sous-sol aménagé avec escalier, portes et plancher de bois height=1200 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776-p-1600.jpg width=1600]
+                figcaption.pub-photo-row__caption
+                  strong.pub-photo-row__title « Escalier et accès »
+                  span.pub-photo-row__text « L’escalier et les accès sont intégrés à l’aménagement pour garder une circulation naturell…e98446d1 »
+              figure.pub-photo-row__figure
+                div.pub-photo-row__media
+                  img.pub-photo-row__image [alt=Cuisine aménagée dans un sous-sol avec îlot central et armoires height=1200 loading=lazy src=/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-1600.jpg width=1600]
+                figcaption.pub-photo-row__caption
+                  strong.pub-photo-row__title « Cuisine et rangement »
+                  span.pub-photo-row__text « Une cuisine et des rangements bien intégrés rendent l’aire de vie du sous-sol vraiment uti…be8b4396 »
+        section.md:py-20.pub-section-grid.py-16.scroll-mt-20 [id=visite]
+          div.container-large.max-w-7xl.mx-auto.px-6
+            div.gap-10.grid.lg:gap-12.lg:grid-cols-12.lg:items-stretch
+              div.lg:col-span-7
+                div.max-w-xl.mb-8.pub-section-header
+                  p.pub-section-header__kicker « La visite »
+                  h2.pub-section-header__title « Ce que nous regardons chez vous »
+                  p.pub-section-header__lede « La visite est sans frais. Elle sert à chiffrer votre projet correctement. »
+                div.pub-visit-points
+                  div.pub-visit-point
+                    h3.pub-visit-point__title « L’humidité »
+                    p.pub-visit-point__text « Les traces d’eau, les odeurs et l’état des murs de fondation. »
+                  div.pub-visit-point
+                    h3.pub-visit-point__title « La hauteur »
+                    p.pub-visit-point__text « Les poutres, les conduits et les tuyaux qui descendent du plafond. »
+                  div.pub-visit-point
+                    h3.pub-visit-point__title « La dalle »
+                    p.pub-visit-point__text « La position des drains, si vous voulez une salle de bain. »
+                  div.pub-visit-point
+                    h3.pub-visit-point__title « Les fenêtres »
+                    p.pub-visit-point__text « Leur taille et leur sortie, surtout si vous voulez une chambre. »
+                div.bg-secondary.flex.flex-col.gap-5.md:p-7.mt-8.p-6.rounded-none.sm:flex-row.sm:items-start.text-white
+                  svg.h-9.lucide.lucide-droplets.shrink-0.text-primary.w-9 [aria-hidden=true height=24 width=24]
+                    path
+                    path
+                  div
+                    h3.font-bold.mb-2.text-lg « L’humidité ne se cache pas sous le gypse »
+                    p.leading-relaxed.text-gray-300.text-sm « Si vous avez déjà vu de l’eau, une odeur ou de la peinture qui pèle, dites-le-nous. Ça cha…ccd79c32 »
+                aside.pub-checklist.pub-visit-checklist [data-testid=checklist-panel]
+                  h3.pub-checklist__title « À préparer pour la visite »
+                    span.pub-checklist__icon [aria-hidden=true]
+                      svg.h-5.lucide.lucide-lightbulb.w-5 [aria-hidden=true height=24 width=24]
+                        path
+                        path
+                        path
+                  ul.pub-checklist__list
+                    li.pub-checklist__item
+                      svg.lucide.lucide-check.pub-checklist__check [aria-hidden=true height=24 width=24]
+                        path
+                      span « L’usage que vous voulez donner à la pièce »
+                    li.pub-checklist__item
+                      svg.lucide.lucide-check.pub-checklist__check [aria-hidden=true height=24 width=24]
+                        path
+                      span « Les pièces fermées souhaitées (chambre, bureau) »
+                    li.pub-checklist__item
+                      svg.lucide.lucide-check.pub-checklist__check [aria-hidden=true height=24 width=24]
+                        path
+                      span « Les traces d’humidité que vous avez déjà vues »
+                    li.pub-checklist__item
+                      svg.lucide.lucide-check.pub-checklist__check [aria-hidden=true height=24 width=24]
+                        path
+                      span « Votre budget approximatif »
+              div.lg:col-span-5.pub-visit-panel
+                div.aspect-[4/3].lg:aspect-auto.pub-visit-panel__media.sm:aspect-[16/10]
+                  img.h-full.object-cover.w-full [alt=Sous-sol en cours d’aménagement avec escalier, câblage et plafond suspendu height=3000 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505.jpg width=4000]
+        section.border-border.border-y.md:py-20.pub-section-muted.py-16.scroll-mt-20 [data-testid=reviews id=avis]
+          div.container-large.max-w-7xl.mx-auto.px-6
+            div.max-w-3xl.mb-12.pub-section-header
+              p.pub-section-header__kicker « Avis Google »
+              h2.pub-section-header__title « Ce que les propriétaires écrivent sur Google »
+              p.pub-section-header__lede « 19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation. »
+            div.pub-reviews
+              figure.pub-review [data-testid=review-card]
+                div.pub-review__stars [aria-label=5 étoiles sur 5 role=img]
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                blockquote.pub-review__text « Magnifique travail de l’équipe SLC Habitation. Nous avions un projet complexe d’agrandisse…3ffb1613 »
+                figcaption.pub-review__author
+                  span.pub-review__name « Johanne Duguay »
+                  span.pub-review__role « Propriétaire »
+              figure.pub-review [data-testid=review-card]
+                div.pub-review__stars [aria-label=5 étoiles sur 5 role=img]
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                blockquote.pub-review__text « Excellente compagnie, service professionnel et soucis du détails! Merci a votre équipe pou…ace76e83 »
+                figcaption.pub-review__author
+                  span.pub-review__name « Mélodie Binette »
+                  span.pub-review__role « Propriétaire »
+              figure.pub-review [data-testid=review-card]
+                div.pub-review__stars [aria-label=5 étoiles sur 5 role=img]
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                  svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
+                    path
+                blockquote.pub-review__text « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je r…184965eb »
+                figcaption.pub-review__author
+                  span.pub-review__name « Isabelle Baril »
+                  span.pub-review__role « Propriétaire »
+        section.bg-background.md:py-20.py-16 [data-testid=section-gallery id=realisations]
+          div.container-large.max-w-7xl.mx-auto.px-6
+            div.pub-gallery-head
+              div.pub-gallery-head__main
+                p.pub-section-header__kicker « Sous-sols réalisés »
+                h2.pub-gallery-head__title.pub-section-header__title « Des sous-sols transformés en pièces de vie »
+              div.pub-gallery-head__aside
+                p.pub-gallery-head__text.pub-section-header__lede « Quelques projets menés de la structure aux finitions, parmi les 500 réalisés depuis 25 ans…3746fb61 »
+            div.pub-gallery
+              div.pub-gallery__block.pub-gallery__block--bento
+                figure.pub-gallery__item.pub-gallery__item--feature
+                  img.pub-gallery__image [alt=Sous-sol aménagé avec escalier, portes et plancher de bois height=3000 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg width=4000]
+                  figcaption.pub-gallery__label
+                    span.pub-gallery__label-category « Rénovation de sous-sol »
+                    span.pub-gallery__label-project « Aire de vie aménagée »
+                div.pub-gallery__stack
+                  figure.pub-gallery__item.pub-gallery__item--stack.pub-gallery__item--stack-1
+                    img.pub-gallery__image [alt=Sous-sol en cours d’aménagement avec escalier, câblage et plafond suspendu height=3000 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505.jpg width=4000]
+                    figcaption.pub-gallery__caption « Travaux en cours dans l’aire de vie »
+                  figure.pub-gallery__item.pub-gallery__item--stack.pub-gallery__item--stack-2
+                    img.pub-gallery__image [alt=Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond height=3000 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173.jpg width=4000]
+                    figcaption.pub-gallery__caption « Salle polyvalente avec finitions complètes »
+                  figure.pub-gallery__item.pub-gallery__item--stack.pub-gallery__item--stack-3
+                    img.pub-gallery__image [alt=Cuisine aménagée dans un sous-sol avec îlot central et armoires height=3000 loading=lazy src=/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943.jpg width=4000]
+                    figcaption.pub-gallery__caption « Cuisine et aire de vie au sous-sol »
+        section.border-border.border-y.md:py-20.pub-section-muted.py-16.scroll-mt-20 [id=faq]
+          div.container-large.max-w-4xl.mx-auto.px-6
+            div.max-w-3xl.mb-16.mx-auto.pub-section-header.text-center
+              p.pub-section-header__kicker « Questions fréquentes »
+              h2.pub-section-header__title « Ce que les propriétaires nous demandent »
+            div.pub-faq-list
+              div.pub-faq [data-open=false]
+                button.pub-faq__summary [aria-controls=faq-panel-«Rd5p» aria-expanded=false type=button]
+                  span.pub-faq__question « Combien coûte l’aménagement d’un sous-sol? »
+                  span.pub-faq__icon [aria-hidden=true]
+                    svg [height=20 width=20]
+                      path
+                div.pub-faq__panel [aria-hidden=true id=faq-panel-«Rd5p» role=region]
+                  div.pub-faq__answer « Le prix dépend de la superficie, des pièces à fermer et des travaux de plomberie ou d’élec…4c5a5021 »
+              div.pub-faq [data-open=false]
+                button.pub-faq__summary [aria-controls=faq-panel-«Rl5p» aria-expanded=false type=button]
+                  span.pub-faq__question « Que faire s’il y a de l’humidité? »
+                  span.pub-faq__icon [aria-hidden=true]
+                    svg [height=20 width=20]
+                      path
+                div.pub-faq__panel [aria-hidden=true id=faq-panel-«Rl5p» role=region]
+                  div.pub-faq__answer « Il faut régler la cause avant de fermer les murs. Pendant la visite, nous cherchons les tr…94858401 »
+              div.pub-faq [data-open=false]
+                button.pub-faq__summary [aria-controls=faq-panel-«Rt5p» aria-expanded=false type=button]
+                  span.pub-faq__question « Peut-on aménager une chambre au sous-sol? »
+                  span.pub-faq__icon [aria-hidden=true]
+                    svg [height=20 width=20]
+                      path
+                div.pub-faq__panel [aria-hidden=true id=faq-panel-«Rt5p» role=region]
+                  div.pub-faq__answer « Souvent oui. Il faut une fenêtre qui sert de sortie et une hauteur suffisante. Nous vérifi…b17bfddb »
+              div.pub-faq [data-open=false]
+                button.pub-faq__summary [aria-controls=faq-panel-«R155p» aria-expanded=false type=button]
+                  span.pub-faq__question « Peut-on ajouter une salle de bain s’il n’y a rien de prévu? »
+                  span.pub-faq__icon [aria-hidden=true]
+                    svg [height=20 width=20]
+                      path
+                div.pub-faq__panel [aria-hidden=true id=faq-panel-«R155p» role=region]
+                  div.pub-faq__answer « C’est possible dans bien des cas. Tout dépend de la position du drain principal et de la d…c85b1697 »
+              div.pub-faq [data-open=false]
+                button.pub-faq__summary [aria-controls=faq-panel-«R1d5p» aria-expanded=false type=button]
+                  span.pub-faq__question « Est-ce que vous vous occupez de tout? »
+                  span.pub-faq__icon [aria-hidden=true]
+                    svg [height=20 width=20]
+                      path
+                div.pub-faq__panel [aria-hidden=true id=faq-panel-«R1d5p» role=region]
+                  div.pub-faq__answer « Oui. Structure, isolation, plomberie, électricité, plancher et finitions sont coordonnés p…6f009c5d »
+        section.bg-background.md:pb-20.md:pt-16.pb-16.pt-12 [data-testid=service-area]
+          div.container-large.max-w-7xl.mx-auto.px-6
+            div.pub-area
+              p.pub-area__label « Nous travaillons à »
+                svg.lucide.lucide-map-pin.pub-area__icon [aria-hidden=true height=24 width=24]
+                  path
+                  circle
+              ul.pub-area__list
+                li.pub-area__item « Laval »
+                li.pub-area__item « Saint-Eustache »
+                li.pub-area__item « Terrebonne »
+                li.pub-area__item « Sainte-Thérèse »
+                li.pub-area__item « Rosemère »
+                li.pub-area__item « Mirabel »
+                li.pub-area__item « Boisbriand »
+                li.pub-area__item « Blainville »
+                li.pub-area__item « Saint-Jérôme »
+              p.pub-area__note « Votre municipalité n’est pas dans la liste? Écrivez-nous, nous vous dirons si nous nous dé…de54b946 »
+        section.isolate.md:py-24.overflow-hidden.pub-section-dark.py-20.relative.text-white [data-sticky-hide=true]
+          img.-z-10.absolute.h-full.inset-0.object-cover.w-full [alt= aria-hidden=true height=3000 loading=lazy src=/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg width=4000]
+          div.-z-10.absolute.bg-secondary/85.inset-0 [aria-hidden=true]
+          div.container-large.max-w-3xl.mx-auto.px-6.relative.text-center
+            div.bg-primary.flex.h-16.items-center.justify-center.mb-6.mx-auto.w-16
+              svg.h-8.lucide.lucide-check.text-white.w-8 [aria-hidden=true height=24 width=24]
+                path
+            h2.font-bold.mb-5 « Prêt à recevoir votre soumission? »
+            p.leading-relaxed.max-w-2xl.mb-9.md:text-[1.0625rem].mx-auto.text-base.text-gray-200 « Dites-nous ce que vous voulez faire de votre sous-sol. Réponse sous 48 heures, visite sans…0cf72347 »
+            a.pub-button.pub-button--lg.pub-button--primary [data-testid=button-bottom-cta href=/soumission?service=renovation-sous-sol] « Demander ma soumission sans frais »
+              svg.lucide.lucide-arrow-right.pub-button__icon [aria-hidden=true height=24 width=24]
+                path
+                path
+      div.pub-sticky-cta [aria-hidden=true data-testid=sticky-cta data-visible=false]
+        a.pub-sticky-cta__phone [data-testid=link-sticky-phone href=tel:5144048494]
+          svg.h-4.lucide.lucide-phone.text-primary.w-4 [aria-hidden=true height=24 width=24]
+            path
+          span.md:not-sr-only.sr-only « (514) 404-8494 »
+        a.pub-button.pub-button--md.pub-button--primary.pub-sticky-cta__button [data-testid=button-sticky-cta href=/soumission] « Ma soumission sans frais »
+          svg.lucide.lucide-arrow-right.pub-button__icon [aria-hidden=true height=24 width=24]
+            path
+            path
+      div.site-chrome.site-chrome--footer [data-sticky-hide= data-testid=site-footer]
+        footer.color-scheme-1.footer3_component
+          div.padding-global
+            div.container-large
+              div.padding-vertical.padding-xxlarge
+                div.padding-bottom.padding-xxlarge
+                  div.footer3_top-wrapper.w-layout-grid
+                    div.footer3_left-wrapper
+                      div.margin-bottom.margin-medium
+                        a.footer3_logo-link.w-nav-brand [href=/]
+                          img.footer3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                      div.margin-bottom.margin-medium
+                        div.footer3_details-wrapper
+                          div.margin-bottom.margin-tiny
+                            div.text-size-small « Adresse »
+                          div.margin-bottom.margin-small
+                            div.text-size-small « Saint Eustache, QC »
+                          div.margin-bottom.margin-tiny
+                            div.text-size-small « Téléphone »
+                          a.text-size-small [href=#] « (514) 404-8494 »
+                          a.text-size-small [href=#] « slchabitation@gmail.com »
+                            br
+                      div.footer3_social-list.w-layout-grid
+                        a.footer3_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                          div.icon-embed-xsmall.w-embed
+                            svg [height=100% width=100%]
+                              path
+                    div.footer3_menu-wrapper.w-layout-grid
+                      div.footer3_link-list
+                        a.footer3_link [href=/] « Accueil »
+                        a.footer3_link [href=/a-propos] « À propos »
+                        a.footer3_link [href=/realisations] « Réalisations »
+                        a.footer3_link [href=/soumission] « Soumission »
+                      div.footer3_link-list
+                        a.footer3_link [href=/renovation] « Rénovation »
+                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                        a.footer3_link [href=/travaux-sur-mesure] « Travaux sur mesure »
+                div.divider-horizontal
+                div.padding-medium.padding-top
+                  div.footer3_bottom-wrapper [style=display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; position: relative;]
+                    div.footer3_credit-text [style=flex: 1;] « © 2025 SLC Habitation. Tous droits réservés. »
+                    div [style=position: absolute; left: 50%; transform: translateX(-50%);]
+                      p [style=#c68f3352] « Fait localement par »
+                        a [href=https://kua.quebec rel=noopener style=color: #d4a574; text-decoration: none; font-weight: 500; display: flex; align-items: center; target=_blank]
+                          img [alt=KUA src=/images/black-letter-kua-logo.png style=height: 24px; width: auto; opacity: 0.8;]
+                    div.footer3_legal-list.w-layout-grid [style=flex: 1; display: flex; justify-content: flex-end;]
+                      a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
+    div [aria-label=Notifications (F8) role=region style=pointer-events:none]
+      ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
+  script [src=/assets/main-*.js type=module]

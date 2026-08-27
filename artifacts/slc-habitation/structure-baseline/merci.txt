@@ -1,0 +1,197 @@
+head
+  link [href=https://fonts.googleapis.com rel=preconnect]
+  link [href=https://fonts.gstatic.com rel=preconnect]
+  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
+  title « Merci, votre demande est reçue | SLC Habitation »
+  meta [name=description]
+  meta [name=robots]
+  link [href=https://slchabitation.com/merci rel=canonical]
+  meta
+  meta
+  meta
+  meta [name=twitter:url]
+  meta [name=twitter:title]
+  meta [name=twitter:description]
+  noscript
+    style « [data-noscript-reveal]{opacity:1!important;transform:none!important} »
+  script « window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gta…410841db »
+  script « function updateGoogleConsentFromCookiebot() { var consent = window.Cookiebot && window.Coo…421f72fa »
+  script « (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm…b644a597 »
+  meta
+  meta [name=viewport]
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta [name=twitter:card]
+  meta [name=twitter:image]
+  meta [name=twitter:image:alt]
+  script [type=application/ld+json] « { "@context": "https://schema.org", "@graph": [ { "@type": "HomeAndConstructionBusiness", …3bbba0a4 »
+  link [href=/favicon.svg rel=icon type=image/svg+xml]
+  link [href=/favicon.png rel=icon sizes=256x256 type=image/png]
+  link [href=/css/normalize.css rel=stylesheet type=text/css]
+  link [href=/css/webflow.css rel=stylesheet type=text/css]
+  link [href=/css/slc-habitation-eea667.webflow.css rel=stylesheet type=text/css]
+  link [href=/css/site-chrome.css rel=stylesheet type=text/css]
+  script [src=/assets/main-*.js type=module]
+  link [href=/assets/main-*.css rel=stylesheet]
+body
+  div [id=root]
+    link [href=/images/relume-657406-p-1600.jpeg rel=preload]
+    div.bg-background.flex.flex-col.font-sans.merci-shell.min-h-[100dvh].text-foreground
+      div.site-chrome.site-chrome--header [data-testid=site-navbar]
+        section.banner9_component.color-scheme-3
+          div.padding-global
+            div.banner9_content-wrapper
+              div.banner9_content
+                div.banne9_icon-wrapper
+                  div.icon-1x1-small.w-embed
+                    svg [height=100% width=100%]
+                      path
+                div.banner9_text-wrapper
+                  a.text-weight-semibold [href=tel:(514)404-8494] « (514) 404-8494 »
+                div.banner9_text-wrapper
+                  p.text-size-small « RBQ: 8351-9033-59 »
+              div.banner9_social-icons.w-layout-grid
+                a.banner9_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                  div.social-icon.w-embed
+                    svg [height=24 width=24]
+                      path
+        div.color-scheme-1.navbar3_component.w-nav [data-animation=over-left data-collapse=medium data-duration=400 data-easing2=ease data-easing=ease role=banner]
+          div.navbar3_container
+            div.navbar3_menu-button.w-nav-button
+              div.menu-icon3
+                div.menu-icon3_line-top
+                div.menu-icon3_line-middle
+                div.menu-icon3_line-bottom
+            nav.navbar3_menu.w-nav-menu [role=navigation]
+              a.navbar3_logo-link-menu.w-nav-brand [href=#]
+                img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+              a.navbar3_link.w-nav-link [href=/] « Accueil »
+              a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
+              div.navbar3_menu-dropdown.w-dropdown [data-delay=200 data-hover=true]
+                div.navbar3_dropdown-toggle.w-dropdown-toggle
+                  div « Services »
+                  div.dropdown-chevron.w-embed
+                    svg [height=100% width=100%]
+                      path
+                nav.navbar3_dropdown-list.w-dropdown-list
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/renovation] « Rénovation »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
+              a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
+              a.navbar3_tablet-menu-button.w-button [href=/soumission] « Soumission »
+            a.navbar3_logo-link.w-nav-brand [href=/]
+              img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+            a.button.w-button [href=/soumission id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
+            div.navbar3_menu-background
+      main.flex-grow [data-conversion-tracked=false]
+        header.bg-secondary.flex.items-end.md:min-h-[28rem].min-h-[22rem].overflow-hidden.relative.text-white
+          img.absolute.h-full.inset-0.object-cover.w-full [alt=Sous-sol rénové par SLC Habitation, boiseries claires et éclairage encastré height=1200 src=/images/relume-657406-p-1600.jpeg style=object-position:center 45% width=1600]
+          div.absolute.bg-gradient-to-t.from-secondary.inset-0.to-secondary/40.via-secondary/85 [aria-hidden=true]
+          div.max-w-5xl.md:pb-20.md:pt-32.mx-auto.pb-14.pt-24.px-6.relative.w-full
+            p.flex.font-bold.gap-2.items-center.mb-4.text-primary.text-xs.tracking-[0.18em].uppercase « Demande reçue »
+              svg.h-4.lucide.lucide-circle-check.w-4 [aria-hidden=true height=24 width=24]
+                circle
+                path
+            h1.font-bold.font-heading.leading-tight.max-w-3xl.mb-4.md:text-5xl.sm:text-4xl.text-3xl.text-white.tracking-tight [data-testid=text-merci-title] « Merci, nous avons bien reçu votre demande »
+            p.leading-relaxed.max-w-2xl.md:text-lg.text-base.text-white/85 « Votre projet est entre nos mains. Nous vous répondons sous 48 heures pour convenir d’une v…9b34a164 »
+        section.bg-background.md:py-24.py-16 [aria-labelledby=merci-etapes data-testid=section-merci]
+          div.gap-12.grid.grid-cols-1.lg:gap-16.lg:grid-cols-12.max-w-5xl.mx-auto.px-6
+            div.lg:col-span-7
+              h2.font-bold.font-heading.leading-tight.md:text-3xl.text-2xl.text-foreground [data-noscript-reveal= id=merci-etapes style=opacity:0;transform:translateY(24px)] « Ce qui se passe maintenant »
+              ol.mt-8.space-y-6 [data-testid=list-merci-steps]
+                li.flex.gap-4 [data-noscript-reveal= style=opacity:0;transform:translateY(24px)]
+                  span.bg-accent.border.border-primary/30.flex.flex-none.font-bold.font-heading.h-9.items-center.justify-center.text-accent-foreground.text-sm.w-9 [aria-hidden=true] « 1 »
+                  div
+                    h3.font-heading.font-semibold.text-foreground.text-lg « Nous lisons votre demande »
+                    p.leading-relaxed.mt-1.text-base.text-muted-foreground « Votre message et vos photos, s’il y en a, sont transmis directement à l’équipe. »
+                li.flex.gap-4 [data-noscript-reveal= style=opacity:0;transform:translateY(24px)]
+                  span.bg-accent.border.border-primary/30.flex.flex-none.font-bold.font-heading.h-9.items-center.justify-center.text-accent-foreground.text-sm.w-9 [aria-hidden=true] « 2 »
+                  div
+                    h3.font-heading.font-semibold.text-foreground.text-lg « Nous vous contactons »
+                    p.leading-relaxed.mt-1.text-base.text-muted-foreground « Réponse sous 48 heures, du lundi au vendredi, par téléphone ou par courriel. »
+                li.flex.gap-4 [data-noscript-reveal= style=opacity:0;transform:translateY(24px)]
+                  span.bg-accent.border.border-primary/30.flex.flex-none.font-bold.font-heading.h-9.items-center.justify-center.text-accent-foreground.text-sm.w-9 [aria-hidden=true] « 3 »
+                  div
+                    h3.font-heading.font-semibold.text-foreground.text-lg « Nous planifions la visite »
+                    p.leading-relaxed.mt-1.text-base.text-muted-foreground « La visite sert à chiffrer votre projet correctement. Elle est sans frais, l’estimation aus…7c627f8e »
+            aside.lg:col-span-5 [data-noscript-reveal= style=opacity:0;transform:translateY(24px)]
+              div.bg-white.border.border-border.md:p-8.p-6
+                h2.font-heading.font-semibold.text-foreground.text-lg « Besoin de nous joindre avant? »
+                ul.mt-5.space-y-4
+                  li
+                    a.flex.font-semibold.gap-3.hover:text-primary.items-center.text-base.text-foreground [data-testid=link-merci-phone href=tel:5144048494]
+                      svg.flex-none.h-5.lucide.lucide-phone.text-primary.w-5 [aria-hidden=true height=24 width=24]
+                        path
+                      span.break-all « (514) 404-8494 »
+                  li
+                    a.flex.font-semibold.gap-3.hover:text-primary.items-center.text-base.text-foreground [data-testid=link-merci-email href=mailto:slchabitation@gmail.com]
+                      svg.flex-none.h-5.lucide.lucide-mail.text-primary.w-5 [aria-hidden=true height=24 width=24]
+                        path
+                        rect [height=16 width=20]
+                      span.break-all « slchabitation@gmail.com »
+                div.border-border.border-t.mt-8.pt-6.space-y-3
+                  a.flex.font-semibold.gap-3.hover:text-primary.items-center.justify-between.text-base.text-foreground [data-testid=link-merci-home href=/] « Retour à l’accueil »
+                    svg.flex-none.h-4.lucide.lucide-arrow-right.text-primary.w-4 [aria-hidden=true height=24 width=24]
+                      path
+                      path
+                  a.flex.font-semibold.gap-3.hover:text-primary.items-center.justify-between.text-base.text-foreground [data-testid=link-merci-projects href=/realisations] « Voir nos réalisations »
+                    svg.flex-none.h-4.lucide.lucide-arrow-right.text-primary.w-4 [aria-hidden=true height=24 width=24]
+                      path
+                      path
+      div.site-chrome.site-chrome--footer [data-testid=site-footer]
+        footer.color-scheme-1.footer3_component
+          div.padding-global
+            div.container-large
+              div.padding-vertical.padding-xxlarge
+                div.padding-bottom.padding-xxlarge
+                  div.footer3_top-wrapper.w-layout-grid
+                    div.footer3_left-wrapper
+                      div.margin-bottom.margin-medium
+                        a.footer3_logo-link.w-nav-brand [href=/]
+                          img.footer3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                      div.margin-bottom.margin-medium
+                        div.footer3_details-wrapper
+                          div.margin-bottom.margin-tiny
+                            div.text-size-small « Adresse »
+                          div.margin-bottom.margin-small
+                            div.text-size-small « Saint Eustache, QC »
+                          div.margin-bottom.margin-tiny
+                            div.text-size-small « Téléphone »
+                          a.text-size-small [href=#] « (514) 404-8494 »
+                          a.text-size-small [href=#] « slchabitation@gmail.com »
+                            br
+                      div.footer3_social-list.w-layout-grid
+                        a.footer3_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                          div.icon-embed-xsmall.w-embed
+                            svg [height=100% width=100%]
+                              path
+                    div.footer3_menu-wrapper.w-layout-grid
+                      div.footer3_link-list
+                        a.footer3_link [href=/] « Accueil »
+                        a.footer3_link [href=/a-propos] « À propos »
+                        a.footer3_link [href=/realisations] « Réalisations »
+                        a.footer3_link [href=/soumission] « Soumission »
+                      div.footer3_link-list
+                        a.footer3_link [href=/renovation] « Rénovation »
+                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                        a.footer3_link [href=/travaux-sur-mesure] « Travaux sur mesure »
+                div.divider-horizontal
+                div.padding-medium.padding-top
+                  div.footer3_bottom-wrapper [style=display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; position: relative;]
+                    div.footer3_credit-text [style=flex: 1;] « © 2025 SLC Habitation. Tous droits réservés. »
+                    div [style=position: absolute; left: 50%; transform: translateX(-50%);]
+                      p [style=#c68f3352] « Fait localement par »
+                        a [href=https://kua.quebec rel=noopener style=color: #d4a574; text-decoration: none; font-weight: 500; display: flex; align-items: center; target=_blank]
+                          img [alt=KUA src=/images/black-letter-kua-logo.png style=height: 24px; width: auto; opacity: 0.8;]
+                    div.footer3_legal-list.w-layout-grid [style=flex: 1; display: flex; justify-content: flex-end;]
+                      a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
+    div [aria-label=Notifications (F8) role=region style=pointer-events:none]
+      ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
+  script [src=/assets/main-*.js type=module]

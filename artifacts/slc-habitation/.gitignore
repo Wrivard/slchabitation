@@ -1,0 +1,5 @@
+# Captures de référence du filet de sécurité visuel.
+# Elles pèsent plusieurs centaines de mégaoctets : au lieu de les versionner,
+# on les régénère à la demande à partir du commit de référence déclaré dans
+# parity-reference.json (« pnpm run parity:baseline »).
+visual-baseline/

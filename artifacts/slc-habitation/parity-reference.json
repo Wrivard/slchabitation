@@ -1,0 +1,5 @@
+{
+  "commit": "83baf52",
+  "description": "Site tel qu'il était avant la migration du HTML Webflow vers React. Les captures de référence du contrôle visuel sont reconstruites à partir de ce commit : « pnpm run parity:baseline ». Après une modification acceptée du site, remplacer ce commit par celui qui vient d'être validé, sans quoi la comparaison signalera indéfiniment des écarts déjà approuvés.",
+  "recordedOn": "2026-08-27"
+}

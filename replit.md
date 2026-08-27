@@ -38,7 +38,37 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+### Site public (`artifacts/slc-habitation`)
+
+- Les pages statiques ne sont plus écrites à la main : `pnpm run build` construit
+  l'application pour le navigateur, puis pour le serveur (`vite.config.ssr.ts`),
+  puis `scripts/prerender.mjs` demande à React le contenu de chaque page. Toute
+  modification d'une page se répercute donc automatiquement sur sa version
+  statique.
+- Filet de sécurité avant/après une modification du site :
+  `pnpm run parity:baseline` reconstruit le site tel qu'il était au commit
+  déclaré dans `parity-reference.json` et en garde des captures ;
+  `pnpm run parity:check` compare la construction actuelle (structure du HTML
+  puis captures d'écran, 3 largeurs, avec et sans JavaScript). Les captures de
+  référence ne sont pas versionnées : elles se régénèrent à la demande.
+- Les captures de référence pèsent plus de 100 Mo : elles ne sont pas
+  versionnées, mais reconstruites depuis le commit inscrit dans
+  `parity-reference.json` (`pnpm run parity:baseline`). Ce qui est versionné :
+  les empreintes de structure (`structure-baseline/`, enregistrées sur l'état
+  accepté) et la liste des écarts visuels acceptés
+  (`visual-accepted-deltas.json`, nommés un par un et rattachés au commit de
+  référence).
+- Après une modification du site acceptée par le propriétaire : relancer
+  `pnpm run structure:baseline`, inscrire le commit validé dans
+  `parity-reference.json` et vider `visual-accepted-deltas.json`. Sans cela, la
+  comparaison signale indéfiniment des écarts déjà approuvés.
+- `pnpm run behaviors:check` vérifie les animations reprises du site Webflow sur
+  la page technique `/verification-interactions`.
+- Le navigateur remonte l'application par-dessus le HTML prérendu
+  (`createRoot`), il ne l'hydrate pas. C'est le comportement d'origine, et le
+  contrôle visuel le vérifie page par page ; passer à `hydrateRoot` demanderait
+  que le rendu serveur et le rendu client soient identiques au caractère près,
+  ce qui n'est pas encore le cas (aperçu statique du formulaire de soumission).
 
 ## Pointers
 

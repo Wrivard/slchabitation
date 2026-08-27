@@ -1,0 +1,25 @@
+{
+  "reference": "83baf52",
+  "description": "Écarts visuels volontairement acceptés par rapport au commit de référence indiqué dans parity-reference.json. Ils ne concernent que la version SANS JavaScript de pages déjà entièrement React, dont le contenu statique était auparavant recopié à la main dans le script de construction : le nouveau rendu les fait converger avec la vraie page. Les versions hydratées, elles, doivent rester identiques au pixel près et ne figurent jamais ici. Le contenu de ces pages statiques reste surveillé par la comparaison de structure (structure-baseline), qui est versionnée et enregistrée sur l'état accepté. Dès que le commit de référence est mis à jour vers un état déjà accepté, cette liste ne s'applique plus et doit être vidée.",
+  "acceptedOn": "2026-08-27",
+  "shots": {
+    "pub__renovation-sous-sol--mobile--static.png": "Page pub : sa version sans JavaScript était recopiée à la main dans le script de construction et avait dérivé du vrai contenu (appel à l'action reformulé, numéros de téléphone absents, libellés d'étapes différents). Elle est désormais produite par la page elle-même.",
+    "pub__renovation-sous-sol--tablet--static.png": "Page pub : sa version sans JavaScript était recopiée à la main dans le script de construction et avait dérivé du vrai contenu (appel à l'action reformulé, numéros de téléphone absents, libellés d'étapes différents). Elle est désormais produite par la page elle-même.",
+    "pub__renovation-sous-sol--desktop--static.png": "Page pub : sa version sans JavaScript était recopiée à la main dans le script de construction et avait dérivé du vrai contenu (appel à l'action reformulé, numéros de téléphone absents, libellés d'étapes différents). Elle est désormais produite par la page elle-même.",
+    "pub__renovation-salle-de-bain--mobile--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__renovation-salle-de-bain--tablet--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__renovation-salle-de-bain--desktop--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__renovation-cuisine--mobile--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__renovation-cuisine--tablet--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__renovation-cuisine--desktop--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__agrandissement-maison--mobile--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__agrandissement-maison--tablet--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "pub__agrandissement-maison--desktop--static.png": "Page pub : idem, la copie statique écrite à la main est remplacée par le rendu de la vraie page.",
+    "merci--mobile--static.png": "Page de confirmation : la copie statique omettait les icônes et le bloc « Ce qui se passe maintenant » restait invisible sans JavaScript. La version sans JavaScript affiche maintenant exactement la même chose que la page hydratée.",
+    "merci--tablet--static.png": "Page de confirmation : la copie statique omettait les icônes et le bloc « Ce qui se passe maintenant » restait invisible sans JavaScript. La version sans JavaScript affiche maintenant exactement la même chose que la page hydratée.",
+    "merci--desktop--static.png": "Page de confirmation : la copie statique omettait les icônes et le bloc « Ce qui se passe maintenant » restait invisible sans JavaScript. La version sans JavaScript affiche maintenant exactement la même chose que la page hydratée.",
+    "politique-de-confidentialite--mobile--static.png": "Page entièrement React : sa version sans JavaScript vient maintenant de la page elle-même au lieu d'une copie du texte dans le script de construction.",
+    "politique-de-confidentialite--tablet--static.png": "Page entièrement React : sa version sans JavaScript vient maintenant de la page elle-même au lieu d'une copie du texte dans le script de construction.",
+    "politique-de-confidentialite--desktop--static.png": "Page entièrement React : sa version sans JavaScript vient maintenant de la page elle-même au lieu d'une copie du texte dans le script de construction."
+  }
+}

@@ -17,6 +17,7 @@ import PolitiqueDeCookie from '@/pages/PolitiqueDeCookie';
 import Unauthorized from '@/pages/Unauthorized';
 import NotFoundPage from '@/pages/NotFoundPage';
 import StyleGuide from '@/pages/StyleGuide';
+import VerificationInteractions from '@/pages/VerificationInteractions';
 
 // New Pub Routes
 import RenovationSousSolPub from '@/pages/pub/RenovationSousSol';
@@ -130,6 +131,9 @@ function Router() {
         <Route path="/401.html" component={Unauthorized} />
         <Route path="/404.html" component={NotFoundPage} />
         <Route path="/style-guide-a2eb197e-ef3b-4620-ad8c-6507e3057840.html" component={StyleGuide} />
+        {/* Banc d'essai des interactions reprises du site hérité : hors menu,
+            hors plan de site, jamais prérendu. */}
+        <Route path="/verification-interactions" component={VerificationInteractions} />
         
         {/* Paid Funnel (Pub) Routes */}
         <Route path="/pub/renovation-sous-sol" component={RenovationSousSolPub} />
@@ -152,11 +156,16 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
 }
 
-function App() {
+/**
+ * `ssrPath` n'est utilisé que par le prérendu : il indique la page à rendre
+ * puisqu'il n'y a pas de barre d'adresse côté serveur. Dans le navigateur, la
+ * propriété reste absente et wouter lit l'URL courante comme avant.
+ */
+function App({ ssrPath }: { ssrPath?: string } = {}) {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')} ssrPath={ssrPath}>
           <Router />
         </WouterRouter>
         <Toaster />

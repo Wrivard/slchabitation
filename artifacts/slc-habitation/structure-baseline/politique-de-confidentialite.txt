@@ -1,0 +1,188 @@
+head
+  link [href=https://fonts.googleapis.com rel=preconnect]
+  link [href=https://fonts.gstatic.com rel=preconnect]
+  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
+  title « Politique de confidentialité | SLC Habitation »
+  meta [name=description]
+  meta [name=robots]
+  link [href=https://slchabitation.com/politique-de-confidentialite rel=canonical]
+  meta
+  meta
+  meta
+  meta [name=twitter:url]
+  meta [name=twitter:title]
+  meta [name=twitter:description]
+  noscript
+    style « [data-noscript-reveal]{opacity:1!important;transform:none!important} »
+  script « window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gta…410841db »
+  script « function updateGoogleConsentFromCookiebot() { var consent = window.Cookiebot && window.Coo…421f72fa »
+  script « (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm…b644a597 »
+  meta
+  meta [name=viewport]
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta
+  meta [name=twitter:card]
+  meta [name=twitter:image]
+  meta [name=twitter:image:alt]
+  script [type=application/ld+json] « { "@context": "https://schema.org", "@graph": [ { "@type": "HomeAndConstructionBusiness", …3bbba0a4 »
+  link [href=/favicon.svg rel=icon type=image/svg+xml]
+  link [href=/favicon.png rel=icon sizes=256x256 type=image/png]
+  link [href=/css/normalize.css rel=stylesheet type=text/css]
+  link [href=/css/webflow.css rel=stylesheet type=text/css]
+  link [href=/css/slc-habitation-eea667.webflow.css rel=stylesheet type=text/css]
+  link [href=/css/site-chrome.css rel=stylesheet type=text/css]
+  script [src=/assets/main-*.js type=module]
+  link [href=/assets/main-*.css rel=stylesheet]
+body
+  div [id=root]
+    div.bg-background.flex.flex-col.font-sans.min-h-screen.text-foreground
+      div.site-chrome.site-chrome--header [data-testid=site-navbar]
+        section.banner9_component.color-scheme-3
+          div.padding-global
+            div.banner9_content-wrapper
+              div.banner9_content
+                div.banne9_icon-wrapper
+                  div.icon-1x1-small.w-embed
+                    svg [height=100% width=100%]
+                      path
+                div.banner9_text-wrapper
+                  a.text-weight-semibold [href=tel:(514)404-8494] « (514) 404-8494 »
+                div.banner9_text-wrapper
+                  p.text-size-small « RBQ: 8351-9033-59 »
+              div.banner9_social-icons.w-layout-grid
+                a.banner9_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                  div.social-icon.w-embed
+                    svg [height=24 width=24]
+                      path
+        div.color-scheme-1.navbar3_component.w-nav [data-animation=over-left data-collapse=medium data-duration=400 data-easing2=ease data-easing=ease role=banner]
+          div.navbar3_container
+            div.navbar3_menu-button.w-nav-button
+              div.menu-icon3
+                div.menu-icon3_line-top
+                div.menu-icon3_line-middle
+                div.menu-icon3_line-bottom
+            nav.navbar3_menu.w-nav-menu [role=navigation]
+              a.navbar3_logo-link-menu.w-nav-brand [href=#]
+                img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+              a.navbar3_link.w-nav-link [href=/] « Accueil »
+              a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
+              div.navbar3_menu-dropdown.w-dropdown [data-delay=200 data-hover=true]
+                div.navbar3_dropdown-toggle.w-dropdown-toggle
+                  div « Services »
+                  div.dropdown-chevron.w-embed
+                    svg [height=100% width=100%]
+                      path
+                nav.navbar3_dropdown-list.w-dropdown-list
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/renovation] « Rénovation »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
+              a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
+              a.navbar3_tablet-menu-button.w-button [href=/soumission] « Soumission »
+            a.navbar3_logo-link.w-nav-brand [href=/]
+              img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+            a.button.w-button [href=/soumission id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
+            div.navbar3_menu-background
+      main.container-large.flex-grow.max-w-3xl.md:py-24.mx-auto.px-6.py-16
+        h1.font-bold.font-heading.mb-8.md:text-5xl.text-3xl « Politique de confidentialité »
+        div.max-w-none.prose.prose-neutral.space-y-6.text-muted-foreground
+          p « Dernière mise à jour : »
+            strong « 25 août 2026 »
+          p « Cette politique décrit les pratiques de SLC Habitation (« nous », « notre » ou « nos ») co…a3e5ffd0 »
+          h2.font-bold.mb-4.mt-8.text-foreground.text-xl « 1. Collecte des renseignements personnels »
+          p « Nous recueillons uniquement les renseignements personnels nécessaires pour vous fournir no…0b894c94 »
+          ul.list-disc.pl-5.space-y-2
+            li « Nom et prénom »
+            li « Adresse courriel »
+            li « Numéro de téléphone »
+            li « Détails concernant votre projet (type de travaux, budget approximatif, description) »
+            li « Données de navigation et témoins (cookies) tels qu&#x27;identifiés ci-bas »
+          h2.font-bold.mb-4.mt-8.text-foreground.text-xl « 2. Utilisation des renseignements »
+          p « Vos renseignements personnels sont utilisés exclusivement pour les fins suivantes : »
+          ul.list-disc.pl-5.space-y-2
+            li « Répondre à votre demande de soumission ou de contact »
+            li « Communiquer avec vous concernant l&#x27;évaluation et l&#x27;exécution de votre projet »
+            li « Comprendre la provenance de nos demandes (via l&#x27;analyse des campagnes publicitaires) »
+            li « Améliorer l&#x27;expérience de navigation sur notre site web »
+          h2.font-bold.mb-4.mt-8.text-foreground.text-xl « 3. Consentement et Témoins (Cookies) »
+          p « Nous utilisons des outils d&#x27;analyse et de suivi (notamment Google Analytics et Google…c46a1d01 »
+          h2.font-bold.mb-4.mt-8.text-foreground.text-xl « 4. Protection et conservation des données »
+          p « Nous appliquons des mesures administratives, techniques et organisationnelles raisonnables…17e3123c »
+          p « Nous conservons les demandes pendant la période nécessaire au suivi du projet, puis selon …e9184d98 »
+          h2.font-bold.mb-4.mt-8.text-foreground.text-xl « 5. Partage des renseignements »
+          p « Nous ne vendons ni ne louons vos renseignements personnels. Ils peuvent être transmis aux …76339ff0 »
+          h2.font-bold.mb-4.mt-8.text-foreground.text-xl « 6. Vos droits »
+          p « Conformément à la législation québécoise, vous disposez des droits suivants concernant vos…fd79b61f »
+          ul.list-disc.pl-5.space-y-2
+            li « Le droit d&#x27;accéder aux renseignements que nous détenons à votre sujet »
+            li « Le droit de demander la rectification de renseignements inexacts ou incomplets »
+            li « Le droit de retirer votre consentement à tout moment »
+            li « Le droit de demander la suppression de vos renseignements personnels »
+          h2.font-bold.mb-4.mt-8.text-foreground.text-xl « 7. Responsable de la protection des renseignements personnels »
+          p « Pour toute question concernant cette politique, ou pour exercer vos droits, vous pouvez co…0dd9cf48 »
+          div.bg-muted.mt-4.p-6.rounded-xl
+            p « Responsable de la protection des renseignements personnels — SLC Habitation »
+              strong « Responsable : »
+            p
+              strong « Courriel : »
+              a [data-testid=link-privacy-email href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
+            p « (514) 404-8494 »
+              strong « Téléphone : »
+        div.mt-12.text-center
+          a.font-semibold.hover:underline.text-primary [href=/] « Retour à l&#x27;accueil »
+      div.site-chrome.site-chrome--footer [data-testid=site-footer]
+        footer.color-scheme-1.footer3_component
+          div.padding-global
+            div.container-large
+              div.padding-vertical.padding-xxlarge
+                div.padding-bottom.padding-xxlarge
+                  div.footer3_top-wrapper.w-layout-grid
+                    div.footer3_left-wrapper
+                      div.margin-bottom.margin-medium
+                        a.footer3_logo-link.w-nav-brand [href=/]
+                          img.footer3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                      div.margin-bottom.margin-medium
+                        div.footer3_details-wrapper
+                          div.margin-bottom.margin-tiny
+                            div.text-size-small « Adresse »
+                          div.margin-bottom.margin-small
+                            div.text-size-small « Saint Eustache, QC »
+                          div.margin-bottom.margin-tiny
+                            div.text-size-small « Téléphone »
+                          a.text-size-small [href=#] « (514) 404-8494 »
+                          a.text-size-small [href=#] « slchabitation@gmail.com »
+                            br
+                      div.footer3_social-list.w-layout-grid
+                        a.footer3_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                          div.icon-embed-xsmall.w-embed
+                            svg [height=100% width=100%]
+                              path
+                    div.footer3_menu-wrapper.w-layout-grid
+                      div.footer3_link-list
+                        a.footer3_link [href=/] « Accueil »
+                        a.footer3_link [href=/a-propos] « À propos »
+                        a.footer3_link [href=/realisations] « Réalisations »
+                        a.footer3_link [href=/soumission] « Soumission »
+                      div.footer3_link-list
+                        a.footer3_link [href=/renovation] « Rénovation »
+                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                        a.footer3_link [href=/travaux-sur-mesure] « Travaux sur mesure »
+                div.divider-horizontal
+                div.padding-medium.padding-top
+                  div.footer3_bottom-wrapper [style=display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; position: relative;]
+                    div.footer3_credit-text [style=flex: 1;] « © 2025 SLC Habitation. Tous droits réservés. »
+                    div [style=position: absolute; left: 50%; transform: translateX(-50%);]
+                      p [style=#c68f3352] « Fait localement par »
+                        a [href=https://kua.quebec rel=noopener style=color: #d4a574; text-decoration: none; font-weight: 500; display: flex; align-items: center; target=_blank]
+                          img [alt=KUA src=/images/black-letter-kua-logo.png style=height: 24px; width: auto; opacity: 0.8;]
+                    div.footer3_legal-list.w-layout-grid [style=flex: 1; display: flex; justify-content: flex-end;]
+                      a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
+    div [aria-label=Notifications (F8) role=region style=pointer-events:none]
+      ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
+  script [src=/assets/main-*.js type=module]
