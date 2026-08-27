@@ -60,6 +60,20 @@ export default defineConfig({
         ]
       : []),
     {
+      // Cookiebot n'accepte que les domaines déclarés dans son tableau de bord :
+      // sur le serveur de développement, son fichier de configuration répond 404
+      // et l'échec de chargement remonte comme une erreur d'exécution dans
+      // l'aperçu. Les balises restent intactes dans le site construit.
+      name: 'strip-cookiebot-in-dev',
+      apply: 'serve',
+      transformIndexHtml(html) {
+        return html.replace(
+          /[ \t]*<script id="(?:Cookiebot|CookieDeclaration)"[^>]*><\/script>\n?/g,
+          '',
+        );
+      },
+    },
+    {
       name: 'rewrite-html-to-index',
       configureServer(server) {
         server.middlewares.use(redirectLegacyRoutes);
