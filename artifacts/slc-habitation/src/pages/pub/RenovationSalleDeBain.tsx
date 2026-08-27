@@ -260,7 +260,7 @@ const faqs = [
   },
   {
     question: 'Est-ce que vous vous occupez de tout?',
-    answer: 'Oui. Démolition, plomberie, ventilation, électricité, céramique et finitions sont coordonnées par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans d’expérience.',
+    answer: 'Oui. Démolition, plomberie, ventilation, électricité, céramique et finitions sont coordonnées par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.',
   },
 ];
 
@@ -403,7 +403,7 @@ export default function RenovationSalleDeBainPub() {
         surface="muted"
         kicker="Salles de bain réalisées"
         title="Des salles de bain terminées par notre équipe"
-        description="Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 18 ans."
+        description="Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 25 ans."
         images={bathroomGallery}
       />
 

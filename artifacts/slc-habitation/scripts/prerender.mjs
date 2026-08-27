@@ -156,7 +156,7 @@ function createFormGalleryMarkup() {
     return `<div class="pub-gallery__block ${modifiers}">${imageMarkup(feature, 'feature')}<div class="pub-gallery__stack">${stack.map((image, stackIndex) => imageMarkup(image, 'stack', stackIndex)).join('')}</div></div>`;
   }).join('');
 
-  return `<section id="realisations" class="bg-background py-16 md:py-20" data-testid="section-gallery"><div class="container-large mx-auto max-w-7xl px-6"><div class="pub-gallery-head"><div class="pub-gallery-head__main"><p class="pub-section-header__kicker">Réalisations</p><h2 class="pub-section-header__title pub-gallery-head__title">Des projets terminés par notre équipe</h2></div><div class="pub-gallery-head__aside"><p class="pub-section-header__lede pub-gallery-head__text">Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 18 ans.</p></div></div><div class="pub-gallery">${galleryBlocks}</div></div></section>`;
+  return `<section id="realisations" class="bg-background py-16 md:py-20" data-testid="section-gallery"><div class="container-large mx-auto max-w-7xl px-6"><div class="pub-gallery-head"><div class="pub-gallery-head__main"><p class="pub-section-header__kicker">Réalisations</p><h2 class="pub-section-header__title pub-gallery-head__title">Des projets terminés par notre équipe</h2></div><div class="pub-gallery-head__aside"><p class="pub-section-header__lede pub-gallery-head__text">Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 25 ans.</p></div></div><div class="pub-gallery">${galleryBlocks}</div></div></section>`;
 }
 
 function createPaidGalleryMarkup(images) {
@@ -218,14 +218,14 @@ const paidPageContent = {
       'Votre budget approximatif',
     ],
     galleryTitle: 'Des sous-sols transformés en pièces de vie',
-    galleryIntro: 'Quelques projets menés de la structure aux finitions, parmi les 500 réalisés depuis 18 ans.',
+    galleryIntro: 'Quelques projets menés de la structure aux finitions, parmi les 500 réalisés depuis 25 ans.',
     ctaText: 'Dites-nous ce que vous voulez faire de votre sous-sol. Réponse sous 48 heures, visite sans frais.',
     faqs: [
       ['Combien coûte l’aménagement d’un sous-sol?', 'Le prix dépend de la superficie, des pièces à fermer et des travaux de plomberie ou d’électricité nécessaires. Nous venons voir votre sous-sol, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.'],
       ['Que faire s’il y a de l’humidité?', 'Il faut régler la cause avant de fermer les murs. Pendant la visite, nous cherchons les traces d’eau et les odeurs, puis nous vous disons ce qui doit être corrigé en premier.'],
       ['Peut-on aménager une chambre au sous-sol?', 'Souvent oui. Il faut une fenêtre qui sert de sortie et une hauteur suffisante. Nous vérifions ces points sur place et nous validons les exigences de votre municipalité.'],
       ['Peut-on ajouter une salle de bain s’il n’y a rien de prévu?', 'C’est possible dans bien des cas. Tout dépend de la position du drain principal et de la dalle de béton. Nous le vérifions pendant la visite.'],
-      ['Est-ce que vous vous occupez de tout?', 'Oui. Structure, isolation, plomberie, électricité, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans d’expérience.'],
+      ['Est-ce que vous vous occupez de tout?', 'Oui. Structure, isolation, plomberie, électricité, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.'],
     ],
   },
   '/pub/renovation-salle-de-bain': {
@@ -259,14 +259,14 @@ const paidPageContent = {
       'Votre budget approximatif',
     ],
     galleryTitle: 'Des salles de bain terminées par notre équipe',
-    galleryIntro: 'Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 18 ans.',
+    galleryIntro: 'Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 25 ans.',
     ctaText: 'Dites-nous ce que vous voulez changer dans votre salle de bain. Réponse sous 48 heures, visite sans frais.',
     faqs: [
       ['Combien coûte une rénovation de salle de bain?', 'Le prix dépend de la grandeur de la pièce, des matériaux et des travaux de plomberie nécessaires. Nous venons voir la pièce, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.'],
       ['Combien de temps dure le chantier?', 'Cela varie d’un projet à l’autre. Nous vous donnons l’échéancier avec votre soumission, une fois la visite faite.'],
       ['Peut-on déplacer la toilette, le bain ou la douche?', 'Souvent oui. Tout dépend de la position du drain et de la structure du plancher. Nous le vérifions pendant la visite avant de vous confirmer le plan.'],
       ['Peut-on remplacer le bain par une grande douche?', 'Oui, c’est une demande fréquente. Nous regardons l’espace disponible, le drain et l’étanchéité à prévoir, puis nous vous proposons ce qui entre dans la pièce.'],
-      ['Est-ce que vous vous occupez de tout?', 'Oui. Démolition, plomberie, ventilation, électricité, céramique et finitions sont coordonnées par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans d’expérience.'],
+      ['Est-ce que vous vous occupez de tout?', 'Oui. Démolition, plomberie, ventilation, électricité, céramique et finitions sont coordonnées par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.'],
     ],
   },
   '/pub/renovation-cuisine': {
@@ -300,14 +300,14 @@ const paidPageContent = {
       'Votre budget approximatif',
     ],
     galleryTitle: 'Des cuisines terminées par notre équipe',
-    galleryIntro: 'Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 18 ans.',
+    galleryIntro: 'Quelques projets menés de la démolition aux finitions, parmi les 500 réalisés depuis 25 ans.',
     ctaText: 'Dites-nous ce que vous voulez changer dans votre cuisine. Réponse sous 48 heures, visite sans frais.',
     faqs: [
       ['Combien coûte une rénovation de cuisine?', 'Le prix dépend de la grandeur de la pièce, des matériaux et des travaux de plomberie ou d’électricité nécessaires. Nous venons voir votre cuisine, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.'],
       ['Combien de temps dure le chantier?', 'Cela varie d’un projet à l’autre. Nous vous donnons l’échéancier avec votre soumission, une fois la visite faite.'],
       ['Peut-on ouvrir le mur entre la cuisine et le salon?', 'Souvent oui. Nous vérifions d’abord si le mur soutient la maison. Si c’est le cas, un renfort est prévu au plan avant les travaux.'],
       ['Est-ce que je peux rester chez moi pendant les travaux?', 'La plupart des clients restent à la maison. Nous protégeons les pièces voisines et nous convenons avec vous des accès à garder libres.'],
-      ['Est-ce que vous vous occupez de tout?', 'Oui. Démolition, plomberie, électricité, armoires, comptoirs, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans d’expérience.'],
+      ['Est-ce que vous vous occupez de tout?', 'Oui. Démolition, plomberie, électricité, armoires, comptoirs, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.'],
     ],
   },
 };
@@ -422,7 +422,7 @@ function createPaidStaticBody(content, routePath) {
   const extra = paidPageEnhancements[serviceSlug];
   const cta = `<a class="inline-flex rounded-none bg-primary px-6 py-3 font-semibold text-white" href="/pub/formulaire?service=${escapeHtml(serviceSlug)}">Obtenir ma soumission sans frais</a>`;
   // Mêmes faits que le composant PubProofBar de la version React.
-  const proofBar = `<section aria-label="Ce que vous obtenez en nous écrivant" class="bg-secondary py-6 text-white"><div class="container-large mx-auto max-w-7xl px-6"><ul class="flex flex-wrap gap-8"><li><strong>Réponse sous 48 h</strong> — à chaque demande reçue</li><li><strong>Estimation sans frais</strong> — visite comprise</li><li><strong>500+ projets complétés</strong> — en 18 ans</li><li><strong>Laval et les Laurentides</strong> — 9 municipalités desservies</li></ul></div></section>`;
+  const proofBar = `<section aria-label="Ce que vous obtenez en nous écrivant" class="bg-secondary py-6 text-white"><div class="container-large mx-auto max-w-7xl px-6"><ul class="flex flex-wrap gap-8"><li><strong>Réponse sous 48 h</strong> — à chaque demande reçue</li><li><strong>Estimation sans frais</strong> — visite comprise</li><li><strong>500+ projets complétés</strong> — en 25 ans</li><li><strong>Laval et les Laurentides</strong> — 9 municipalités desservies</li></ul></div></section>`;
   const nav = createPaidNav(Boolean(extra.details))
     .map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(label)}</a>`)
     .join(' · ');

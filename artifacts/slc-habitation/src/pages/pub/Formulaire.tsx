@@ -166,7 +166,7 @@ export default function FormulairePub() {
         id="realisations"
         kicker="Réalisations"
         title="Des projets terminés par notre équipe"
-        description="Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 18 ans."
+        description="Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 25 ans."
         images={formGallery}
       />
 

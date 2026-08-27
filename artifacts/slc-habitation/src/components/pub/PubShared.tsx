@@ -230,7 +230,7 @@ export function PubHero({
 const proofItems: { icon: LucideIcon; value: string; text: string }[] = [
   { icon: Clock, value: 'Réponse sous 48 h', text: 'à chaque demande reçue' },
   { icon: Wallet, value: 'Estimation sans frais', text: 'visite comprise' },
-  { icon: CheckCircle2, value: '500+ projets complétés', text: 'en 18 ans' },
+  { icon: CheckCircle2, value: '500+ projets complétés', text: 'en 25 ans' },
   { icon: MapPin, value: 'Laval et les Laurentides', text: '9 municipalités desservies' },
 ];
 

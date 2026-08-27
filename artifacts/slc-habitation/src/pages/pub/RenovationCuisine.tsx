@@ -259,7 +259,7 @@ const faqs = [
   },
   {
     question: 'Est-ce que vous vous occupez de tout?',
-    answer: 'Oui. Démolition, plomberie, électricité, armoires, comptoirs, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans d’expérience.',
+    answer: 'Oui. Démolition, plomberie, électricité, armoires, comptoirs, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.',
   },
 ];
 
@@ -338,7 +338,7 @@ export default function RenovationCuisinePub() {
 
           <PubActionBar
             className="mt-10"
-            note="Plus de 500 projets complétés depuis 18 ans."
+            note="Plus de 500 projets complétés depuis 25 ans."
             action={<PubCTA service="renovation-cuisine" testId="button-etapes-cta">Obtenir ma soumission sans frais</PubCTA>}
           />
         </div>
@@ -408,7 +408,7 @@ export default function RenovationCuisinePub() {
         id="realisations"
         kicker="Cuisines réalisées"
         title="Des cuisines terminées par notre équipe"
-        description="Quelques projets menés du plan aux finitions, parmi les 500 réalisés depuis 18 ans."
+        description="Quelques projets menés du plan aux finitions, parmi les 500 réalisés depuis 25 ans."
         images={kitchenGallery}
       />
 

@@ -243,7 +243,7 @@ const faqs = [
   },
   {
     question: 'Est-ce que vous vous occupez de tout?',
-    answer: 'Oui. Structure, isolation, plomberie, électricité, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 18 ans d’expérience.',
+    answer: 'Oui. Structure, isolation, plomberie, électricité, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.',
   },
 ];
 
@@ -393,7 +393,7 @@ export default function RenovationSousSolPub() {
         id="realisations"
         kicker="Sous-sols réalisés"
         title="Des sous-sols transformés en pièces de vie"
-        description="Quelques projets menés de la structure aux finitions, parmi les 500 réalisés depuis 18 ans."
+        description="Quelques projets menés de la structure aux finitions, parmi les 500 réalisés depuis 25 ans."
         images={gallery}
       />
 
