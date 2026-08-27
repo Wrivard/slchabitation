@@ -9,12 +9,13 @@
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "behaviors:check": "node scripts/behaviors-check.mjs",
+    "contrast:check": "node scripts/contrast-check.mjs",
     "structure:baseline": "node scripts/structure-check.mjs --update",
     "structure:check": "node scripts/structure-check.mjs",
     "visual:baseline": "node scripts/parity-baseline.mjs",
     "visual:check": "node scripts/visual-check.mjs",
     "parity:baseline": "node scripts/parity-baseline.mjs",
-    "parity:check": "pnpm run build && pnpm run structure:check && pnpm run visual:check"
+    "parity:check": "pnpm run build && pnpm run structure:check && pnpm run visual:check && pnpm run contrast:check"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",

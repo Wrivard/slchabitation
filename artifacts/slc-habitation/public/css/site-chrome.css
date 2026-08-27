@@ -96,31 +96,33 @@
   color: #fff;
 }
 
+/*
+ * Un bloc peut imposer lui-même sa couleur de texte : les cartes photo de la
+ * page d'accueil portent la classe Webflow `.text-color-white` et comptent sur
+ * l'héritage pour leur titre. Leur contenu a exactement la même forme qu'un
+ * bloc éditorial (surtitre dans un `.margin-bottom`, puis titre), donc les
+ * règles ci-dessus les attrapaient et repeignaient le titre en presque noir
+ * sur la photo, illisible. La couleur portée par le bloc l'emporte.
+ */
 .page-wrapper
-  :is(.color-scheme-1, .color-scheme-2)
-  :has(> .margin-bottom:has(> .text-style-tagline))
-  > :is(
-    p.text-size-medium,
-    p.text-size-large,
-    .margin-bottom > p.text-size-medium,
-    .margin-bottom > p.text-size-large,
-    .layout423_card-content-bottom p
-  ) {
-  color: color-mix(in srgb, var(--color-scheme-1--text) 68%, transparent);
+  .text-color-white
+  .margin-bottom:has(> .text-style-tagline)
+  ~ .margin-bottom
+  > :is(h1, h2, h3, h4, h5, h6),
+.page-wrapper
+  .text-color-white
+  .margin-bottom:has(> .text-style-tagline)
+  ~ :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--_primitives---colors--white, #fff);
 }
 
-.page-wrapper
-  .color-scheme-3
-  :has(> .margin-bottom:has(> .text-style-tagline))
-  > :is(
-    p.text-size-medium,
-    p.text-size-large,
-    .margin-bottom > p.text-size-medium,
-    .margin-bottom > p.text-size-large,
-    .layout423_card-content-bottom p
-  ) {
-  color: rgb(255 255 255 / 0.78);
-}
+/*
+ * Deux règles teintaient ici le texte d'accompagnement de ces mêmes blocs.
+ * Elles n'ont jamais rien coloré : leur sélecteur imbriquait un `:has()` dans
+ * un autre, ce que les navigateurs refusent, et la règle entière était donc
+ * ignorée. Les paragraphes héritent de la couleur de leur section, comme sur le
+ * site d'origine ; les rendre valides changerait l'apparence actuelle du site.
+ */
 
 /*
  * Menu mobile : le voile (`z-index: 0`) et le panneau (`z-index: 1`) couvrent

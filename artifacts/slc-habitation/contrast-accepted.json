@@ -1,0 +1,12 @@
+{
+  "description": "Paires de couleurs sous le seuil d'accessibilité qui appartiennent à la charte du site et existaient déjà avant la conversion du HTML Webflow en React. Elles ont été relevées une par une en comparant le site actuel au site d'origine : aucune n'a été introduite par la conversion. Toute autre paire illisible fait échouer « pnpm run contrast:check ». Corriger l'une d'elles suppose de revoir la charte avec le propriétaire, pas seulement le code.",
+  "entries": {
+    "rgb(255, 255, 255) sur rgb(255, 128, 32)": "Blanc sur l'orange de la marque : couleur des boutons d'appel à l'action du site (« Soumission », « Démarrez votre projet maintenant »).",
+    "rgb(245, 126, 36) sur rgb(255, 255, 255)": "Orange de la marque sur fond blanc : couleur des surtitres de section (« Contact », « Expertise », « Fondation »).",
+    "rgb(245, 126, 36) sur rgb(64, 64, 64)": "Orange de la marque sur photo sombre : surtitres posés sur une image d'ambiance.",
+    "rgb(245, 126, 36) sur rgb(96, 96, 96)": "Orange de la marque sur photo sombre, largeur téléphone : surtitre des bannières des pages de services.",
+    "rgb(153, 153, 153) sur rgb(255, 255, 255)": "Gris clair sur blanc : mention « Fait localement par » du pied de page, en très petit corps.",
+    "rgb(239, 67, 67) sur rgb(255, 255, 255)": "Rouge sur blanc : astérisque des champs obligatoires du formulaire.",
+    "rgb(245, 128, 38) sur rgb(255, 255, 255)": "Orange de la marque sur blanc : mot mis en valeur dans le titre de la page Agrandissement."
+  }
+}

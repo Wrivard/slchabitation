@@ -477,6 +477,36 @@
   --app-font-heading: 'Alexandria', system-ui, sans-serif;
 }
 
+/* Carte principale du formulaire : le panneau sombre sépare clairement
+   l'action du fond quadrillé. Les champs restent blancs pour conserver le
+   contraste et les repères habituels de saisie. */
+.soumission-quote-form__card {
+  --background: 0 0% 4%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 4%;
+  --card-foreground: 0 0% 100%;
+  --muted: 0 0% 100% / 0.1;
+  --muted-foreground: 0 0% 82%;
+  --border: 0 0% 100% / 0.26;
+  --input: 0 0% 100% / 0.42;
+  --accent: 26 91% 22%;
+  --accent-foreground: 0 0% 100%;
+  --form-control-foreground: 0 0% 4%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* `bg-white` est utilisé par les champs et les cartes de choix. Sans cette
+   inversion locale, leur texte hériterait du blanc de la carte et deviendrait
+   illisible sur leur fond clair. */
+.soumission-quote-form__card .bg-white {
+  color: hsl(var(--form-control-foreground));
+}
+
+.soumission-quote-form__card .bg-white .text-foreground {
+  color: hsl(var(--form-control-foreground));
+}
+
 .soumission-quote-form h2,
 .soumission-quote-form h3,
 .soumission-quote-form h4 {

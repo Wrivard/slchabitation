@@ -53,7 +53,7 @@ export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: 
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
         {/* Le formulaire reste le point d'attention : premier sur mobile, à droite sur grand écran. */}
         <div className="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
-          <div className="rounded-lg border border-border bg-white p-6 shadow-[0_24px_60px_-40px_rgb(0_0_0_/_0.45)] sm:p-8 md:p-10">
+          <div className="soumission-quote-form__card rounded-lg border border-border bg-black p-6 text-white shadow-[0_24px_60px_-40px_rgb(0_0_0_/_0.45)] sm:p-8 md:p-10">
             <QuoteForm
               key={defaultService}
               services={soumissionServices}

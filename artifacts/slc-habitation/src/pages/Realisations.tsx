@@ -497,33 +497,6 @@ margin: 0rem !important;
                   {' '}
                   <div data-reveal-group="" className="blog22_component">
                     {' '}
-                    <div className="margin-bottom margin-xxlarge">
-                      {' '}
-                      <div className="max-width-large">
-                        {' '}
-                        <div className="margin-bottom margin-xsmall">
-                          {' '}
-                          <div className="text-style-tagline">
-                            Projets
-                          </div>
-                          {' '}
-                        </div>
-                        {' '}
-                        <div className="margin-bottom margin-small">
-                          {' '}
-                          <h2 className="heading-style-h1">
-                            Découvrez nos réalisations
-                          </h2>
-                          {' '}
-                        </div>
-                        {' '}
-                        <p className="text-size-medium">
-                          Inspirez-vous de nos projets de rénovation réussis
-                        </p>
-                        {' '}
-                      </div>
-                      {' '}
-                    </div>
                     {' '}
                     <div className="blog22_content">
                       {' '}

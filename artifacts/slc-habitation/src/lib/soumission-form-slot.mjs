@@ -139,7 +139,7 @@ const staticSteps = [
 export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id="${SOUMISSION_FORM_SLOT_ID}">
   <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
   <div class="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
-  <div class="rounded-lg border border-border bg-white p-6 shadow-[0_24px_60px_-40px_rgb(0_0_0_/_0.45)] sm:p-8 md:p-10">
+  <div class="soumission-quote-form__card rounded-lg border border-border bg-black p-6 text-white shadow-[0_24px_60px_-40px_rgb(0_0_0_/_0.45)] sm:p-8 md:p-10">
     <div class="mb-8">
       <div class="flex items-baseline justify-between gap-4">
         <p class="text-xs font-bold uppercase tracking-[0.16em] text-primary">Étape 1 sur ${staticSteps.length}</p>
