@@ -22,10 +22,19 @@ const MARKETING_CONSENT_VERSION = "cookiebot-2026-08-25";
 const MAX_MESSAGE_LENGTH = 2_000;
 const MAX_NAME_LENGTH = 80;
 const QUARANTINE_MAX_ENTRIES = 200;
+/* Les trois premiers libellés viennent du tunnel publicitaire, les suivants du
+   formulaire de /soumission. La liste doit rester alignée sur celle du
+   composant QuoteForm : un libellé absent d'ici est rejeté. */
 const ALLOWED_SERVICES = new Set([
   "Rénovation de sous-sol",
   "Rénovation de salle de bain",
   "Rénovation de cuisine",
+  "Travaux extérieurs",
+  "Agrandissement",
+  "Construction neuve",
+  "Construction de garage",
+  "Projet commercial",
+  "Projet industriel",
 ]);
 /* Compléments demandés au visiteur depuis le formulaire publicitaire. Ils sont
    facultatifs côté serveur : une valeur absente ou inconnue est simplement

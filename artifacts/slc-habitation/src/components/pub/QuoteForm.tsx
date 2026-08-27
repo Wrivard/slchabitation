@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Loader2, ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { Loader2, ArrowRight, ArrowLeft, CheckCircle2, ImagePlus, X } from 'lucide-react';
 import { Link } from 'wouter';
 import { useTrackingParams } from '@/hooks/use-tracking-params';
 import { TurnstileWidget } from '@/components/pub/TurnstileWidget';
@@ -19,37 +19,69 @@ declare global {
   }
 }
 
-const formSchema = z.object({
-  service: z.string().refine((val) => ['renovation-sous-sol', 'renovation-salle-de-bain', 'renovation-cuisine'].includes(val), {
-    message: "Veuillez sélectionner un type de travaux valide",
-  }),
-  budget: z.string().min(1, "Veuillez sélectionner un budget approximatif"),
-  description: z.string().min(10, "Veuillez décrire brièvement votre projet (min 10 caractères)"),
-  city: z.string().min(1, "Veuillez indiquer la ville du projet"),
-  timeline: z.string().min(1, "Veuillez indiquer quand vous souhaitez faire les travaux"),
-  referral: z.string().optional(),
-  firstName: z.string().min(2, "Le prénom est requis"),
-  lastName: z.string().min(2, "Le nom est requis"),
-  email: z.string().email("Courriel invalide"),
-  phone: z.string().min(10, "Numéro de téléphone invalide"),
-  consent: z.boolean().refine((value) => value, {
-    message: "Vous devez consentir pour envoyer la demande",
-  }),
-  honeypot: z.string().max(0).optional(),
-});
+/* Le serveur n'accepte qu'une liste fermée de libellés de service : `label` est
+   la valeur envoyée, `id` sert uniquement à l'affichage et à la validation
+   locale. Toute entrée ajoutée ici doit exister dans `ALLOWED_SERVICES`
+   (artifacts/api-server/src/routes/submit-form.ts), sinon l'envoi est rejeté. */
+export interface QuoteFormService {
+  id: string;
+  label: string;
+}
 
-type FormData = z.infer<typeof formSchema>;
+export const paidFunnelServices: QuoteFormService[] = [
+  { id: 'renovation-sous-sol', label: 'Rénovation de sous-sol' },
+  { id: 'renovation-salle-de-bain', label: 'Rénovation de salle de bain' },
+  { id: 'renovation-cuisine', label: 'Rénovation de cuisine' },
+];
+
+/* Mêmes limites que celles annoncées par l'ancien formulaire de /soumission et
+   appliquées par le serveur. */
+export const MAX_PHOTOS = 5;
+export const MAX_PHOTO_BYTES = 4 * 1024 * 1024;
+export const MAX_PHOTOS_TOTAL_BYTES = Math.round(4.5 * 1024 * 1024);
+
+/* Le serveur refuse au-delà de 2 000 caractères : la limite est reprise ici
+   pour que le visiteur le voie avant l'envoi. */
+const MAX_DESCRIPTION_LENGTH = 2_000;
+
+const createFormSchema = (serviceIds: string[]) =>
+  z.object({
+    service: z.string().refine((val) => serviceIds.includes(val), {
+      message: "Veuillez sélectionner un type de travaux valide",
+    }),
+    budget: z.string().min(1, "Veuillez sélectionner un budget approximatif"),
+    description: z
+      .string()
+      .min(10, "Veuillez décrire brièvement votre projet (min 10 caractères)")
+      .max(MAX_DESCRIPTION_LENGTH, `La description ne peut pas dépasser ${MAX_DESCRIPTION_LENGTH} caractères`),
+    city: z.string().min(1, "Veuillez indiquer la ville du projet"),
+    timeline: z.string().min(1, "Veuillez indiquer quand vous souhaitez faire les travaux"),
+    referral: z.string().optional(),
+    firstName: z.string().min(2, "Le prénom est requis"),
+    lastName: z.string().min(2, "Le nom est requis"),
+    email: z.string().email("Courriel invalide"),
+    phone: z.string().min(10, "Numéro de téléphone invalide"),
+    consent: z.boolean().refine((value) => value, {
+      message: "Vous devez consentir pour envoyer la demande",
+    }),
+    honeypot: z.string().max(0).optional(),
+  });
+
+type FormData = z.infer<ReturnType<typeof createFormSchema>>;
 
 interface QuoteFormProps {
   defaultService?: string;
   className?: string;
+  /** Services proposés à l'étape 1. Par défaut, les trois du tunnel publicitaire. */
+  services?: QuoteFormService[];
+  /** Ajoute le dépôt de photos du projet à l'étape 2. */
+  allowPhotos?: boolean;
 }
 
-const serviceMap: Record<string, string> = {
-  'renovation-sous-sol': 'Rénovation de sous-sol',
-  'renovation-salle-de-bain': 'Rénovation de salle de bain',
-  'renovation-cuisine': 'Rénovation de cuisine',
-};
+function formatFileSize(bytes: number): string {
+  const megabytes = bytes / (1024 * 1024);
+  return `${megabytes.toFixed(1).replace('.', ',')} Mo`;
+}
 
 /* Les neuf municipalités déjà annoncées sur le site, plus une sortie de secours
    pour les demandes qui viennent d'à côté. Les valeurs envoyées au serveur sont
@@ -97,12 +129,25 @@ const stepVariants = {
   exit: { opacity: 0, x: -20, transition: { duration: 0.3 } }
 };
 
-export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProps) {
+export function QuoteForm({
+  defaultService = "",
+  className = "",
+  services = paidFunnelServices,
+  allowPhotos = false,
+}: QuoteFormProps) {
   const [step, setStep] = useState(1);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [turnstileError, setTurnstileError] = useState(false);
+  const [photos, setPhotos] = useState<File[]>([]);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+  const photoInputRef = useRef<HTMLInputElement>(null);
+
+  const formSchema = useMemo(
+    () => createFormSchema(services.map((service) => service.id)),
+    [services],
+  );
 
   const startedAt = useRef<number>(Date.now());
   const submissionId = useRef<string>(crypto.randomUUID());
@@ -180,6 +225,51 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
     setStep((prev) => prev - 1);
   };
 
+  const addPhotos = (fileList: FileList | null) => {
+    if (!fileList || fileList.length === 0) return;
+
+    const incoming = Array.from(fileList);
+    const accepted: File[] = [];
+    let error: string | null = null;
+    let totalSize = photos.reduce((total, photo) => total + photo.size, 0);
+
+    for (const file of incoming) {
+      if (!file.type.startsWith('image/')) {
+        error = `« ${file.name} » n’est pas une image. Formats acceptés : JPG, PNG, GIF, WEBP.`;
+        continue;
+      }
+      if (photos.length + accepted.length >= MAX_PHOTOS) {
+        error = `Vous pouvez joindre au maximum ${MAX_PHOTOS} photos.`;
+        break;
+      }
+      if (file.size > MAX_PHOTO_BYTES) {
+        error = `« ${file.name} » pèse ${formatFileSize(file.size)} : chaque photo doit faire au plus ${formatFileSize(MAX_PHOTO_BYTES)}.`;
+        continue;
+      }
+      if (totalSize + file.size > MAX_PHOTOS_TOTAL_BYTES) {
+        error = `Le poids total des photos doit rester sous ${formatFileSize(MAX_PHOTOS_TOTAL_BYTES)}.`;
+        continue;
+      }
+      accepted.push(file);
+      totalSize += file.size;
+    }
+
+    if (accepted.length > 0) {
+      setPhotos((previous) => [...previous, ...accepted]);
+    }
+    setPhotoError(error);
+
+    // Permet de re-sélectionner le même fichier après un retrait.
+    if (photoInputRef.current) {
+      photoInputRef.current.value = '';
+    }
+  };
+
+  const removePhoto = (index: number) => {
+    setPhotos((previous) => previous.filter((_, position) => position !== index));
+    setPhotoError(null);
+  };
+
   const onSubmit = async (data: FormData) => {
     setErrorMsg(null);
 
@@ -198,7 +288,7 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
       payload.append('Contact-6-Email', data.email);
       payload.append('Contact-6-Phone', data.phone);
 
-      const exactService = serviceMap[data.service];
+      const exactService = services.find((service) => service.id === data.service)?.label;
       const exactBudget = budgetMap[data.budget];
       if (!exactService || !exactBudget) {
         setErrorMsg("Le service ou le budget sélectionné n'est pas valide.");
@@ -208,6 +298,12 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
       payload.append('Contact-6-Radio', exactBudget);
 
       payload.append('Contact-6-Message', data.description);
+
+      /* Photos facultatives : le serveur les lit sous ce nom de champ et
+         applique les mêmes limites que celles affichées au visiteur. */
+      for (const photo of photos) {
+        payload.append('Contact-6-Image', photo, photo.name);
+      }
 
       /* Réponses ajoutées au formulaire : le serveur les accepte comme des
          compléments, une valeur absente ne bloque jamais l'envoi. */
@@ -260,7 +356,14 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
         body: payload
       });
 
-      const result = await response.json().catch(() => ({}));
+      const result = await response.json().catch(() => ({} as Record<string, any>));
+
+      if (response.status === 413) {
+        throw new Error(
+          result.error?.message ||
+            `Les photos jointes sont trop volumineuses. Retirez-en une ou réduisez leur poids (maximum ${formatFileSize(MAX_PHOTOS_TOTAL_BYTES)} au total).`,
+        );
+      }
 
       if (response.ok && result.success === true) {
         window.dataLayer = window.dataLayer || [];
@@ -379,15 +482,35 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                 </div>
 
                 <div className="space-y-8">
-                  {!defaultService && (
+                  {!defaultService && services.length > 4 && (
+                    /* Au-delà de quatre services, la liste déroulante reste plus
+                       lisible que des cartes à cocher, surtout sur mobile. */
+                    <div className="space-y-3">
+                      <label htmlFor="service" className="block text-sm font-bold text-foreground uppercase tracking-wider">
+                        Type de travaux <span className="text-destructive">*</span>
+                      </label>
+                      <select
+                        id="service"
+                        {...register("service")}
+                        aria-invalid={errors.service ? 'true' : undefined}
+                        aria-describedby={errors.service ? 'service-error' : undefined}
+                        className="w-full p-4 rounded-none border border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-accent/5 text-lg"
+                        data-testid="select-service"
+                      >
+                        <option value="">Sélectionnez un service</option>
+                        {services.map((svc) => (
+                          <option key={svc.id} value={svc.id}>{svc.label}</option>
+                        ))}
+                      </select>
+                      {errors.service && <p id="service-error" className="text-sm text-destructive" data-testid="error-service">{errors.service.message}</p>}
+                    </div>
+                  )}
+
+                  {!defaultService && services.length <= 4 && (
                     <div className="space-y-4">
                       <label className="block text-sm font-bold text-foreground uppercase tracking-wider">Type de travaux <span className="text-destructive">*</span></label>
                       <div className="grid grid-cols-1 gap-3">
-                        {[
-                          { id: 'renovation-sous-sol', label: 'Rénovation de sous-sol' },
-                          { id: 'renovation-salle-de-bain', label: 'Rénovation de salle de bain' },
-                          { id: 'renovation-cuisine', label: 'Rénovation de cuisine' },
-                        ].map(svc => (
+                        {services.map(svc => (
                           <label
                             key={svc.id}
                             className={`border rounded-none p-5 cursor-pointer transition-all flex items-center gap-4 group ${
@@ -525,6 +648,68 @@ export function QuoteForm({ defaultService = "", className = "" }: QuoteFormProp
                       {errors.timeline && <p id="timeline-error" className="text-sm text-destructive" data-testid="error-timeline">{errors.timeline.message}</p>}
                     </div>
                   </div>
+
+                  {allowPhotos && (
+                    <div className="space-y-3">
+                      <label htmlFor="photos" className="block text-sm font-bold text-foreground uppercase tracking-wider">
+                        Photos du projet <span className="font-medium normal-case tracking-normal text-muted-foreground">(facultatif)</span>
+                      </label>
+                      <div className="border border-dashed border-input bg-accent/5 p-5 space-y-4">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={() => photoInputRef.current?.click()}
+                            disabled={photos.length >= MAX_PHOTOS}
+                            className="inline-flex items-center gap-2 border border-border bg-white px-4 py-3 font-semibold text-foreground transition-colors hover:border-primary/50 hover:bg-accent/20 disabled:cursor-not-allowed disabled:opacity-60"
+                            data-testid="button-add-photos"
+                          >
+                            <ImagePlus className="h-5 w-5" /> Ajouter des photos
+                          </button>
+                          <span className="text-sm text-muted-foreground" data-testid="text-photo-count">
+                            {photos.length} / {MAX_PHOTOS} photo{photos.length > 1 ? 's' : ''}
+                          </span>
+                        </div>
+                        <input
+                          ref={photoInputRef}
+                          id="photos"
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          className="sr-only"
+                          onChange={(event) => addPhotos(event.target.files)}
+                          data-testid="input-photos"
+                        />
+                        {photos.length > 0 && (
+                          <ul className="space-y-2" data-testid="list-photos">
+                            {photos.map((photo, index) => (
+                              <li
+                                key={`${photo.name}-${index}`}
+                                className="flex items-center justify-between gap-3 border border-border bg-white px-4 py-3"
+                              >
+                                <span className="min-w-0 flex-1 truncate text-sm text-foreground">{photo.name}</span>
+                                <span className="shrink-0 text-sm text-muted-foreground">{formatFileSize(photo.size)}</span>
+                                <button
+                                  type="button"
+                                  onClick={() => removePhoto(index)}
+                                  className="shrink-0 text-muted-foreground transition-colors hover:text-destructive"
+                                  aria-label={`Retirer la photo ${photo.name}`}
+                                  data-testid={`button-remove-photo-${index}`}
+                                >
+                                  <X className="h-5 w-5" />
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        <p className="text-sm text-muted-foreground">
+                          JPG, PNG, GIF ou WEBP — {formatFileSize(MAX_PHOTO_BYTES)} par photo, {MAX_PHOTOS} photos et {formatFileSize(MAX_PHOTOS_TOTAL_BYTES)} au total.
+                        </p>
+                        {photoError && (
+                          <p className="text-sm text-destructive" role="alert" data-testid="error-photos">{photoError}</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="flex gap-4 pt-6">
                     <button

@@ -6,6 +6,10 @@ import {
   getPageSemantics,
 } from '../src/lib/publicPageSemantics.mjs';
 import { readSiteChrome } from './lib/site-chrome.mjs';
+import {
+  prepareSoumissionMarkup,
+  soumissionFormStaticMarkup,
+} from '../src/lib/soumission-form-slot.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const outputDir = path.join(root, 'dist', 'public');
@@ -16,6 +20,11 @@ const seoMetadata = JSON.parse(
 const { siteOrigin, routes } = seoMetadata;
 const fontStylesheet =
   'https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap';
+
+/* Pages issues d'un gabarit Webflow qui montent malgré tout un composant React
+   stylé avec la feuille de l'application. Les pages de repli héritent déjà de
+   l'entête du shell Vite, qui la référence. */
+const routesNeedingAppStyles = new Set(['/soumission']);
 
 // Même navbar et même pied de page que les pages React : le balisage vient du
 // gabarit legacy, comme le module `src/generated/site-chrome.ts`.
@@ -551,6 +560,7 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   <meta name="twitter:title" content="${escapeHtml(route.title)}">
   <meta name="twitter:description" content="${escapeHtml(route.description)}">
   ${createSchemaTag(route.schema)}
+  ${routesNeedingAppStyles.has(route.path) ? appStylesheet : ''}
 `;
   html = html.replace(/<head([^>]*)>/i, `<head$1>${headTags}`);
 
@@ -581,10 +591,28 @@ if (!appScriptMatch) {
 
 const appScript = `<script type="module" src="${appScriptMatch[1]}"></script>`;
 
+// Les gabarits hérités de Webflow n'embarquent que le CSS du site d'origine.
+// La page /soumission affiche désormais un composant React stylé avec la
+// feuille de l'application : elle doit donc la charger elle aussi, sans quoi le
+// formulaire arriverait sans mise en forme.
+const appStylesheetMatch = appShell.match(
+  /<link\b[^>]*href="[^"]*assets\/[^"]+\.css"[^>]*>/i,
+);
+if (!appStylesheetMatch) {
+  throw new Error('Could not find the built application stylesheet in index.html');
+}
+const appStylesheet = appStylesheetMatch[0];
+
 for (const route of routes) {
-  const sourceHtml = route.source
+  let sourceHtml = route.source
     ? await readFile(path.join(sourceDir, route.source), 'utf8')
     : createFallbackSource(appShell, route);
+
+  if (route.source === 'soumission.html') {
+    // Version statique du formulaire progressif, affichée avant l'hydratation.
+    sourceHtml = prepareSoumissionMarkup(sourceHtml, soumissionFormStaticMarkup);
+  }
+
   const renderedHtml = createPrerenderedPage(sourceHtml, route, appScript);
   const routeOutput =
     route.path === '/'

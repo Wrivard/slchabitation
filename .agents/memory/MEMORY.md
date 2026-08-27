@@ -1,4 +1,4 @@
-- [Legacy HTML in React](legacy-html-react-lifecycle.md) — embedded page scripts must replay late DOMContentLoaded/load listeners after React mounts.
+- [Legacy HTML in React](legacy-html-react-lifecycle.md) — rejouer les écouteurs tardifs des scripts embarqués, et mémoïser le conteneur dangerouslySetInnerHTML sinon les nœuds capturés se détachent.
 - [Legacy Webflow CSS isolation](legacy-webflow-css-isolation.md) — isolate React funnel styling from legacy global rules; use scoped semantic classes for layout-critical chrome.
 - [Static public pages](static-public-pages.md) — public marketing routes must ship prerendered HTML alongside the React experience.
 - [Paid funnel claims](paid-funnel-claims.md) — Google Ads copy must stay within the owner-approved evidence set and avoid invented commercial promises.
