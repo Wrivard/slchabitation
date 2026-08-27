@@ -3,6 +3,7 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parse } from 'node-html-parser';
 import { prerenderedFileFor, readParityRoutes } from './lib/parity-targets.mjs';
+import { isAutomaticImagePreload, nonLazyImageSources } from './lib/react-image-preloads.mjs';
 
 /**
  * Empreinte structurelle des documents prérendus.
@@ -54,6 +55,15 @@ function normalizeWhitespace(value) {
   return value.replace(/\s+/g, ' ').trim();
 }
 
+/* React réécrit les styles en ligne sans espace après les deux-points ni
+   point-virgule final. La déclaration reste la même : elle est ramenée à une
+   écriture unique des deux côtés. */
+function normalizeStyle(value) {
+  return value
+    .replace(/\s*([:;])\s*/g, '$1')
+    .replace(/;$/, '');
+}
+
 /* Le nom des fichiers construits contient une empreinte qui change à chaque
    modification du code. Elle n'a rien de structurel : on la neutralise pour ne
    pas signaler dix-huit pages « modifiées » à chaque construction. */
@@ -67,7 +77,8 @@ function describeAttributes(node) {
   for (const attribute of trackedAttributes) {
     const value = node.getAttribute(attribute);
     if (value === undefined || value === null) continue;
-    const normalized = normalizeBuildHashes(normalizeWhitespace(value));
+    const cleaned = attribute === 'style' ? normalizeStyle(value) : value;
+    const normalized = normalizeBuildHashes(normalizeWhitespace(cleaned));
     parts.push(`${attribute}=${normalized.length > 120 ? `#${shortHash(normalized)}` : normalized}`);
   }
 
@@ -80,15 +91,22 @@ function describeAttributes(node) {
   return parts.sort();
 }
 
+/* Le texte est comparé tel qu'il s'affiche : React écrit « &#x27; » là où
+   l'export Webflow écrivait l'apostrophe, ce qui donne le même caractère à
+   l'écran. */
 function directText(node) {
   const text = node.childNodes
     .filter((child) => child.nodeType === 3)
-    .map((child) => child.rawText)
+    .map((child) => child.text)
     .join(' ');
   return normalizeWhitespace(text);
 }
 
-function walk(node, depth, lines) {
+function walk(node, depth, lines, automaticPreloads) {
+  /* Les préchargements ajoutés par React n'existent pas dans l'export d'origine
+     et n'affichent rien : ils fausseraient la comparaison. */
+  if (automaticPreloads.has(node)) return;
+
   const classes = normalizeWhitespace(node.getAttribute('class') || '')
     .split(' ')
     .filter(Boolean)
@@ -110,7 +128,7 @@ function walk(node, depth, lines) {
 
   for (const child of node.childNodes) {
     if (child.nodeType === 1) {
-      walk(child, depth + 1, lines);
+      walk(child, depth + 1, lines, automaticPreloads);
     }
   }
 }
@@ -126,8 +144,15 @@ function signatureFor(html) {
   const head = document.querySelector('head');
   const body = document.querySelector('body');
 
-  if (head) walk(head, 0, lines);
-  if (body) walk(body, 0, lines);
+  const imageSources = nonLazyImageSources(document);
+  const automaticPreloads = new Set(
+    document
+      .querySelectorAll('link')
+      .filter((link) => isAutomaticImagePreload(link, imageSources)),
+  );
+
+  if (head) walk(head, 0, lines, automaticPreloads);
+  if (body) walk(body, 0, lines, automaticPreloads);
 
   return `${lines.join('\n')}\n`;
 }

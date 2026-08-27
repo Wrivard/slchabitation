@@ -4572,7 +4572,10 @@ figcaption {
     text-align: center !important;
   }
   
-  .footer3_bottom-wrapper > div[style*="position: absolute"] {
+  /* Le crédit est repéré par son style en ligne. React sérialise les styles
+     sans espace après les deux-points : les deux écritures sont visées. */
+  .footer3_bottom-wrapper > div[style*="position: absolute"],
+  .footer3_bottom-wrapper > div[style*="position:absolute"] {
     position: static !important;
     left: auto !important;
     transform: none !important;

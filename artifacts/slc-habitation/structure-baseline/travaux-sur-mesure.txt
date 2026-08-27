@@ -99,7 +99,7 @@ body
                         path
                   nav.navbar3_dropdown-list.w-dropdown-list
                     a.navbar3_dropdown-link.w-dropdown-link [href=/renovation] « Rénovation »
-                    a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
                     a.navbar3_dropdown-link.w--current.w-dropdown-link [aria-current=page href=/travaux-sur-mesure] « Travaux sur mesure »
                 a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
                 a.navbar3_tablet-menu-button.w-button [href=/soumission] « Soumission »
@@ -159,7 +159,7 @@ body
                                     path
                             div.margin-bottom.margin-xsmall
                               h3.heading-style-h6 « Résultats durables »
-                            p « Les réparations que nous faisons tiennent bon. C&#x27;est du travail qui dure. »
+                            p « Les réparations que nous faisons tiennent bon. C'est du travail qui dure. »
           section.color-scheme-2.section_layout356
             div.layout356_component
               div.layout356_anchor [id=layout356-anchor-one]
@@ -203,7 +203,7 @@ body
                           div.margin-bottom.margin-xsmall
                             div.text-style-tagline « Extérieur »
                           div.margin-bottom.margin-small
-                            h2.heading-style-h2 « l&#x27;enveloppe de votre maison »
+                            h2.heading-style-h2 « l'enveloppe de votre maison »
                               span.text-span-17 « embellissez »
                           p.text-size-medium « Toitures, revêtements, portes et fenêtres. Nos réparations et installations extérieures ré…90d178e4 »
                           div.margin-medium.margin-top
@@ -259,7 +259,7 @@ body
                             span.text-span-19 « mains »
                             span.text-span-20 « cœur »
                         div.margin-bottom.margin-medium
-                          p.text-size-medium « Depuis près d&#x27;un quart de siècle, SLC Habitation réalise des travaux qui respectent v…245c8f05 »
+                          p.text-size-medium « Depuis près d'un quart de siècle, SLC Habitation réalise des travaux qui respectent votre …a6ae9bf0 »
                         div.layout203_item-list.w-layout-grid
                           div.layout203_item
                             div.margin-bottom.margin-xsmall
@@ -428,7 +428,7 @@ body
                   div.cta3_component [data-reveal-group=]
                     div.max-width-large
                       div.margin-bottom.margin-small
-                        h2.heading-style-h2 « Transformez votre espace aujourd&#x27;hui »
+                        h2.heading-style-h2 « Transformez votre espace aujourd'hui »
                       p.text-size-medium « Découvrez nos services pour créer un espace qui vous ressemble et vous inspire. »
                       div.margin-medium.margin-top
                         div.button-group
@@ -447,7 +447,7 @@ body
                         div.margin-bottom.margin-small
                           h2.heading-style-h2 « Foire aux »
                             span.text-span-21 « questions »
-                        p.text-size-medium « Tout ce qu&#x27;il faut savoir sur nos services et notre processus »
+                        p.text-size-medium « Tout ce qu'il faut savoir sur nos services et notre processus »
                     div.faq2_list
                       div.faq2_accordion
                         button.faq2_question [aria-controls=faq-answer-e5b96cda-bccb-eaa7-0940-485899c966a2 aria-expanded=false data-w-id=e5b96cda-bccb-eaa7-0940-485899c966a2 type=button]
@@ -470,10 +470,10 @@ body
                         div.faq2_answer [aria-hidden=true id=faq-answer-e5b96cda-bccb-eaa7-0940-485899c966ad style=width:100%;height:0px]
                           div.margin-bottom.margin-small
                             div.max-width-large
-                              p « Le coût dépend de l&#x27;ampleur et de la complexité de votre projet. Nous offrons des sou…81a12a56 »
+                              p « Le coût dépend de l'ampleur et de la complexité de votre projet. Nous offrons des soumissi…347437de »
                       div.faq2_accordion
                         button.faq2_question [aria-controls=faq-answer-e5b96cda-bccb-eaa7-0940-485899c966b8 aria-expanded=false data-w-id=e5b96cda-bccb-eaa7-0940-485899c966b8 type=button]
-                          div.text-size-medium « Travaillez-vous toute l&#x27;année? »
+                          div.text-size-medium « Travaillez-vous toute l'année? »
                           div.faq2_icon-wrapper
                             div.icon-embed-small.w-embed
                               svg [aria-hidden=true height=100% role=img width=100%]
@@ -481,7 +481,7 @@ body
                         div.faq2_answer [aria-hidden=true id=faq-answer-e5b96cda-bccb-eaa7-0940-485899c966b8 style=width:100%;height:0px]
                           div.margin-bottom.margin-small
                             div.max-width-large
-                              p « Oui, nous opérons douze mois par année. Qu&#x27;il s&#x27;agisse d&#x27;une rénovation int…3e7ab6b2 »
+                              p « Oui, nous opérons douze mois par année. Qu'il s'agisse d'une rénovation intérieure ou de t…d5036dad »
                       div.faq2_accordion
                         button.faq2_question [aria-controls=faq-answer-e5b96cda-bccb-eaa7-0940-485899c966c3 aria-expanded=false data-w-id=e5b96cda-bccb-eaa7-0940-485899c966c3 type=button]
                           div.text-size-medium « Utilisez-vous des matériaux durables? »
@@ -503,7 +503,7 @@ body
                         div.faq2_answer [aria-hidden=true id=faq-answer-e5b96cda-bccb-eaa7-0940-485899c966ce style=width:100%;height:0px]
                           div.margin-bottom.margin-small
                             div.max-width-large
-                              p « Notre engagement ne s&#x27;arrête pas à la fin des travaux. Nous restons disponibles pour …c901e23f »
+                              p « Notre engagement ne s'arrête pas à la fin des travaux. Nous restons disponibles pour répon…33fd48ba »
                     div.margin-top.margin-xxlarge
                       div.max-width-medium
                         div.margin-bottom.margin-xsmall
@@ -649,20 +649,18 @@ body
                         a.footer3_link [href=/soumission] « Soumission »
                       div.footer3_link-list
                         a.footer3_link [href=/renovation] « Rénovation »
-                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
                         a.footer3_link.w--current [aria-current=page href=/travaux-sur-mesure] « Travaux sur mesure »
                 div.divider-horizontal
                 div.padding-medium.padding-top
-                  div.footer3_bottom-wrapper [style=display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; position: relative;]
-                    div.footer3_credit-text [style=flex: 1;] « © 2025 SLC Habitation. Tous droits réservés. »
-                    div [style=position: absolute; left: 50%; transform: translateX(-50%);]
-                      p [style=#c68f3352] « Fait localement par »
-                        a [href=https://kua.quebec rel=noopener style=color: #d4a574; text-decoration: none; font-weight: 500; display: flex; align-items: center; target=_blank]
-                          img [alt=KUA src=/images/black-letter-kua-logo.png style=height: 24px; width: auto; opacity: 0.8;]
-                    div.footer3_legal-list.w-layout-grid [style=flex: 1; display: flex; justify-content: flex-end;]
+                  div.footer3_bottom-wrapper [style=display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;position:relative]
+                    div.footer3_credit-text [style=flex:1] « © 2025 SLC Habitation. Tous droits réservés. »
+                    div [style=position:absolute;left:50%;transform:translateX(-50%)]
+                      p [style=margin:0;font-size:11px;color:#999;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap] « Fait localement par »
+                        a [href=https://kua.quebec rel=noopener style=color:#d4a574;text-decoration:none;font-weight:500;display:flex;align-items:center target=_blank]
+                          img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
+                    div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                       a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
-      script [src=https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=694c3be8aafcbfe2290c3b7f type=text/javascript]
-      script [src=/js/webflow.js type=text/javascript]
     div [aria-label=Notifications (F8) role=region style=pointer-events:none]
       ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
   script [src=/assets/main-*.js type=module]

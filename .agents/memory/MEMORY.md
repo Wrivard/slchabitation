@@ -8,4 +8,6 @@
 - [Shells HTML multiples sous Vite](vite-multi-html-shells.md) — une feuille ajoutée au seul index.html manque aux routes servies par leur propre fichier HTML.
 - [Ancres markup hérité](legacy-markup-anchors.md) — comparer la liste de classes et exiger une seule correspondance : `\b` matche aussi les variantes suffixées.
 - [Contrôles Radix/shadcn](radix-form-controls-gotchas.md) — Select contrôlé avec `''` (pas `undefined`) pour le placeholder, et cartes radio sans label imbriqué.
+- [Styles en ligne et sélecteurs CSS](react-inline-style-serialization.md) — React réécrit `style` sans espaces : tout sélecteur `[style*="a: b"]` cesse de matcher dès qu'un balisage passe en JSX.
+- [Comparer avant/après](before-after-worktree-comparison.md) — arbre de travail git sur le commit d'avant + script de mesure courant, sinon le diff mélange vrai écart et changement d'outil.
 - [Chrome Webflow réutilisé](legacy-webflow-chrome-reuse.md) — emporter aussi les interactions du menu et les variables .color-scheme, pas seulement le balisage.

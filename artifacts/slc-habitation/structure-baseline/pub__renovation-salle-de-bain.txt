@@ -42,7 +42,6 @@ head
   link [href=/assets/main-*.css rel=stylesheet]
 body
   div [id=root]
-    link [href=/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-1600.jpg rel=preload]
     div.bg-background.flex.flex-col.font-sans.min-h-[100dvh].pub-shell.selection:bg-primary/20.selection:text-primary.text-foreground
       div.site-chrome.site-chrome--header [data-testid=site-navbar]
         section.banner9_component.color-scheme-3
@@ -82,7 +81,7 @@ body
                       path
                 nav.navbar3_dropdown-list.w-dropdown-list
                   a.navbar3_dropdown-link.w-dropdown-link [href=/renovation] « Rénovation »
-                  a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
                   a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
               a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
               a.navbar3_tablet-menu-button.w-button [href=/soumission] « Soumission »
@@ -589,17 +588,17 @@ body
                         a.footer3_link [href=/soumission] « Soumission »
                       div.footer3_link-list
                         a.footer3_link [href=/renovation] « Rénovation »
-                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement &amp; Construction neuve »
+                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
                         a.footer3_link [href=/travaux-sur-mesure] « Travaux sur mesure »
                 div.divider-horizontal
                 div.padding-medium.padding-top
-                  div.footer3_bottom-wrapper [style=display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; position: relative;]
-                    div.footer3_credit-text [style=flex: 1;] « © 2025 SLC Habitation. Tous droits réservés. »
-                    div [style=position: absolute; left: 50%; transform: translateX(-50%);]
-                      p [style=#c68f3352] « Fait localement par »
-                        a [href=https://kua.quebec rel=noopener style=color: #d4a574; text-decoration: none; font-weight: 500; display: flex; align-items: center; target=_blank]
-                          img [alt=KUA src=/images/black-letter-kua-logo.png style=height: 24px; width: auto; opacity: 0.8;]
-                    div.footer3_legal-list.w-layout-grid [style=flex: 1; display: flex; justify-content: flex-end;]
+                  div.footer3_bottom-wrapper [style=display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;position:relative]
+                    div.footer3_credit-text [style=flex:1] « © 2025 SLC Habitation. Tous droits réservés. »
+                    div [style=position:absolute;left:50%;transform:translateX(-50%)]
+                      p [style=margin:0;font-size:11px;color:#999;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap] « Fait localement par »
+                        a [href=https://kua.quebec rel=noopener style=color:#d4a574;text-decoration:none;font-weight:500;display:flex;align-items:center target=_blank]
+                          img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
+                    div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                       a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
     div [aria-label=Notifications (F8) role=region style=pointer-events:none]
       ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]

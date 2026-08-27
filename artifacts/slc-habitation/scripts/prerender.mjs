@@ -2,11 +2,6 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import {
-  applyPageSemantics,
-  enhanceAccessibility,
-  getPageSemantics,
-} from '../src/lib/publicPageSemantics.mjs';
-import {
   soumissionFormSlotMarkup,
   soumissionFormStaticMarkup,
 } from '../src/lib/soumission-form-slot.mjs';
@@ -42,13 +37,13 @@ const fontStylesheet =
 const routesNeedingAppStyles = new Set(['/soumission']);
 
 /* Anciennes adresses Webflow qui, dans l'application, redirigent aussitôt vers
-   une autre page. Leur document statique continue d'exposer le contenu hérité :
+   une autre page. Leur document statique continue d'exposer le contenu d'origine :
    ces adresses sont référencées par les moteurs de recherche, et les remplacer
-   par un message de redirection ferait disparaître ce contenu de l'index. La
-   redirection reste faite par React au chargement, comme aujourd'hui. Le jour
-   où l'hébergement renverra une vraie redirection HTTP, cette liste disparaîtra
-   avec les gabarits hérités. */
-const routesKeepingLegacyBody = new Set([
+   par un message de redirection ferait disparaître ce contenu de l'index. Ce
+   contenu vient de leur page React, rendue directement — l'application, elle,
+   ne les monte jamais et redirige au chargement, comme aujourd'hui. Le jour où
+   l'hébergement renverra une vraie redirection HTTP, cette liste disparaîtra. */
+const routesRedirectingOnLoad = new Set([
   '/renovation-sous-sol',
   '/renovation-salle-de-bain',
   '/renovation-cuisine',
@@ -56,8 +51,9 @@ const routesKeepingLegacyBody = new Set([
 ]);
 
 let renderRoute;
+let renderRedirectPage;
 try {
-  ({ renderRoute } = await import(pathToFileURL(serverBundle).href));
+  ({ renderRoute, renderRedirectPage } = await import(pathToFileURL(serverBundle).href));
 } catch (error) {
   throw new Error(
     `Le rendu serveur est introuvable (${path.relative(root, serverBundle)}). ` +
@@ -140,16 +136,15 @@ function createSchemaTag(schema) {
 /**
  * Contenu de la page, rendu par l'application React elle-même.
  *
- * Seule exception : le formulaire de soumission. Il n'est monté qu'une fois la
- * page vivante, dans un emplacement réservé au milieu du balisage hérité ; la
- * version statique y dépose donc un aperçu non interactif, remplacé par le vrai
- * formulaire dès que React démarre.
+ * Deux cas particuliers. Les anciennes adresses qui redirigent au chargement
+ * ne sont jamais montées par l'application : leur page est rendue directement,
+ * telle quelle. Et le formulaire de soumission n'est monté qu'une fois la page
+ * vivante, dans un emplacement réservé : la version statique y dépose un
+ * aperçu non interactif, remplacé par le vrai formulaire dès que React démarre.
  */
-function renderRouteBody(route, legacyBodyContent) {
-  if (routesKeepingLegacyBody.has(route.path)) {
-    return enhanceAccessibility(
-      applyPageSemantics(legacyBodyContent, getPageSemantics(route.source)),
-    );
+function renderRouteBody(route) {
+  if (routesRedirectingOnLoad.has(route.path)) {
+    return renderRedirectPage(route.path);
   }
 
   const body = markHiddenRevealElements(renderRoute(route.path));
@@ -212,7 +207,7 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   }
 
   const bodyAttributes = bodyMatch[1] || '';
-  const staticBody = `<body${bodyAttributes}><div id="root">${renderRouteBody(route, bodyMatch[2])}</div>${appScript}</body>`;
+  const staticBody = `<body${bodyAttributes}><div id="root">${renderRouteBody(route)}</div>${appScript}</body>`;
   return normalizeAttributeUrls(
     html.replace(/<body[^>]*>[\s\S]*?<\/body>/i, staticBody),
   );
