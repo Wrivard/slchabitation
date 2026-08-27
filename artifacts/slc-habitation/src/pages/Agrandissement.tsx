@@ -456,8 +456,8 @@ margin: 0rem !important;
               {' '}
               <div className="image-overlay-layer-2"></div>
               <picture>
-                <source type="image/webp" srcSet="/images/upscale-house-1-min-1-p-500.webp 500w, /images/upscale-house-1-min-1-p-800.webp 800w, /images/upscale-house-1-min-1-p-1080.webp 1080w, /images/upscale-house-1-min-1-p-1600.webp 1600w, /images/upscale-house-1-min-1-p-2000.webp 2000w, /images/upscale-house-1-min-1-p-2600.webp 2600w, /images/upscale-house-1-min-1-p-3200.webp 3200w, /images/upscale-house-1-min-1.webp 4096w" sizes="(max-width: 4096px) 100vw, 4096px" />
-                <img width="4096" height="2672" sizes="(max-width: 4096px) 100vw, 4096px" srcSet="/images/upscale-house-1-min-1-p-500.png 500w, /images/upscale-house-1-min-1-p-800.png 800w, /images/upscale-house-1-min-1-p-1080.png 1080w, /images/upscale-house-1-min-1-p-1600.png 1600w, /images/upscale-house-1-min-1-p-2000.png 2000w, /images/upscale-house-1-min-1-p-2600.png 2600w, /images/upscale-house-1-min-1-p-3200.png 3200w, /images/upscale-house-1-min-1.png 4096w" alt="Agrandissement contemporain d’une maison" src="/images/upscale-house-1-min-1.png" loading="eager" className="header50_background-image" />
+                <source type="image/webp" srcSet="/images/upscale-house-1-min-1-p-500.webp 500w, /images/upscale-house-1-min-1-p-800.webp 800w, /images/upscale-house-1-min-1-p-1080.webp 1080w, /images/upscale-house-1-min-1-p-1600.webp 1600w, /images/upscale-house-1-min-1-p-2000.webp 2000w, /images/upscale-house-1-min-1-p-2600.webp 2600w" sizes="100vw" />
+                <img width="4096" height="2672" alt="Agrandissement contemporain d’une maison" src="/images/upscale-house-1-min-1-p-1600.png" loading="eager" className="header50_background-image" />
               </picture>
               {' '}
             </div>

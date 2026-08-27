@@ -28,7 +28,7 @@ const seoMetadata = JSON.parse(
 );
 const { siteOrigin, routes } = seoMetadata;
 const fontStylesheet =
-  'https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap';
+  'https://fonts.googleapis.com/css2?family=Alexandria:wght@400;700&family=Inter:wght@400;500;600;700&display=swap';
 
 let renderRoute;
 try {

@@ -1,7 +1,7 @@
 head
   link [href=https://fonts.googleapis.com rel=preconnect]
   link [href=https://fonts.gstatic.com rel=preconnect]
-  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
+  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400;700&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
   title « Travaux sur mesure | SLC Habitation »
   meta [name=description]
   meta [name=robots]
@@ -410,7 +410,7 @@ body
                         div.gallery8_image-wrapper
                           picture
                             source [sizes=(max-width: 832px) 100vw, 832px srcset=/images/relume-657284-p-500.webp 500w, /images/relume-657284-p-800.webp 800w, /images/relume-657284.webp 832w type=image/webp]
-                            img.gallery8_image3 [alt=Projet de rénovation résidentielle SLC Habitation height=1248 loading=eager sizes=(max-width: 832px) 100vw, 832px src=/images/relume-657284.png srcset=/images/relume-657284-p-500.png 500w, /images/relume-657284-p-800.png 800w, /images/relume-657284.png 832w width=832]
+                            img.gallery8_image3 [alt=Projet de rénovation résidentielle SLC Habitation height=1248 loading=lazy sizes=(max-width: 832px) 100vw, 832px src=/images/relume-657284-p-800.png srcset=/images/relume-657284-p-500.png 500w, /images/relume-657284-p-800.png 800w width=832]
                         script.w-json [type=application/json] « { "items": [], "group": "" } »
                       a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
                         div.gallery8_image-wrapper

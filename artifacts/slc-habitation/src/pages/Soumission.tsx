@@ -936,7 +936,7 @@ margin: 0rem !important;
                         <div className="gallery8_image-wrapper">
                           <picture>
                             <source type="image/webp" srcSet="/images/relume-657284-p-500.webp 500w, /images/relume-657284-p-800.webp 800w, /images/relume-657284.webp 832w" sizes="(max-width: 832px) 100vw, 832px" />
-                            <img width="832" height="1248" sizes="(max-width: 832px) 100vw, 832px" srcSet="/images/relume-657284-p-500.png 500w, /images/relume-657284-p-800.png 800w, /images/relume-657284.png 832w" alt="Projet de rénovation résidentielle SLC Habitation" src="/images/relume-657284.png" loading="eager" className="gallery8_image3" />
+                            <img width="832" height="1248" sizes="(max-width: 832px) 100vw, 832px" srcSet="/images/relume-657284-p-500.png 500w, /images/relume-657284-p-800.png 800w" alt="Projet de rénovation résidentielle SLC Habitation" src="/images/relume-657284-p-800.png" loading="lazy" className="gallery8_image3" />
                           </picture>
                         </div>
                         {' '}

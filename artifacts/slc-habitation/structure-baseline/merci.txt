@@ -1,7 +1,7 @@
 head
   link [href=https://fonts.googleapis.com rel=preconnect]
   link [href=https://fonts.gstatic.com rel=preconnect]
-  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
+  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400;700&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
   title « Merci, votre demande est reçue | SLC Habitation »
   meta [name=description]
   meta [name=robots]

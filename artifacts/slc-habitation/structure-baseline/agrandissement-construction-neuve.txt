@@ -1,7 +1,7 @@
 head
   link [href=https://fonts.googleapis.com rel=preconnect]
   link [href=https://fonts.gstatic.com rel=preconnect]
-  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
+  link [href=https://fonts.googleapis.com/css2?family=Alexandria:wght@400;700&family=Inter:wght@400;500;600;700&display=swap rel=stylesheet]
   title « Agrandissement et maison neuve | SLC Habitation »
   meta [name=description]
   meta [name=robots]
@@ -124,8 +124,8 @@ body
             div.header50_background-image-wrapper
               div.image-overlay-layer-2
               picture
-                source [sizes=(max-width: 4096px) 100vw, 4096px srcset=#1af53677 type=image/webp]
-                img.header50_background-image [alt=Agrandissement contemporain d’une maison height=2672 loading=eager sizes=(max-width: 4096px) 100vw, 4096px src=/images/upscale-house-1-min-1.png srcset=#cc5151ac width=4096]
+                source [sizes=100vw srcset=#4a7752c9 type=image/webp]
+                img.header50_background-image [alt=Agrandissement contemporain d’une maison height=2672 loading=eager src=/images/upscale-house-1-min-1-p-1600.png width=4096]
           section.color-scheme-1.section_layout201
             div.padding-global
               div.container-large
