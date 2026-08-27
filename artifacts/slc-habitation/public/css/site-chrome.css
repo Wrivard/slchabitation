@@ -35,6 +35,17 @@
   background-color: var(--color-scheme-1--background);
 }
 
+/* Les deux CTA orange du site doivent garder le même contraste : texte blanc. */
+.site-chrome .navbar3_component .navbar3_container > .button.w-button,
+.site-chrome .navbar3_component .navbar3_tablet-menu-button.w-button {
+  color: #fff !important;
+}
+
+.site-chrome .navbar3_component .navbar3_container > .button.w-button:hover,
+.site-chrome .navbar3_component .navbar3_tablet-menu-button.w-button:hover {
+  color: #fff !important;
+}
+
 /*
  * Menu mobile : le voile (`z-index: 0`) et le panneau (`z-index: 1`) couvrent
  * toute la barre. Le bouton doit rester au-dessus pour refermer le menu, comme
