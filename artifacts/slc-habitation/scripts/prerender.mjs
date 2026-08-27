@@ -30,24 +30,9 @@ const { siteOrigin, routes } = seoMetadata;
 const fontStylesheet =
   'https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap';
 
-/* Anciennes adresses Webflow qui, dans l'application, redirigent aussitôt vers
-   une autre page. Leur document statique continue d'exposer le contenu d'origine :
-   ces adresses sont référencées par les moteurs de recherche, et les remplacer
-   par un message de redirection ferait disparaître ce contenu de l'index. Ce
-   contenu vient de leur page React, rendue directement — l'application, elle,
-   ne les monte jamais et redirige au chargement, comme aujourd'hui. Le jour où
-   l'hébergement renverra une vraie redirection HTTP, cette liste disparaîtra. */
-const routesRedirectingOnLoad = new Set([
-  '/renovation-sous-sol',
-  '/renovation-salle-de-bain',
-  '/renovation-cuisine',
-  '/formulaire',
-]);
-
 let renderRoute;
-let renderRedirectPage;
 try {
-  ({ renderRoute, renderRedirectPage } = await import(pathToFileURL(serverBundle).href));
+  ({ renderRoute } = await import(pathToFileURL(serverBundle).href));
 } catch (error) {
   throw new Error(
     `Le rendu serveur est introuvable (${path.relative(root, serverBundle)}). ` +
@@ -130,17 +115,11 @@ function createSchemaTag(schema) {
 /**
  * Contenu de la page, rendu par l'application React elle-même.
  *
- * Deux cas particuliers. Les anciennes adresses qui redirigent au chargement
- * ne sont jamais montées par l'application : leur page est rendue directement,
- * telle quelle. Et le formulaire de soumission n'est monté qu'une fois la page
- * vivante, dans un emplacement réservé : la version statique y dépose un
- * aperçu non interactif, remplacé par le vrai formulaire dès que React démarre.
+ * Le formulaire de soumission n'est monté qu'une fois la page vivante, dans un
+ * emplacement réservé : la version statique y dépose un aperçu non interactif,
+ * remplacé par le vrai formulaire dès que React démarre.
  */
 function renderRouteBody(route) {
-  if (routesRedirectingOnLoad.has(route.path)) {
-    return renderRedirectPage(route.path);
-  }
-
   const body = markHiddenRevealElements(renderRoute(route.path));
 
   if (route.path !== '/soumission') {

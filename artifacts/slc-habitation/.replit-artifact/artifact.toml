@@ -28,6 +28,38 @@ from = "/renovation"
 to = "/renovation/index.html"
 
 [[services.production.rewrites]]
+from = "/renovation-sous-sol"
+to = "/renovation-sous-sol/index.html"
+
+[[services.production.rewrites]]
+from = "/renovation-sous-sol/*"
+to = "/renovation-sous-sol/index.html"
+
+[[services.production.rewrites]]
+from = "/renovation-salle-de-bain"
+to = "/renovation-salle-de-bain/index.html"
+
+[[services.production.rewrites]]
+from = "/renovation-salle-de-bain/*"
+to = "/renovation-salle-de-bain/index.html"
+
+[[services.production.rewrites]]
+from = "/renovation-cuisine"
+to = "/renovation-cuisine/index.html"
+
+[[services.production.rewrites]]
+from = "/renovation-cuisine/*"
+to = "/renovation-cuisine/index.html"
+
+[[services.production.rewrites]]
+from = "/formulaire"
+to = "/formulaire/index.html"
+
+[[services.production.rewrites]]
+from = "/formulaire/*"
+to = "/formulaire/index.html"
+
+[[services.production.rewrites]]
 from = "/agrandissement-construction-neuve"
 to = "/agrandissement-construction-neuve/index.html"
 

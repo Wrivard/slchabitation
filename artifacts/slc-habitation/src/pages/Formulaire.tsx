@@ -1,10 +1,9 @@
 /**
- * Ancienne adresse « /formulaire ».
+ * Page publique « /formulaire ».
  *
- * L'application redirige cette adresse vers la page qui l'a remplacée ; ce
- * composant ne sert qu'au document statique, servi le temps que la
- * redirection s'applique. Il reprend le balisage de l'export Webflow
- * (`site/formulaire.html`), à l'identique.
+ * Elle conserve le formulaire historique et son identité SEO propre. Le
+ * composant reprend le balisage de l'export Webflow
+ * (`site/formulaire.html`).
  */
 export default function Formulaire() {
   return (

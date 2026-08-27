@@ -8,6 +8,10 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import Home from '@/pages/Home';
 import APropos from '@/pages/APropos';
 import Renovation from '@/pages/Renovation';
+import RenovationSousSol from '@/pages/RenovationSousSol';
+import RenovationSalleDeBain from '@/pages/RenovationSalleDeBain';
+import RenovationCuisine from '@/pages/RenovationCuisine';
+import Formulaire from '@/pages/Formulaire';
 import Agrandissement from '@/pages/Agrandissement';
 import TravauxSurMesure from '@/pages/TravauxSurMesure';
 import Realisations from '@/pages/Realisations';
@@ -46,18 +50,6 @@ function FunnelRedirect({ to }: { to: string }) {
       <p data-testid="status-funnel-redirect">Redirection vers le formulaire de soumission…</p>
     </main>
   );
-}
-
-function RenovationSousSolRedirect() {
-  return <FunnelRedirect to="/pub/renovation-sous-sol" />;
-}
-
-function RenovationSalleDeBainRedirect() {
-  return <FunnelRedirect to="/pub/renovation-salle-de-bain" />;
-}
-
-function RenovationCuisineRedirect() {
-  return <FunnelRedirect to="/pub/renovation-cuisine" />;
 }
 
 function FormulaireRedirect() {
@@ -117,10 +109,10 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/a-propos" component={APropos} />
         <Route path="/renovation" component={Renovation} />
-        <Route path="/renovation-sous-sol" component={RenovationSousSolRedirect} />
-        <Route path="/renovation-salle-de-bain" component={RenovationSalleDeBainRedirect} />
-        <Route path="/renovation-cuisine" component={RenovationCuisineRedirect} />
-        <Route path="/formulaire" component={FormulaireRedirect} />
+        <Route path="/renovation-sous-sol" component={RenovationSousSol} />
+        <Route path="/renovation-salle-de-bain" component={RenovationSalleDeBain} />
+        <Route path="/renovation-cuisine" component={RenovationCuisine} />
+        <Route path="/formulaire" component={Formulaire} />
         <Route path="/agrandissement-construction-neuve" component={Agrandissement} />
         <Route path="/travaux-sur-mesure" component={TravauxSurMesure} />
         <Route path="/realisations" component={Realisations} />

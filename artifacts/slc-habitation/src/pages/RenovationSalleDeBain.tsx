@@ -1,10 +1,9 @@
 /**
- * Ancienne adresse « /renovation-salle-de-bain ».
+ * Page publique « /renovation-salle-de-bain ».
  *
- * L'application redirige cette adresse vers la page qui l'a remplacée ; ce
- * composant ne sert qu'au document statique, servi le temps que la
- * redirection s'applique. Il reprend le balisage de l'export Webflow
- * (`site/renovation-salle-de-bain.html`), à l'identique.
+ * Elle reste indexable et distincte du tunnel publicitaire. Le composant
+ * reprend le balisage de l'export Webflow
+ * (`site/renovation-salle-de-bain.html`).
  */
 export default function RenovationSalleDeBain() {
   return (

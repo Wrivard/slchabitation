@@ -103,6 +103,9 @@ body
                         path
                   nav.navbar3_dropdown-list.w-dropdown-list
                     a.navbar3_dropdown-link.w-dropdown-link [href=/renovation] « Rénovation »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/renovation-sous-sol] « Rénovation de sous-sol »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/renovation-salle-de-bain] « Rénovation de salle de bain »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/renovation-cuisine] « Rénovation de cuisine »
                     a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
                     a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
                 a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
