@@ -40,7 +40,21 @@ const imageAltText = {
   'images/relume-567906.jpeg': 'Intérieur résidentiel rénové par SLC Habitation',
 };
 
-const semanticHtmlContent = applyPageSemantics(htmlContent, imageAltText);
+/*
+ * Le gabarit HTML est conservé dans ce module pour la version React, tandis
+ * que `site/soumission.html` sert de source à la prérenderisation. On garde
+ * cette copie historique alignée ici avant d'appliquer les transformations
+ * d'accessibilité et de liens.
+ */
+const updatedHtmlContent = htmlContent
+  .replace('>Devis</div>', '>Soumission en ligne</div>')
+  .replace('>Obtenez votre soumission</h1>', '>Parlons de votre projet</h1>')
+  .replace(
+    '>Dites-nous ce que vous envisagez. Nous répondons vite, sans détour, avec des chiffres honnêtes.</p>',
+    '>Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p>',
+  );
+
+const semanticHtmlContent = applyPageSemantics(updatedHtmlContent, imageAltText);
 
 /* L'ancien formulaire d'une seule page et ses scripts d'envoi sont retirés du
    balisage hérité : c'est `SoumissionQuoteForm` qui occupe leur place. */
