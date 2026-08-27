@@ -211,7 +211,7 @@ body
                                 span « Saint-Eustache, QC »
                           p.text-muted-foreground.text-sm « Vos renseignements servent uniquement à préparer votre soumission. Ils ne sont ni vendus n…af256e46 »
                             a.hover:text-primary.underline [href=/politique-de-confidentialite] « Politique de confidentialité »
-          section.color-scheme-2.section_testimonial6
+          section.color-scheme-2.section_testimonial6.testimonials-showcase
             div.padding-global
               div.container-large
                 div.padding-section-large
@@ -223,7 +223,7 @@ body
                             span.text-span-2 « clients »
                         p.text-size-medium « Ce que disent ceux qui nous font confiance »
                     div.testimonial6_grid-list [data-reveal-group-nested=]
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
@@ -256,7 +256,7 @@ body
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Mélodie Binette »
                                 div « Propriétaire, Laval »
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
@@ -289,7 +289,7 @@ body
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Johanne Duguay »
                                 div « Propriétaire, Montréal »
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
