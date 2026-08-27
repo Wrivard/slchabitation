@@ -16,3 +16,9 @@ courante* du script de mesure, reconstruire, puis comparer les deux sorties
 mesurées par le même outil. Les écarts restants sont alors réels et se
 revoient un par un avant de figer une nouvelle base. Penser à
 `git worktree remove` ensuite.
+
+Même méthode quand la base de référence est un commit **ancien** et qu'un garde-fou visuel signale
+des dizaines d'écarts : ils mélangent alors les changements déjà acceptés et les siens. Construire
+l'état d'avant dans un arbre de travail et mesurer les deux constructions avec le même script
+répond seul à la question « lesquels de ces écarts viennent de moi ? ». Une simple mesure de
+hauteur de page par route suffit souvent à trier avant de sortir l'artillerie des captures.

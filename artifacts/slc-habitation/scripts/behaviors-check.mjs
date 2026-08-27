@@ -14,6 +14,13 @@ import path from 'node:path';
  * masqués tant qu'ils ne sont pas à l'écran, apparition en cascade, bouton de
  * retour en haut qui se déplie après une demi-hauteur d'écran, et affichage
  * immédiat lorsque le visiteur demande moins d'animations.
+ *
+ * La seconde moitié du script vérifie les mêmes gestes sur les vraies pages :
+ * menu mobile, menu déroulant « Services », filtre des réalisations, mise en
+ * retrait des cartes au survol et compteurs animés. Ces comportements étaient
+ * assurés par le moteur Webflow et par des scripts recopiés dans l'entête de
+ * chaque page ; ils sont désormais tenus par l'application elle-même, et c'est
+ * ici qu'on s'assure qu'ils n'ont pas changé.
  */
 
 const root = path.resolve(import.meta.dirname, '..');
@@ -29,6 +36,36 @@ function check(label, condition, detail = '') {
   }
   failures.push(detail ? `${label} — ${detail}` : label);
   console.log(`  ✗ ${label}${detail ? ` — ${detail}` : ''}`);
+}
+
+/**
+ * Laisse à la page le temps de brancher ses gestes.
+ *
+ * Les comportements sont posés au montage des composants : la page peut être
+ * « inactive » pendant un court instant après le chargement réseau.
+ */
+async function settle(page) {
+  await page.waitForTimeout(1500);
+}
+
+/**
+ * Parcourt la page de haut en bas puis remonte.
+ *
+ * Les blocs n'apparaissent qu'une fois entrés à l'écran : tant qu'ils
+ * attendent, ils sont masqués et rien ne peut être cliqué. Un visiteur les
+ * découvre en défilant ; c'est ce que ce passage reproduit avant de vérifier ce
+ * qui se trouve plus bas dans la page.
+ */
+async function scrollThroughPage(page) {
+  await page.evaluate(async () => {
+    const step = Math.round(window.innerHeight * 0.6);
+    for (let offset = 0; offset < document.body.scrollHeight; offset += step) {
+      window.scrollTo(0, offset);
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.waitForTimeout(1200);
 }
 
 async function visibilityOf(page, testId) {
@@ -153,6 +190,228 @@ try {
       state.opacity === 1 && state.visibility === 'visible',
       JSON.stringify(state),
     );
+
+    await context.close();
+  }
+
+  console.log('Menu mobile');
+  {
+    const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const page = await context.newPage();
+    await page.goto(`${server.origin}/`, { waitUntil: 'networkidle' });
+    await settle(page);
+
+    const menuState = () =>
+      page.evaluate(() => {
+        const menu = document.querySelector('.navbar3_component .w-nav-menu');
+        const button = document.querySelector('.navbar3_component .w-nav-button');
+        if (!menu || !button) return null;
+        return {
+          open: menu.hasAttribute('data-nav-menu-open'),
+          expanded: button.getAttribute('aria-expanded'),
+          height: Math.round(menu.getBoundingClientRect().height),
+          bodyLocked: document.body.style.overflow === 'hidden',
+        };
+      });
+
+    const closed = await menuState();
+    check('le panneau est replié au chargement', closed !== null && !closed.open && closed.height < 50, JSON.stringify(closed));
+
+    await page.locator('.navbar3_component .w-nav-button').click();
+    await page.waitForTimeout(500);
+    const opened = await menuState();
+    check(
+      'le bouton déploie le panneau sur toute la page',
+      opened.open && opened.height > 300 && opened.expanded === 'true',
+      JSON.stringify(opened),
+    );
+    check('le fond ne défile plus derrière le panneau', opened.bodyLocked, JSON.stringify(opened));
+
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(400);
+    const afterEscape = await menuState();
+    check('la touche Échap referme le panneau', !afterEscape.open, JSON.stringify(afterEscape));
+
+    await page.locator('.navbar3_component .w-nav-button').click();
+    await page.waitForTimeout(400);
+    await page.locator('.navbar3_component .w-nav-menu a[href="/realisations"]').first().click();
+    await page.waitForTimeout(600);
+    check(
+      'un lien du panneau conduit bien à la page demandée',
+      new URL(page.url()).pathname === '/realisations',
+      page.url(),
+    );
+
+    await context.close();
+  }
+
+  console.log('Menu déroulant « Services »');
+  {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(`${server.origin}/`, { waitUntil: 'networkidle' });
+    await settle(page);
+
+    const dropdownState = () =>
+      page.evaluate(() => {
+        const list = document.querySelector('.navbar3_component .w-dropdown-list');
+        if (!list) return null;
+        return {
+          open: list.classList.contains('w--open'),
+          height: Math.round(list.getBoundingClientRect().height),
+        };
+      });
+
+    const initial = await dropdownState();
+    check('le menu est replié au chargement', initial !== null && !initial.open, JSON.stringify(initial));
+
+    await page.locator('.navbar3_component .w-dropdown-toggle').first().hover();
+    await page.waitForTimeout(400);
+    const hovered = await dropdownState();
+    check(
+      'le survol déroule la liste des services',
+      hovered.open && hovered.height > 50,
+      JSON.stringify(hovered),
+    );
+
+    await page.mouse.move(700, 600);
+    await page.waitForTimeout(400);
+    const left = await dropdownState();
+    check('la liste se replie quand la souris ressort', !left.open, JSON.stringify(left));
+
+    await page.locator('.navbar3_component .w-dropdown-toggle').first().focus();
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(300);
+    const byKeyboard = await dropdownState();
+    check('le clavier déroule aussi la liste', byKeyboard.open, JSON.stringify(byKeyboard));
+
+    await context.close();
+  }
+
+  console.log('Filtre des réalisations');
+  {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(`${server.origin}/realisations`, { waitUntil: 'networkidle' });
+    await settle(page);
+    await scrollThroughPage(page);
+
+    const visibleProjects = () =>
+      page.evaluate(() =>
+        Array.from(document.querySelectorAll('.blog22_item')).filter(
+          (element) => element.getBoundingClientRect().height > 0,
+        ).length,
+      );
+
+    const total = await visibleProjects();
+    check('toutes les réalisations sont visibles au départ', total > 0, `${total} projet(s)`);
+
+    const filters = page.locator('.category-filter-link');
+    const filterCount = await filters.count();
+    check('les boutons de filtre sont présents', filterCount > 1, `${filterCount} bouton(s)`);
+
+    if (filterCount > 1) {
+      await filters.nth(1).click();
+      await page.waitForTimeout(500);
+      const filtered = await visibleProjects();
+      check(
+        'un filtre ne laisse qu\'une partie des réalisations',
+        filtered > 0 && filtered < total,
+        `${filtered} sur ${total}`,
+      );
+
+      await filters.nth(0).click();
+      await page.waitForTimeout(500);
+      const restored = await visibleProjects();
+      check(
+        '« Tous » ramène l\'ensemble des réalisations',
+        restored === total,
+        `${restored} sur ${total}`,
+      );
+    }
+
+    await context.close();
+  }
+
+  console.log('Cartes de services au survol');
+  {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(`${server.origin}/`, { waitUntil: 'networkidle' });
+
+    await settle(page);
+    await scrollThroughPage(page);
+
+    const card = page.locator('.layout423_card').first();
+    await card.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(300);
+
+    const before = await page.evaluate(
+      () => document.querySelectorAll('.layout423_card-content.inactive').length,
+    );
+    check('aucune carte n\'est estompée au départ', before === 0, `${before} carte(s)`);
+
+    await card.hover();
+    await page.waitForTimeout(300);
+    const during = await page.evaluate(() => ({
+      inactive: document.querySelectorAll('.layout423_card-content.inactive').length,
+      total: document.querySelectorAll('.layout423_card-content').length,
+    }));
+    check(
+      'survoler une carte estompe les autres',
+      during.inactive > 0 && during.inactive < during.total,
+      JSON.stringify(during),
+    );
+
+    await page.mouse.move(5, 5);
+    await page.waitForTimeout(300);
+    const after = await page.evaluate(
+      () => document.querySelectorAll('.layout423_card-content.inactive').length,
+    );
+    check('les cartes retrouvent leur teinte à la sortie', after === 0, `${after} carte(s)`);
+
+    await context.close();
+  }
+
+  console.log('Compteurs animés');
+  {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(`${server.origin}/`, { waitUntil: 'networkidle' });
+
+    const numbers = page.locator('[counter-element="number"]');
+    const count = await numbers.count();
+    check('la page d\'accueil affiche des compteurs', count > 0, `${count} compteur(s)`);
+
+    if (count > 0) {
+      await settle(page);
+      /* Le compteur peut attendre son tour d'apparition : on l'amène à l'écran
+         sans passer par la visibilité, puis on relève ce qu'il affiche. */
+      await numbers.first().evaluate((element) => {
+        element.scrollIntoView({ block: 'center' });
+      });
+
+      /* Le compte défile trop vite pour une capture unique : on relève les
+         valeurs successives pendant toute la durée annoncée par la page. */
+      const seen = new Set();
+      for (let elapsed = 0; elapsed < 4500; elapsed += 100) {
+        seen.add((await numbers.first().textContent())?.trim());
+        await page.waitForTimeout(100);
+      }
+
+      const values = [...seen];
+      const final = (await numbers.allTextContents()).map((value) => value.trim());
+      check(
+        'le compte défile au lieu d\'afficher directement sa valeur',
+        values.length > 3,
+        `${values.length} valeur(s) : ${values.slice(0, 5).join(', ')}…`,
+      );
+      check(
+        'le compte s\'arrête sur la valeur de la page',
+        final[0] === '25' && final[1] === '500',
+        JSON.stringify(final),
+      );
+    }
 
     await context.close();
   }

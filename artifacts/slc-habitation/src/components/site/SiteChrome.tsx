@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
-import { siteFooterHtml, siteHeaderHtml } from '@/generated/site-chrome';
+import { siteFooterHtml, siteHeaderHtml } from './site-chrome-markup';
 import { initSiteNav } from '@/lib/site-nav';
 
 /**
  * Navbar et pied de page du site principal, réutilisés tels quels partout.
  *
- * Le balisage vient de `src/generated/site-chrome.ts`, extrait du gabarit
- * legacy au moment du build. Les pages qui embarquent déjà `webflow.js`
- * gardent leur copie interne ; ces composants servent aux pages React qui ne
- * chargent pas le script legacy, comme le tunnel publicitaire.
+ * Le balisage vient de `site-chrome-markup.ts`. Les pages du site principal
+ * écrivent le leur directement dans leur composant ; ces composants servent aux
+ * pages qui n'ont pas ce gabarit, comme le tunnel publicitaire et la page de
+ * remerciement.
  */
 
 /** Marque le lien de la page courante comme Webflow le ferait. */

@@ -88,19 +88,12 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist/public'),
     emptyOutDir: true,
+    /* Un seul document source : `index.html`. Les pages publiques sont
+       ensuite écrites une à une par `scripts/prerender.mjs`, qui part de ce
+       document construit. */
     rollupOptions: {
       input: {
         index: path.resolve(import.meta.dirname, 'index.html'),
-        about: path.resolve(import.meta.dirname, 'a-propos.html'),
-        renovation: path.resolve(import.meta.dirname, 'renovation.html'),
-        sousSol: path.resolve(import.meta.dirname, 'renovation-sous-sol.html'),
-        salleDeBain: path.resolve(import.meta.dirname, 'renovation-salle-de-bain.html'),
-        cuisine: path.resolve(import.meta.dirname, 'renovation-cuisine.html'),
-        formulaire: path.resolve(import.meta.dirname, 'formulaire.html'),
-        expansion: path.resolve(import.meta.dirname, 'agrandissement-construction-neuve.html'),
-        customWork: path.resolve(import.meta.dirname, 'travaux-sur-mesure.html'),
-        projects: path.resolve(import.meta.dirname, 'realisations.html'),
-        quote: path.resolve(import.meta.dirname, 'soumission.html'),
       },
     },
   },

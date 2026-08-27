@@ -5,4 +5,6 @@
  * des scripts inline copiés dans chaque page Webflow.
  */
 export { useBackToTop } from './back-to-top';
+export { useCountUp } from './count-up';
 export { useRevealOnScroll } from './reveal-on-scroll';
+export { useSitePageBehaviors } from './site-page';

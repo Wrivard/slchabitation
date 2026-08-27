@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr-CA">
   <head>
+    <!--
+      Entête unique du site.
+
+      Toutes les pages publiques partent de ce document : le prérendu
+      (scripts/prerender.mjs) y insère le contenu rendu par React, puis remplace
+      le titre, la description et les adresses par celles de la page. Ce qui est
+      écrit ici est donc commun à toutes les pages ; ce qui change d'une page à
+      l'autre vit dans src/lib/seo-route-metadata.json.
+    -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -35,6 +44,8 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=(), browsing-topics=(), attribution-reporting=(), run-ad-auction=(), join-ad-interest-group=(), private-state-token-issuance=(), private-aggregation=()" />
+    <meta name="author" content="SLC Habitation" />
     <title>Rénovation et construction neuve | SLC Habitation</title>
     <meta name="description" content="SLC Habitation réalise des projets de rénovation, d’agrandissement, de construction neuve et de travaux sur mesure dans les Laurentides et Laval." />
     <meta name="robots" content="index, follow" />
@@ -57,6 +68,14 @@
     <meta name="twitter:description" content="SLC Habitation réalise des projets de rénovation, d’agrandissement, de construction neuve et de travaux sur mesure dans les Laurentides et Laval." />
     <meta name="twitter:image" content="https://slchabitation.com/images/relume-657269-p-1200.jpeg" />
     <meta name="twitter:image:alt" content="SLC Habitation — rénovation et construction résidentielle" />
+    <meta name="theme-color" content="#d4a574" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=yes" />
+    <!--
+      Fiche de l'entreprise, commune à toutes les pages. Le prérendu ajoute
+      au-dessus, sous l'identifiant « page-schema », la fiche propre à la page
+      (questions fréquentes, service décrit…).
+    -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -86,6 +105,12 @@
               { "@type": "City", "name": "Sainte-Thérèse" },
               { "@type": "City", "name": "Rosemère" }
             ],
+            "priceRange": "$$",
+            "identifier": {
+              "@type": "PropertyValue",
+              "name": "RBQ",
+              "value": "8351-9033-59"
+            },
             "sameAs": ["https://www.facebook.com/SLCHabitation"]
           },
           {
@@ -114,15 +139,22 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/256x256.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Preserved CSS from Webflow -->
+    <link rel="dns-prefetch" href="//www.google.com">
+    <link rel="dns-prefetch" href="//consent.cookiebot.com">
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="0c8feb33-6ff7-4ea6-aeb2-85c1fde2f998" data-blockingmode="auto" type="text/javascript"></script>
+    <script id="CookieDeclaration" src="https://consent.cookiebot.com/0c8feb33-6ff7-4ea6-aeb2-85c1fde2f998/cd.js" type="text/javascript" async></script>
+
+    <!-- Feuilles de style héritées de Webflow, conservées telles quelles. -->
+    <link rel="preload" href="/css/slc-habitation-eea667.webflow.css" as="style">
     <link href="/css/normalize.css" rel="stylesheet" type="text/css">
     <link href="/css/webflow.css" rel="stylesheet" type="text/css">
     <link href="/css/slc-habitation-eea667.webflow.css" rel="stylesheet" type="text/css">
     <link href="/css/site-chrome.css" rel="stylesheet" type="text/css">
+    <link href="/css/site-page.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="root"></div>

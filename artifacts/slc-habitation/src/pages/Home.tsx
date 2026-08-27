@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import { useLegacyWebflowEngine } from '@/lib/legacy-webflow-engine';
-import { enableFaqAccessibility } from '@/lib/enhanceAccessibility';
+import { useSitePageBehaviors } from '@/lib/behaviors/site-page';
+import { enableFaqAccessibility } from '@/lib/behaviors/faq-disclosure';
 import { setupHoverCards } from '@/lib/behaviors/hover-cards';
 
 /**
@@ -14,7 +14,7 @@ import { setupHoverCards } from '@/lib/behaviors/hover-cards';
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useLegacyWebflowEngine();
+  useSitePageBehaviors(containerRef);
 
   useEffect(() => {
     const container = containerRef.current;

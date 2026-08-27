@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import { useLegacyWebflowEngine } from '@/lib/legacy-webflow-engine';
-import { enableFaqAccessibility } from '@/lib/enhanceAccessibility';
+import { useSitePageBehaviors } from '@/lib/behaviors/site-page';
+import { enableFaqAccessibility } from '@/lib/behaviors/faq-disclosure';
 
 /**
  * Page « /agrandissement-construction-neuve ».
@@ -13,7 +13,7 @@ import { enableFaqAccessibility } from '@/lib/enhanceAccessibility';
 export default function Agrandissement() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useLegacyWebflowEngine();
+  useSitePageBehaviors(containerRef);
 
   useEffect(() => {
     const container = containerRef.current;

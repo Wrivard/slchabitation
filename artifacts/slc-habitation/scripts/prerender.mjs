@@ -1,4 +1,4 @@
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import {
@@ -15,14 +15,13 @@ import {
  * d'indexation voient donc rigoureusement la même page — il n'existe plus de
  * copie écrite à la main susceptible de s'écarter du vrai site.
  *
- * Les pages issues du gabarit Webflow conservent leur document d'origine
- * (entête, feuilles de style, scripts hérités) : seul le contenu placé dans
- * `#root` provient du rendu React.
+ * Toutes les pages partent du même document, `index.html` : l'entête commune y
+ * est écrite une seule fois, et seuls le titre, la description et les adresses
+ * changent d'une page à l'autre, depuis `src/lib/seo-route-metadata.json`.
  */
 
 const root = path.resolve(import.meta.dirname, '..');
 const outputDir = path.join(root, 'dist', 'public');
-const sourceDir = path.join(root, 'site');
 const serverBundle = path.join(root, 'dist', 'server', 'entry-server.js');
 const seoMetadata = JSON.parse(
   await readFile(path.join(root, 'src/lib/seo-route-metadata.json'), 'utf8'),
@@ -30,11 +29,6 @@ const seoMetadata = JSON.parse(
 const { siteOrigin, routes } = seoMetadata;
 const fontStylesheet =
   'https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap';
-
-/* Pages issues d'un gabarit Webflow qui montent malgré tout un composant React
-   stylé avec la feuille de l'application. Les pages sans gabarit hérité partent
-   du shell Vite, qui la référence déjà. */
-const routesNeedingAppStyles = new Set(['/soumission']);
 
 /* Anciennes adresses Webflow qui, dans l'application, redirigent aussitôt vers
    une autre page. Leur document statique continue d'exposer le contenu d'origine :
@@ -197,13 +191,12 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   <meta name="twitter:description" content="${escapeHtml(route.description)}">
   ${createSchemaTag(route.schema)}
   ${noScriptRevealStyle}
-  ${routesNeedingAppStyles.has(route.path) ? appStylesheet : ''}
 `;
   html = html.replace(/<head([^>]*)>/i, `<head$1>${headTags}`);
 
   const bodyMatch = html.match(/<body([^>]*)>([\s\S]*?)<\/body>/i);
   if (!bodyMatch) {
-    throw new Error(`Could not find a body in ${route.source ?? route.path}`);
+    throw new Error(`Could not find a body in ${route.path}`);
   }
 
   const bodyAttributes = bodyMatch[1] || '';
@@ -223,37 +216,14 @@ if (!appScriptMatch) {
 
 const appScript = `<script type="module" src="${appScriptMatch[1]}"></script>`;
 
-// Les gabarits hérités de Webflow n'embarquent que le CSS du site d'origine.
-// La page /soumission affiche désormais un composant React stylé avec la
-// feuille de l'application : elle doit donc la charger elle aussi, sans quoi le
-// formulaire arriverait sans mise en forme.
-const appStylesheetMatch = appShell.match(
-  /<link\b[^>]*href="[^"]*assets\/[^"]+\.css"[^>]*>/i,
-);
-if (!appStylesheetMatch) {
-  throw new Error('Could not find the built application stylesheet in index.html');
-}
-const appStylesheet = appStylesheetMatch[0];
-
 for (const route of routes) {
-  const sourceHtml = route.source
-    ? await readFile(path.join(sourceDir, route.source), 'utf8')
-    : appShell;
-
-  const renderedHtml = createPrerenderedPage(sourceHtml, route, appScript);
+  const renderedHtml = createPrerenderedPage(appShell, route, appScript);
   const routeOutput =
     route.path === '/'
       ? path.join(outputDir, 'index.html')
       : path.join(outputDir, route.path.slice(1), 'index.html');
   await mkdir(path.dirname(routeOutput), { recursive: true });
   await writeFile(routeOutput, renderedHtml);
-
-  // Vite's SEO entry points may emit the former .html path as a physical file.
-  // Remove it so the alternate URL is handled by the clean-route redirect
-  // instead of becoming a second indexable document.
-  if (route.path !== '/' && route.source) {
-    await rm(path.join(outputDir, route.source), { force: true });
-  }
 }
 
 console.log(`Prerendered ${routes.length} public routes from the React application.`);

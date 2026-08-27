@@ -16,7 +16,6 @@ import Merci from '@/pages/Merci';
 import PolitiqueDeCookie from '@/pages/PolitiqueDeCookie';
 import Unauthorized from '@/pages/Unauthorized';
 import NotFoundPage from '@/pages/NotFoundPage';
-import StyleGuide from '@/pages/StyleGuide';
 import VerificationInteractions from '@/pages/VerificationInteractions';
 
 // New Pub Routes
@@ -130,7 +129,6 @@ function Router() {
         <Route path="/politique-de-cookie" component={PolitiqueDeCookie} />
         <Route path="/401.html" component={Unauthorized} />
         <Route path="/404.html" component={NotFoundPage} />
-        <Route path="/style-guide-a2eb197e-ef3b-4620-ad8c-6507e3057840.html" component={StyleGuide} />
         {/* Banc d'essai des interactions reprises du site hérité : hors menu,
             hors plan de site, jamais prérendu. */}
         <Route path="/verification-interactions" component={VerificationInteractions} />

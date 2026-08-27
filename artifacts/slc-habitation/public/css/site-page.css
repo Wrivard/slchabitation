@@ -1,0 +1,71 @@
+/* Règles qui accompagnaient chaque page du gabarit Webflow dans une balise
+   <style> recopiée d'un document à l'autre. Elles sont réunies ici, une seule
+   fois, et chargées après les feuilles héritées comme elles l'étaient. */
+
+/* Qualité du rendu des polices. */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+}
+
+/* Bouton « retour en haut ».
+   Le conteneur est masqué par défaut pour que le bouton n'apparaisse pas le
+   temps du chargement : c'est le comportement React qui le révèle. */
+[data-back-to-top="wrap"] {
+  opacity: 0;
+}
+
+.back-top__arrow-row {
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0, 1);
+}
+
+.back-top__button {
+  transition: border-width 0.5s cubic-bezier(0.65, 0, 0, 1);
+}
+
+/* État au clavier */
+.back-top__button:focus-visible {
+  border-width: 0.6em;
+}
+
+.back-top__button:focus-visible .back-top__arrow-row {
+  transform: translate(0px, -100%);
+}
+
+/* Survol */
+@media (hover: hover) {
+  .back-top__button:hover {
+    border-width: 0.6em;
+  }
+
+  .back-top__button:hover .back-top__arrow-row {
+    transform: translate(0px, -100%);
+  }
+}
+
+/* Cartes de services de la page d'accueil.
+   Le gabarit Webflow déclarait ici l'état de départ d'animations au survol qui
+   n'ont jamais été jouées : le panneau reste replié et le voile reste posé. Ces
+   règles sont conservées à l'identique pour que l'affichage ne change pas. */
+@media (min-width: 992px) {
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed59"],
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed6c"],
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed7f"] {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+    height: 0px;
+  }
+
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed51"],
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed64"],
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed77"] {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed4f"],
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed62"],
+  [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed75"] {
+    width: 50%;
+  }
+}

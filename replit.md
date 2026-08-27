@@ -40,11 +40,41 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ### Site public (`artifacts/slc-habitation`)
 
-- Les pages statiques ne sont plus écrites à la main : `pnpm run build` construit
-  l'application pour le navigateur, puis pour le serveur (`vite.config.ssr.ts`),
-  puis `scripts/prerender.mjs` demande à React le contenu de chaque page. Toute
-  modification d'une page se répercute donc automatiquement sur sa version
-  statique.
+#### Comment le site est fabriqué
+
+- Une page = un composant React dans `src/pages/`. Il n'y a plus aucun fichier
+  HTML de page : le dossier `site/`, l'ancien moteur Webflow (`webflow.js`,
+  jQuery, GSAP) et les scripts de conversion ont été retirés.
+- Un seul document sert de gabarit : `index.html`. Il contient tout ce qui est
+  commun à toutes les pages (bandeau de consentement, mesure d'audience,
+  feuilles de style héritées de Webflow, icônes, fiche de l'entreprise).
+- `pnpm run build` construit l'application pour le navigateur, puis pour le
+  serveur (`vite.config.ssr.ts`), puis `scripts/prerender.mjs` écrit une page
+  statique par adresse : il part du gabarit construit et y insère le contenu
+  rendu par React. Toute modification d'une page se répercute donc
+  automatiquement sur sa version statique.
+- L'entête, le pied de page et le menu viennent de
+  `src/components/site/site-chrome-markup.ts`, un fichier tenu à la main (plus
+  aucune génération automatique).
+- Les animations reprises du site Webflow (menu, apparition au défilement,
+  compteurs, retour en haut) sont des comportements React réunis dans
+  `src/lib/behaviors/` ; chaque page les active avec `useSitePageBehaviors`.
+
+#### Modifier une page
+
+1. Modifier le composant correspondant dans `src/pages/`.
+2. Pour le titre, la description, l'adresse canonique ou la fiche structurée de
+   la page : `src/lib/seo-route-metadata.json`. Pour quelque chose de commun à
+   toutes les pages : `index.html`.
+3. `pnpm run build`, puis `pnpm run structure:check` et `pnpm run visual:check`
+   pour vérifier que rien d'autre n'a bougé.
+
+#### Points de vigilance
+
+- Toutes les pages chargent désormais la feuille de style de l'application
+  (Tailwind, avec sa remise à zéro) en plus des feuilles héritées de Webflow,
+  comme c'était déjà le cas dans l'aperçu de développement. Une règle Tailwind
+  ajoutée sans précaution peut donc toucher une page héritée.
 - Filet de sécurité avant/après une modification du site :
   `pnpm run parity:baseline` reconstruit le site tel qu'il était au commit
   déclaré dans `parity-reference.json` et en garde des captures ;

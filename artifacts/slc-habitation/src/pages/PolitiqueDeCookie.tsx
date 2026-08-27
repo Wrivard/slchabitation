@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { useLegacyWebflowEngine } from '@/lib/legacy-webflow-engine';
+import { useSitePageBehaviors } from '@/lib/behaviors/site-page';
 
 /**
  * Page « /politique-de-cookie ».
@@ -12,7 +12,7 @@ import { useLegacyWebflowEngine } from '@/lib/legacy-webflow-engine';
 export default function PolitiqueDeCookie() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useLegacyWebflowEngine();
+  useSitePageBehaviors(containerRef);
 
 
   return (

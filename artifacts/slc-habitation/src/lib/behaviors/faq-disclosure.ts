@@ -1,21 +1,11 @@
-import { enhanceAccessibility as enhanceStaticMarkupAccessibility } from './publicPageSemantics.mjs';
-
 /**
- * Adds semantic, keyboard, and screen-reader support to the imported Webflow
- * page markup before it is mounted by React.
- */
-export function enhanceAccessibility(html: string): string {
-  return enhanceStaticMarkupAccessibility(html);
-}
-
-/**
- * Keeps the semantic state of the imported FAQ disclosures in step with the
- * visual state, and drives the panel height and the transition itself.
+ * Ouverture et fermeture des questions fréquentes.
  *
- * Le moteur d'interactions de Webflow (ix2) est bien chargé sur ces pages,
- * mais ses écouteurs sont liés au DOM d'origine : après le montage React, il
- * ne rejoue plus l'animation et les réponses restent à `height: 0px`. C'est
- * donc ce module qui pilote l'ouverture.
+ * Les blocs « FAQ » viennent du gabarit d'origine : une question est un bouton,
+ * la réponse un panneau dont la hauteur s'anime. Ce comportement tient les deux
+ * en phase — l'état annoncé aux lecteurs d'écran (`aria-expanded`,
+ * `aria-hidden`) et la hauteur du panneau — et remplace l'animation que le
+ * moteur Webflow jouait autrefois.
  */
 export function enableFaqAccessibility(container: HTMLElement): () => void {
   const controls = Array.from(

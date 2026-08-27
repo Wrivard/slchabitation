@@ -2,8 +2,8 @@ import { createPortal } from 'react-dom';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'wouter';
 
-import { useLegacyWebflowEngine } from '@/lib/legacy-webflow-engine';
-import { enableFaqAccessibility } from '@/lib/enhanceAccessibility';
+import { useSitePageBehaviors } from '@/lib/behaviors/site-page';
+import { enableFaqAccessibility } from '@/lib/behaviors/faq-disclosure';
 import { SoumissionQuoteForm, soumissionServices } from '@/components/site/SoumissionQuoteForm';
 
 /* Les pages publicitaires nomment certains services autrement : l'adresse
@@ -38,7 +38,7 @@ export default function Soumission() {
   const [location] = useLocation();
   const defaultService = useMemo(() => readServiceParam(), [location]);
 
-  useLegacyWebflowEngine();
+  useSitePageBehaviors(containerRef);
 
   useEffect(() => {
     setFormSlot(formSlotRef.current);

@@ -13,3 +13,10 @@ simplement pas chargée.
 
 **How to apply:** en cas de « cette règle ne s'applique pas sur cette page », vérifier d'abord la
 présence de la feuille dans `document.styleSheets` avant de chercher une surcharge.
+
+Cas le plus coûteux observé : en développement, Vite injecte la feuille de l'application sur
+n'importe quelle page servie, donc l'aperçu paraît correct ; seule la version **construite** d'une
+route servie par son propre shell s'en retrouve privée. Des pages sont ainsi restées longtemps
+publiées sans mise en page, sans que rien ne le signale. Un contrôle qui ne regarde que le serveur
+de développement ne peut pas voir ce défaut : comparer les pages **construites**. Réunir toutes les
+routes sur un seul shell supprime la classe de bugs entière.

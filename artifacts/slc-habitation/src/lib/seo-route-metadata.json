@@ -2,7 +2,6 @@
   "siteOrigin": "https://slchabitation.com",
   "routes": [
     {
-      "source": "index.html",
       "path": "/",
       "title": "Rénovation et construction neuve | SLC Habitation",
       "description": "SLC Habitation réalise des projets de rénovation, d’agrandissement, de construction neuve et de travaux sur mesure dans les Laurentides et Laval.",
@@ -54,7 +53,6 @@
       }
     },
     {
-      "source": "a-propos.html",
       "path": "/a-propos",
       "title": "À propos de SLC Habitation | Rénovation résidentielle",
       "description": "Découvrez SLC Habitation, une équipe de rénovation résidentielle à l’écoute des propriétaires des Laurentides, de Laval et des environs.",
@@ -72,7 +70,6 @@
       }
     },
     {
-      "source": "renovation.html",
       "path": "/renovation",
       "title": "Rénovation résidentielle | SLC Habitation",
       "description": "Confiez votre rénovation résidentielle à SLC Habitation : cuisines, salles de bains, sous-sols et espaces de vie pensés pour vos besoins.",
@@ -100,7 +97,6 @@
       }
     },
     {
-      "source": "renovation-sous-sol.html",
       "path": "/renovation-sous-sol",
       "title": "Rénovation de sous-sol Laval et Laurentides | SLC",
       "description": "Aménagement de sous-sol sur mesure à Laval et dans les Laurentides : planification, isolation, insonorisation, finition et coordination par SLC Habitation.",
@@ -157,7 +153,6 @@
       }
     },
     {
-      "source": "renovation-salle-de-bain.html",
       "path": "/renovation-salle-de-bain",
       "title": "Rénovation salle de bain | Laval et Laurentides",
       "description": "Rénovation de salle de bain à Laval et dans les Laurentides : étanchéité, plomberie, céramique, ventilation et coordination par SLC Habitation.",
@@ -214,7 +209,6 @@
       }
     },
     {
-      "source": "renovation-cuisine.html",
       "path": "/renovation-cuisine",
       "title": "Rénovation de cuisine | Laval et Laurentides",
       "description": "Rénovation de cuisine à Laval et dans les Laurentides : aménagement, armoires, plomberie, électricité et coordination par SLC Habitation.",
@@ -271,7 +265,6 @@
       }
     },
     {
-      "source": "formulaire.html",
       "path": "/formulaire",
       "title": "Demander une soumission | SLC Habitation",
       "description": "Demandez une soumission pour vos travaux de rénovation ou construction.",
@@ -289,7 +282,6 @@
       }
     },
     {
-      "source": "agrandissement-construction-neuve.html",
       "path": "/agrandissement-construction-neuve",
       "title": "Agrandissement et maison neuve | SLC Habitation",
       "description": "SLC Habitation conçoit des agrandissements résidentiels et des constructions neuves pour créer des espaces de vie fonctionnels et durables.",
@@ -317,7 +309,6 @@
       }
     },
     {
-      "source": "travaux-sur-mesure.html",
       "path": "/travaux-sur-mesure",
       "title": "Travaux sur mesure | SLC Habitation",
       "description": "SLC Habitation réalise des travaux sur mesure pour adapter, embellir et renforcer votre maison selon votre situation et vos priorités.",
@@ -345,7 +336,6 @@
       }
     },
     {
-      "source": "realisations.html",
       "path": "/realisations",
       "title": "Réalisations de rénovation | SLC Habitation",
       "description": "Parcourez les réalisations de SLC Habitation et découvrez des projets de rénovation, d’agrandissement et de construction résidentielle.",
@@ -363,7 +353,6 @@
       }
     },
     {
-      "source": "soumission.html",
       "path": "/soumission",
       "title": "Demander une soumission | SLC Habitation",
       "description": "Décrivez votre projet à SLC Habitation et demandez une soumission pour vos travaux de rénovation, d’agrandissement ou de construction neuve.",
@@ -381,7 +370,6 @@
       }
     },
     {
-      "source": "politique-de-cookie.html",
       "path": "/politique-de-cookie",
       "title": "Politique de cookies | SLC Habitation",
       "description": "Consultez la politique de cookies de SLC Habitation et découvrez comment nous utilisons les cookies sur notre site."
