@@ -5,6 +5,7 @@ import {
   enhanceAccessibility,
   getPageSemantics,
 } from '../src/lib/publicPageSemantics.mjs';
+import { readSiteChrome } from './lib/site-chrome.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const outputDir = path.join(root, 'dist', 'public');
@@ -15,6 +16,12 @@ const seoMetadata = JSON.parse(
 const { siteOrigin, routes } = seoMetadata;
 const fontStylesheet =
   'https://fonts.googleapis.com/css2?family=Alexandria:wght@400&family=Inter:wght@400;500;600;700&display=swap';
+
+// Même navbar et même pied de page que les pages React : le balisage vient du
+// gabarit legacy, comme le module `src/generated/site-chrome.ts`.
+const { headerHtml: siteHeaderHtml, footerHtml: siteFooterHtml } = await readSiteChrome(root);
+const staticSiteHeader = `<div class="site-chrome site-chrome--header" data-testid="site-navbar">${siteHeaderHtml}</div>`;
+const staticSiteFooter = `<div class="site-chrome site-chrome--footer" data-testid="site-footer" data-sticky-hide>${siteFooterHtml}</div>`;
 
 function escapeHtml(value) {
   return value
@@ -423,10 +430,12 @@ function createPaidStaticBody(content, routePath) {
   const cta = `<a class="inline-flex rounded-none bg-primary px-6 py-3 font-semibold text-white" href="/pub/formulaire?service=${escapeHtml(serviceSlug)}">Obtenir ma soumission sans frais</a>`;
   // Mêmes faits que le composant PubProofBar de la version React.
   const proofBar = `<section aria-label="Ce que vous obtenez en nous écrivant" class="bg-secondary py-6 text-white"><div class="container-large mx-auto max-w-7xl px-6"><ul class="flex flex-wrap gap-8"><li><strong>Réponse sous 48 h</strong> — à chaque demande reçue</li><li><strong>Estimation sans frais</strong> — visite comprise</li><li><strong>500+ projets complétés</strong> — en 25 ans</li><li><strong>Laval et les Laurentides</strong> — 9 municipalités desservies</li></ul></div></section>`;
+  // Même structure que le composant PubNavLinks (variante « bar »).
   const nav = createPaidNav(Boolean(extra.details))
-    .map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(label)}</a>`)
-    .join(' · ');
-  const headerNav = `<nav aria-label="Sections de la page" class="border-t border-border"><div class="container-large mx-auto flex gap-4 overflow-x-auto px-6 py-2">${nav}</div></nav>`;
+    .map(([id, label]) =>
+      `<a href="#${escapeHtml(id)}" class="pub-header-nav__link" data-active="false">${escapeHtml(label)}</a>`)
+    .join('');
+  const headerNav = `<div class="pub-section-nav"><nav aria-label="Sections de la page" class="pub-header-nav pub-header-nav--bar" data-testid="pub-toc"><div class="pub-header-nav__list no-scrollbar">${nav}</div></nav></div>`;
   const images = createPaidGalleryMarkup(extra.images);
   const [heroSrc, heroAlt, heroWidth, heroHeight] = extra.hero;
   const heroThumbs = extra.thumbs
@@ -460,7 +469,7 @@ function createPaidStaticBody(content, routePath) {
   const checklist = content.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
   const faqItems = content.faqs.map(([question, answer]) =>
     `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('');
-  return `<header class="border-b bg-background"><div class="container-large mx-auto flex items-center justify-between px-6 py-4"><a href="/"><img src="/images/relume-567884.png" width="180" height="60" alt="SLC Habitation"></a><div class="flex items-center gap-6"><a href="tel:5144048494" class="font-semibold">(514) 404-8494</a>${cta}</div></div>${headerNav}</header>
+  return `${staticSiteHeader}${headerNav}
   <main><section class="bg-secondary py-20 text-white"><div class="container-large mx-auto max-w-5xl px-6"><img src="${escapeHtml(heroSrc)}" alt="${escapeHtml(heroAlt)}" width="${heroWidth}" height="${heroHeight}"><p class="text-primary font-bold uppercase tracking-widest mb-4">${escapeHtml(extra.label)}</p><h1 class="text-4xl md:text-6xl font-bold mb-6">${escapeHtml(content.h1)}</h1><p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">${escapeHtml(content.intro)}</p><ul class="flex flex-wrap gap-4 mb-8"><li class="border border-white/25 bg-white/10 px-4 py-2">19 avis Google 5 étoiles</li><li class="border border-white/25 bg-white/10 px-4 py-2">Licence RBQ : 8351-9033-59</li></ul>${cta}<p>${escapeHtml(extra.thumbsLabel)}</p>${heroThumbs}</div></section>
   ${proofBar}
      <section id="inclus" class="pub-section-grid py-20"><div class="container-large mx-auto max-w-7xl px-6"><p>Ce qui est inclus</p><h2>${escapeHtml(content.includedTitle)}</h2><p>${escapeHtml(content.includedIntro)}</p>${included}<p>Visite et estimation sans frais, réponse sous 48 heures.</p>${cta}</div></section>
@@ -472,7 +481,7 @@ function createPaidStaticBody(content, routePath) {
    <section id="faq" class="pub-section-muted py-20"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2>${faqItems}</div></section>
    ${serviceArea}
   <section class="bg-secondary py-20 text-white text-center">${ctaImage}<div class="container-large mx-auto max-w-4xl px-6"><h2>Prêt à recevoir votre soumission?</h2><p class="mb-8">${escapeHtml(content.ctaText)}</p>${cta}</div></section></main>
-  <footer class="pub-footer bg-secondary py-16 text-white"><div class="container-large mx-auto max-w-7xl px-6"><p>Studio de rénovation résidentielle desservant Laval et les Laurentides.</p><p>Laval, Saint-Eustache, Terrebonne, Sainte-Thérèse, Rosemère, Mirabel, Boisbriand, Blainville et Saint-Jérôme.</p><p>RBQ 8351-9033-59 · <a href="tel:5144048494">(514) 404-8494</a> · <a href="/politique-de-confidentialite">Politique de confidentialité</a></p></div></footer>`;
+  ${staticSiteFooter}`;
 }
 
 function createFallbackSource(appShell, route) {
@@ -484,14 +493,16 @@ function createFallbackSource(appShell, route) {
   } else if (route.path === '/pub/formulaire') {
     // Même ordre de lecture que la version React : entête avec photo, formulaire,
     // réassurance, puis questions fréquentes en section distincte.
-    bodyContent = `<header class="border-b bg-white"><div class="container-large mx-auto flex items-center justify-between px-6 py-4"><img src="/images/relume-567884.png" width="180" height="60" alt="SLC Habitation"><a href="tel:5144048494">(514) 404-8494</a><a href="/pub/formulaire">Obtenir une soumission</a></div></header>
+    bodyContent = `${staticSiteHeader}
     <main><section class="pub-form-hero"><img src="/images/relume-655417.jpeg" width="2560" height="1920" alt="" aria-hidden="true" class="pub-form-hero__image"><div class="pub-form-hero__scrim" aria-hidden="true"></div><div class="pub-form-hero__inner"><p class="pub-form-hero__label">Demande de soumission</p><h1 class="pub-form-hero__title">Parlons de votre projet de rénovation</h1><p>Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p></div></section>
      <section id="formulaire" class="pub-form-section py-16" aria-labelledby="formulaire-title"><div class="container-large mx-auto max-w-6xl px-6"><h2 id="formulaire-title">Parlez-nous de votre projet</h2><p>Le formulaire vous demande le type de travaux, votre budget approximatif, ce que vous voulez changer, la ville du projet, l’échéancier souhaité et vos coordonnées. Nous vous répondons sous 48 heures.</p><p>Le formulaire s’affiche dès que les fonctions de sécurité de la page sont chargées.</p><noscript><p>JavaScript est requis pour transmettre la demande en ligne. Vous pouvez aussi appeler SLC Habitation au <a href="tel:5144048494">(514) 404-8494</a>.</p></noscript><ul><li>Licence RBQ : 8351-9033-59</li><li>19 avis Google, tous 5 étoiles</li><li>Estimation sans frais, visite comprise</li></ul><figure class="pub-quote"><blockquote class="pub-quote__text">Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!</blockquote><figcaption class="pub-quote__author"><span class="pub-quote__name">Isabelle Baril</span> <span class="pub-quote__role">Avis Google</span></figcaption></figure><p>Vous préférez en parler de vive voix? <a href="tel:5144048494">(514) 404-8494</a></p></div></section>
      ${createFormGalleryMarkup()}
      <section id="faq" class="bg-muted py-16"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2><details><summary>Que se passe-t-il après l’envoi du formulaire?</summary><p>Nous vous répondons sous 48 heures et nous convenons d’une visite sans frais. Votre soumission est préparée à partir de cette visite.</p></details><details><summary>Quand les travaux peuvent-ils commencer?</summary><p>L’échéancier vous est donné après la visite, avec votre soumission. Il dépend de l’ampleur des travaux et de nos disponibilités.</p></details><details><summary>Est-ce que la soumission est payante?</summary><p>Non. La visite et l’estimation sont sans frais. SLC Habitation détient la licence RBQ 8351-9033-59.</p></details></div></section></main>
-    <footer class="pub-footer bg-secondary py-12 text-white"><div class="container-large mx-auto px-6"><p>Studio de rénovation résidentielle desservant Laval et les Laurentides.</p><p>Laval, Saint-Eustache, Terrebonne, Sainte-Thérèse, Rosemère, Mirabel, Boisbriand, Blainville et Saint-Jérôme.</p><p>RBQ 8351-9033-59 · <a href="tel:5144048494">(514) 404-8494</a> · <a href="/politique-de-confidentialite">Politique de confidentialité</a></p></div></footer>`;
+    ${staticSiteFooter}`;
   } else {
-    bodyContent = `<main class="min-h-screen bg-background py-16"><div class="container-large px-6 mx-auto max-w-3xl"><h1>${escapeHtml(route.title)}</h1><p>${escapeHtml(route.description)}</p></div></main>`;
+    // Les pages sans contenu statique dédié gardent tout de même la vraie
+    // navbar et le vrai pied de page, comme leur rendu React.
+    bodyContent = `${staticSiteHeader}<main class="min-h-screen bg-background py-16"><div class="container-large px-6 mx-auto max-w-3xl"><h1>${escapeHtml(route.title)}</h1><p>${escapeHtml(route.description)}</p></div></main>${staticSiteFooter}`;
   }
 
   // Les pages publicitaires s'affichent dans le conteneur `.pub-shell`, qui porte

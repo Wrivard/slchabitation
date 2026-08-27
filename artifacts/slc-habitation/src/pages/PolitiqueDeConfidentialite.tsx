@@ -1,13 +1,10 @@
 import { Link } from 'wouter';
+import { SiteFooter, SiteHeader } from '@/components/site/SiteChrome';
 
 export default function PolitiqueDeConfidentialite() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground">
-      <header className="py-6 px-6 md:px-12 border-b border-border bg-white flex justify-center md:justify-start">
-        <Link href="/" className="inline-block">
-          <img src="/images/relume-567884.png" alt="SLC Habitation" className="h-10 w-auto" />
-        </Link>
-      </header>
+      <SiteHeader />
 
       <main className="flex-grow container-large px-6 py-16 md:py-24 mx-auto max-w-3xl">
         <h1 className="text-3xl md:text-5xl font-bold font-heading mb-8">Politique de confidentialité</h1>
@@ -108,9 +105,7 @@ export default function PolitiqueDeConfidentialite() {
         </div>
       </main>
 
-      <footer className="py-8 text-center text-sm text-muted-foreground bg-secondary">
-        <p>© {new Date().getFullYear()} SLC Habitation. Tous droits réservés.</p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -290,25 +290,20 @@
   --radius: 0.5rem;
   --app-font-heading: 'Alexandria', system-ui, sans-serif;
   --pub-primary-dark: #c4661e;
-  --pub-header-height: 4rem;
+  /* Hauteur de la navbar du site (`.navbar3_component`), collée en haut. */
+  --pub-header-height: 4.5rem;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 479px) {
   .pub-shell {
-    --pub-header-height: 4.3rem;
+    --pub-header-height: 4rem;
   }
 }
 
-/* L'en-tête collant contient la table des matières : sur les écrans étroits
-   elle occupe une deuxième rangée, prise en compte par les ancres. */
+/* La table des matières de la page se colle juste sous la navbar : les deux
+   hauteurs sont retirées de la position des ancres. */
 .pub-shell {
   --pub-nav-bar-height: 3.4rem;
-}
-
-@media (min-width: 1440px) {
-  .pub-shell {
-    --pub-nav-bar-height: 0rem;
-  }
 }
 
 .pub-shell section[id] {
@@ -508,7 +503,16 @@
   flex: 0 0 auto;
 }
 
-/* --- Table des matières, intégrée à l'en-tête collant --- */
+/* --- Table des matières, collée sous la navbar du site --- */
+.pub-shell .pub-section-nav {
+  position: sticky;
+  top: var(--pub-header-height);
+  z-index: 900;
+  width: 100%;
+  border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
+}
+
 .pub-shell .pub-header-nav__list {
   display: flex;
   align-items: center;
@@ -543,14 +547,7 @@
   background: hsl(var(--primary) / 0.08);
 }
 
-/* Variante en ligne : réservée aux écrans assez larges pour la porter
-   à côté du logo et des actions. */
-.pub-shell .pub-header-nav--inline {
-  display: none;
-  min-width: 0;
-}
-
-/* Variante en barre : deuxième rangée défilante sous le logo. */
+/* Barre défilante des sections de la page. */
 .pub-shell .pub-header-nav--bar {
   width: 100%;
   border-top: 1px solid hsl(var(--border));
@@ -575,39 +572,10 @@
 }
 
 @media (min-width: 1440px) {
-  .pub-shell .pub-header-nav--inline {
-    display: block;
-    flex: 1 1 auto;
-    overflow: hidden;
-  }
-
-  /* Une seule rangée : les liens se resserrent plutôt que de passer à la ligne
-     et d'allonger l'en-tête collant. */
-  .pub-shell .pub-header-nav--inline .pub-header-nav__list {
+  /* Les sections tiennent sur une rangée centrée : plus besoin de défilement. */
+  .pub-shell .pub-header-nav--bar .pub-header-nav__list {
     justify-content: center;
-    flex-wrap: nowrap;
-    gap: 0.1rem;
-    overflow-x: auto;
-  }
-
-  .pub-shell .pub-header-nav--inline .pub-header-nav__link {
-    padding: 0.35rem 0.55rem;
-    font-size: 0.8125rem;
-  }
-
-  .pub-shell .pub-header-nav--bar {
-    display: none;
-  }
-}
-
-@media (min-width: 1600px) {
-  .pub-shell .pub-header-nav--inline .pub-header-nav__list {
-    gap: 0.25rem;
-  }
-
-  .pub-shell .pub-header-nav--inline .pub-header-nav__link {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.875rem;
+    overflow-x: visible;
   }
 }
 
@@ -2093,37 +2061,6 @@ button.faq2_question {
   }
 }
 
-/* --- Pied de page du parcours publicitaire --- */
-.pub-footer__title {
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0.16em;
-  text-transform: uppercase !important;
-  color: rgba(255, 255, 255, 0.55);
-  margin: 0 0 1.15rem;
-}
-
-.pub-footer ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pub-footer li {
-  margin: 0;
-  padding: 0;
-}
-
-.pub-footer a {
-  color: rgba(255, 255, 255, 0.75);
-  text-decoration: none;
-}
-
-.pub-footer a:hover {
-  color: #fff;
-}
-
 /* --- CTA flottant --- */
 .pub-sticky-cta {
   position: fixed;
@@ -2185,87 +2122,10 @@ button.faq2_question {
   }
 }
 
-.pub-site-header__row {
-  padding: 0.75rem 1rem;
-  gap: 1rem;
-}
-
-.pub-site-header__logo {
-  display: block;
-  flex: 0 0 auto;
-  width: 5rem;
-  min-width: 0;
-}
-
-.pub-site-header__logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 2.5rem;
-  object-fit: contain;
-  object-position: left center;
-}
-
-.pub-site-header__actions {
-  flex: 0 0 auto;
-  gap: 0.65rem;
-  min-width: 0;
-}
-
-.pub-site-header__phone {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 0 0 auto;
-  font-size: 1rem;
-}
-
-.pub-site-header__cta {
-  display: inline-flex !important;
-  flex: 0 0 auto;
-  padding: 0.75rem 1rem !important;
-  font-size: 0.875rem !important;
-  white-space: nowrap;
-}
-
-@media (min-width: 640px) {
-  .pub-site-header__row {
-    padding: 0.9rem 2rem;
-  }
-
-  .pub-site-header__logo {
-    width: 7.5rem;
-  }
-
-  .pub-site-header__actions {
-    gap: 1.25rem;
-  }
-
-  .pub-site-header__cta {
-    padding: 0.9rem 1.5rem !important;
-    font-size: 1rem !important;
-  }
-}
-
+/* Les écrans les plus étroits gagnent un peu de marge sur la barre de sections. */
 @media (max-width: 389px) {
-  .pub-site-header__row {
-    padding-inline: 0.75rem;
-  }
-
   .pub-shell .pub-header-nav--bar {
     padding-inline: 0.75rem;
-  }
-
-  .pub-site-header__logo {
-    width: 4.25rem;
-  }
-
-  .pub-site-header__actions {
-    gap: 0.4rem;
-  }
-
-  .pub-site-header__cta {
-    padding-inline: 0.75rem !important;
   }
 }
 

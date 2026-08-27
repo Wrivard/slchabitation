@@ -1,0 +1,46 @@
+/* Navigation commune au site principal et aux pages publicitaires.
+   Chargée après les feuilles Webflow pour pouvoir surcharger la navbar. */
+
+/* Les pages du gabarit legacy portent ces correspondances dans une balise
+   <style> interne. Elles sont reprises ici pour que la bande de contact et le
+   pied de page gardent leurs couleurs sur les pages qui n'ont pas ce gabarit. */
+.color-scheme-2 {
+  --color-scheme-1--text: var(--color-scheme-2--text);
+  --color-scheme-1--background: var(--color-scheme-2--background);
+  --color-scheme-1--foreground: var(--color-scheme-2--foreground);
+  --color-scheme-1--border: var(--color-scheme-2--border);
+  --color-scheme-1--accent: var(--color-scheme-2--accent);
+}
+
+.color-scheme-3 {
+  --color-scheme-1--text: var(--color-scheme-3--text);
+  --color-scheme-1--background: var(--color-scheme-3--background);
+  --color-scheme-1--foreground: var(--color-scheme-3--foreground);
+  --color-scheme-1--border: var(--color-scheme-3--border);
+  --color-scheme-1--accent: var(--color-scheme-3--accent);
+}
+
+/* Le conteneur React qui injecte la navbar ne doit pas créer de boîte :
+   sans cela, la barre ne pourrait se coller qu'à l'intérieur de ce conteneur. */
+.site-chrome--header {
+  display: contents;
+}
+
+/* La barre reste visible pendant le défilement, sur tout le site. La bande de
+   contact la précède et défile normalement, comme avant. */
+.navbar3_component {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-scheme-1--background);
+}
+
+/*
+ * Menu mobile : le voile (`z-index: 0`) et le panneau (`z-index: 1`) couvrent
+ * toute la barre. Le bouton doit rester au-dessus pour refermer le menu, comme
+ * sur les pages qui chargent le script Webflow d'origine.
+ */
+.site-chrome .navbar3_component .w-nav-button {
+  position: relative;
+  z-index: 2;
+}

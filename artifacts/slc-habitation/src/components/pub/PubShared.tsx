@@ -7,9 +7,8 @@ type Tone = 'light' | 'dark';
 export type PubNavItem = { href: string; label: string };
 
 /**
- * Suit la section en cours de lecture pour les liens de sections placés dans
- * l'en-tête. Un seul appel sert les deux variantes d'affichage (en ligne sur
- * grand écran, barre défilante en dessous).
+ * Suit la section en cours de lecture pour la barre de sections collée sous la
+ * navbar du site.
  */
 export function usePubActiveSection(items: PubNavItem[]): string {
   const [active, setActive] = useState('');
@@ -24,8 +23,14 @@ export function usePubActiveSection(items: PubNavItem[]): string {
     let frame = 0;
     const update = () => {
       frame = 0;
-      const header = document.querySelector<HTMLElement>('.pub-site-header');
-      const offset = (header?.getBoundingClientRect().bottom ?? 0) + 24;
+      // Les deux barres collées en haut masquent le début de la section.
+      const navbar = document.querySelector<HTMLElement>('.navbar3_component');
+      const sectionNav = document.querySelector<HTMLElement>('.pub-section-nav');
+      const offset =
+        Math.max(
+          navbar?.getBoundingClientRect().bottom ?? 0,
+          sectionNav?.getBoundingClientRect().bottom ?? 0,
+        ) + 24;
       let current = '';
       for (const section of sections) {
         if (section.el.getBoundingClientRect().top <= offset) current = section.href;
@@ -51,37 +56,27 @@ export function usePubActiveSection(items: PubNavItem[]): string {
 }
 
 /**
- * Liste des sections de la page, affichée dans l'en-tête.
- * `variant="inline"` s'insère dans la rangée du logo (écrans larges),
- * `variant="bar"` occupe une deuxième rangée défilante.
+ * Liste des sections de la page, affichée dans une barre défilante collée
+ * sous la navbar du site.
  */
-export function PubNavLinks({
-  items,
-  active,
-  variant,
-}: {
-  items: PubNavItem[];
-  active: string;
-  variant: 'inline' | 'bar';
-}) {
+export function PubNavLinks({ items, active }: { items: PubNavItem[]; active: string }) {
   const listRef = useRef<HTMLDivElement>(null);
 
   // La barre défile horizontalement : l'entrée active doit rester visible.
   useEffect(() => {
-    if (variant !== 'bar') return;
     const list = listRef.current;
     if (!list || !active) return;
     const link = list.querySelector<HTMLElement>('[data-active="true"]');
     if (!link || list.scrollWidth <= list.clientWidth) return;
     const target = link.offsetLeft - (list.clientWidth - link.clientWidth) / 2;
     list.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
-  }, [active, variant]);
+  }, [active]);
 
   return (
     <nav
       aria-label="Sections de la page"
-      className={`pub-header-nav pub-header-nav--${variant}`}
-      data-testid={variant === 'bar' ? 'pub-toc' : 'pub-header-nav-inline'}
+      className="pub-header-nav pub-header-nav--bar"
+      data-testid="pub-toc"
     >
       <div ref={listRef} className="pub-header-nav__list no-scrollbar">
         {items.map((item) => {
