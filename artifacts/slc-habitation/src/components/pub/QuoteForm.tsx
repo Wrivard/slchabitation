@@ -194,7 +194,7 @@ const optionalHintClass = 'ml-1 font-medium normal-case tracking-normal text-mut
 /* Carte de choix : la sélection et le focus clavier se lisent d'un coup d'œil
    grâce à l'état du bouton radio qu'elle contient. */
 const choiceCardClass =
-  'flex cursor-pointer items-center gap-3 rounded-md border border-border bg-white p-4 text-base transition-colors hover:border-primary/50 hover:bg-accent/50 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-accent has-[[data-state=checked]]:ring-1 has-[[data-state=checked]]:ring-primary has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2';
+  'quote-form-choice flex cursor-pointer items-center gap-3 rounded-md border border-border bg-white p-4 text-base transition-[background-color,border-color,box-shadow,color,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/60 hover:bg-accent/50 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary has-[[data-state=checked]]:text-white has-[[data-state=checked]]:shadow-[0_12px_28px_-18px_hsl(var(--primary))] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2';
 
 export function QuoteForm({
   defaultService = "",
@@ -498,9 +498,9 @@ export function QuoteForm({
         exit: { opacity: 0, transition: { duration: 0.1 } },
       }
     : {
-        hidden: { opacity: 0, x: 24, transition: { duration: 0.28, ease: 'easeOut' } },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.34, ease: 'easeOut' } },
-        exit: { opacity: 0, x: -24, transition: { duration: 0.22, ease: 'easeIn' } },
+        hidden: { opacity: 0, x: 16, transition: { duration: 0.24, ease: 'easeOut' } },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.32, ease: 'easeOut' } },
+        exit: { opacity: 0, x: -16, transition: { duration: 0.18, ease: 'easeIn' } },
       };
 
   if (isSuccess) {

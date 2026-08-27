@@ -278,7 +278,7 @@ body
                             div.margin-bottom.margin-xsmall
                               h3.heading-style-h6 « Matériaux solides »
                             p « Nous choisissons ce qui résiste au temps et aux épreuves du quotidien. »
-          section.color-scheme-2.section_testimonial6
+          section.color-scheme-2.section_testimonial6.testimonials-showcase
             div.padding-global
               div.container-large
                 div.padding-section-large
@@ -290,7 +290,7 @@ body
                             span.text-span-2 « clients »
                         p.text-size-medium « Ce que disent ceux qui nous font confiance »
                     div.testimonial6_grid-list [data-reveal-group-nested=]
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
@@ -323,7 +323,7 @@ body
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Mélodie Binette »
                                 div « Propriétaire, Laval »
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
@@ -356,7 +356,7 @@ body
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Johanne Duguay »
                                 div « Propriétaire, Montréal »
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon

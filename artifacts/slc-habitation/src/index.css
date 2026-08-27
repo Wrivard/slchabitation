@@ -507,6 +507,29 @@
   color: hsl(var(--form-control-foreground));
 }
 
+/* Les cartes radio ont un état choisi volontairement franc : l'ancien accent
+   sombre avec du texte noir manquait de contraste et ressemblait à un état
+   pressé plutôt qu'à une sélection. */
+.soumission-quote-form__card .quote-form-choice:has([data-state='checked']) {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  color: #fff;
+}
+
+.soumission-quote-form__card .quote-form-choice:has([data-state='checked']) > span {
+  color: #fff;
+}
+
+.soumission-quote-form__card .quote-form-choice [role='radio'][data-state='checked'] {
+  border-color: #fff;
+  background-color: #fff;
+  color: hsl(var(--primary));
+}
+
+.soumission-quote-form__card .quote-form-choice [role='radio'][data-state='checked'] svg {
+  fill: hsl(var(--primary));
+}
+
 .soumission-quote-form h2,
 .soumission-quote-form h3,
 .soumission-quote-form h4 {

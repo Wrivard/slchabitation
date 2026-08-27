@@ -133,13 +133,6 @@ body
               div.container-large
                 div.padding-section-large
                   div.blog22_component [data-reveal-group=]
-                    div.margin-bottom.margin-xxlarge
-                      div.max-width-large
-                        div.margin-bottom.margin-xsmall
-                          div.text-style-tagline « Projets »
-                        div.margin-bottom.margin-small
-                          h2.heading-style-h1 « Découvrez nos réalisations »
-                        p.text-size-medium « Inspirez-vous de nos projets de rénovation réussis »
                     div.blog22_content
                       div.category-filter-menu
                         a.active.category-filter-link.w-inline-block [aria-current=true data-category=all href=#]
@@ -267,7 +260,7 @@ body
                                 div.blog22_image-wrapper
                                   img.blog22_image [alt=Projet de rénovation commerciale par SLC Habitation loading=lazy sizes=(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw src=/images/COMMERCIAL/20170517_124129.jpg srcset=#c54724c2]
                               script.w-json [type=application/json] « { "items": [ { "url": "images/COMMERCIAL/20170517_124129.jpg", "fileName": "20170517_12412…7f34367f »
-          section.color-scheme-2.section_testimonial6
+          section.color-scheme-2.section_testimonial6.testimonials-showcase
             div.padding-global
               div.container-large
                 div.padding-section-large
@@ -279,7 +272,7 @@ body
                             span.text-span-2 « clients »
                         p.text-size-medium « Ce que disent ceux qui nous font confiance »
                     div.testimonial6_grid-list [data-reveal-group-nested=]
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
@@ -312,7 +305,7 @@ body
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Mélodie Binette »
                                 div « Propriétaire, Laval »
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
@@ -345,7 +338,7 @@ body
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Johanne Duguay »
                                 div « Propriétaire, Montréal »
-                      div.testimonial6_content
+                      div.testimonial6_content.testimonials-card
                         div.margin-bottom.margin-medium
                           div.testimonial6_rating-wrapper
                             div.testimonial6_rating-icon
