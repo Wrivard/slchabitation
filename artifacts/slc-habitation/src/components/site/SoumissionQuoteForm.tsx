@@ -1,4 +1,4 @@
-import { ShieldCheck, Star, Wallet, Clock, Phone } from 'lucide-react';
+import { ShieldCheck, Star, Wallet, Clock, Phone, Mail, MapPin } from 'lucide-react';
 import { QuoteForm, type QuoteFormService } from '@/components/pub/QuoteForm';
 
 /* Les services historiquement proposés sur /soumission. Les libellés sont
@@ -24,71 +24,117 @@ const trustItems = [
   { icon: ShieldCheck, title: 'Licence RBQ', text: '8351-9033-59' },
 ];
 
+/* Moyens de contact du bloc hérité que cette section remplace. */
+const contactItems = [
+  { icon: Phone, label: '(514) 404-8494', href: 'tel:5144048494', testId: 'link-soumission-phone' },
+  {
+    icon: Mail,
+    label: 'slchabitation@gmail.com',
+    href: 'mailto:slchabitation@gmail.com',
+    testId: 'link-soumission-email',
+  },
+  { icon: MapPin, label: 'Saint-Eustache, QC', href: null, testId: 'text-soumission-address' },
+];
+
 /**
- * Le formulaire progressif du tunnel publicitaire, entouré des repères de
- * confiance, tel qu'il est monté dans la page /soumission héritée de Webflow.
+ * La section « Soumission en ligne » de la page héritée de Webflow : entête,
+ * colonne de réassurance et formulaire progressif du tunnel publicitaire.
+ *
+ * Le formulaire occupe la colonne de droite en grand écran et passe en premier
+ * sur mobile; la réassurance suit le défilement à côté de lui.
  *
  * La version statique de cette même section vit dans
  * `src/lib/soumission-form-slot.mjs` : toute modification visible ici doit y
  * être reportée pour que la page prérendue ne saute pas au montage.
  */
-export function SoumissionQuoteForm() {
+export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: string }) {
   return (
-    <div className="soumission-quote-form space-y-6" data-testid="section-soumission-form">
-      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4" data-testid="list-form-trust">
-        {trustItems.map(({ icon: Icon, title, text }) => (
-          <li key={title} className="flex flex-col gap-1 border border-border/60 bg-white p-4">
-            <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
-            <p className="text-sm font-semibold leading-snug text-foreground">{title}</p>
-            <p className="text-xs text-muted-foreground">{text}</p>
-          </li>
-        ))}
-      </ul>
-
-      <div className="border border-border bg-white p-6 sm:p-8">
-        <QuoteForm services={soumissionServices} allowPhotos />
+    <div className="soumission-quote-form" data-testid="section-soumission-form">
+      <div className="mb-10 max-w-3xl md:mb-12">
+        <p className="text-sm font-semibold uppercase tracking-wider text-primary">Soumission en ligne</p>
+        <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-foreground md:text-4xl">
+          Parlons de votre projet
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+          Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons
+          sous 48 heures. La visite et l’estimation sont sans frais.
+        </p>
       </div>
 
-      {/* Avis Google réel, déjà utilisé sur les pages du tunnel publicitaire. */}
-      <figure className="border border-border bg-muted p-5" data-testid="quote-form-review">
-        <div className="mb-2 flex gap-0.5 text-primary" aria-hidden="true">
-          {[0, 1, 2, 3, 4].map((star) => (
-            <Star key={star} className="h-4 w-4 fill-current" />
-          ))}
+      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
+        {/* Le formulaire reste le point d'attention : premier sur mobile, à droite sur grand écran. */}
+        <div className="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
+          <div className="border border-border bg-white p-6 sm:p-8 md:p-10">
+            <QuoteForm
+              key={defaultService}
+              services={soumissionServices}
+              defaultService={defaultService}
+              allowServiceChange
+              allowPhotos
+            />
+          </div>
         </div>
-        <blockquote className="text-base leading-relaxed text-foreground">
-          « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je
-          recommande vivement! »
-        </blockquote>
-        <figcaption className="mt-2 text-sm text-muted-foreground">
-          Isabelle Baril — Avis Google
-        </figcaption>
-      </figure>
 
-      <div className="border border-border bg-muted p-5">
-        <p className="text-sm text-muted-foreground">Vous préférez en parler de vive voix?</p>
-        <a
-          href="tel:5144048494"
-          className="mt-1 inline-flex items-center gap-2 text-lg font-semibold text-foreground hover:text-primary"
-          data-testid="link-soumission-phone"
-        >
-          <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
-          (514) 404-8494
-        </a>
+        {/* Réassurance : reste visible à côté du formulaire pendant la saisie. */}
+        <aside className="order-2 space-y-6 lg:sticky lg:top-24 lg:order-1 lg:col-span-6 xl:col-span-5">
+          <ul className="grid grid-cols-2 gap-3" data-testid="list-form-trust">
+            {trustItems.map(({ icon: Icon, title, text }) => (
+              <li key={title} className="flex flex-col gap-1 border border-border/60 bg-white p-4">
+                <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                <p className="text-sm font-semibold leading-snug text-foreground">{title}</p>
+                <p className="text-xs text-muted-foreground">{text}</p>
+              </li>
+            ))}
+          </ul>
+
+          {/* Avis Google réel, déjà utilisé sur les pages du tunnel publicitaire. */}
+          <figure className="border border-border bg-muted p-5" data-testid="quote-form-review">
+            <div className="mb-2 flex gap-0.5 text-primary" aria-hidden="true">
+              {[0, 1, 2, 3, 4].map((star) => (
+                <Star key={star} className="h-4 w-4 fill-current" />
+              ))}
+            </div>
+            <blockquote className="text-base leading-relaxed text-foreground">
+              « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je
+              recommande vivement! »
+            </blockquote>
+            <figcaption className="mt-2 text-sm text-muted-foreground">
+              Isabelle Baril — Avis Google
+            </figcaption>
+          </figure>
+
+          <div className="border border-border bg-muted p-5">
+            <p className="text-sm text-muted-foreground">Vous préférez en parler de vive voix?</p>
+            <ul className="mt-3 space-y-2">
+              {contactItems.map(({ icon: Icon, label, href, testId }) => (
+                <li key={label} className="flex items-center gap-2 text-base font-semibold text-foreground">
+                  <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                  {href ? (
+                    <a href={href} className="hover:text-primary" data-testid={testId}>
+                      {label}
+                    </a>
+                  ) : (
+                    <span data-testid={testId}>{label}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="text-sm text-muted-foreground" data-testid="text-form-privacy">
+            Vos renseignements servent uniquement à préparer votre soumission. Ils ne sont ni vendus ni
+            transmis à un tiers.{' '}
+            <a
+              href="/politique-de-confidentialite"
+              className="underline hover:text-primary"
+              data-testid="link-soumission-privacy"
+            >
+              Politique de confidentialité
+            </a>
+            .
+          </p>
+        </aside>
       </div>
-
-      <p className="text-sm text-muted-foreground" data-testid="text-form-privacy">
-        Vos renseignements servent uniquement à préparer votre soumission. Ils ne sont ni vendus ni
-        transmis à un tiers.{' '}
-        <a
-          href="/politique-de-confidentialite"
-          className="underline hover:text-primary"
-          data-testid="link-soumission-privacy"
-        >
-          Politique de confidentialité
-        </a>
-        .
-      </p>
     </div>
   );
 }

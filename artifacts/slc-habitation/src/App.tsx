@@ -22,7 +22,6 @@ import RenovationSousSolPub from '@/pages/pub/RenovationSousSol';
 import RenovationSalleDeBainPub from '@/pages/pub/RenovationSalleDeBain';
 import RenovationCuisinePub from '@/pages/pub/RenovationCuisine';
 import AgrandissementPub from '@/pages/pub/Agrandissement';
-import FormulairePub from '@/pages/pub/Formulaire';
 import PolitiqueDeConfidentialite from '@/pages/PolitiqueDeConfidentialite';
 
 import {
@@ -61,7 +60,7 @@ function RenovationCuisineRedirect() {
 }
 
 function FormulaireRedirect() {
-  return <FunnelRedirect to="/pub/formulaire" />;
+  return <FunnelRedirect to="/soumission" />;
 }
 
 /**
@@ -135,7 +134,8 @@ function Router() {
         <Route path="/pub/renovation-salle-de-bain" component={RenovationSalleDeBainPub} />
         <Route path="/pub/renovation-cuisine" component={RenovationCuisinePub} />
         <Route path="/pub/agrandissement-maison" component={AgrandissementPub} />
-        <Route path="/pub/formulaire" component={FormulairePub} />
+        {/* L'ancienne page du tunnel publicitaire a été fusionnée avec /soumission. */}
+        <Route path="/pub/formulaire" component={FormulaireRedirect} />
         <Route path="/politique-de-confidentialite" component={PolitiqueDeConfidentialite} />
 
         {/* Fallback to NotFoundPage (the one from Webflow) for custom 404 */}

@@ -48,10 +48,6 @@ from = "/politique-de-cookie"
 to = "/politique-de-cookie/index.html"
 
 [[services.production.rewrites]]
-from = "/pub/formulaire"
-to = "/pub/formulaire/index.html"
-
-[[services.production.rewrites]]
 from = "/pub/renovation-cuisine"
 to = "/pub/renovation-cuisine/index.html"
 
@@ -98,10 +94,6 @@ to = "/soumission/index.html"
 [[services.production.rewrites]]
 from = "/politique-de-cookie.html"
 to = "/politique-de-cookie/index.html"
-
-[[services.production.rewrites]]
-from = "/pub/formulaire/*"
-to = "/pub/formulaire/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-cuisine/*"

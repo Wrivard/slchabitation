@@ -36,6 +36,16 @@ const ALLOWED_SERVICES = new Set([
   "Projet commercial",
   "Projet industriel",
 ]);
+/* Pages du tunnel publicitaire pouvant être annoncées comme provenance d'une
+   demande. La liste doit rester alignée sur `paidPageSlugs`
+   (artifacts/slc-habitation/src/lib/paid-pages.ts) : une valeur inconnue est
+   ignorée plutôt que reportée dans le courriel. */
+const ALLOWED_PAID_PAGES = new Set([
+  "/pub/renovation-sous-sol",
+  "/pub/renovation-salle-de-bain",
+  "/pub/renovation-cuisine",
+  "/pub/agrandissement-maison",
+]);
 /* Compléments demandés au visiteur depuis le formulaire publicitaire. Ils sont
    facultatifs côté serveur : une valeur absente ou inconnue est simplement
    ignorée, jamais un motif de rejet, pour qu'un client plus ancien continue
@@ -297,6 +307,9 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       sanitizedValue(fields, "source_page") || sanitizedValue(fields, "Contact-6-Source-Page");
     const attributionCapturedAt = sanitizedValue(fields, "attribution_captured_at", 40);
     const attributionLandingPage = sanitizedValue(fields, "attribution_landing_page", 300);
+    const declaredPaidPage = sanitizedValue(fields, "paid_page", 300);
+    const paidPage =
+      declaredPaidPage && ALLOWED_PAID_PAGES.has(declaredPaidPage) ? declaredPaidPage : undefined;
     const utmSource = sanitizedValue(fields, "utm_source", 255);
     const utmMedium = sanitizedValue(fields, "utm_medium", 255);
     const utmCampaign = sanitizedValue(fields, "utm_campaign", 255);
@@ -470,6 +483,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       ["Page d’origine", sourcePage],
       ["Attribution captée le", attributionCapturedAt],
       ["Page d’atterrissage publicitaire", attributionLandingPage],
+      ["Page publicitaire d’origine", paidPage],
       ["UTM source", utmSource],
       ["UTM medium", utmMedium],
       ["UTM campaign", utmCampaign],

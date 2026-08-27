@@ -6,4 +6,5 @@
 - [Galerie tuile vedette](gallery-feature-tile-heights.md) — une tuile ne dicte la hauteur d'un bloc grid que si les images voisines sortent du flux.
 - [Routes pub en production](published-artifact-route-resolution.md) — les pages statiques imbriquées nécessitent des réécritures wildcard et une résolution Vite dédiée.
 - [Shells HTML multiples sous Vite](vite-multi-html-shells.md) — une feuille ajoutée au seul index.html manque aux routes servies par leur propre fichier HTML.
+- [Ancres markup hérité](legacy-markup-anchors.md) — comparer la liste de classes et exiger une seule correspondance : `\b` matche aussi les variantes suffixées.
 - [Chrome Webflow réutilisé](legacy-webflow-chrome-reuse.md) — emporter aussi les interactions du menu et les variables .color-scheme, pas seulement le balisage.

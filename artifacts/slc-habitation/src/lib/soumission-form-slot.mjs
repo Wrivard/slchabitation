@@ -13,8 +13,20 @@
 
 export const SOUMISSION_FORM_SLOT_ID = 'soumission-form-slot';
 
-/* Bloc Webflow qui contient le formulaire et ses messages de succès/erreur. */
-const FORM_BLOCK_ANCHOR = '<div class="contact6_form-block w-form">';
+/* Grille Webflow à deux colonnes : le texte de contact à gauche, le formulaire
+   d'origine à droite. La section React reprend les deux colonnes, donc c'est
+   toute la grille qui est retirée. */
+/* Grille héritée à remplacer. Le repérage tolère les deux formes de guillemets
+   et compare la liste de classes pour ne pas confondre `contact6_content` avec
+   ses variantes (`contact6_content-left`). */
+const LEGACY_GRID_CLASS = 'contact6_content';
+const DIV_WITH_CLASS = /<div\b[^>]*\bclass=(?:"([^"]*)"|'([^']*)')[^>]*>/gi;
+
+function findLegacyGridAnchors(html) {
+  return [...html.matchAll(DIV_WITH_CLASS)].filter((match) =>
+    (match[1] ?? match[2] ?? '').split(/\s+/).includes(LEGACY_GRID_CLASS),
+  );
+}
 
 /* Scripts inline de la page d'origine : la gestion des photos et l'envoi du
    formulaire. Ils n'ont plus de formulaire à piloter une fois le bloc retiré. */
@@ -65,11 +77,14 @@ export function removeLegacyFormScripts(html) {
  * Remplace le bloc du formulaire hérité par le balisage fourni.
  */
 export function replaceLegacyFormBlock(html, replacementHtml) {
-  const start = html.indexOf(FORM_BLOCK_ANCHOR);
-  if (start === -1) {
-    throw new Error('Le bloc du formulaire de /soumission est introuvable.');
+  const anchors = findLegacyGridAnchors(html);
+  if (anchors.length !== 1) {
+    throw new Error(
+      `La grille du formulaire de /soumission doit apparaître une seule fois (${anchors.length} trouvée(s)).`,
+    );
   }
 
+  const start = anchors[0].index;
   const end = findBlockEnd(html, start);
   return `${html.slice(0, start)}${replacementHtml}${html.slice(end)}`;
 }
@@ -95,16 +110,18 @@ const staticTrustItems = [
   { title: 'Licence RBQ', text: '8351-9033-59' },
 ];
 
+/* Mêmes identifiants et libellés que `soumissionServices`
+   (src/components/site/SoumissionQuoteForm.tsx). */
 const staticServices = [
-  'Rénovation de cuisine',
-  'Rénovation de salle de bain',
-  'Rénovation de sous-sol',
-  'Travaux extérieurs',
-  'Agrandissement',
-  'Construction neuve',
-  'Construction de garage',
-  'Projet commercial',
-  'Projet industriel',
+  ['renovation-cuisine', 'Rénovation de cuisine'],
+  ['renovation-salle-de-bain', 'Rénovation de salle de bain'],
+  ['renovation-sous-sol', 'Rénovation de sous-sol'],
+  ['travaux-exterieurs', 'Travaux extérieurs'],
+  ['agrandissement', 'Agrandissement'],
+  ['construction-neuve', 'Construction neuve'],
+  ['construction-garage', 'Construction de garage'],
+  ['commercial', 'Projet commercial'],
+  ['industriel', 'Projet industriel'],
 ];
 
 const staticBudgets = [
@@ -112,6 +129,12 @@ const staticBudgets = [
   '25 000 $ – 50 000 $',
   '50 000 $ – 100 000 $',
   '100 000 $ et plus',
+];
+
+const staticContactItems = [
+  { label: '(514) 404-8494', href: 'tel:5144048494' },
+  { label: 'slchabitation@gmail.com', href: 'mailto:slchabitation@gmail.com' },
+  { label: 'Saint-Eustache, QC', href: null },
 ];
 
 const staticSteps = [
@@ -127,20 +150,16 @@ const staticSteps = [
  *
  * À garder aligné sur `src/components/site/SoumissionQuoteForm.tsx`.
  */
-export const soumissionFormStaticMarkup = `<div class="soumission-quote-form space-y-6" id="${SOUMISSION_FORM_SLOT_ID}">
-  <ul class="grid grid-cols-2 gap-3 sm:grid-cols-4">
-    ${staticTrustItems
-      .map(
-        ({ title, text }) => `<li class="flex flex-col gap-1 border border-border/60 bg-white p-4">
-      ${staticIconSlot}
-      <p class="text-sm font-semibold leading-snug text-foreground">${title}</p>
-      <p class="text-xs text-muted-foreground">${text}</p>
-    </li>`,
-      )
-      .join('\n    ')}
-  </ul>
+export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id="${SOUMISSION_FORM_SLOT_ID}">
+  <div class="mb-10 max-w-3xl md:mb-12">
+    <p class="text-sm font-semibold uppercase tracking-wider text-primary">Soumission en ligne</p>
+    <h2 class="mt-3 font-heading text-3xl font-bold leading-tight text-foreground md:text-4xl">Parlons de votre projet</h2>
+    <p class="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p>
+  </div>
 
-  <div class="border border-border bg-white p-6 sm:p-8">
+  <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
+  <div class="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
+  <div class="border border-border bg-white p-6 sm:p-8 md:p-10">
     <div class="mb-10 relative">
       <div class="flex justify-between mb-2 relative z-10">
         ${staticSteps
@@ -170,7 +189,7 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form spa
           <label for="service" class="block text-sm font-bold text-foreground uppercase tracking-wider">Type de travaux <span class="text-destructive">*</span></label>
           <select id="service" name="service" class="w-full p-4 rounded-none border border-input bg-accent/5 text-lg">
             <option value="">Sélectionnez un service</option>
-            ${staticServices.map((service) => `<option value="">${service}</option>`).join('\n            ')}
+            ${staticServices.map(([id, label]) => `<option value="${id}">${label}</option>`).join('\n            ')}
           </select>
         </div>
 
@@ -192,6 +211,20 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form spa
       </div>
     </div>
   </div>
+  </div>
+
+  <div class="order-2 space-y-6 lg:sticky lg:top-24 lg:order-1 lg:col-span-6 xl:col-span-5">
+  <ul class="grid grid-cols-2 gap-3">
+    ${staticTrustItems
+      .map(
+        ({ title, text }) => `<li class="flex flex-col gap-1 border border-border/60 bg-white p-4">
+      ${staticIconSlot}
+      <p class="text-sm font-semibold leading-snug text-foreground">${title}</p>
+      <p class="text-xs text-muted-foreground">${text}</p>
+    </li>`,
+      )
+      .join('\n    ')}
+  </ul>
 
   <figure class="border border-border bg-muted p-5">
     <blockquote class="text-base leading-relaxed text-foreground">« Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement! »</blockquote>
@@ -200,8 +233,19 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form spa
 
   <div class="border border-border bg-muted p-5">
     <p class="text-sm text-muted-foreground">Vous préférez en parler de vive voix?</p>
-    <a href="tel:5144048494" class="mt-1 inline-flex items-center gap-2 text-lg font-semibold text-foreground hover:text-primary">(514) 404-8494</a>
+    <ul class="mt-3 space-y-2">
+      ${staticContactItems
+        .map(
+          ({ label, href }) => `<li class="flex items-center gap-2 text-base font-semibold text-foreground">
+        ${staticIconSlot}
+        ${href ? `<a href="${href}" class="hover:text-primary">${label}</a>` : `<span>${label}</span>`}
+      </li>`,
+        )
+        .join('\n      ')}
+    </ul>
   </div>
 
   <p class="text-sm text-muted-foreground">Vos renseignements servent uniquement à préparer votre soumission. Ils ne sont ni vendus ni transmis à un tiers. <a href="/politique-de-confidentialite" class="underline hover:text-primary">Politique de confidentialité</a>.</p>
+  </div>
+  </div>
 </div>`;

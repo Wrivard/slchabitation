@@ -141,40 +141,6 @@ const paidReviewsTitle = 'Ce que les propriétaires écrivent sur Google';
 const paidReviewsIntro =
   '19 avis Google, tous 5 étoiles. En voici trois, laissés par des clients de SLC Habitation.';
 
-const formGallery = [
-  ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-1600.jpg', 'Salle de bain lumineuse avec douche vitrée, bain et céramique blanche', 1600, 1200, 'Rénovation de salle de bain', 'Douche vitrée'],
-  ['/images/relume-657406.jpeg', 'Espace de vie au sous-sol avec grande cuisine, plancher en vinyle et fenêtres basses', 2048, 1536, 'Rénovation de sous-sol', 'Aire de vie et cuisine'],
-  ['/images/INT%C3%89RIEUR/Cuisine/corinne%202-p-1600.jpg', 'Cuisine avec îlot en bois, rangements blancs et suspensions', 1600, 2133, 'Rénovation de cuisine', 'Îlot en bois'],
-  ['/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241219_152819-p-1600.jpg', 'Salle de bain aux murs foncés avec douche en céramique', 1600, 2133, 'Rénovation de salle de bain', 'Palette foncée'],
-];
-
-function createFormGalleryMarkup() {
-  const blocks = [];
-  for (let index = 0; index < formGallery.length; index += 4) {
-    blocks.push(formGallery.slice(index, index + 4));
-  }
-
-  const galleryBlocks = blocks.map((block, blockIndex) => {
-    const [feature, ...stack] = block;
-    const modifiers = [
-      stack.length === 0 ? 'pub-gallery__block--single' : '',
-      stack.length === 1 ? 'pub-gallery__block--pair' : '',
-      stack.length >= 3 ? 'pub-gallery__block--bento' : '',
-      stack.length > 0 && blockIndex % 2 === 1 ? 'pub-gallery__block--reverse' : '',
-    ].filter(Boolean).join(' ');
-    const imageMarkup = ([src, alt, width, height, category, project], variant, stackIndex = -1) => {
-      const label = variant === 'feature'
-        ? `<figcaption class="pub-gallery__label"><span class="pub-gallery__label-category">${escapeHtml(category)}</span><span class="pub-gallery__label-project">${escapeHtml(project)}</span></figcaption>`
-        : '';
-      const stackClass = variant === 'stack' ? ` pub-gallery__item--stack-${stackIndex + 1}` : '';
-      return `<figure class="pub-gallery__item pub-gallery__item--${variant}${stackClass}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" loading="lazy" class="pub-gallery__image">${label}</figure>`;
-    };
-    return `<div class="pub-gallery__block ${modifiers}">${imageMarkup(feature, 'feature')}<div class="pub-gallery__stack">${stack.map((image, stackIndex) => imageMarkup(image, 'stack', stackIndex)).join('')}</div></div>`;
-  }).join('');
-
-  return `<section id="realisations" class="bg-background py-16 md:py-20" data-testid="section-gallery"><div class="container-large mx-auto max-w-7xl px-6"><div class="pub-gallery-head"><div class="pub-gallery-head__main"><p class="pub-section-header__kicker">Réalisations</p><h2 class="pub-section-header__title pub-gallery-head__title">Des projets terminés par notre équipe</h2></div><div class="pub-gallery-head__aside"><p class="pub-section-header__lede pub-gallery-head__text">Cuisine, salle de bain ou sous-sol : découvrez quelques réalisations parmi les 500 projets menés depuis 25 ans.</p></div></div><div class="pub-gallery">${galleryBlocks}</div></div></section>`;
-}
-
 function createPaidGalleryMarkup(images) {
   const blocks = [];
   for (let index = 0; index < images.length; index += 4) {
@@ -509,7 +475,7 @@ const paidPageEnhancements = {
 function createPaidStaticBody(content, routePath) {
   const serviceSlug = routePath.replace('/pub/', '');
   const extra = paidPageEnhancements[serviceSlug];
-  const cta = `<a class="inline-flex rounded-none bg-primary px-6 py-3 font-semibold text-white" href="/pub/formulaire?service=${escapeHtml(serviceSlug)}">Obtenir ma soumission sans frais</a>`;
+  const cta = `<a class="inline-flex rounded-none bg-primary px-6 py-3 font-semibold text-white" href="/soumission?service=${escapeHtml(serviceSlug)}&amp;pub=${escapeHtml(serviceSlug)}">Obtenir ma soumission sans frais</a>`;
   // Mêmes faits que le composant PubProofBar de la version React.
   const proofBar = `<section aria-label="Ce que vous obtenez en nous écrivant" class="bg-secondary py-6 text-white"><div class="container-large mx-auto max-w-7xl px-6"><ul class="flex flex-wrap gap-8"><li><strong>Réponse sous 48 h</strong> — à chaque demande reçue</li><li><strong>Estimation sans frais</strong> — visite comprise</li><li><strong>500+ projets complétés</strong> — en 25 ans</li><li><strong>Laval et les Laurentides</strong> — 9 municipalités desservies</li></ul></div></section>`;
   // Même structure que le composant PubNavLinks (variante « bar »).
@@ -572,15 +538,6 @@ function createFallbackSource(appShell, route) {
 
   if (content) {
     bodyContent = createPaidStaticBody(content, route.path);
-  } else if (route.path === '/pub/formulaire') {
-    // Même ordre de lecture que la version React : entête avec photo, formulaire,
-    // réassurance, puis questions fréquentes en section distincte.
-    bodyContent = `${staticSiteHeader}
-    <main><section class="pub-form-hero"><img src="/images/relume-655417.jpeg" width="2560" height="1920" alt="" aria-hidden="true" class="pub-form-hero__image"><div class="pub-form-hero__scrim" aria-hidden="true"></div><div class="pub-form-hero__inner"><p class="pub-form-hero__label">Demande de soumission</p><h1 class="pub-form-hero__title">Parlons de votre projet de rénovation</h1><p>Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p></div></section>
-     <section id="formulaire" class="pub-form-section py-16" aria-labelledby="formulaire-title"><div class="container-large mx-auto max-w-6xl px-6"><h2 id="formulaire-title">Parlez-nous de votre projet</h2><p>Le formulaire vous demande le type de travaux, votre budget approximatif, ce que vous voulez changer, la ville du projet, l’échéancier souhaité et vos coordonnées. Nous vous répondons sous 48 heures.</p><p>Le formulaire s’affiche dès que les fonctions de sécurité de la page sont chargées.</p><noscript><p>JavaScript est requis pour transmettre la demande en ligne. Vous pouvez aussi appeler SLC Habitation au <a href="tel:5144048494">(514) 404-8494</a>.</p></noscript><ul><li>Licence RBQ : 8351-9033-59</li><li>19 avis Google, tous 5 étoiles</li><li>Estimation sans frais, visite comprise</li></ul><figure class="pub-quote"><blockquote class="pub-quote__text">Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je recommande vivement!</blockquote><figcaption class="pub-quote__author"><span class="pub-quote__name">Isabelle Baril</span> <span class="pub-quote__role">Avis Google</span></figcaption></figure><p>Vous préférez en parler de vive voix? <a href="tel:5144048494">(514) 404-8494</a></p></div></section>
-     ${createFormGalleryMarkup()}
-     <section id="faq" class="bg-muted py-16"><div class="container-large mx-auto max-w-4xl px-6"><p>Questions fréquentes</p><h2>Ce que les propriétaires nous demandent</h2><details><summary>Que se passe-t-il après l’envoi du formulaire?</summary><p>Nous vous répondons sous 48 heures et nous convenons d’une visite sans frais. Votre soumission est préparée à partir de cette visite.</p></details><details><summary>Quand les travaux peuvent-ils commencer?</summary><p>L’échéancier vous est donné après la visite, avec votre soumission. Il dépend de l’ampleur des travaux et de nos disponibilités.</p></details><details><summary>Est-ce que la soumission est payante?</summary><p>Non. La visite et l’estimation sont sans frais. SLC Habitation détient la licence RBQ 8351-9033-59.</p></details></div></section></main>
-    ${staticSiteFooter}`;
   } else {
     // Les pages sans contenu statique dédié gardent tout de même la vraie
     // navbar et le vrai pied de page, comme leur rendu React.

@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import { useMemo } from 'react';
+import { isPaidPageSlug } from '@/lib/paid-pages';
 
 export function PubCTA({
   service,
@@ -22,20 +23,22 @@ export function PubCTA({
     if (service) return service;
     if (typeof window === 'undefined') return '';
     const pathnameService = window.location.pathname.replace(/^\/pub\//, '');
-    const validServices = [
-      'renovation-sous-sol',
-      'renovation-salle-de-bain',
-      'renovation-cuisine',
-      'agrandissement-maison',
-    ];
-    if (validServices.includes(pathnameService)) return pathnameService;
+    if (isPaidPageSlug(pathnameService)) return pathnameService;
     const queryService = new URLSearchParams(window.location.search).get('service') || '';
-    return validServices.includes(queryService) ? queryService : '';
+    return isPaidPageSlug(queryService) ? queryService : '';
   }, [location, service]);
+
+  /* Page publicitaire d'où part le clic : le formulaire est commun à tout le
+     site, ce paramètre garde la trace de l'annonce à l'origine de la demande. */
+  const paidPageSlug = useMemo(() => {
+    if (typeof window === 'undefined') return '';
+    const match = window.location.pathname.match(/^\/pub\/([a-z0-9-]+)\/?$/);
+    return match && isPaidPageSlug(match[1]) ? match[1] : '';
+  }, [location]);
 
   const href = useMemo(() => {
     if (typeof window === 'undefined') {
-      return serviceContext ? `/pub/formulaire?service=${serviceContext}` : '/pub/formulaire';
+      return serviceContext ? `/soumission?service=${serviceContext}` : '/soumission';
     }
     const currentParams = new URLSearchParams(window.location.search);
     if (serviceContext) {
@@ -43,9 +46,12 @@ export function PubCTA({
     } else {
       currentParams.delete('service');
     }
+    if (paidPageSlug) {
+      currentParams.set('pub', paidPageSlug);
+    }
     const query = currentParams.toString();
-    return query ? `/pub/formulaire?${query}` : '/pub/formulaire';
-  }, [location, serviceContext]);
+    return query ? `/soumission?${query}` : '/soumission';
+  }, [location, serviceContext, paidPageSlug]);
 
   return (
     <Link
@@ -57,12 +63,12 @@ export function PubCTA({
         window.dataLayer.push({
           event: 'quote_cta_click',
           service: serviceContext || 'formulaire',
-          destination: '/pub/formulaire',
+          destination: '/soumission',
         });
         // Quand la route change, c'est le routeur qui remet la vue en haut :
         // remonter ici écraserait la position mémorisée pour le bouton Retour.
         // Il ne reste donc que le cas d'un clic depuis la page du formulaire.
-        if (location === '/pub/formulaire') {
+        if (location === '/soumission') {
           window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
         }
       }}

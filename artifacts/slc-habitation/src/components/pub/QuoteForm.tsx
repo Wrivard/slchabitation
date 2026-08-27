@@ -77,6 +77,13 @@ interface QuoteFormProps {
   services?: QuoteFormService[];
   /** Ajoute le dépôt de photos du projet à l'étape 2. */
   allowPhotos?: boolean;
+  /**
+   * Garde le choix du service affiché même lorsqu'un service est présélectionné.
+   * Les pages publicitaires masquent ce choix, car la page ne parle que d'un
+   * service; la page de soumission le laisse visible pour que le visiteur
+   * puisse corriger la présélection venue de l'adresse.
+   */
+  allowServiceChange?: boolean;
 }
 
 function formatFileSize(bytes: number): string {
@@ -135,7 +142,9 @@ export function QuoteForm({
   className = "",
   services = paidFunnelServices,
   allowPhotos = false,
+  allowServiceChange = false,
 }: QuoteFormProps) {
+  const showServiceChoice = allowServiceChange || !defaultService;
   const [step, setStep] = useState(1);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -483,7 +492,7 @@ export function QuoteForm({
                 </div>
 
                 <div className="space-y-8">
-                  {!defaultService && services.length > 4 && (
+                  {showServiceChoice && services.length > 4 && (
                     /* Au-delà de quatre services, la liste déroulante reste plus
                        lisible que des cartes à cocher, surtout sur mobile. */
                     <div className="space-y-3">
@@ -507,7 +516,7 @@ export function QuoteForm({
                     </div>
                   )}
 
-                  {!defaultService && services.length <= 4 && (
+                  {showServiceChoice && services.length <= 4 && (
                     <div className="space-y-4">
                       <label className="block text-sm font-bold text-foreground uppercase tracking-wider">Type de travaux <span className="text-destructive">*</span></label>
                       <div className="grid grid-cols-1 gap-3">
