@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
-import { siteFooterHtml, siteHeaderHtml } from './site-chrome-markup';
+import { addAccessibleNames, siteFooterHtml, siteHeaderHtml } from './site-chrome-markup';
 import { initSiteNav } from '@/lib/site-nav';
 
 /**
@@ -48,7 +48,7 @@ export function SiteHeader() {
       ref={containerRef}
       className="site-chrome site-chrome--header"
       data-testid="site-navbar"
-      dangerouslySetInnerHTML={{ __html: siteHeaderHtml }}
+      dangerouslySetInnerHTML={{ __html: addAccessibleNames(siteHeaderHtml) }}
     />
   );
 }
@@ -59,7 +59,7 @@ export function SiteFooter({ stickyHide = false }: { stickyHide?: boolean }) {
       className="site-chrome site-chrome--footer"
       data-testid="site-footer"
       data-sticky-hide={stickyHide ? '' : undefined}
-      dangerouslySetInnerHTML={{ __html: siteFooterHtml }}
+      dangerouslySetInnerHTML={{ __html: addAccessibleNames(siteFooterHtml) }}
     />
   );
 }

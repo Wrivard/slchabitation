@@ -69,7 +69,7 @@ body
                 div.banner9_text-wrapper
                   p.text-size-small « RBQ: 8351-9033-59 »
               div.banner9_social-icons.w-layout-grid
-                a.banner9_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                a.banner9_social-link.w-inline-block [aria-label=Facebook de SLC Habitation href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
                   div.social-icon.w-embed
                     svg [height=24 width=24]
                       path
@@ -82,7 +82,7 @@ body
                 div.menu-icon3_line-bottom
             nav.navbar3_menu.w-nav-menu [role=navigation]
               a.navbar3_logo-link-menu.w-nav-brand [href=#]
-                img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
               a.navbar3_link.w-nav-link [href=/] « Accueil »
               a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
               div.navbar3_menu-dropdown.w-dropdown [data-delay=200 data-hover=true]
@@ -98,7 +98,7 @@ body
               a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
               a.navbar3_tablet-menu-button.w-button [href=/soumission] « Soumission »
             a.navbar3_logo-link.w-nav-brand [href=/]
-              img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+              img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
             a.button.w-button [href=/soumission id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
             div.navbar3_menu-background
       div.pub-section-nav
@@ -577,7 +577,7 @@ body
                     div.footer3_left-wrapper
                       div.margin-bottom.margin-medium
                         a.footer3_logo-link.w-nav-brand [href=/]
-                          img.footer3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                          img.footer3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                       div.margin-bottom.margin-medium
                         div.footer3_details-wrapper
                           div.margin-bottom.margin-tiny
@@ -590,7 +590,7 @@ body
                           a.text-size-small [href=#] « slchabitation@gmail.com »
                             br
                       div.footer3_social-list.w-layout-grid
-                        a.footer3_social-link.w-inline-block [href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
+                        a.footer3_social-link.w-inline-block [aria-label=Facebook de SLC Habitation href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path

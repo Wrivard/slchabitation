@@ -843,9 +843,9 @@ export function QuoteForm({
 
                     {allowPhotos && (
                       <div className="space-y-2">
-                        <span className={`block ${labelClass}`}>
+                        <label htmlFor="photos" className={`block ${labelClass}`}>
                           Photos du projet <span className={optionalHintClass}>(facultatif)</span>
-                        </span>
+                        </label>
                         <div className="space-y-4 rounded-md border border-dashed border-input bg-muted/50 p-5">
                           <div className="flex flex-wrap items-center gap-3">
                             <Button
