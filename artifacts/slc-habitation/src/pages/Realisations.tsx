@@ -1154,7 +1154,7 @@ margin: 0rem !important;
             {' '}
           </header>
           {' '}
-          <section className="section_testimonial6 color-scheme-2">
+          <section className="section_testimonial6 testimonials-showcase color-scheme-2">
             {' '}
             <div className="padding-global">
               {' '}
@@ -1189,7 +1189,7 @@ margin: 0rem !important;
                     {' '}
                     <div data-reveal-group-nested="" className="testimonial6_grid-list">
                       {' '}
-                      <div className="testimonial6_content">
+                      <div className="testimonial6_content testimonials-card">
                         {' '}
                         <div className="margin-bottom margin-medium">
                           {' '}
@@ -1297,7 +1297,7 @@ margin: 0rem !important;
                         {' '}
                       </div>
                       {' '}
-                      <div className="testimonial6_content">
+                      <div className="testimonial6_content testimonials-card">
                         {' '}
                         <div className="margin-bottom margin-medium">
                           {' '}
@@ -1405,7 +1405,7 @@ margin: 0rem !important;
                         {' '}
                       </div>
                       {' '}
-                      <div className="testimonial6_content">
+                      <div className="testimonial6_content testimonials-card">
                         {' '}
                         <div className="margin-bottom margin-medium">
                           {' '}
