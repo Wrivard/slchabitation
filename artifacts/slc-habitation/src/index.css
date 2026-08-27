@@ -530,6 +530,52 @@
   fill: hsl(var(--primary));
 }
 
+.soumission-quote-form__card .quote-form-choice:has([data-state='checked']):hover {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  color: #fff;
+}
+
+.soumission-quote-form .soumission-quote-form__review {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: clamp(1.35rem, 2.5vw, 2.25rem);
+  border: 1px solid rgb(11 11 11 / 0.12);
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 0.96);
+  box-shadow: 0 1rem 2.5rem -2rem rgb(11 11 11 / 0.35);
+}
+
+.soumission-quote-form .soumission-quote-form__review .text-primary {
+  color: hsl(26 72% 43%);
+}
+
+.soumission-quote-form .soumission-quote-form__review blockquote {
+  max-width: 32rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.soumission-quote-form .soumission-quote-form__review figcaption {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(11 11 11 / 0.1);
+}
+
+.soumission-quote-form .soumission-quote-form__review figcaption img {
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: 0 0 auto;
+}
+
+.soumission-quote-form .soumission-quote-form__review figcaption span {
+  display: block;
+}
+
 .soumission-quote-form h2,
 .soumission-quote-form h3,
 .soumission-quote-form h4 {

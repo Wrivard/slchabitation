@@ -87,7 +87,7 @@ export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: 
               « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je
               recommande vivement! »
             </blockquote>
-            <figcaption className="mt-4 flex items-center gap-3 text-sm text-muted-foreground">
+            <figcaption className="mt-4 flex items-center gap-4 text-sm text-muted-foreground">
               <img
                 src="/images/relume-657334.png"
                 alt="Portrait d’Isabelle Baril"
