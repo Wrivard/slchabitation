@@ -306,7 +306,7 @@ margin: 0rem !important;
                   {' '}
                   <div className="banner9_text-wrapper">
                     {' '}
-                    <a href="tel:(514)404-8494" className="text-weight-semibold">
+                    <a href="tel:+15144048494" className="text-weight-semibold">
                       (514) 404-8494
                     </a>
                     {' '}
@@ -1783,7 +1783,7 @@ margin: 0rem !important;
                                   {' '}
                                 </div>
                                 {' '}
-                                <a href="tel:(514)404-8494" className="text-style-link">
+                                <a href="tel:+15144048494" className="text-style-link">
                                   (514) 404-8494
                                 </a>
                                 {' '}
@@ -2054,11 +2054,11 @@ margin: 0rem !important;
                             {' '}
                           </div>
                           {' '}
-                          <a href="#" className="text-size-small">
+                          <a href="tel:+15144048494" className="text-size-small">
                             (514) 404-8494
                           </a>
                           {' '}
-                          <a href="#" className="text-size-small">
+                          <a href="mailto:slchabitation@gmail.com" className="text-size-small">
                             <br />
                             slchabitation@gmail.com
                           </a>

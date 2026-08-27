@@ -94,7 +94,7 @@ export default function PolitiqueDeConfidentialite() {
           <div className="bg-muted p-6 rounded-xl mt-4">
             <p><strong>Responsable :</strong> Responsable de la protection des renseignements personnels — SLC Habitation</p>
             <p><strong>Courriel :</strong> <a href="mailto:slchabitation@gmail.com" data-testid="link-privacy-email">slchabitation@gmail.com</a></p>
-            <p><strong>Téléphone :</strong> (514) 404-8494</p>
+            <p><strong>Téléphone :</strong> <a href="tel:+15144048494" data-testid="link-privacy-phone">(514) 404-8494</a></p>
           </div>
         </div>
         
