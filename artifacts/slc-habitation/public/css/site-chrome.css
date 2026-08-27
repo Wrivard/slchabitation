@@ -61,6 +61,68 @@
 }
 
 /*
+ * Hiérarchie commune des blocs surtitre / titre / sous-texte du site principal.
+ * Les pages publicitaires sont montées dans `.pub-shell`, sans `.page-wrapper`,
+ * et ne sont donc pas concernées par ces règles.
+ *
+ * Le sélecteur `:has()` suit le motif réel des exports Webflow : le surtitre
+ * est dans un wrapper `.margin-bottom`, puis le titre et son texte voisin sont
+ * ses frères. Cela évite de recolorer les titres de cartes ou les questions FAQ
+ * qui ne font pas partie d'un de ces blocs éditoriaux.
+ */
+.page-wrapper .text-style-tagline {
+  color: hsl(26 91% 55%);
+}
+
+.page-wrapper
+  .margin-bottom:has(> .text-style-tagline)
+  ~ .margin-bottom
+  > :is(h1, h2, h3, h4, h5, h6),
+.page-wrapper
+  .margin-bottom:has(> .text-style-tagline)
+  ~ :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--color-scheme-1--text);
+}
+
+.page-wrapper
+  .color-scheme-3
+  .margin-bottom:has(> .text-style-tagline)
+  ~ .margin-bottom
+  > :is(h1, h2, h3, h4, h5, h6),
+.page-wrapper
+  .color-scheme-3
+  .margin-bottom:has(> .text-style-tagline)
+  ~ :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
+}
+
+.page-wrapper
+  :is(.color-scheme-1, .color-scheme-2)
+  :has(> .margin-bottom:has(> .text-style-tagline))
+  > :is(
+    p.text-size-medium,
+    p.text-size-large,
+    .margin-bottom > p.text-size-medium,
+    .margin-bottom > p.text-size-large,
+    .layout423_card-content-bottom p
+  ) {
+  color: color-mix(in srgb, var(--color-scheme-1--text) 68%, transparent);
+}
+
+.page-wrapper
+  .color-scheme-3
+  :has(> .margin-bottom:has(> .text-style-tagline))
+  > :is(
+    p.text-size-medium,
+    p.text-size-large,
+    .margin-bottom > p.text-size-medium,
+    .margin-bottom > p.text-size-large,
+    .layout423_card-content-bottom p
+  ) {
+  color: rgb(255 255 255 / 0.78);
+}
+
+/*
  * Menu mobile : le voile (`z-index: 0`) et le panneau (`z-index: 1`) couvrent
  * toute la barre. Le bouton doit rester au-dessus pour refermer le menu, comme
  * sur les pages qui chargent le script Webflow d'origine.
