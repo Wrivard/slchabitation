@@ -50,17 +50,6 @@ const contactItems = [
 export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: string }) {
   return (
     <div className="soumission-quote-form" data-testid="section-soumission-form">
-      <div className="mb-10 max-w-3xl md:mb-12">
-        <p className="text-sm font-semibold uppercase tracking-wider text-primary">Soumission en ligne</p>
-        <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-foreground md:text-4xl">
-          Parlons de votre projet
-        </h2>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-          Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons
-          sous 48 heures. La visite et l’estimation sont sans frais.
-        </p>
-      </div>
-
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
         {/* Le formulaire reste le point d'attention : premier sur mobile, à droite sur grand écran. */}
         <div className="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">

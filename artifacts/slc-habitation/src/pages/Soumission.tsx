@@ -47,11 +47,17 @@ const imageAltText = {
  * d'accessibilité et de liens.
  */
 const updatedHtmlContent = htmlContent
-  .replace('>Devis</div>', '>Soumission en ligne</div>')
-  .replace('>Obtenez votre soumission</h1>', '>Parlons de votre projet</h1>')
   .replace(
-    '>Dites-nous ce que vous envisagez. Nous répondons vite, sans détour, avec des chiffres honnêtes.</p>',
-    '>Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p>',
+    'class="text-style-tagline text-color-white">Devis</div>',
+    'class="text-style-tagline text-color-white soumission-hero__label">Soumission en ligne</div>',
+  )
+  .replace(
+    'class="heading-style-h1">Obtenez votre soumission</h1>',
+    'class="heading-style-h1 soumission-hero__title">Parlons de votre projet</h1>',
+  )
+  .replace(
+    'class="text-size-medium">Dites-nous ce que vous envisagez. Nous répondons vite, sans détour, avec des chiffres honnêtes.</p>',
+    'class="text-size-medium soumission-hero__intro">Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p>',
   );
 
 const semanticHtmlContent = applyPageSemantics(updatedHtmlContent, imageAltText);

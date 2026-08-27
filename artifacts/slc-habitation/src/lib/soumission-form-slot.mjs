@@ -137,12 +137,6 @@ const staticSteps = [
  * À garder aligné sur `src/components/site/SoumissionQuoteForm.tsx`.
  */
 export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id="${SOUMISSION_FORM_SLOT_ID}">
-  <div class="mb-10 max-w-3xl md:mb-12">
-    <p class="text-sm font-semibold uppercase tracking-wider text-primary">Soumission en ligne</p>
-    <h2 class="mt-3 font-heading text-3xl font-bold leading-tight text-foreground md:text-4xl">Parlons de votre projet</h2>
-    <p class="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">Dites-nous ce que vous voulez rénover à Laval ou dans les Laurentides. Nous vous répondons sous 48 heures. La visite et l’estimation sont sans frais.</p>
-  </div>
-
   <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
   <div class="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
   <div class="rounded-lg border border-border bg-white p-6 shadow-[0_24px_60px_-40px_rgb(0_0_0_/_0.45)] sm:p-8 md:p-10">
