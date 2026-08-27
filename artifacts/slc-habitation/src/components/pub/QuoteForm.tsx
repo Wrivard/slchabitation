@@ -32,6 +32,7 @@ export const paidFunnelServices: QuoteFormService[] = [
   { id: 'renovation-sous-sol', label: 'Rénovation de sous-sol' },
   { id: 'renovation-salle-de-bain', label: 'Rénovation de salle de bain' },
   { id: 'renovation-cuisine', label: 'Rénovation de cuisine' },
+  { id: 'agrandissement-maison', label: 'Agrandissement' },
 ];
 
 /* Mêmes limites que celles annoncées par l'ancien formulaire de /soumission et

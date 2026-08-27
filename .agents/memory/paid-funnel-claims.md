@@ -8,3 +8,5 @@ Google Ads funnel copy may state only these owner-approved proof points: RBQ 835
 **Why:** Paid-page redesign work can easily introduce persuasive but unverified promises that create compliance and trust risk.
 
 **How to apply:** Treat new service copy as assessment-based and conditional. Reuse verified source material, and remove any claim whose evidence has not been explicitly approved by the owner.
+
+Photo captions and alt text are claims too. A jobsite photo only proves what the main site already says it shows: the legacy Webflow pages carry an `imageAltText` map that labels each file (e.g. one house is "maison agrandie", another the same age is "réparation structurelle" / "construction résidentielle"). Check that map before captioning a reused photo, and when the label is ambiguous, describe what is visible instead of asserting the service being sold.

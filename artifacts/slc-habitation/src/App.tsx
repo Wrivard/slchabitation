@@ -21,6 +21,7 @@ import StyleGuide from '@/pages/StyleGuide';
 import RenovationSousSolPub from '@/pages/pub/RenovationSousSol';
 import RenovationSalleDeBainPub from '@/pages/pub/RenovationSalleDeBain';
 import RenovationCuisinePub from '@/pages/pub/RenovationCuisine';
+import AgrandissementPub from '@/pages/pub/Agrandissement';
 import FormulairePub from '@/pages/pub/Formulaire';
 import PolitiqueDeConfidentialite from '@/pages/PolitiqueDeConfidentialite';
 
@@ -133,6 +134,7 @@ function Router() {
         <Route path="/pub/renovation-sous-sol" component={RenovationSousSolPub} />
         <Route path="/pub/renovation-salle-de-bain" component={RenovationSalleDeBainPub} />
         <Route path="/pub/renovation-cuisine" component={RenovationCuisinePub} />
+        <Route path="/pub/agrandissement-maison" component={AgrandissementPub} />
         <Route path="/pub/formulaire" component={FormulairePub} />
         <Route path="/politique-de-confidentialite" component={PolitiqueDeConfidentialite} />
 

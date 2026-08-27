@@ -326,6 +326,47 @@ const paidPageContent = {
       ['Est-ce que vous vous occupez de tout?', 'Oui. Démolition, plomberie, électricité, armoires, comptoirs, plancher et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.'],
     ],
   },
+  '/pub/agrandissement-maison': {
+    h1: 'Agrandissement de maison à Laval et dans les Laurentides',
+    intro:
+      'Nous venons voir votre maison et votre terrain, puis nous vous remettons votre soumission.',
+    steps: [
+      ['Vous nous écrivez', 'Un formulaire de 3 étapes. Nous vous répondons sous 48 heures.'],
+      ['Nous venons voir', 'La visite est sans frais. Nous regardons la maison, le terrain et l’espace que vous voulez gagner.'],
+      ['Vous recevez votre soumission', 'Les travaux prévus y sont détaillés. La soumission est sans frais.'],
+      ['On réalise les travaux', 'Une équipe, un ordre de travail clair, de la fondation aux finitions.'],
+    ],
+    includedTitle: 'Un agrandissement mené de la fondation aux finitions, par une seule équipe',
+    includedIntro:
+      'Vous n’avez pas à engager un excavateur, un charpentier, un couvreur et un finisseur chacun de leur côté. Nous nous occupons de tout.',
+    included: [
+      ['La fondation et la structure', ['Fondation ou dalle selon le projet', 'Charpente de l’agrandissement', 'Ouverture du mur existant']],
+      ['L’enveloppe et la toiture', ['Toiture raccordée à l’existant', 'Isolation, pare-air et fenêtres', 'Revêtement extérieur']],
+      ['Les finitions, dedans comme dehors', ['Plomberie et électricité de l’ajout', 'Gypse, plancher, peinture', 'Raccords avec les pièces existantes']],
+    ],
+    visit: [
+      ['Le terrain', 'L’espace autour de la maison, la pente et les accès pour la machinerie.'],
+      ['La structure existante', 'Le mur à ouvrir, la fondation en place et ce qui soutient la maison.'],
+      ['La toiture', 'Comment le nouveau toit se raccorde à l’ancien et où l’eau s’écoule.'],
+      ['Les services', 'L’électricité, la plomberie et le chauffage à prolonger dans le nouvel espace.'],
+    ],
+    checklist: [
+      'L’usage que vous voulez donner à l’espace ajouté',
+      'Le certificat de localisation, si vous l’avez',
+      'Des photos ou des idées que vous aimez',
+      'Votre budget approximatif',
+    ],
+    galleryTitle: 'Des agrandissements terminés par notre équipe',
+    galleryIntro: 'Quelques projets menés de la fondation aux finitions, parmi les 500 réalisés depuis 25 ans.',
+    ctaText: 'Dites-nous l’espace que vous voulez gagner. Réponse sous 48 heures, visite sans frais.',
+    faqs: [
+      ['Combien coûte un agrandissement de maison?', 'Le prix dépend de la superficie ajoutée, du type de fondation, de la toiture et des finitions choisies. Nous venons voir la maison et le terrain, puis nous vous remettons une soumission détaillée. La visite et l’estimation sont sans frais.'],
+      ['Combien de temps durent les travaux?', 'Cela varie d’un projet à l’autre. Nous vous donnons l’échéancier avec votre soumission, une fois la visite faite.'],
+      ['Faut-il un permis de la municipalité?', 'Un agrandissement demande presque toujours un permis, et les règles changent d’une municipalité à l’autre. Nous en parlons pendant la visite et nous vous disons ce qui doit être obtenu avant le début des travaux.'],
+      ['Peut-on ajouter un étage plutôt qu’agrandir au sol?', 'C’est possible dans bien des cas, quand la fondation et la structure peuvent porter un étage de plus. C’est l’un des points que nous vérifions pendant la visite.'],
+      ['Est-ce que vous vous occupez de tout?', 'Oui. Fondation, charpente, toiture, revêtement, plomberie, électricité et finitions sont coordonnés par notre équipe. SLC Habitation détient la licence RBQ 8351-9033-59 et cumule 25 ans d’expérience.'],
+    ],
+  },
 };
 
 const paidPageEnhancements = {
@@ -430,6 +471,38 @@ const paidPageEnhancements = {
       ['/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943.jpg', 'Cuisine aménagée dans un sous-sol avec îlot central et armoires', 4000, 3000, 'Cuisine et aire de vie au sous-sol'],
     ],
     label: 'Entrepreneur en rénovation',
+  },
+  'agrandissement-maison': {
+    hero: ['/images/upscale-house-1-min-1-p-1600.webp', 'Maison agrandie à l’arrière avec un volume contemporain vitré, éclairé en soirée', 1600, 1044],
+    thumbsLabel: 'Agrandissements réalisés',
+    thumbs: [
+      ['/images/ajout-etage-01-p-500.jpeg', 'Chantier d’ajout d’étage : charpente montée au-dessus d’une maison en hiver', 500, 375],
+      ['/images/relume-655431-p-500.jpeg', 'Agrandissement terminé avec revêtement de bois et de métal', 500, 779],
+      ['/images/relume-655499-p-500.jpeg', 'Agrandissement à l’arrière d’une maison avec terrasse de bois', 500, 667],
+    ],
+    cardImages: [
+      ['/images/ajout-etage-01-p-800.jpeg', 'Charpente d’un ajout d’étage montée au-dessus d’une maison en hiver', 800, 600],
+      ['/images/relume-655441-p-800.jpeg', 'Chantier résidentiel : murs recouverts de pare-air avant la pose du revêtement', 800, 1066],
+      ['/images/relume-655431-p-800.jpeg', 'Agrandissement terminé avec revêtement de bois et de métal', 800, 1247],
+    ],
+    detailsTitle: 'Un ajout qui ne se voit pas comme un ajout',
+    detailsIntro:
+      'Ces trois photos viennent de chantiers d’agrandissement. Voici ce qu’on y remarque de près.',
+    details: [
+      ['/images/relume-655431-p-1600.jpeg', 'Façade d’un agrandissement avec revêtement de bois, panneaux foncés et grandes fenêtres', 1600, 2493, 'Le revêtement et les ouvertures', 'Les matériaux et les fenêtres de l’ajout suivent les lignes de la maison pour que le volume reste dans le même ton.'],
+      ['/images/relume-655434-p-1600.jpeg', 'Étage ajouté vu de l’intérieur, plafond mansardé refermé et plancher de bois protégé', 1600, 1200, 'L’étage ajouté avant la peinture', 'À l’intérieur, le nouvel espace est fermé, isolé et prêt pour le plancher, la peinture et les moulures.'],
+      ['/images/relume-655496-p-1600.jpeg', 'Toiture et lucarnes refaites au-dessus d’une maison en pierre pendant les travaux', 1600, 1200, 'Le raccord de toiture', 'La toiture et les lucarnes sont reprises pour que le raccord reste étanche et que l’eau s’écoule au bon endroit.'],
+    ],
+    visitImage: ['/images/relume-655499-p-1600.jpeg', 'Maison agrandie à l’arrière avec grandes portes vitrées et terrasse de bois', 1600, 2133],
+    ctaImage: ['/images/upscale-house-1-min-1-p-1600.webp', 1600, 1044],
+    reviews: [paidReviews.johanne, paidReviews.melodie, paidReviews.isabelle],
+    images: [
+      ['/images/upscale-house-1-min-1-p-1600.webp', 'Maison agrandie à l’arrière avec un volume contemporain vitré', 1600, 1044, 'Agrandissement contemporain à l’arrière'],
+      ['/images/relume-655431-p-1600.jpeg', 'Agrandissement terminé avec revêtement de bois et de métal', 1600, 2493, 'Revêtement de bois et de métal'],
+      ['/images/relume-655496-p-1600.jpeg', 'Toiture et lucarnes refaites sur une maison en pierre', 1600, 1200, 'Toiture et lucarnes reprises'],
+      ['/images/relume-655499-p-1600.jpeg', 'Agrandissement à l’arrière d’une maison avec portes vitrées et terrasse', 1600, 2133, 'Pièce ajoutée ouverte sur la cour'],
+    ],
+    label: 'Entrepreneur en agrandissement',
   },
 };
 

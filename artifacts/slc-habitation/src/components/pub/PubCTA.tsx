@@ -26,6 +26,7 @@ export function PubCTA({
       'renovation-sous-sol',
       'renovation-salle-de-bain',
       'renovation-cuisine',
+      'agrandissement-maison',
     ];
     if (validServices.includes(pathnameService)) return pathnameService;
     const queryService = new URLSearchParams(window.location.search).get('service') || '';

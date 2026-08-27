@@ -64,6 +64,10 @@ from = "/pub/renovation-sous-sol"
 to = "/pub/renovation-sous-sol/index.html"
 
 [[services.production.rewrites]]
+from = "/pub/agrandissement-maison"
+to = "/pub/agrandissement-maison/index.html"
+
+[[services.production.rewrites]]
 from = "/index"
 to = "/index.html"
 
@@ -110,6 +114,10 @@ to = "/pub/renovation-salle-de-bain/index.html"
 [[services.production.rewrites]]
 from = "/pub/renovation-sous-sol/*"
 to = "/pub/renovation-sous-sol/index.html"
+
+[[services.production.rewrites]]
+from = "/pub/agrandissement-maison/*"
+to = "/pub/agrandissement-maison/index.html"
 
 [[services.production.rewrites]]
 from = "/*"

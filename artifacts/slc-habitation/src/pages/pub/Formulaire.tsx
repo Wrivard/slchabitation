@@ -75,7 +75,12 @@ export default function FormulairePub() {
     if (typeof window === 'undefined') return '';
     const params = new URLSearchParams(window.location.search);
     const serviceParam = params.get('service');
-    const validServices = ['renovation-sous-sol', 'renovation-salle-de-bain', 'renovation-cuisine'];
+    const validServices = [
+      'renovation-sous-sol',
+      'renovation-salle-de-bain',
+      'renovation-cuisine',
+      'agrandissement-maison',
+    ];
     return validServices.includes(serviceParam || '') ? serviceParam! : '';
   }, [location]);
 
