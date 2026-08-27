@@ -112,13 +112,16 @@ export function metadataForPath(location: string) {
     .replace(/\/$/, '') || '/';
 
   const isPubRoute = normalizedPath.startsWith('/pub');
+  const route = routes[normalizedPath] ?? {
+    path: normalizedPath,
+    title: 'SLC Habitation | Rénovation résidentielle',
+    description: 'SLC Habitation accompagne les propriétaires pour leurs projets de rénovation, d’agrandissement et de construction résidentielle.',
+  };
 
+  /* Les pages du tunnel publicitaire sont exclues des moteurs par principe;
+     les autres pages le demandent explicitement (page de confirmation). */
   return {
-    ...(routes[normalizedPath] ?? {
-      path: normalizedPath,
-      title: 'SLC Habitation | Rénovation résidentielle',
-      description: 'SLC Habitation accompagne les propriétaires pour leurs projets de rénovation, d’agrandissement et de construction résidentielle.',
-    }),
-    noindex: isPubRoute,
+    ...route,
+    noindex: isPubRoute || route.noindex === true,
   };
 }

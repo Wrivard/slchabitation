@@ -32,6 +32,7 @@ const legacyRouteRedirects: Record<string, string> = {
 const prerenderedRoutePaths = new Set(
   [
     ...Object.values(legacyRouteRedirects).filter((route) => route !== '/'),
+    '/merci',
     '/pub/agrandissement-maison',
     '/pub/renovation-cuisine',
     '/pub/renovation-salle-de-bain',

@@ -12,6 +12,7 @@ import Agrandissement from '@/pages/Agrandissement';
 import TravauxSurMesure from '@/pages/TravauxSurMesure';
 import Realisations from '@/pages/Realisations';
 import Soumission from '@/pages/Soumission';
+import Merci from '@/pages/Merci';
 import PolitiqueDeCookie from '@/pages/PolitiqueDeCookie';
 import Unauthorized from '@/pages/Unauthorized';
 import NotFoundPage from '@/pages/NotFoundPage';
@@ -124,6 +125,7 @@ function Router() {
         <Route path="/travaux-sur-mesure" component={TravauxSurMesure} />
         <Route path="/realisations" component={Realisations} />
         <Route path="/soumission" component={Soumission} />
+        <Route path="/merci" component={Merci} />
         <Route path="/politique-de-cookie" component={PolitiqueDeCookie} />
         <Route path="/401.html" component={Unauthorized} />
         <Route path="/404.html" component={NotFoundPage} />

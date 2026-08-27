@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Loader2, ArrowRight, ArrowLeft, CheckCircle2, ImagePlus, X } from 'lucide-react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useTrackingParams } from '@/hooks/use-tracking-params';
+import { rememberQuoteSubmission } from '@/lib/quote-submission';
 import { TurnstileWidget } from '@/components/pub/TurnstileWidget';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -167,6 +168,7 @@ export function QuoteForm({
   const stepThreeHeadingRef = useRef<HTMLHeadingElement>(null);
 
   const getTrackingParams = useTrackingParams();
+  const [, navigate] = useLocation();
 
   const {
     register,
@@ -378,7 +380,20 @@ export function QuoteForm({
       if (response.ok && result.success === true) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'quote_form_submit', service: defaultService || 'formulaire', step: 3 });
+
+        /* La conversion se mesure sur `/merci` : le marqueur dit à cette page
+           qu'une demande vient réellement d'être envoyée. */
+        rememberQuoteSubmission({
+          submittedAt: Date.now(),
+          submissionId: submissionId.current,
+          service: exactService,
+          paidPage: trackingParams.paid_page,
+        });
+
+        /* L'écran de confirmation reste affiché en repli : si la navigation
+           n'aboutit pas, le visiteur voit quand même que c'est parti. */
         setIsSuccess(true);
+        navigate(`/merci?service=${encodeURIComponent(data.service)}`);
       } else {
         throw new Error(result.error?.message || result.message || "Une erreur inattendue est survenue.");
       }

@@ -10,6 +10,14 @@ import {
   prepareSoumissionMarkup,
   soumissionFormStaticMarkup,
 } from '../src/lib/soumission-form-slot.mjs';
+import {
+  merciContactTitle,
+  merciContacts,
+  merciHero,
+  merciLinks,
+  merciSteps,
+  merciStepsTitle,
+} from '../src/lib/merci-content.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const outputDir = path.join(root, 'dist', 'public');
@@ -532,11 +540,44 @@ function createPaidStaticBody(content, routePath) {
   ${staticSiteFooter}`;
 }
 
+/* Version statique de la page de remerciement : mêmes textes et mêmes classes
+   que `src/pages/Merci.tsx`, sans l'animation d'apparition. Le contenu vient du
+   module partagé pour que les deux rendus ne puissent pas diverger. */
+function createMerciStaticBody() {
+  const steps = merciSteps
+    .map(
+      (step, index) => `<li class="flex gap-4"><span class="flex h-9 w-9 flex-none items-center justify-center border border-primary/30 bg-accent font-heading text-sm font-bold text-accent-foreground" aria-hidden="true">${index + 1}</span><div><h3 class="font-heading text-lg font-semibold text-foreground">${escapeHtml(step.title)}</h3><p class="mt-1 text-base leading-relaxed text-muted-foreground">${escapeHtml(step.text)}</p></div></li>`,
+    )
+    .join('');
+
+  const contacts = merciContacts
+    .map(
+      (contact) =>
+        `<li><a href="${escapeHtml(contact.href)}" class="flex items-center gap-3 text-base font-semibold text-foreground hover:text-primary" data-testid="${escapeHtml(contact.testId)}"><span class="break-all">${escapeHtml(contact.label)}</span></a></li>`,
+    )
+    .join('');
+
+  const links = merciLinks
+    .map(
+      (link) =>
+        `<a href="${escapeHtml(link.href)}" class="flex items-center justify-between gap-3 text-base font-semibold text-foreground hover:text-primary" data-testid="${escapeHtml(link.testId)}">${escapeHtml(link.label)}</a>`,
+    )
+    .join('');
+
+  return `<div class="merci-shell flex min-h-[100dvh] flex-col bg-background font-sans text-foreground">${staticSiteHeader}
+  <main class="flex-grow">
+    <header class="relative flex min-h-[22rem] items-end overflow-hidden bg-secondary text-white md:min-h-[28rem]"><img src="${escapeHtml(merciHero.image.src)}" alt="${escapeHtml(merciHero.image.alt)}" width="${merciHero.image.width}" height="${merciHero.image.height}" class="absolute inset-0 h-full w-full object-cover" style="object-position:center 45%"><div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/85 to-secondary/40"></div><div class="relative mx-auto w-full max-w-5xl px-6 pb-14 pt-24 md:pb-20 md:pt-32"><p class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-primary">${escapeHtml(merciHero.kicker)}</p><h1 class="mb-4 max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl" data-testid="text-merci-title">${escapeHtml(merciHero.title)}</h1><p class="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">${escapeHtml(merciHero.intro)}</p></div></header>
+    <section class="bg-background py-16 md:py-24" aria-labelledby="merci-etapes" data-testid="section-merci"><div class="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 lg:grid-cols-12 lg:gap-16"><div class="lg:col-span-7"><h2 id="merci-etapes" class="font-heading text-2xl font-bold leading-tight text-foreground md:text-3xl">${escapeHtml(merciStepsTitle)}</h2><ol class="mt-8 space-y-6" data-testid="list-merci-steps">${steps}</ol></div><aside class="lg:col-span-5"><div class="border border-border bg-white p-6 md:p-8"><h2 class="font-heading text-lg font-semibold text-foreground">${escapeHtml(merciContactTitle)}</h2><ul class="mt-5 space-y-4">${contacts}</ul><div class="mt-8 space-y-3 border-t border-border pt-6">${links}</div></div></aside></div></section>
+  </main>${staticSiteFooter}</div>`;
+}
+
 function createFallbackSource(appShell, route) {
   const content = paidPageContent[route.path];
   let bodyContent;
 
-  if (content) {
+  if (route.path === '/merci') {
+    bodyContent = createMerciStaticBody();
+  } else if (content) {
     bodyContent = createPaidStaticBody(content, route.path);
   } else {
     // Les pages sans contenu statique dédié gardent tout de même la vraie
@@ -581,7 +622,7 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   <link href="${fontStylesheet}" rel="stylesheet">
   <title>${escapeHtml(route.title)}</title>
   <meta name="description" content="${escapeHtml(route.description)}">
-  <meta name="robots" content="${route.path.startsWith('/pub/') ? 'noindex, follow' : 'index, follow'}">
+  <meta name="robots" content="${route.path.startsWith('/pub/') || route.noindex === true ? 'noindex, follow' : 'index, follow'}">
   <link rel="canonical" href="${canonical}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:title" content="${escapeHtml(route.title)}">

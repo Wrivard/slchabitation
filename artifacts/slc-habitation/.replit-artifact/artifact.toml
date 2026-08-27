@@ -64,6 +64,14 @@ from = "/pub/agrandissement-maison"
 to = "/pub/agrandissement-maison/index.html"
 
 [[services.production.rewrites]]
+from = "/merci"
+to = "/merci/index.html"
+
+[[services.production.rewrites]]
+from = "/merci/*"
+to = "/merci/index.html"
+
+[[services.production.rewrites]]
 from = "/index"
 to = "/index.html"
 

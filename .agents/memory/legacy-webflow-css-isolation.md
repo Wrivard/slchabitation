@@ -17,4 +17,6 @@ The preserved Webflow stylesheets are linked from the HTML shell *unlayered*, wh
 
 **Caveat:** `revert-layer` falls through to the framework reset when the element carries no matching utility, so an unsized heading collapses to body size. Audit every element covered by such a rule and give it an explicit utility.
 
+**Don't forget spacing:** the legacy rules also zero `margin-top`/`margin-bottom` on headings and paragraphs, so `mt-*`/`mb-*` utilities silently do nothing. A scoped shell that sizes its own type needs `margin-block: revert-layer` alongside the font properties, otherwise the page renders correctly sized but visually cramped — an easy symptom to misread as a missing utility.
+
 **Also:** any statically prerendered fallback markup for these routes must be wrapped in the same funnel-root class, or it renders with the legacy styles the scoped rules were meant to neutralize.
