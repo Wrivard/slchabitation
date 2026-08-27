@@ -77,7 +77,7 @@ export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: 
           </ul>
 
           {/* Avis Google réel, déjà utilisé sur les pages du tunnel publicitaire. */}
-          <figure className="border border-border bg-muted p-5" data-testid="quote-form-review">
+          <figure className="soumission-quote-form__review testimonials-card" data-testid="quote-form-review">
             <div className="mb-2 flex gap-0.5 text-primary" aria-hidden="true">
               {[0, 1, 2, 3, 4].map((star) => (
                 <Star key={star} className="h-4 w-4 fill-current" />
@@ -87,8 +87,16 @@ export function SoumissionQuoteForm({ defaultService = '' }: { defaultService?: 
               « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je
               recommande vivement! »
             </blockquote>
-            <figcaption className="mt-2 text-sm text-muted-foreground">
-              Isabelle Baril — Avis Google
+            <figcaption className="mt-4 flex items-center gap-3 text-sm text-muted-foreground">
+              <img
+                src="/images/relume-657334.png"
+                alt="Portrait d’Isabelle Baril"
+                width="44"
+                height="44"
+                loading="lazy"
+                className="h-11 w-11 rounded-full border border-border object-cover"
+              />
+              <span>Isabelle Baril — Avis Google</span>
             </figcaption>
           </figure>
 

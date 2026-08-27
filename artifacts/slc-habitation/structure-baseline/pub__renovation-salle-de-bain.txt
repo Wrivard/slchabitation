@@ -410,8 +410,10 @@ body
                     path
                 blockquote.pub-review__text « Plusieurs projets avec cette équipe et toujours ultra satisfaite! Fiable, à l’écoute, je r…184965eb »
                 figcaption.pub-review__author
-                  span.pub-review__name « Isabelle Baril »
-                  span.pub-review__role « Propriétaire »
+                  img.pub-review__avatar [alt=Portrait de Isabelle Baril height=56 loading=lazy src=/images/relume-657334.png width=56]
+                  span
+                    span.pub-review__name « Isabelle Baril »
+                    span.pub-review__role « Propriétaire »
               figure.pub-review [data-testid=review-card]
                 div.pub-review__stars [aria-label=5 étoiles sur 5 role=img]
                   svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
@@ -426,8 +428,10 @@ body
                     path
                 blockquote.pub-review__text « Excellente compagnie, service professionnel et soucis du détails! Merci a votre équipe pou…ace76e83 »
                 figcaption.pub-review__author
-                  span.pub-review__name « Mélodie Binette »
-                  span.pub-review__role « Propriétaire »
+                  img.pub-review__avatar [alt=Portrait de Mélodie Binette height=56 loading=lazy src=/images/relume-657333.png width=56]
+                  span
+                    span.pub-review__name « Mélodie Binette »
+                    span.pub-review__role « Propriétaire »
               figure.pub-review [data-testid=review-card]
                 div.pub-review__stars [aria-label=5 étoiles sur 5 role=img]
                   svg.lucide.lucide-star.pub-review__star [aria-hidden=true height=24 width=24]
@@ -442,8 +446,10 @@ body
                     path
                 blockquote.pub-review__text « Magnifique travail de l’équipe SLC Habitation. Nous avions un projet complexe d’agrandisse…3ffb1613 »
                 figcaption.pub-review__author
-                  span.pub-review__name « Johanne Duguay »
-                  span.pub-review__role « Propriétaire »
+                  img.pub-review__avatar [alt=Portrait de Johanne Duguay height=56 loading=lazy src=/images/relume-657331.png width=56]
+                  span
+                    span.pub-review__name « Johanne Duguay »
+                    span.pub-review__role « Propriétaire »
         section.bg-muted/30.border-border.border-y.md:py-20.py-16 [data-testid=section-gallery id=realisations]
           div.container-large.max-w-7xl.mx-auto.px-6
             div.pub-gallery-head

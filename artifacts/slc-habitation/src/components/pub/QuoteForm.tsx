@@ -194,7 +194,7 @@ const optionalHintClass = 'ml-1 font-medium normal-case tracking-normal text-mut
 /* Carte de choix : la sélection et le focus clavier se lisent d'un coup d'œil
    grâce à l'état du bouton radio qu'elle contient. */
 const choiceCardClass =
-  'quote-form-choice flex cursor-pointer items-center gap-3 rounded-md border border-border bg-white p-4 text-base transition-[background-color,border-color,box-shadow,color,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/60 hover:bg-accent/50 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary has-[[data-state=checked]]:text-white has-[[data-state=checked]]:shadow-[0_12px_28px_-18px_hsl(var(--primary))] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2';
+  'quote-form-choice flex cursor-pointer items-center gap-3 rounded-md border border-border bg-white p-4 text-base transition-[background-color,border-color,box-shadow,color] duration-200 ease-out hover:border-primary/60 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary has-[[data-state=checked]]:text-white has-[[data-state=checked]]:shadow-[0_12px_28px_-18px_hsl(var(--primary))] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2';
 
 export function QuoteForm({
   defaultService = "",
@@ -588,7 +588,8 @@ export function QuoteForm({
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="w-full"
+                  className="w-full will-change-transform"
+                  aria-live="polite"
                 >
                   <div className="mb-8">
                     <h3
@@ -666,7 +667,7 @@ export function QuoteForm({
                                       className="h-5 w-5 shrink-0 border-muted-foreground/50 data-[state=checked]:border-primary"
                                       data-testid={`radio-service-${svc.id}`}
                                     />
-                                    <span className="text-lg text-foreground">{svc.label}</span>
+                                    <span className="text-lg">{svc.label}</span>
                                   </Label>
                                 ))}
                               </RadioGroup>
@@ -707,7 +708,7 @@ export function QuoteForm({
                                     className="h-5 w-5 shrink-0 border-muted-foreground/50 data-[state=checked]:border-primary"
                                     data-testid={`radio-budget-${index}`}
                                   />
-                                  <span className="text-foreground">{budget}</span>
+                                  <span>{budget}</span>
                                 </Label>
                               ))}
                             </RadioGroup>
@@ -737,7 +738,8 @@ export function QuoteForm({
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="w-full"
+                  className="w-full will-change-transform"
+                  aria-live="polite"
                 >
                   <div className="mb-8">
                     <h3
@@ -944,7 +946,8 @@ export function QuoteForm({
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="w-full pb-2"
+                  className="w-full pb-2 will-change-transform"
+                  aria-live="polite"
                 >
                   <div className="mb-8">
                     <h3

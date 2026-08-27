@@ -487,7 +487,7 @@ margin: 0rem !important;
             {' '}
           </header>
           {' '}
-          <header id="blog-header-22" className="section_blog22 color-scheme-1">
+          <header id="blog-header-22" className="section_blog22 realisations-gallery color-scheme-1">
             {' '}
             <div className="padding-global">
               {' '}
@@ -500,7 +500,7 @@ margin: 0rem !important;
                     {' '}
                     <div className="blog22_content">
                       {' '}
-                      <div className="category-filter-menu">
+                      <div className="category-filter-menu realisations-gallery__filters">
                         {' '}
                         <a href="#" className="category-filter-link active w-inline-block" data-category="all" aria-current="true">
                           {' '}
@@ -540,7 +540,7 @@ margin: 0rem !important;
                       {' '}
                       <div className="blog22_list-wrapper">
                         {' '}
-                        <div className="w-layout-grid blog22_list">
+                        <div className="w-layout-grid blog22_list realisations-gallery__grid">
                           {' '}
                           {' '}
                           <div className="blog22_item" data-category="interieur">

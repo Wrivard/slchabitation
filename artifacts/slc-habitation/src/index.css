@@ -1111,9 +1111,21 @@
 }
 
 .pub-shell .pub-review__author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   border-top: 1px solid hsl(var(--border));
+}
+
+.pub-shell .pub-review__avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: 0 0 auto;
+  border: 1px solid hsl(var(--border));
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .pub-shell .pub-review__name {
@@ -2476,4 +2488,219 @@ button.faq2_question {
 
 .category-filter-status:empty {
   display: none;
+}
+
+/* --------------------------------------------------------------------------
+ * Galerie des réalisations
+ *
+ * Un bento dense laisse les filtres réorganiser les images sans “trou” au
+ * milieu de la grille. Les rapports restent cohérents, même si une catégorie
+ * contient beaucoup moins d’images que la galerie complète.
+ * ----------------------------------------------------------------------- */
+.realisations-gallery .blog22_content {
+  max-width: none;
+}
+
+.realisations-gallery__filters {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  width: auto;
+  margin-bottom: 2.25rem;
+  padding: 0.4rem;
+  border: 1px solid rgba(11, 11, 11, 0.12);
+  border-radius: 0.65rem;
+  background: #fff;
+  box-shadow: 0 12px 30px -26px rgb(0 0 0 / 0.55);
+}
+
+.realisations-gallery .category-filter-link {
+  min-height: 2.5rem;
+  border-radius: 0.4rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.realisations-gallery .category-filter-link:hover {
+  border-color: rgba(245, 128, 38, 0.42);
+  background: rgb(245 128 38 / 0.08);
+}
+
+.realisations-gallery .category-filter-link.active,
+.realisations-gallery .category-filter-link[aria-current='true'] {
+  box-shadow: 0 8px 18px -12px rgb(245 128 38 / 0.95);
+}
+
+.realisations-gallery .category-filter-status {
+  margin: -1rem 0 1.5rem;
+}
+
+.realisations-gallery .blog22_list-wrapper {
+  overflow: visible;
+}
+
+.realisations-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  grid-auto-rows: clamp(7.5rem, 13vw, 12rem);
+  gap: clamp(0.7rem, 1.5vw, 1.25rem);
+}
+
+.realisations-gallery .blog22_item {
+  grid-column: span 1;
+  grid-row: span 1;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.realisations-gallery .blog22_item:nth-child(7n + 1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.realisations-gallery .blog22_item:nth-child(7n + 2) {
+  grid-column: span 2;
+}
+
+.realisations-gallery .blog22_item-link,
+.realisations-gallery .blog22_item-link > .margin-bottom,
+.realisations-gallery .blog22_image-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.realisations-gallery .blog22_image-wrapper {
+  overflow: hidden;
+  border-radius: 0.55rem;
+  background: #e8e7e2;
+}
+
+.realisations-gallery .blog22_image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.realisations-gallery .blog22_item:hover .blog22_image {
+  transform: scale(1.045);
+}
+
+@media (max-width: 767px) {
+  .realisations-gallery__filters {
+    width: 100%;
+    margin-bottom: 1.75rem;
+  }
+
+  .realisations-gallery .category-filter-link {
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .realisations-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: clamp(6.25rem, 29vw, 9.5rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Politique de cookies : seul le contenu légal est densifié en carte lisible.
+ * L’en-tête et le pied de page hérités restent volontairement inchangés.
+ * ----------------------------------------------------------------------- */
+.cookie-policy-section {
+  position: relative;
+  background:
+    linear-gradient(rgb(245 128 38 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(245 128 38 / 0.045) 1px, transparent 1px),
+    #f8f8f5;
+  background-size: 2.75rem 2.75rem;
+}
+
+.cookie-policy-section .content28_component {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.cookie-policy-section .max-width-large {
+  max-width: none;
+}
+
+.cookie-policy-section .text-rich-text {
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border: 1px solid rgba(11, 11, 11, 0.13);
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 24px 55px -42px rgb(0 0 0 / 0.45);
+}
+
+.cookie-policy-section .text-rich-text h2 {
+  margin: 2.75rem 0 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid #f58026;
+  color: #121212;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  line-height: 1.25;
+}
+
+.cookie-policy-section .text-rich-text > h2:first-child {
+  margin-top: 0;
+}
+
+.cookie-policy-section .text-rich-text h3 {
+  margin: 1.75rem 0 0.65rem;
+  color: #2f2f2f;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.cookie-policy-section .text-rich-text p,
+.cookie-policy-section .text-rich-text li {
+  color: #454545;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.cookie-policy-section .text-rich-text ul {
+  margin: 0.8rem 0 1.25rem;
+  padding: 1rem 1.25rem 1rem 2.4rem;
+  border-left: 1px solid rgb(245 128 38 / 0.35);
+  background: rgb(245 128 38 / 0.055);
+}
+
+.cookie-policy-section .text-rich-text li + li {
+  margin-top: 0.45rem;
+}
+
+.cookie-policy-section .text-rich-text a {
+  color: #a84a0c;
+  font-weight: 700;
+  text-decoration-color: rgb(168 74 12 / 0.35);
+  text-underline-offset: 0.18em;
+}
+
+.cookie-policy-section .text-rich-text a:hover {
+  color: #803706;
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 767px) {
+  .cookie-policy-section {
+    background-size: 2rem 2rem;
+  }
+
+  .cookie-policy-section .text-rich-text {
+    border-radius: 0.5rem;
+  }
+
+  .cookie-policy-section .text-rich-text h2 {
+    margin-top: 2.25rem;
+  }
 }

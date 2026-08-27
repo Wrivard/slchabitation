@@ -119,7 +119,7 @@ body
             div.header50_background-image-wrapper
               div.image-overlay-layer-2
               img.header50_background-image [alt= loading=eager sizes=(max-width: 3072px) 100vw, 3072px src=/images/52905772_2041603709290452_831293527185948672_n.jpg srcset=#5446cd57]
-          section.color-scheme-1.section_content28
+          section.color-scheme-1.cookie-policy-section.section_content28
             div.padding-global
               div.container-large
                 div.padding-section-large

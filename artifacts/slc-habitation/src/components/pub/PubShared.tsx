@@ -718,6 +718,12 @@ export function PubReviews({
   description?: string;
   items: { quote: string; author: string; role?: string }[];
 }) {
+  const portraits: Record<string, string> = {
+    'Mélodie Binette': '/images/relume-657333.png',
+    'Johanne Duguay': '/images/relume-657331.png',
+    'Isabelle Baril': '/images/relume-657334.png',
+  };
+
   return (
     <section id={id} className="pub-section-muted scroll-mt-20 border-y border-border py-16 md:py-20" data-testid="reviews">
       <div className="container-large mx-auto max-w-7xl px-6">
@@ -732,8 +738,20 @@ export function PubReviews({
               </div>
               <blockquote className="pub-review__text">{item.quote}</blockquote>
               <figcaption className="pub-review__author">
-                <span className="pub-review__name">{item.author}</span>
-                <span className="pub-review__role">{item.role ?? 'Propriétaire'}</span>
+                {portraits[item.author] && (
+                  <img
+                    src={portraits[item.author]}
+                    alt={`Portrait de ${item.author}`}
+                    width="56"
+                    height="56"
+                    loading="lazy"
+                    className="pub-review__avatar"
+                  />
+                )}
+                <span>
+                  <span className="pub-review__name">{item.author}</span>
+                  <span className="pub-review__role">{item.role ?? 'Propriétaire'}</span>
+                </span>
               </figcaption>
             </figure>
           ))}

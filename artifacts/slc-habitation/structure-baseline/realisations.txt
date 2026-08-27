@@ -128,13 +128,13 @@ body
             div.header50_background-image-wrapper
               div.image-overlay-layer-2
               img.header50_background-image [alt=Agrandissement résidentiel réalisé par SLC Habitation loading=eager sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-657272.jpeg srcset=#54d31b16]
-          header.color-scheme-1.section_blog22 [id=blog-header-22]
+          header.color-scheme-1.realisations-gallery.section_blog22 [id=blog-header-22]
             div.padding-global
               div.container-large
                 div.padding-section-large
                   div.blog22_component [data-reveal-group=]
                     div.blog22_content
-                      div.category-filter-menu
+                      div.category-filter-menu.realisations-gallery__filters
                         a.active.category-filter-link.w-inline-block [aria-current=true data-category=all href=#]
                           div « Voir tout »
                         a.category-filter-link.w-inline-block [data-category=interieur href=#]
@@ -145,7 +145,7 @@ body
                           div « Commercial »
                       p.category-filter-status [aria-live=polite data-filter-status=]
                       div.blog22_list-wrapper
-                        div.blog22_list.w-layout-grid
+                        div.blog22_list.realisations-gallery__grid.w-layout-grid
                           div.blog22_item [data-category=interieur]
                             a.blog22_item-link.w-inline-block.w-lightbox [href=/images/relume-655417.jpeg]
                               div.margin-bottom.margin-small

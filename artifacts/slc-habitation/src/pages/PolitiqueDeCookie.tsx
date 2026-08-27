@@ -439,7 +439,7 @@ margin: 0rem !important;
             {' '}
           </header>
           {' '}
-          <section className="section_content28 color-scheme-1">
+          <section className="section_content28 cookie-policy-section color-scheme-1">
             {' '}
             <div className="padding-global">
               {' '}
