@@ -1370,16 +1370,16 @@ margin: 0rem !important;
                         <div className="margin-bottom margin-small">
                           {' '}
                           <h2 className="heading-style-h2">
-                            {'À propos de '}
+                            {'Foire aux '}
                             <span className="text-span-6">
-                              SLC Habitation
+                              questions
                             </span>
                           </h2>
                           {' '}
                         </div>
                         {' '}
                         <p className="text-size-medium">
-                          Des réponses sur notre parcours, notre expertise et les régions que nous desservons.
+                          Tout ce qu'il faut savoir sur nos services et notre processus
                         </p>
                         {' '}
                       </div>
@@ -1393,7 +1393,7 @@ margin: 0rem !important;
                         <button type="button" data-w-id="0ecc3351-5422-24a4-66bb-031667706605" className="faq2_question" aria-expanded="false" aria-controls="faq-answer-0ecc3351-5422-24a4-66bb-031667706605">
                           {' '}
                           <div className="text-size-medium">
-                            Depuis quand SLC Habitation accompagne-t-elle les propriétaires?
+                            Quel est votre processus?
                           </div>
                           {' '}
                           <div className="faq2_icon-wrapper">
@@ -1417,7 +1417,7 @@ margin: 0rem !important;
                             <div className="max-width-large">
                               {' '}
                               <p>
-                                SLC Habitation a amorcé ses activités en 2007. Aujourd'hui, l'entreprise s'appuie sur plus de 25 ans d'expérience cumulée dans le secteur résidentiel.
+                                Nous commençons par écouter vos besoins et votre vision. Ensuite, notre équipe évalue le projet sur place, puis nous préparons une soumission détaillée. Une fois approuvée, nous exécutons le travail avec rigueur et transparence.
                               </p>
                               {' '}
                             </div>
@@ -1433,7 +1433,7 @@ margin: 0rem !important;
                         <button type="button" data-w-id="0ecc3351-5422-24a4-66bb-031667706610" className="faq2_question" aria-expanded="false" aria-controls="faq-answer-0ecc3351-5422-24a4-66bb-031667706610">
                           {' '}
                           <div className="text-size-medium">
-                            Quelle est l'expertise de SLC Habitation?
+                            Combien coûte une rénovation?
                           </div>
                           {' '}
                           <div className="faq2_icon-wrapper">
@@ -1457,7 +1457,7 @@ margin: 0rem !important;
                             <div className="max-width-large">
                               {' '}
                               <p>
-                                Au fil des années, SLC Habitation a développé une expertise reconnue en rénovation et en agrandissement résidentiel.
+                                Le coût dépend de l'ampleur et de la complexité de votre projet. Nous offrons des soumissions sans obligation qui détaillent chaque aspect des travaux. Aucune surprise, seulement de l'honnêteté.
                               </p>
                               {' '}
                             </div>
@@ -1473,7 +1473,7 @@ margin: 0rem !important;
                         <button type="button" data-w-id="0ecc3351-5422-24a4-66bb-03166770661b" className="faq2_question" aria-expanded="false" aria-controls="faq-answer-0ecc3351-5422-24a4-66bb-03166770661b">
                           {' '}
                           <div className="text-size-medium">
-                            Votre entreprise détient-elle une licence RBQ?
+                            Travaillez-vous toute l'année?
                           </div>
                           {' '}
                           <div className="faq2_icon-wrapper">
@@ -1497,7 +1497,7 @@ margin: 0rem !important;
                             <div className="max-width-large">
                               {' '}
                               <p>
-                                Oui. SLC Habitation détient la licence RBQ 8351-9033-59.
+                                Oui, nous opérons douze mois par année. Qu'il s'agisse d'une rénovation intérieure ou de travaux extérieurs, notre équipe demeure disponible selon votre calendrier et vos priorités.
                               </p>
                               {' '}
                             </div>
@@ -1513,7 +1513,7 @@ margin: 0rem !important;
                         <button type="button" data-w-id="0ecc3351-5422-24a4-66bb-031667706626" className="faq2_question" aria-expanded="false" aria-controls="faq-answer-0ecc3351-5422-24a4-66bb-031667706626">
                           {' '}
                           <div className="text-size-medium">
-                            Quelles régions desservez-vous?
+                            Utilisez-vous des matériaux durables?
                           </div>
                           {' '}
                           <div className="faq2_icon-wrapper">
@@ -1537,7 +1537,7 @@ margin: 0rem !important;
                             <div className="max-width-large">
                               {' '}
                               <p>
-                                SLC Habitation intervient dans plusieurs municipalités des Laurentides et de Laval, notamment Saint-Eustache, Mirabel, Boisbriand, Blainville, Laval, Terrebonne, Sainte-Thérèse et Rosemère.
+                                Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps. Chaque élément est choisi pour sa durabilité et son esthétique, assurant que votre investissement perdure.
                               </p>
                               {' '}
                             </div>
@@ -1553,7 +1553,7 @@ margin: 0rem !important;
                         <button type="button" data-w-id="0ecc3351-5422-24a4-66bb-031667706631" className="faq2_question" aria-expanded="false" aria-controls="faq-answer-0ecc3351-5422-24a4-66bb-031667706631">
                           {' '}
                           <div className="text-size-medium">
-                            Quelle approche guide votre équipe?
+                            Offrez-vous un suivi après?
                           </div>
                           {' '}
                           <div className="faq2_icon-wrapper">
@@ -1577,7 +1577,7 @@ margin: 0rem !important;
                             <div className="max-width-large">
                               {' '}
                               <p>
-                                Notre équipe met de l'avant la qualité d'exécution, les finitions soignées et le respect des attentes des clients.
+                                Notre engagement ne s'arrête pas à la fin des travaux. Nous restons disponibles pour répondre à vos questions et assurer votre satisfaction complète. Votre confiance est notre plus grande récompense.
                               </p>
                               {' '}
                             </div>
