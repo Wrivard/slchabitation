@@ -13,6 +13,13 @@ import {
 const router: IRouter = Router();
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024;
+/**
+ * The published API runs as a serverless function, whose host refuses a request
+ * body over 4.5 MB before any of this code runs. Keeping the total below that
+ * means an oversized upload is answered by the form, with an explanation,
+ * instead of dying at the host with none.
+ */
+const MAX_TOTAL_FILE_SIZE = 4 * 1024 * 1024;
 const MAX_FILES = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 3;
@@ -150,7 +157,25 @@ function clientAddress(req: Request) {
     : forwardedFor;
   const originalClient = forwardedChain?.split(",")[0]?.trim();
 
-  return originalClient || connectionAddress(req);
+  return trustedClientAddress(req) || originalClient || connectionAddress(req);
+}
+
+/**
+ * The visitor address the hosting platform itself vouches for. The serverless
+ * host sets this header at its edge and overwrites whatever the client sent, so
+ * unlike `x-forwarded-for` it cannot be forged.
+ *
+ * Its absence is what tells us we are not behind that edge, which is why the
+ * ceiling below is only worth applying then: on the serverless host every
+ * request arrives from the platform's own proxy, so a ceiling keyed on the
+ * connection would count unrelated visitors sharing an instance against a
+ * single budget and lock out real customers.
+ */
+function trustedClientAddress(req: Request) {
+  const header = req.headers["x-vercel-forwarded-for"];
+  const chain = Array.isArray(header) ? header.join(",") : header;
+
+  return chain?.split(",")[0]?.trim() || undefined;
 }
 
 /**
@@ -243,6 +268,8 @@ async function verifyTurnstile(token: string | undefined, req: Request) {
 function parseRequest(req: Request): Promise<[Fields, Files]> {
   const form = formidable({
     maxFileSize: MAX_FILE_SIZE,
+    // Without this the parser buffers every file before the total is checked.
+    maxTotalFileSize: MAX_TOTAL_FILE_SIZE,
     maxFiles: MAX_FILES,
     keepExtensions: true,
     uploadDir: "/tmp",
@@ -294,11 +321,12 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       return;
     }
 
-    const rateLimited =
-      !consumeRateLimit(
-        `connection:${connectionFingerprint(req)}`,
-        CONNECTION_RATE_LIMIT_MAX_REQUESTS,
-      ) || !consumeRateLimit(`visitor:${sourceFingerprint(req)}`);
+    const rateLimited = trustedClientAddress(req)
+      ? !consumeRateLimit(`visitor:${sourceFingerprint(req)}`)
+      : !consumeRateLimit(
+          `connection:${connectionFingerprint(req)}`,
+          CONNECTION_RATE_LIMIT_MAX_REQUESTS,
+        ) || !consumeRateLimit(`visitor:${sourceFingerprint(req)}`);
     if (rateLimited) {
       reject(req, res, "rate_limited", "Trop de demandes. Veuillez réessayer dans quelques minutes.", 429);
       return;
@@ -428,12 +456,12 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       (file) => !file.mimetype?.toLowerCase().startsWith("image/"),
     );
     const totalFileSize = uploadedFiles.reduce((total, file) => total + (file.size || 0), 0);
-    if (uploadedFiles.length > MAX_FILES || invalidFile || totalFileSize > 4.5 * 1024 * 1024) {
+    if (uploadedFiles.length > MAX_FILES || invalidFile || totalFileSize > MAX_TOTAL_FILE_SIZE) {
       reject(
         req,
         res,
         "invalid_files",
-        "Les fichiers doivent être des images (maximum cinq) de 4,5 Mo ou moins au total.",
+        "Les fichiers doivent être des images (maximum cinq) de 4 Mo ou moins au total.",
         413,
       );
       return;
@@ -606,17 +634,25 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       : "";
     const message = error instanceof Error ? error.message : "";
 
+    /* Compared in lower case because the parser names its own limits in the
+       message, and `maxTotalFileSize` does not contain `maxFileSize`: matching
+       exactly would send an upload that is merely too heavy down the internal
+       error path, where the visitor is told to try again later instead of being
+       told what to fix. */
+    const normalizedMessage = message.toLowerCase();
     if (
       code === "LIMIT_FILE_SIZE" ||
       code === "LIMIT_FILE_COUNT" ||
-      message.includes("maxFileSize") ||
-      message.includes("maxFiles")
+      normalizedMessage.includes("maxfilesize") ||
+      normalizedMessage.includes("maxtotalfilesize") ||
+      normalizedMessage.includes("maxfiles")
     ) {
       res.status(413).json({
         success: false,
         error: {
           code: "file_too_large",
-          message: "Les images sont trop volumineuses. Veuillez réduire leur taille ou en sélectionner moins.",
+          message:
+            "Les images sont trop volumineuses (maximum 4 Mo au total). Veuillez réduire leur taille ou en sélectionner moins.",
         },
       });
       return;

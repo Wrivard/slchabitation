@@ -1,4 +1,6 @@
 {
+  "$comment": "The API function imports the bundle emitted by the api-server build, so the whole workspace must be built here, not just the site.",
+  "buildCommand": "pnpm run build",
   "outputDirectory": "artifacts/slc-habitation/dist/public",
   "cleanUrls": true,
   "trailingSlash": false,
