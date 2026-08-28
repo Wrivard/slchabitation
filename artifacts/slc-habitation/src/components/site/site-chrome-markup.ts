@@ -26,10 +26,6 @@ export function addAccessibleNames(html: string): string {
       '<a href="https://www.facebook.com/SLCHabitation"',
       '<a aria-label="Facebook de SLC Habitation" href="https://www.facebook.com/SLCHabitation"',
     )
-    .replaceAll(
-      '<a href="/politique-de-cookie" class="footer3_legal-link">Politique de cookies</a>',
-      '<a href="/politique-de-cookie" class="footer3_legal-link">Politique de cookies</a> <a href="/politique-de-confidentialite" class="footer3_legal-link">Politique de confidentialité</a>',
-    )
     .replaceAll('alt=""', 'alt="SLC Habitation"');
 }
 

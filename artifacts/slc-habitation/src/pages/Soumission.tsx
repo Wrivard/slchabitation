@@ -1786,10 +1786,6 @@ margin: 0rem !important;
                         Politique de cookies
                       </a>
                       {' '}
-                      <a href="/politique-de-confidentialite" className="footer3_legal-link">
-                        Politique de confidentialité
-                      </a>
-                      {' '}
                     </div>
                     {' '}
                   </div>
