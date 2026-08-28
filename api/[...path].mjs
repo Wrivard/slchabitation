@@ -11,6 +11,10 @@
  * module settings, which do not match the workspace's. Staying with plain
  * JavaScript keeps that difference out of the deployment.
  *
+ * That bundle only exists if the whole workspace is built, which is why
+ * vercel.json pins the build command instead of leaving it to the host: a build
+ * of the site alone would leave this import pointing at nothing.
+ *
  * Keep this file a thin adapter. Anything with behaviour belongs in the app.
  */
 import app from "../artifacts/api-server/dist/app.mjs";
