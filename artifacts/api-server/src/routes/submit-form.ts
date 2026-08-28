@@ -9,6 +9,10 @@ import {
   type ConversionDispatchInput,
   type ConversionStatus,
 } from "../lib/conversion-dispatch";
+import {
+  renderClientConfirmation,
+  renderOwnerNotification,
+} from "../lib/email-templates";
 
 const router: IRouter = Router();
 
@@ -121,19 +125,6 @@ function sanitizedValue(fields: Fields, key: string, maxLength = 300) {
   return value.replace(/[\u0000-\u001F\u007F]/g, "").trim().slice(0, maxLength);
 }
 
-function escapeHtml(value: string) {
-  return value.replace(
-    /[&<>"']/g,
-    (character) =>
-      ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;",
-      })[character]!,
-  );
-}
 
 function fileList(value: File | File[] | undefined) {
   if (!value) return [];
@@ -524,15 +515,18 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       })),
     );
 
-    const detailRows = [
-      ["Nom complet", fullName],
-      ["Courriel", email],
-      ["Téléphone", phone],
+    /* Ce que la personne a écrit sur son projet : repris tel quel dans son
+       accusé de réception, pour qu'elle garde une trace de sa demande. */
+    const projectRows: Array<[string, string | undefined]> = [
       ["Service", service],
       ["Budget", budget ? budgetLabels[budget] ?? budget : undefined],
       ["Ville du projet", projectCity],
       ["Échéancier souhaité", projectTimeline],
       ["Nous a connus par", referralSource],
+    ];
+    /* Provenance et consentement : utiles à l'entreprise, sans intérêt pour la
+       personne qui a rempli le formulaire. Ces lignes ne partent qu'à l'interne. */
+    const contextRows: Array<[string, string | undefined]> = [
       ["Version du consentement", consentVersion],
       ["Texte du consentement", consentText],
       ["Consentement marketing", consentMarketing ? "accordé" : "refusé"],
@@ -551,15 +545,19 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       ["Google WBRAID", consentMarketing ? wbraid : undefined],
       ["Google source", gadSource],
       ["Google campaign ID", gadCampaignId],
-    ]
-      .filter(([, value]) => Boolean(value))
-      .map(
-        ([label, value]) =>
-          `<tr><td style="padding:8px 12px 8px 0;font-weight:700">${label}</td><td style="padding:8px 0">${escapeHtml(value!)}</td></tr>`,
-      )
-      .join("");
+    ];
 
-    const businessHtml = `<!doctype html><html lang="fr"><body style="font-family:Arial,sans-serif;color:#232323"><h1 style="color:#0b0b0b">Nouvelle demande de soumission</h1><table>${detailRows}</table><h2 style="color:#0b0b0b">Message</h2><p style="white-space:pre-wrap;line-height:1.6">${escapeHtml(message)}</p>${attachments.length ? `<p>${attachments.length} image(s) jointe(s).</p>` : ""}</body></html>`;
+    const ownerEmail = renderOwnerNotification({
+      fullName,
+      email,
+      phone,
+      projectRows,
+      contextRows,
+      message,
+      attachmentCount: attachments.length,
+      submissionId,
+    });
+
     const from = process.env.FROM_EMAIL || "noreply@kua.quebec";
     const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -567,8 +565,10 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       from,
       to: recipientEmail,
       replyTo: email,
-      subject: `Nouvelle soumission — ${fullName}`,
-      html: businessHtml,
+      subject: ownerEmail.subject,
+      html: ownerEmail.html,
+      // Les filtres anti-pourriel se méfient d'un courriel sans version texte.
+      text: ownerEmail.text,
       attachments,
     });
 
@@ -598,10 +598,20 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       conversionInput,
     });
     try {
+      const clientEmail = renderClientConfirmation({
+        firstName: firstName || fullName,
+        summaryRows: projectRows,
+        message,
+        attachmentCount: attachments.length,
+      });
       const confirmationResult = await resend.emails.send({
-        from, to: email, replyTo: recipientEmail,
-        subject: "Nous avons reçu votre demande de soumission",
-        html: `<p>Bonjour ${escapeHtml(firstName || fullName)},</p><p>Merci pour votre demande. L’équipe de SLC Habitation vous répondra sous peu.</p>`,
+        from,
+        to: email,
+        // Une réponse du client doit aboutir chez l'entreprise, pas dans le vide.
+        replyTo: recipientEmail,
+        subject: clientEmail.subject,
+        html: clientEmail.html,
+        text: clientEmail.text,
       });
       if (confirmationResult.error) req.log.warn("Quote confirmation email could not be sent");
     } catch {
