@@ -12,7 +12,6 @@ import {
 
 const router: IRouter = Router();
 
-const BUSINESS_EMAIL = "wrivard@kua.quebec";
 const MAX_FILE_SIZE = 4 * 1024 * 1024;
 const MAX_FILES = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60_000;
@@ -46,22 +45,8 @@ const ALLOWED_PAID_PAGES = new Set([
   "/pub/renovation-cuisine",
   "/pub/agrandissement-maison",
 ]);
-/* Compléments demandés au visiteur depuis le formulaire publicitaire. Ils sont
-   facultatifs côté serveur : une valeur absente ou inconnue est simplement
-   ignorée, jamais un motif de rejet, pour qu'un client plus ancien continue
-   d'être accepté. */
-const ALLOWED_PROJECT_CITIES = new Set([
-  "Laval",
-  "Saint-Eustache",
-  "Terrebonne",
-  "Sainte-Thérèse",
-  "Rosemère",
-  "Mirabel",
-  "Boisbriand",
-  "Blainville",
-  "Saint-Jérôme",
-  "Autre municipalité",
-]);
+/* Compléments demandés au visiteur depuis le formulaire publicitaire. La ville
+   est saisie librement afin d'accepter aussi les municipalités voisines. */
 const ALLOWED_PROJECT_TIMELINES = new Set([
   "Dès que possible",
   "Dans les 3 prochains mois",
@@ -284,7 +269,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
     const phone = sanitizedValue(fields, "Contact-6-Phone", 24);
     const service = sanitizedValue(fields, "Contact-6-Select", 100);
     const budget = sanitizedValue(fields, "Contact-6-Radio", 100);
-    const projectCity = allowedChoice(sanitizedValue(fields, "project_city", 60), ALLOWED_PROJECT_CITIES);
+    const projectCity = sanitizedValue(fields, "project_city", 120);
     const projectTimeline = allowedChoice(
       sanitizedValue(fields, "project_timeline", 60),
       ALLOWED_PROJECT_TIMELINES,
@@ -411,8 +396,9 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       return;
     }
 
-    if (!process.env.RESEND_API_KEY) {
-      req.log.warn("Quote form received without Resend configuration");
+    const recipientEmail = process.env.RECIPIENT_EMAIL?.trim();
+    if (!process.env.RESEND_API_KEY || !recipientEmail || !emailPattern.test(recipientEmail)) {
+      req.log.error("Quote form email delivery is not configured correctly");
       res.status(503).json({
         success: false,
         error: {
@@ -508,7 +494,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
 
     const businessResult = await resend.emails.send({
       from,
-      to: BUSINESS_EMAIL,
+      to: recipientEmail,
       replyTo: email,
       subject: `Nouvelle soumission — ${fullName}`,
       html: businessHtml,
@@ -542,7 +528,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
     });
     try {
       const confirmationResult = await resend.emails.send({
-        from, to: email, replyTo: BUSINESS_EMAIL,
+        from, to: email, replyTo: recipientEmail,
         subject: "Nous avons reçu votre demande de soumission",
         html: `<p>Bonjour ${escapeHtml(firstName || fullName)},</p><p>Merci pour votre demande. L’équipe de SLC Habitation vous répondra sous peu.</p>`,
       });

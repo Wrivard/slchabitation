@@ -125,22 +125,6 @@ function formatFileSize(bytes: number): string {
   return `${megabytes.toFixed(1).replace('.', ',')} Mo`;
 }
 
-/* Les neuf municipalités déjà annoncées sur le site, plus une sortie de secours
-   pour les demandes qui viennent d'à côté. Les valeurs envoyées au serveur sont
-   exactement ces libellés. */
-const projectCities = [
-  'Laval',
-  'Saint-Eustache',
-  'Terrebonne',
-  'Sainte-Thérèse',
-  'Rosemère',
-  'Mirabel',
-  'Boisbriand',
-  'Blainville',
-  'Saint-Jérôme',
-  'Autre municipalité',
-];
-
 const projectTimelines = [
   'Dès que possible',
   'Dans les 3 prochains mois',
@@ -400,9 +384,7 @@ export function QuoteForm({
 
       /* Réponses ajoutées au formulaire : le serveur les accepte comme des
          compléments, une valeur absente ne bloque jamais l'envoi. */
-      if (projectCities.includes(data.city)) {
-        payload.append('project_city', data.city);
-      }
+      payload.append('project_city', data.city);
       if (projectTimelines.includes(data.timeline)) {
         payload.append('project_timeline', data.timeline);
       }
@@ -794,20 +776,15 @@ export function QuoteForm({
                             <FormLabel className={labelClass}>
                               Ville du projet <span className="text-destructive">*</span>
                             </FormLabel>
-                            <Select value={field.value ?? ''} onValueChange={field.onChange}>
-                              <FormControl>
-                                <SelectTrigger className={selectTriggerClass} data-testid="select-city">
-                                  <SelectValue placeholder="Sélectionnez une ville" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                {projectCities.map((city) => (
-                                  <SelectItem key={city} value={city} className="text-base">
-                                    {city}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                value={field.value ?? ''}
+                                placeholder="Ex. Saint-Eustache"
+                                className={selectTriggerClass}
+                                data-testid="input-city"
+                              />
+                            </FormControl>
                             <FormMessage data-testid="error-city" />
                           </FormItem>
                         )}

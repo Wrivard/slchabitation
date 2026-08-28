@@ -55,6 +55,11 @@ timeoutMs = 20000
 channel = "stable-25_05"
 packages = ["chromium"]
 
+[userenv]
+
+[userenv.shared]
+RECIPIENT_EMAIL = "wrivard@kua.quebec"
+
 [[deployment.rewrites]]
 from = "/pub/formulaire/*"
 to = "/pub/formulaire/index.html"
