@@ -409,28 +409,98 @@ try {
     await page.waitForTimeout(300);
 
     const before = await page.evaluate(
-      () => document.querySelectorAll('.layout423_card-content.inactive').length,
+      () => {
+        const card = document.querySelector('.layout423_card');
+        const bottom = card?.querySelector('.layout423_card-content-bottom');
+        const overlay = card?.querySelector('.layout423_overlay');
+        if (!card || !bottom || !overlay) return null;
+        return {
+          inactive: document.querySelectorAll('.layout423_card-content.inactive').length,
+          cardWidth: card.getBoundingClientRect().width,
+          bottomHeight: bottom.getBoundingClientRect().height,
+          bottomOpacity: Number.parseFloat(getComputedStyle(bottom).opacity),
+          overlay: getComputedStyle(overlay).backgroundColor,
+        };
+      },
     );
-    check('aucune carte n\'est estompée au départ', before === 0, `${before} carte(s)`);
+    check(
+      'aucune carte n\'est estompée au départ',
+      before !== null && before.inactive === 0,
+      JSON.stringify(before),
+    );
+    check(
+      'le descriptif détaillé est replié au départ',
+      before !== null && before.bottomHeight === 0 && before.bottomOpacity === 0,
+      JSON.stringify(before),
+    );
 
     await card.hover();
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(380);
     const during = await page.evaluate(() => ({
       inactive: document.querySelectorAll('.layout423_card-content.inactive').length,
       total: document.querySelectorAll('.layout423_card-content').length,
+      cardWidth: document.querySelector('.layout423_card')?.getBoundingClientRect().width ?? 0,
+      bottomHeight:
+        document
+          .querySelector('.layout423_card .layout423_card-content-bottom')
+          ?.getBoundingClientRect().height ?? 0,
+      bottomOpacity: Number.parseFloat(
+        getComputedStyle(
+          document.querySelector('.layout423_card .layout423_card-content-bottom'),
+        ).opacity,
+      ),
+      overlay: getComputedStyle(
+        document.querySelector('.layout423_card .layout423_overlay'),
+      ).backgroundColor,
     }));
     check(
       'survoler une carte estompe les autres',
       during.inactive > 0 && during.inactive < during.total,
       JSON.stringify(during),
     );
+    check(
+      'la carte survolée s\'agrandit',
+      before !== null && during.cardWidth > before.cardWidth * 1.15,
+      JSON.stringify({ before: before?.cardWidth, during: during.cardWidth }),
+    );
+    check(
+      'le descriptif remonte et devient visible',
+      during.bottomHeight > 0 && during.bottomOpacity > 0.95,
+      JSON.stringify(during),
+    );
+    check(
+      'le voile de la carte survolée s\'assombrit',
+      during.overlay === 'rgba(0, 0, 0, 0.7)',
+      during.overlay,
+    );
 
     await page.mouse.move(5, 5);
-    await page.waitForTimeout(300);
-    const after = await page.evaluate(
-      () => document.querySelectorAll('.layout423_card-content.inactive').length,
+    await page.waitForTimeout(280);
+    const after = await page.evaluate(() => {
+      const card = document.querySelector('.layout423_card');
+      const bottom = card?.querySelector('.layout423_card-content-bottom');
+      if (!card || !bottom) return null;
+      return {
+        inactive: document.querySelectorAll('.layout423_card-content.inactive').length,
+        cardWidth: card.getBoundingClientRect().width,
+        bottomHeight: bottom.getBoundingClientRect().height,
+        bottomOpacity: Number.parseFloat(getComputedStyle(bottom).opacity),
+      };
+    });
+    check(
+      'les cartes retrouvent leur teinte à la sortie',
+      after !== null && after.inactive === 0,
+      JSON.stringify(after),
     );
-    check('les cartes retrouvent leur teinte à la sortie', after === 0, `${after} carte(s)`);
+    check(
+      'la carte et son descriptif se replient à la sortie',
+      before !== null &&
+        after !== null &&
+        Math.abs(after.cardWidth - before.cardWidth) < 2 &&
+        after.bottomHeight === 0 &&
+        after.bottomOpacity === 0,
+      JSON.stringify({ before, after }),
+    );
 
     await context.close();
   }

@@ -45,27 +45,63 @@
 }
 
 /* Cartes de services de la page d'accueil.
-   Le gabarit Webflow déclarait ici l'état de départ d'animations au survol qui
-   n'ont jamais été jouées : le panneau reste replié et le voile reste posé. Ces
-   règles sont conservées à l'identique pour que l'affichage ne change pas. */
+   Ces états et transitions reprennent l'interaction Webflow « Layout 423 Card » :
+   la carte active s'élargit, le texte inférieur remonte et le voile s'assombrit. */
 @media (min-width: 992px) {
+  .layout423_card {
+    transition:
+      width var(--layout423-hover-duration, 200ms)
+      cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed59"],
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed6c"],
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed7f"] {
     opacity: 0;
     transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
     height: 0px;
+    overflow: hidden;
+    transition:
+      height var(--layout423-hover-duration, 200ms)
+        cubic-bezier(0.165, 0.84, 0.44, 1),
+      opacity var(--layout423-hover-duration, 200ms)
+        cubic-bezier(0.165, 0.84, 0.44, 1),
+      transform var(--layout423-hover-duration, 200ms)
+        cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed51"],
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed64"],
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed77"] {
     background-color: rgba(0, 0, 0, 0.5);
+    transition:
+      background-color var(--layout423-hover-duration, 200ms) ease;
   }
 
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed4f"],
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed62"],
   [data-w-id="df626311-65f5-f7ae-e458-b9664b55ed75"] {
     width: 50%;
+  }
+
+  .layout423_card.is-hovered {
+    width: 70%;
+  }
+
+  .layout423_card.is-hovered .layout423_card-content-bottom {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .layout423_card.is-hovered .layout423_overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: reduce) {
+  .layout423_card,
+  .layout423_card-content-bottom,
+  .layout423_overlay {
+    transition-duration: 0ms;
   }
 }
