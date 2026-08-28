@@ -58,15 +58,65 @@
       "description": "Découvrez SLC Habitation, une équipe de rénovation résidentielle à l’écoute des propriétaires des Laurentides, de Laval et des environs.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "À propos de SLC Habitation",
-        "description": "Découvrez SLC Habitation, une équipe de rénovation résidentielle à l’écoute des propriétaires des Laurentides, de Laval et des environs.",
-        "url": "https://slchabitation.com/a-propos",
-        "about": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        }
+        "@graph": [
+          {
+            "@type": "AboutPage",
+            "name": "À propos de SLC Habitation",
+            "description": "Découvrez SLC Habitation, une équipe de rénovation résidentielle à l’écoute des propriétaires des Laurentides, de Laval et des environs.",
+            "url": "https://slchabitation.com/a-propos",
+            "about": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/a-propos#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Depuis quand SLC Habitation accompagne-t-elle les propriétaires?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "SLC Habitation a amorcé ses activités en 2007. Aujourd'hui, l'entreprise s'appuie sur plus de 25 ans d'expérience cumulée dans le secteur résidentiel."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quelle est l'expertise de SLC Habitation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Au fil des années, SLC Habitation a développé une expertise reconnue en rénovation et en agrandissement résidentiel."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Votre entreprise détient-elle une licence RBQ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui. SLC Habitation détient la licence RBQ 8351-9033-59."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quelles régions desservez-vous?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "SLC Habitation intervient dans plusieurs municipalités des Laurentides et de Laval, notamment Saint-Eustache, Mirabel, Boisbriand, Blainville, Laval, Terrebonne, Sainte-Thérèse et Rosemère."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quelle approche guide votre équipe?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Notre équipe met de l'avant la qualité d'exécution, les finitions soignées et le respect des attentes des clients."
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -75,24 +125,74 @@
       "description": "Confiez votre rénovation résidentielle à SLC Habitation : cuisines, salles de bains, sous-sols et espaces de vie pensés pour vos besoins.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Rénovation résidentielle",
-        "description": "Rénovation de cuisines, salles de bains, sous-sols et espaces de vie adaptée aux besoins des propriétaires.",
-        "url": "https://slchabitation.com/renovation",
-        "provider": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        },
-        "areaServed": [
-          { "@type": "City", "name": "Saint-Eustache" },
-          { "@type": "City", "name": "Mirabel" },
-          { "@type": "City", "name": "Boisbriand" },
-          { "@type": "City", "name": "Blainville" },
-          { "@type": "City", "name": "Laval" },
-          { "@type": "City", "name": "Terrebonne" },
-          { "@type": "City", "name": "Sainte-Thérèse" },
-          { "@type": "City", "name": "Rosemère" }
+        "@graph": [
+          {
+            "@type": "Service",
+            "name": "Rénovation résidentielle",
+            "description": "Rénovation de cuisines, salles de bains, sous-sols et espaces de vie adaptée aux besoins des propriétaires.",
+            "url": "https://slchabitation.com/renovation",
+            "provider": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Saint-Eustache" },
+              { "@type": "City", "name": "Mirabel" },
+              { "@type": "City", "name": "Boisbriand" },
+              { "@type": "City", "name": "Blainville" },
+              { "@type": "City", "name": "Laval" },
+              { "@type": "City", "name": "Terrebonne" },
+              { "@type": "City", "name": "Sainte-Thérèse" },
+              { "@type": "City", "name": "Rosemère" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/renovation#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quel est votre processus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nous commençons par écouter vos besoins et votre vision. Ensuite, notre équipe évalue le projet sur place, puis nous préparons une soumission détaillée. Une fois approuvée, nous exécutons le travail avec rigueur et transparence."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Combien coûte une rénovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Le coût dépend de l'ampleur et de la complexité de votre projet. Nous offrons des soumissions sans obligation qui détaillent chaque aspect des travaux. Aucune surprise, seulement de l'honnêteté."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Travaillez-vous toute l'année?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui, nous opérons douze mois par année. Qu'il s'agisse d'une rénovation intérieure ou de travaux extérieurs, notre équipe demeure disponible selon votre calendrier et vos priorités."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Utilisez-vous des matériaux durables?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps. Chaque élément est choisi pour sa durabilité et son esthétique, assurant que votre investissement perdure."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Offrez-vous un suivi après?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Notre engagement ne s'arrête pas à la fin des travaux. Nous restons disponibles pour répondre à vos questions et assurer votre satisfaction complète. Votre confiance est notre plus grande récompense."
+                }
+              }
+            ]
+          }
         ]
       }
     },
@@ -287,24 +387,74 @@
       "description": "SLC Habitation conçoit des agrandissements résidentiels et des constructions neuves pour créer des espaces de vie fonctionnels et durables.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Agrandissement et construction neuve",
-        "description": "Projets d’agrandissement résidentiel et de construction neuve, incluant maisons neuves et garages.",
-        "url": "https://slchabitation.com/agrandissement-construction-neuve",
-        "provider": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        },
-        "areaServed": [
-          { "@type": "City", "name": "Saint-Eustache" },
-          { "@type": "City", "name": "Mirabel" },
-          { "@type": "City", "name": "Boisbriand" },
-          { "@type": "City", "name": "Blainville" },
-          { "@type": "City", "name": "Laval" },
-          { "@type": "City", "name": "Terrebonne" },
-          { "@type": "City", "name": "Sainte-Thérèse" },
-          { "@type": "City", "name": "Rosemère" }
+        "@graph": [
+          {
+            "@type": "Service",
+            "name": "Agrandissement et construction neuve",
+            "description": "Projets d’agrandissement résidentiel et de construction neuve, incluant maisons neuves et garages.",
+            "url": "https://slchabitation.com/agrandissement-construction-neuve",
+            "provider": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Saint-Eustache" },
+              { "@type": "City", "name": "Mirabel" },
+              { "@type": "City", "name": "Boisbriand" },
+              { "@type": "City", "name": "Blainville" },
+              { "@type": "City", "name": "Laval" },
+              { "@type": "City", "name": "Terrebonne" },
+              { "@type": "City", "name": "Sainte-Thérèse" },
+              { "@type": "City", "name": "Rosemère" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/agrandissement-construction-neuve#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quel est votre processus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nous commençons par écouter vos besoins et votre vision. Ensuite, notre équipe évalue le projet sur place, puis nous préparons une soumission détaillée. Une fois approuvée, nous exécutons le travail avec rigueur et transparence."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Combien coûte une rénovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Le coût dépend de l'ampleur et de la complexité de votre projet. Nous offrons des soumissions sans obligation qui détaillent chaque aspect des travaux. Aucune surprise, seulement de l'honnêteté."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Travaillez-vous toute l'année?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui, nous opérons douze mois par année. Qu'il s'agisse d'une rénovation intérieure ou de travaux extérieurs, notre équipe demeure disponible selon votre calendrier et vos priorités."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Utilisez-vous des matériaux durables?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps. Chaque élément est choisi pour sa durabilité et son esthétique, assurant que votre investissement perdure."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Offrez-vous un suivi après?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Notre engagement ne s'arrête pas à la fin des travaux. Nous restons disponibles pour répondre à vos questions et assurer votre satisfaction complète. Votre confiance est notre plus grande récompense."
+                }
+              }
+            ]
+          }
         ]
       }
     },
@@ -314,24 +464,74 @@
       "description": "SLC Habitation réalise des travaux sur mesure pour adapter, embellir et renforcer votre maison selon votre situation et vos priorités.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Travaux résidentiels sur mesure",
-        "description": "Solutions de travaux résidentiels sur mesure, évaluées avec soin et conçues pour produire des résultats durables.",
-        "url": "https://slchabitation.com/travaux-sur-mesure",
-        "provider": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        },
-        "areaServed": [
-          { "@type": "City", "name": "Saint-Eustache" },
-          { "@type": "City", "name": "Mirabel" },
-          { "@type": "City", "name": "Boisbriand" },
-          { "@type": "City", "name": "Blainville" },
-          { "@type": "City", "name": "Laval" },
-          { "@type": "City", "name": "Terrebonne" },
-          { "@type": "City", "name": "Sainte-Thérèse" },
-          { "@type": "City", "name": "Rosemère" }
+        "@graph": [
+          {
+            "@type": "Service",
+            "name": "Travaux résidentiels sur mesure",
+            "description": "Solutions de travaux résidentiels sur mesure, évaluées avec soin et conçues pour produire des résultats durables.",
+            "url": "https://slchabitation.com/travaux-sur-mesure",
+            "provider": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Saint-Eustache" },
+              { "@type": "City", "name": "Mirabel" },
+              { "@type": "City", "name": "Boisbriand" },
+              { "@type": "City", "name": "Blainville" },
+              { "@type": "City", "name": "Laval" },
+              { "@type": "City", "name": "Terrebonne" },
+              { "@type": "City", "name": "Sainte-Thérèse" },
+              { "@type": "City", "name": "Rosemère" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/travaux-sur-mesure#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quel est votre processus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nous commençons par écouter vos besoins et votre vision. Ensuite, notre équipe évalue le projet sur place, puis nous préparons une soumission détaillée. Une fois approuvée, nous exécutons le travail avec rigueur et transparence."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Combien coûte une rénovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Le coût dépend de l'ampleur et de la complexité de votre projet. Nous offrons des soumissions sans obligation qui détaillent chaque aspect des travaux. Aucune surprise, seulement de l'honnêteté."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Travaillez-vous toute l'année?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui, nous opérons douze mois par année. Qu'il s'agisse d'une rénovation intérieure ou de travaux extérieurs, notre équipe demeure disponible selon votre calendrier et vos priorités."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Utilisez-vous des matériaux durables?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps. Chaque élément est choisi pour sa durabilité et son esthétique, assurant que votre investissement perdure."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Offrez-vous un suivi après?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Notre engagement ne s'arrête pas à la fin des travaux. Nous restons disponibles pour répondre à vos questions et assurer votre satisfaction complète. Votre confiance est notre plus grande récompense."
+                }
+              }
+            ]
+          }
         ]
       }
     },
@@ -341,15 +541,65 @@
       "description": "Parcourez les réalisations de SLC Habitation et découvrez des projets de rénovation, d’agrandissement et de construction résidentielle.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Réalisations de rénovation",
-        "description": "Parcourez les réalisations de SLC Habitation et découvrez des projets de rénovation, d’agrandissement et de construction résidentielle.",
-        "url": "https://slchabitation.com/realisations",
-        "about": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        }
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "name": "Réalisations de rénovation",
+            "description": "Parcourez les réalisations de SLC Habitation et découvrez des projets de rénovation, d’agrandissement et de construction résidentielle.",
+            "url": "https://slchabitation.com/realisations",
+            "about": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/realisations#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quel est votre processus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nous commençons par écouter vos besoins et votre vision. Ensuite, notre équipe évalue le projet sur place, puis nous préparons une soumission détaillée. Une fois approuvée, nous exécutons le travail avec rigueur et transparence."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Combien coûte une rénovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Le coût dépend de l'ampleur et de la complexité de votre projet. Nous offrons des soumissions sans obligation qui détaillent chaque aspect des travaux. Aucune surprise, seulement de l'honnêteté."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Travaillez-vous toute l'année?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui, nous opérons douze mois par année. Qu'il s'agisse d'une rénovation intérieure ou de travaux extérieurs, notre équipe demeure disponible selon votre calendrier et vos priorités."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Utilisez-vous des matériaux durables?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps. Chaque élément est choisi pour sa durabilité et son esthétique, assurant que votre investissement perdure."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Offrez-vous un suivi après?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Notre engagement ne s'arrête pas à la fin des travaux. Nous restons disponibles pour répondre à vos questions et assurer votre satisfaction complète. Votre confiance est notre plus grande récompense."
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -358,15 +608,65 @@
       "description": "Décrivez votre projet à SLC Habitation et demandez une soumission pour vos travaux de rénovation, d’agrandissement ou de construction neuve.",
       "schema": {
         "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Demander une soumission — SLC Habitation",
-        "description": "Décrivez votre projet à SLC Habitation et demandez une soumission pour vos travaux de rénovation, d’agrandissement ou de construction neuve.",
-        "url": "https://slchabitation.com/soumission",
-        "about": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        }
+        "@graph": [
+          {
+            "@type": "ContactPage",
+            "name": "Demander une soumission — SLC Habitation",
+            "description": "Décrivez votre projet à SLC Habitation et demandez une soumission pour vos travaux de rénovation, d’agrandissement ou de construction neuve.",
+            "url": "https://slchabitation.com/soumission",
+            "about": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "SLC Habitation",
+              "url": "https://slchabitation.com"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slchabitation.com/soumission#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quel est votre processus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nous commençons par écouter vos besoins et votre vision. Ensuite, notre équipe évalue le projet sur place, puis nous préparons une soumission détaillée. Une fois approuvée, nous exécutons le travail avec rigueur et transparence."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Combien coûte une rénovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Le coût dépend de l'ampleur et de la complexité de votre projet. Nous offrons des soumissions sans obligation qui détaillent chaque aspect des travaux. Aucune surprise, seulement de l'honnêteté."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Travaillez-vous toute l'année?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui, nous opérons douze mois par année. Qu'il s'agisse d'une rénovation intérieure ou de travaux extérieurs, notre équipe demeure disponible selon votre calendrier et vos priorités."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Utilisez-vous des matériaux durables?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolument. Nous sélectionnons des matériaux de qualité supérieure qui résistent au temps. Chaque élément est choisi pour sa durabilité et son esthétique, assurant que votre investissement perdure."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Offrez-vous un suivi après?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Notre engagement ne s'arrête pas à la fin des travaux. Nous restons disponibles pour répondre à vos questions et assurer votre satisfaction complète. Votre confiance est notre plus grande récompense."
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {

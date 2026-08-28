@@ -1584,7 +1584,7 @@ margin: 0rem !important;
             {' '}
           </section>
           {' '}
-          <section className="section_faq2 color-scheme-1">
+          <section id="faq" className="section_faq2 color-scheme-1">
             {' '}
             <div className="padding-global">
               {' '}

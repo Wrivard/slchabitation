@@ -12,7 +12,7 @@ head
   meta [name=twitter:url]
   meta [name=twitter:title]
   meta [name=twitter:description]
-  script [id=page-schema type=application/ld+json] « {"@context":"https://schema.org","@type":"ContactPage","name":"Demander une soumission — S…1fff8eb8 »
+  script [id=page-schema type=application/ld+json] « {"@context":"https://schema.org","@graph":[{"@type":"ContactPage","name":"Demander une sou…cda80c5e »
   noscript
     style « [data-noscript-reveal]{opacity:1!important;transform:none!important} »
   script « window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gta…410841db »
@@ -353,7 +353,7 @@ body
                         div.gallery8_image-wrapper-large
                           img.gallery8_image4 [alt=Intérieur résidentiel rénové par SLC Habitation loading=eager sizes=(max-width: 1440px) 100vw, 1440px src=/images/relume-567906.jpeg srcset=#9725534b]
                         script.w-json [type=application/json] « { "items": [], "group": "" } »
-          section.color-scheme-1.section_faq2
+          section.color-scheme-1.section_faq2 [id=faq]
             div.padding-global
               div.container-large
                 div.padding-section-large

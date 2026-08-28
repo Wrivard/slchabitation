@@ -12,7 +12,7 @@ head
   meta [name=twitter:url]
   meta [name=twitter:title]
   meta [name=twitter:description]
-  script [id=page-schema type=application/ld+json] « {"@context":"https://schema.org","@type":"Service","name":"Travaux résidentiels sur mesure…fc5684f6 »
+  script [id=page-schema type=application/ld+json] « {"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Travaux résidentiels…628b4efd »
   noscript
     style « [data-noscript-reveal]{opacity:1!important;transform:none!important} »
   script « window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gta…410841db »
@@ -436,7 +436,7 @@ body
             div.cta3_background-image-wrapper
               div.image-overlay-layer
               img.cta3_background-image-position-center [alt=Projet résidentiel réalisé par SLC Habitation loading=eager sizes=(max-width: 3072px) 100vw, 3072px src=/images/90639537_2793436424107173_8894610445172736000_n.jpg srcset=#e6d27d58]
-          section.color-scheme-1.section_faq2
+          section.color-scheme-1.section_faq2 [id=faq]
             div.padding-global
               div.container-large
                 div.padding-section-large
