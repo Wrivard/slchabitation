@@ -18,4 +18,6 @@
 - [Hôte réel du domaine](production-host-split.md) — vérifier qui répond sur le domaine du client avant de diagnostiquer une panne d'API; le déploiement Replit n'est pas forcément celui-là.
 - [Express en fonction Vercel](vercel-serverless-express.md) — ne pas écrire la fonction en TypeScript dans un monorepo; réexporter un paquet déjà construit et rester sous 4,5 Mo de corps de requête.
 - [IP client derrière un proxy](express-trusted-proxy-ip.md) — avec `trust proxy`, `req.ip` suit l'en-tête falsifiable; plafonner aussi sur l'adresse de la connexion.
+- [Repères visuels SLC](slc-brand-assets.md) — le fichier nommé `Logo.svg` est un reste de gabarit; le vrai logo porte un nom opaque et donne la couleur de la marque.
+- [Courriels transactionnels](transactional-email-rendering.md) — tableaux et styles en ligne; une valeur échappée en texte reste dangereuse dans un `href`.
 - [Publication GitHub](github-publishing.md) — pousser par l’intégration Replit; Git HTTPS n’a pas d’identifiants et un 403 HTML du proxy peut bloquer seulement les écritures.

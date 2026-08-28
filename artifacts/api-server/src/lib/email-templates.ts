@@ -63,6 +63,17 @@ function presentRows(rows: Array<[string, string | undefined | null]>): DetailRo
     .map(([label, value]) => ({ label, value: value.trim() }));
 }
 
+/**
+ * Adresse de destination d'un lien courriel. L'adresse vient du formulaire :
+ * la validation du champ laisse passer des guillemets, qui refermeraient
+ * l'attribut `href` et laisseraient écrire n'importe quel autre attribut dans
+ * la messagerie du destinataire. Le pourcentage-encodage neutralise cela ; le
+ * `@` est rétabli parce qu'il fait partie de la syntaxe du lien.
+ */
+function mailtoUrl(address: string) {
+  return `mailto:${encodeURIComponent(address).replaceAll("%40", "@")}`;
+}
+
 function detailTable(rows: DetailRow[], options: { muted?: boolean } = {}) {
   if (rows.length === 0) return "";
   const labelColor = options.muted ? brand.muted : brand.muted;
@@ -94,10 +105,11 @@ function panel(inner: string) {
 /** Bouton en tableau : les messageries n'affichent pas un `<button>` stylé. */
 function button(href: string, label: string, variant: "solid" | "outline" = "solid") {
   const solid = variant === "solid";
+  const safeHref = escapeHtml(href);
   return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
             <tr>
               <td style="background-color:${solid ? brand.ink : brand.paper};border:1px solid ${brand.ink};">
-                <a href="${href}" style="display:inline-block;padding:13px 22px;font-family:${brand.bodyFont};font-size:15px;font-weight:600;line-height:1;color:${solid ? "#FFFFFF" : brand.ink};text-decoration:none;">${escapeHtml(label)}</a>
+                <a href="${safeHref}" style="display:inline-block;padding:13px 22px;font-family:${brand.bodyFont};font-size:15px;font-weight:600;line-height:1;color:${solid ? "#FFFFFF" : brand.ink};text-decoration:none;">${escapeHtml(label)}</a>
               </td>
             </tr>
           </table>`;
@@ -168,7 +180,7 @@ ${options.footer}
 
 function siteFooter(extra?: string) {
   return `                <p style="margin:0 0 4px;">${brand.name} · ${brand.city} · ${brand.licence}</p>
-                <p style="margin:0 0 4px;"><a href="${brand.phoneHref}" style="color:${brand.muted};">${brand.phoneDisplay}</a> · <a href="mailto:${brand.email}" style="color:${brand.muted};">${brand.email}</a> · <a href="${brand.siteUrl}" style="color:${brand.muted};">slchabitation.com</a></p>${
+                <p style="margin:0 0 4px;"><a href="${brand.phoneHref}" style="color:${brand.muted};">${brand.phoneDisplay}</a> · <a href="${mailtoUrl(brand.email)}" style="color:${brand.muted};">${brand.email}</a> · <a href="${brand.siteUrl}" style="color:${brand.muted};">slchabitation.com</a></p>${
                   extra ? `\n                <p style="margin:8px 0 0;">${extra}</p>` : ""
                 }`;
 }
@@ -328,7 +340,7 @@ export function renderOwnerNotification(input: OwnerNotificationInput): EmailCon
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
                       <tr>
                         <td style="padding-right:10px;">${button(`tel:${input.phone.replace(/[^0-9+]/g, "")}`, "Appeler")}</td>
-                        <td>${button(`mailto:${input.email}`, "Répondre", "outline")}</td>
+                        <td>${button(mailtoUrl(input.email), "Répondre", "outline")}</td>
                       </tr>
                     </table>`,
                 )}
