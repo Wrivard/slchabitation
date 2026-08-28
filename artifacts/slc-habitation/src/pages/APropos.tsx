@@ -429,7 +429,7 @@ margin: 0rem !important;
                       <div className="margin-bottom margin-small">
                         {' '}
                         <h1 className="heading-style-h1">
-                          À propos de SLC Habitation, votre équipe de rénovation résidentielle
+                          Votre partenaire construction
                         </h1>
                         {' '}
                       </div>
