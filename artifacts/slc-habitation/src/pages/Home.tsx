@@ -400,18 +400,6 @@ margin: 0rem !important;
                       Rénovation
                     </a>
                     {' '}
-                    <a href="/renovation-sous-sol" className="navbar3_dropdown-link w-dropdown-link">
-                      Rénovation de sous-sol
-                    </a>
-                    {' '}
-                    <a href="/renovation-salle-de-bain" className="navbar3_dropdown-link w-dropdown-link">
-                      Rénovation de salle de bain
-                    </a>
-                    {' '}
-                    <a href="/renovation-cuisine" className="navbar3_dropdown-link w-dropdown-link">
-                      Rénovation de cuisine
-                    </a>
-                    {' '}
                     <a href="/agrandissement-construction-neuve" className="navbar3_dropdown-link w-dropdown-link">
                       Agrandissement & Construction neuve
                     </a>
