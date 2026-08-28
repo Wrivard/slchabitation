@@ -15,3 +15,4 @@
 - [Lisibilité et contraste](legibility-contrast-audit.md) — mesurer le fond en rephotographiant la page textes transparents ; `:has()` imbriqué invalide toute la règle.
 - [Lightbox Webflow sans runtime](webflow-lightbox-runtime.md) — le JSON `.w-json` reste inerte sans Webflow; conserver un href image et brancher la visionneuse accessible partagée.
 - [Profils sociaux SLC](slc-social-profile-evidence.md) — ne publier que les profils confirmés par le site officiel; les icônes de gabarit ne prouvent pas qu’un compte existe.
+- [Publication GitHub](github-publishing.md) — pousser par l’intégration Replit; Git HTTPS n’a pas d’identifiants et un 403 HTML du proxy peut bloquer seulement les écritures.
