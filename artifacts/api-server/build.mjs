@@ -15,7 +15,14 @@ async function buildAll() {
   await rm(distDir, { recursive: true, force: true });
 
   await esbuild({
-    entryPoints: [path.resolve(artifactDir, "src/index.ts")],
+    // `index` boots a long-running server for the Replit service. `app` is the
+    // same Express app without the listener, so a serverless host (Vercel) can
+    // hand it a single request. Both come from one build, so the published site
+    // and the service can never drift apart.
+    entryPoints: [
+      path.resolve(artifactDir, "src/index.ts"),
+      path.resolve(artifactDir, "src/app.ts"),
+    ],
     platform: "node",
     bundle: true,
     format: "esm",
