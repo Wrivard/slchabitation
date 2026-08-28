@@ -477,7 +477,7 @@ margin: 0rem !important;
                     <div data-reveal-group="" className="w-layout-grid layout201_content">
                       {' '}
                       <div className="layout201_image-wrapper">
-                        <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-657272-p-500.jpeg 500w, /images/relume-657272-p-800.jpeg 800w, /images/relume-657272-p-1080.jpeg 1080w, /images/relume-657272-p-1600.jpeg 1600w, /images/relume-657272-p-2000.jpeg 2000w, /images/relume-657272.jpeg 2560w" alt="Agrandissement résidentiel sur mesure par SLC Habitation" src="/images/relume-657272.jpeg" loading="eager" className="layout201_image" />
+                        <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-657272-p-500.jpeg 500w, /images/relume-657272-p-800.jpeg 800w, /images/relume-657272-p-1080.jpeg 1080w, /images/relume-657272-p-1600.jpeg 1600w, /images/relume-657272-p-2000.jpeg 2000w, /images/relume-657272.jpeg 2560w" alt="Agrandissement résidentiel sur mesure par SLC Habitation" src="/images/relume-657272.jpeg" loading="lazy" className="layout201_image" />
                       </div>
                       {' '}
                       <div id="w-node-_1cc7e597-291f-4ff8-1922-994dbf9da33a-aeae6f09" className="layout201_content-right">
@@ -680,7 +680,7 @@ margin: 0rem !important;
                         </div>
                         {' '}
                         <div className="layout356_image-wrapper">
-                          <img sizes="(max-width: 1024px) 100vw, 1024px" srcSet="/images/ajout-etage-01-p-500.jpeg 500w, /images/ajout-etage-01-p-800.jpeg 800w, /images/ajout-etage-01.jpeg 1024w" alt="Chantier d’ajout d’étage sur une maison en hiver" src="/images/ajout-etage-01.jpeg" loading="eager" className="layout356_image" />
+                          <img sizes="(max-width: 1024px) 100vw, 1024px" srcSet="/images/ajout-etage-01-p-500.jpeg 500w, /images/ajout-etage-01-p-800.jpeg 800w, /images/ajout-etage-01.jpeg 1024w" alt="Chantier d’ajout d’étage sur une maison en hiver" src="/images/ajout-etage-01.jpeg" loading="lazy" className="layout356_image" />
                         </div>
                         {' '}
                       </div>
@@ -777,7 +777,7 @@ margin: 0rem !important;
                         </div>
                         {' '}
                         <div className="layout356_image-wrapper">
-                          <img sizes="(max-width: 2064px) 100vw, 2064px" srcSet="/images/relume-655431-p-500.jpeg 500w, /images/relume-655431-p-800.jpeg 800w, /images/relume-655431-p-1080.jpeg 1080w, /images/relume-655431-p-1600.jpeg 1600w, /images/relume-655431-p-2000.jpeg 2000w, /images/relume-655431.jpeg 2064w" alt="Extension résidentielle réalisée par SLC Habitation" src="/images/relume-655431.jpeg" loading="eager" className="layout356_image" />
+                          <img sizes="(max-width: 2064px) 100vw, 2064px" srcSet="/images/relume-655431-p-500.jpeg 500w, /images/relume-655431-p-800.jpeg 800w, /images/relume-655431-p-1080.jpeg 1080w, /images/relume-655431-p-1600.jpeg 1600w, /images/relume-655431-p-2000.jpeg 2000w, /images/relume-655431.jpeg 2064w" alt="Extension résidentielle réalisée par SLC Habitation" src="/images/relume-655431.jpeg" loading="lazy" className="layout356_image" />
                         </div>
                         {' '}
                       </div>
@@ -876,7 +876,7 @@ margin: 0rem !important;
                         </div>
                         {' '}
                         <div className="layout356_image-wrapper">
-                          <img sizes="(max-width: 1200px) 100vw, 1200px" srcSet="/images/relume-655430-p-500.jpeg 500w, /images/relume-655430-p-800.jpeg 800w, /images/relume-655430-p-1080.jpeg 1080w, /images/relume-655430.jpeg 1200w" alt="Garage résidentiel construit par SLC Habitation" src="/images/relume-655430.jpeg" loading="eager" className="layout356_image" />
+                          <img sizes="(max-width: 1200px) 100vw, 1200px" srcSet="/images/relume-655430-p-500.jpeg 500w, /images/relume-655430-p-800.jpeg 800w, /images/relume-655430-p-1080.jpeg 1080w, /images/relume-655430.jpeg 1200w" alt="Garage résidentiel construit par SLC Habitation" src="/images/relume-655430.jpeg" loading="lazy" className="layout356_image" />
                         </div>
                         {' '}
                       </div>
@@ -908,7 +908,7 @@ margin: 0rem !important;
                     <div data-reveal-group="" className="w-layout-grid layout203_content">
                       {' '}
                       <div className="layout203_image-wrapper">
-                        <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655441-p-500.jpeg 500w, /images/relume-655441-p-800.jpeg 800w, /images/relume-655441-p-1080.jpeg 1080w, /images/relume-655441-p-1600.jpeg 1600w, /images/relume-655441-p-2000.jpeg 2000w, /images/relume-655441.jpeg 2560w" alt="Projet de construction résidentielle par SLC Habitation" src="/images/relume-655441.jpeg" loading="eager" className="layout203_image" />
+                        <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655441-p-500.jpeg 500w, /images/relume-655441-p-800.jpeg 800w, /images/relume-655441-p-1080.jpeg 1080w, /images/relume-655441-p-1600.jpeg 1600w, /images/relume-655441-p-2000.jpeg 2000w, /images/relume-655441.jpeg 2560w" alt="Projet de construction résidentielle par SLC Habitation" src="/images/relume-655441.jpeg" loading="lazy" className="layout203_image" />
                       </div>
                       {' '}
                       <div id="w-node-_1cc7e597-291f-4ff8-1922-994dbf9da3c0-aeae6f09" className="layout203_content-right">
@@ -1131,7 +1131,7 @@ margin: 0rem !important;
                             <div className="margin-bottom margin-xsmall">
                               {' '}
                               <div className="testimonial6_client-image-wrapper">
-                                <img loading="eager" src="/images/relume-657333.png" alt="" className="testimonial6_client-image" />
+                                <img loading="lazy" src="/images/relume-657333.png" alt="" className="testimonial6_client-image" />
                               </div>
                               {' '}
                             </div>
@@ -1239,7 +1239,7 @@ margin: 0rem !important;
                             <div className="margin-bottom margin-xsmall">
                               {' '}
                               <div className="testimonial6_client-image-wrapper">
-                                <img loading="eager" src="/images/relume-657331.png" alt="" className="testimonial6_client-image" />
+                                <img loading="lazy" src="/images/relume-657331.png" alt="" className="testimonial6_client-image" />
                               </div>
                               {' '}
                             </div>
@@ -1347,7 +1347,7 @@ margin: 0rem !important;
                             <div className="margin-bottom margin-xsmall">
                               {' '}
                               <div className="testimonial6_client-image-wrapper">
-                                <img loading="eager" src="/images/relume-657334.png" alt="" className="testimonial6_client-image" />
+                                <img loading="lazy" src="/images/relume-657334.png" alt="" className="testimonial6_client-image" />
                               </div>
                               {' '}
                             </div>
@@ -1428,7 +1428,7 @@ margin: 0rem !important;
                       <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper-large">
-                          <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655497-p-500.jpeg 500w, /images/relume-655497-p-800.jpeg 800w, /images/relume-655497-p-1080.jpeg 1080w, /images/relume-655497-p-1600.jpeg 1600w, /images/relume-655497-p-2000.jpeg 2000w, /images/relume-655497.jpeg 2560w" alt="Projet d’agrandissement résidentiel par SLC Habitation" src="/images/relume-655497.jpeg" loading="eager" className="gallery8_image1" />
+                          <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655497-p-500.jpeg 500w, /images/relume-655497-p-800.jpeg 800w, /images/relume-655497-p-1080.jpeg 1080w, /images/relume-655497-p-1600.jpeg 1600w, /images/relume-655497-p-2000.jpeg 2000w, /images/relume-655497.jpeg 2560w" alt="Projet d’agrandissement résidentiel par SLC Habitation" src="/images/relume-655497.jpeg" loading="lazy" className="gallery8_image1" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
@@ -1441,7 +1441,7 @@ margin: 0rem !important;
                       <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper">
-                          <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655496-p-500.jpeg 500w, /images/relume-655496-p-800.jpeg 800w, /images/relume-655496-p-1080.jpeg 1080w, /images/relume-655496-p-1600.jpeg 1600w, /images/relume-655496-p-2000.jpeg 2000w, /images/relume-655496.jpeg 2560w" alt="Maison agrandie par SLC Habitation" src="/images/relume-655496.jpeg" loading="eager" className="gallery8_image3" />
+                          <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655496-p-500.jpeg 500w, /images/relume-655496-p-800.jpeg 800w, /images/relume-655496-p-1080.jpeg 1080w, /images/relume-655496-p-1600.jpeg 1600w, /images/relume-655496-p-2000.jpeg 2000w, /images/relume-655496.jpeg 2560w" alt="Maison agrandie par SLC Habitation" src="/images/relume-655496.jpeg" loading="lazy" className="gallery8_image3" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
@@ -1454,7 +1454,7 @@ margin: 0rem !important;
                       <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper">
-                          <img sizes="(max-width: 2448px) 100vw, 2448px" srcSet="/images/relume-655499-p-500.jpeg 500w, /images/relume-655499-p-800.jpeg 800w, /images/relume-655499-p-1080.jpeg 1080w, /images/relume-655499-p-1600.jpeg 1600w, /images/relume-655499-p-2000.jpeg 2000w, /images/relume-655499.jpeg 2448w" alt="Extension de maison réalisée par SLC Habitation" src="/images/relume-655499.jpeg" loading="eager" className="gallery8_image2" />
+                          <img sizes="(max-width: 2448px) 100vw, 2448px" srcSet="/images/relume-655499-p-500.jpeg 500w, /images/relume-655499-p-800.jpeg 800w, /images/relume-655499-p-1080.jpeg 1080w, /images/relume-655499-p-1600.jpeg 1600w, /images/relume-655499-p-2000.jpeg 2000w, /images/relume-655499.jpeg 2448w" alt="Extension de maison réalisée par SLC Habitation" src="/images/relume-655499.jpeg" loading="lazy" className="gallery8_image2" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
@@ -1467,7 +1467,7 @@ margin: 0rem !important;
                       <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper-large">
-                          <img sizes="(max-width: 960px) 100vw, 960px" srcSet="/images/relume-655501-p-500.jpeg 500w, /images/relume-655501-p-800.jpeg 800w, /images/relume-655501.jpeg 960w" alt="Agrandissement résidentiel sur mesure par SLC Habitation" src="/images/relume-655501.jpeg" loading="eager" className="gallery8_image4" />
+                          <img sizes="(max-width: 960px) 100vw, 960px" srcSet="/images/relume-655501-p-500.jpeg 500w, /images/relume-655501-p-800.jpeg 800w, /images/relume-655501.jpeg 960w" alt="Agrandissement résidentiel sur mesure par SLC Habitation" src="/images/relume-655501.jpeg" loading="lazy" className="gallery8_image4" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
@@ -1542,7 +1542,7 @@ margin: 0rem !important;
             <div className="cta3_background-image-wrapper">
               {' '}
               <div className="image-overlay-layer"></div>
-              <img sizes="(max-width: 3072px) 100vw, 3072px" srcSet="/images/90639537_2793436424107173_8894610445172736000_n-p-500.jpg 500w, /images/90639537_2793436424107173_8894610445172736000_n-p-800.jpg 800w, /images/90639537_2793436424107173_8894610445172736000_n-p-1080.jpg 1080w, /images/90639537_2793436424107173_8894610445172736000_n-p-1600.jpg 1600w, /images/90639537_2793436424107173_8894610445172736000_n-p-2000.jpg 2000w, /images/90639537_2793436424107173_8894610445172736000_n-p-2600.jpg 2600w, /images/90639537_2793436424107173_8894610445172736000_n.jpg 3072w" alt="" src="/images/90639537_2793436424107173_8894610445172736000_n.jpg" loading="eager" className="cta3_background-image-position-center" />
+              <img sizes="(max-width: 3072px) 100vw, 3072px" srcSet="/images/90639537_2793436424107173_8894610445172736000_n-p-500.jpg 500w, /images/90639537_2793436424107173_8894610445172736000_n-p-800.jpg 800w, /images/90639537_2793436424107173_8894610445172736000_n-p-1080.jpg 1080w, /images/90639537_2793436424107173_8894610445172736000_n-p-1600.jpg 1600w, /images/90639537_2793436424107173_8894610445172736000_n-p-2000.jpg 2000w, /images/90639537_2793436424107173_8894610445172736000_n-p-2600.jpg 2600w, /images/90639537_2793436424107173_8894610445172736000_n.jpg 3072w" alt="" src="/images/90639537_2793436424107173_8894610445172736000_n.jpg" loading="lazy" className="cta3_background-image-position-center" />
               {' '}
             </div>
             {' '}
@@ -2167,7 +2167,7 @@ margin: 0rem !important;
                       <div className="margin-bottom margin-medium">
                         {' '}
                         <a href="/" className="footer3_logo-link w-nav-brand">
-                          <img sizes="(max-width: 479px) 86vw, 76.8125px" height="44px" alt="SLC Habitation" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="footer3_logo" />
+                          <img sizes="(max-width: 479px) 86vw, 76.8125px" height="44px" alt="SLC Habitation" src="/images/relume-567884.png" loading="lazy" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="footer3_logo" />
                         </a>
                         {' '}
                       </div>

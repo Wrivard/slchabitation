@@ -29,6 +29,10 @@ const seoMetadata = JSON.parse(
 const { siteOrigin, routes } = seoMetadata;
 const fontStylesheet =
   'https://fonts.googleapis.com/css2?family=Alexandria:wght@400;700&family=Inter:wght@400;500;600;700&display=swap';
+const fontLoadingMarkup = `
+  <link rel="preload" href="${fontStylesheet}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="${fontStylesheet}" rel="stylesheet"></noscript>
+`;
 
 let renderRoute;
 try {
@@ -150,6 +154,10 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   html = removeHeadTag(html, /<script\b[^>]*id=["']page-schema["'][^>]*>[\s\S]*?<\/script>\s*/gi);
   html = removeHeadTag(
     html,
+    /<noscript>\s*<link\b[^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*>\s*<\/noscript>\s*/gi,
+  );
+  html = removeHeadTag(
+    html,
     /<link\b[^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*>\s*/gi,
   );
 
@@ -157,7 +165,7 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   const headTags = `
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="${fontStylesheet}" rel="stylesheet">
+  ${fontLoadingMarkup}
   <title>${escapeHtml(route.title)}</title>
   <meta name="description" content="${escapeHtml(route.description)}">
   <meta name="robots" content="${route.path.startsWith('/pub/') || route.noindex === true ? 'noindex, follow' : 'index, follow'}">

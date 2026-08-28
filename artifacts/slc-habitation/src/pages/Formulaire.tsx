@@ -606,7 +606,7 @@ margin: 0rem !important;
                       <div className="margin-bottom margin-medium">
                         {' '}
                         <a href="/" className="footer3_logo-link w-nav-brand">
-                          <img sizes="(max-width: 479px) 86vw, 76.8125px" height="44px" alt="" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="footer3_logo" />
+                          <img sizes="(max-width: 479px) 86vw, 76.8125px" height="44px" alt="" src="/images/relume-567884.png" loading="lazy" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="footer3_logo" />
                         </a>
                         {' '}
                       </div>
