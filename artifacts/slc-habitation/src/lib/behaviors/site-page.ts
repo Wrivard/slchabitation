@@ -1,6 +1,7 @@
 import { useEffect, type RefObject } from 'react';
 
 import { initSiteNav } from '@/lib/site-nav';
+import { enableAccessibleLightboxes } from './accessible-lightbox';
 import { useBackToTop } from './back-to-top';
 import { useCountUp } from './count-up';
 import { useRevealOnScroll } from './reveal-on-scroll';
@@ -22,6 +23,12 @@ export function useSitePageBehaviors(containerRef: RefObject<HTMLElement | null>
     const container = containerRef.current;
     if (!container) return;
     return initSiteNav(container);
+  }, [containerRef]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    return enableAccessibleLightboxes(container);
   }, [containerRef]);
 
   useRevealOnScroll(containerRef);

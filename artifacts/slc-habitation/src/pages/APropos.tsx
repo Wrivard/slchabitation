@@ -334,7 +334,7 @@ margin: 0rem !important;
               {' '}
               <nav id="site-navigation" role="navigation" className="navbar3_menu w-nav-menu">
                 {' '}
-                <a href="#" className="navbar3_logo-link-menu w-nav-brand">
+                <a href="/" className="navbar3_logo-link-menu w-nav-brand">
                   <img sizes="(max-width: 991px) 100vw, 76.8125px" height="44px" alt="SLC Habitation" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="navbar3_logo" />
                 </a>
                 {' '}
@@ -1183,20 +1183,31 @@ margin: 0rem !important;
                     {' '}
                     <div data-reveal-group-nested="" className="gallery8_list">
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-655453.jpeg" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper-large">
                           <img sizes="(max-width: 1407px) 100vw, 1407px" srcSet="/images/relume-655453-p-500.jpeg 500w, /images/relume-655453-p-800.jpeg 800w, /images/relume-655453-p-1080.jpeg 1080w, /images/relume-655453.jpeg 1407w" alt="Cuisine moderne rénovée par SLC Habitation" src="/images/relume-655453.jpeg" loading="lazy" className="gallery8_image1" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-655453.jpeg",
+      "fileName": "relume-655453.jpeg",
+      "origFileName": "relume-655453.jpeg",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Cuisine moderne rénovée par SLC Habitation"
+    }
+  ],
+  "group": "portfolio-a-propos"
 }` }} />
                         {' '}
                       </a>
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-657284-p-800.png" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper">
                           <picture>
@@ -1206,34 +1217,67 @@ margin: 0rem !important;
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-657284-p-800.png",
+      "fileName": "relume-657284-p-800.png",
+      "origFileName": "relume-657284-p-800.png",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Projet de rénovation résidentielle SLC Habitation"
+    }
+  ],
+  "group": "portfolio-a-propos"
 }` }} />
                         {' '}
                       </a>
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-567908.jpeg" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper">
                           <img sizes="(max-width: 1440px) 100vw, 1440px" srcSet="/images/relume-567908-p-500.jpeg 500w, /images/relume-567908-p-800.jpeg 800w, /images/relume-567908-p-1080.jpeg 1080w, /images/relume-567908.jpeg 1440w" alt="Salle de bain rénovée par SLC Habitation" src="/images/relume-567908.jpeg" loading="lazy" className="gallery8_image2" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-567908.jpeg",
+      "fileName": "relume-567908.jpeg",
+      "origFileName": "relume-567908.jpeg",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Salle de bain rénovée par SLC Habitation"
+    }
+  ],
+  "group": "portfolio-a-propos"
 }` }} />
                         {' '}
                       </a>
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-567906.jpeg" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper-large">
                           <img sizes="(max-width: 1440px) 100vw, 1440px" srcSet="/images/relume-567906-p-500.jpeg 500w, /images/relume-567906-p-800.jpeg 800w, /images/relume-567906-p-1080.jpeg 1080w, /images/relume-567906.jpeg 1440w" alt="Intérieur résidentiel rénové par SLC Habitation" src="/images/relume-567906.jpeg" loading="lazy" className="gallery8_image4" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-567906.jpeg",
+      "fileName": "relume-567906.jpeg",
+      "origFileName": "relume-567906.jpeg",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Intérieur résidentiel rénové par SLC Habitation"
+    }
+  ],
+  "group": "portfolio-a-propos"
 }` }} />
                         {' '}
                       </a>
@@ -1722,9 +1766,9 @@ margin: 0rem !important;
                                   {' '}
                                 </div>
                                 {' '}
-                                <a href="#" className="text-style-link">
+                                <div className="text-style-link">
                                   Saint Eustache, QC
-                                </a>
+                                </div>
                                 {' '}
                               </div>
                               {' '}
@@ -2064,6 +2108,10 @@ margin: 0rem !important;
                       {' '}
                       <a href="/politique-de-cookie" className="footer3_legal-link">
                         Politique de cookies
+                      </a>
+                      {' '}
+                      <a href="/politique-de-confidentialite" className="footer3_legal-link">
+                        Politique de confidentialité
                       </a>
                       {' '}
                     </div>

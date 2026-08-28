@@ -76,7 +76,7 @@ body
                       svg [height=100% width=100%]
                         path
                   div.banner9_text-wrapper
-                    a.text-weight-semibold [href=tel:(514)404-8494] « (514) 404-8494 »
+                    a.text-weight-semibold [href=tel:+15144048494] « (514) 404-8494 »
                   div.banner9_text-wrapper
                     p.text-size-small « RBQ: 8351-9033-59 »
                 div.banner9_social-icons.w-layout-grid
@@ -92,7 +92,7 @@ body
                   div.menu-icon3_line-middle
                   div.menu-icon3_line-bottom
               nav.navbar3_menu.w-nav-menu [id=site-navigation role=navigation]
-                a.navbar3_logo-link-menu.w-nav-brand [href=#]
+                a.navbar3_logo-link-menu.w-nav-brand [href=/]
                   img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                 a.navbar3_link.w-nav-link [href=/] « Accueil »
                 a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
@@ -253,7 +253,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657333.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657333.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Mélodie Binette »
@@ -286,7 +286,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657331.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657331.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Johanne Duguay »
@@ -319,7 +319,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657334.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657334.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Isabelle Baril »
@@ -337,24 +337,24 @@ body
                               span.text-span-3 « Photos »
                           p.text-size-medium « Découvrez nos réalisations exceptionnelles en rénovation. »
                     div.gallery8_list [data-reveal-group-nested=]
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-655453.jpeg]
                         div.gallery8_image-wrapper-large
-                          img.gallery8_image1 [alt=Cuisine moderne rénovée par SLC Habitation loading=eager sizes=(max-width: 1407px) 100vw, 1407px src=/images/relume-655453.jpeg srcset=#26b1a4e9]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                          img.gallery8_image1 [alt=Cuisine moderne rénovée par SLC Habitation loading=lazy sizes=(max-width: 1407px) 100vw, 1407px src=/images/relume-655453.jpeg srcset=#26b1a4e9]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-655453.jpeg", "fileName": "relume-655453.jpeg", "orig…d0b29275 »
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-657284-p-800.png]
                         div.gallery8_image-wrapper
                           picture
                             source [sizes=(max-width: 832px) 100vw, 832px srcset=/images/relume-657284-p-500.webp 500w, /images/relume-657284-p-800.webp 800w, /images/relume-657284.webp 832w type=image/webp]
                             img.gallery8_image3 [alt=Projet de rénovation résidentielle SLC Habitation height=1248 loading=lazy sizes=(max-width: 832px) 100vw, 832px src=/images/relume-657284-p-800.png srcset=/images/relume-657284-p-500.png 500w, /images/relume-657284-p-800.png 800w width=832]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-657284-p-800.png", "fileName": "relume-657284-p-800.p…3f6a7c24 »
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-567908.jpeg]
                         div.gallery8_image-wrapper
-                          img.gallery8_image2 [alt=Salle de bain rénovée par SLC Habitation loading=eager sizes=(max-width: 1440px) 100vw, 1440px src=/images/relume-567908.jpeg srcset=#691dacdc]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                          img.gallery8_image2 [alt=Salle de bain rénovée par SLC Habitation loading=lazy sizes=(max-width: 1440px) 100vw, 1440px src=/images/relume-567908.jpeg srcset=#691dacdc]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-567908.jpeg", "fileName": "relume-567908.jpeg", "orig…6dcdba50 »
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-567906.jpeg]
                         div.gallery8_image-wrapper-large
-                          img.gallery8_image4 [alt=Intérieur résidentiel rénové par SLC Habitation loading=eager sizes=(max-width: 1440px) 100vw, 1440px src=/images/relume-567906.jpeg srcset=#9725534b]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
+                          img.gallery8_image4 [alt=Intérieur résidentiel rénové par SLC Habitation loading=lazy sizes=(max-width: 1440px) 100vw, 1440px src=/images/relume-567906.jpeg srcset=#9725534b]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-567906.jpeg", "fileName": "relume-567906.jpeg", "orig…346ac132 »
           section.color-scheme-1.section_faq2 [id=faq]
             div.padding-global
               div.container-large
@@ -429,7 +429,7 @@ body
                         p.text-size-medium « Notre équipe attend votre appel ou votre message »
                         div.margin-medium.margin-top
                           div.button-group
-                            a.button.is-secondary.w-button [href=#] « Nous joindre »
+                            a.button.is-secondary.w-button [href=#contact] « Nous joindre »
           section.color-scheme-2.section_contact16 [id=contact]
             div.padding-global
               div.container-large
@@ -463,7 +463,7 @@ body
                               div.contact16_item-text-wrapper
                                 div.margin-bottom.margin-xxsmall
                                   h3.heading-style-h6 « Téléphone »
-                                a.text-style-link [href=tel:(514)404-8494] « (514) 404-8494 »
+                                a.text-style-link [href=tel:+15144048494] « (514) 404-8494 »
                             div.contact16_item [id=w-node-e38c6ec8-eebd-6f74-b15f-2480144227ea-144227c5]
                               div.contact16_item-icon-wrapper
                                 div.icon-embed-xsmall.w-embed
@@ -472,7 +472,7 @@ body
                               div.contact16_item-text-wrapper
                                 div.margin-bottom.margin-xxsmall
                                   h3.heading-style-h6 « Adresse »
-                                a.text-style-link [href=#] « Saint Eustache, QC »
+                                div.text-style-link « Saint Eustache, QC »
                     div.contact16_map-wrapper
                       iframe.contact16_map [loading=lazy src=https://www.google.com/maps/d/embed?mid=1k56IyW1TzLWOWD5u3sdZecuYDg8wjDg&ehbc=2E312F]
           section.color-scheme-3.section_layout626
@@ -526,7 +526,7 @@ body
                     div.footer3_left-wrapper
                       div.margin-bottom.margin-medium
                         a.footer3_logo-link.w-nav-brand [href=/]
-                          img.footer3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                          img.footer3_logo [alt=SLC Habitation height=44px loading=lazy sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                       div.margin-bottom.margin-medium
                         div.footer3_details-wrapper
                           div.margin-bottom.margin-tiny
@@ -535,8 +535,8 @@ body
                             div.text-size-small « Saint Eustache, QC »
                           div.margin-bottom.margin-tiny
                             div.text-size-small « Téléphone »
-                          a.text-size-small [href=#] « (514) 404-8494 »
-                          a.text-size-small [href=#] « slchabitation@gmail.com »
+                          a.text-size-small [href=tel:+15144048494] « (514) 404-8494 »
+                          a.text-size-small [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                             br
                       div.footer3_social-list.w-layout-grid
                         a.footer3_social-link.w-inline-block [aria-label=Facebook de SLC Habitation href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
@@ -563,6 +563,7 @@ body
                           img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
                     div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                       a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
+                      a.footer3_legal-link [href=/politique-de-confidentialite] « Politique de confidentialité »
       div.back-top__wrap [data-back-to-top=wrap]
         a.messenger_button.w-inline-block [aria-label=Contacter SLC Habitation sur Messenger href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
           img [alt= loading=lazy sizes=(max-width: 2008px) 100vw, 2008px src=/images/Messenger_Icon_Secondary_White.png srcset=#67cd9d44]

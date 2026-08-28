@@ -307,7 +307,7 @@ margin: 0rem !important;
               {' '}
               <nav id="site-navigation" role="navigation" className="navbar3_menu w-nav-menu">
                 {' '}
-                <a href="#" className="navbar3_logo-link-menu w-nav-brand">
+                <a href="/" className="navbar3_logo-link-menu w-nav-brand">
                   <img sizes="(max-width: 991px) 100vw, 76.8125px" height="44px" alt="" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="navbar3_logo" />
                 </a>
                 {' '}
@@ -742,7 +742,7 @@ margin: 0rem !important;
                       {' '}
                       <div className="w-layout-grid footer3_social-list">
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -754,7 +754,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -766,7 +766,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -778,7 +778,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -790,7 +790,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -878,6 +878,10 @@ margin: 0rem !important;
                       {' '}
                       <a href="/politique-de-cookie" className="footer3_legal-link">
                         Politique de cookies
+                      </a>
+                      {' '}
+                      <a href="/politique-de-confidentialite" className="footer3_legal-link">
+                        Politique de confidentialité
                       </a>
                       {' '}
                     </div>

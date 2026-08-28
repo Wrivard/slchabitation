@@ -75,7 +75,7 @@ body
                     svg [height=100% width=100%]
                       path
                 div.banner9_text-wrapper
-                  a.text-weight-semibold [href=tel:(514)404-8494] « (514) 404-8494 »
+                  a.text-weight-semibold [href=tel:+15144048494] « (514) 404-8494 »
                 div.banner9_text-wrapper
                   p.text-size-small « RBQ: 8351-9033-59 »
               div.banner9_social-icons.w-layout-grid
@@ -87,7 +87,7 @@ body
                 div.menu-icon3_line-middle
                 div.menu-icon3_line-bottom
             nav.navbar3_menu.w-nav-menu [id=site-navigation role=navigation]
-              a.navbar3_logo-link-menu.w-nav-brand [href=#]
+              a.navbar3_logo-link-menu.w-nav-brand [href=/]
                 img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
               a.navbar3_link.w-nav-link [href=/] « Accueil »
               a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
@@ -102,10 +102,10 @@ body
                   a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
                   a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
               a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
-              a.navbar3_tablet-menu-button.w-button [data-service=renovation-sous-sol href=/formulaire] « Soumission »
+              a.navbar3_tablet-menu-button.w-button [data-service=renovation-sous-sol href=/soumission] « Soumission »
             a.navbar3_logo-link.w-nav-brand [href=/]
               img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
-            a.button.w-button [data-service=renovation-sous-sol href=/formulaire id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
+            a.button.w-button [data-service=renovation-sous-sol href=/soumission id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
             div.navbar3_menu-background
         section.bg-mine-shaft.md:py-28.overflow-hidden.py-20.relative.text-white
           div.absolute.bg-black.inset-0.z-0
@@ -114,7 +114,7 @@ body
             h1.font-bold.font-heading.leading-tight.mb-6.md:text-5xl.text-3xl « Rénovation de sous-sol à Laval et dans les Laurentides »
             p.max-w-2xl.mb-8.md:text-xl.mx-auto.text-gray-200.text-lg « Transformez votre sous-sol en salle familiale ou appartement complet. Nous concevons et ré…8e0447ff »
             div.flex.flex-col.gap-4.items-center.justify-center.mb-8.sm:flex-row
-              a.!bg-[#f58026].cta-link.font-medium.hover:bg-[#d86d1b].px-8.py-4.rounded-lg.shadow-md.sm:w-auto.text-center.text-lg.text-white.transition-colors.w-full [data-service=renovation-sous-sol href=/formulaire] « Obtenir une estimation »
+              a.!bg-[#f58026].cta-link.font-medium.hover:bg-[#d86d1b].px-8.py-4.rounded-lg.shadow-md.sm:w-auto.text-center.text-lg.text-white.transition-colors.w-full [data-service=renovation-sous-sol href=/soumission] « Obtenir une estimation »
             div.flex.flex-wrap.font-medium.gap-x-6.gap-y-2.items-center.justify-center.text-gray-300.text-sm
               div.flex.gap-2.items-center
                 svg.h-5.text-[#f58026].w-5
@@ -210,7 +210,7 @@ body
           div.container-large.fade-up.max-w-3xl.mx-auto.px-6.relative.text-center.z-10
             h2.font-bold.font-heading.mb-6.md:text-4xl.text-3xl « Prêt à maximiser votre espace ? »
             p.mb-10.text-gray-300.text-lg « Confiez-nous votre sous-sol. Nous prenons en charge la gestion complète des travaux, de la…38d0c319 »
-            a.!bg-[#f58026].cta-link.duration-300.font-bold.hover:-translate-y-1.hover:bg-[#d86d1b].inline-block.px-10.py-5.rounded-lg.shadow-xl.text-lg.text-white.transform.transition-colors [data-service=renovation-sous-sol href=/formulaire] « Demander une soumission gratuite »
+            a.!bg-[#f58026].cta-link.duration-300.font-bold.hover:-translate-y-1.hover:bg-[#d86d1b].inline-block.px-10.py-5.rounded-lg.shadow-xl.text-lg.text-white.transform.transition-colors [data-service=renovation-sous-sol href=/soumission] « Demander une soumission gratuite »
           div.!bg-[#f58026]/20.-bottom-64.-right-64.absolute.blur-3xl.h-[500px].rounded-full.w-[500px]
           div.!bg-[#f58026]/10.-left-64.-top-64.absolute.blur-3xl.h-[500px].rounded-full.w-[500px]
       footer.color-scheme-1.footer3_component
@@ -222,7 +222,7 @@ body
                   div.footer3_left-wrapper
                     div.margin-bottom.margin-medium
                       a.footer3_logo-link.w-nav-brand [href=/]
-                        img.footer3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                        img.footer3_logo [alt= height=44px loading=lazy sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                     div.margin-bottom.margin-medium
                       div.footer3_details-wrapper
                         div.margin-bottom.margin-tiny
@@ -231,27 +231,27 @@ body
                           div.text-size-small « Saint Eustache, QC »
                         div.margin-bottom.margin-tiny
                           div.text-size-small « Téléphone »
-                        a.text-size-small [href=#] « (514) 404-8494 »
-                        a.text-size-small [href=#] « slchabitation@gmail.com »
+                        a.text-size-small [href=tel:+15144048494] « (514) 404-8494 »
+                        a.text-size-small [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                           br
                     div.footer3_social-list.w-layout-grid
-                      a.footer3_social-link.w-inline-block [href=#]
+                      a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
                           svg [height=100% width=100%]
                             path
-                      a.footer3_social-link.w-inline-block [href=#]
+                      a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
                           svg [height=100% width=100%]
                             path
-                      a.footer3_social-link.w-inline-block [href=#]
+                      a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
                           svg [height=100% width=100%]
                             path
-                      a.footer3_social-link.w-inline-block [href=#]
+                      a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
                           svg [height=100% width=100%]
                             path
-                      a.footer3_social-link.w-inline-block [href=#]
+                      a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
                           svg [height=100% width=100%]
                             path
@@ -260,7 +260,7 @@ body
                       a.footer3_link [href=/] « Accueil »
                       a.footer3_link [href=/a-propos] « À propos »
                       a.footer3_link [href=/realisations] « Réalisations »
-                      a.footer3_link [data-service=renovation-sous-sol href=/formulaire] « Soumission »
+                      a.footer3_link [data-service=renovation-sous-sol href=/soumission] « Soumission »
                     div.footer3_link-list
                       a.footer3_link.w--current [aria-current=page href=/renovation] « Rénovation »
                       a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
@@ -275,6 +275,7 @@ body
                         img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
                   div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                     a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
+                    a.footer3_legal-link [href=/politique-de-confidentialite] « Politique de confidentialité »
     div [aria-label=Notifications (F8) role=region style=pointer-events:none]
       ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
   script [src=/assets/index-*.js type=module]

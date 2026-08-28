@@ -13,3 +13,4 @@
 - [Chrome Webflow réutilisé](legacy-webflow-chrome-reuse.md) — emporter aussi les interactions du menu et les variables .color-scheme, pas seulement le balisage.
 - [Scripts tiers liés au domaine](third-party-scripts-dev-domain.md) — un script refusé sur le domaine de développement remonte en « (unknown runtime error) » sans pile ; le retirer côté dev seulement.
 - [Lisibilité et contraste](legibility-contrast-audit.md) — mesurer le fond en rephotographiant la page textes transparents ; `:has()` imbriqué invalide toute la règle.
+- [Lightbox Webflow sans runtime](webflow-lightbox-runtime.md) — le JSON `.w-json` reste inerte sans Webflow; conserver un href image et brancher la visionneuse accessible partagée.

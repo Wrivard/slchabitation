@@ -75,7 +75,7 @@ body
                       svg [height=100% width=100%]
                         path
                   div.banner9_text-wrapper
-                    a.text-weight-semibold [href=tel:(514)404-8494] « (514) 404-8494 »
+                    a.text-weight-semibold [href=tel:+15144048494] « (514) 404-8494 »
                   div.banner9_text-wrapper
                     p.text-size-small « RBQ: 8351-9033-59 »
                 div.banner9_social-icons.w-layout-grid
@@ -87,7 +87,7 @@ body
                   div.menu-icon3_line-middle
                   div.menu-icon3_line-bottom
               nav.navbar3_menu.w-nav-menu [id=site-navigation role=navigation]
-                a.navbar3_logo-link-menu.w-nav-brand [href=#]
+                a.navbar3_logo-link-menu.w-nav-brand [href=/]
                   img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                 a.navbar3_link.w-nav-link [href=/] « Accueil »
                 a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
@@ -233,7 +233,7 @@ body
                           a [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                           br
                           strong « Téléphone : »
-                          a [href=tel:(514)404-8494] « (514) 404-8494 »
+                          a [href=tel:+15144048494] « (514) 404-8494 »
                           br
                           strong « Adresse : »
                         p « Vous avez également le droit de déposer une plainte auprès de la si vous estimez que vos d…95443ffc »
@@ -285,7 +285,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657333.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657333.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Mélodie Binette »
@@ -318,7 +318,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657331.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657331.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Johanne Duguay »
@@ -351,7 +351,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657334.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657334.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Isabelle Baril »
@@ -371,7 +371,7 @@ body
                           a.button.is-alternate.is-secondary.w-button [href=#contact] « Contactez-nous »
             div.cta3_background-image-wrapper
               div.image-overlay-layer
-              img.cta3_background-image-position-center [alt= loading=eager sizes=(max-width: 3072px) 100vw, 3072px src=/images/90639537_2793436424107173_8894610445172736000_n.jpg srcset=#e6d27d58]
+              img.cta3_background-image-position-center [alt= loading=lazy sizes=(max-width: 3072px) 100vw, 3072px src=/images/90639537_2793436424107173_8894610445172736000_n.jpg srcset=#e6d27d58]
           section.color-scheme-2.section_contact16 [id=contact]
             div.padding-global
               div.container-large
@@ -405,7 +405,7 @@ body
                               div.contact16_item-text-wrapper
                                 div.margin-bottom.margin-xxsmall
                                   h3.heading-style-h6 « Téléphone »
-                                a.text-style-link [href=tel:(514)404-8494] « (514) 404-8494 »
+                                a.text-style-link [href=tel:+15144048494] « (514) 404-8494 »
                             div.contact16_item [id=w-node-e38c6ec8-eebd-6f74-b15f-2480144227ea-144227c5]
                               div.contact16_item-icon-wrapper
                                 div.icon-embed-xsmall.w-embed
@@ -414,7 +414,7 @@ body
                               div.contact16_item-text-wrapper
                                 div.margin-bottom.margin-xxsmall
                                   h3.heading-style-h6 « Adresse »
-                                a.text-style-link [href=#] « Saint Eustache, QC »
+                                div.text-style-link « Saint Eustache, QC »
                     div.contact16_map-wrapper
                       iframe.contact16_map [loading=lazy src=https://www.google.com/maps/d/embed?mid=1k56IyW1TzLWOWD5u3sdZecuYDg8wjDg&ehbc=2E312F]
           section.color-scheme-3.section_layout626
@@ -468,7 +468,7 @@ body
                     div.footer3_left-wrapper
                       div.margin-bottom.margin-medium
                         a.footer3_logo-link.w-nav-brand [href=/]
-                          img.footer3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                          img.footer3_logo [alt= height=44px loading=lazy sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                       div.margin-bottom.margin-medium
                         div.footer3_details-wrapper
                           div.margin-bottom.margin-tiny
@@ -477,27 +477,27 @@ body
                             div.text-size-small « Saint Eustache, QC »
                           div.margin-bottom.margin-tiny
                             div.text-size-small « Téléphone »
-                          a.text-size-small [href=#] « (514) 404-8494 »
-                          a.text-size-small [href=#] « slchabitation@gmail.com »
+                          a.text-size-small [href=tel:+15144048494] « (514) 404-8494 »
+                          a.text-size-small [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                             br
                       div.footer3_social-list.w-layout-grid
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
@@ -521,6 +521,7 @@ body
                           img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
                     div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                       a.footer3_legal-link.w--current [aria-current=page href=/politique-de-cookie] « Politique de cookies »
+                      a.footer3_legal-link [href=/politique-de-confidentialite] « Politique de confidentialité »
       div.back-top__wrap [data-back-to-top=wrap]
         a.messenger_button.w-inline-block [aria-label=Contacter SLC Habitation sur Messenger href=https://m.me/SLCHabitation target=_blank]
           img [alt= loading=lazy sizes=(max-width: 2008px) 100vw, 2008px src=/images/Messenger_Icon_Secondary_White.png srcset=#67cd9d44]

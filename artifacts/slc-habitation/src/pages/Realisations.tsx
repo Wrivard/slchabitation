@@ -348,7 +348,7 @@ margin: 0rem !important;
               {' '}
               <nav id="site-navigation" role="navigation" className="navbar3_menu w-nav-menu">
                 {' '}
-                <a href="#" className="navbar3_logo-link-menu w-nav-brand">
+                <a href="/" className="navbar3_logo-link-menu w-nav-brand">
                   <img sizes="(max-width: 991px) 100vw, 76.8125px" height="44px" alt="SLC Habitation" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="navbar3_logo" />
                 </a>
                 {' '}
@@ -502,7 +502,7 @@ margin: 0rem !important;
                       {' '}
                       <div className="category-filter-menu realisations-gallery__filters">
                         {' '}
-                        <a href="#" className="category-filter-link active w-inline-block" data-category="all" aria-current="true">
+                        <a href="/realisations" className="category-filter-link active w-inline-block" data-category="all" aria-current="true">
                           {' '}
                           <div>
                             Voir tout
@@ -510,7 +510,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="category-filter-link w-inline-block" data-category="interieur">
+                        <a href="/realisations" className="category-filter-link w-inline-block" data-category="interieur">
                           {' '}
                           <div>
                             Intérieur
@@ -518,7 +518,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="category-filter-link w-inline-block" data-category="exterieur">
+                        <a href="/realisations" className="category-filter-link w-inline-block" data-category="exterieur">
                           {' '}
                           <div>
                             Extérieur
@@ -526,7 +526,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="category-filter-link w-inline-block" data-category="commercial">
+                        <a href="/realisations" className="category-filter-link w-inline-block" data-category="commercial">
                           {' '}
                           <div>
                             Commercial
@@ -1997,9 +1997,9 @@ margin: 0rem !important;
                                   {' '}
                                 </div>
                                 {' '}
-                                <a href="#" className="text-style-link">
+                                <div className="text-style-link">
                                   Saint Eustache, QC
-                                </a>
+                                </div>
                                 {' '}
                               </div>
                               {' '}
@@ -2339,6 +2339,10 @@ margin: 0rem !important;
                       {' '}
                       <a href="/politique-de-cookie" className="footer3_legal-link">
                         Politique de cookies
+                      </a>
+                      {' '}
+                      <a href="/politique-de-confidentialite" className="footer3_legal-link">
+                        Politique de confidentialité
                       </a>
                       {' '}
                     </div>

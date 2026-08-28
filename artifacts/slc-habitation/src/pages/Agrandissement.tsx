@@ -322,7 +322,7 @@ margin: 0rem !important;
               {' '}
               <nav id="site-navigation" role="navigation" className="navbar3_menu w-nav-menu">
                 {' '}
-                <a href="#" className="navbar3_logo-link-menu w-nav-brand">
+                <a href="/" className="navbar3_logo-link-menu w-nav-brand">
                   <img sizes="(max-width: 991px) 100vw, 76.8125px" height="44px" alt="SLC Habitation" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="navbar3_logo" />
                 </a>
                 {' '}
@@ -1425,54 +1425,98 @@ margin: 0rem !important;
                     {' '}
                     <div className="gallery8_list">
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-655497.jpeg" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper-large">
                           <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655497-p-500.jpeg 500w, /images/relume-655497-p-800.jpeg 800w, /images/relume-655497-p-1080.jpeg 1080w, /images/relume-655497-p-1600.jpeg 1600w, /images/relume-655497-p-2000.jpeg 2000w, /images/relume-655497.jpeg 2560w" alt="Projet d’agrandissement résidentiel par SLC Habitation" src="/images/relume-655497.jpeg" loading="lazy" className="gallery8_image1" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-655497.jpeg",
+      "fileName": "relume-655497.jpeg",
+      "origFileName": "relume-655497.jpeg",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Projet d’agrandissement résidentiel par SLC Habitation"
+    }
+  ],
+  "group": "portfolio-agrandissement"
 }` }} />
                         {' '}
                       </a>
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-655496.jpeg" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper">
                           <img sizes="(max-width: 2560px) 100vw, 2560px" srcSet="/images/relume-655496-p-500.jpeg 500w, /images/relume-655496-p-800.jpeg 800w, /images/relume-655496-p-1080.jpeg 1080w, /images/relume-655496-p-1600.jpeg 1600w, /images/relume-655496-p-2000.jpeg 2000w, /images/relume-655496.jpeg 2560w" alt="Maison agrandie par SLC Habitation" src="/images/relume-655496.jpeg" loading="lazy" className="gallery8_image3" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-655496.jpeg",
+      "fileName": "relume-655496.jpeg",
+      "origFileName": "relume-655496.jpeg",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Maison agrandie par SLC Habitation"
+    }
+  ],
+  "group": "portfolio-agrandissement"
 }` }} />
                         {' '}
                       </a>
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-655499.jpeg" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper">
                           <img sizes="(max-width: 2448px) 100vw, 2448px" srcSet="/images/relume-655499-p-500.jpeg 500w, /images/relume-655499-p-800.jpeg 800w, /images/relume-655499-p-1080.jpeg 1080w, /images/relume-655499-p-1600.jpeg 1600w, /images/relume-655499-p-2000.jpeg 2000w, /images/relume-655499.jpeg 2448w" alt="Extension de maison réalisée par SLC Habitation" src="/images/relume-655499.jpeg" loading="lazy" className="gallery8_image2" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-655499.jpeg",
+      "fileName": "relume-655499.jpeg",
+      "origFileName": "relume-655499.jpeg",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Extension de maison réalisée par SLC Habitation"
+    }
+  ],
+  "group": "portfolio-agrandissement"
 }` }} />
                         {' '}
                       </a>
                       {' '}
-                      <a href="#" className="gallery8_lightbox-link w-inline-block w-lightbox">
+                      <a href="/images/relume-655501.jpeg" className="gallery8_lightbox-link w-inline-block w-lightbox">
                         {' '}
                         <div className="gallery8_image-wrapper-large">
                           <img sizes="(max-width: 960px) 100vw, 960px" srcSet="/images/relume-655501-p-500.jpeg 500w, /images/relume-655501-p-800.jpeg 800w, /images/relume-655501.jpeg 960w" alt="Agrandissement résidentiel sur mesure par SLC Habitation" src="/images/relume-655501.jpeg" loading="lazy" className="gallery8_image4" />
                         </div>
                         {' '}
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: `{
-  "items": [],
-  "group": ""
+  "items": [
+    {
+      "url": "images/relume-655501.jpeg",
+      "fileName": "relume-655501.jpeg",
+      "origFileName": "relume-655501.jpeg",
+      "fileSize": 0,
+      "height": 0,
+      "width": 0,
+      "type": "image",
+      "caption": "Agrandissement résidentiel sur mesure par SLC Habitation"
+    }
+  ],
+  "group": "portfolio-agrandissement"
 }` }} />
                         {' '}
                       </a>
@@ -1961,9 +2005,9 @@ margin: 0rem !important;
                                   {' '}
                                 </div>
                                 {' '}
-                                <a href="#" className="text-style-link">
+                                <div className="text-style-link">
                                   Saint Eustache, QC
-                                </a>
+                                </div>
                                 {' '}
                               </div>
                               {' '}
@@ -2215,7 +2259,7 @@ margin: 0rem !important;
                       {' '}
                       <div className="w-layout-grid footer3_social-list">
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2227,7 +2271,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2239,7 +2283,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2251,7 +2295,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2263,7 +2307,7 @@ margin: 0rem !important;
                           {' '}
                         </a>
                         {' '}
-                        <a href="#" className="footer3_social-link w-inline-block">
+                        <a aria-hidden="true" className="footer3_social-link w-inline-block">
                           {' '}
                           <div className="icon-embed-xsmall w-embed">
                             <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2351,6 +2395,10 @@ margin: 0rem !important;
                       {' '}
                       <a href="/politique-de-cookie" className="footer3_legal-link">
                         Politique de cookies
+                      </a>
+                      {' '}
+                      <a href="/politique-de-confidentialite" className="footer3_legal-link">
+                        Politique de confidentialité
                       </a>
                       {' '}
                     </div>

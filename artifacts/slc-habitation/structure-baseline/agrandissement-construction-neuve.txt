@@ -76,7 +76,7 @@ body
                       svg [height=100% width=100%]
                         path
                   div.banner9_text-wrapper
-                    a.text-weight-semibold [href=tel:(514)404-8494] « (514) 404-8494 »
+                    a.text-weight-semibold [href=tel:+15144048494] « (514) 404-8494 »
                   div.banner9_text-wrapper
                     p.text-size-small « RBQ: 8351-9033-59 »
                 div.banner9_social-icons.w-layout-grid
@@ -88,7 +88,7 @@ body
                   div.menu-icon3_line-middle
                   div.menu-icon3_line-bottom
               nav.navbar3_menu.w-nav-menu [id=site-navigation role=navigation]
-                a.navbar3_logo-link-menu.w-nav-brand [href=#]
+                a.navbar3_logo-link-menu.w-nav-brand [href=/]
                   img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                 a.navbar3_link.w-nav-link [href=/] « Accueil »
                 a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
@@ -135,7 +135,7 @@ body
                   div.layout201_component
                     div.layout201_content.w-layout-grid [data-reveal-group=]
                       div.layout201_image-wrapper
-                        img.layout201_image [alt=Agrandissement résidentiel sur mesure par SLC Habitation loading=eager sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-657272.jpeg srcset=#54d31b16]
+                        img.layout201_image [alt=Agrandissement résidentiel sur mesure par SLC Habitation loading=lazy sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-657272.jpeg srcset=#54d31b16]
                       div.layout201_content-right [id=w-node-_1cc7e597-291f-4ff8-1922-994dbf9da33a-aeae6f09]
                         div.margin-bottom.margin-xsmall
                           div.text-style-tagline « Expansion »
@@ -191,7 +191,7 @@ body
                                   svg [height=16 width=16]
                                     path
                         div.layout356_image-wrapper
-                          img.layout356_image [alt=Chantier d’ajout d’étage sur une maison en hiver loading=eager sizes=(max-width: 1024px) 100vw, 1024px src=/images/ajout-etage-01.jpeg srcset=/images/ajout-etage-01-p-500.jpeg 500w, /images/ajout-etage-01-p-800.jpeg 800w, /images/ajout-etage-01.jpeg 1024w]
+                          img.layout356_image [alt=Chantier d’ajout d’étage sur une maison en hiver loading=lazy sizes=(max-width: 1024px) 100vw, 1024px src=/images/ajout-etage-01.jpeg srcset=/images/ajout-etage-01-p-500.jpeg 500w, /images/ajout-etage-01-p-800.jpeg 800w, /images/ajout-etage-01.jpeg 1024w]
               div.layout356_anchor [id=layout356-anchor-two]
               div.content-item-2.layout356_content-item
                 div.padding-global
@@ -218,7 +218,7 @@ body
                                   svg [height=16 width=16]
                                     path
                         div.layout356_image-wrapper
-                          img.layout356_image [alt=Extension résidentielle réalisée par SLC Habitation loading=eager sizes=(max-width: 2064px) 100vw, 2064px src=/images/relume-655431.jpeg srcset=#71eaee68]
+                          img.layout356_image [alt=Extension résidentielle réalisée par SLC Habitation loading=lazy sizes=(max-width: 2064px) 100vw, 2064px src=/images/relume-655431.jpeg srcset=#71eaee68]
                     div.layout356_anchor [id=feature-three-anchor]
               div.layout356_anchor [id=layout356-anchor-three]
               div.content-item-3.layout356_content-item
@@ -246,7 +246,7 @@ body
                                   svg [height=16 width=16]
                                     path
                         div.layout356_image-wrapper
-                          img.layout356_image [alt=Garage résidentiel construit par SLC Habitation loading=eager sizes=(max-width: 1200px) 100vw, 1200px src=/images/relume-655430.jpeg srcset=#1c9dd87e]
+                          img.layout356_image [alt=Garage résidentiel construit par SLC Habitation loading=lazy sizes=(max-width: 1200px) 100vw, 1200px src=/images/relume-655430.jpeg srcset=#1c9dd87e]
                     div.layout356_anchor
           section.color-scheme-1.section_layout203
             div.padding-global
@@ -255,7 +255,7 @@ body
                   div.layout203_component
                     div.layout203_content.w-layout-grid [data-reveal-group=]
                       div.layout203_image-wrapper
-                        img.layout203_image [alt=Projet de construction résidentielle par SLC Habitation loading=eager sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-655441.jpeg srcset=#4540455c]
+                        img.layout203_image [alt=Projet de construction résidentielle par SLC Habitation loading=lazy sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-655441.jpeg srcset=#4540455c]
                       div.layout203_content-right [id=w-node-_1cc7e597-291f-4ff8-1922-994dbf9da3c0-aeae6f09]
                         div.margin-bottom.margin-small
                           h2.heading-style-h3 « Construire demande de la vision et du savoir-faire »
@@ -321,7 +321,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657333.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657333.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Mélodie Binette »
@@ -354,7 +354,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657331.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657331.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Johanne Duguay »
@@ -387,7 +387,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657334.png]
+                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657334.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Isabelle Baril »
@@ -405,22 +405,22 @@ body
                               span.text-span-24 « Photos »
                           p.text-size-medium « Découvrez nos réalisations exceptionnelles en rénovation. »
                     div.gallery8_list
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-655497.jpeg]
                         div.gallery8_image-wrapper-large
-                          img.gallery8_image1 [alt=Projet d’agrandissement résidentiel par SLC Habitation loading=eager sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-655497.jpeg srcset=#a9eef842]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                          img.gallery8_image1 [alt=Projet d’agrandissement résidentiel par SLC Habitation loading=lazy sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-655497.jpeg srcset=#a9eef842]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-655497.jpeg", "fileName": "relume-655497.jpeg", "orig…1b92a802 »
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-655496.jpeg]
                         div.gallery8_image-wrapper
-                          img.gallery8_image3 [alt=Maison agrandie par SLC Habitation loading=eager sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-655496.jpeg srcset=#4a22bc51]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                          img.gallery8_image3 [alt=Maison agrandie par SLC Habitation loading=lazy sizes=(max-width: 2560px) 100vw, 2560px src=/images/relume-655496.jpeg srcset=#4a22bc51]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-655496.jpeg", "fileName": "relume-655496.jpeg", "orig…18f8efc5 »
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-655499.jpeg]
                         div.gallery8_image-wrapper
-                          img.gallery8_image2 [alt=Extension de maison réalisée par SLC Habitation loading=eager sizes=(max-width: 2448px) 100vw, 2448px src=/images/relume-655499.jpeg srcset=#f84b7592]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
-                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=#]
+                          img.gallery8_image2 [alt=Extension de maison réalisée par SLC Habitation loading=lazy sizes=(max-width: 2448px) 100vw, 2448px src=/images/relume-655499.jpeg srcset=#f84b7592]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-655499.jpeg", "fileName": "relume-655499.jpeg", "orig…8c1e0cc5 »
+                      a.gallery8_lightbox-link.w-inline-block.w-lightbox [href=/images/relume-655501.jpeg]
                         div.gallery8_image-wrapper-large
-                          img.gallery8_image4 [alt=Agrandissement résidentiel sur mesure par SLC Habitation loading=eager sizes=(max-width: 960px) 100vw, 960px src=/images/relume-655501.jpeg srcset=/images/relume-655501-p-500.jpeg 500w, /images/relume-655501-p-800.jpeg 800w, /images/relume-655501.jpeg 960w]
-                        script.w-json [type=application/json] « { "items": [], "group": "" } »
+                          img.gallery8_image4 [alt=Agrandissement résidentiel sur mesure par SLC Habitation loading=lazy sizes=(max-width: 960px) 100vw, 960px src=/images/relume-655501.jpeg srcset=/images/relume-655501-p-500.jpeg 500w, /images/relume-655501-p-800.jpeg 800w, /images/relume-655501.jpeg 960w]
+                        script.w-json [type=application/json] « { "items": [ { "url": "images/relume-655501.jpeg", "fileName": "relume-655501.jpeg", "orig…a04bfac3 »
           section.color-scheme-3.section_cta3.text-color-white
             div.padding-global
               div.container-large
@@ -436,7 +436,7 @@ body
                           a.button.is-alternate.is-secondary.w-button [href=#contact] « Contactez-nous »
             div.cta3_background-image-wrapper
               div.image-overlay-layer
-              img.cta3_background-image-position-center [alt= loading=eager sizes=(max-width: 3072px) 100vw, 3072px src=/images/90639537_2793436424107173_8894610445172736000_n.jpg srcset=#e6d27d58]
+              img.cta3_background-image-position-center [alt= loading=lazy sizes=(max-width: 3072px) 100vw, 3072px src=/images/90639537_2793436424107173_8894610445172736000_n.jpg srcset=#e6d27d58]
           section.color-scheme-1.section_faq2 [id=faq]
             div.padding-global
               div.container-large
@@ -545,7 +545,7 @@ body
                               div.contact16_item-text-wrapper
                                 div.margin-bottom.margin-xxsmall
                                   h3.heading-style-h6 « Téléphone »
-                                a.text-style-link [href=tel:(514)404-8494] « (514) 404-8494 »
+                                a.text-style-link [href=tel:+15144048494] « (514) 404-8494 »
                             div.contact16_item [id=w-node-e38c6ec8-eebd-6f74-b15f-2480144227ea-144227c5]
                               div.contact16_item-icon-wrapper
                                 div.icon-embed-xsmall.w-embed
@@ -554,7 +554,7 @@ body
                               div.contact16_item-text-wrapper
                                 div.margin-bottom.margin-xxsmall
                                   h3.heading-style-h6 « Adresse »
-                                a.text-style-link [href=#] « Saint Eustache, QC »
+                                div.text-style-link « Saint Eustache, QC »
                     div.contact16_map-wrapper
                       iframe.contact16_map [loading=lazy src=https://www.google.com/maps/d/embed?mid=1k56IyW1TzLWOWD5u3sdZecuYDg8wjDg&ehbc=2E312F]
           section.color-scheme-3.section_layout626
@@ -608,7 +608,7 @@ body
                     div.footer3_left-wrapper
                       div.margin-bottom.margin-medium
                         a.footer3_logo-link.w-nav-brand [href=/]
-                          img.footer3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                          img.footer3_logo [alt=SLC Habitation height=44px loading=lazy sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                       div.margin-bottom.margin-medium
                         div.footer3_details-wrapper
                           div.margin-bottom.margin-tiny
@@ -617,27 +617,27 @@ body
                             div.text-size-small « Saint Eustache, QC »
                           div.margin-bottom.margin-tiny
                             div.text-size-small « Téléphone »
-                          a.text-size-small [href=#] « (514) 404-8494 »
-                          a.text-size-small [href=#] « slchabitation@gmail.com »
+                          a.text-size-small [href=tel:+15144048494] « (514) 404-8494 »
+                          a.text-size-small [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                             br
                       div.footer3_social-list.w-layout-grid
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
-                        a.footer3_social-link.w-inline-block [href=#]
+                        a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
                             svg [height=100% width=100%]
                               path
@@ -661,6 +661,7 @@ body
                           img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
                     div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                       a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
+                      a.footer3_legal-link [href=/politique-de-confidentialite] « Politique de confidentialité »
     div [aria-label=Notifications (F8) role=region style=pointer-events:none]
       ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
   script [src=/assets/index-*.js type=module]

@@ -11,8 +11,24 @@
 export function addAccessibleNames(html: string): string {
   return html
     .replaceAll(
+      '<a href="#" class="navbar3_logo-link-menu w-nav-brand">',
+      '<a href="/" class="navbar3_logo-link-menu w-nav-brand">',
+    )
+    .replaceAll(
+      '<a href="#" class="text-size-small">(514) 404-8494</a>',
+      '<a href="tel:+15144048494" class="text-size-small">(514) 404-8494</a>',
+    )
+    .replaceAll(
+      '<a href="#" class="text-size-small"><br>slchabitation@gmail.com</a>',
+      '<a href="mailto:slchabitation@gmail.com" class="text-size-small"><br>slchabitation@gmail.com</a>',
+    )
+    .replaceAll(
       '<a href="https://www.facebook.com/SLCHabitation"',
       '<a aria-label="Facebook de SLC Habitation" href="https://www.facebook.com/SLCHabitation"',
+    )
+    .replaceAll(
+      '<a href="/politique-de-cookie" class="footer3_legal-link">Politique de cookies</a>',
+      '<a href="/politique-de-cookie" class="footer3_legal-link">Politique de cookies</a> <a href="/politique-de-confidentialite" class="footer3_legal-link">Politique de confidentialité</a>',
     )
     .replaceAll('alt=""', 'alt="SLC Habitation"');
 }

@@ -333,6 +333,68 @@ try {
     await context.close();
   }
 
+  console.log('Visionneuse des réalisations');
+  {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(`${server.origin}/`, { waitUntil: 'networkidle' });
+
+    await settle(page);
+    await scrollThroughPage(page);
+
+    const firstCard = page.locator('a.gallery8_lightbox-link').first();
+    await firstCard.scrollIntoViewIfNeeded();
+    await firstCard.focus();
+    await firstCard.press('Enter');
+    await page.waitForTimeout(200);
+
+    const opened = await page.evaluate(() => {
+      const dialog = document.querySelector('dialog.site-lightbox');
+      const image = dialog?.querySelector('img.site-lightbox__image');
+      return {
+        open: dialog?.hasAttribute('open') ?? false,
+        imagePath: image instanceof HTMLImageElement ? new URL(image.src).pathname : '',
+        focus: document.activeElement?.className ?? '',
+        bodyLocked: document.body.classList.contains('site-lightbox-open'),
+      };
+    });
+    check(
+      'Entrée ouvre l’image agrandie dans un dialogue',
+      opened.open && opened.imagePath === '/images/relume-655453.jpeg',
+      JSON.stringify(opened),
+    );
+    check(
+      'le bouton de fermeture reçoit le focus et la page ne défile plus',
+      String(opened.focus).includes('site-lightbox__close') && opened.bodyLocked,
+      JSON.stringify(opened),
+    );
+
+    await page.keyboard.press('ArrowRight');
+    const nextPath = await page
+      .locator('dialog.site-lightbox img.site-lightbox__image')
+      .evaluate((image) => new URL(image.src).pathname);
+    check(
+      'les flèches parcourent les images du même groupe',
+      nextPath === '/images/relume-657284-p-800.png',
+      nextPath,
+    );
+
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(200);
+    const closed = await page.evaluate(() => ({
+      open: document.querySelector('dialog.site-lightbox')?.hasAttribute('open') ?? false,
+      focusRestored: document.activeElement?.matches('a.gallery8_lightbox-link') ?? false,
+      bodyLocked: document.body.classList.contains('site-lightbox-open'),
+    }));
+    check(
+      'Échap ferme la visionneuse et rend le focus à la carte',
+      !closed.open && closed.focusRestored && !closed.bodyLocked,
+      JSON.stringify(closed),
+    );
+
+    await context.close();
+  }
+
   console.log('Cartes de services au survol');
   {
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });

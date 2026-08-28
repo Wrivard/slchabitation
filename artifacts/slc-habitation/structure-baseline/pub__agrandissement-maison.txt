@@ -83,7 +83,7 @@ body
                 div.menu-icon3_line-middle
                 div.menu-icon3_line-bottom
             nav.navbar3_menu.w-nav-menu [role=navigation]
-              a.navbar3_logo-link-menu.w-nav-brand [href=#]
+              a.navbar3_logo-link-menu.w-nav-brand [href=/]
                 img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
               a.navbar3_link.w-nav-link [href=/] « Accueil »
               a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
@@ -584,8 +584,8 @@ body
                             div.text-size-small « Saint Eustache, QC »
                           div.margin-bottom.margin-tiny
                             div.text-size-small « Téléphone »
-                          a.text-size-small [href=#] « (514) 404-8494 »
-                          a.text-size-small [href=#] « slchabitation@gmail.com »
+                          a.text-size-small [href=tel:+15144048494] « (514) 404-8494 »
+                          a.text-size-small [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                             br
                       div.footer3_social-list.w-layout-grid
                         a.footer3_social-link.w-inline-block [aria-label=Facebook de SLC Habitation href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
@@ -612,6 +612,7 @@ body
                           img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
                     div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                       a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
+                      a.footer3_legal-link [href=/politique-de-confidentialite] « Politique de confidentialité »
     div [aria-label=Notifications (F8) role=region style=pointer-events:none]
       ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
   script [src=/assets/index-*.js type=module]
