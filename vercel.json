@@ -1,0 +1,25 @@
+{
+  "outputDirectory": "artifacts/slc-habitation/dist/public",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)\\.webp",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/webp"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.avif",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/avif"
+        }
+      ]
+    }
+  ]
+}
