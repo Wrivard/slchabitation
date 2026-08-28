@@ -334,7 +334,7 @@ margin: 0rem !important;
               {' '}
               <nav id="site-navigation" role="navigation" className="navbar3_menu w-nav-menu">
                 {' '}
-                <a href="/" className="navbar3_logo-link-menu w-nav-brand">
+                <a href="/" className="navbar3_logo-link-menu w-nav-brand" aria-label="Accueil — SLC Habitation">
                   <img sizes="(max-width: 991px) 100vw, 76.8125px" height="44px" alt="SLC Habitation" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="navbar3_logo" />
                 </a>
                 {' '}

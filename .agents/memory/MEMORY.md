@@ -14,3 +14,4 @@
 - [Scripts tiers liés au domaine](third-party-scripts-dev-domain.md) — un script refusé sur le domaine de développement remonte en « (unknown runtime error) » sans pile ; le retirer côté dev seulement.
 - [Lisibilité et contraste](legibility-contrast-audit.md) — mesurer le fond en rephotographiant la page textes transparents ; `:has()` imbriqué invalide toute la règle.
 - [Lightbox Webflow sans runtime](webflow-lightbox-runtime.md) — le JSON `.w-json` reste inerte sans Webflow; conserver un href image et brancher la visionneuse accessible partagée.
+- [Profils sociaux SLC](slc-social-profile-evidence.md) — ne publier que les profils confirmés par le site officiel; les icônes de gabarit ne prouvent pas qu’un compte existe.
