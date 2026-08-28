@@ -16,7 +16,7 @@ import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useTrackingParams } from '@/hooks/use-tracking-params';
 import { rememberQuoteSubmission } from '@/lib/quote-submission';
-import { TurnstileWidget } from '@/components/pub/TurnstileWidget';
+import { TurnstileWidget, type TurnstileStatus } from '@/components/pub/TurnstileWidget';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -193,6 +193,7 @@ export function QuoteForm({
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [turnstileError, setTurnstileError] = useState(false);
+  const [turnstileStatus, setTurnstileStatus] = useState<TurnstileStatus>('loading');
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoError, setPhotoError] = useState<string | null>(null);
   const photoInputRef = useRef<HTMLInputElement>(null);
@@ -289,6 +290,13 @@ export function QuoteForm({
     turnstileResetRef.current = resetFn;
   }, []);
 
+  const handleTurnstileStatusChange = useCallback((status: TurnstileStatus) => {
+    setTurnstileStatus(status);
+    if (status === 'unavailable') {
+      setTurnstileToken(null);
+    }
+  }, []);
+
   const nextStep = async (fieldsToValidate: (keyof FormData)[]) => {
     const isStepValid = await trigger(fieldsToValidate);
     if (isStepValid) {
@@ -352,7 +360,7 @@ export function QuoteForm({
 
     if (
       import.meta.env.PROD &&
-      (!import.meta.env.VITE_TURNSTILE_SITE_KEY || !turnstileToken)
+      !turnstileToken
     ) {
       setErrorMsg("La vérification de sécurité est temporairement indisponible. Veuillez nous appeler ou réessayer plus tard.");
       return;
@@ -1099,8 +1107,19 @@ export function QuoteForm({
                         onVerify={handleTurnstileVerify}
                         onError={handleTurnstileError}
                         onResetRef={handleTurnstileReset}
+                        onStatusChange={handleTurnstileStatusChange}
                       />
                     </div>
+
+                    {import.meta.env.PROD && turnstileStatus === 'unavailable' && (
+                      <p
+                        className="text-center text-sm font-medium text-destructive"
+                        role="status"
+                        data-testid="turnstile-status"
+                      >
+                        La vérification de sécurité est temporairement indisponible. Veuillez réessayer plus tard.
+                      </p>
+                    )}
 
                     {errorMsg && (
                       <div
@@ -1129,7 +1148,11 @@ export function QuoteForm({
                       <Button
                         type="submit"
                         size="lg"
-                        disabled={isSubmitting || turnstileError}
+                        disabled={
+                          isSubmitting ||
+                          (import.meta.env.PROD &&
+                            (turnstileStatus !== 'ready' || turnstileError))
+                        }
                         className="h-14 flex-1 text-base font-bold"
                         data-testid="button-submit-quote"
                       >
