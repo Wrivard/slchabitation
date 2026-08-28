@@ -27,6 +27,10 @@ const seoMetadata = JSON.parse(
   await readFile(path.join(root, 'src/lib/seo-route-metadata.json'), 'utf8'),
 );
 const { siteOrigin, routes } = seoMetadata;
+const artifactToml = await readFile(
+  path.join(root, '.replit-artifact', 'artifact.toml'),
+  'utf8',
+);
 const fontStylesheet =
   'https://fonts.googleapis.com/css2?family=Alexandria:wght@400;700&family=Inter:wght@400;500;600;700&display=swap';
 const fontLoadingMarkup = `
@@ -116,6 +120,56 @@ function createSchemaTag(schema) {
   return `<script id="page-schema" type="application/ld+json">${serializedSchema}</script>`;
 }
 
+function createSitemap() {
+  const indexableRoutes = routes.filter(
+    (route) => route.noindex !== true && !route.path.startsWith('/pub/'),
+  );
+  const entries = indexableRoutes
+    .map((route) => {
+      const canonical = `${siteOrigin}${route.path === '/' ? '/' : route.path}`;
+      return `  <url>\n    <loc>${escapeHtml(canonical)}</loc>\n  </url>`;
+    })
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`;
+}
+
+function assertProductionRewrites() {
+  const rewriteEntries = [
+    ...artifactToml.matchAll(
+      /\[\[services\.production\.rewrites\]\]\s+from\s*=\s*"([^"]+)"\s+to\s*=\s*"([^"]+)"/g,
+    ),
+  ];
+  const rewriteTargets = new Map(
+    rewriteEntries.map(([, from, to]) => [from, to]),
+  );
+  const expectedRewrites = new Map(
+    routes
+      .filter((route) => route.path !== '/')
+      .map((route) => [route.path, `${route.path}/index.html`]),
+  );
+
+  expectedRewrites.set(
+    '/politique-de-confidentialite/*',
+    '/politique-de-confidentialite/index.html',
+  );
+  expectedRewrites.set('/formulaire', '/soumission/index.html');
+  expectedRewrites.set('/formulaire/*', '/soumission/index.html');
+  expectedRewrites.set('/formulaire.html', '/soumission/index.html');
+
+  const mismatches = [...expectedRewrites].filter(
+    ([from, to]) => rewriteTargets.get(from) !== to,
+  );
+  if (mismatches.length > 0) {
+    const details = mismatches
+      .map(([from, to]) => `${from} → ${to}`)
+      .join(', ');
+    throw new Error(
+      `Production rewrites are not synchronized with prerendered routes: ${details}`,
+    );
+  }
+}
+
 /**
  * Contenu de la page, rendu par l'application React elle-même.
  *
@@ -194,6 +248,7 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
 }
 
 const appShell = await readFile(path.join(outputDir, 'index.html'), 'utf8');
+assertProductionRewrites();
 const appScriptMatch = appShell.match(
   /<script type="module"[^>]*src="([^"]+)"[^>]*><\/script>/i,
 );
@@ -213,4 +268,8 @@ for (const route of routes) {
   await writeFile(routeOutput, renderedHtml);
 }
 
-console.log(`Prerendered ${routes.length} public routes from the React application.`);
+await writeFile(path.join(outputDir, 'sitemap.xml'), createSitemap());
+
+console.log(
+  `Prerendered ${routes.length} public routes and generated their sitemap from the React application.`,
+);

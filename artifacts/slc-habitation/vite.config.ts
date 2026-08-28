@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
+import seoRouteMetadata from './src/lib/seo-route-metadata.json';
 
 const rawPort = process.env.PORT;
 const port = rawPort ? Number(rawPort) : 5173;
@@ -22,7 +23,8 @@ const legacyRouteRedirects: Record<string, string> = {
   '/renovation-sous-sol.html': '/renovation-sous-sol',
   '/renovation-salle-de-bain.html': '/renovation-salle-de-bain',
   '/renovation-cuisine.html': '/renovation-cuisine',
-  '/formulaire.html': '/formulaire',
+  '/formulaire': '/soumission',
+  '/formulaire.html': '/soumission',
   '/agrandissement-construction-neuve.html': '/agrandissement-construction-neuve',
   '/travaux-sur-mesure.html': '/travaux-sur-mesure',
   '/realisations.html': '/realisations',
@@ -30,14 +32,9 @@ const legacyRouteRedirects: Record<string, string> = {
   '/politique-de-cookie.html': '/politique-de-cookie',
 };
 const prerenderedRoutePaths = new Set(
-  [
-    ...Object.values(legacyRouteRedirects).filter((route) => route !== '/'),
-    '/merci',
-    '/pub/agrandissement-maison',
-    '/pub/renovation-cuisine',
-    '/pub/renovation-salle-de-bain',
-    '/pub/renovation-sous-sol',
-  ],
+  seoRouteMetadata.routes
+    .map(({ path }) => path)
+    .filter((route) => route !== '/'),
 );
 
 export default defineConfig({

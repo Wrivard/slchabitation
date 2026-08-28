@@ -53,11 +53,11 @@ to = "/renovation-cuisine/index.html"
 
 [[services.production.rewrites]]
 from = "/formulaire"
-to = "/formulaire/index.html"
+to = "/soumission/index.html"
 
 [[services.production.rewrites]]
 from = "/formulaire/*"
-to = "/formulaire/index.html"
+to = "/soumission/index.html"
 
 [[services.production.rewrites]]
 from = "/agrandissement-construction-neuve"
@@ -78,6 +78,14 @@ to = "/soumission/index.html"
 [[services.production.rewrites]]
 from = "/politique-de-cookie"
 to = "/politique-de-cookie/index.html"
+
+[[services.production.rewrites]]
+from = "/politique-de-confidentialite"
+to = "/politique-de-confidentialite/index.html"
+
+[[services.production.rewrites]]
+from = "/politique-de-confidentialite/*"
+to = "/politique-de-confidentialite/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-cuisine"
@@ -129,6 +137,10 @@ to = "/realisations/index.html"
 
 [[services.production.rewrites]]
 from = "/soumission.html"
+to = "/soumission/index.html"
+
+[[services.production.rewrites]]
+from = "/formulaire.html"
 to = "/soumission/index.html"
 
 [[services.production.rewrites]]

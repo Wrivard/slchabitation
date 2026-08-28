@@ -359,7 +359,7 @@ margin: 0rem !important;
                   Réalisations
                 </a>
                 {' '}
-                <a href="/formulaire" data-service="renovation-salle-de-bain" className="navbar3_tablet-menu-button w-button">
+                <a href="/soumission" data-service="renovation-salle-de-bain" className="navbar3_tablet-menu-button w-button">
                   Soumission
                 </a>
                 {' '}
@@ -369,7 +369,7 @@ margin: 0rem !important;
                 <img sizes="(max-width: 479px) 86vw, 76.8125px" height="44px" alt="" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="navbar3_logo" />
               </a>
               {' '}
-              <a id="w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc" href="/formulaire" data-service="renovation-salle-de-bain" className="button w-button">
+              <a id="w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc" href="/soumission" data-service="renovation-salle-de-bain" className="button w-button">
                 Soumission
               </a>
               {' '}
@@ -399,7 +399,7 @@ margin: 0rem !important;
               {' '}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                 {' '}
-                <a href="/formulaire" data-service="renovation-salle-de-bain" className="cta-link !bg-[#f58026] hover:bg-[#d86d1b] transition-colors px-8 py-4 rounded-lg font-medium text-lg w-full sm:w-auto text-white text-center shadow-md">
+              <a href="/soumission" data-service="renovation-salle-de-bain" className="cta-link !bg-[#f58026] hover:bg-[#d86d1b] transition-colors px-8 py-4 rounded-lg font-medium text-lg w-full sm:w-auto text-white text-center shadow-md">
                   Obtenir une estimation
                 </a>
                 {' '}
@@ -665,7 +665,7 @@ margin: 0rem !important;
                 Rencontrez notre équipe pour discuter de vos goûts, de vos contraintes et de votre budget. Nous nous occupons du reste.
               </p>
               {' '}
-              <a href="/formulaire" data-service="renovation-salle-de-bain" className="cta-link inline-block !bg-[#f58026] hover:bg-[#d86d1b] transition-colors px-10 py-5 rounded-lg font-bold text-lg text-white shadow-xl hover:-translate-y-1 transform duration-300">
+              <a href="/soumission" data-service="renovation-salle-de-bain" className="cta-link inline-block !bg-[#f58026] hover:bg-[#d86d1b] transition-colors px-10 py-5 rounded-lg font-bold text-lg text-white shadow-xl hover:-translate-y-1 transform duration-300">
                 Demander une soumission sans frais
               </a>
               {' '}
@@ -820,7 +820,7 @@ margin: 0rem !important;
                           Réalisations
                         </a>
                         {' '}
-                        <a href="/formulaire" data-service="renovation-salle-de-bain" className="footer3_link">
+                        <a href="/soumission" data-service="renovation-salle-de-bain" className="footer3_link">
                           Soumission
                         </a>
                         {' '}

@@ -365,23 +365,6 @@
       }
     },
     {
-      "path": "/formulaire",
-      "title": "Demander une soumission | SLC Habitation",
-      "description": "Demandez une soumission pour vos travaux de rénovation ou construction.",
-      "schema": {
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Demander une soumission — SLC Habitation",
-        "description": "Demandez une soumission pour vos travaux de rénovation ou construction.",
-        "url": "https://slchabitation.com/formulaire",
-        "about": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "SLC Habitation",
-          "url": "https://slchabitation.com"
-        }
-      }
-    },
-    {
       "path": "/agrandissement-construction-neuve",
       "title": "Agrandissement et maison neuve | SLC Habitation",
       "description": "SLC Habitation conçoit des agrandissements résidentiels et des constructions neuves pour créer des espaces de vie fonctionnels et durables.",

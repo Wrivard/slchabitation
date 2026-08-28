@@ -359,7 +359,7 @@ margin: 0rem !important;
                   Réalisations
                 </a>
                 {' '}
-                <a href="/formulaire" className="navbar3_tablet-menu-button w-button">
+                <a href="/soumission" className="navbar3_tablet-menu-button w-button">
                   Soumission
                 </a>
                 {' '}
@@ -369,7 +369,7 @@ margin: 0rem !important;
                 <img sizes="(max-width: 479px) 86vw, 76.8125px" height="44px" alt="" src="/images/relume-567884.png" loading="eager" srcSet="/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w" className="navbar3_logo" />
               </a>
               {' '}
-              <a id="w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc" href="/formulaire" className="button w-button">
+              <a id="w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc" href="/soumission" className="button w-button">
                 Soumission
               </a>
               {' '}
@@ -734,7 +734,7 @@ margin: 0rem !important;
                           Réalisations
                         </a>
                         {' '}
-                        <a href="/formulaire" className="footer3_link">
+                        <a href="/soumission" className="footer3_link">
                           Soumission
                         </a>
                         {' '}

@@ -11,7 +11,6 @@ import Renovation from '@/pages/Renovation';
 import RenovationSousSol from '@/pages/RenovationSousSol';
 import RenovationSalleDeBain from '@/pages/RenovationSalleDeBain';
 import RenovationCuisine from '@/pages/RenovationCuisine';
-import Formulaire from '@/pages/Formulaire';
 import Agrandissement from '@/pages/Agrandissement';
 import TravauxSurMesure from '@/pages/TravauxSurMesure';
 import Realisations from '@/pages/Realisations';
@@ -112,7 +111,8 @@ function Router() {
         <Route path="/renovation-sous-sol" component={RenovationSousSol} />
         <Route path="/renovation-salle-de-bain" component={RenovationSalleDeBain} />
         <Route path="/renovation-cuisine" component={RenovationCuisine} />
-        <Route path="/formulaire" component={Formulaire} />
+        {/* L'ancien formulaire est conservé comme alias historique de /soumission. */}
+        <Route path="/formulaire" component={FormulaireRedirect} />
         <Route path="/agrandissement-construction-neuve" component={Agrandissement} />
         <Route path="/travaux-sur-mesure" component={TravauxSurMesure} />
         <Route path="/realisations" component={Realisations} />
