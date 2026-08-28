@@ -73,7 +73,10 @@ export const paidFunnelServices: QuoteFormService[] = [
    appliquées par le serveur. */
 export const MAX_PHOTOS = 5;
 export const MAX_PHOTO_BYTES = 4 * 1024 * 1024;
-export const MAX_PHOTOS_TOTAL_BYTES = Math.round(4.5 * 1024 * 1024);
+// The published API runs as a serverless function, which refuses a request body
+// over 4.5 MB outright. Cap the photos below that so the visitor is told in the
+// form what is too heavy, instead of the upload dying at the host.
+export const MAX_PHOTOS_TOTAL_BYTES = 4 * 1024 * 1024;
 
 /* Le serveur refuse au-delà de 2 000 caractères : la limite est reprise ici
    pour que le visiteur le voie avant l'envoi. */

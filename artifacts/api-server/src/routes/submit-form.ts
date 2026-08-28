@@ -16,6 +16,12 @@ const MAX_FILE_SIZE = 4 * 1024 * 1024;
 const MAX_FILES = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 3;
+/**
+ * Ceiling for everything arriving from one address, whatever `x-forwarded-for`
+ * claims. Generous enough for the whole published site behind its proxy, low
+ * enough to bound a flood of forged forwarding headers.
+ */
+const CONNECTION_RATE_LIMIT_MAX_REQUESTS = 60;
 const MIN_FILL_MS = 3_000;
 const MARKETING_CONSENT_VERSION = "cookiebot-2026-08-25";
 const MAX_MESSAGE_LENGTH = 2_000;
@@ -127,15 +133,44 @@ function fileList(value: File | File[] | undefined) {
   return Array.isArray(value) ? value : [value];
 }
 
+/**
+ * The published site is served by a static host that proxies /api to this
+ * server, so `req.ip` is the proxy rather than the visitor. The first
+ * `x-forwarded-for` entry is the original client, which keeps the per-visitor
+ * rate limit from collapsing onto a single proxy address.
+ *
+ * A client can forge that header, so it is only ever used to separate visitors
+ * from each other, never as proof of identity: `connectionAddress` below keeps
+ * a coarse ceiling that a forged header cannot escape.
+ */
 function clientAddress(req: Request) {
-  return req.ip || req.headers["x-forwarded-for"]?.toString().split(",")[0].trim() || "unknown";
+  const forwardedFor = req.headers["x-forwarded-for"];
+  const forwardedChain = Array.isArray(forwardedFor)
+    ? forwardedFor.join(",")
+    : forwardedFor;
+  const originalClient = forwardedChain?.split(",")[0]?.trim();
+
+  return originalClient || connectionAddress(req);
+}
+
+/**
+ * The address the request actually arrived from. `req.ip` is unusable here:
+ * with `trust proxy` enabled Express derives it from `x-forwarded-for`, so it
+ * follows whatever the client claims. The socket address cannot be forged.
+ */
+function connectionAddress(req: Request) {
+  return req.socket.remoteAddress || "unknown";
 }
 
 function sourceFingerprint(req: Request) {
   return createHash("sha256").update(clientAddress(req)).digest("hex").slice(0, 24);
 }
 
-function consumeRateLimit(key: string) {
+function connectionFingerprint(req: Request) {
+  return createHash("sha256").update(connectionAddress(req)).digest("hex").slice(0, 24);
+}
+
+function consumeRateLimit(key: string, maxRequests = RATE_LIMIT_MAX_REQUESTS) {
   const now = Date.now();
   for (const [existingKey, value] of requestCounts) {
     if (value.resetAt <= now) requestCounts.delete(existingKey);
@@ -145,7 +180,7 @@ function consumeRateLimit(key: string) {
     requestCounts.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
     return true;
   }
-  if (current.count >= RATE_LIMIT_MAX_REQUESTS) return false;
+  if (current.count >= maxRequests) return false;
   current.count += 1;
   return true;
 }
@@ -188,10 +223,13 @@ async function verifyTurnstile(token: string | undefined, req: Request) {
     const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
       headers: { "content-type": "application/json" },
+      // `remoteip` is deliberately omitted: the published site reaches this
+      // server through a proxy, so the visitor's address is only known from a
+      // forgeable header. Sending a wrong one makes Cloudflare reject genuine
+      // submissions, which is the exact failure this form must not have.
       body: JSON.stringify({
         secret: process.env.TURNSTILE_SECRET_KEY,
         response: token,
-        remoteip: clientAddress(req),
       }),
       signal: AbortSignal.timeout(5_000),
     });
@@ -256,7 +294,12 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       return;
     }
 
-    if (!consumeRateLimit(sourceFingerprint(req))) {
+    const rateLimited =
+      !consumeRateLimit(
+        `connection:${connectionFingerprint(req)}`,
+        CONNECTION_RATE_LIMIT_MAX_REQUESTS,
+      ) || !consumeRateLimit(`visitor:${sourceFingerprint(req)}`);
+    if (rateLimited) {
       reject(req, res, "rate_limited", "Trop de demandes. Veuillez réessayer dans quelques minutes.", 429);
       return;
     }
