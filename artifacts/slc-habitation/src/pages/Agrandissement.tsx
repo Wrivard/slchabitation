@@ -417,7 +417,7 @@ margin: 0rem !important;
                       <div className="margin-bottom margin-small">
                         {' '}
                         <h1 className="heading-style-h1">
-                          Agrandissez votre espace
+                          Agrandissement de maison et construction neuve
                         </h1>
                         {' '}
                       </div>

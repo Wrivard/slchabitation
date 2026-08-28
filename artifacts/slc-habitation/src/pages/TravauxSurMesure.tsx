@@ -417,7 +417,7 @@ margin: 0rem !important;
                       <div className="margin-bottom margin-small">
                         {' '}
                         <h1 className="heading-style-h1">
-                          Vous méritez une maison qui vous ressemble
+                          Travaux sur mesure pour votre maison
                         </h1>
                         {' '}
                       </div>

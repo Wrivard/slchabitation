@@ -15,7 +15,6 @@ Ce fichier est un index complémentaire destiné aux systèmes de récupération
 - [Travaux sur mesure](https://slchabitation.com/travaux-sur-mesure) — Travaux résidentiels personnalisés pour adapter, embellir et renforcer une maison selon le projet.
 - [Réalisations](https://slchabitation.com/realisations) — Portfolio de projets de rénovation, d'agrandissement et de construction résidentielle réalisés par SLC Habitation.
 - [Demander une soumission](https://slchabitation.com/soumission) — Formulaire pour décrire un projet et demander une soumission en rénovation, agrandissement ou construction neuve.
-- [Formulaire de rénovation](https://slchabitation.com/formulaire) — Formulaire partagé des pages de rénovation ciblées, avec présélection du service demandé.
 
 ## Références techniques
 

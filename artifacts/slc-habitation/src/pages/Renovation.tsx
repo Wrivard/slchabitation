@@ -417,7 +417,7 @@ margin: 0rem !important;
                       <div className="margin-bottom margin-small">
                         {' '}
                         <h1 className="heading-style-h1">
-                          Vos experts en rénovation
+                          Rénovation résidentielle à Laval et dans les Laurentides
                         </h1>
                         {' '}
                       </div>
