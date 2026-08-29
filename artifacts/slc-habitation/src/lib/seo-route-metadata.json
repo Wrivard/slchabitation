@@ -137,14 +137,38 @@
               "url": "https://slchabitation.com"
             },
             "areaServed": [
-              { "@type": "City", "name": "Saint-Eustache" },
-              { "@type": "City", "name": "Mirabel" },
-              { "@type": "City", "name": "Boisbriand" },
-              { "@type": "City", "name": "Blainville" },
-              { "@type": "City", "name": "Laval" },
-              { "@type": "City", "name": "Terrebonne" },
-              { "@type": "City", "name": "Sainte-Thérèse" },
-              { "@type": "City", "name": "Rosemère" }
+              {
+                "@type": "City",
+                "name": "Saint-Eustache"
+              },
+              {
+                "@type": "City",
+                "name": "Mirabel"
+              },
+              {
+                "@type": "City",
+                "name": "Boisbriand"
+              },
+              {
+                "@type": "City",
+                "name": "Blainville"
+              },
+              {
+                "@type": "City",
+                "name": "Laval"
+              },
+              {
+                "@type": "City",
+                "name": "Terrebonne"
+              },
+              {
+                "@type": "City",
+                "name": "Sainte-Thérèse"
+              },
+              {
+                "@type": "City",
+                "name": "Rosemère"
+              }
             ]
           },
           {
@@ -215,8 +239,14 @@
               "url": "https://slchabitation.com"
             },
             "areaServed": [
-              { "@type": "City", "name": "Laval" },
-              { "@type": "AdministrativeArea", "name": "Laurentides" }
+              {
+                "@type": "City",
+                "name": "Laval"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Laurentides"
+              }
             ]
           },
           {
@@ -271,8 +301,14 @@
               "url": "https://slchabitation.com"
             },
             "areaServed": [
-              { "@type": "City", "name": "Laval" },
-              { "@type": "AdministrativeArea", "name": "Laurentides" }
+              {
+                "@type": "City",
+                "name": "Laval"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Laurentides"
+              }
             ]
           },
           {
@@ -327,8 +363,14 @@
               "url": "https://slchabitation.com"
             },
             "areaServed": [
-              { "@type": "City", "name": "Laval" },
-              { "@type": "AdministrativeArea", "name": "Laurentides" }
+              {
+                "@type": "City",
+                "name": "Laval"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Laurentides"
+              }
             ]
           },
           {
@@ -382,14 +424,38 @@
               "url": "https://slchabitation.com"
             },
             "areaServed": [
-              { "@type": "City", "name": "Saint-Eustache" },
-              { "@type": "City", "name": "Mirabel" },
-              { "@type": "City", "name": "Boisbriand" },
-              { "@type": "City", "name": "Blainville" },
-              { "@type": "City", "name": "Laval" },
-              { "@type": "City", "name": "Terrebonne" },
-              { "@type": "City", "name": "Sainte-Thérèse" },
-              { "@type": "City", "name": "Rosemère" }
+              {
+                "@type": "City",
+                "name": "Saint-Eustache"
+              },
+              {
+                "@type": "City",
+                "name": "Mirabel"
+              },
+              {
+                "@type": "City",
+                "name": "Boisbriand"
+              },
+              {
+                "@type": "City",
+                "name": "Blainville"
+              },
+              {
+                "@type": "City",
+                "name": "Laval"
+              },
+              {
+                "@type": "City",
+                "name": "Terrebonne"
+              },
+              {
+                "@type": "City",
+                "name": "Sainte-Thérèse"
+              },
+              {
+                "@type": "City",
+                "name": "Rosemère"
+              }
             ]
           },
           {
@@ -459,14 +525,38 @@
               "url": "https://slchabitation.com"
             },
             "areaServed": [
-              { "@type": "City", "name": "Saint-Eustache" },
-              { "@type": "City", "name": "Mirabel" },
-              { "@type": "City", "name": "Boisbriand" },
-              { "@type": "City", "name": "Blainville" },
-              { "@type": "City", "name": "Laval" },
-              { "@type": "City", "name": "Terrebonne" },
-              { "@type": "City", "name": "Sainte-Thérèse" },
-              { "@type": "City", "name": "Rosemère" }
+              {
+                "@type": "City",
+                "name": "Saint-Eustache"
+              },
+              {
+                "@type": "City",
+                "name": "Mirabel"
+              },
+              {
+                "@type": "City",
+                "name": "Boisbriand"
+              },
+              {
+                "@type": "City",
+                "name": "Blainville"
+              },
+              {
+                "@type": "City",
+                "name": "Laval"
+              },
+              {
+                "@type": "City",
+                "name": "Terrebonne"
+              },
+              {
+                "@type": "City",
+                "name": "Sainte-Thérèse"
+              },
+              {
+                "@type": "City",
+                "name": "Rosemère"
+              }
             ]
           },
           {
@@ -688,5 +778,12 @@
       "title": "Politique de confidentialité | SLC Habitation",
       "description": "Consultez la politique de confidentialité de SLC Habitation pour comprendre la collecte, l’utilisation et la protection de vos renseignements personnels."
     }
-  ]
+  ],
+  "notFoundRoute": {
+    "path": "/404.html",
+    "title": "Page introuvable | SLC Habitation",
+    "description": "Cette page n’existe pas ou a été déplacée. Revenez à l’accueil de SLC Habitation ou demandez votre soumission gratuite.",
+    "noindex": true,
+    "canonical": false
+  }
 }
