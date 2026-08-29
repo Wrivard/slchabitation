@@ -26,7 +26,7 @@ const serverBundle = path.join(root, 'dist', 'server', 'entry-server.js');
 const seoMetadata = JSON.parse(
   await readFile(path.join(root, 'src/lib/seo-route-metadata.json'), 'utf8'),
 );
-const { siteOrigin, routes } = seoMetadata;
+const { siteOrigin, routes, notFoundRoute } = seoMetadata;
 const artifactToml = await readFile(
   path.join(root, '.replit-artifact', 'artifact.toml'),
   'utf8',
@@ -216,6 +216,14 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   );
 
   const canonical = `${siteOrigin}${route.path === '/' ? '/' : route.path}`;
+  /* Une page d'erreur ne représente aucune adresse : lui donner une adresse
+     canonique reviendrait à désigner une page réelle qui n'existe pas. */
+  const addressTags =
+    route.canonical === false
+      ? ''
+      : `<link rel="canonical" href="${canonical}">
+  <meta property="og:url" content="${canonical}">
+  <meta name="twitter:url" content="${canonical}">`;
   const headTags = `
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -223,11 +231,9 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   <title>${escapeHtml(route.title)}</title>
   <meta name="description" content="${escapeHtml(route.description)}">
   <meta name="robots" content="${route.path.startsWith('/pub/') || route.noindex === true ? 'noindex, follow' : 'index, follow'}">
-  <link rel="canonical" href="${canonical}">
-  <meta property="og:url" content="${canonical}">
+  ${addressTags}
   <meta property="og:title" content="${escapeHtml(route.title)}">
   <meta property="og:description" content="${escapeHtml(route.description)}">
-  <meta name="twitter:url" content="${canonical}">
   <meta name="twitter:title" content="${escapeHtml(route.title)}">
   <meta name="twitter:description" content="${escapeHtml(route.description)}">
   ${createSchemaTag(route.schema)}
@@ -268,8 +274,22 @@ for (const route of routes) {
   await writeFile(routeOutput, renderedHtml);
 }
 
+/**
+ * Page servie quand l'adresse demandée n'existe pas.
+ *
+ * L'application React affiche déjà sa propre page « Page introuvable », mais
+ * l'hébergement ne sert que des fichiers : sans document `404.html` à la racine
+ * du site publié, une adresse inconnue reçoit la page d'erreur nue de
+ * l'hébergeur, sans entête, sans pied de page et sans retour vers le site. Le
+ * fichier est donc rendu à partir de la même application que les autres pages.
+ */
+await writeFile(
+  path.join(outputDir, '404.html'),
+  createPrerenderedPage(appShell, notFoundRoute, appScript),
+);
+
 await writeFile(path.join(outputDir, 'sitemap.xml'), createSitemap());
 
 console.log(
-  `Prerendered ${routes.length} public routes and generated their sitemap from the React application.`,
+  `Prerendered ${routes.length} public routes, the not-found page and the sitemap from the React application.`,
 );
