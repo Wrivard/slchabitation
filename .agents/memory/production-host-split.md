@@ -15,4 +15,16 @@ Conséquence : un hébergeur de fichiers statiques n'a aucun backend, donc toute
 2. Si les routes `/api/*` existent sur cet hôte, ou si elles renvoient un 404 de l'hébergeur statique.
 3. Si les variables et secrets dont dépend la route existent vraiment dans l'environnement de **cet** hôte — leur absence produit une erreur applicative propre qu'on prend facilement pour un bogue de code.
 
+**Le même triage vaut pour le référencement.** Un domaine avec et sans `www` est
+un seul site pour l'humain, mais deux adresses pour un moteur de recherche : une
+seule répond, l'autre redirige. Si les balises canoniques, le plan du site et le
+fichier robots nomment celle qui redirige, le moteur lit une page, s'entend dire
+que la vraie page est ailleurs, y va, se fait renvoyer d'où il vient — et conclut
+que ce qu'il vient de lire n'est pas indexable. Le symptôme est une poignée de
+pages « avec redirection » ou « autre page avec balise canonique correcte ».
+
+Vérifier laquelle des deux formes répond `200` avant de fixer l'adresse de
+référence du site, et rendre la redirection permanente (308) plutôt que
+temporaire, sinon l'ancienne forme reste candidate à l'indexation.
+
 Deux montages possibles quand le site public est statique : faire mandater `/api/*` vers le déploiement qui possède l'API (impose deux publications distinctes, une par hôte, et une seule ne suffit jamais), ou donner un backend à l'hôte public lui-même. Préférer le second : un seul hôte à publier, pas de saut réseau supplémentaire, et les secrets ne vivent qu'à un endroit.

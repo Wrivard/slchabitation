@@ -14,3 +14,7 @@ Le dépôt local ne possède aucun identifiant HTTPS : `git push` échoue toujou
 - La sortie de `git diff --name-only` peut arriver avec un retour chariot en fin de ligne dans cet environnement ; le retirer, sinon le chemin ne correspond à aucun fichier et le fichier disparaît silencieusement de la publication.
 - Après la mise à jour de la référence, relire un fichier publié depuis la branche distante pour confirmer, puis réaligner la branche locale sur le distant.
 - Si les endpoints Git Data et Contents renvoient tous deux un 403 HTML, conserver le commit local et signaler le blocage plutôt que de demander ou manipuler un jeton.
+
+**Un contenu peut être refusé pour ce qu'il contient.** Le proxy inspecte le corps de la requête et bloque tout envoi contenant une balise `script` littérale (ouvrante ou fermante), y compris encodée en base64 et y compris à l'intérieur d'une expression régulière ou d'une chaîne de caractères. Un fichier de génération de pages HTML devient donc impossible à mettre à jour par ce chemin, alors même qu'il est déjà dans le dépôt.
+
+Diagnostic : si un fichier est refusé pendant qu'un autre passe, ce n'est ni une limite de débit ni la taille. Sonder en publiant des *blobs* jetables (un blob sans référence ne modifie rien) : d'abord le fichier sans ses chevrons, puis des fragments, jusqu'à isoler le motif. Ne pas déformer le code du projet pour contourner le filtre ; laisser le commit prêt en local et demander une poussée manuelle.
