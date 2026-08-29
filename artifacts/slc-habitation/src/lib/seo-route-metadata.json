@@ -1,5 +1,5 @@
 {
-  "siteOrigin": "https://slchabitation.com",
+  "siteOrigin": "https://www.slchabitation.com",
   "routes": [
     {
       "path": "/",
@@ -63,16 +63,16 @@
             "@type": "AboutPage",
             "name": "À propos de SLC Habitation",
             "description": "Découvrez SLC Habitation, une équipe de rénovation résidentielle à l’écoute des propriétaires des Laurentides, de Laval et des environs.",
-            "url": "https://slchabitation.com/a-propos",
+            "url": "https://www.slchabitation.com/a-propos",
             "about": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             }
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/a-propos#faq",
+            "@id": "https://www.slchabitation.com/a-propos#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -130,11 +130,11 @@
             "@type": "Service",
             "name": "Rénovation résidentielle",
             "description": "Rénovation de cuisines, salles de bains, sous-sols et espaces de vie adaptée aux besoins des propriétaires.",
-            "url": "https://slchabitation.com/renovation",
+            "url": "https://www.slchabitation.com/renovation",
             "provider": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             },
             "areaServed": [
               {
@@ -173,7 +173,7 @@
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/renovation#faq",
+            "@id": "https://www.slchabitation.com/renovation#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -229,14 +229,14 @@
         "@graph": [
           {
             "@type": "Service",
-            "@id": "https://slchabitation.com/renovation-sous-sol#service",
+            "@id": "https://www.slchabitation.com/renovation-sous-sol#service",
             "name": "Rénovation de sous-sol",
             "description": "Aménagement et finition de sous-sols sur mesure dans les Laurentides et à Laval.",
-            "url": "https://slchabitation.com/renovation-sous-sol",
+            "url": "https://www.slchabitation.com/renovation-sous-sol",
             "provider": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             },
             "areaServed": [
               {
@@ -251,7 +251,7 @@
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/renovation-sous-sol#faq",
+            "@id": "https://www.slchabitation.com/renovation-sous-sol#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -291,14 +291,14 @@
         "@graph": [
           {
             "@type": "Service",
-            "@id": "https://slchabitation.com/renovation-salle-de-bain#service",
+            "@id": "https://www.slchabitation.com/renovation-salle-de-bain#service",
             "name": "Rénovation de salle de bain",
             "description": "Rénovation de salles de bain, douches italiennes et pose de céramique.",
-            "url": "https://slchabitation.com/renovation-salle-de-bain",
+            "url": "https://www.slchabitation.com/renovation-salle-de-bain",
             "provider": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             },
             "areaServed": [
               {
@@ -313,7 +313,7 @@
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/renovation-salle-de-bain#faq",
+            "@id": "https://www.slchabitation.com/renovation-salle-de-bain#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -353,14 +353,14 @@
         "@graph": [
           {
             "@type": "Service",
-            "@id": "https://slchabitation.com/renovation-cuisine#service",
+            "@id": "https://www.slchabitation.com/renovation-cuisine#service",
             "name": "Rénovation de cuisine",
             "description": "Aménagement et rénovation complète de cuisines.",
-            "url": "https://slchabitation.com/renovation-cuisine",
+            "url": "https://www.slchabitation.com/renovation-cuisine",
             "provider": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             },
             "areaServed": [
               {
@@ -375,7 +375,7 @@
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/renovation-cuisine#faq",
+            "@id": "https://www.slchabitation.com/renovation-cuisine#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -417,11 +417,11 @@
             "@type": "Service",
             "name": "Agrandissement et construction neuve",
             "description": "Projets d’agrandissement résidentiel et de construction neuve, incluant maisons neuves et garages.",
-            "url": "https://slchabitation.com/agrandissement-construction-neuve",
+            "url": "https://www.slchabitation.com/agrandissement-construction-neuve",
             "provider": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             },
             "areaServed": [
               {
@@ -460,7 +460,7 @@
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/agrandissement-construction-neuve#faq",
+            "@id": "https://www.slchabitation.com/agrandissement-construction-neuve#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -518,11 +518,11 @@
             "@type": "Service",
             "name": "Travaux résidentiels sur mesure",
             "description": "Solutions de travaux résidentiels sur mesure, évaluées avec soin et conçues pour produire des résultats durables.",
-            "url": "https://slchabitation.com/travaux-sur-mesure",
+            "url": "https://www.slchabitation.com/travaux-sur-mesure",
             "provider": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             },
             "areaServed": [
               {
@@ -561,7 +561,7 @@
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/travaux-sur-mesure#faq",
+            "@id": "https://www.slchabitation.com/travaux-sur-mesure#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -619,16 +619,16 @@
             "@type": "CollectionPage",
             "name": "Réalisations de rénovation",
             "description": "Parcourez les réalisations de SLC Habitation et découvrez des projets de rénovation, d’agrandissement et de construction résidentielle.",
-            "url": "https://slchabitation.com/realisations",
+            "url": "https://www.slchabitation.com/realisations",
             "about": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             }
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/realisations#faq",
+            "@id": "https://www.slchabitation.com/realisations#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -686,16 +686,16 @@
             "@type": "ContactPage",
             "name": "Demander une soumission — SLC Habitation",
             "description": "Décrivez votre projet à SLC Habitation et demandez une soumission pour vos travaux de rénovation, d’agrandissement ou de construction neuve.",
-            "url": "https://slchabitation.com/soumission",
+            "url": "https://www.slchabitation.com/soumission",
             "about": {
               "@type": "HomeAndConstructionBusiness",
               "name": "SLC Habitation",
-              "url": "https://slchabitation.com"
+              "url": "https://www.slchabitation.com"
             }
           },
           {
             "@type": "FAQPage",
-            "@id": "https://slchabitation.com/soumission#faq",
+            "@id": "https://www.slchabitation.com/soumission#faq",
             "mainEntity": [
               {
                 "@type": "Question",

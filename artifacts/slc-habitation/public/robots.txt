@@ -22,8 +22,8 @@ Allow: /images/*.svg
 Allow: /images/*.webp
 
 # Sitemap location
-Sitemap: https://slchabitation.com/sitemap.xml
+Sitemap: https://www.slchabitation.com/sitemap.xml
 
 # AI retrieval and search agents are allowed to discover the public site.
 # A supplementary machine-readable page index is available at:
-# https://slchabitation.com/llms.txt
+# https://www.slchabitation.com/llms.txt

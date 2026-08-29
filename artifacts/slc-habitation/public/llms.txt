@@ -6,17 +6,17 @@ Ce fichier est un index complémentaire destiné aux systèmes de récupération
 
 ## Pages principales
 
-- [Accueil](https://slchabitation.com/) — Présentation de SLC Habitation et de ses services de rénovation et de construction résidentielle dans les Laurentides et à Laval.
-- [Rénovation résidentielle](https://slchabitation.com/renovation) — Rénovation de cuisines, salles de bains, sous-sols et espaces de vie adaptée aux besoins des propriétaires.
-- [Rénovation de sous-sol](https://slchabitation.com/renovation-sous-sol) — Aménagement et finition de sous-sols pour créer un espace de vie confortable, durable et adapté aux besoins du foyer.
-- [Rénovation de salle de bain](https://slchabitation.com/renovation-salle-de-bain) — Rénovation clé en main de salles de bain, incluant plomberie, céramique, rangement et finitions.
-- [Rénovation de cuisine](https://slchabitation.com/renovation-cuisine) — Conception et rénovation de cuisines fonctionnelles avec prise en charge coordonnée du projet.
-- [Agrandissement et construction neuve](https://slchabitation.com/agrandissement-construction-neuve) — Projets d'agrandissement résidentiel et de construction neuve, incluant maisons neuves et garages.
-- [Travaux sur mesure](https://slchabitation.com/travaux-sur-mesure) — Travaux résidentiels personnalisés pour adapter, embellir et renforcer une maison selon le projet.
-- [Réalisations](https://slchabitation.com/realisations) — Portfolio de projets de rénovation, d'agrandissement et de construction résidentielle réalisés par SLC Habitation.
-- [Demander une soumission](https://slchabitation.com/soumission) — Formulaire pour décrire un projet et demander une soumission en rénovation, agrandissement ou construction neuve.
+- [Accueil](https://www.slchabitation.com/) — Présentation de SLC Habitation et de ses services de rénovation et de construction résidentielle dans les Laurentides et à Laval.
+- [Rénovation résidentielle](https://www.slchabitation.com/renovation) — Rénovation de cuisines, salles de bains, sous-sols et espaces de vie adaptée aux besoins des propriétaires.
+- [Rénovation de sous-sol](https://www.slchabitation.com/renovation-sous-sol) — Aménagement et finition de sous-sols pour créer un espace de vie confortable, durable et adapté aux besoins du foyer.
+- [Rénovation de salle de bain](https://www.slchabitation.com/renovation-salle-de-bain) — Rénovation clé en main de salles de bain, incluant plomberie, céramique, rangement et finitions.
+- [Rénovation de cuisine](https://www.slchabitation.com/renovation-cuisine) — Conception et rénovation de cuisines fonctionnelles avec prise en charge coordonnée du projet.
+- [Agrandissement et construction neuve](https://www.slchabitation.com/agrandissement-construction-neuve) — Projets d'agrandissement résidentiel et de construction neuve, incluant maisons neuves et garages.
+- [Travaux sur mesure](https://www.slchabitation.com/travaux-sur-mesure) — Travaux résidentiels personnalisés pour adapter, embellir et renforcer une maison selon le projet.
+- [Réalisations](https://www.slchabitation.com/realisations) — Portfolio de projets de rénovation, d'agrandissement et de construction résidentielle réalisés par SLC Habitation.
+- [Demander une soumission](https://www.slchabitation.com/soumission) — Formulaire pour décrire un projet et demander une soumission en rénovation, agrandissement ou construction neuve.
 
 ## Références techniques
 
-- [Sitemap XML](https://slchabitation.com/sitemap.xml) — Liste des URL publiques indexables.
-- [Robots.txt](https://slchabitation.com/robots.txt) — Directives d'exploration du site.
+- [Sitemap XML](https://www.slchabitation.com/sitemap.xml) — Liste des URL publiques indexables.
+- [Robots.txt](https://www.slchabitation.com/robots.txt) — Directives d'exploration du site.
