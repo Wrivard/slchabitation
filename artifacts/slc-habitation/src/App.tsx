@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { PageMetadata, metadataForPath } from '@/components/page-metadata';
+import { refreshCallTracking } from '@/lib/google-ads';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
@@ -99,6 +100,13 @@ function Router() {
   const [location] = useLocation();
   const metadata = metadataForPath(location);
   useScrollToTopOnNavigation(location);
+
+  /* Le numéro de téléphone remplacé par Google pour le suivi des appels est
+     réécrit par l'application à chaque changement de page ; la demande doit
+     donc être rejouée après le rendu. */
+  useEffect(() => {
+    refreshCallTracking();
+  }, [location]);
 
   return (
     <RoutedErrorBoundary>
