@@ -20,4 +20,5 @@
 - [IP client derrière un proxy](express-trusted-proxy-ip.md) — avec `trust proxy`, `req.ip` suit l'en-tête falsifiable; plafonner aussi sur l'adresse de la connexion.
 - [Repères visuels SLC](slc-brand-assets.md) — le fichier nommé `Logo.svg` est un reste de gabarit; le vrai logo porte un nom opaque et donne la couleur de la marque.
 - [Courriels transactionnels](transactional-email-rendering.md) — tableaux et styles en ligne; une valeur échappée en texte reste dangereuse dans un `href`.
+- [Marquage publicitaire Google](google-ads-call-tracking.md) — un conteneur de balises n'exécute pas les commandes d'un compte absent; et le numéro remplacé doit être redemandé après chaque rendu React.
 - [Publication GitHub](github-publishing.md) — pousser par l’intégration Replit; Git HTTPS n’a pas d’identifiants et un 403 HTML du proxy peut bloquer seulement les écritures.
