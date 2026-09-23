@@ -35,33 +35,31 @@
       window.addEventListener('CookiebotOnConsent', updateGoogleConsentFromCookiebot);
       window.addEventListener('CookiebotOnDecline', updateGoogleConsentFromCookiebot);
     </script>
-    <!--
-      Compte publicitaire Google (AW-18365089753) et suivi des appels : Google
-      remplace le numéro affiché par un numéro de transfert pour rattacher un
-      appel à une annonce.
-
-      La bibliothèque est chargée explicitement ici. Le reste du site passe par
-      Google Tag Manager, mais un conteneur ne traite pas les commandes d'un
-      compte publicitaire qui n'y est pas déclaré : sans ce chargement, les
-      deux commandes ci-dessous n'auraient aucun effet.
-
-      Le numéro est aussi re-signalé après chaque changement de page par
-      src/lib/google-ads.ts, car l'application réécrit le texte sans recharger.
-    -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18365089753"></script>
-    <script>
-      gtag('js', new Date());
-      gtag('config', 'AW-18365089753');
-      gtag('config', 'AW-18365089753/yOTDCJnriYAdENmPlLVE', {
-        'phone_conversion_number': '(514) 404-8494'
-      });
-    </script>
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-PCNZTC97');
+    </script>
+    <!--
+      Suivi des appels Google Ads : Google remplace le numéro affiché par un
+      numéro de transfert, ce qui lui permet de rattacher un appel à une
+      annonce.
+
+      Aucune bibliothèque n'est chargée ici : le compte publicitaire
+      AW-18365089753 arrive déjà par le conteneur ci-dessus (vérifié sur le site
+      en ligne). Le charger une seconde fois déclarerait deux visites pour une
+      seule.
+
+      Le numéro est aussi re-signalé après chaque changement de page par
+      src/lib/google-ads.ts, car l'application réécrit le texte sans recharger
+      le document.
+    -->
+    <script>
+      gtag('config', 'AW-18365089753/yOTDCJnriYAdENmPlLVE', {
+        'phone_conversion_number': '(514) 404-8494'
+      });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
