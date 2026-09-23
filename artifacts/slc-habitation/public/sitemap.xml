@@ -1,90 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  
-  <!-- Homepage - Highest Priority -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.slchabitation.com/</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
-  
-  <!-- Contact/Form pages - High Priority -->
   <url>
-    <loc>https://www.slchabitation.com/soumission</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.slchabitation.com/a-propos</loc>
   </url>
-  
-  <!-- Service pages - High Priority -->
   <url>
     <loc>https://www.slchabitation.com/renovation</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.slchabitation.com/renovation-sous-sol</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.slchabitation.com/renovation-salle-de-bain</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.slchabitation.com/renovation-cuisine</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.slchabitation.com/agrandissement-construction-neuve</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://www.slchabitation.com/travaux-sur-mesure</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
-  
-  <!-- About page - Medium Priority -->
-  <url>
-    <loc>https://www.slchabitation.com/a-propos</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Portfolio/Realizations - High Priority -->
   <url>
     <loc>https://www.slchabitation.com/realisations</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
-  
-  <!-- Legal pages - Low Priority -->
+  <url>
+    <loc>https://www.slchabitation.com/soumission</loc>
+  </url>
   <url>
     <loc>https://www.slchabitation.com/politique-de-cookie</loc>
-    <lastmod>2025-01-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.slchabitation.com/pub/renovation-sous-sol</loc>
+  </url>
+  <url>
+    <loc>https://www.slchabitation.com/pub/renovation-salle-de-bain</loc>
+  </url>
+  <url>
+    <loc>https://www.slchabitation.com/pub/renovation-cuisine</loc>
+  </url>
+  <url>
+    <loc>https://www.slchabitation.com/pub/agrandissement-maison</loc>
   </url>
   <url>
     <loc>https://www.slchabitation.com/politique-de-confidentialite</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>

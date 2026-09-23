@@ -7,19 +7,20 @@ head
   title « Rénovation salle de bain | Laval et Laurentides »
   meta [name=description]
   meta [name=robots]
-  link [href=https://slchabitation.com/renovation-salle-de-bain rel=canonical]
-  meta
-  meta
+  link [href=https://www.slchabitation.com/renovation-salle-de-bain rel=canonical]
   meta
   meta [name=twitter:url]
+  meta
+  meta
   meta [name=twitter:title]
   meta [name=twitter:description]
-  script [id=page-schema type=application/ld+json] « {"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://slchabitation…185ddb55 »
+  script [id=page-schema type=application/ld+json] « {"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://www.slchabita…fc3fac84 »
   noscript
     style « [data-noscript-reveal]{opacity:1!important;transform:none!important} »
   script « window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gta…410841db »
   script « function updateGoogleConsentFromCookiebot() { var consent = window.Cookiebot && window.Coo…421f72fa »
   script « (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm…b644a597 »
+  script « gtag('config', 'AW-18365089753/yOTDCJnriYAdENmPlLVE', { 'phone_conversion_number': '(514) …56a6ea88 »
   meta
   meta [name=viewport]
   meta
@@ -39,7 +40,7 @@ head
   meta [name=theme-color]
   meta [name=apple-mobile-web-app-capable]
   meta [name=format-detection]
-  script [type=application/ld+json] « { "@context": "https://schema.org", "@graph": [ { "@type": "HomeAndConstructionBusiness", …8688d436 »
+  script [type=application/ld+json] « { "@context": "https://schema.org", "@graph": [ { "@type": "HomeAndConstructionBusiness", …d2c109f9 »
   link [href=/favicon.svg rel=icon type=image/svg+xml]
   link [href=/favicon.png rel=icon sizes=256x256 type=image/png]
   link [href=/images/256x256.png rel=apple-touch-icon]
@@ -87,8 +88,8 @@ body
                 div.menu-icon3_line-middle
                 div.menu-icon3_line-bottom
             nav.navbar3_menu.w-nav-menu [id=site-navigation role=navigation]
-              a.navbar3_logo-link-menu.w-nav-brand [href=/]
-                img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+              a.navbar3_logo-link-menu.w-nav-brand [aria-label=Accueil — SLC Habitation href=/]
+                img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
               a.navbar3_link.w-nav-link [href=/] « Accueil »
               a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
               div.navbar3_menu-dropdown.w-dropdown [data-delay=200 data-hover=true]
@@ -98,14 +99,16 @@ body
                     svg [height=100% width=100%]
                       path
                 nav.navbar3_dropdown-list.w-dropdown-list
-                  a.navbar3_dropdown-link.w--current.w-dropdown-link [aria-current=page href=/renovation] « Rénovation »
-                  a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/pub/renovation-cuisine] « Rénovation de cuisine »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/pub/renovation-salle-de-bain] « Rénovation de salle de bain »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/pub/renovation-sous-sol] « Rénovation de sous-sol »
+                  a.navbar3_dropdown-link.w-dropdown-link [href=/pub/agrandissement-maison] « Agrandissement de maison »
                   a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
               a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
-              a.navbar3_tablet-menu-button.w-button [data-service=renovation-salle-de-bain href=/soumission] « Soumission »
+              a.navbar3_tablet-menu-button.w-button [data-service=renovation-salle-de-bain href=/formulaire] « Soumission »
             a.navbar3_logo-link.w-nav-brand [href=/]
-              img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
-            a.button.w-button [data-service=renovation-salle-de-bain href=/soumission id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
+              img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+            a.button.w-button [data-service=renovation-salle-de-bain href=/formulaire id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
             div.navbar3_menu-background
         section.bg-mine-shaft.md:py-28.overflow-hidden.py-20.relative.text-white
           div.absolute.bg-black.inset-0.z-0
@@ -114,7 +117,7 @@ body
             h1.font-bold.font-heading.leading-tight.mb-6.md:text-5xl.text-3xl « Rénovation de salle de bain à Laval et dans les Laurentides »
             p.max-w-2xl.mb-8.md:text-xl.mx-auto.text-gray-200.text-lg « De la douche italienne au bain autoportant, nous créons des espaces sur mesure. Nous géron…598b7f14 »
             div.flex.flex-col.gap-4.items-center.justify-center.mb-8.sm:flex-row
-              a.!bg-[#f58026].cta-link.font-medium.hover:bg-[#d86d1b].px-8.py-4.rounded-lg.shadow-md.sm:w-auto.text-center.text-lg.text-white.transition-colors.w-full [data-service=renovation-salle-de-bain href=/soumission] « Obtenir une estimation »
+              a.!bg-[#f58026].cta-link.font-medium.hover:bg-[#d86d1b].px-8.py-4.rounded-lg.shadow-md.sm:w-auto.text-center.text-lg.text-white.transition-colors.w-full [data-service=renovation-salle-de-bain href=/formulaire] « Obtenir une estimation »
             div.flex.flex-wrap.font-medium.gap-x-6.gap-y-2.items-center.justify-center.text-gray-300.text-sm
               div.flex.gap-2.items-center
                 svg.h-5.text-[#f58026].w-5
@@ -190,7 +193,7 @@ body
           div.container-large.fade-up.max-w-3xl.mx-auto.px-6.relative.text-center.z-10
             h2.font-bold.font-heading.mb-6.md:text-4xl.text-3xl.text-mine-shaft « Commencez la transformation aujourd'hui »
             p.mb-10.text-lg.text-neutral-dark « Rencontrez notre équipe pour discuter de vos goûts, de vos contraintes et de votre budget.…fa69bedd »
-            a.!bg-[#f58026].cta-link.duration-300.font-bold.hover:-translate-y-1.hover:bg-[#d86d1b].inline-block.px-10.py-5.rounded-lg.shadow-xl.text-lg.text-white.transform.transition-colors [data-service=renovation-salle-de-bain href=/soumission] « Demander une soumission sans frais »
+            a.!bg-[#f58026].cta-link.duration-300.font-bold.hover:-translate-y-1.hover:bg-[#d86d1b].inline-block.px-10.py-5.rounded-lg.shadow-xl.text-lg.text-white.transform.transition-colors [data-service=renovation-salle-de-bain href=/formulaire] « Demander une soumission sans frais »
       footer.color-scheme-1.footer3_component
         div.padding-global
           div.container-large
@@ -200,7 +203,7 @@ body
                   div.footer3_left-wrapper
                     div.margin-bottom.margin-medium
                       a.footer3_logo-link.w-nav-brand [href=/]
-                        img.footer3_logo [alt= height=44px loading=lazy sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                        img.footer3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                     div.margin-bottom.margin-medium
                       div.footer3_details-wrapper
                         div.margin-bottom.margin-tiny
@@ -213,35 +216,37 @@ body
                         a.text-size-small [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                           br
                     div.footer3_social-list.w-layout-grid
-                      a.footer3_social-link.w-inline-block [aria-hidden=true]
+                      a.footer3_social-link.w-inline-block [aria-label=Facebook de SLC Habitation href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
                         div.icon-embed-xsmall.w-embed
-                          svg [height=100% width=100%]
+                          svg [aria-hidden=true height=100% width=100%]
                             path
                       a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
-                          svg [height=100% width=100%]
+                          svg [aria-hidden=true height=100% width=100%]
                             path
                       a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
-                          svg [height=100% width=100%]
+                          svg [aria-hidden=true height=100% width=100%]
                             path
                       a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
-                          svg [height=100% width=100%]
+                          svg [aria-hidden=true height=100% width=100%]
                             path
                       a.footer3_social-link.w-inline-block [aria-hidden=true]
                         div.icon-embed-xsmall.w-embed
-                          svg [height=100% width=100%]
+                          svg [aria-hidden=true height=100% width=100%]
                             path
                   div.footer3_menu-wrapper.w-layout-grid
                     div.footer3_link-list
                       a.footer3_link [href=/] « Accueil »
                       a.footer3_link [href=/a-propos] « À propos »
                       a.footer3_link [href=/realisations] « Réalisations »
-                      a.footer3_link [data-service=renovation-salle-de-bain href=/soumission] « Soumission »
+                      a.footer3_link [data-service=renovation-salle-de-bain href=/formulaire] « Soumission »
                     div.footer3_link-list
-                      a.footer3_link.w--current [aria-current=page href=/renovation] « Rénovation »
-                      a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
+                      a.footer3_link [href=/pub/renovation-cuisine] « Rénovation de cuisine »
+                      a.footer3_link [href=/pub/renovation-salle-de-bain] « Rénovation de salle de bain »
+                      a.footer3_link [href=/pub/renovation-sous-sol] « Rénovation de sous-sol »
+                      a.footer3_link [href=/pub/agrandissement-maison] « Agrandissement de maison »
                       a.footer3_link [href=/travaux-sur-mesure] « Travaux sur mesure »
               div.divider-horizontal
               div.padding-medium.padding-top
@@ -253,7 +258,6 @@ body
                         img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
                   div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                     a.footer3_legal-link [href=/politique-de-cookie] « Politique de cookies »
-                    a.footer3_legal-link [href=/politique-de-confidentialite] « Politique de confidentialité »
     div [aria-label=Notifications (F8) role=region style=pointer-events:none]
       ol.fixed.flex.flex-col-reverse.max-h-screen.md:max-w-[420px].p-4.sm:bottom-0.sm:flex-col.sm:right-0.sm:top-auto.top-0.w-full.z-[100]
   script [src=/assets/index-*.js type=module]

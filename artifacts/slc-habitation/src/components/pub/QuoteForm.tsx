@@ -16,6 +16,7 @@ import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useTrackingParams } from '@/hooks/use-tracking-params';
 import { rememberQuoteSubmission } from '@/lib/quote-submission';
+import { trackFormStepComplete, trackLeadGenerated } from '@/lib/ga-form-events';
 import { TurnstileWidget, type TurnstileStatus } from '@/components/pub/TurnstileWidget';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -211,6 +212,11 @@ export function QuoteForm({
   const startedAt = useRef<number>(Date.now());
   const submissionId = useRef<string>(crypto.randomUUID());
   const formStarted = useRef(false);
+  /* Mesure GA4 : une étape franchie et une demande envoyée ne comptent chacune
+     qu'une fois, même si le visiteur revient en arrière puis repart en avant,
+     et quel que soit le nombre de rendus de React. */
+  const stepsTracked = useRef(new Set<number>());
+  const leadTracked = useRef(false);
   const turnstileResetRef = useRef<(() => void) | undefined>(undefined);
   const shellRef = useRef<HTMLDivElement>(null);
   const stepHeadingRefs = [
@@ -305,6 +311,10 @@ export function QuoteForm({
     if (isStepValid) {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'form_step_complete', service: defaultService || 'formulaire', step });
+      if (!stepsTracked.current.has(step)) {
+        stepsTracked.current.add(step);
+        trackFormStepComplete(step);
+      }
       setStep((prev) => prev + 1);
     }
   };
@@ -454,6 +464,13 @@ export function QuoteForm({
       if (response.ok && result.success === true) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'quote_form_submit', service: defaultService || 'formulaire', step: 3 });
+
+        /* La conversion part d'ici, avant la redirection : `/merci` peut être
+           rechargée ou visitée directement, elle ne prouve rien. */
+        if (!leadTracked.current) {
+          leadTracked.current = true;
+          trackLeadGenerated();
+        }
 
         /* La conversion se mesure sur `/merci` : le marqueur dit à cette page
            qu'une demande vient réellement d'être envoyée. */

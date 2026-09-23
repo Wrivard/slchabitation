@@ -143,7 +143,6 @@ export function metadataForPath(location: string) {
     .replace(/\.html$/, '')
     .replace(/\/$/, '') || '/';
 
-  const isPubRoute = normalizedPath.startsWith('/pub');
   const isUtilityPath = utilityPaths.has(normalizedPath);
   /* Toute adresse inconnue affiche la page « Page introuvable » : sa fiche
      descriptive doit suivre, sinon le navigateur réécrirait l'adresse demandée
@@ -160,10 +159,12 @@ export function metadataForPath(location: string) {
         }
       : notFoundRoute);
 
-  /* Les pages du tunnel publicitaire sont exclues des moteurs par principe;
-     les autres pages le demandent explicitement (page de confirmation). */
+  /* Les pages du tunnel publicitaire sont devenues les pages de services du
+     menu : elles sont référencées comme les autres. Seules les pages qui le
+     demandent explicitement restent hors des moteurs (confirmation, pages
+     techniques). */
   return {
     ...route,
-    noindex: isPubRoute || route.noindex === true,
+    noindex: route.noindex === true,
   };
 }

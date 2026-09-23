@@ -354,12 +354,20 @@ margin: 0rem !important;
                   {' '}
                   <nav className="navbar3_dropdown-list w-dropdown-list">
                     {' '}
-                    <a href="/renovation" className="navbar3_dropdown-link w-dropdown-link">
-                      Rénovation
+                    <a href="/pub/renovation-cuisine" className="navbar3_dropdown-link w-dropdown-link">
+                      Rénovation de cuisine
                     </a>
                     {' '}
-                    <a href="/agrandissement-construction-neuve" aria-current="page" className="navbar3_dropdown-link w-dropdown-link w--current">
-                      Agrandissement & Construction neuve
+                    <a href="/pub/renovation-salle-de-bain" className="navbar3_dropdown-link w-dropdown-link">
+                      Rénovation de salle de bain
+                    </a>
+                    {' '}
+                    <a href="/pub/renovation-sous-sol" className="navbar3_dropdown-link w-dropdown-link">
+                      Rénovation de sous-sol
+                    </a>
+                    {' '}
+                    <a href="/pub/agrandissement-maison" className="navbar3_dropdown-link w-dropdown-link">
+                      Agrandissement de maison
                     </a>
                     {' '}
                     <a href="/travaux-sur-mesure" className="navbar3_dropdown-link w-dropdown-link">
@@ -2347,12 +2355,20 @@ margin: 0rem !important;
                       {' '}
                       <div className="footer3_link-list">
                         {' '}
-                        <a href="/renovation" className="footer3_link">
-                          Rénovation
+                        <a href="/pub/renovation-cuisine" className="footer3_link">
+                          Rénovation de cuisine
                         </a>
                         {' '}
-                        <a href="/agrandissement-construction-neuve" aria-current="page" className="footer3_link w--current">
-                          Agrandissement & Construction neuve
+                        <a href="/pub/renovation-salle-de-bain" className="footer3_link">
+                          Rénovation de salle de bain
+                        </a>
+                        {' '}
+                        <a href="/pub/renovation-sous-sol" className="footer3_link">
+                          Rénovation de sous-sol
+                        </a>
+                        {' '}
+                        <a href="/pub/agrandissement-maison" className="footer3_link">
+                          Agrandissement de maison
                         </a>
                         {' '}
                         <a href="/travaux-sur-mesure" className="footer3_link">

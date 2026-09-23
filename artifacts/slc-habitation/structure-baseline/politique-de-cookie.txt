@@ -7,11 +7,11 @@ head
   title « Politique de cookies | SLC Habitation »
   meta [name=description]
   meta [name=robots]
-  link [href=https://slchabitation.com/politique-de-cookie rel=canonical]
-  meta
-  meta
+  link [href=https://www.slchabitation.com/politique-de-cookie rel=canonical]
   meta
   meta [name=twitter:url]
+  meta
+  meta
   meta [name=twitter:title]
   meta [name=twitter:description]
   noscript
@@ -19,6 +19,7 @@ head
   script « window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gta…410841db »
   script « function updateGoogleConsentFromCookiebot() { var consent = window.Cookiebot && window.Coo…421f72fa »
   script « (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm…b644a597 »
+  script « gtag('config', 'AW-18365089753/yOTDCJnriYAdENmPlLVE', { 'phone_conversion_number': '(514) …56a6ea88 »
   meta
   meta [name=viewport]
   meta
@@ -38,7 +39,7 @@ head
   meta [name=theme-color]
   meta [name=apple-mobile-web-app-capable]
   meta [name=format-detection]
-  script [type=application/ld+json] « { "@context": "https://schema.org", "@graph": [ { "@type": "HomeAndConstructionBusiness", …8688d436 »
+  script [type=application/ld+json] « { "@context": "https://schema.org", "@graph": [ { "@type": "HomeAndConstructionBusiness", …d2c109f9 »
   link [href=/favicon.svg rel=icon type=image/svg+xml]
   link [href=/favicon.png rel=icon sizes=256x256 type=image/png]
   link [href=/images/256x256.png rel=apple-touch-icon]
@@ -87,8 +88,8 @@ body
                   div.menu-icon3_line-middle
                   div.menu-icon3_line-bottom
               nav.navbar3_menu.w-nav-menu [id=site-navigation role=navigation]
-                a.navbar3_logo-link-menu.w-nav-brand [href=/]
-                  img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                a.navbar3_logo-link-menu.w-nav-brand [aria-label=Accueil — SLC Habitation href=/]
+                  img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 991px) 100vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                 a.navbar3_link.w-nav-link [href=/] « Accueil »
                 a.navbar3_link.w-nav-link [href=/a-propos] « À Propos »
                 div.navbar3_menu-dropdown.w-dropdown [data-delay=200 data-hover=true]
@@ -98,13 +99,15 @@ body
                       svg [height=100% width=100%]
                         path
                   nav.navbar3_dropdown-list.w-dropdown-list
-                    a.navbar3_dropdown-link.w-dropdown-link [href=/renovation] « Rénovation »
-                    a.navbar3_dropdown-link.w-dropdown-link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/pub/renovation-cuisine] « Rénovation de cuisine »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/pub/renovation-salle-de-bain] « Rénovation de salle de bain »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/pub/renovation-sous-sol] « Rénovation de sous-sol »
+                    a.navbar3_dropdown-link.w-dropdown-link [href=/pub/agrandissement-maison] « Agrandissement de maison »
                     a.navbar3_dropdown-link.w-dropdown-link [href=/travaux-sur-mesure] « Travaux sur mesure »
                 a.navbar3_link.w-nav-link [href=/realisations] « Réalisations »
                 a.navbar3_tablet-menu-button.w-button [href=/soumission] « Soumission »
               a.navbar3_logo-link.w-nav-brand [href=/]
-                img.navbar3_logo [alt= height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                img.navbar3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
               a.button.w-button [href=/soumission id=w-node-e94d028c-b457-e648-e3c9-1bebe5f245fc-e5f245dc] « Soumission »
               div.navbar3_menu-background
           header.color-scheme-3.section_header50.text-color-white
@@ -285,7 +288,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657333.png]
+                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657333.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Mélodie Binette »
@@ -318,7 +321,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657331.png]
+                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657331.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Johanne Duguay »
@@ -351,7 +354,7 @@ body
                           div.testimonial6_client
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-image-wrapper
-                                img.testimonial6_client-image [alt= loading=lazy src=/images/relume-657334.png]
+                                img.testimonial6_client-image [alt= loading=eager src=/images/relume-657334.png]
                             div.margin-bottom.margin-xsmall
                               div.testimonial6_client-info
                                 div.text-weight-semibold « Isabelle Baril »
@@ -371,7 +374,7 @@ body
                           a.button.is-alternate.is-secondary.w-button [href=#contact] « Contactez-nous »
             div.cta3_background-image-wrapper
               div.image-overlay-layer
-              img.cta3_background-image-position-center [alt= loading=lazy sizes=(max-width: 3072px) 100vw, 3072px src=/images/90639537_2793436424107173_8894610445172736000_n.jpg srcset=#e6d27d58]
+              img.cta3_background-image-position-center [alt= loading=eager sizes=(max-width: 3072px) 100vw, 3072px src=/images/90639537_2793436424107173_8894610445172736000_n.jpg srcset=#e6d27d58]
           section.color-scheme-2.section_contact16 [id=contact]
             div.padding-global
               div.container-large
@@ -414,7 +417,7 @@ body
                               div.contact16_item-text-wrapper
                                 div.margin-bottom.margin-xxsmall
                                   h3.heading-style-h6 « Adresse »
-                                div.text-style-link « Saint Eustache, QC »
+                                a.text-style-link [href=#] « Saint Eustache, QC »
                     div.contact16_map-wrapper
                       iframe.contact16_map [loading=lazy src=https://www.google.com/maps/d/embed?mid=1k56IyW1TzLWOWD5u3sdZecuYDg8wjDg&ehbc=2E312F]
           section.color-scheme-3.section_layout626
@@ -468,7 +471,7 @@ body
                     div.footer3_left-wrapper
                       div.margin-bottom.margin-medium
                         a.footer3_logo-link.w-nav-brand [href=/]
-                          img.footer3_logo [alt= height=44px loading=lazy sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
+                          img.footer3_logo [alt=SLC Habitation height=44px loading=eager sizes=(max-width: 479px) 86vw, 76.8125px src=/images/relume-567884.png srcset=/images/relume-567884-p-500.png 500w, /images/relume-567884.png 660w]
                       div.margin-bottom.margin-medium
                         div.footer3_details-wrapper
                           div.margin-bottom.margin-tiny
@@ -481,25 +484,25 @@ body
                           a.text-size-small [href=mailto:slchabitation@gmail.com] « slchabitation@gmail.com »
                             br
                       div.footer3_social-list.w-layout-grid
-                        a.footer3_social-link.w-inline-block [aria-hidden=true]
+                        a.footer3_social-link.w-inline-block [aria-label=Facebook de SLC Habitation href=https://www.facebook.com/SLCHabitation rel=noopener target=_blank]
                           div.icon-embed-xsmall.w-embed
-                            svg [height=100% width=100%]
+                            svg [aria-hidden=true height=100% width=100%]
                               path
                         a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
-                            svg [height=100% width=100%]
+                            svg [aria-hidden=true height=100% width=100%]
                               path
                         a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
-                            svg [height=100% width=100%]
+                            svg [aria-hidden=true height=100% width=100%]
                               path
                         a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
-                            svg [height=100% width=100%]
+                            svg [aria-hidden=true height=100% width=100%]
                               path
                         a.footer3_social-link.w-inline-block [aria-hidden=true]
                           div.icon-embed-xsmall.w-embed
-                            svg [height=100% width=100%]
+                            svg [aria-hidden=true height=100% width=100%]
                               path
                     div.footer3_menu-wrapper.w-layout-grid
                       div.footer3_link-list
@@ -508,8 +511,10 @@ body
                         a.footer3_link [href=/realisations] « Réalisations »
                         a.footer3_link [href=/soumission] « Soumission »
                       div.footer3_link-list
-                        a.footer3_link [href=/renovation] « Rénovation »
-                        a.footer3_link [href=/agrandissement-construction-neuve] « Agrandissement & Construction neuve »
+                        a.footer3_link [href=/pub/renovation-cuisine] « Rénovation de cuisine »
+                        a.footer3_link [href=/pub/renovation-salle-de-bain] « Rénovation de salle de bain »
+                        a.footer3_link [href=/pub/renovation-sous-sol] « Rénovation de sous-sol »
+                        a.footer3_link [href=/pub/agrandissement-maison] « Agrandissement de maison »
                         a.footer3_link [href=/travaux-sur-mesure] « Travaux sur mesure »
                 div.divider-horizontal
                 div.padding-medium.padding-top
@@ -521,7 +526,6 @@ body
                           img [alt=KUA src=/images/black-letter-kua-logo.png style=height:24px;width:auto;opacity:0.8]
                     div.footer3_legal-list.w-layout-grid [style=flex:1;display:flex;justify-content:flex-end]
                       a.footer3_legal-link.w--current [aria-current=page href=/politique-de-cookie] « Politique de cookies »
-                      a.footer3_legal-link [href=/politique-de-confidentialite] « Politique de confidentialité »
       div.back-top__wrap [data-back-to-top=wrap]
         a.messenger_button.w-inline-block [aria-label=Contacter SLC Habitation sur Messenger href=https://m.me/SLCHabitation target=_blank]
           img [alt= loading=lazy sizes=(max-width: 2008px) 100vw, 2008px src=/images/Messenger_Icon_Secondary_White.png srcset=#67cd9d44]

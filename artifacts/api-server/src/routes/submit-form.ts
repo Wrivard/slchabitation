@@ -80,6 +80,12 @@ const ALLOWED_REFERRAL_SOURCES = new Set([
   "Autre",
 ]);
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/* Adresse mise en copie de chaque demande, en plus du destinataire principal.
+   Elle est écrite ici pour que la copie parte même là où aucune variable
+   d'environnement n'a été configurée ; CC_EMAIL la remplace au besoin
+   (plusieurs adresses séparées par des virgules, ou une valeur vide pour
+   n'envoyer aucune copie). */
+const DEFAULT_CC_EMAIL = "gberther@kua.quebec";
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 type ProcessedSubmission = {
   processedAt: number;
@@ -471,6 +477,19 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       return;
     }
 
+    /* Une adresse invalide est ignorée plutôt que de faire échouer l'envoi :
+       la demande doit arriver au destinataire principal quoi qu'il arrive. Le
+       destinataire lui-même est retiré de la copie, sinon il reçoit deux fois
+       le même courriel. */
+    const ccEmails = (process.env.CC_EMAIL ?? DEFAULT_CC_EMAIL)
+      .split(",")
+      .map((address) => address.trim())
+      .filter(
+        (address) =>
+          emailPattern.test(address) &&
+          address.toLowerCase() !== recipientEmail.toLowerCase(),
+      );
+
     const formSubmissionId = sanitizedValue(fields, "submission_id", 36);
     const submissionId =
       requestedSubmissionId ??
@@ -561,7 +580,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
     const from = process.env.FROM_EMAIL || "noreply@kua.quebec";
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const businessResult = await resend.emails.send({
+    const ownerMessage = {
       from,
       to: recipientEmail,
       replyTo: email,
@@ -570,7 +589,19 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       // Les filtres anti-pourriel se méfient d'un courriel sans version texte.
       text: ownerEmail.text,
       attachments,
-    });
+    };
+
+    let businessResult = await resend.emails.send(
+      ccEmails.length > 0 ? { ...ownerMessage, cc: ccEmails } : ownerMessage,
+    );
+
+    /* Une copie refusée par le service d'envoi ne doit pas emporter la demande
+       avec elle : perdre la copie est sans gravité, perdre la demande d'un
+       client ne l'est pas. L'envoi est donc retenté sans la copie. */
+    if (businessResult.error && ccEmails.length > 0) {
+      req.log.warn("Quote email refused with a copy; retrying without it");
+      businessResult = await resend.emails.send(ownerMessage);
+    }
 
     if (businessResult.error) {
       req.log.error("Unable to send quote email");

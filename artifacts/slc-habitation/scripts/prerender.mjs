@@ -121,9 +121,7 @@ function createSchemaTag(schema) {
 }
 
 function createSitemap() {
-  const indexableRoutes = routes.filter(
-    (route) => route.noindex !== true && !route.path.startsWith('/pub/'),
-  );
+  const indexableRoutes = routes.filter((route) => route.noindex !== true);
   const entries = indexableRoutes
     .map((route) => {
       const canonical = `${siteOrigin}${route.path === '/' ? '/' : route.path}`;
@@ -230,7 +228,7 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   ${fontLoadingMarkup}
   <title>${escapeHtml(route.title)}</title>
   <meta name="description" content="${escapeHtml(route.description)}">
-  <meta name="robots" content="${route.path.startsWith('/pub/') || route.noindex === true ? 'noindex, follow' : 'index, follow'}">
+  <meta name="robots" content="${route.noindex === true ? 'noindex, follow' : 'index, follow'}">
   ${addressTags}
   <meta property="og:title" content="${escapeHtml(route.title)}">
   <meta property="og:description" content="${escapeHtml(route.description)}">
