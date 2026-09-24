@@ -1,9 +1,12 @@
 # SEO-Optimized Robots.txt
-# Last Updated: 2025-01-22
+# Last Updated: 2026-09-24
 
 # Allow all search engines
 User-agent: *
 Allow: /
+
+# Legacy service pages use a page-level "noindex, follow" directive.
+# Keep them crawlable so crawlers can read that directive; do not disallow them here.
 
 # Keep crawlable resources available to rendering crawlers. The public
 # application depends on these files for its initial presentation.
