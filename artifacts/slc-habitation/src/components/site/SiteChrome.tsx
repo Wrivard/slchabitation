@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useLocation } from 'wouter';
 import { addAccessibleNames, siteFooterHtml, siteHeaderHtml } from './site-chrome-markup';
 import { initSiteNav } from '@/lib/site-nav';
@@ -30,6 +30,20 @@ function markCurrentLink(root: HTMLElement, pathname: string) {
 export function SiteHeader() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [location] = useLocation();
+  /* PubLayout se rerend pendant le défilement pour changer sa section active.
+     Garder cet élément identique empêche React de remplacer le HTML Webflow :
+     ses nœuds ont des écouteurs natifs attachés par initSiteNav. */
+  const header = useMemo(
+    () => (
+      <div
+        ref={containerRef}
+        className="site-chrome site-chrome--header"
+        data-testid="site-navbar"
+        dangerouslySetInnerHTML={{ __html: addAccessibleNames(siteHeaderHtml) }}
+      />
+    ),
+    [],
+  );
 
   useEffect(() => {
     const container = containerRef.current;
@@ -43,14 +57,7 @@ export function SiteHeader() {
     markCurrentLink(container, location);
   }, [location]);
 
-  return (
-    <div
-      ref={containerRef}
-      className="site-chrome site-chrome--header"
-      data-testid="site-navbar"
-      dangerouslySetInnerHTML={{ __html: addAccessibleNames(siteHeaderHtml) }}
-    />
-  );
+  return header;
 }
 
 export function SiteFooter({ stickyHide = false }: { stickyHide?: boolean }) {
