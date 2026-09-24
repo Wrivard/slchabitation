@@ -749,11 +749,8 @@
   flex: 0 0 auto;
 }
 
-/* --- Table des matières, collée sous la navbar du site --- */
+/* --- Table des matières : visible au départ, puis elle défile avec la page --- */
 .pub-shell .pub-section-nav {
-  position: sticky;
-  top: var(--pub-header-height);
-  z-index: 900;
   width: 100%;
   border-bottom: 1px solid hsl(var(--border));
   background: hsl(var(--background));
