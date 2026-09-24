@@ -123,6 +123,7 @@
       "path": "/renovation",
       "title": "Rénovation résidentielle | SLC Habitation",
       "description": "Confiez votre rénovation résidentielle à SLC Habitation : cuisines, salles de bains, sous-sols et espaces de vie pensés pour vos besoins.",
+      "noindex": true,
       "schema": {
         "@context": "https://schema.org",
         "@graph": [
@@ -224,6 +225,7 @@
       "path": "/renovation-sous-sol",
       "title": "Rénovation de sous-sol Laval et Laurentides | SLC",
       "description": "Aménagement de sous-sol sur mesure à Laval et dans les Laurentides : planification, isolation, insonorisation, finition et coordination par SLC Habitation.",
+      "noindex": true,
       "schema": {
         "@context": "https://schema.org",
         "@graph": [
@@ -286,6 +288,7 @@
       "path": "/renovation-salle-de-bain",
       "title": "Rénovation salle de bain | Laval et Laurentides",
       "description": "Rénovation de salle de bain à Laval et dans les Laurentides : étanchéité, plomberie, céramique, ventilation et coordination par SLC Habitation.",
+      "noindex": true,
       "schema": {
         "@context": "https://schema.org",
         "@graph": [
@@ -348,6 +351,7 @@
       "path": "/renovation-cuisine",
       "title": "Rénovation de cuisine | Laval et Laurentides",
       "description": "Rénovation de cuisine à Laval et dans les Laurentides : aménagement, armoires, plomberie, électricité et coordination par SLC Habitation.",
+      "noindex": true,
       "schema": {
         "@context": "https://schema.org",
         "@graph": [
@@ -410,6 +414,7 @@
       "path": "/agrandissement-construction-neuve",
       "title": "Agrandissement et maison neuve | SLC Habitation",
       "description": "SLC Habitation conçoit des agrandissements résidentiels et des constructions neuves pour créer des espaces de vie fonctionnels et durables.",
+      "noindex": true,
       "schema": {
         "@context": "https://schema.org",
         "@graph": [
