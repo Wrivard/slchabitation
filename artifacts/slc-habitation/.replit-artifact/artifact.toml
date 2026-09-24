@@ -89,19 +89,19 @@ to = "/politique-de-confidentialite/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-cuisine"
-to = "/pub/renovation-cuisine/index.html"
+to = "/services/renovation-cuisine/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-salle-de-bain"
-to = "/pub/renovation-salle-de-bain/index.html"
+to = "/services/renovation-salle-de-bain/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-sous-sol"
-to = "/pub/renovation-sous-sol/index.html"
+to = "/services/renovation-sous-sol/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/agrandissement-maison"
-to = "/pub/agrandissement-maison/index.html"
+to = "/services/agrandissement-maison/index.html"
 
 [[services.production.rewrites]]
 from = "/merci"
@@ -149,19 +149,51 @@ to = "/politique-de-cookie/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-cuisine/*"
-to = "/pub/renovation-cuisine/index.html"
+to = "/services/renovation-cuisine/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-salle-de-bain/*"
-to = "/pub/renovation-salle-de-bain/index.html"
+to = "/services/renovation-salle-de-bain/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/renovation-sous-sol/*"
-to = "/pub/renovation-sous-sol/index.html"
+to = "/services/renovation-sous-sol/index.html"
 
 [[services.production.rewrites]]
 from = "/pub/agrandissement-maison/*"
-to = "/pub/agrandissement-maison/index.html"
+to = "/services/agrandissement-maison/index.html"
+
+[[services.production.rewrites]]
+from = "/services/renovation-cuisine"
+to = "/services/renovation-cuisine/index.html"
+
+[[services.production.rewrites]]
+from = "/services/renovation-cuisine/*"
+to = "/services/renovation-cuisine/index.html"
+
+[[services.production.rewrites]]
+from = "/services/renovation-salle-de-bain"
+to = "/services/renovation-salle-de-bain/index.html"
+
+[[services.production.rewrites]]
+from = "/services/renovation-salle-de-bain/*"
+to = "/services/renovation-salle-de-bain/index.html"
+
+[[services.production.rewrites]]
+from = "/services/renovation-sous-sol"
+to = "/services/renovation-sous-sol/index.html"
+
+[[services.production.rewrites]]
+from = "/services/renovation-sous-sol/*"
+to = "/services/renovation-sous-sol/index.html"
+
+[[services.production.rewrites]]
+from = "/services/agrandissement-maison"
+to = "/services/agrandissement-maison/index.html"
+
+[[services.production.rewrites]]
+from = "/services/agrandissement-maison/*"
+to = "/services/agrandissement-maison/index.html"
 
 [[services.production.rewrites]]
 from = "/*"

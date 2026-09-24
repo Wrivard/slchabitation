@@ -143,15 +143,21 @@ export function metadataForPath(location: string) {
     .replace(/\.html$/, '')
     .replace(/\/$/, '') || '/';
 
-  const isUtilityPath = utilityPaths.has(normalizedPath);
+  const legacyPaidSlug = normalizedPath.match(/^\/pub\/([^/]+)$/)?.[1];
+  const paidServicePath = legacyPaidSlug
+    ? `/services/${legacyPaidSlug}`
+    : undefined;
+  const metadataPath =
+    paidServicePath && routes[paidServicePath] ? paidServicePath : normalizedPath;
+  const isUtilityPath = utilityPaths.has(metadataPath);
   /* Toute adresse inconnue affiche la page « Page introuvable » : sa fiche
      descriptive doit suivre, sinon le navigateur réécrirait l'adresse demandée
      comme si elle désignait une page du site. */
   const route =
-    routes[normalizedPath] ??
+    routes[metadataPath] ??
     (isUtilityPath
       ? {
-          path: normalizedPath,
+          path: metadataPath,
           title: 'SLC Habitation | Rénovation résidentielle',
           description:
             'SLC Habitation accompagne les propriétaires pour leurs projets de rénovation, d’agrandissement et de construction résidentielle.',

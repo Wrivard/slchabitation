@@ -31,6 +31,12 @@ const legacyRouteRedirects: Record<string, string> = {
   '/soumission.html': '/soumission',
   '/politique-de-cookie.html': '/politique-de-cookie',
 };
+for (const { path: routePath } of seoRouteMetadata.routes) {
+  if (routePath.startsWith('/services/')) {
+    const slug = routePath.slice('/services/'.length);
+    legacyRouteRedirects[`/pub/${slug}`] = routePath;
+  }
+}
 const prerenderedRoutePaths = new Set(
   seoRouteMetadata.routes
     .map(({ path }) => path)
@@ -133,7 +139,8 @@ function redirectLegacyRoutes(
   next: () => void,
 ) {
   const requestUrl = new URL(req.url || '/', 'http://localhost');
-  const cleanPath = legacyRouteRedirects[requestUrl.pathname];
+  const normalizedPath = requestUrl.pathname.replace(/\/+$/, '') || '/';
+  const cleanPath = legacyRouteRedirects[normalizedPath];
   if (!cleanPath) {
     next();
     return;

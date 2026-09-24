@@ -10,6 +10,7 @@
  */
 export function addAccessibleNames(html: string): string {
   return html
+    .replaceAll('href="/pub/', 'href="/services/')
     .replaceAll(
       '<a href="#" class="navbar3_logo-link-menu w-nav-brand">',
       '<a href="/" class="navbar3_logo-link-menu w-nav-brand">',

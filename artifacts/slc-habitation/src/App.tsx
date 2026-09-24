@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useRef } from 'react';
+import { type ComponentType, type ReactNode, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { PageMetadata, metadataForPath } from '@/components/page-metadata';
@@ -54,6 +54,61 @@ function FunnelRedirect({ to }: { to: string }) {
 
 function FormulaireRedirect() {
   return <FunnelRedirect to="/soumission" />;
+}
+
+function LegacyPaidServiceRoute({
+  component: Page,
+  to,
+}: {
+  component: ComponentType;
+  to: string;
+}) {
+  const [location, navigate] = useLocation();
+
+  useEffect(() => {
+    if (location === to) return;
+    navigate(`${to}${window.location.search}${window.location.hash}`, {
+      replace: true,
+    });
+  }, [location, navigate, to]);
+
+  return <Page />;
+}
+
+function LegacyRenovationSousSolPub() {
+  return (
+    <LegacyPaidServiceRoute
+      component={RenovationSousSolPub}
+      to="/services/renovation-sous-sol"
+    />
+  );
+}
+
+function LegacyRenovationSalleDeBainPub() {
+  return (
+    <LegacyPaidServiceRoute
+      component={RenovationSalleDeBainPub}
+      to="/services/renovation-salle-de-bain"
+    />
+  );
+}
+
+function LegacyRenovationCuisinePub() {
+  return (
+    <LegacyPaidServiceRoute
+      component={RenovationCuisinePub}
+      to="/services/renovation-cuisine"
+    />
+  );
+}
+
+function LegacyAgrandissementPub() {
+  return (
+    <LegacyPaidServiceRoute
+      component={AgrandissementPub}
+      to="/services/agrandissement-maison"
+    />
+  );
 }
 
 /**
@@ -133,11 +188,16 @@ function Router() {
             hors plan de site, jamais prérendu. */}
         <Route path="/verification-interactions" component={VerificationInteractions} />
         
-        {/* Paid Funnel (Pub) Routes */}
-        <Route path="/pub/renovation-sous-sol" component={RenovationSousSolPub} />
-        <Route path="/pub/renovation-salle-de-bain" component={RenovationSalleDeBainPub} />
-        <Route path="/pub/renovation-cuisine" component={RenovationCuisinePub} />
-        <Route path="/pub/agrandissement-maison" component={AgrandissementPub} />
+        {/* Paid service pages use distinct clean URLs to preserve existing routes. */}
+        <Route path="/services/renovation-sous-sol" component={RenovationSousSolPub} />
+        <Route path="/services/renovation-salle-de-bain" component={RenovationSalleDeBainPub} />
+        <Route path="/services/renovation-cuisine" component={RenovationCuisinePub} />
+        <Route path="/services/agrandissement-maison" component={AgrandissementPub} />
+        {/* The old /pub URLs stay compatible and immediately replace themselves with the clean URLs. */}
+        <Route path="/pub/renovation-sous-sol" component={LegacyRenovationSousSolPub} />
+        <Route path="/pub/renovation-salle-de-bain" component={LegacyRenovationSalleDeBainPub} />
+        <Route path="/pub/renovation-cuisine" component={LegacyRenovationCuisinePub} />
+        <Route path="/pub/agrandissement-maison" component={LegacyAgrandissementPub} />
         {/* L'ancienne page du tunnel publicitaire a été fusionnée avec /soumission. */}
         <Route path="/pub/formulaire" component={FormulaireRedirect} />
         <Route path="/politique-de-confidentialite" component={PolitiqueDeConfidentialite} />

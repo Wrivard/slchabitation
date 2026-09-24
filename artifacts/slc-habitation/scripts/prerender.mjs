@@ -154,6 +154,11 @@ function assertProductionRewrites() {
   expectedRewrites.set('/formulaire', '/soumission/index.html');
   expectedRewrites.set('/formulaire/*', '/soumission/index.html');
   expectedRewrites.set('/formulaire.html', '/soumission/index.html');
+  for (const route of routes.filter(({ path }) => path.startsWith('/services/'))) {
+    const legacyPath = `/pub/${route.path.slice('/services/'.length)}`;
+    expectedRewrites.set(legacyPath, `${route.path}/index.html`);
+    expectedRewrites.set(`${legacyPath}/*`, `${route.path}/index.html`);
+  }
 
   const mismatches = [...expectedRewrites].filter(
     ([from, to]) => rewriteTargets.get(from) !== to,

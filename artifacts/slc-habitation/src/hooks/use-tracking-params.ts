@@ -61,7 +61,7 @@ export function useTrackingParams() {
     });
 
     const paidPageSlug = searchParams.get(PAID_PAGE_PARAM)?.trim() ?? '';
-    const paidPage = isPaidPageSlug(paidPageSlug) ? `/pub/${paidPageSlug}` : undefined;
+    const paidPage = isPaidPageSlug(paidPageSlug) ? `/services/${paidPageSlug}` : undefined;
 
     if (Object.keys(capturedParams).length > 0 || paidPage) {
       const previous = readAttribution();
