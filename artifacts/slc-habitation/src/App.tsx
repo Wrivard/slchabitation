@@ -1,4 +1,4 @@
-import { type ComponentType, type ReactNode, useEffect, useRef } from 'react';
+import { lazy, Suspense, type ComponentType, type ReactNode, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { PageMetadata, metadataForPath } from '@/components/page-metadata';
@@ -6,28 +6,13 @@ import { refreshCallTracking } from '@/lib/google-ads';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
-import Home from '@/pages/Home';
-import APropos from '@/pages/APropos';
-import Renovation from '@/pages/Renovation';
-import RenovationSousSol from '@/pages/RenovationSousSol';
-import RenovationSalleDeBain from '@/pages/RenovationSalleDeBain';
-import RenovationCuisine from '@/pages/RenovationCuisine';
-import Agrandissement from '@/pages/Agrandissement';
-import TravauxSurMesure from '@/pages/TravauxSurMesure';
-import Realisations from '@/pages/Realisations';
 import Soumission from '@/pages/Soumission';
-import Merci from '@/pages/Merci';
-import PolitiqueDeCookie from '@/pages/PolitiqueDeCookie';
-import Unauthorized from '@/pages/Unauthorized';
-import NotFoundPage from '@/pages/NotFoundPage';
-import VerificationInteractions from '@/pages/VerificationInteractions';
 
 // New Pub Routes
 import RenovationSousSolPub from '@/pages/pub/RenovationSousSol';
 import RenovationSalleDeBainPub from '@/pages/pub/RenovationSalleDeBain';
 import RenovationCuisinePub from '@/pages/pub/RenovationCuisine';
 import AgrandissementPub from '@/pages/pub/Agrandissement';
-import PolitiqueDeConfidentialite from '@/pages/PolitiqueDeConfidentialite';
 
 import {
   Route,
@@ -35,6 +20,29 @@ import {
   useLocation,
   Router as WouterRouter,
 } from 'wouter';
+
+// La page de soumission et les pages services restent immédiatement disponibles :
+// seules les pages héritées, volumineuses, sont chargées à la demande côté client.
+// Le prérendu reçoit leurs composants synchrones depuis entry-server.tsx.
+export const clientLegacyPages = {
+  Home: lazy(() => import('@/pages/Home')),
+  APropos: lazy(() => import('@/pages/APropos')),
+  Renovation: lazy(() => import('@/pages/Renovation')),
+  RenovationSousSol: lazy(() => import('@/pages/RenovationSousSol')),
+  RenovationSalleDeBain: lazy(() => import('@/pages/RenovationSalleDeBain')),
+  RenovationCuisine: lazy(() => import('@/pages/RenovationCuisine')),
+  Agrandissement: lazy(() => import('@/pages/Agrandissement')),
+  TravauxSurMesure: lazy(() => import('@/pages/TravauxSurMesure')),
+  Realisations: lazy(() => import('@/pages/Realisations')),
+  Merci: lazy(() => import('@/pages/Merci')),
+  PolitiqueDeCookie: lazy(() => import('@/pages/PolitiqueDeCookie')),
+  Unauthorized: lazy(() => import('@/pages/Unauthorized')),
+  NotFoundPage: lazy(() => import('@/pages/NotFoundPage')),
+  VerificationInteractions: lazy(() => import('@/pages/VerificationInteractions')),
+  PolitiqueDeConfidentialite: lazy(() => import('@/pages/PolitiqueDeConfidentialite')),
+};
+
+export type LegacyPages = { [K in keyof typeof clientLegacyPages]: ComponentType };
 
 const queryClient = new QueryClient();
 
@@ -151,7 +159,13 @@ function useScrollToTopOnNavigation(location: string) {
   }, [location]);
 }
 
-function Router() {
+function Router({ pages }: { pages: LegacyPages }) {
+  const {
+    Home, APropos, Renovation, RenovationSousSol, RenovationSalleDeBain,
+    RenovationCuisine, Agrandissement, TravauxSurMesure, Realisations,
+    Merci, PolitiqueDeCookie, Unauthorized, NotFoundPage,
+    VerificationInteractions, PolitiqueDeConfidentialite,
+  } = pages;
   const [location] = useLocation();
   const metadata = metadataForPath(location);
   useScrollToTopOnNavigation(location);
@@ -166,6 +180,7 @@ function Router() {
   return (
     <RoutedErrorBoundary>
       <PageMetadata {...metadata} />
+      <Suspense fallback={<main className="min-h-screen px-6 py-24 text-center" role="status">Chargement de la page…</main>}>
       <Switch>
         {/* Main Site Routes */}
         <Route path="/" component={Home} />
@@ -205,6 +220,7 @@ function Router() {
         {/* Fallback to NotFoundPage (the one from Webflow) for custom 404 */}
         <Route component={NotFoundPage} />
       </Switch>
+      </Suspense>
     </RoutedErrorBoundary>
   );
 }
@@ -219,12 +235,12 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
  * puisqu'il n'y a pas de barre d'adresse côté serveur. Dans le navigateur, la
  * propriété reste absente et wouter lit l'URL courante comme avant.
  */
-function App({ ssrPath }: { ssrPath?: string } = {}) {
+function App({ ssrPath, legacyPages = clientLegacyPages }: { ssrPath?: string; legacyPages?: LegacyPages } = {}) {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')} ssrPath={ssrPath}>
-          <Router />
+          <Router pages={legacyPages} />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>
