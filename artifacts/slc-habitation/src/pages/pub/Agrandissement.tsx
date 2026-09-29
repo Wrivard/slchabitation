@@ -40,12 +40,16 @@ import {
 const extensionImages = {
   hero: {
     src: '/images/upscale-house-1-min-1-p-1600.webp',
+    srcSet: '/images/upscale-house-1-min-1-p-800.webp 800w, /images/upscale-house-1-min-1-p-1080.webp 1080w, /images/upscale-house-1-min-1-p-1600.webp 1600w',
+    sizes: '100vw',
     alt: 'Maison agrandie à l’arrière avec un volume contemporain vitré, éclairé en soirée',
     width: 1600,
     height: 1044,
   },
   visit: {
     src: '/images/relume-655499-p-1600.jpeg',
+    srcSet: '/images/relume-655499-p-800.jpeg 800w, /images/relume-655499-p-1600.jpeg 1600w',
+    sizes: '(min-width: 1024px) 42vw, 100vw',
     alt: 'Maison agrandie à l’arrière avec grandes portes vitrées et terrasse de bois',
     width: 1600,
     height: 2133,
@@ -76,6 +80,8 @@ const heroThumbs = [
 const detailPhotos = [
   {
     src: '/images/relume-655431-p-1600.jpeg',
+    srcSet: '/images/relume-655431-p-800.jpeg 800w, /images/relume-655431-p-1600.jpeg 1600w',
+    sizes: '(min-width: 768px) 33vw, 100vw',
     alt: 'Façade d’un agrandissement avec revêtement de bois, panneaux foncés et grandes fenêtres',
     width: 1600,
     height: 2493,
@@ -84,6 +90,8 @@ const detailPhotos = [
   },
   {
     src: '/images/relume-655434-p-1600.jpeg',
+    srcSet: '/images/relume-655434-p-800.jpeg 800w, /images/relume-655434-p-1600.jpeg 1600w',
+    sizes: '(min-width: 768px) 33vw, 100vw',
     alt: 'Étage ajouté vu de l’intérieur, plafond mansardé refermé et plancher de bois protégé',
     width: 1600,
     height: 1200,
@@ -92,6 +100,8 @@ const detailPhotos = [
   },
   {
     src: '/images/relume-655496-p-1600.jpeg',
+    srcSet: '/images/relume-655496-p-800.jpeg 800w, /images/relume-655496-p-1600.jpeg 1600w',
+    sizes: '(min-width: 768px) 33vw, 100vw',
     alt: 'Toiture et lucarnes refaites au-dessus d’une maison en pierre pendant les travaux',
     width: 1600,
     height: 1200,
@@ -143,6 +153,8 @@ const serviceCities = [
 const extensionGallery = [
   {
     src: '/images/upscale-house-1-min-1-p-1600.webp',
+    srcSet: extensionImages.hero.srcSet,
+    sizes: '(min-width: 768px) 55vw, 100vw',
     alt: 'Maison agrandie à l’arrière avec un volume contemporain vitré',
     width: 1600,
     height: 1044,
@@ -152,6 +164,8 @@ const extensionGallery = [
   },
   {
     src: '/images/relume-655431-p-1600.jpeg',
+    srcSet: '/images/relume-655431-p-800.jpeg 800w, /images/relume-655431-p-1600.jpeg 1600w',
+    sizes: '(min-width: 768px) 45vw, 100vw',
     alt: 'Agrandissement terminé avec revêtement de bois et de métal',
     width: 1600,
     height: 2493,
@@ -161,6 +175,8 @@ const extensionGallery = [
   },
   {
     src: '/images/relume-655496-p-1600.jpeg',
+    srcSet: '/images/relume-655496-p-800.jpeg 800w, /images/relume-655496-p-1600.jpeg 1600w',
+    sizes: '(min-width: 768px) 45vw, 100vw',
     alt: 'Toiture et lucarnes refaites sur une maison en pierre',
     width: 1600,
     height: 1200,
@@ -170,6 +186,8 @@ const extensionGallery = [
   },
   {
     src: '/images/relume-655499-p-1600.jpeg',
+    srcSet: extensionImages.visit.srcSet,
+    sizes: '(min-width: 768px) 45vw, 100vw',
     alt: 'Agrandissement à l’arrière d’une maison avec portes vitrées et terrasse',
     width: 1600,
     height: 2133,
@@ -286,7 +304,7 @@ export default function AgrandissementPub() {
       {/* HERO */}
       <PubHero
         label="Entrepreneur en agrandissement"
-        title="Agrandissement de maison à Laval et dans les Laurentides"
+        title="Agrandissement et extension de maison à Laval et dans les Laurentides"
         intro="Nous venons voir votre maison et votre terrain, puis nous vous remettons votre soumission."
         badges={[
           { icon: Star, text: '19 avis Google 5 étoiles' },
@@ -401,6 +419,8 @@ export default function AgrandissementPub() {
               <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto">
                 <img
                   src={extensionImages.visit.src}
+                  srcSet={extensionImages.visit.srcSet}
+                  sizes={extensionImages.visit.sizes}
                   alt={extensionImages.visit.alt}
                   width={extensionImages.visit.width}
                   height={extensionImages.visit.height}

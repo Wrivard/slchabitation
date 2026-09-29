@@ -219,6 +219,13 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   );
 
   const canonical = `${siteOrigin}${route.path === '/' ? '/' : route.path}`;
+  // L'image du héros est la plus grande image visible dès l'arrivée sur cette
+  // page. Précharger le même srcset que l'élément <img> évite de télécharger
+  // une variante inutile et démarre le transfert avant l'analyse du corps.
+  const heroPreload =
+    route.path === '/services/agrandissement-maison'
+      ? '<link rel="preload" as="image" imagesrcset="/images/upscale-house-1-min-1-p-800.webp 800w, /images/upscale-house-1-min-1-p-1080.webp 1080w, /images/upscale-house-1-min-1-p-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">'
+      : '';
   /* Une page d'erreur ne représente aucune adresse : lui donner une adresse
      canonique reviendrait à désigner une page réelle qui n'existe pas. */
   const addressTags =
@@ -228,6 +235,7 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   <meta property="og:url" content="${canonical}">
   <meta name="twitter:url" content="${canonical}">`;
   const headTags = `
+   ${heroPreload}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   ${fontLoadingMarkup}

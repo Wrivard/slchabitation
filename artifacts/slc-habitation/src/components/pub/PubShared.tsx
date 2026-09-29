@@ -140,7 +140,7 @@ export function PubSectionHeader({
  * vignettes montre tout de suite du vrai travail réalisé.
  * ----------------------------------------------------------------------- */
 
-type PubImage = { src: string; alt: string; width: number; height: number };
+type PubImage = { src: string; alt: string; width: number; height: number; srcSet?: string; sizes?: string };
 
 export function PubHero({
   label,
@@ -169,6 +169,8 @@ export function PubHero({
     <section className="pub-hero" data-testid="pub-hero">
       <img
         src={image.src}
+        srcSet={image.srcSet}
+        sizes={image.sizes}
         alt={image.alt}
         width={image.width}
         height={image.height}
@@ -442,6 +444,8 @@ export function PubActionBar({
 
 export interface PubGalleryImage {
   src: string;
+  srcSet?: string;
+  sizes?: string;
   alt: string;
   width?: number;
   height?: number;
@@ -467,10 +471,13 @@ function PubGalleryTile({
     <figure className={`pub-gallery__item pub-gallery__item--${variant} ${className}`.trim()}>
       <img
         src={image.src}
+        srcSet={image.srcSet}
+        sizes={image.sizes}
         alt={image.alt}
         width={image.width}
         height={image.height}
         loading="lazy"
+        decoding="async"
         className="pub-gallery__image"
       />
       {label ? (
@@ -682,10 +689,13 @@ export function PubPhotoRow({
               <div className="pub-photo-row__media">
                 <img
                   src={item.src}
+                  srcSet={item.srcSet}
+                  sizes={item.sizes}
                   alt={item.alt}
                   width={item.width}
                   height={item.height}
                   loading="lazy"
+                  decoding="async"
                   className="pub-photo-row__image"
                 />
               </div>
