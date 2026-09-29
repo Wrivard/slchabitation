@@ -305,7 +305,7 @@ export default function AgrandissementPub() {
       <PubHero
         label="Entrepreneur en agrandissement"
         title="Agrandissement et extension de maison à Laval et dans les Laurentides"
-        intro="Nous venons voir votre maison et votre terrain, puis nous vous remettons votre soumission."
+        intro="Obtenez votre soumission d'agrandissement de maison sans frais : nous venons voir votre maison et votre terrain, puis nous vous remettons un prix détaillé"
         badges={[
           { icon: Star, text: '19 avis Google 5 étoiles' },
           { icon: ShieldCheck, text: 'Licence RBQ : 8351-9033-59' },
