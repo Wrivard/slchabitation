@@ -2883,3 +2883,44 @@ body.site-lightbox-open {
     margin-top: 2.25rem;
   }
 }
+
+/* Bouton Appeler dans l'en-tête des pages pub (PubLayout seulement) */
+.site-chrome--header .site-call-button {
+  display: inline-flex;
+  align-items: stretch;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.site-chrome--header .site-call-button__label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.7rem;
+  background: hsl(var(--primary));
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+}
+
+.site-chrome--header .site-call-button__number {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid currentColor;
+  border-left: 0;
+}
+
+.pub-shell .pub-button__call-label {
+  font-weight: 800;
+  padding-right: 0.5rem;
+  margin-right: 0.1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.pub-sticky-cta__label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

@@ -27,7 +27,11 @@ function markCurrentLink(root: HTMLElement, pathname: string) {
   }
 }
 
-export function SiteHeader() {
+const CALL_ANCHOR = '<a href="tel:(514)404-8494" class="text-weight-semibold">(514) 404-8494</a>';
+const CALL_BUTTON =
+  '<a href="tel:+15144048494" class="text-weight-semibold site-call-button"><span class="site-call-button__label">Appeler</span><span class="site-call-button__number">(514) 404-8494</span></a>';
+
+export function SiteHeader({ callButton = false }: { callButton?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [location] = useLocation();
   /* PubLayout se rerend pendant le défilement pour changer sa section active.
@@ -39,10 +43,12 @@ export function SiteHeader() {
         ref={containerRef}
         className="site-chrome site-chrome--header"
         data-testid="site-navbar"
-        dangerouslySetInnerHTML={{ __html: addAccessibleNames(siteHeaderHtml) }}
+        dangerouslySetInnerHTML={{
+          __html: addAccessibleNames(callButton ? siteHeaderHtml.replace(CALL_ANCHOR, CALL_BUTTON) : siteHeaderHtml),
+        }}
       />
     ),
-    [],
+    [callButton],
   );
 
   useEffect(() => {

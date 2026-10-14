@@ -35,49 +35,56 @@ const navItems = [
   { href: '#faq', label: 'Questions' },
 ];
 
+const sDir = '/images/INT%C3%89RIEUR/randoms/';
+const basementPhotos = {
+  kitchen: {
+    src: `${sDir}IMG_20231107_093929_1787769698943-p-1600.webp`,
+    srcSet: `${sDir}IMG_20231107_093929_1787769698943-p-500.webp 500w, ${sDir}IMG_20231107_093929_1787769698943-p-800.webp 800w, ${sDir}IMG_20231107_093929_1787769698943-p-1600.webp 1600w`,
+    alt: 'Cuisine aménagée dans un sous-sol avec îlot central et armoires',
+    width: 1600,
+    height: 1200,
+  },
+  room: {
+    src: `${sDir}20241018_161142_1787769672173-p-1600.webp`,
+    srcSet: `${sDir}20241018_161142_1787769672173-p-500.webp 500w, ${sDir}20241018_161142_1787769672173-p-800.webp 800w, ${sDir}20241018_161142_1787769672173-p-1600.webp 1600w`,
+    alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
+    width: 1600,
+    height: 1200,
+  },
+  stairs: {
+    src: `${sDir}20260224_143901_1787769689776-p-1600.jpg`,
+    srcSet: `${sDir}20260224_143901_1787769689776-p-500.jpg 500w, ${sDir}20260224_143901_1787769689776-p-800.jpg 800w, ${sDir}20260224_143901_1787769689776-p-1600.jpg 1600w`,
+    alt: 'Sous-sol aménagé avec escalier, portes et plancher de bois',
+    width: 1600,
+    height: 1200,
+  },
+};
+
+const heroImage = { ...basementPhotos.kitchen, sizes: '100vw' };
+const visitImage = { ...basementPhotos.room, sizes: '(min-width: 1024px) 42vw, 100vw' };
+
 const heroThumbs = [
-  {
-    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-500.jpg',
-    alt: 'Salle polyvalente au sous-sol avec portes françaises',
-    width: 500,
-    height: 375,
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505-p-500.jpg',
-    alt: 'Sous-sol en cours d’aménagement avec escalier et plafond suspendu',
-    width: 500,
-    height: 375,
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-500.jpg',
-    alt: 'Cuisine aménagée dans un sous-sol lumineux',
-    width: 500,
-    height: 375,
-  },
+  { ...basementPhotos.room, sizes: '160px' },
+  { ...basementPhotos.kitchen, sizes: '160px' },
+  { ...basementPhotos.stairs, sizes: '160px' },
 ];
 
 const detailPhotos = [
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173-p-1600.jpg',
-    alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
-    width: 1600,
-    height: 1200,
+    ...basementPhotos.room,
+    sizes: '(min-width: 768px) 33vw, 100vw',
     caption: 'Plancher et portes',
     text: 'Le plancher, les portes et les moulures donnent une finition propre et durable à la pièce.',
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776-p-1600.jpg',
-    alt: 'Sous-sol aménagé avec escalier, portes et plancher de bois',
-    width: 1600,
-    height: 1200,
+    ...basementPhotos.stairs,
+    sizes: '(min-width: 768px) 33vw, 100vw',
     caption: 'Escalier et accès',
     text: 'L’escalier et les accès sont intégrés à l’aménagement pour garder une circulation naturelle.',
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943-p-1600.jpg',
-    alt: 'Cuisine aménagée dans un sous-sol avec îlot central et armoires',
-    width: 1600,
-    height: 1200,
+    ...basementPhotos.kitchen,
+    sizes: '(min-width: 768px) 33vw, 100vw',
     caption: 'Cuisine et rangement',
     text: 'Une cuisine et des rangements bien intégrés rendent l’aire de vie du sous-sol vraiment utile.',
   },
@@ -114,40 +121,25 @@ const serviceCities = [
 
 const gallery = [
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20260224_143901_1787769689776.jpg',
-    alt: 'Sous-sol aménagé avec escalier, portes et plancher de bois',
-    width: 4000,
-    height: 3000,
-    caption: 'Escalier et aire de vie aménagés',
+    ...basementPhotos.kitchen,
+    sizes: '(min-width: 768px) 55vw, 100vw',
+    caption: 'Cuisine et aire de vie au sous-sol',
     category: 'Rénovation de sous-sol',
-    project: 'Aire de vie aménagée',
+    project: 'Cuisine au sous-sol',
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/20260224_144034_1787769693505.jpg',
-    alt: 'Sous-sol en cours d’aménagement avec escalier, câblage et plafond suspendu',
-    width: 4000,
-    height: 3000,
-    caption: 'Travaux en cours dans l’aire de vie',
-    category: 'Rénovation de sous-sol',
-    project: 'Travaux en cours',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/randoms/20241018_161142_1787769672173.jpg',
-    alt: 'Salle polyvalente au sous-sol avec portes françaises, plancher clair et éclairage au plafond',
-    width: 4000,
-    height: 3000,
+    ...basementPhotos.room,
+    sizes: '(min-width: 768px) 45vw, 100vw',
     caption: 'Salle polyvalente avec finitions complètes',
     category: 'Rénovation de sous-sol',
     project: 'Salle polyvalente',
   },
   {
-    src: '/images/INT%C3%89RIEUR/randoms/IMG_20231107_093929_1787769698943.jpg',
-    alt: 'Cuisine aménagée dans un sous-sol avec îlot central et armoires',
-    width: 4000,
-    height: 3000,
-    caption: 'Cuisine et aire de vie au sous-sol',
+    ...basementPhotos.stairs,
+    sizes: '(min-width: 768px) 45vw, 100vw',
+    caption: 'Escalier et aire de vie aménagés',
     category: 'Rénovation de sous-sol',
-    project: 'Cuisine au sous-sol',
+    project: 'Aire de vie aménagée',
   },
 ];
 
@@ -253,14 +245,14 @@ export default function RenovationSousSolPub() {
       {/* HERO */}
       <PubHero
         label="Entrepreneur en rénovation"
-        title="Rénovation de sous-sol à Laval et dans les Laurentides"
+        title="Rénovation de sous-sol sur la Rive-Nord"
         intro="Nous venons voir votre sous-sol, puis nous vous remettons votre soumission."
         badges={[
           { icon: Star, text: '19 avis Google 5 étoiles' },
           { icon: ShieldCheck, text: 'Licence RBQ : 8351-9033-59' },
         ]}
         action={<PubCTA service="renovation-sous-sol" size="lg" testId="button-hero-cta">Obtenir ma soumission sans frais</PubCTA>}
-        image={gallery[0]}
+        image={heroImage}
         objectPosition="center 60%"
         thumbs={heroThumbs}
         thumbsLabel="Sous-sols réalisés"
@@ -374,7 +366,7 @@ export default function RenovationSousSolPub() {
             </div>
             <div className="pub-visit-panel lg:col-span-5">
               <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto">
-                <img src={gallery[1].src} alt={gallery[1].alt} width={gallery[1].width} height={gallery[1].height} loading="lazy" className="h-full w-full object-cover" />
+                <img src={visitImage.src} srcSet={visitImage.srcSet} sizes={visitImage.sizes} alt={visitImage.alt} width={visitImage.width} height={visitImage.height} loading="lazy" className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
@@ -420,11 +412,13 @@ export default function RenovationSousSolPub() {
       {/* CTA FOOTER */}
       <section data-sticky-hide className="pub-section-dark relative isolate overflow-hidden py-20 text-white md:py-24">
         <img
-          src={gallery[0].src}
+          src={heroImage.src}
+          srcSet={heroImage.srcSet}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
-          width={gallery[0].width}
-          height={gallery[0].height}
+          width={heroImage.width}
+          height={heroImage.height}
           loading="lazy"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />

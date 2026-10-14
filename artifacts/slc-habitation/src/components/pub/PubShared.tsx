@@ -203,6 +203,8 @@ export function PubHero({
                 <img
                   key={thumb.src}
                   src={thumb.src}
+                  srcSet={thumb.srcSet}
+                  sizes={thumb.sizes}
                   alt={thumb.alt}
                   width={thumb.width}
                   height={thumb.height}
@@ -228,7 +230,7 @@ const proofItems: { icon: LucideIcon; value: string; text: string }[] = [
   { icon: Clock, value: 'Réponse sous 48 h', text: 'à chaque demande reçue' },
   { icon: Wallet, value: 'Estimation sans frais', text: 'visite comprise' },
   { icon: CheckCircle2, value: '500+ projets complétés', text: 'en 25 ans' },
-  { icon: MapPin, value: 'Laval et les Laurentides', text: '9 municipalités desservies' },
+  { icon: MapPin, value: 'Rive-Nord', text: 'Consultez les villes desservies' },
 ];
 
 export function PubProofBar() {
@@ -425,7 +427,8 @@ export function PubActionBar({
     >
       <a href="tel:5144048494" className="pub-button pub-button--phone" data-testid="link-action-phone">
         <Phone className="pub-button__icon" aria-hidden="true" />
-        (514) 404-8494
+        <span className="pub-button__call-label">Appeler</span>
+        <span>(514) 404-8494</span>
       </a>
       {action}
       {note && (

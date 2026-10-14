@@ -22,3 +22,4 @@
 - [Courriels transactionnels](transactional-email-rendering.md) — tableaux et styles en ligne; une valeur échappée en texte reste dangereuse dans un `href`.
 - [Marquage publicitaire Google](google-ads-call-tracking.md) — un conteneur de balises n'exécute pas les commandes d'un compte absent; et le numéro remplacé doit être redemandé après chaque rendu React.
 - [Publication GitHub](github-publishing.md) — pousser par l’intégration Replit; Git HTTPS n’a pas d’identifiants et un 403 HTML du proxy peut bloquer seulement les écritures.
+- [Positionnement des services](service-positioning.md) — Rive-Nord dans les titres ne retire pas Laval du territoire; demander une soumission ne doit pas exiger de budget.

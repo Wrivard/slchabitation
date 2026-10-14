@@ -173,7 +173,7 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id
         </div>
 
         <div class="space-y-2">
-          <span class="block text-xs font-bold uppercase leading-none tracking-[0.12em] text-foreground">Budget approximatif <span class="text-destructive">*</span></span>
+          <span class="block text-xs font-bold uppercase leading-none tracking-[0.12em] text-foreground">Budget approximatif <span class="ml-1 font-medium normal-case tracking-normal text-muted-foreground">(facultatif)</span></span>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
             ${staticBudgets
               .map(

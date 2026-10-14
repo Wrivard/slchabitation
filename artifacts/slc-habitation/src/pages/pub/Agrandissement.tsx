@@ -58,10 +58,8 @@ const extensionImages = {
 
 const heroThumbs = [
   {
-    src: '/images/ajout-etage-01-p-500.jpeg',
-    alt: 'Chantier d’ajout d’étage : charpente montée au-dessus d’une maison en hiver',
-    width: 500,
-    height: 375,
+    ...extensionImages.hero,
+    sizes: '160px',
   },
   {
     src: '/images/relume-655431-p-500.jpeg',
@@ -89,24 +87,16 @@ const detailPhotos = [
     text: 'Les matériaux et les fenêtres de l’ajout suivent les lignes de la maison pour que le volume reste dans le même ton.',
   },
   {
-    src: '/images/relume-655434-p-1600.jpeg',
-    srcSet: '/images/relume-655434-p-800.jpeg 800w, /images/relume-655434-p-1600.jpeg 1600w',
+    ...extensionImages.hero,
     sizes: '(min-width: 768px) 33vw, 100vw',
-    alt: 'Étage ajouté vu de l’intérieur, plafond mansardé refermé et plancher de bois protégé',
-    width: 1600,
-    height: 1200,
-    caption: 'L’étage ajouté avant la peinture',
-    text: 'À l’intérieur, le nouvel espace est fermé, isolé et prêt pour le plancher, la peinture et les moulures.',
+    caption: 'Un ajout intégré à la maison',
+    text: 'Le revêtement foncé et les grandes fenêtres distinguent l’ajout tout en conservant la façade de brique existante.',
   },
   {
-    src: '/images/relume-655496-p-1600.jpeg',
-    srcSet: '/images/relume-655496-p-800.jpeg 800w, /images/relume-655496-p-1600.jpeg 1600w',
+    ...extensionImages.visit,
     sizes: '(min-width: 768px) 33vw, 100vw',
-    alt: 'Toiture et lucarnes refaites au-dessus d’une maison en pierre pendant les travaux',
-    width: 1600,
-    height: 1200,
-    caption: 'Le raccord de toiture',
-    text: 'La toiture et les lucarnes sont reprises pour que le raccord reste étanche et que l’eau s’écoule au bon endroit.',
+    caption: 'Une pièce ouverte sur la cour',
+    text: 'Les portes vitrées relient la pièce ajoutée à la terrasse de bois et au jardin.',
   },
 ];
 
@@ -172,17 +162,6 @@ const extensionGallery = [
     caption: 'Revêtement de bois et de métal',
     category: 'Agrandissement',
     project: 'Extension deux étages',
-  },
-  {
-    src: '/images/relume-655496-p-1600.jpeg',
-    srcSet: '/images/relume-655496-p-800.jpeg 800w, /images/relume-655496-p-1600.jpeg 1600w',
-    sizes: '(min-width: 768px) 45vw, 100vw',
-    alt: 'Toiture et lucarnes refaites sur une maison en pierre',
-    width: 1600,
-    height: 1200,
-    caption: 'Toiture et lucarnes reprises',
-    category: 'Agrandissement',
-    project: 'Toiture et lucarnes',
   },
   {
     src: '/images/relume-655499-p-1600.jpeg',
@@ -304,7 +283,7 @@ export default function AgrandissementPub() {
       {/* HERO */}
       <PubHero
         label="Entrepreneur en agrandissement"
-        title="Agrandissement et extension de maison à Laval et dans les Laurentides"
+        title="Agrandissement et extension de maison sur la Rive-Nord"
         intro="Obtenez votre soumission d'agrandissement de maison sans frais : nous venons voir votre maison et votre terrain, puis nous vous remettons un prix détaillé"
         badges={[
           { icon: Star, text: '19 avis Google 5 étoiles' },
@@ -473,6 +452,8 @@ export default function AgrandissementPub() {
       <section data-sticky-hide className="pub-section-dark relative isolate overflow-hidden py-20 text-white md:py-24">
         <img
           src={extensionImages.hero.src}
+          srcSet={extensionImages.hero.srcSet}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
           width={extensionImages.hero.width}

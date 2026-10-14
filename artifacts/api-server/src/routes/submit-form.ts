@@ -386,7 +386,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       reject(req, res, "too_fast", "Veuillez prendre un moment avant d’envoyer le formulaire.");
       return;
     }
-    if (!fullName || !email || !phone || !message || !service || !budget) {
+    if (!fullName || !email || !phone || !message || !service) {
       reject(req, res, "required_fields", "Tous les champs obligatoires doivent être remplis.");
       return;
     }
@@ -419,7 +419,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
       reject(req, res, "invalid_service", "Veuillez sélectionner un service valide.");
       return;
     }
-    if (!(budget in budgetLabels)) {
+    if (budget && !Object.hasOwn(budgetLabels, budget)) {
       reject(req, res, "invalid_budget", "Veuillez sélectionner une fourchette de budget valide.");
       return;
     }
@@ -538,7 +538,7 @@ router.post("/submit-form", async (req: Request, res: Response): Promise<void> =
        accusé de réception, pour qu'elle garde une trace de sa demande. */
     const projectRows: Array<[string, string | undefined]> = [
       ["Service", service],
-      ["Budget", budget ? budgetLabels[budget] ?? budget : undefined],
+      ["Budget", budget ? budgetLabels[budget] : "Non précisé"],
       ["Ville du projet", projectCity],
       ["Échéancier souhaité", projectTimeline],
       ["Nous a connus par", referralSource],

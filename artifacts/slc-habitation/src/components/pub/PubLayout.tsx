@@ -17,7 +17,7 @@ export function PubLayout({ children, navItems = [] }: { children: ReactNode; na
 
   return (
     <div className="pub-shell min-h-[100dvh] flex flex-col font-sans bg-background text-foreground selection:bg-primary/20 selection:text-primary">
-      <SiteHeader />
+      <SiteHeader callButton />
 
       {navItems.length > 0 && (
         <div className="pub-section-nav">

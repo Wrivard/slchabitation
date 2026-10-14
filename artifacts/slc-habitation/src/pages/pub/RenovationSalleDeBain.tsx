@@ -25,62 +25,61 @@ import {
   ClipboardCheck, Wrench, Hammer, Droplets, MessageSquare, CalendarCheck, Check,
 } from 'lucide-react';
 
-const bathroomImages = {
-  hero: {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
-    alt: 'Salle de bain avec vanité en bois, grande douche vitrée et céramique grise',
+const bDir = '/images/INT%C3%89RIEUR/Salle%20de%20Bain/';
+const bathPhotos = {
+  dark: {
+    src: `${bDir}20250920_190401-p-1600.webp`,
+    srcSet: `${bDir}20250920_190401-p-500.webp 500w, ${bDir}20250920_190401-p-800.webp 800w, ${bDir}20250920_190401-p-1600.webp 1600w`,
+    alt: 'Salle de bain avec douche vitrée, vanité noire, mur sombre et plantes',
     width: 1600,
     height: 1200,
   },
-  visit: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vitre-p-1600.jpg',
-  bright: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-bain-autoportant-p-1600.jpg',
+  double: {
+    src: `${bDir}20241030_163652-p-1600.webp`,
+    srcSet: `${bDir}20241030_163652-p-500.webp 500w, ${bDir}20241030_163652-p-800.webp 800w, ${bDir}20241030_163652-p-1600.webp 1600w`,
+    alt: 'Salle de bain avec double vanité en bois et bain',
+    width: 1600,
+    height: 1200,
+  },
+  wood: {
+    src: `${bDir}IMG_9858-p-600.webp`,
+    srcSet: `${bDir}IMG_9858-p-500.webp 500w, ${bDir}IMG_9858-p-600.webp 600w`,
+    alt: 'Salle de bain avec vanité en bois et bain clair',
+    width: 600,
+    height: 800,
+  },
+};
+
+const bathroomImages = {
+  hero: { ...bathPhotos.dark, sizes: '100vw' },
+  visit: { ...bathPhotos.wood, sizes: '(min-width: 1024px) 42vw, 100vw' },
+  bright: { ...bathPhotos.double, sizes: '100vw' },
 };
 
 const heroThumbs = [
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-bain-autoportant-p-500.jpg',
-    alt: 'Salle de bain avec bain autoportant, robinetterie noire et plancher gris',
-    width: 500,
-    height: 375,
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-500.jpg',
-    alt: 'Salle de bain avec vanité en bois et douche vitrée',
-    width: 500,
-    height: 375,
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-vanite-noire-p-500.jpg',
-    alt: 'Salle de bain avec vanité noire, mur hexagonal et douche vitrée',
-    width: 500,
-    height: 667,
-  },
+  { ...bathPhotos.dark, sizes: '160px' },
+  { ...bathPhotos.double, sizes: '160px' },
+  { ...bathPhotos.wood, sizes: '160px' },
 ];
 
 const detailPhotos = [
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
-    alt: 'Salle de bain avec vanité en bois, grande douche vitrée et céramique grise',
-    width: 1600,
-    height: 1200,
-    caption: 'Douche et vanité coordonnées',
-    text: 'La vanité en bois et la douche vitrée se répondent dans une pièce claire et fonctionnelle.',
+    ...bathPhotos.dark,
+    sizes: '(min-width: 768px) 33vw, 100vw',
+    caption: 'Douche vitrée et mur accent',
+    text: 'Le verre, les surfaces foncées et les touches de bois donnent du caractère à cette salle de bain.',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vitre-p-800.jpg',
-    alt: 'Douche vitrée avec grande céramique grise et robinetterie noire',
-    width: 800,
-    height: 1067,
-    caption: 'Douche vitrée et céramique',
-    text: 'La grande douche vitrée met en valeur la céramique et garde la pièce visuellement ouverte.',
+    ...bathPhotos.double,
+    sizes: '(min-width: 768px) 33vw, 100vw',
+    caption: 'Double vanité et lumière naturelle',
+    text: 'La double vanité en bois offre du rangement dans une pièce éclairée par une grande fenêtre.',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2023-vanite-bois-p-800.jpg',
-    alt: 'Vanité en bois avec lavabo noir, miroirs ronds et dosseret décoratif',
-    width: 800,
-    height: 1067,
-    caption: 'Vanité et mur accent',
-    text: 'La vanité en bois et le mur accent donnent du caractère à cette salle de bain sans alourdir l’espace.',
+    ...bathPhotos.wood,
+    sizes: '(min-width: 768px) 33vw, 100vw',
+    caption: 'Bois et surfaces claires',
+    text: 'La vanité en bois et les surfaces claires créent une salle de bain lumineuse et chaleureuse.',
   },
 ];
 
@@ -125,46 +124,25 @@ const serviceCities = [
 
 const bathroomGallery = [
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-bain-autoportant-p-1600.jpg',
-    alt: 'Salle de bain avec bain autoportant blanc, robinetterie noire et plancher gris',
-    caption: 'Bain autoportant et robinetterie noire',
+    ...bathPhotos.dark,
+    sizes: '(min-width: 768px) 55vw, 100vw',
+    caption: 'Douche vitrée, vanité noire et mur sombre',
     category: 'Rénovation de salle de bain',
-    project: 'Bain autoportant',
+    project: 'Douche vitrée et vanité noire',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vanite-p-1600.jpg',
-    alt: 'Salle de bain avec vanité en bois, grande douche vitrée et céramique grise',
-    caption: 'Vanité en bois et douche vitrée',
+    ...bathPhotos.double,
+    sizes: '(min-width: 768px) 45vw, 100vw',
+    caption: 'Double vanité en bois et bain',
     category: 'Rénovation de salle de bain',
-    project: 'Douche et vanité',
+    project: 'Double vanité en bois',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-douche-vitre-p-1600.jpg',
-    alt: 'Douche vitrée avec grande céramique grise et robinetterie noire',
-    caption: 'Grande douche vitrée',
+    ...bathPhotos.wood,
+    sizes: '(min-width: 768px) 45vw, 100vw',
+    caption: 'Vanité en bois et bain clair',
     category: 'Rénovation de salle de bain',
-    project: 'Douche sur mesure',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2022-vanite-noire-p-1600.jpg',
-    alt: 'Salle de bain avec vanité noire, mur hexagonal et douche vitrée',
-    caption: 'Vanité noire et mur hexagonal',
-    category: 'Rénovation de salle de bain',
-    project: 'Vanité et mur accent',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2023-vanite-bois-p-1600.jpg',
-    alt: 'Salle de bain avec vanité en bois, lavabo noir et mur décoratif',
-    caption: 'Vanité en bois et lavabo noir',
-    category: 'Rénovation de salle de bain',
-    project: 'Vanité sur mesure',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/salle-bain-2024-douche-vanite-p-1600.jpg',
-    alt: 'Salle de bain avec meuble-lavabo en bois, douche vitrée et porte coulissante',
-    caption: 'Meuble-lavabo et porte coulissante',
-    category: 'Rénovation de salle de bain',
-    project: 'Salle de bain complète',
+    project: 'Vanité en bois',
   },
 ];
 
@@ -270,7 +248,7 @@ export default function RenovationSalleDeBainPub() {
       {/* HERO */}
       <PubHero
         label="Entrepreneur en rénovation"
-        title="Rénovation de salle de bain à Laval et dans les Laurentides"
+        title="Rénovation de salle de bain sur la Rive-Nord"
         intro="Nous venons voir votre salle de bain, puis nous vous remettons votre soumission."
         badges={[
           { icon: Star, text: '19 avis Google 5 étoiles' },
@@ -383,7 +361,7 @@ export default function RenovationSalleDeBainPub() {
             </div>
             <div className="pub-visit-panel lg:col-span-5">
               <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto">
-                <img src={bathroomImages.visit} alt="Douche vitrée avec grande céramique grise et robinetterie noire" width="1200" height="1600" loading="lazy" className="h-full w-full object-cover" />
+                <img src={bathroomImages.visit.src} srcSet={bathroomImages.visit.srcSet} sizes={bathroomImages.visit.sizes} alt={bathroomImages.visit.alt} width={bathroomImages.visit.width} height={bathroomImages.visit.height} loading="lazy" className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
@@ -430,7 +408,9 @@ export default function RenovationSalleDeBainPub() {
       {/* CTA FOOTER */}
       <section data-sticky-hide className="pub-section-dark relative isolate overflow-hidden py-20 text-white md:py-24">
         <img
-          src={bathroomImages.bright}
+          src={bathroomImages.bright.src}
+          srcSet={bathroomImages.bright.srcSet}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
           width={1600}

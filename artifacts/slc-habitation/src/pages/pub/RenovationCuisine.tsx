@@ -34,66 +34,60 @@ import {
   Wrench,
 } from 'lucide-react';
 
-const kitchenImages = {
-  hero: {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-1600.jpg',
-    alt: 'Cuisine rénovée avec îlot central, armoires en bois et salle à manger attenante',
+const kDir = '/images/INT%C3%89RIEUR/Cuisine/';
+const kitchenPhotos = {
+  wood: {
+    src: `${kDir}finitions-cuisine-01-p-800.webp`,
+    srcSet: `${kDir}finitions-cuisine-01-p-500.webp 500w, ${kDir}finitions-cuisine-01-p-800.webp 800w, ${kDir}finitions-cuisine-01-p-1600.webp 1200w`,
+    alt: 'Cuisine avec îlot en bois et armoires noires',
+    width: 800,
+    height: 1067,
+  },
+  white: {
+    src: `${kDir}finitions-cuisine-02-p-1600.webp`,
+    srcSet: `${kDir}finitions-cuisine-02-p-500.webp 500w, ${kDir}finitions-cuisine-02-p-800.webp 800w, ${kDir}finitions-cuisine-02-p-1600.webp 1600w`,
+    alt: 'Cuisine avec grand îlot blanc',
     width: 1600,
     height: 1200,
   },
-  visit: {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-1600.jpg',
-    alt: 'Cuisine blanche avec îlot, dosseret en petits carreaux et grande fenêtre',
-    width: 1600,
-    height: 1200,
+  twoTone: {
+    src: `${kDir}finitions-cuisine-03-p-800.webp`,
+    srcSet: `${kDir}finitions-cuisine-03-p-500.webp 500w, ${kDir}finitions-cuisine-03-p-800.webp 800w, ${kDir}finitions-cuisine-03-p-1600.webp 1200w`,
+    alt: 'Cuisine deux tons',
+    width: 800,
+    height: 1067,
   },
 };
 
+const kitchenImages = {
+  hero: { ...kitchenPhotos.white, sizes: '100vw' },
+  visit: { ...kitchenPhotos.twoTone, sizes: '(min-width: 1024px) 42vw, 100vw' },
+};
+
 const heroThumbs = [
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2023-ilot-bois-p-500.jpg',
-    alt: 'Cuisine avec îlot en bois, armoires noires et comptoir clair',
-    width: 500,
-    height: 333,
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-500.jpg',
-    alt: 'Cuisine blanche avec îlot et fenêtre donnant sur la cour',
-    width: 500,
-    height: 375,
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-500.jpg',
-    alt: 'Cuisine avec îlot, armoires en bois et luminaires suspendus',
-    width: 500,
-    height: 375,
-  },
+  { ...kitchenPhotos.wood, sizes: '160px' },
+  { ...kitchenPhotos.white, sizes: '160px' },
+  { ...kitchenPhotos.twoTone, sizes: '160px' },
 ];
 
 const detailPhotos = [
   {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2023-ilot-bois-p-1600.jpg',
-    alt: 'Cuisine avec îlot en bois, armoires noires, comptoir clair et suspensions',
-    width: 1600,
-    height: 1067,
+    ...kitchenPhotos.wood,
+    sizes: '(min-width: 768px) 33vw, 100vw',
     caption: 'Îlot et contraste des matériaux',
-    text: 'Le bois de l’îlot, les armoires foncées et le comptoir clair créent un point central chaleureux.',
+    text: 'Le bois de l’îlot et les armoires foncées créent un point central chaleureux.',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-1600.jpg',
-    alt: 'Cuisine blanche avec fenêtre, évier sous la fenêtre et îlot central',
-    width: 1600,
-    height: 1200,
-    caption: 'Lumière naturelle et espace de travail',
-    text: 'La fenêtre éclaire le plan de travail et l’îlot garde une circulation pratique autour de la cuisine.',
+    ...kitchenPhotos.white,
+    sizes: '(min-width: 768px) 33vw, 100vw',
+    caption: 'Grand îlot et espace de travail',
+    text: 'Le grand comptoir clair offre un espace généreux pour préparer les repas et se réunir.',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-1600.jpg',
-    alt: 'Cuisine avec armoires en bois, îlot central, dosseret en pierre et salle à manger',
-    width: 1600,
-    height: 1200,
-    caption: 'Cuisine et salle à manger coordonnées',
-    text: 'Les armoires, le dosseret et le plancher prolongent la cuisine jusque dans l’espace repas.',
+    ...kitchenPhotos.twoTone,
+    sizes: '(min-width: 768px) 33vw, 100vw',
+    caption: 'Armoires et finitions coordonnées',
+    text: 'Les armoires deux tons, les comptoirs clairs et le plancher donnent une continuité à la pièce.',
   },
 ];
 
@@ -138,32 +132,25 @@ const serviceCities = [
 
 const kitchenGallery = [
   {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2023-ilot-bois-p-1600.jpg',
-    alt: 'Cuisine avec îlot en bois, armoires noires et comptoir clair',
+    ...kitchenPhotos.white,
+    sizes: '(min-width: 768px) 55vw, 100vw',
+    caption: 'Cuisine avec grand îlot blanc',
+    category: 'Rénovation de cuisine',
+    project: 'Grand îlot blanc',
+  },
+  {
+    ...kitchenPhotos.wood,
+    sizes: '(min-width: 768px) 45vw, 100vw',
     caption: 'Îlot en bois et armoires noires',
     category: 'Rénovation de cuisine',
-    project: 'Îlot et rangement',
+    project: 'Îlot en bois',
   },
   {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2026-salle-a-manger-p-1600.jpg',
-    alt: 'Cuisine avec îlot central, armoires en bois et salle à manger attenante',
-    caption: 'Cuisine et salle à manger',
+    ...kitchenPhotos.twoTone,
+    sizes: '(min-width: 768px) 45vw, 100vw',
+    caption: 'Cuisine deux tons',
     category: 'Rénovation de cuisine',
-    project: 'Projet cuisine et repas',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/cuisine-2018-fenetre-p-1600.jpg',
-    alt: 'Cuisine blanche avec fenêtre, îlot central et dosseret en petits carreaux',
-    caption: 'Cuisine blanche et fenêtre',
-    category: 'Rénovation de cuisine',
-    project: 'Cuisine lumineuse',
-  },
-  {
-    src: '/images/INT%C3%89RIEUR/Cuisine/2403-p-1600.jpg',
-    alt: 'Détail d’une cuisine avec éclairage sous les armoires',
-    caption: 'Éclairage de travail sous les armoires',
-    category: 'Rénovation de cuisine',
-    project: 'Éclairage de travail',
+    project: 'Cuisine deux tons',
   },
 ];
 
@@ -269,7 +256,7 @@ export default function RenovationCuisinePub() {
       {/* HERO */}
       <PubHero
         label="Entrepreneur en rénovation"
-        title="Rénovation de cuisine à Laval et dans les Laurentides"
+        title="Rénovation de cuisine sur la Rive-Nord"
         intro="Nous venons voir votre cuisine, puis nous vous remettons votre soumission."
         badges={[
           { icon: Star, text: '19 avis Google 5 étoiles' },
@@ -384,6 +371,8 @@ export default function RenovationCuisinePub() {
               <div className="pub-visit-panel__media aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto">
                 <img
                   src={kitchenImages.visit.src}
+                  srcSet={kitchenImages.visit.srcSet}
+                  sizes={kitchenImages.visit.sizes}
                   alt={kitchenImages.visit.alt}
                   width={kitchenImages.visit.width}
                   height={kitchenImages.visit.height}
@@ -436,6 +425,8 @@ export default function RenovationCuisinePub() {
       <section data-sticky-hide className="pub-section-dark relative isolate overflow-hidden py-20 text-white md:py-24">
         <img
           src={kitchenImages.hero.src}
+          srcSet={kitchenImages.hero.srcSet}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
           width={kitchenImages.hero.width}

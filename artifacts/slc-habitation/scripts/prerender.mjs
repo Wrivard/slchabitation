@@ -222,10 +222,17 @@ function createPrerenderedPage(sourceHtml, route, appScript) {
   // L'image du héros est la plus grande image visible dès l'arrivée sur cette
   // page. Précharger le même srcset que l'élément <img> évite de télécharger
   // une variante inutile et démarre le transfert avant l'analyse du corps.
-  const heroPreload =
-    route.path === '/services/agrandissement-maison'
-      ? '<link rel="preload" as="image" imagesrcset="/images/upscale-house-1-min-1-p-800.webp 800w, /images/upscale-house-1-min-1-p-1080.webp 1080w, /images/upscale-house-1-min-1-p-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">'
-      : '';
+  const D = '/images/INT%C3%89RIEUR/';
+  const preloadSets = {
+    '/services/agrandissement-maison':
+      '/images/upscale-house-1-min-1-p-800.webp 800w, /images/upscale-house-1-min-1-p-1080.webp 1080w, /images/upscale-house-1-min-1-p-1600.webp 1600w',
+    '/services/renovation-cuisine': `${D}Cuisine/finitions-cuisine-02-p-500.webp 500w, ${D}Cuisine/finitions-cuisine-02-p-800.webp 800w, ${D}Cuisine/finitions-cuisine-02-p-1600.webp 1600w`,
+    '/services/renovation-salle-de-bain': `${D}Salle%20de%20Bain/20250920_190401-p-500.webp 500w, ${D}Salle%20de%20Bain/20250920_190401-p-800.webp 800w, ${D}Salle%20de%20Bain/20250920_190401-p-1600.webp 1600w`,
+    '/services/renovation-sous-sol': `${D}randoms/IMG_20231107_093929_1787769698943-p-500.webp 500w, ${D}randoms/IMG_20231107_093929_1787769698943-p-800.webp 800w, ${D}randoms/IMG_20231107_093929_1787769698943-p-1600.webp 1600w`,
+  };
+  const heroPreload = preloadSets[route.path]
+    ? `<link rel="preload" as="image" imagesrcset="${preloadSets[route.path]}" imagesizes="100vw" fetchpriority="high">`
+    : '';
   /* Une page d'erreur ne représente aucune adresse : lui donner une adresse
      canonique reviendrait à désigner une page réelle qui n'existe pas. */
   const addressTags =

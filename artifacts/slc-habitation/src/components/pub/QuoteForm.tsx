@@ -88,7 +88,10 @@ const createFormSchema = (serviceIds: string[]) =>
     service: z.string().refine((val) => serviceIds.includes(val), {
       message: "Veuillez sélectionner un type de travaux valide",
     }),
-    budget: z.string().min(1, "Veuillez sélectionner un budget approximatif"),
+    budget: z.string().refine(
+      (value) => value === "" || Object.hasOwn(budgetMap, value),
+      "Veuillez sélectionner une fourchette de budget valide",
+    ),
     description: z
       .string()
       .min(10, "Veuillez décrire brièvement votre projet (min 10 caractères)")
@@ -387,13 +390,15 @@ export function QuoteForm({
       payload.append('Contact-6-Phone', data.phone);
 
       const exactService = services.find((service) => service.id === data.service)?.label;
-      const exactBudget = budgetMap[data.budget];
-      if (!exactService || !exactBudget) {
+      const exactBudget = data.budget && Object.hasOwn(budgetMap, data.budget)
+        ? budgetMap[data.budget]
+        : undefined;
+      if (!exactService || (data.budget && !exactBudget)) {
         setErrorMsg("Le service ou le budget sélectionné n'est pas valide.");
         return;
       }
       payload.append('Contact-6-Select', exactService);
-      payload.append('Contact-6-Radio', exactBudget);
+      if (exactBudget) payload.append('Contact-6-Radio', exactBudget);
 
       payload.append('Contact-6-Message', data.description);
 
@@ -697,7 +702,7 @@ export function QuoteForm({
                             id="budget-group-label"
                             className={cn('block', labelClass, fieldState.error && 'text-destructive')}
                           >
-                            Budget approximatif <span className="text-destructive">*</span>
+                            Budget approximatif <span className={optionalHintClass}>(facultatif)</span>
                           </span>
                           <FormControl>
                             <RadioGroup
@@ -723,6 +728,16 @@ export function QuoteForm({
                               ))}
                             </RadioGroup>
                           </FormControl>
+                          {field.value && (
+                            <button
+                              type="button"
+                              className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                              onClick={() => field.onChange("")}
+                              data-testid="button-clear-budget"
+                            >
+                              Je préfère ne pas préciser de budget
+                            </button>
+                          )}
                           <FormMessage data-testid="error-budget" />
                         </FormItem>
                       )}

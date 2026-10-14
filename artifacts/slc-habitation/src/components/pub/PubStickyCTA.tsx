@@ -78,6 +78,7 @@ export function PubStickyCTA() {
         }}
       >
         <Phone className="h-4 w-4 text-primary" />
+        <span className="pub-sticky-cta__label">Appeler</span>
         <span className="sr-only md:not-sr-only">(514) 404-8494</span>
       </a>
       <PubCTA service="" className="pub-sticky-cta__button" testId="button-sticky-cta">
