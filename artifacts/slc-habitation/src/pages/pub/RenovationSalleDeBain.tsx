@@ -152,10 +152,10 @@ const includedCards = [
     title: 'La démolition et la préparation',
     points: ['Retrait de l’ancienne salle de bain', 'Protection du reste de la maison', 'Plancher et murs remis d’aplomb'],
     image: {
-      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20220511_145711-p-800.jpg',
-      alt: 'Salle de bain refaite avec bain, mur de céramique blanche et plancher de terrazzo',
+      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241030_163652-p-800.webp',
+      alt: 'Salle de bain lumineuse avec double vanité en bois, grande fenêtre et bain',
       width: 800,
-      height: 1067,
+      height: 600,
     },
   },
   {
@@ -163,10 +163,10 @@ const includedCards = [
     title: 'La plomberie et la ventilation',
     points: ['Douche, bain, toilette, vanité', 'Membrane étanche dans la douche', 'Ventilateur évacué vers l’extérieur'],
     image: {
-      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20241018_153927-p-800.jpg',
-      alt: 'Salle de bain avec douche d’angle vitrée, vanité blanche et murs foncés',
+      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20250920_190401-p-800.webp',
+      alt: 'Salle de bain avec grande douche vitrée, vanité noire, touches de bois et plantes',
       width: 800,
-      height: 1067,
+      height: 600,
     },
   },
   {
@@ -174,10 +174,10 @@ const includedCards = [
     title: 'La céramique et les finitions',
     points: ['Céramique au sol et aux murs', 'Vanité, miroir, robinetterie', 'Éclairage, prises et peinture'],
     image: {
-      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/20220511_145731-p-800.jpg',
-      alt: 'Vanité suspendue en bois, miroir rond et plancher de terrazzo',
-      width: 800,
-      height: 1067,
+      src: '/images/INT%C3%89RIEUR/Salle%20de%20Bain/IMG_9858-p-600.webp',
+      alt: 'Salle de bain aux surfaces claires avec vanité en bois et bain',
+      width: 600,
+      height: 800,
     },
   },
 ];
