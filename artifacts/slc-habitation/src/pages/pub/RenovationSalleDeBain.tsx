@@ -64,22 +64,34 @@ const heroThumbs = [
 
 const detailPhotos = [
   {
-    ...bathPhotos.dark,
+    src: `${bDir}20251024_145742-p-1200.webp`,
+    srcSet: `${bDir}20251024_145742-p-500.webp 500w, ${bDir}20251024_145742-p-800.webp 800w, ${bDir}20251024_145742-p-1200.webp 1200w`,
     sizes: '(min-width: 768px) 33vw, 100vw',
-    caption: 'Douche vitrée et mur accent',
-    text: 'Le verre, les surfaces foncées et les touches de bois donnent du caractère à cette salle de bain.',
+    alt: 'Vanité blanche suspendue, miroir rond rétroéclairé et douche vitrée',
+    width: 1200,
+    height: 1600,
+    caption: 'Lignes épurées et miroir lumineux',
+    text: 'La vanité suspendue et le miroir rond rétroéclairé donnent une finition sobre et soignée.',
   },
   {
-    ...bathPhotos.double,
+    src: `${bDir}20230410_141714-p-1200.webp`,
+    srcSet: `${bDir}20230410_141714-p-500.webp 500w, ${bDir}20230410_141714-p-800.webp 800w, ${bDir}20230410_141714-p-1200.webp 1200w`,
     sizes: '(min-width: 768px) 33vw, 100vw',
-    caption: 'Double vanité et lumière naturelle',
-    text: 'La double vanité en bois offre du rangement dans une pièce éclairée par une grande fenêtre.',
+    alt: 'Vanité en bois avec lavabos noirs, miroirs ronds et mur de céramique décorative',
+    width: 1200,
+    height: 1600,
+    caption: 'Bois et céramique décorative',
+    text: 'Le bois, les lavabos noirs et les miroirs ronds s’accordent avec le mur de céramique décorative.',
   },
   {
-    ...bathPhotos.wood,
+    src: `${bDir}20241219_152903-p-1200.webp`,
+    srcSet: `${bDir}20241219_152903-p-500.webp 500w, ${bDir}20241219_152903-p-800.webp 800w, ${bDir}20241219_152903-p-1200.webp 1200w`,
     sizes: '(min-width: 768px) 33vw, 100vw',
-    caption: 'Bois et surfaces claires',
-    text: 'La vanité en bois et les surfaces claires créent une salle de bain lumineuse et chaleureuse.',
+    alt: 'Douche vitrée à cadre noir, grandes tuiles grises et rangement mural en bois',
+    width: 1200,
+    height: 1600,
+    caption: 'Douche vitrée et grandes tuiles',
+    text: 'La céramique grise, le cadre noir de la douche et le rangement en bois créent un ensemble coordonné.',
   },
 ];
 
