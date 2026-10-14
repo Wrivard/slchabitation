@@ -695,50 +695,29 @@ export function QuoteForm({
 
                     <FormField
                       control={control}
-                      name="budget"
+                      name="timeline"
                       render={({ field, fieldState }) => (
                         <FormItem>
                           <span
-                            id="budget-group-label"
                             className={cn('block', labelClass, fieldState.error && 'text-destructive')}
                           >
-                            Budget approximatif <span className={optionalHintClass}>(facultatif)</span>
+                            Échéancier souhaité <span className="text-destructive">*</span>
                           </span>
                           <FormControl>
-                            <RadioGroup
-                              value={field.value}
-                              onValueChange={field.onChange}
-                              aria-labelledby="budget-group-label"
-                              className="grid grid-cols-1 gap-3 sm:grid-cols-2"
-                            >
-                              {budgetOptions.map((budget, index) => (
-                                <Label
-                                  key={budget}
-                                  htmlFor={`budget-${index}`}
-                                  className={`${choiceCardClass} font-medium`}
-                                >
-                                  <RadioGroupItem
-                                    value={budget}
-                                    id={`budget-${index}`}
-                                    className="h-5 w-5 shrink-0 border-muted-foreground/50 data-[state=checked]:border-primary"
-                                    data-testid={`radio-budget-${index}`}
-                                  />
-                                  <span>{budget}</span>
-                                </Label>
-                              ))}
-                            </RadioGroup>
+                            <Select value={field.value ?? ''} onValueChange={field.onChange}>
+                              <SelectTrigger className={selectTriggerClass} data-testid="select-timeline">
+                                <SelectValue placeholder="Sélectionnez un moment" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {projectTimelines.map((timeline) => (
+                                  <SelectItem key={timeline} value={timeline} className="text-base">
+                                    {timeline}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                           </FormControl>
-                          {field.value && (
-                            <button
-                              type="button"
-                              className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                              onClick={() => field.onChange("")}
-                              data-testid="button-clear-budget"
-                            >
-                              Je préfère ne pas préciser de budget
-                            </button>
-                          )}
-                          <FormMessage data-testid="error-budget" />
+                          <FormMessage data-testid="error-timeline" />
                         </FormItem>
                       )}
                     />
@@ -746,7 +725,7 @@ export function QuoteForm({
                     <Button
                       type="button"
                       size="lg"
-                      onClick={() => nextStep(['service', 'budget'])}
+                      onClick={() => nextStep(['service', 'timeline'])}
                       className="mt-2 h-14 w-full text-base font-bold"
                       data-testid="button-next-step-1"
                     >
@@ -833,33 +812,57 @@ export function QuoteForm({
                         )}
                       />
 
-                      <FormField
-                        control={control}
-                        name="timeline"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className={labelClass}>
-                              Échéancier souhaité <span className="text-destructive">*</span>
-                            </FormLabel>
-                            <Select value={field.value ?? ''} onValueChange={field.onChange}>
-                              <FormControl>
-                                <SelectTrigger className={selectTriggerClass} data-testid="select-timeline">
-                                  <SelectValue placeholder="Sélectionnez un moment" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                {projectTimelines.map((timeline) => (
-                                  <SelectItem key={timeline} value={timeline} className="text-base">
-                                    {timeline}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                            <FormMessage data-testid="error-timeline" />
-                          </FormItem>
-                        )}
-                      />
                     </div>
+
+                    <FormField
+                      control={control}
+                      name="budget"
+                      render={({ field, fieldState }) => (
+                        <FormItem>
+                          <span
+                            id="budget-group-label"
+                            className={cn('block', labelClass, fieldState.error && 'text-destructive')}
+                          >
+                            Budget approximatif <span className={optionalHintClass}>(facultatif)</span>
+                          </span>
+                          <FormControl>
+                            <RadioGroup
+                              value={field.value}
+                              onValueChange={field.onChange}
+                              aria-labelledby="budget-group-label"
+                              className="grid grid-cols-1 gap-3 sm:grid-cols-2"
+                            >
+                              {budgetOptions.map((budget, index) => (
+                                <Label
+                                  key={budget}
+                                  htmlFor={`budget-${index}`}
+                                  className={`${choiceCardClass} font-medium`}
+                                >
+                                  <RadioGroupItem
+                                    value={budget}
+                                    id={`budget-${index}`}
+                                    className="h-5 w-5 shrink-0 border-muted-foreground/50 data-[state=checked]:border-primary"
+                                    data-testid={`radio-budget-${index}`}
+                                  />
+                                  <span>{budget}</span>
+                                </Label>
+                              ))}
+                            </RadioGroup>
+                          </FormControl>
+                          {field.value && (
+                            <button
+                              type="button"
+                              className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                              onClick={() => field.onChange("")}
+                              data-testid="button-clear-budget"
+                            >
+                              Je préfère ne pas préciser de budget
+                            </button>
+                          )}
+                          <FormMessage data-testid="error-budget" />
+                        </FormItem>
+                      )}
+                    />
 
                     {allowPhotos && (
                       <div className="space-y-2">
@@ -948,7 +951,7 @@ export function QuoteForm({
                       <Button
                         type="button"
                         size="lg"
-                        onClick={() => nextStep(['description', 'city', 'timeline'])}
+                        onClick={() => nextStep(['description', 'city', 'budget'])}
                         className="h-14 flex-1 text-base font-bold"
                         data-testid="button-next-step-2"
                       >

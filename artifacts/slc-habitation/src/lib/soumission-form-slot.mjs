@@ -117,6 +117,14 @@ const staticBudgets = [
   '100 000 $ et plus',
 ];
 
+const staticTimelines = [
+  'Dès que possible',
+  'Dans les 3 prochains mois',
+  'Dans 3 à 6 mois',
+  'Dans plus de 6 mois',
+  'Je ne sais pas encore',
+];
+
 const staticContactItems = [
   { label: '(514) 404-8494', href: 'tel:5144048494' },
   { label: 'slchabitation@gmail.com', href: 'mailto:slchabitation@gmail.com' },
@@ -173,17 +181,9 @@ export const soumissionFormStaticMarkup = `<div class="soumission-quote-form" id
         </div>
 
         <div class="space-y-2">
-          <span class="block text-xs font-bold uppercase leading-none tracking-[0.12em] text-foreground">Budget approximatif <span class="ml-1 font-medium normal-case tracking-normal text-muted-foreground">(facultatif)</span></span>
-          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            ${staticBudgets
-              .map(
-                (budget) => `<span class="flex items-center gap-3 rounded-md border border-border bg-white p-4 text-base font-medium leading-none">
-              <span class="h-5 w-5 shrink-0 rounded-full border border-muted-foreground/50"></span>
-              <span class="text-foreground">${budget}</span>
-            </span>`,
-              )
-              .join('\n            ')}
-          </div>
+          <span class="block text-xs font-bold uppercase leading-none tracking-[0.12em] text-foreground">Échéancier souhaité <span class="text-destructive">*</span></span>
+          <span class="flex h-12 w-full items-center justify-between rounded-md border border-input bg-white px-4 text-base text-muted-foreground">Sélectionnez un moment<span class="block h-4 w-4 opacity-50" aria-hidden="true"></span></span>
+          <span class="sr-only">${staticTimelines.join(', ')}</span>
         </div>
 
         <span class="mt-2 inline-flex h-14 w-full items-center justify-center gap-2 rounded-md border border-primary-border bg-primary px-8 text-base font-bold text-primary-foreground">Continuer</span>
